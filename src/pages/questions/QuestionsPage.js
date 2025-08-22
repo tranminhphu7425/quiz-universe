@@ -1,23 +1,9 @@
-"use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = QuestionsPage;
-var jsx_runtime_1 = require("react/jsx-runtime");
-var react_1 = require("react");
-var framer_motion_1 = require("framer-motion");
-var lucide_react_1 = require("lucide-react");
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { CheckCircle2, XCircle, Sparkles, ArrowRight, RefreshCcw, LayoutGrid } from "lucide-react";
 // ====== Demo data (bạn có thể truyền qua props hoặc fetch API) ======
-var demoQuestions = [
+const demoQuestions = [
     {
         "id": 3,
         "stem": "Khái niệm tư tưởng Hồ Chí Minh lần đầu tiên được Đảng ta trình bày tại \nĐại hội Đảng toàn quốc lần thứ mấy?",
@@ -4647,85 +4633,74 @@ var demoQuestions = [
     }
 ];
 // ====== Page ======
-function QuestionsPage(_a) {
-    var _b = _a.questions, questions = _b === void 0 ? demoQuestions : _b;
-    var _c = (0, react_1.useState)({}), picked = _c[0], setPicked = _c[1]; // qId -> optionId
-    var _d = (0, react_1.useState)(false), submitted = _d[0], setSubmitted = _d[1];
-    var _e = (0, react_1.useState)({}), answers = _e[0], setAnswers = _e[1];
-    var _f = (0, react_1.useState)(false), navOpen = _f[0], setNavOpen = _f[1]; // ✅ trạng thái mở/đóng popup
-    var PAGE_SIZE = 10;
-    var pageSizeFAB = 50;
-    var _g = (0, react_1.useState)(1), page = _g[0], setPage = _g[1];
-    var total = questions.length;
-    var pageCount = Math.ceil(total / PAGE_SIZE);
-    var start = (page - 1) * PAGE_SIZE;
-    var end = start + PAGE_SIZE;
-    var isZone = function (index) { return (index >= start && index < end); };
-    var pageQuestions = questions.slice(start, end);
+export default function QuestionsPage({ questions = demoQuestions }) {
+    const [picked, setPicked] = useState({}); // qId -> optionId
+    const [submitted, setSubmitted] = useState(false);
+    const [answers, setAnswers] = useState({});
+    const [navOpen, setNavOpen] = useState(false); // ✅ trạng thái mở/đóng popup
+    const PAGE_SIZE = 10;
+    const pageSizeFAB = 50;
+    const [page, setPage] = useState(1);
+    const total = questions.length;
+    const pageCount = Math.ceil(total / PAGE_SIZE);
+    const start = (page - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    const isZone = (index) => index >= start && index < end;
+    const pageQuestions = questions.slice(start, end);
     // {FAB}
-    var startIndexFAB = Math.floor(start / pageSizeFAB) * pageSizeFAB;
-    var endIndexFAB = startIndexFAB + pageSizeFAB;
-    var currentQuestions = questions.slice(startIndexFAB, endIndexFAB);
-    var answeredSet = new Set(Object.entries(picked)
-        .filter(function (_a) {
-        var optId = _a[1];
-        return optId != null;
-    })
-        .map(function (_a) {
-        var qId = _a[0];
-        return Number(qId);
-    }));
+    const startIndexFAB = Math.floor(start / pageSizeFAB) * pageSizeFAB;
+    const endIndexFAB = startIndexFAB + pageSizeFAB;
+    const currentQuestions = questions.slice(startIndexFAB, endIndexFAB);
+    const answeredSet = new Set(Object.entries(picked)
+        .filter(([, optId]) => optId != null)
+        .map(([qId]) => Number(qId)));
     // ✅ chuyển tới câu bất kỳ: đổi trang + scroll mượt
-    var goToQuestion = function (qGlobalIndex, qId) {
-        var _a;
-        var targetPage = Math.floor(qGlobalIndex / PAGE_SIZE) + 1;
+    const goToQuestion = (qGlobalIndex, qId) => {
+        const targetPage = Math.floor(qGlobalIndex / PAGE_SIZE) + 1;
         if (targetPage !== page) {
             setPage(targetPage);
             // chờ DOM render xong rồi scroll
-            setTimeout(function () {
-                var _a;
-                (_a = document.getElementById("q-".concat(qId))) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTimeout(() => {
+                document.getElementById(`q-${qId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
             }, 0);
         }
         else {
-            (_a = document.getElementById("q-".concat(qId))) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ behavior: "smooth", block: "start" });
+            document.getElementById(`q-${qId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
-    var score = (0, react_1.useMemo)(function () {
+    const score = useMemo(() => {
         if (!submitted)
             return 0;
-        var s = 0;
-        for (var _i = 0, questions_1 = questions; _i < questions_1.length; _i++) {
-            var q = questions_1[_i];
-            var pickedOptionId = picked[q.id];
-            var correct = q.options.find(function (o) { return o.isCorrect; });
+        let s = 0;
+        for (const q of questions) {
+            const pickedOptionId = picked[q.id];
+            const correct = q.options.find((o) => o.isCorrect);
             if (pickedOptionId && correct && pickedOptionId === correct.id)
                 s += 1;
         }
         return s;
     }, [submitted, picked, questions]);
-    var reset = function () {
+    const reset = () => {
         setPicked({});
         setSubmitted(false);
     };
     // Hàm xử lý khi chọn đáp án
-    var handleSelectOption = function (questionId, optionId) {
-        setAnswers(function (prev) {
-            var _a;
-            return (__assign(__assign({}, prev), (_a = {}, _a[questionId] = optionId, _a)));
-        });
+    const handleSelectOption = (questionId, optionId) => {
+        setAnswers((prev) => ({
+            ...prev,
+            [questionId]: optionId,
+        }));
     };
     // Tính số câu đã làm (có đáp án được chọn)
-    var numAnswered = (0, react_1.useMemo)(function () { return Object.values(picked).filter(function (v) { return v !== null && v !== undefined; }).length; }, [picked]);
-    return ((0, jsx_runtime_1.jsxs)("div", { className: "min-h-screen bg-slate-50 dark:bg-slate-900", children: [(0, jsx_runtime_1.jsxs)("section", { className: "relative  overflow-hidden", children: [(0, jsx_runtime_1.jsx)("div", { className: "absolute  inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" }), (0, jsx_runtime_1.jsxs)("div", { className: "relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-14 text-white md:flex-row md:justify-between", children: [(0, jsx_runtime_1.jsxs)(framer_motion_1.motion.div, { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 }, transition: { type: "spring", stiffness: 160, damping: 18 }, children: [(0, jsx_runtime_1.jsxs)("div", { className: "mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur", children: [(0, jsx_runtime_1.jsx)(lucide_react_1.Sparkles, { className: "h-4 w-4" }), " QuizUniverse \u2022 L\u00E0m tr\u1EAFc nghi\u1EC7m"] }), (0, jsx_runtime_1.jsxs)("h1", { className: "text-[2rem] md:text-[2.6rem] font-black leading-tight", children: ["B\u1ED9 c\u00E2u h\u1ECFi \u00F4n t\u1EADp ", (0, jsx_runtime_1.jsx)("span", { className: "bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent", children: "ML021" })] }), (0, jsx_runtime_1.jsx)("p", { className: "mt-2 text-white/90", children: "Ch\u1ECDn \u0111\u00E1p \u00E1n cho t\u1EEBng c\u00E2u. N\u1ED9p b\u00E0i \u0111\u1EC3 xem \u0111i\u1EC3m v\u00E0 l\u1EDDi gi\u1EA3i." })] }), (0, jsx_runtime_1.jsxs)(framer_motion_1.motion.div, { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 }, transition: { delay: 0.05 }, className: "flex items-center gap-3 flex-wrap", children: [(0, jsx_runtime_1.jsxs)("div", { className: "rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20", children: ["T\u1ED5ng c\u00E2u: ", (0, jsx_runtime_1.jsx)("b", { children: total })] }), (0, jsx_runtime_1.jsxs)("div", { className: "rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20", children: ["Tr\u1EA1ng th\u00E1i: ", (0, jsx_runtime_1.jsx)("b", { children: submitted ? "Đã nộp" : "Chưa nộp" })] }), (0, jsx_runtime_1.jsxs)("div", { className: "rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20", children: ["\u0110\u00E3 l\u00E0m: ", (0, jsx_runtime_1.jsx)("b", { children: numAnswered }), "/", total] })] })] })] }), (0, jsx_runtime_1.jsxs)("div", { className: "relative", children: [(0, jsx_runtime_1.jsx)("div", { className: "absolute right-5 top-10 w-fit h-full", children: (0, jsx_runtime_1.jsxs)("div", { className: "sticky top-20 w-fit", children: [!navOpen && ((0, jsx_runtime_1.jsx)("button", { type: "button", onClick: function () { return setNavOpen(true); }, className: " z-40 grid h-12 w-12 place-items-center rounded-full bg-emerald-600 text-white shadow-lg hover:brightness-110", "aria-label": "M\u1EDF danh s\u00E1ch c\u00E2u h\u1ECFi", title: "Danh s\u00E1ch c\u00E2u h\u1ECFi", children: (0, jsx_runtime_1.jsx)(lucide_react_1.LayoutGrid, { className: "h-5 w-5" }) })), navOpen && ((0, jsx_runtime_1.jsx)("div", { className: " inset-0 z-50 h-3/4 my-auto", children: (0, jsx_runtime_1.jsxs)(framer_motion_1.motion.div, { initial: { x: 360 }, animate: { x: 0 }, exit: { x: 360 }, transition: { type: "tween", duration: 0.2 }, className: " right-0 top-0 h-full w-[320px] bg-white shadow-xl dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 p-4 flex flex-col", children: [(0, jsx_runtime_1.jsxs)("div", { className: "mb-3 flex items-center justify-between", children: [(0, jsx_runtime_1.jsx)("h4", { className: "text-sm font-semibold text-slate-700 dark:text-slate-200", children: "Danh s\u00E1ch c\u00E2u h\u1ECFi" }), (0, jsx_runtime_1.jsx)("button", { className: "rounded-lg border border-slate-200 px-3 py-1 text-xs text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", onClick: function () { return setNavOpen(false); }, children: "\u0110\u00F3ng" })] }), (0, jsx_runtime_1.jsxs)("div", { className: "mb-3 flex flex-wrap gap-2 text-xs", children: [(0, jsx_runtime_1.jsx)("span", { className: "inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-700", children: "Ch\u01B0a l\u00E0m" }), (0, jsx_runtime_1.jsx)("span", { className: "inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-white bg-emerald-600", children: "\u0110\u00E3 ch\u1ECDn" }), submitted && ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("span", { className: "inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-white bg-emerald-500", children: "\u0110\u00FAng" }), (0, jsx_runtime_1.jsx)("span", { className: "inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-white bg-rose-500", children: "Sai" })] }))] }), (0, jsx_runtime_1.jsx)("div", { className: "grid grid-cols-5 gap-2 overflow-auto", children: currentQuestions.map(function (q, idx) {
-                                                    var _a;
-                                                    var globalIndex = startIndexFAB + idx; // tính index toàn cục
-                                                    var qNumber = globalIndex + 1; // số thứ tự câu
-                                                    var pickedId = picked[q.id];
-                                                    var hasPicked = pickedId != null;
-                                                    var color = "";
+    const numAnswered = useMemo(() => Object.values(picked).filter((v) => v !== null && v !== undefined).length, [picked]);
+    return (_jsxs("div", { className: "min-h-screen bg-slate-50 dark:bg-slate-900", children: [_jsxs("section", { className: "relative  overflow-hidden", children: [_jsx("div", { className: "absolute  inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" }), _jsxs("div", { className: "relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-14 text-white md:flex-row md:justify-between", children: [_jsxs(motion.div, { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 }, transition: { type: "spring", stiffness: 160, damping: 18 }, children: [_jsxs("div", { className: "mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur", children: [_jsx(Sparkles, { className: "h-4 w-4" }), " QuizUniverse \u2022 L\u00E0m tr\u1EAFc nghi\u1EC7m"] }), _jsxs("h1", { className: "text-[2rem] md:text-[2.6rem] font-black leading-tight", children: ["B\u1ED9 c\u00E2u h\u1ECFi \u00F4n t\u1EADp ", _jsx("span", { className: "bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent", children: "ML021" })] }), _jsx("p", { className: "mt-2 text-white/90", children: "Ch\u1ECDn \u0111\u00E1p \u00E1n cho t\u1EEBng c\u00E2u. N\u1ED9p b\u00E0i \u0111\u1EC3 xem \u0111i\u1EC3m v\u00E0 l\u1EDDi gi\u1EA3i." })] }), _jsxs(motion.div, { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 }, transition: { delay: 0.05 }, className: "flex items-center gap-3 flex-wrap", children: [_jsxs("div", { className: "rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20", children: ["T\u1ED5ng c\u00E2u: ", _jsx("b", { children: total })] }), _jsxs("div", { className: "rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20", children: ["Tr\u1EA1ng th\u00E1i: ", _jsx("b", { children: submitted ? "Đã nộp" : "Chưa nộp" })] }), _jsxs("div", { className: "rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20", children: ["\u0110\u00E3 l\u00E0m: ", _jsx("b", { children: numAnswered }), "/", total] })] })] })] }), _jsxs("div", { className: "relative", children: [_jsx("div", { className: "absolute right-5 top-10 w-fit h-full", children: _jsxs("div", { className: "sticky top-20 w-fit", children: [!navOpen && (_jsx("button", { type: "button", onClick: () => setNavOpen(true), className: " z-40 grid h-12 w-12 place-items-center rounded-full bg-emerald-600 text-white shadow-lg hover:brightness-110", "aria-label": "M\u1EDF danh s\u00E1ch c\u00E2u h\u1ECFi", title: "Danh s\u00E1ch c\u00E2u h\u1ECFi", children: _jsx(LayoutGrid, { className: "h-5 w-5" }) })), navOpen && (_jsx("div", { className: " inset-0 z-50 h-3/4 my-auto", children: _jsxs(motion.div, { initial: { x: 360 }, animate: { x: 0 }, exit: { x: 360 }, transition: { type: "tween", duration: 0.2 }, className: " right-0 top-0 h-full w-[320px] bg-white shadow-xl dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 p-4 flex flex-col", children: [_jsxs("div", { className: "mb-3 flex items-center justify-between", children: [_jsx("h4", { className: "text-sm font-semibold text-slate-700 dark:text-slate-200", children: "Danh s\u00E1ch c\u00E2u h\u1ECFi" }), _jsx("button", { className: "rounded-lg border border-slate-200 px-3 py-1 text-xs text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", onClick: () => setNavOpen(false), children: "\u0110\u00F3ng" })] }), _jsxs("div", { className: "mb-3 flex flex-wrap gap-2 text-xs", children: [_jsx("span", { className: "inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-700", children: "Ch\u01B0a l\u00E0m" }), _jsx("span", { className: "inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-white bg-emerald-600", children: "\u0110\u00E3 ch\u1ECDn" }), submitted && (_jsxs(_Fragment, { children: [_jsx("span", { className: "inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-white bg-emerald-500", children: "\u0110\u00FAng" }), _jsx("span", { className: "inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-white bg-rose-500", children: "Sai" })] }))] }), _jsx("div", { className: "grid grid-cols-5 gap-2 overflow-auto", children: currentQuestions.map((q, idx) => {
+                                                    const globalIndex = startIndexFAB + idx; // tính index toàn cục
+                                                    const qNumber = globalIndex + 1; // số thứ tự câu
+                                                    const pickedId = picked[q.id];
+                                                    const hasPicked = pickedId != null;
+                                                    let color = "";
                                                     if (submitted && hasPicked) {
-                                                        var isCorrect = ((_a = q.options.find(function (o) { return o.isCorrect; })) === null || _a === void 0 ? void 0 : _a.id) === pickedId;
+                                                        const isCorrect = q.options.find(o => o.isCorrect)?.id === pickedId;
                                                         color = isCorrect ? "bg-emerald-500 text-white" : "bg-rose-500 text-white";
                                                     }
                                                     else if (hasPicked) {
@@ -4734,63 +4709,45 @@ function QuestionsPage(_a) {
                                                     else {
                                                         color = "border border-slate-300 text-slate-700 dark:text-slate-300 dark:border-slate-700";
                                                     }
-                                                    var finalColor = color;
+                                                    let finalColor = color;
                                                     if (finalColor === "border border-slate-300 text-slate-700 dark:text-slate-300 dark:border-slate-700" && isZone(globalIndex)) {
                                                         finalColor = "bg-neutral-200 dark:bg-neutral-500";
                                                     }
-                                                    return ((0, jsx_runtime_1.jsx)("button", { onClick: function () { return goToQuestion(globalIndex, q.id); }, className: "h-8 rounded-md text-sm font-semibold  ".concat(finalColor, "  "), title: "T\u1EDBi c\u00E2u ".concat(qNumber), children: qNumber }, q.id));
-                                                }) }), (0, jsx_runtime_1.jsx)("div", { className: "mt-auto pt-3", children: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-wrap items-center gap-2", children: [(0, jsx_runtime_1.jsx)("button", { onClick: function () { return setPage(function (p) { return Math.max(1, p - 1); }); }, disabled: page === 1, className: "rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", children: "\u2190 Tr\u01B0\u1EDBc" }), (0, jsx_runtime_1.jsxs)("div", { className: "text-sm text-slate-600 dark:text-slate-300", children: ["Trang ", (0, jsx_runtime_1.jsx)("b", { children: page }), "/", (0, jsx_runtime_1.jsx)("b", { children: pageCount })] }), (0, jsx_runtime_1.jsx)("button", { onClick: function () { return setPage(function (p) { return Math.min(pageCount, p + 1); }); }, disabled: page === pageCount, className: "ml-auto rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", children: "Sau \u2192" })] }) })] }) }))] }) }), (0, jsx_runtime_1.jsxs)("main", { className: " mx-auto max-w-5xl px-6 py-10", children: [(0, jsx_runtime_1.jsx)("div", { className: "mb-6 flex flex-wrap items-center gap-3", children: !submitted ? ((0, jsx_runtime_1.jsxs)("button", { onClick: function () { return setSubmitted(true); }, className: "inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110", children: ["N\u1ED9p b\u00E0i ", (0, jsx_runtime_1.jsx)(lucide_react_1.ArrowRight, { className: "h-4 w-4" })] })) : ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsxs)("div", { className: "mr-2 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:ring-emerald-800", children: ["\u0110i\u1EC3m: ", (0, jsx_runtime_1.jsx)("b", { children: score }), "/", (0, jsx_runtime_1.jsx)("b", { children: total })] }), (0, jsx_runtime_1.jsxs)("button", { onClick: reset, className: "inline-flex items-center gap-2 rounded-full bg-slate-800 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-slate-700", children: ["L\u00E0m l\u1EA1i ", (0, jsx_runtime_1.jsx)(lucide_react_1.RefreshCcw, { className: "h-4 w-4" })] })] })) }), (0, jsx_runtime_1.jsx)("div", { className: "space-y-6", children: pageQuestions.map(function (q, idx) {
-                                    var _a;
-                                    return ((0, jsx_runtime_1.jsx)(QuestionCard, { index: start + idx + 1, q: q, pickedOptionId: (_a = picked[q.id]) !== null && _a !== void 0 ? _a : null, onPick: function (optionId) {
-                                            setPicked(function (m) {
-                                                var _a;
-                                                return (__assign(__assign({}, m), (_a = {}, _a[q.id] = optionId, _a)));
-                                            });
-                                            setAnswers(function (m) {
-                                                var _a;
-                                                return (__assign(__assign({}, m), (_a = {}, _a[q.id] = optionId, _a)));
-                                            }); // giữ đồng bộ với numAnswered
-                                        }, onClear: function () {
-                                            setPicked(function (m) {
-                                                var _a;
-                                                return (__assign(__assign({}, m), (_a = {}, _a[q.id] = null, _a)));
-                                            });
-                                            setAnswers(function (m) {
-                                                var _a;
-                                                return (__assign(__assign({}, m), (_a = {}, _a[q.id] = null, _a)));
-                                            }); // cập nhật số câu đã làm
-                                        }, showResult: submitted }, q.id));
-                                }) }), (0, jsx_runtime_1.jsxs)("div", { className: "my-5 flex flex-wrap items-center gap-2", children: [(0, jsx_runtime_1.jsx)("button", { type: "button", onClick: function () { return setPage(function (p) { return Math.max(1, p - 1); }); }, disabled: page === 1, className: "rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", title: "Trang tr\u01B0\u1EDBc", children: "\u2190 Tr\u01B0\u1EDBc" }), Array.from({ length: pageCount }, function (_, i) { return i + 1; })
-                                        .filter(function (p) { return Math.abs(p - page) <= 2 || p === 1 || p === pageCount; }) // hiển thị trang đầu/cuối và lân cận
-                                        .reduce(function (acc, p, idx, arr) {
+                                                    return (_jsx("button", { onClick: () => goToQuestion(globalIndex, q.id), className: `h-8 rounded-md text-sm font-semibold  ${finalColor}  `, title: `Tới câu ${qNumber}`, children: qNumber }, q.id));
+                                                }) }), _jsx("div", { className: "mt-auto pt-3", children: _jsxs("div", { className: "flex flex-wrap items-center gap-2", children: [_jsx("button", { onClick: () => setPage((p) => Math.max(1, p - 1)), disabled: page === 1, className: "rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", children: "\u2190 Tr\u01B0\u1EDBc" }), _jsxs("div", { className: "text-sm text-slate-600 dark:text-slate-300", children: ["Trang ", _jsx("b", { children: page }), "/", _jsx("b", { children: pageCount })] }), _jsx("button", { onClick: () => setPage((p) => Math.min(pageCount, p + 1)), disabled: page === pageCount, className: "ml-auto rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", children: "Sau \u2192" })] }) })] }) }))] }) }), _jsxs("main", { className: " mx-auto max-w-5xl px-6 py-10", children: [_jsx("div", { className: "mb-6 flex flex-wrap items-center gap-3", children: !submitted ? (_jsxs("button", { onClick: () => setSubmitted(true), className: "inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110", children: ["N\u1ED9p b\u00E0i ", _jsx(ArrowRight, { className: "h-4 w-4" })] })) : (_jsxs(_Fragment, { children: [_jsxs("div", { className: "mr-2 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:ring-emerald-800", children: ["\u0110i\u1EC3m: ", _jsx("b", { children: score }), "/", _jsx("b", { children: total })] }), _jsxs("button", { onClick: reset, className: "inline-flex items-center gap-2 rounded-full bg-slate-800 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-slate-700", children: ["L\u00E0m l\u1EA1i ", _jsx(RefreshCcw, { className: "h-4 w-4" })] })] })) }), _jsx("div", { className: "space-y-6", children: pageQuestions.map((q, idx) => (_jsx(QuestionCard, { index: start + idx + 1, q: q, pickedOptionId: picked[q.id] ?? null, onPick: (optionId) => {
+                                        setPicked((m) => ({ ...m, [q.id]: optionId }));
+                                        setAnswers((m) => ({ ...m, [q.id]: optionId })); // giữ đồng bộ với numAnswered
+                                    }, onClear: () => {
+                                        setPicked((m) => ({ ...m, [q.id]: null }));
+                                        setAnswers((m) => ({ ...m, [q.id]: null })); // cập nhật số câu đã làm
+                                    }, showResult: submitted }, q.id))) }), _jsxs("div", { className: "my-5 flex flex-wrap items-center gap-2", children: [_jsx("button", { type: "button", onClick: () => setPage((p) => Math.max(1, p - 1)), disabled: page === 1, className: "rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", title: "Trang tr\u01B0\u1EDBc", children: "\u2190 Tr\u01B0\u1EDBc" }), Array.from({ length: pageCount }, (_, i) => i + 1)
+                                        .filter(p => Math.abs(p - page) <= 2 || p === 1 || p === pageCount) // hiển thị trang đầu/cuối và lân cận
+                                        .reduce((acc, p, idx, arr) => {
                                         if (idx > 0) {
-                                            var prev = arr[idx - 1];
+                                            const prev = arr[idx - 1];
                                             if (typeof prev === "number" && typeof p === "number" && p - prev > 1)
                                                 acc.push("…");
                                         }
                                         acc.push(p);
                                         return acc;
                                     }, [])
-                                        .map(function (p, i) {
-                                        return typeof p === "string" ? ((0, jsx_runtime_1.jsx)("span", { className: "px-2 text-slate-400", children: "\u2026" }, "ellipsis-".concat(i))) : ((0, jsx_runtime_1.jsx)("button", { onClick: function () { return setPage(p); }, className: "rounded-lg px-3 py-1.5 text-sm font-medium border\n              ".concat(p === page
-                                                ? "bg-emerald-600 text-white border-emerald-600"
-                                                : "border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"), title: "Trang ".concat(p), children: p }, p));
-                                    }), (0, jsx_runtime_1.jsx)("button", { type: "button", onClick: function () { return setPage(function (p) { return Math.min(pageCount, p + 1); }); }, disabled: page === pageCount, className: "rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", title: "Trang sau", children: "Sau \u2192" }), (0, jsx_runtime_1.jsxs)("div", { className: "ml-auto text-sm text-slate-600 dark:text-slate-300", children: ["Trang ", (0, jsx_runtime_1.jsx)("b", { children: page }), "/", (0, jsx_runtime_1.jsx)("b", { children: pageCount }), " \u2022 C\u00E2u ", (0, jsx_runtime_1.jsx)("b", { children: start + 1 }), "\u2013", (0, jsx_runtime_1.jsx)("b", { children: Math.min(end, total) }), " / ", total] })] })] })] })] }));
+                                        .map((p, i) => typeof p === "string" ? (_jsx("span", { className: "px-2 text-slate-400", children: "\u2026" }, `ellipsis-${i}`)) : (_jsx("button", { onClick: () => setPage(p), className: `rounded-lg px-3 py-1.5 text-sm font-medium border
+              ${p === page
+                                            ? "bg-emerald-600 text-white border-emerald-600"
+                                            : "border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"}`, title: `Trang ${p}`, children: p }, p))), _jsx("button", { type: "button", onClick: () => setPage((p) => Math.min(pageCount, p + 1)), disabled: page === pageCount, className: "rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", title: "Trang sau", children: "Sau \u2192" }), _jsxs("div", { className: "ml-auto text-sm text-slate-600 dark:text-slate-300", children: ["Trang ", _jsx("b", { children: page }), "/", _jsx("b", { children: pageCount }), " \u2022 C\u00E2u ", _jsx("b", { children: start + 1 }), "\u2013", _jsx("b", { children: Math.min(end, total) }), " / ", total] })] })] })] })] }));
 }
 // ====== Components ======
-function QuestionCard(_a) {
-    var index = _a.index, q = _a.q, pickedOptionId = _a.pickedOptionId, onPick = _a.onPick, onClear = _a.onClear, showResult = _a.showResult;
-    var correct = q.options.find(function (o) { return o.isCorrect; });
-    var isCorrect = showResult && pickedOptionId && correct && pickedOptionId === correct.id;
-    var isWrong = showResult && pickedOptionId && correct && pickedOptionId !== correct.id;
-    return ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.div, { id: "q-".concat(q.id), initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.2 }, transition: { type: "spring", stiffness: 140, damping: 16 }, className: "rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm hover:shadow-md dark:border-slate-800 dark:bg-slate-900", children: [(0, jsx_runtime_1.jsxs)("div", { className: "mb-3 flex items-start justify-between gap-3", children: [(0, jsx_runtime_1.jsxs)("h3", { className: "text-base font-semibold text-slate-800 dark:text-slate-200", children: [(0, jsx_runtime_1.jsx)("span", { className: "mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/90 text-xs font-bold text-white", children: index }), (0, jsx_runtime_1.jsx)("span", { className: "whitespace-pre-line", children: q.stem })] }), showResult ? (isCorrect ? ((0, jsx_runtime_1.jsxs)("span", { className: "inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-emerald-700 ring-1 ring-emerald-300 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800", children: [(0, jsx_runtime_1.jsx)(lucide_react_1.CheckCircle2, { className: "h-4 w-4" }), " \u0110\u00FAng"] })) : isWrong ? ((0, jsx_runtime_1.jsxs)("span", { className: "inline-flex items-center gap-1 rounded-full bg-rose-100 px-2 py-1 text-rose-700 ring-1 ring-rose-300 dark:bg-rose-900/30 dark:text-rose-300 dark:ring-rose-800", children: [(0, jsx_runtime_1.jsx)(lucide_react_1.XCircle, { className: "h-4 w-4" }), " Sai"] })) : null) : (pickedOptionId !== null && ((0, jsx_runtime_1.jsx)("button", { type: "button", onClick: onClear, className: "rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", title: "X\u00F3a l\u1EF1a ch\u1ECDn c\u1EE7a c\u00E2u n\u00E0y", children: "X\u00F3a l\u1EF1a ch\u1ECDn" })))] }), (0, jsx_runtime_1.jsx)("div", { className: "mt-3 grid gap-2", children: q.options
+function QuestionCard({ index, q, pickedOptionId, onPick, onClear, showResult, }) {
+    const correct = q.options.find((o) => o.isCorrect);
+    const isCorrect = showResult && pickedOptionId && correct && pickedOptionId === correct.id;
+    const isWrong = showResult && pickedOptionId && correct && pickedOptionId !== correct.id;
+    return (_jsxs(motion.div, { id: `q-${q.id}`, initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.2 }, transition: { type: "spring", stiffness: 140, damping: 16 }, className: "rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm hover:shadow-md dark:border-slate-800 dark:bg-slate-900", children: [_jsxs("div", { className: "mb-3 flex items-start justify-between gap-3", children: [_jsxs("h3", { className: "text-base font-semibold text-slate-800 dark:text-slate-200", children: [_jsx("span", { className: "mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/90 text-xs font-bold text-white", children: index }), _jsx("span", { className: "whitespace-pre-line", children: q.stem })] }), showResult ? (isCorrect ? (_jsxs("span", { className: "inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-emerald-700 ring-1 ring-emerald-300 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800", children: [_jsx(CheckCircle2, { className: "h-4 w-4" }), " \u0110\u00FAng"] })) : isWrong ? (_jsxs("span", { className: "inline-flex items-center gap-1 rounded-full bg-rose-100 px-2 py-1 text-rose-700 ring-1 ring-rose-300 dark:bg-rose-900/30 dark:text-rose-300 dark:ring-rose-800", children: [_jsx(XCircle, { className: "h-4 w-4" }), " Sai"] })) : null) : (pickedOptionId !== null && (_jsx("button", { type: "button", onClick: onClear, className: "rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800", title: "X\u00F3a l\u1EF1a ch\u1ECDn c\u1EE7a c\u00E2u n\u00E0y", children: "X\u00F3a l\u1EF1a ch\u1ECDn" })))] }), _jsx("div", { className: "mt-3 grid gap-2", children: q.options
                     .slice()
-                    .sort(function (a, b) { return a.sortOrder - b.sortOrder; })
-                    .map(function (opt) { return ((0, jsx_runtime_1.jsx)(OptionItem, { name: "q-".concat(q.id), opt: opt, checked: pickedOptionId === opt.id, disabled: showResult, onChange: function () { return onPick(opt.id); }, reveal: showResult, isCorrect: opt.isCorrect, isPicked: pickedOptionId === opt.id }, opt.id)); }) }), showResult && q.explanation && ((0, jsx_runtime_1.jsxs)("div", { className: "mt-4 rounded-xl bg-amber-50 p-3 text-amber-900 ring-1 ring-amber-200 dark:bg-amber-900/20 dark:text-amber-200 dark:ring-amber-800", children: [(0, jsx_runtime_1.jsx)("div", { className: "text-sm font-semibold", children: "Gi\u1EA3i th\u00EDch" }), (0, jsx_runtime_1.jsx)("p", { className: "mt-1 text-sm leading-relaxed", children: q.explanation })] }))] }));
+                    .sort((a, b) => a.sortOrder - b.sortOrder)
+                    .map((opt) => (_jsx(OptionItem, { groupName: `q-${q.id}`, opt: opt, checked: pickedOptionId === opt.id, disabled: showResult, onChange: () => onPick(opt.id), reveal: showResult, isCorrect: opt.isCorrect, isPicked: pickedOptionId === opt.id }, opt.id))) }), showResult && q.explanation && (_jsxs("div", { className: "mt-4 rounded-xl bg-amber-50 p-3 text-amber-900 ring-1 ring-amber-200 dark:bg-amber-900/20 dark:text-amber-200 dark:ring-amber-800", children: [_jsx("div", { className: "text-sm font-semibold", children: "Gi\u1EA3i th\u00EDch" }), _jsx("p", { className: "mt-1 text-sm leading-relaxed", children: q.explanation })] }))] }));
 }
-function OptionItem(_a) {
-    var opt = _a.opt, checked = _a.checked, disabled = _a.disabled, onChange = _a.onChange, reveal = _a.reveal, isCorrect = _a.isCorrect, isPicked = _a.isPicked, groupName = _a.groupName;
-    var state = reveal
+function OptionItem({ opt, checked, disabled, onChange, reveal, isCorrect, isPicked, groupName, }) {
+    const state = reveal
         ? isCorrect
             ? "correct"
             : isPicked
@@ -4799,12 +4756,12 @@ function OptionItem(_a) {
         : checked
             ? "active"
             : "idle";
-    var classByState = {
+    const classByState = {
         idle: "border-slate-200 hover:border-emerald-300 dark:border-slate-700 dark:hover:border-emerald-700",
         active: "border-emerald-400 bg-emerald-50 ring-1 ring-emerald-300 dark:bg-emerald-900/20 dark:border-emerald-700 dark:ring-emerald-800",
         correct: "border-emerald-400 bg-emerald-50 ring-1 ring-emerald-300 dark:bg-emerald-900/20 dark:border-emerald-700 dark:ring-emerald-800",
         wrong: "border-rose-300 bg-rose-50 ring-1 ring-rose-300 dark:bg-rose-900/20 dark:border-rose-700 dark:ring-rose-800",
         neutral: "border-slate-200 opacity-70 dark:border-slate-700",
     };
-    return ((0, jsx_runtime_1.jsxs)("label", { className: "group flex cursor-pointer items-start gap-3 rounded-xl border p-3 transition ".concat(classByState[state]), children: [(0, jsx_runtime_1.jsx)("input", { type: "radio", name: groupName, className: "mt-1 h-4 w-4 accent-emerald-600", checked: checked, onChange: onChange, disabled: disabled }), (0, jsx_runtime_1.jsx)("div", { className: "flex-1", children: (0, jsx_runtime_1.jsxs)("div", { className: "flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200", children: [(0, jsx_runtime_1.jsx)("span", { className: "inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100 text-slate-700 group-hover:bg-emerald-100 group-hover:text-emerald-800 dark:bg-slate-800 dark:text-slate-300 dark:group-hover:bg-emerald-900/30 dark:group-hover:text-emerald-300", children: opt.label }), (0, jsx_runtime_1.jsx)("span", { children: opt.content })] }) })] }));
+    return (_jsxs("label", { className: `group flex cursor-pointer items-start gap-3 rounded-xl border p-3 transition ${classByState[state]}`, children: [_jsx("input", { type: "radio", name: groupName, className: "mt-1 h-4 w-4 accent-emerald-600", checked: checked, onChange: onChange, disabled: disabled }), _jsx("div", { className: "flex-1", children: _jsxs("div", { className: "flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200", children: [_jsx("span", { className: "inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100 text-slate-700 group-hover:bg-emerald-100 group-hover:text-emerald-800 dark:bg-slate-800 dark:text-slate-300 dark:group-hover:bg-emerald-900/30 dark:group-hover:text-emerald-300", children: opt.label }), _jsx("span", { children: opt.content })] }) })] }));
 }

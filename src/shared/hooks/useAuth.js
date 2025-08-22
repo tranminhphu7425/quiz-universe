@@ -1,42 +1,111 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthProvider = AuthProvider;
-exports.useAuth = useAuth;
-var jsx_runtime_1 = require("react/jsx-runtime");
-// Auto-generated
-var react_1 = require("react");
+import { jsx as _jsx } from "react/jsx-runtime";
+// src/shared/hooks/useAuth.tsx
+import { createContext, useContext, useState, useEffect } from "react";
+const QUIZ_AUTH_KEY = "quiz-auth";
 // ===== Context =====
-var AuthContext = (0, react_1.createContext)(undefined);
+const AuthContext = createContext(undefined);
 // ===== Provider =====
-function AuthProvider(_a) {
-    var children = _a.children;
-    var _b = (0, react_1.useState)(null), user = _b[0], setUser = _b[1];
+export function AuthProvider({ children }) {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false);
     // Load từ localStorage (persist)
-    (0, react_1.useEffect)(function () {
-        var raw = localStorage.getItem("quiz-auth");
+    useEffect(() => {
+        const raw = localStorage.getItem(QUIZ_AUTH_KEY);
         if (raw) {
             try {
                 setUser(JSON.parse(raw));
             }
-            catch (_a) {
+            catch {
                 // ignore lỗi parse
             }
         }
     }, []);
-    var login = function (u) {
+    const persist = (u, remember) => {
+        if (!u) {
+            localStorage.removeItem(QUIZ_AUTH_KEY);
+            return;
+        }
+        if (remember) {
+            localStorage.setItem(QUIZ_AUTH_KEY, JSON.stringify(u));
+        }
+        else {
+            // không nhớ: chỉ set state, không lưu localStorage
+            localStorage.removeItem(QUIZ_AUTH_KEY);
+        }
+    };
+    const login = async (email, _password, opts) => {
+        setLoading(true);
+        try {
+            // TODO: gọi API thật sự tại đây
+            // Demo: mock user theo email
+            const mockUser = {
+                id: "u1",
+                name: email.split("@")[0] || "User",
+                role: "STUDENT",
+                tenantId: "default",
+            };
+            setUser(mockUser);
+            persist(mockUser, opts?.remember);
+        }
+        finally {
+            setLoading(false);
+        }
+    };
+    const loginWithUser = (u, opts) => {
         setUser(u);
-        localStorage.setItem("quiz-auth", JSON.stringify(u));
+        persist(u, opts?.remember);
     };
-    var logout = function () {
-        setUser(null);
-        localStorage.removeItem("quiz-auth");
+    const register = async ({ name, email, password }) => {
+        setLoading(true);
+        try {
+            const mockUser = {
+                id: "u2",
+                name: name || email.split("@")[0] || "User",
+                role: "STUDENT",
+                tenantId: "default",
+            };
+            setUser(mockUser);
+            persist(mockUser, false);
+        }
+        finally {
+            setLoading(false);
+        }
     };
-    var value = { user: user, login: login, logout: logout };
-    return (0, jsx_runtime_1.jsx)(AuthContext.Provider, { value: value, children: children });
+    const logout = async () => {
+        setLoading(true);
+        try {
+            // TODO: call API logout nếu cần
+            setUser(null);
+            persist(null);
+        }
+        finally {
+            setLoading(false);
+        }
+    };
+    const requestPasswordReset = async (_email) => {
+        // TODO: gọi API gửi email reset
+        // giữ nguyên loading=false để UI không bị khoá lâu
+        return;
+    };
+    const resetPassword = async (_token, _newPassword) => {
+        // TODO: gọi API đổi mật khẩu
+        return;
+    };
+    const value = {
+        user,
+        loading,
+        login,
+        loginWithUser,
+        register,
+        logout,
+        requestPasswordReset,
+        resetPassword,
+    };
+    return _jsx(AuthContext.Provider, { value: value, children: children });
 }
 // ===== Hook =====
-function useAuth() {
-    var ctx = (0, react_1.useContext)(AuthContext);
+export function useAuth() {
+    const ctx = useContext(AuthContext);
     if (!ctx) {
         throw new Error("useAuth must be used within <AuthProvider>");
     }

@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.I18nProvider = I18nProvider;
-var jsx_runtime_1 = require("react/jsx-runtime");
-var react_1 = require("react");
-var i18next_1 = require("i18next");
-var react_i18next_1 = require("react-i18next");
+import { jsx as _jsx } from "react/jsx-runtime";
+import { useEffect } from "react";
+import i18n from "i18next";
+import { initReactI18next, I18nextProvider } from "react-i18next";
 // ===== Ngôn ngữ mặc định (có thể tách ra folder locales) =====
-var resources = {
+const resources = {
     vi: {
         translation: {
             welcome: "Xin chào {{name}}",
@@ -25,21 +22,20 @@ var resources = {
     },
 };
 // ===== Khởi tạo i18n =====
-i18next_1.default
-    .use(react_i18next_1.initReactI18next)
+i18n
+    .use(initReactI18next)
     .init({
-    resources: resources,
+    resources,
     lng: "vi", // ngôn ngữ mặc định
     fallbackLng: "en",
     interpolation: { escapeValue: false },
 });
-function I18nProvider(_a) {
-    var children = _a.children;
+export function I18nProvider({ children }) {
     // Option: load lang từ localStorage
-    (0, react_1.useEffect)(function () {
-        var stored = localStorage.getItem("quiz-lang");
+    useEffect(() => {
+        const stored = localStorage.getItem("quiz-lang");
         if (stored)
-            i18next_1.default.changeLanguage(stored);
+            i18n.changeLanguage(stored);
     }, []);
-    return (0, jsx_runtime_1.jsx)(react_i18next_1.I18nextProvider, { i18n: i18next_1.default, children: children });
+    return _jsx(I18nextProvider, { i18n: i18n, children: children });
 }

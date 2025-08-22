@@ -6,9 +6,7 @@ import Floating from "@/shared/ui/Floatting"; // dùng cùng import như các tr
 import { useAuth } from "@/app/providers/AuthProvider";
 
 export default function ForgotPasswordPage() {
-    const { requestPasswordReset, resetPassword, loading } =
-        useAuth?.() ?? { requestPasswordReset: async () => { }, resetPassword: async () => { }, loading: false };
-
+    const { requestPasswordReset, loading } = useAuth();
     const [email, setEmail] = useState("");
     const [sent, setSent] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -37,8 +35,7 @@ export default function ForgotPasswordPage() {
 
         try {
             // Tùy API của bạn: ưu tiên requestPasswordReset(email); nếu không có thì resetPassword({ email })
-            if (requestPasswordReset) await requestPasswordReset(email);
-            else if (resetPassword) await resetPassword({ email });
+           await requestPasswordReset(email);
             setSent(true);
         } catch (err: any) {
             setError(err?.message ?? "Không thể gửi email đặt lại mật khẩu. Vui lòng thử lại.");

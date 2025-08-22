@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import Logo from "@/assets/images/logo/quizuniverselogo.png";
+import type { Variants } from "framer-motion";
+
 
 import { 
   Menu, 
@@ -56,16 +58,16 @@ const menuVariants = {
 const itemVariants = {
   open: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
   closed: { opacity: 0, y: -20 },
-};
+} satisfies Variants;;
 
 const bounceTransition = {
   y: {
     duration: 0.4,
     repeat: Infinity,
-    repeatType: "reverse",
-    ease: "easeOut",
+    repeatType: "reverse" as const, // giữ literal type
+    ease: "easeOut" as const,       // giữ literal type
   },
-};
+} as const;
 
 export default function Header({
   tenants = [

@@ -1,9 +1,9 @@
 // Auto-generated
 // src/layouts/DashboardLayout.tsx
-import { NavLink, Outlet, useLocation, useMatches, useParams } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useMatches, useParams, type To } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { cn } from "../shared/lib/array"; // hoặc tạo 1 helper cn() riêng; tạm dùng join
-import { useAuth } from "../shared/hooks/useAuth.tsx";
+import { useAuth } from "../shared/hooks/useAuth";
 
 // Nếu dùng lucide-react:
 // import { LayoutDashboard, ListChecks, FilePlus2, Settings, Users, LogOut, Menu } from "lucide-react";
@@ -104,7 +104,7 @@ export default function DashboardLayout() {
                 {adminMenu.map((m) => (
                   <li key={m.to}>
                     <NavLink
-                      to={m.to}
+                      to={(m.to ?? "#") as To}
                       className={({ isActive }) =>
                         "flex items-center gap-2 rounded-md px-3 py-2 transition hover:bg-muted " +
                         (isActive ? "bg-muted text-foreground" : "text-muted-foreground")
@@ -176,7 +176,7 @@ export default function DashboardLayout() {
             {crumbs.map((c, i) => (
               <span key={c.to} className="inline-flex items-center gap-1">
                 {i > 0 && <span className="opacity-60">/</span>}
-                <NavLink to={c.to} className="hover:underline">
+                <NavLink  to={(c.to ?? "#") as To}  className="hover:underline">
                   {c.label}
                 </NavLink>
               </span>

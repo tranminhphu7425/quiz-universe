@@ -1,30 +1,24 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var vite_1 = require("vite");
-var plugin_react_1 = require("@vitejs/plugin-react");
-var path_1 = require("path");
-exports.default = (0, vite_1.defineConfig)({
-    plugins: [(0, plugin_react_1.default)()],
-    base: "/quiz-universe",
-    server: {
-        port: 5173,
-        proxy: {
-            '/api': {
-                target: 'http://localhost:3001', // trỏ tới server Express
-                changeOrigin: true,
-            },
-        },
-    },
+// ❌ bỏ dòng này nếu muốn, không còn cần thiết khi đã cấu hình tsconfig.node.json
+// /// <reference types="node" />
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+// Cách A (ổn với TS mới): 'node:url'
+import { fileURLToPath, URL } from 'node:url';
+// Nếu môi trường/TS cũ không hiểu 'node:url', đổi sang:
+// import { fileURLToPath, URL } from 'url'
+export default defineConfig({
+    base: '/quiz-universe/', // đổi theo tên repo
     resolve: {
         alias: {
-            "@": path_1.default.resolve(__dirname, "src"), // alias @ → src
-            "@app": path_1.default.resolve(__dirname, "src/app"),
-            "@shared": path_1.default.resolve(__dirname, "src/shared"),
-            "@features": path_1.default.resolve(__dirname, "src/features"),
-            "@entities": path_1.default.resolve(__dirname, "src/entities"),
-            "@pages": path_1.default.resolve(__dirname, "src/pages"),
-            "@layouts": path_1.default.resolve(__dirname, "src/layouts"),
-            "@widgets": path_1.default.resolve(__dirname, "src/widgets"),
-        },
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
+            '@app': fileURLToPath(new URL('./src/app', import.meta.url)),
+            '@shared': fileURLToPath(new URL('./src/shared', import.meta.url)),
+            '@features': fileURLToPath(new URL('./src/features', import.meta.url)),
+            '@entities': fileURLToPath(new URL('./src/entities', import.meta.url)),
+            '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
+            '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
+            '@widgets': fileURLToPath(new URL('./src/widgets', import.meta.url))
+        }
     },
+    plugins: [react()]
 });

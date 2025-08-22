@@ -1,15 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("react/jsx-runtime");
+import { jsx as _jsx } from "react/jsx-runtime";
 // src/App.tsx
-var react_router_dom_1 = require("react-router-dom");
-var router_1 = require("./app/router");
-var QueryProvider_1 = require("./app/providers/QueryProvider");
-var AuthProvider_1 = require("./app/providers/AuthProvider");
-var ThemeProvider_1 = require("./app/providers/ThemeProvider");
-var I18nProvider_1 = require("./app/providers/I18nProvider");
-require("./App.css");
+import { RouterProvider } from "react-router-dom";
+import { router } from "./app/router";
+import { QueryProvider } from "./app/providers/QueryProvider";
+import { AuthProvider } from "./app/providers/AuthProvider";
+import { ThemeProvider } from "./app/providers/ThemeProvider";
+import { I18nProvider } from "./app/providers/I18nProvider";
+import "./App.css";
 function App() {
-    return ((0, jsx_runtime_1.jsx)(ThemeProvider_1.ThemeProvider, { children: (0, jsx_runtime_1.jsx)(I18nProvider_1.I18nProvider, { children: (0, jsx_runtime_1.jsx)(AuthProvider_1.AuthProvider, { children: (0, jsx_runtime_1.jsx)(QueryProvider_1.QueryProvider, { children: (0, jsx_runtime_1.jsx)(react_router_dom_1.RouterProvider, { router: router_1.router }) }) }) }) }));
+    return (_jsx(ThemeProvider, { children: _jsx(I18nProvider, { children: _jsx(AuthProvider, { children: _jsx(QueryProvider, { children: _jsx(RouterProvider, { router: router }) }) }) }) }));
 }
-exports.default = App;
+export default App;

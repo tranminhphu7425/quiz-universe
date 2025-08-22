@@ -25,7 +25,7 @@ export type Question = {
 
 
 // ====== Demo data (bạn có thể truyền qua props hoặc fetch API) ======
-const demoQuestions: Question[] =[
+const demoQuestions: Question[] = [
   {
     "id": 3,
     "stem": "Khái niệm tư tưởng Hồ Chí Minh lần đầu tiên được Đảng ta trình bày tại \nĐại hội Đảng toàn quốc lần thứ mấy?",
@@ -4672,7 +4672,8 @@ export default function QuestionsPage({ questions = demoQuestions }: { questions
   const pageCount = Math.ceil(total / PAGE_SIZE);
   const start = (page - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
-  const isZone = (index) => (index >= start && index < end);
+  const isZone = (index: number): boolean => index >= start && index < end;
+
   const pageQuestions = questions.slice(start, end);
   // {FAB}
   const startIndexFAB = Math.floor(start / pageSizeFAB) * pageSizeFAB;
@@ -4699,7 +4700,7 @@ export default function QuestionsPage({ questions = demoQuestions }: { questions
     } else {
       document.getElementById(`q-${qId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    
+
   };
 
   const score = useMemo(() => {
@@ -5083,7 +5084,7 @@ function QuestionCard({
           .map((opt) => (
             <OptionItem
               key={opt.id}
-              name={`q-${q.id}`}        // ✅ sửa group radio theo id câu hỏi
+              groupName={`q-${q.id}`}   // 👈 đổi từ name → groupName
               opt={opt}
               checked={pickedOptionId === opt.id}
               disabled={showResult}
@@ -5092,6 +5093,7 @@ function QuestionCard({
               isCorrect={opt.isCorrect}
               isPicked={pickedOptionId === opt.id}
             />
+
           ))}
       </div>
 

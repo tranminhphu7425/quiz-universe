@@ -1,29 +1,26 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryProvider = QueryProvider;
-var jsx_runtime_1 = require("react/jsx-runtime");
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 // Auto-generated
 // src/app/providers/QueryProvider.tsx
-var react_1 = require("react");
-var react_query_1 = require("@tanstack/react-query");
+import { useMemo } from "react";
+import { QueryClient, QueryClientProvider, QueryCache, MutationCache, } from "@tanstack/react-query";
 // Optional: chỉ import Devtools khi dev build
-var ReactQueryDevtools = null;
+let ReactQueryDevtools = null;
 if (import.meta.env.DEV) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore – dynamic require dành cho dev
-    ReactQueryDevtools = (await Promise.resolve().then(function () { return require("@tanstack/react-query-devtools"); })).ReactQueryDevtools;
+    ReactQueryDevtools = (await import("@tanstack/react-query-devtools")).ReactQueryDevtools;
 }
-var queryClientSingleton = null;
+let queryClientSingleton = null;
 function createClient() {
-    return new react_query_1.QueryClient({
-        queryCache: new react_query_1.QueryCache({
-            onError: function (error, query) {
+    return new QueryClient({
+        queryCache: new QueryCache({
+            onError: (error, query) => {
                 // Bạn có thể log/notify ở đây
                 // console.error("[RQ] Query error:", query?.queryKey, error);
             },
         }),
-        mutationCache: new react_query_1.MutationCache({
-            onError: function (error, _vars, _ctx, mutation) {
+        mutationCache: new MutationCache({
+            onError: (error, _vars, _ctx, mutation) => {
                 // console.error("[RQ] Mutation error:", mutation?.options?.mutationKey, error);
             },
         }),
@@ -41,12 +38,11 @@ function createClient() {
         },
     });
 }
-function QueryProvider(_a) {
-    var children = _a.children;
-    var client = (0, react_1.useMemo)(function () {
+export function QueryProvider({ children }) {
+    const client = useMemo(() => {
         if (!queryClientSingleton)
             queryClientSingleton = createClient();
         return queryClientSingleton;
     }, []);
-    return ((0, jsx_runtime_1.jsxs)(react_query_1.QueryClientProvider, { client: client, children: [children, import.meta.env.DEV && ReactQueryDevtools ? ((0, jsx_runtime_1.jsx)(ReactQueryDevtools, { initialIsOpen: false, buttonPosition: "bottom-left" })) : null] }));
+    return (_jsxs(QueryClientProvider, { client: client, children: [children, import.meta.env.DEV && ReactQueryDevtools ? (_jsx(ReactQueryDevtools, { initialIsOpen: false, buttonPosition: "bottom-left" })) : null] }));
 }
