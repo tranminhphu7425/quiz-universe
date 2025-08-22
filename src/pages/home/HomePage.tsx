@@ -177,7 +177,7 @@ export default function HomePage() {
             glow-text font-[Poppins]
           "
               >
-                QuizUniverse
+                QuizUniverse1
               </span>
             </motion.h1>
 

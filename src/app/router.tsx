@@ -68,11 +68,7 @@ function RequireAuth() {
   return <Outlet />;
 }
 
-const isGitHubPages = import.meta.env.PROD;
-
-export const router =  isGitHubPages 
-  ?
-  createHashRouter(
+export const router =  createBrowserRouter(
   [
     {
       element: <Layout />,
@@ -93,32 +89,6 @@ export const router =  isGitHubPages
     },
   ],
   {
-    basename: import.meta.env.BASE_URL, 
-  })
-  
-  
-  
-  : createBrowserRouter(
-  [
-    {
-      element: <Layout />,
-      children: [
-        { path: "/login", element: withSuspense(<LoginPage />) },
-        { path: "/register", element: withSuspense(<RegisterPage />) },
-        { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
-        { path: "/terms", element: withSuspense(<TermsPage />) },
-
-        { path: "/", element: withSuspense(<HomePage />), errorElement: <NotFoundPage /> },
-        { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
-        { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
-        { path: "/select-tenant", element: withSuspense(<TenantsPage />), errorElement: <NotFoundPage /> },
-        { path: "/questions", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
-
-        { path: "*", element: <NotFoundPage /> },
-      ],
-    },
-  ],
-  {
-    basename: import.meta.env.BASE_URL, 
+    basename: '/quiz-universe/', // Đổi theo tên repo của bạn
   }
 );
