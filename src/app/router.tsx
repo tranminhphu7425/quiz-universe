@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter,createHashRouter , Outlet } from "react-router-dom";
 import { Suspense } from "react";
 
 import PublicLayout from "@layouts/PublicLayout";
@@ -68,62 +68,57 @@ function RequireAuth() {
   return <Outlet />;
 }
 
-export const router = createBrowserRouter([
-  
- {
-  element: <Layout />,
-  children: [
+const isGitHubPages = import.meta.env.PROD;
+
+export const router =  isGitHubPages 
+  ?
+  createHashRouter(
+  [
     {
-    path: "/login",
-    element: withSuspense(<LoginPage />),
-  },
-  {
-    path: "/register",
-    element: withSuspense(<RegisterPage />),
-  },
-  {
-    path: "/forgot-password",
-    element: withSuspense(<ForgotPasswordPage />),
-  },
-  {
-    path: "/terms",
-    element: withSuspense(<TermsPage />),
-  },
-     // Root → HomePage mặc định
-  { path: "/", element: withSuspense(<HomePage />), errorElement: <NotFoundPage /> },
+      element: <Layout />,
+      children: [
+        { path: "/login", element: withSuspense(<LoginPage />) },
+        { path: "/register", element: withSuspense(<RegisterPage />) },
+        { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
+        { path: "/terms", element: withSuspense(<TermsPage />) },
 
-  // About page
+        { path: "/", element: withSuspense(<HomePage />), errorElement: <NotFoundPage /> },
+        { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
+        { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
+        { path: "/select-tenant", element: withSuspense(<TenantsPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
+
+        { path: "*", element: <NotFoundPage /> },
+      ],
+    },
+  ],
   {
-    path: "/about",
-    element: withSuspense(<AboutPage />),
-    errorElement: <NotFoundPage />,
-  },
-  // Contact page
+    basename: import.meta.env.BASE_URL, 
+  })
+  
+  
+  
+  : createBrowserRouter(
+  [
+    {
+      element: <Layout />,
+      children: [
+        { path: "/login", element: withSuspense(<LoginPage />) },
+        { path: "/register", element: withSuspense(<RegisterPage />) },
+        { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
+        { path: "/terms", element: withSuspense(<TermsPage />) },
+
+        { path: "/", element: withSuspense(<HomePage />), errorElement: <NotFoundPage /> },
+        { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
+        { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
+        { path: "/select-tenant", element: withSuspense(<TenantsPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
+
+        { path: "*", element: <NotFoundPage /> },
+      ],
+    },
+  ],
   {
-    path: "/contact",
-    element: withSuspense(<ContactPage />),
-    errorElement: <NotFoundPage />,
-  },
-  // Trang chọn trường thủ công (nếu cần)
-  {
-    path: "/select-tenant",
-    element: withSuspense(<TenantsPage />),
-    errorElement: <NotFoundPage />,
-  },
-
-  // Questions page
-  {
-    path: "/questions",
-
-    element: withSuspense(<QuestionsPage />),
-    errorElement: <NotFoundPage />,
-  },
-
-
-
-
-  // 404
-  { path: "*", element: <NotFoundPage /> },
-  ]
- }
-]);
+    basename: import.meta.env.BASE_URL, 
+  }
+);

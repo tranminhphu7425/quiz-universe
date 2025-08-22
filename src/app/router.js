@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React from "react";
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import NotFoundPage from "@pages/not-found/NotFoundPage"; // bạn tạo sẵn file này
 import { Layout } from "@/layouts/Layout"; // Tạo một layout component mới
@@ -33,54 +33,44 @@ function RequireAuth() {
     // TODO: lấy user từ useAuth
     return _jsx(Outlet, {});
 }
-export const router = createBrowserRouter([
-    {
-        element: _jsx(Layout, {}),
-        children: [
+const isGitHubPages = import.meta.env.PROD;
+export const router = isGitHubPages
+    ?
+        createHashRouter([
             {
-                path: "/login",
-                element: withSuspense(_jsx(LoginPage, {})),
+                element: _jsx(Layout, {}),
+                children: [
+                    { path: "/login", element: withSuspense(_jsx(LoginPage, {})) },
+                    { path: "/register", element: withSuspense(_jsx(RegisterPage, {})) },
+                    { path: "/forgot-password", element: withSuspense(_jsx(ForgotPasswordPage, {})) },
+                    { path: "/terms", element: withSuspense(_jsx(TermsPage, {})) },
+                    { path: "/", element: withSuspense(_jsx(HomePage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                    { path: "/about", element: withSuspense(_jsx(AboutPage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                    { path: "/contact", element: withSuspense(_jsx(ContactPage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                    { path: "/select-tenant", element: withSuspense(_jsx(TenantsPage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                    { path: "/questions", element: withSuspense(_jsx(QuestionsPage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                    { path: "*", element: _jsx(NotFoundPage, {}) },
+                ],
             },
-            {
-                path: "/register",
-                element: withSuspense(_jsx(RegisterPage, {})),
-            },
-            {
-                path: "/forgot-password",
-                element: withSuspense(_jsx(ForgotPasswordPage, {})),
-            },
-            {
-                path: "/terms",
-                element: withSuspense(_jsx(TermsPage, {})),
-            },
-            // Root → HomePage mặc định
-            { path: "/", element: withSuspense(_jsx(HomePage, {})), errorElement: _jsx(NotFoundPage, {}) },
-            // About page
-            {
-                path: "/about",
-                element: withSuspense(_jsx(AboutPage, {})),
-                errorElement: _jsx(NotFoundPage, {}),
-            },
-            // Contact page
-            {
-                path: "/contact",
-                element: withSuspense(_jsx(ContactPage, {})),
-                errorElement: _jsx(NotFoundPage, {}),
-            },
-            // Trang chọn trường thủ công (nếu cần)
-            {
-                path: "/select-tenant",
-                element: withSuspense(_jsx(TenantsPage, {})),
-                errorElement: _jsx(NotFoundPage, {}),
-            },
-            // Questions page
-            {
-                path: "/questions",
-                element: withSuspense(_jsx(QuestionsPage, {})),
-                errorElement: _jsx(NotFoundPage, {}),
-            },
-            // 404
-            { path: "*", element: _jsx(NotFoundPage, {}) },
-        ]
-    }
-]);
+        ], {
+            basename: import.meta.env.BASE_URL,
+        })
+    : createBrowserRouter([
+        {
+            element: _jsx(Layout, {}),
+            children: [
+                { path: "/login", element: withSuspense(_jsx(LoginPage, {})) },
+                { path: "/register", element: withSuspense(_jsx(RegisterPage, {})) },
+                { path: "/forgot-password", element: withSuspense(_jsx(ForgotPasswordPage, {})) },
+                { path: "/terms", element: withSuspense(_jsx(TermsPage, {})) },
+                { path: "/", element: withSuspense(_jsx(HomePage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                { path: "/about", element: withSuspense(_jsx(AboutPage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                { path: "/contact", element: withSuspense(_jsx(ContactPage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                { path: "/select-tenant", element: withSuspense(_jsx(TenantsPage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                { path: "/questions", element: withSuspense(_jsx(QuestionsPage, {})), errorElement: _jsx(NotFoundPage, {}) },
+                { path: "*", element: _jsx(NotFoundPage, {}) },
+            ],
+        },
+    ], {
+        basename: import.meta.env.BASE_URL,
+    });

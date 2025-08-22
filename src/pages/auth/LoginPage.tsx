@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 import { Mail, Lock, Sparkles, ArrowRight, Heart } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
+import { GoogleLogin } from "@react-oauth/google";
 
 export default function LoginPage() {
-  const { login, loading } = useAuth?.() ?? { login: async () => {}, loading: false };
+  const { login, loading } = useAuth?.() ?? { login: async () => { }, loading: false };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(true);
@@ -99,19 +100,19 @@ export default function LoginPage() {
               QuizUniverse • Đăng nhập
             </div>
             <h1 className="text-4xl font-black leading-tight text-white">
-  <span
-    className="
+              <span
+                className="
       bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 
       bg-clip-text text-transparent glow-text font-['Be Vietnam Pro']
       dark:drop-shadow-none
     "
-    style={{
-      textShadow: "0px 2px 2px rgba(0,0,0,0.1)" // chỉ áp cho light
-    }}
-  >
-    Chào mừng trở lại
-  </span>
-</h1>
+                style={{
+                  textShadow: "0px 2px 2px rgba(0,0,0,0.1)" // chỉ áp cho light
+                }}
+              >
+                Chào mừng trở lại
+              </span>
+            </h1>
             <p className="mt-2 text-white/90 dark:text-gray-300">
               Tiếp tục với tài khoản của bạn để truy cập ngân hàng câu hỏi.
             </p>
@@ -200,7 +201,8 @@ export default function LoginPage() {
 
             {/* Divider */}
             <div className="my-4 h-px bg-white/20 dark:bg-white/10" />
-
+            {/* Google Login */}
+            
             {/* Link đăng ký */}
             <p className="text-center text-sm text-white/90 dark:text-gray-300">
               Chưa có tài khoản?{" "}

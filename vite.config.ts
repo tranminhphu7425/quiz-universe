@@ -10,8 +10,10 @@ import { fileURLToPath, URL } from 'node:url'
 // Nếu môi trường/TS cũ không hiểu 'node:url', đổi sang:
 // import { fileURLToPath, URL } from 'url'
 
-export default defineConfig({
-  base: '/quiz-universe/', // đổi theo tên repo
+
+
+export default defineConfig(() => ({
+  base: process.env.NODE_ENV === "production" ? "/quizuniverse/" : "/", // đổi theo tên repo
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -24,5 +26,14 @@ export default defineConfig({
       '@widgets': fileURLToPath(new URL('./src/widgets', import.meta.url))
     }
   },
-  plugins: [react()]
-})
+
+  plugins: [react()],
+  server: {
+    port: 5173,
+    strictPort: true,
+    // Nếu chạy WSL/Docker/LAN mà WS không nối được, mở comment dưới:
+    // host: true,
+    // hmr: { protocol: "ws", host: "localhost", clientPort: 5173 },
+  },
+  preview: { port: 5173, strictPort: true },
+}))

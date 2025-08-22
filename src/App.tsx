@@ -6,7 +6,7 @@ import { AuthProvider } from "./app/providers/AuthProvider";
 import { ThemeProvider } from "./app/providers/ThemeProvider";
 import { I18nProvider } from "./app/providers/I18nProvider";
 
-import "./App.css";
+import "@/App.css";
 
 function App() {
   return (
