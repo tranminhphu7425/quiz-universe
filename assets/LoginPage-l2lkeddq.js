@@ -1,4 +1,4 @@
-import{u as k,r as a,j as e,F as r,S as m,H as y,m as s,M as v,L as x}from"./index-CTjAopX9.js";import{L as j}from"./lock-B-XXTgqc.js";import{A as N}from"./arrow-right-CFZlDSyl.js";function L(){const{login:h,loading:n}=k?.()??{login:async()=>{},loading:!1},[l,g]=a.useState(""),[i,p]=a.useState(""),[o,u]=a.useState(!0),[d,c]=a.useState(null),b=a.useMemo(()=>encodeURIComponent(`
+import{u as k,r as a,j as e,F as r,S as m,H as y,m as s,M as v,L as x}from"./index-rX3UtXpZ.js";import{L as j}from"./lock-7fal6vb9.js";import{A as N}from"./arrow-right-CSFYppOb.js";function L(){const{login:h,loading:n}=k?.()??{login:async()=>{},loading:!1},[l,g]=a.useState(""),[i,p]=a.useState(""),[o,u]=a.useState(!0),[d,c]=a.useState(null),b=a.useMemo(()=>encodeURIComponent(`
       <svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160' fill='none'>
         <g stroke='#10b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
           <path d='M28 36h40a8 8 0 018 8v44H36a8 8 0 01-8-8V36z' opacity='0.7'/>
