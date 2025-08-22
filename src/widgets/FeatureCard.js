@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("react/jsx-runtime");
+var framer_motion_1 = require("framer-motion");
+var react_router_dom_1 = require("react-router-dom");
+var lucide_react_1 = require("lucide-react");
+function FeatureCard(_a) {
+    var title = _a.title, description = _a.description, to = _a.to, cta = _a.cta, icon = _a.icon;
+    return ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.div, { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 }, transition: { type: "spring", stiffness: 160, damping: 18 }, className: "\r\n    relative group rounded-2xl border p-5 shadow-sm\r\n    border-emerald-100 bg-white\r\n    hover:shadow-md hover:bg-white/95\r\n    dark:border-emerald-900/40 dark:bg-slate-900/70 dark:hover:bg-slate-900\r\n    transition-colors  \r\n  ", children: [(0, jsx_runtime_1.jsx)("div", { "aria-hidden": true, className: "\r\n      pointer-events-none absolute inset-0 rounded-2xl opacity-0\r\n      group-hover:opacity-100 transition-opacity\r\n      bg-gradient-to-br from-emerald-200/10 via-transparent to-sky-300/10\r\n      dark:from-emerald-500/10 dark:to-sky-500/10\r\n    " }), (0, jsx_runtime_1.jsxs)("div", { className: "flex items-center gap-2 text-emerald-900 dark:text-emerald-200", children: [icon, (0, jsx_runtime_1.jsx)("div", { className: "text-lg font-semibold", children: title })] }), (0, jsx_runtime_1.jsx)("p", { className: "mt-1 mb-10 text-emerald-800/80 dark:text-slate-300/80", children: description }), (0, jsx_runtime_1.jsx)("div", { className: "absolute bottom-5 left-5", children: (0, jsx_runtime_1.jsxs)(react_router_dom_1.Link, { to: to, className: "\r\n        inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium shadow\r\n        bg-emerald-600 text-white hover:bg-emerald-700\r\n        focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 focus-visible:ring-offset-2\r\n        dark:bg-emerald-500 dark:hover:bg-emerald-600\r\n        dark:focus-visible:ring-emerald-400/60 dark:focus-visible:ring-offset-slate-900\r\n      ", children: [cta, (0, jsx_runtime_1.jsx)(lucide_react_1.ArrowRight, { className: "h-4 w-4" })] }) })] }));
+}
+exports.default = FeatureCard;
