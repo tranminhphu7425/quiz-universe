@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "composite": true,                 // <<< bắt buộc để dùng project references
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "strict": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@shared/*": ["src/shared/*"],
+      "@features/*": ["src/features/*"],
+      "@entities/*": ["src/entities/*"],
+      "@pages/*": ["src/pages/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@widgets/*": ["src/widgets/*"]
+    },
+    "types": ["vite/client"],
+    "declaration": true               // không sinh .d.ts cho app
+  },
+  "include": ["src"],
+  "exclude": ["**/*.d.ts"]             // tránh lôi các .d.ts “đầu ra” vào input
+}
