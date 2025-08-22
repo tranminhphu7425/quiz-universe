@@ -13,7 +13,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 
 export default defineConfig(() => ({
-  base: process.env.NODE_ENV === "production" ? "/quizuniverse/" : "/", // đổi theo tên repo
+  base: "/quizuniverse/" , // đổi theo tên repo
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -35,5 +35,5 @@ export default defineConfig(() => ({
     // host: true,
     // hmr: { protocol: "ws", host: "localhost", clientPort: 5173 },
   },
-  preview: { port: 5173, strictPort: true },
+  preview: { port: 4173, strictPort: true },
 }))
