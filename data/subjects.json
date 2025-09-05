@@ -1,0 +1,16 @@
+[
+  {
+    "id": 4,
+    "code": "ML021-01",
+    "name": "Tư tưởng Hồ Chí Minh",
+    "description": "Nhập tự động từ PDF TTHCM",
+    "createdAt": "2025-08-19T17:07:54"
+  },
+  {
+    "id": 5,
+    "code": "ML021-02",
+    "name": "Tư tưởng Hồ Chí Minh",
+    "description": "Ngân hàng câu hỏi ôn tập (Giáo trình Thầy Búa).",
+    "createdAt": "2025-08-26T13:28:29"
+  }
+]
