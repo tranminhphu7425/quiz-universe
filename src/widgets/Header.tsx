@@ -80,7 +80,7 @@ export default function Header({
   onGetStarted,
   onLogin,
   links = [
-    { label: "Câu hỏi", href: "/questions" },
+    { label: "Câu hỏi", href: "/subjects" },
     { label: "Đề thi", href: "/exams/create" },
     
   ],

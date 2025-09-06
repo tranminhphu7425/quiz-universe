@@ -1,74 +1,31 @@
 // Auto-generated
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   BookOpen, Search, Filter, CheckCircle2, Clock, Tag, PlusCircle, ChevronLeft, ChevronRight, FilePlus2
 } from "lucide-react";
+import { AlertTriangle, RefreshCcw } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
+import { set } from "zod";
 
 type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
+import localSubjects from "@/assets/data/subjects.json"; // import file JSON cục bộ
 
-type Question = {
-  id: string;
-  subject: string;
-  chapter?: string;
-  difficulty: Difficulty;
-  type: QType;
-  tags: string[];
-  content: string; // text/HTML ngắn
-  approved: boolean;
-  updatedAt: string;
-};
 
-// ===== MOCK DATA (thay bằng fetch API của bạn) =====
-const MOCK: Question[] = [
-  {
-    id: "q1",
-    subject: "Toán",
-    chapter: "Hàm số",
-    difficulty: "easy",
-    type: "MCQ",
-    tags: ["hàm số bậc nhất", "cơ bản"],
-    content: "Cho hàm số y = ax + b (a ≠ 0). Tìm <i>hệ số góc</i> của đồ thị?",
-    approved: true,
-    updatedAt: "2025-08-10T08:30:00Z",
-  },
-  {
-    id: "q2",
-    subject: "Lịch sử Đảng",
-    chapter: "Cương lĩnh 1930",
-    difficulty: "medium",
-    type: "TRUE_FALSE",
-    tags: ["cương lĩnh", "1930"],
-    content: "Cương lĩnh chính trị đầu tiên do Nguyễn Ái Quốc soạn thảo. (Đ/S)",
-    approved: true,
-    updatedAt: "2025-07-21T03:20:00Z",
-  },
-  {
-    id: "q3",
-    subject: "Vật lý",
-    chapter: "Điện học",
-    difficulty: "hard",
-    type: "FILL_BLANK",
-    tags: ["điện trở", "định luật Ôm"],
-    content: "Điền vào chỗ trống: I = __ / R.",
-    approved: false,
-    updatedAt: "2025-08-15T13:00:00Z",
-  },
-  {
-    id: "q4",
-    subject: "Toán",
-    chapter: "Xác suất",
-    difficulty: "medium",
-    type: "MCQ",
-    tags: ["biến cố", "tổ hợp"],
-    content: "Xác suất của biến cố chắc chắn là bao nhiêu?",
-    approved: true,
-    updatedAt: "2025-06-02T10:10:00Z",
-  },
-];
+
+type Subject = {
+  id: number;
+  code: string;
+  name: string;
+  description?: string;
+  createdAt: string;
+}
+
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080/api";
+
+
 
 // Map màu theo độ khó
 const DIFFICULTY_MAP: Record<Difficulty, { text: string; bg: string; ring: string }> = {
@@ -80,36 +37,68 @@ const DIFFICULTY_MAP: Record<Difficulty, { text: string; bg: string; ring: strin
 export default function SubjectPage() {
   // ======= FILTER STATE =======
   const [q, setQ] = useState("");
-  const [subject, setSubject] = useState<string>("all");
   const [diff, setDiff] = useState<"all" | Difficulty>("all");
   const [type, setType] = useState<"all" | QType>("all");
   const [onlyApproved, setOnlyApproved] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Subject[]>([]);
 
   // ======= PAGINATION =======
   const [page, setPage] = useState(1);
   const pageSize = 6;
 
-  const subjects = useMemo(() => ["all", ...Array.from(new Set(MOCK.map(m => m.subject)))], []);
+
   const types = ["all", "MCQ", "TRUE_FALSE", "FILL_BLANK"] as const;
   const diffs = ["all", "easy", "medium", "hard"] as const;
+
+
+  const fetchData = async () => {
+    setLoading(true);
+    setErr(null);
+    const ac = new AbortController();
+
+    try {
+      const res = await fetch(`${API_BASE}/subjects`, { signal: ac.signal });
+
+      // Nếu API lỗi → ném error để sang catch
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(text || `HTTP ${res.status}`);
+      }
+
+      const json = (await res.json()) as Subject[];
+      setData(Array.isArray(json) ? json : []);
+    } catch (e: any) {
+      if (e.name !== "AbortError") {
+        console.error("API fetch failed:", e);
+        setErr("Không thể lấy dữ liệu từ API. Đang sử dụng dữ liệu cục bộ!");
+        // Fallback sang JSON nội bộ
+        setData(localSubjects);
+      }
+    } finally {
+      setLoading(false);
+    }
+
+    return () => ac.abort();
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
+
+
 
   // ======= FILTERING =======
   const filtered = useMemo(() => {
     const kw = q.trim().toLowerCase();
-    return MOCK.filter(item => {
-      const okQ = !kw || (
-        item.content.toLowerCase().includes(kw) ||
-        item.subject.toLowerCase().includes(kw) ||
-        (item.chapter?.toLowerCase().includes(kw)) ||
-        item.tags.some(t => t.toLowerCase().includes(kw))
-      );
-      const okSubject = subject === "all" || item.subject === subject;
-      const okDiff = diff === "all" || item.difficulty === diff;
-      const okType = type === "all" || item.type === type;
-      const okApproved = !onlyApproved || item.approved;
-      return okQ && okSubject && okDiff && okType && okApproved;
-    });
-  }, [q, subject, diff, type, onlyApproved]);
+    if (!kw) return data;
+    return data.filter((s) =>
+      [s.code, s.name, s.description ?? ""].some((x) => x.toLowerCase().includes(kw))
+    );
+  }, [q, data]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const pageData = filtered.slice((page - 1) * pageSize, page * pageSize);
@@ -225,28 +214,29 @@ export default function SubjectPage() {
             </div>
 
             {/* Subject */}
-            <SelectBox
+            {/* <SelectBox
               label="Môn học"
               value={subject}
               onChange={(v) => handleFilterChange(setSubject)(v)}
               options={subjects}
-            />
+            /> */}
 
             {/* Type */}
-            <SelectBox
+            {/* <SelectBox
               label="Loại câu hỏi"
               value={type}
               onChange={(v) => handleFilterChange(setType)(v as any)}
               options={types as any}
-            />
+            /> */}
 
             {/* Difficulty */}
-            <SelectBox
+            {/* <SelectBox
               label="Độ khó"
               value={diff}
               onChange={(v) => handleFilterChange(setDiff)(v as any)}
               options={diffs as any}
-            />
+            /> */}
+
           </div>
 
           {/* Approved toggle */}
@@ -273,9 +263,10 @@ export default function SubjectPage() {
         ) : (
           <>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {pageData.map((it) => (
-                <QuestionCard key={it.id} q={it} />
+              {filtered.map((s) => (
+                <SubjectCard key={s.id} s={s} />
               ))}
+
             </div>
 
             {/* Pagination */}
@@ -305,36 +296,9 @@ export default function SubjectPage() {
   );
 }
 
-function SelectBox({
-  label, value, onChange, options,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  options: readonly string[];
-}) {
-  return (
-    <div>
-      <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
-        {label}
-      </label>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl bg-white/80 px-3 py-2 text-sm text-gray-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-gray-100 dark:ring-white/10"
-      >
-        {options.map((op) => (
-          <option key={op} value={op}>
-            {op === "all" ? "Tất cả" : op}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
 
-function QuestionCard({ q }: { q: Question }) {
-  const d = DIFFICULTY_MAP[q.difficulty];
+
+function SubjectCard({ s }: { s: Subject }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 18 }}
@@ -342,72 +306,84 @@ function QuestionCard({ q }: { q: Question }) {
       viewport={{ once: true }}
       transition={{ type: "spring", stiffness: 160, damping: 16 }}
       whileHover={{ y: -4, scale: 1.01 }}
-      className="rounded-xl border border-emerald-100/60 bg-white p-4 shadow-lg transition
-                 dark:border-slate-800 dark:bg-slate-900"
+      className="rounded-xl border border-emerald-100/60 bg-white p-4 shadow-lg transition dark:border-slate-800 dark:bg-slate-900"
     >
-      {/* Header */}
-      <div className="mb-2 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <BookOpen className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-          <div className="text-sm font-semibold text-emerald-800 dark:text-emerald-200">
-            {q.subject}
-            {q.chapter ? <span className="text-xs text-emerald-900/70 dark:text-emerald-300/70"> • {q.chapter}</span> : null}
+      <div className="mb-2 flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1 rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-100">
+              <Tag className="h-3 w-3" />
+              {s.code}
+            </span>
           </div>
+          <h3 className="mt-1 truncate text-base font-bold text-emerald-900 dark:text-emerald-200">
+            {s.name}
+          </h3>
         </div>
 
-        <div className={`inline-flex items-center gap-2 rounded-full px-2 py-0.5 text-xs ring ${d.bg} ${d.text} ${d.ring}`}>
-          <span className="font-semibold">
-            {q.difficulty === "easy" ? "Dễ" : q.difficulty === "medium" ? "Trung bình" : "Khó"}
-          </span>
-          <span className="text-[10px] opacity-80">{q.type === "MCQ" ? "MCQ" : q.type === "TRUE_FALSE" ? "Đ/S" : "Điền"}</span>
-        </div>
-      </div>
-
-      {/* Content preview */}
-      <div
-        className="prose prose-sm max-w-none text-gray-700 dark:prose-invert dark:text-gray-300"
-        dangerouslySetInnerHTML={{ __html: truncateHtml(q.content, 160) }}
-      />
-
-      {/* Tags & meta */}
-      <div className="mt-3 flex flex-wrap items-center gap-2">
-        {q.tags.map((t) => (
-          <span key={t} className="inline-flex items-center gap-1 rounded-md bg-emerald-100 px-2 py-0.5 text-xs text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-100">
-            <Tag className="h-3 w-3" /> {t}
-          </span>
-        ))}
-      </div>
-
-      <div className="mt-3 flex items-center justify-between text-xs">
-        <div className="flex items-center gap-2 text-emerald-900/70 dark:text-slate-300/70">
-          <Clock className="h-3.5 w-3.5" />
-          <span>Cập nhật: {new Date(q.updatedAt).toLocaleDateString()}</span>
-        </div>
-        <div className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs
-                        bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-100">
-          <CheckCircle2 className={`h-3.5 w-3.5 ${q.approved ? "" : "opacity-40"}`} />
-          {q.approved ? "Đã kiểm duyệt" : "Chờ duyệt"}
-        </div>
-      </div>
-
-      {/* Actions */}
-      <div className="mt-4 flex items-center justify-end gap-2">
         <Link
-          to={`/app/questions/${q.id}`}
-          className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-emerald-900 ring-1 ring-emerald-200 hover:bg-emerald-50 dark:bg-white/5 dark:text-emerald-200 dark:ring-slate-700 dark:hover:bg-slate-800"
-        >
-          Xem chi tiết
-        </Link>
-        <Link
-          to={`/app/questions/${q.id}/edit`}
+          to={`/questions/subject/${s.id}`}
           className="rounded-full bg-yellow-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
         >
-          Sửa
+          Xem
         </Link>
+      </div>
+
+      {s.description ? (
+        <p className="line-clamp-3 text-sm text-gray-700 dark:text-gray-300">{s.description}</p>
+      ) : (
+        <p className="text-sm italic text-gray-500 dark:text-gray-400">Chưa có mô tả</p>
+      )}
+
+      <div className="mt-3 flex items-center gap-2 text-xs text-emerald-900/70 dark:text-slate-300/70">
+        <Clock className="h-3.5 w-3.5" />
+        <span>Tạo lúc: {new Date(s.createdAt).toLocaleString()}</span>
       </div>
     </motion.div>
   );
 }
+
+
+
+function LoadingState() {
+  return (
+    <div className="grid place-items-center rounded-2xl border border-dashed border-emerald-300/40 p-10 text-center dark:border-slate-700">
+      <div className="animate-pulse">
+        <div className="mb-2 h-4 w-48 rounded bg-emerald-200/60 dark:bg-emerald-500/20" />
+        <div className="mx-auto h-3 w-72 rounded bg-emerald-200/40 dark:bg-emerald-500/10" />
+      </div>
+    </div>
+  );
+}
+
+function ErrorState({ message, onRetry }: { message: string; onRetry: () => void }) {
+  return (
+    <div className="grid place-items-center rounded-2xl border border-dashed border-rose-300/40 p-10 text-center dark:border-rose-700/50">
+      <div className="mx-auto max-w-md">
+        <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-800 dark:bg-rose-500/20 dark:text-rose-100">
+          <AlertTriangle className="h-4 w-4" />
+          Lỗi tải dữ liệu
+        </div>
+        <p className="text-sm text-rose-900/80 dark:text-rose-100/80">
+          {message || "Không thể tải dữ liệu."}
+        </p>
+        <div className="mt-4 flex justify-center">
+          <button
+            onClick={onRetry}
+            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-rose-900 ring-1 ring-rose-200 hover:bg-rose-50 dark:bg-white/5 dark:text-rose-100 dark:ring-rose-700 dark:hover:bg-slate-800"
+          >
+            <RefreshCcw className="h-4 w-4" /> Thử lại
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
 
 function EmptyState() {
   return (
@@ -424,7 +400,7 @@ function EmptyState() {
             to="/app/questions/create"
             className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
           >
-            <PlusCircle className="h-4 w-4" /> Thêm câu hỏi
+            <PlusCircle className="h-4 w-4" /> Thêm môn học mới
           </Link>
         </div>
       </div>

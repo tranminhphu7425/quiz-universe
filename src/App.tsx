@@ -5,6 +5,7 @@ import { QueryProvider } from "./app/providers/QueryProvider";
 import { AuthProvider } from "./app/providers/AuthProvider";
 import { ThemeProvider } from "./app/providers/ThemeProvider";
 import { I18nProvider } from "./app/providers/I18nProvider";
+import Test from "./test/test";
 
 import "@/App.css";
 
@@ -23,6 +24,7 @@ function App() {
       </I18nProvider>
      
     </ThemeProvider>
+  
   );
 }
 

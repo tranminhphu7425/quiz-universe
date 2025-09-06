@@ -21,6 +21,7 @@ const ForgotPasswordPage  = React.lazy(() => import("@pages/auth/ForgotPasswordP
 const TermsPage = React.lazy(() => import("@pages/legal/TermsPage"));
 const DashboardPage = React.lazy(() => import("@pages/dashboard/DashboardPage"));
 const TenantsPage = React.lazy(() => import("@pages/universities/TenantsPage"));
+const SubjectsPage = React.lazy(() => import("@pages/subjects/SubjectsPage"));
 const QuestionsPage = React.lazy(() => import("@pages/questions/QuestionsPage"));
 const ListQuestionsPage = React.lazy(() => import("@pages/questions/ListQuestionsPage"));
 const EditQuestionPage = React.lazy(() => import("@pages/questions/EditQuestionPage"));
@@ -68,11 +69,9 @@ function RequireAuth() {
   return <Outlet />;
 }
 
-const isGitHubPages = import.meta.env.PROD;
 
-export const router =  isGitHubPages 
-  ?
-  createHashRouter(
+export const router =  
+  createBrowserRouter(
   [
     {
       element: <Layout />,
@@ -86,39 +85,14 @@ export const router =  isGitHubPages
         { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
         { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
         { path: "/select-tenant", element: withSuspense(<TenantsPage />), errorElement: <NotFoundPage /> },
-        { path: "/questions", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
+        { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
 
         { path: "*", element: <NotFoundPage /> },
       ],
     },
   ],
   {
-    basename: import.meta.env.BASE_URL, 
-  })
-  
-  
-  
-  : createBrowserRouter(
-  [
-    {
-      element: <Layout />,
-      children: [
-        { path: "/login", element: withSuspense(<LoginPage />) },
-        { path: "/register", element: withSuspense(<RegisterPage />) },
-        { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
-        { path: "/terms", element: withSuspense(<TermsPage />) },
-
-        { path: "/", element: withSuspense(<HomePage />), errorElement: <NotFoundPage /> },
-        { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
-        { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
-        { path: "/select-tenant", element: withSuspense(<TenantsPage />), errorElement: <NotFoundPage /> },
-        { path: "/questions", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
-
-        { path: "*", element: <NotFoundPage /> },
-      ],
-    },
-  ],
-  {
-    basename: import.meta.env.BASE_URL, 
+    basename: "/quiz-universe" , 
   }
 );
