@@ -20,7 +20,7 @@ CREATE TABLE users (
 -- Môn học
 CREATE TABLE subjects (
   subject_id    BIGINT PRIMARY KEY AUTO_INCREMENT,
-  code          VARCHAR(32) UNIQUE NOT NULL,
+  code          VARCHAR(32)  NOT NULL,
   name          VARCHAR(160) NOT NULL,
   description   TEXT,
   created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP

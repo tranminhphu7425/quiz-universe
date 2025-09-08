@@ -1,5 +1,5 @@
-import { useMemo, useState , useRef, useEffect } from "react";
-import { useParams, Link} from "react-router-dom"; 
+import { useMemo, useState, useRef, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 import {
@@ -15,30 +15,15 @@ import {
   TimerReset,
 } from "lucide-react";
 import { ArrowRight, LayoutGrid, RefreshCcw, Sparkles, XCircle } from "lucide-react";
+import LoadingState from "@/widgets/LoadingState";
+import { Question, QuestionOption, fetchQuestionsBySubjectId } from "@/shared/api/questionsApi";
+import { fetchSubjectNameById, Subject } from "@/shared/api/subjectApi";
+import localSubjects from "@/assets/data/subjects.json"; // import file JSON cục bộ
 
 
 
-type QuestionOption = {
-  id: number;
-  label: string;        // "A" | "B" | ...
-  content: string;
-  isCorrect: boolean;
-  sortOrder?: number;
-};
-
-type Question = {
-  id: number;
-  stem: string;
-  explanation?: string | null;
-  questionType: "mcq_single" | "mcq_multi" | string;
-  status: "approved" | "draft" | "rejected" | string;
-  createdAt: string;
-  updatedAt?: string;
-  options: QuestionOption[];
-};
 
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8080/api";
 
 
 // ====== Page ======
@@ -53,54 +38,75 @@ export default function QuestionsPage() {
   const [err, setErr] = useState<string | null>(null);
   const [q, setQ] = useState("");
   const [showAns, setShowAns] = useState(false);
+  const pageTopRef = useRef<HTMLDivElement | null>(null);
+  const suppressTopScrollRef = useRef(false);
+  const [page, setPage] = useState(1);
+  const [subjectName, setSubjectName] = useState<string>("");
   useEffect(() => {
     console.log(subjectId);
   }, [subjectId]);
-  const fetchData = () => {
-  if (!subjectId) return;
-  setLoading(true);
-  setErr(null);
+  const fetchData = async() => {
+    if (subjectId == null) return;
+     const ac = new AbortController();
+    setLoading(true);
+    setErr(null);
+    const id = Number(subjectId);
+   
 
-  const ac = new AbortController();
+    (async () => {
+    const [qRes, sRes] = await Promise.allSettled([
+      fetchQuestionsBySubjectId(id, ac.signal),
+      fetchSubjectNameById(id), // nhớ nhận signal
+    ]);
 
-  (async () => {
-    try {
-      const res = await fetch(`${API_BASE}/questions/subject/${subjectId}`, { signal: ac.signal });
-      if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        throw new Error(text || `HTTP ${res.status}`);
-      }
-      const json = (await res.json()) as Question[];
-      setData(Array.isArray(json) ? json : []);
-    } catch (e: any) {
-      if (e?.name === "AbortError") return;
-
-      // Báo lỗi & Fallback sang JSON cục bộ
-      setErr(e?.message || "Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
+    // Questions
+    if (qRes.status === "fulfilled") {
+      setData(qRes.value);
+    } else if (qRes.reason?.name !== "AbortError") {
+      setErr("Không thể lấy câu hỏi từ API. Đang dùng dữ liệu cục bộ!");
       try {
-        // VD: src/assets/data/questionssubject4.json, 5.json, ...
-        const local = await import(`@/assets/data/questionssubject${subjectId}.json`);
+        const local = await import(`@/assets/data/questionssubject${id}.json`);
         setData((local.default ?? []) as Question[]);
       } catch {
-        // Nếu không có file tương ứng thì để rỗng
         setData([]);
       }
-    } finally {
-      setLoading(false);
     }
-  })();
+
+    // Subject name
+    if (sRes.status === "fulfilled") {
+      setSubjectName(sRes.value.name);
+    } else if (sRes.reason?.name !== "AbortError") {
+      const idNum = Number(subjectId);
+      const sj = (localSubjects as Subject[]).find(s => s.id === idNum);
+
+      setSubjectName(sj?.name ?? `[Môn #${idNum}]`); // placeholder khi API tên môn lỗi
+      setErr((prev) => prev ?? "Một số dữ liệu không tải được từ API.");
+    }
+  })()
+    .catch((e) => {
+      if (e?.name !== "AbortError") setErr("Có lỗi không xác định!");
+    })
+    .finally(() => setLoading(false));
 
   return () => ac.abort();
-};
+  };
 
-useEffect(fetchData, [subjectId]);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
 
+  useEffect(() => {
+    // chỉ scroll-top khi đổi trang bằng nút phân trang
+    if (suppressTopScrollRef.current) return;
+    pageTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // hoặc: document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+  }, [page]);
 
 
   const PAGE_SIZE = 10;
   const pageSizeFAB = 50;
-  const [page, setPage] = useState(1);
+
   const reopenTimerRef = useRef<number | null>(null);
   const total = data.length;
   const pageCount = Math.ceil(total / PAGE_SIZE);
@@ -125,17 +131,20 @@ useEffect(fetchData, [subjectId]);
     const targetPage = Math.floor(qGlobalIndex / PAGE_SIZE) + 1;
 
     if (targetPage !== page) {
+      suppressTopScrollRef.current = true;   // ⬅️ chặn scroll-top của useEffect
       setPage(targetPage);
-      // chờ DOM render xong rồi scroll
+
+      // chờ render xong rồi scroll tới đúng câu
       setTimeout(() => {
         document.getElementById(`q-${qId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        // nhả cờ sau một nhịp để lần đổi trang kế tiếp lại scroll-top bình thường
+        setTimeout(() => { suppressTopScrollRef.current = false; }, 300);
       }, 0);
-
     } else {
       document.getElementById(`q-${qId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-
   };
+
 
   const score = useMemo(() => {
     if (!submitted) return 0;
@@ -191,7 +200,7 @@ useEffect(fetchData, [subjectId]);
               <Sparkles className="h-4 w-4" /> QuizUniverse • Làm trắc nghiệm
             </div>
             <h1 className="text-[2rem] md:text-[2.6rem] font-black leading-tight">
-              Bộ câu hỏi ôn tập <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">ML021</span>
+              Bộ câu hỏi ôn tập <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">{subjectName}</span>
             </h1>
             <p className="mt-2 text-white/90">Chọn đáp án cho từng câu. Nộp bài để xem điểm và lời giải.</p>
           </motion.div>
@@ -220,9 +229,9 @@ useEffect(fetchData, [subjectId]);
 
       {/* ====== BODY ====== */}
       <div className="relative">
-        
-        <main className=" mx-auto max-w-5xl px-6 py-10">
 
+        <main className=" mx-auto max-w-5xl px-6 py-10">
+          <div ref={pageTopRef} />
 
           <div className="mb-6 flex flex-wrap items-center gap-3">
             {!submitted ? (
@@ -246,84 +255,94 @@ useEffect(fetchData, [subjectId]);
               </>
             )}
           </div>
+          {loading ? (
+            <LoadingState count={PAGE_SIZE} />
+          )
+            // : err ? (<></>)
+            : (
+              <>
+                <div className="space-y-6">
+                  {pageQuestions.map((q, idx) => (
+                    <QuestionCard
 
-          <div className="space-y-6">
-            {pageQuestions.map((q, idx) => (
-              <QuestionCard
-
-                key={q.id}
-                index={start + idx + 1}
-                q={q}
-                pickedOptionId={picked[q.id] ?? null}
-                onPick={(optionId) => {
-                  setPicked((m) => ({ ...m, [q.id]: optionId }));
-                  setAnswers((m) => ({ ...m, [q.id]: optionId })); // giữ đồng bộ với numAnswered
-                }}
-                onClear={() => {
-                  setPicked((m) => ({ ...m, [q.id]: null }));
-                  setAnswers((m) => ({ ...m, [q.id]: null }));     // cập nhật số câu đã làm
-                }}
-                showResult={submitted}
-              />
-            ))}
-          </div>
-          {/* Điều hướng phân trang */}
-          <div className="my-5 flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-              disabled={page === 1}
-              className="rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              title="Trang trước"
-            >
-              ← Trước
-            </button>
-
-            {/* Nút số trang (tối ưu: chỉ hiển thị một cụm nhỏ quanh trang hiện tại) */}
-            {Array.from({ length: pageCount }, (_, i) => i + 1)
-              .filter(p => Math.abs(p - page) <= 2 || p === 1 || p === pageCount) // hiển thị trang đầu/cuối và lân cận
-              .reduce<(number | string)[]>((acc, p, idx, arr) => {
-                if (idx > 0) {
-                  const prev = arr[idx - 1] as number;
-                  if (typeof prev === "number" && typeof p === "number" && p - prev > 1) acc.push("…");
-                }
-                acc.push(p as number);
-                return acc;
-              }, [])
-              .map((p, i) =>
-                typeof p === "string" ? (
-                  <span key={`ellipsis-${i}`} className="px-2 text-slate-400">…</span>
-                ) : (
+                      key={q.id}
+                      index={start + idx + 1}
+                      q={q}
+                      pickedOptionId={picked[q.id] ?? null}
+                      onPick={(optionId) => {
+                        setPicked((m) => ({ ...m, [q.id]: optionId }));
+                        setAnswers((m) => ({ ...m, [q.id]: optionId })); // giữ đồng bộ với numAnswered
+                      }}
+                      onClear={() => {
+                        setPicked((m) => ({ ...m, [q.id]: null }));
+                        setAnswers((m) => ({ ...m, [q.id]: null }));     // cập nhật số câu đã làm
+                      }}
+                      showResult={submitted}
+                    />
+                  ))}
+                </div>
+                {/* Điều hướng phân trang */}
+                <div className="my-5 flex flex-wrap items-center gap-2">
                   <button
-                    key={p}
-                    onClick={() => setPage(p)}
-                    className={`rounded-lg px-3 py-1.5 text-sm font-medium border
-              ${p === page
-                        ? "bg-emerald-600 text-white border-emerald-600"
-                        : "border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"}`}
-                    title={`Trang ${p}`}
+                    type="button"
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                    className="rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                    title="Trang trước"
                   >
-                    {p}
+                    ← Trước
                   </button>
-                )
-              )
-            }
 
-            <button
-              type="button"
-              onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
-              disabled={page === pageCount}
-              className="rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              title="Trang sau"
-            >
-              Sau →
-            </button>
+                  {/* Nút số trang (tối ưu: chỉ hiển thị một cụm nhỏ quanh trang hiện tại) */}
+                  {Array.from({ length: pageCount }, (_, i) => i + 1)
+                    .filter(p => Math.abs(p - page) <= 2 || p === 1 || p === pageCount) // hiển thị trang đầu/cuối và lân cận
+                    .reduce<(number | string)[]>((acc, p, idx, arr) => {
+                      if (idx > 0) {
+                        const prev = arr[idx - 1] as number;
+                        if (typeof prev === "number" && typeof p === "number" && p - prev > 1) acc.push("…");
+                      }
+                      acc.push(p as number);
+                      return acc;
+                    }, [])
+                    .map((p, i) =>
+                      typeof p === "string" ? (
+                        <span key={`ellipsis-${i}`} className="px-2 text-slate-400">…</span>
+                      ) : (
+                        <button
+                          key={p}
+                          onClick={() => setPage(p)}
+                          className={`rounded-lg px-3 py-1.5 text-sm font-medium border
+              ${p === page
+                              ? "bg-emerald-600 text-white border-emerald-600"
+                              : "border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"}`}
+                          title={`Trang ${p}`}
+                        >
+                          {p}
+                        </button>
+                      )
+                    )
+                  }
 
-            {/* Hiển thị phạm vi câu trên trang */}
-            <div className="ml-auto text-sm text-slate-600 dark:text-slate-300">
-              Trang <b>{page}</b>/<b>{pageCount}</b> • Câu <b>{start + 1}</b>–<b>{Math.min(end, total)}</b> / {total}
-            </div>
-          </div>
+                  <button
+                    type="button"
+                    onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
+                    disabled={page === pageCount}
+                    className="rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                    title="Trang sau"
+                  >
+                    Sau →
+                  </button>
+
+                  {/* Hiển thị phạm vi câu trên trang */}
+                  <div className="ml-auto text-sm text-slate-600 dark:text-slate-300">
+                    Trang <b>{page}</b>/<b>{pageCount}</b> • Câu <b>{start + 1}</b>–<b>{Math.min(end, total)}</b> / {total}
+                  </div>
+                </div>
+              </>
+            )
+          }
+
+
         </main>
         <div className="absolute right-5 top-10 w-fit h-full">
           <div className="sticky top-20 w-fit">
@@ -471,14 +490,16 @@ function QuestionCard({
 
 
   return (
+
     <motion.div
-      id={`q-${q.id}`}
+
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ type: "spring", stiffness: 140, damping: 16 }}
-      className=" rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+      className="relative rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
+      <div id={`q-${q.id}`} className="absolute -top-24"></div>
       <div className="mb-3 flex items-start justify-between gap-3">
         <h3 className="text-base font-semibold text-slate-800 dark:text-slate-200">
           <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/90 text-xs font-bold text-white">

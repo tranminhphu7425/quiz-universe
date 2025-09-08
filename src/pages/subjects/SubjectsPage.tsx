@@ -11,19 +11,11 @@ import { set } from "zod";
 
 type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
-import localSubjects from "@/assets/data/subjects.json"; // import file JSON cục bộ
+import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
 
 
 
-type Subject = {
-  id: number;
-  code: string;
-  name: string;
-  description?: string;
-  createdAt: string;
-}
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080/api";
 
 
 
@@ -53,35 +45,36 @@ export default function SubjectPage() {
   const diffs = ["all", "easy", "medium", "hard"] as const;
 
 
-  const fetchData = async () => {
+
+
+  async function fetchData() {
+
+  
+    const ac = new AbortController();
     setLoading(true);
     setErr(null);
-    const ac = new AbortController();
 
-    try {
-      const res = await fetch(`${API_BASE}/subjects`, { signal: ac.signal });
+    (async () => {
+      try {
+        // 1) Ưu tiên lấy từ API
+        const list = await fetchAllSubjects(ac.signal);
+       
+        setData(list);
+      } catch (e: any) {
+        // Nếu bị hủy thì thôi
+        if (e?.name === "AbortError") return;
 
-      // Nếu API lỗi → ném error để sang catch
-      if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        throw new Error(text || `HTTP ${res.status}`);
+        // 2) API lỗi -> fallback sang JSON cục bộ (dynamic import)
+        setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
+        const local = await import("@/assets/data/subjects.json");
+        setData((local.default ?? []) as Subject[]);
+      } finally {
+        setLoading(false);
       }
-
-      const json = (await res.json()) as Subject[];
-      setData(Array.isArray(json) ? json : []);
-    } catch (e: any) {
-      if (e.name !== "AbortError") {
-        console.error("API fetch failed:", e);
-        setErr("Không thể lấy dữ liệu từ API. Đang sử dụng dữ liệu cục bộ!");
-        // Fallback sang JSON nội bộ
-        setData(localSubjects);
-      }
-    } finally {
-      setLoading(false);
-    }
+    })();
 
     return () => ac.abort();
-  };
+  }
 
   useEffect(() => {
     fetchData();
@@ -216,9 +209,9 @@ export default function SubjectPage() {
             {/* Subject */}
             {/* <SelectBox
               label="Môn học"
-              value={subject}
-              onChange={(v) => handleFilterChange(setSubject)(v)}
-              options={subjects}
+              value={}
+              onChange={}
+              options={}
             /> */}
 
             {/* Type */}
@@ -258,7 +251,14 @@ export default function SubjectPage() {
         </motion.div>
 
         {/* List */}
-        {filtered.length === 0 ? (
+        {loading ? (
+          <LoadingState />
+        ) 
+        // : err ? (
+        //   <ErrorState message={err} onRetry={fetchData} />
+        // ) 
+        :
+        filtered.length === 0 ? (
           <EmptyState />
         ) : (
           <>
@@ -349,8 +349,8 @@ function LoadingState() {
   return (
     <div className="grid place-items-center rounded-2xl border border-dashed border-emerald-300/40 p-10 text-center dark:border-slate-700">
       <div className="animate-pulse">
-        <div className="mb-2 h-4 w-48 rounded bg-emerald-200/60 dark:bg-emerald-500/20" />
-        <div className="mx-auto h-3 w-72 rounded bg-emerald-200/40 dark:bg-emerald-500/10" />
+        <div className="mb-2 h-8 w-48 rounded bg-emerald-200/60 dark:bg-emerald-500/20" />
+        <div className="mx-auto h-8 w-72 rounded bg-emerald-200/40 dark:bg-emerald-500/10" />
       </div>
     </div>
   );
@@ -414,3 +414,33 @@ function truncateHtml(html: string, maxLen: number) {
   const s = txt.length > maxLen ? txt.slice(0, maxLen - 1) + "…" : txt;
   return s;
 }
+
+
+
+// function SelectBox({
+//   label, value, onChange, options,
+// }: {
+//   label: string;
+//   value: string;
+//   onChange: (v: string) => void;
+//   options: readonly string[];
+// }) {
+//   return (
+//     <div>
+//       <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
+//         {label}
+//       </label>
+//       <select
+//         value={value}
+//         onChange={(e) => onChange(e.target.value)}
+//         className="w-full rounded-xl bg-white/80 px-3 py-2 text-sm text-gray-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-gray-100 dark:ring-white/10"
+//       >
+//         {options.map((op) => (
+//           <option key={op} value={op}>
+//             {op === "all" ? "Tất cả" : op}
+//           </option>
+//         ))}
+//       </select>
+//     </div>
+//   );
+// }

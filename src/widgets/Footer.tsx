@@ -5,6 +5,7 @@ import { Github, Twitter, MessageCircle, Mail, Heart, Sparkles, Send, ShieldChec
 import Logo from "@/assets/images/logo/quizuniverselogo.png";
 import ThemeToggle from "@/shared/ui/ThemeToggle";
 import Floating from "@/shared/ui/Floatting";
+import { Link } from "react-router-dom";
 
 
 export interface FooterLinkGroup {
@@ -54,8 +55,8 @@ export default function Footer({
     {
       title: "Công ty",
       links: [
-        { label: "Giới thiệu", href: "#" },
-        { label: "Liên hệ", href: "#" },
+        { label: "Giới thiệu", href: "/about" },
+        { label: "Liên hệ", href: "/contact" },
         { label: "Tuyển dụng", href: "#" },
       ],
     },
@@ -173,13 +174,13 @@ export default function Footer({
                 <ul className="mt-3 space-y-2 text-sm text-sky-800/80 dark:text-slate-300">
                   {g.links.map((l) => (
                     <li key={l.label}>
-                      <a
+                      <Link
                         className="hover:text-sky-900 dark:hover:text-sky-200"
-                        href={l.href}
+                        to={l.href}
                         {...(l.external ? { target: "_blank", rel: "noreferrer" } : {})}
                       >
                         {l.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
