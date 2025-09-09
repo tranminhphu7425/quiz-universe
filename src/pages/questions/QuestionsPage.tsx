@@ -21,14 +21,37 @@ import { fetchSubjectNameById, Subject } from "@/shared/api/subjectApi";
 import localSubjects from "@/assets/data/subjects.json"; // import file JSON cục bộ
 
 
+const BLANK_RE = /\.{5,}/g; // 6 dấu chấm trở lên
+
+type Segment =
+  | { type: "text"; text: string }
+  | { type: "blank" };
+
+function stemToSegments(stem: string): Segment[] {
+  const segs: Segment[] = [];
+  let lastIdx = 0;
+  let m: RegExpExecArray | null;
+  while ((m = BLANK_RE.exec(stem)) !== null) {
+    const start = m.index;
+    if (start > lastIdx) segs.push({ type: "text", text: stem.slice(lastIdx, start) });
+    segs.push({ type: "blank" });
+    lastIdx = start + m[0].length;
+  }
+  if (lastIdx < stem.length) segs.push({ type: "text", text: stem.slice(lastIdx) });
+  // Nếu không có blank nào, trả về 1 text segment duy nhất
+  return segs.length ? segs : [{ type: "text", text: stem }];
+}
 
 
-
+function normalize(s: string) {
+  return (s ?? "").trim().replace(/\s+/g, " ").toLowerCase();
+}
 
 
 // ====== Page ======
 export default function QuestionsPage() {
   const [picked, setPicked] = useState<Record<number, number | null>>({}); // qId -> optionId
+  const [fillAnswers, setFillAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [answers, setAnswers] = useState<{ [questionId: number]: number | null }>({});
   const { subjectId } = useParams<{ subjectId: string }>();
@@ -45,50 +68,50 @@ export default function QuestionsPage() {
   useEffect(() => {
     console.log(subjectId);
   }, [subjectId]);
-  const fetchData = async() => {
+  const fetchData = async () => {
     if (subjectId == null) return;
-     const ac = new AbortController();
+    const ac = new AbortController();
     setLoading(true);
     setErr(null);
     const id = Number(subjectId);
-   
+
 
     (async () => {
-    const [qRes, sRes] = await Promise.allSettled([
-      fetchQuestionsBySubjectId(id, ac.signal),
-      fetchSubjectNameById(id), // nhớ nhận signal
-    ]);
+      const [qRes, sRes] = await Promise.allSettled([
+        fetchQuestionsBySubjectId(id, ac.signal),
+        fetchSubjectNameById(id), // nhớ nhận signal
+      ]);
 
-    // Questions
-    if (qRes.status === "fulfilled") {
-      setData(qRes.value);
-    } else if (qRes.reason?.name !== "AbortError") {
-      setErr("Không thể lấy câu hỏi từ API. Đang dùng dữ liệu cục bộ!");
-      try {
-        const local = await import(`@/assets/data/questionssubject${id}.json`);
-        setData((local.default ?? []) as Question[]);
-      } catch {
-        setData([]);
+      // Questions
+      if (qRes.status === "fulfilled") {
+        setData(qRes.value);
+      } else if (qRes.reason?.name !== "AbortError") {
+        setErr("Không thể lấy câu hỏi từ API. Đang dùng dữ liệu cục bộ!");
+        try {
+          const local = await import(`@/assets/data/questionssubject${id}.json`);
+          setData((local.default ?? []) as Question[]);
+        } catch {
+          setData([]);
+        }
       }
-    }
 
-    // Subject name
-    if (sRes.status === "fulfilled") {
-      setSubjectName(sRes.value.name);
-    } else if (sRes.reason?.name !== "AbortError") {
-      const idNum = Number(subjectId);
-      const sj = (localSubjects as Subject[]).find(s => s.id === idNum);
+      // Subject name
+      if (sRes.status === "fulfilled") {
+        setSubjectName(sRes.value.name);
+      } else if (sRes.reason?.name !== "AbortError") {
+        const idNum = Number(subjectId);
+        const sj = (localSubjects as Subject[]).find(s => s.id === idNum);
 
-      setSubjectName(sj?.name ?? `[Môn #${idNum}]`); // placeholder khi API tên môn lỗi
-      setErr((prev) => prev ?? "Một số dữ liệu không tải được từ API.");
-    }
-  })()
-    .catch((e) => {
-      if (e?.name !== "AbortError") setErr("Có lỗi không xác định!");
-    })
-    .finally(() => setLoading(false));
+        setSubjectName(sj?.name ?? `[Môn #${idNum}]`); // placeholder khi API tên môn lỗi
+        setErr((prev) => prev ?? "Một số dữ liệu không tải được từ API.");
+      }
+    })()
+      .catch((e) => {
+        if (e?.name !== "AbortError") setErr("Có lỗi không xác định!");
+      })
+      .finally(() => setLoading(false));
 
-  return () => ac.abort();
+    return () => ac.abort();
   };
 
   useEffect(() => {
@@ -126,6 +149,10 @@ export default function QuestionsPage() {
     .map(([qId]) => Number(qId))
   );
 
+  const matchAnswer = (user: string, correctSpec: string) =>
+    correctSpec.split("|").some(ans => normalize(user) === normalize(ans));
+
+
   // ✅ chuyển tới câu bất kỳ: đổi trang + scroll mượt
   const goToQuestion = (qGlobalIndex: number, qId: number) => {
     const targetPage = Math.floor(qGlobalIndex / PAGE_SIZE) + 1;
@@ -146,21 +173,40 @@ export default function QuestionsPage() {
   };
 
 
+
   const score = useMemo(() => {
     if (!submitted) return 0;
+
     let s = 0;
     for (const q of data) {
-      const pickedOptionId = picked[q.id];
-      const correct = q.options.find((o) => o.isCorrect);
-      if (pickedOptionId && correct && pickedOptionId === correct.id) s += 1;
+      if (q.questionType === "fill_in") {
+        // Đúng khi TẤT CẢ ô (options) đều khớp nội dung
+        const allCorrect =
+          q.options.length > 0 &&
+          q.options.every(opt => {
+            const user = fillAnswers?.[opt.id] ?? "";        // <-- state nhập liệu: { optionId: text }
+            return matchAnswer(user, opt.content);           // hoặc: normalize(user) === normalize(opt.content)
+          });
+
+        if (allCorrect) s += 1;
+      } else {
+        // mcq_single (giữ nguyên)
+        const pickedOptionId = picked[q.id];
+        const correct = q.options.find(o => o.isCorrect);
+        if (pickedOptionId && correct && pickedOptionId === correct.id) s += 1;
+      }
     }
     return s;
-  }, [submitted, picked, data]);
-
+  }, [submitted, data, picked, fillAnswers]);   // <-- nhớ thêm fillAnswers
   const reset = () => {
     setPicked({});
+
+    setFillAnswers({});
+    setAnswers({});
     setSubmitted(false);
   };
+
+
 
   // Hàm xử lý khi chọn đáp án
   const handleSelectOption = (questionId: number, optionId: number) => {
@@ -268,6 +314,7 @@ export default function QuestionsPage() {
                       key={q.id}
                       index={start + idx + 1}
                       q={q}
+                      questionType={q.questionType}
                       pickedOptionId={picked[q.id] ?? null}
                       onPick={(optionId) => {
                         setPicked((m) => ({ ...m, [q.id]: optionId }));
@@ -278,6 +325,8 @@ export default function QuestionsPage() {
                         setAnswers((m) => ({ ...m, [q.id]: null }));     // cập nhật số câu đã làm
                       }}
                       showResult={submitted}
+                      answers={fillAnswers}
+                      onFill={(optionId, value) => { setFillAnswers((m) => ({ ...m, [optionId]: value })); }}
                     />
                   ))}
                 </div>
@@ -472,21 +521,34 @@ export default function QuestionsPage() {
 function QuestionCard({
   index,
   q,
+  questionType = "mcq_single",
   pickedOptionId,
   onPick,
   onClear,
   showResult,
+  answers,                    // { [optionId]: "user text" }
+  onFill,                     // (optionId, value) => void
 }: {
   index: number;
   q: Question;
+  questionType: string;
   pickedOptionId: number | null;
   onPick: (optionId: number) => void;
   onClear: () => void;
   showResult: boolean;
+  answers?: Record<number, string>;
+  onFill?: (optionId: number, value: string) => void;
 }) {
   const correct = q.options.find((o) => o.isCorrect);
   const isCorrect = showResult && pickedOptionId && correct && pickedOptionId === correct.id;
   const isWrong = showResult && pickedOptionId && correct && pickedOptionId !== correct.id;
+
+  // === TÍNH ĐÚNG/SAI CHO FILL_IN (tất cả ô đúng mới coi là đúng toàn câu):
+  const allFillCorrect =
+    questionType === "fill_in" &&
+    showResult &&
+    q.options.length > 0 &&
+    q.options.every((opt) => normalize(answers?.[opt.id] ?? "") === normalize(opt.content));
 
 
   return (
@@ -500,65 +562,178 @@ function QuestionCard({
       className="relative rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
       <div id={`q-${q.id}`} className="absolute -top-24"></div>
-      <div className="mb-3 flex items-start justify-between gap-3">
-        <h3 className="text-base font-semibold text-slate-800 dark:text-slate-200">
-          <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/90 text-xs font-bold text-white">
-            {index}
-          </span>
-          <span className="whitespace-pre-line">{q.stem}</span>
-        </h3>
+      {questionType === "mcq_single" ? (
+        <>
+          <div className="mb-3 flex items-start justify-between gap-3">
+            <h3 className="text-base font-semibold text-slate-800 dark:text-slate-200">
+              <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/90 text-xs font-bold text-white">
+                {index}
+              </span>
+              <span className="whitespace-pre-line">{q.stem}</span>
+            </h3>
 
-        {/* Badge kết quả hoặc nút Xóa */}
-        {showResult ? (
-          isCorrect ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-emerald-700 ring-1 ring-emerald-300 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800">
-              <CheckCircle2 className="h-4 w-4" /> Đúng
-            </span>
-          ) : isWrong ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-rose-100 px-2 py-1 text-rose-700 ring-1 ring-rose-300 dark:bg-rose-900/30 dark:text-rose-300 dark:ring-rose-800">
-              <XCircle className="h-4 w-4" /> Sai
-            </span>
-          ) : null
+            {/* Badge kết quả hoặc nút Xóa */}
+            {showResult ? (
+              isCorrect ? (
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-emerald-700 ring-1 ring-emerald-300 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800">
+                  <CheckCircle2 className="h-4 w-4" /> Đúng
+                </span>
+              ) : isWrong ? (
+                <span className="inline-flex items-center gap-1 rounded-full bg-rose-100 px-2 py-1 text-rose-700 ring-1 ring-rose-300 dark:bg-rose-900/30 dark:text-rose-300 dark:ring-rose-800">
+                  <XCircle className="h-4 w-4" /> Sai
+                </span>
+              ) : null
+            ) : (
+              pickedOptionId !== null && (
+                <button
+                  type="button"
+                  onClick={onClear}
+                  className="rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                  title="Xóa lựa chọn của câu này"
+                >
+                  Xóa lựa chọn
+                </button>
+              )
+            )}
+          </div>
+
+          <div className="mt-3 grid gap-2">
+            {q.options
+              .slice()
+              .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+              .map((opt) => (
+                <OptionItem
+                  key={opt.id}
+                  groupName={`q-${q.id}`}   // 👈 đổi từ name → groupName
+                  opt={opt}
+                  checked={pickedOptionId === opt.id}
+                  disabled={showResult}
+                  onChange={() => onPick(opt.id)}
+                  reveal={showResult}
+                  isCorrect={opt.isCorrect}
+                  isPicked={pickedOptionId === opt.id}
+                />
+
+              ))}
+          </div>
+
+          {showResult && q.explanation && (
+            <div className="mt-4 rounded-xl bg-amber-50 p-3 text-amber-900 ring-1 ring-amber-200 dark:bg-amber-900/20 dark:text-amber-200 dark:ring-amber-800">
+              <div className="text-sm font-semibold">Giải thích</div>
+              <p className="mt-1 text-sm leading-relaxed">{q.explanation}</p>
+            </div>
+          )}
+        </>
+      )
+        : questionType === "fill_in" ? (
+          <>
+            {(() => {
+              // sort options theo sortOrder trước
+              const opts = q.options
+                .slice()
+                .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+
+              const segs = stemToSegments(q.stem);
+              let blankIdx = 0;
+
+              // tính tổng đúng để gắn badge tổng quát (nếu bạn muốn)
+              const allFillCorrect =
+                showResult &&
+                segs.some(s => s.type === "blank") &&
+                opts.length > 0 &&
+                // chỉ tính trên số blank thực có
+                segs.filter(s => s.type === "blank").every((_, i) => {
+                  const opt = opts[i];
+                  const user = answers?.[opt?.id ?? -1] ?? "";
+                  return opt ? normalize(user) === normalize(opt.content) : false;
+                });
+
+              return (
+                <>
+                  {/* Bạn có thể hiển thị badge tổng quát ở header (đã code ở phiên bản trước) */}
+                  <p className="whitespace-pre-wrap leading-relaxed text-slate-800 dark:text-slate-200">
+                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/90 text-xs font-bold text-white">
+                      {index}
+                    </span>
+                    {segs.map((seg, i) => {
+                      if (seg.type === "text") {
+                        return <span key={`t-${i}`}>{seg.text}</span>;
+                      } else {
+                        const opt = opts[blankIdx] ?? null;
+                        const val = opt ? (answers?.[opt.id] ?? "") : (answers?.[-1] ?? "");
+                        const idxNow = blankIdx; // chốt index cho closure
+                        blankIdx++;
+                        return (
+                          <InlineBlank
+                            key={`b-${i}`}
+                            opt={opt}
+                            value={val}
+                            reveal={showResult}
+                            onChange={(v) => {
+                              if (!opt) return; // không có option thì bỏ qua
+                              onFill?.(opt.id, v);
+                            }}
+                          />
+                        );
+                      }
+                    })}
+                  </p>
+
+                  {/* Nếu số blank > số option: cảnh báo nhẹ khi chấm (không bắt buộc) */}
+                  {showResult && segs.filter(s => s.type === "blank").length > opts.length && (
+                    <div className="mt-3 text-xs text-amber-600 dark:text-amber-300">
+                      Lưu ý: Số ô trống trong câu nhiều hơn số đáp án cung cấp.
+                    </div>
+                  )}
+
+                  {/* Gợi ý đáp án & giải thích khi chấm */}
+                  {showResult && (
+                    <div className="mt-4 space-y-3">
+                      {/* Hiển thị đáp án đúng cho từng ô dưới dạng danh sách nhỏ */}
+                      <div className="rounded-xl bg-slate-50 p-3 text-sm ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-700">
+                        <div className="mb-1 font-semibold">Đáp án</div>
+                        <ul className="list-disc space-y-0.5 pl-5">
+                          {opts.map((opt) => {
+                            const user = answers?.[opt.id] ?? "";
+                            const ok = normalize(user) === normalize(opt.content);
+                            return (
+                              <li key={opt.id} className="flex items-baseline gap-2">
+                                <span className="text-slate-500 dark:text-slate-400 w-10 shrink-0">
+                                  Ô {opt.label}:
+                                </span>
+                                <span className={ok ? "text-emerald-700 dark:text-emerald-300" : "text-rose-700 dark:text-rose-300"}>
+                                  {ok ? "Đúng" : "Sai"}
+                                </span>
+                                {!ok && (
+                                  <span className="text-slate-700 dark:text-slate-200">
+                                    &nbsp;→&nbsp;
+                                    <span className="font-medium">{opt.content}</span>
+                                  </span>
+                                )}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+
+                      {q.explanation && (
+                        <div className="rounded-xl bg-amber-50 p-3 text-amber-900 ring-1 ring-amber-200 dark:bg-amber-900/20 dark:text-amber-200 dark:ring-amber-800">
+                          <div className="text-sm font-semibold">Giải thích</div>
+                          <p className="mt-1 text-sm leading-relaxed">{q.explanation}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </>
+              );
+            })()}
+          </>
         ) : (
-          pickedOptionId !== null && (
-            <button
-              type="button"
-              onClick={onClear}
-              className="rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              title="Xóa lựa chọn của câu này"
-            >
-              Xóa lựa chọn
-            </button>
-          )
-        )}
-      </div>
+          <></>
+        )
 
-      <div className="mt-3 grid gap-2">
-        {q.options
-          .slice()
-          .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
-          .map((opt) => (
-            <OptionItem
-              key={opt.id}
-              groupName={`q-${q.id}`}   // 👈 đổi từ name → groupName
-              opt={opt}
-              checked={pickedOptionId === opt.id}
-              disabled={showResult}
-              onChange={() => onPick(opt.id)}
-              reveal={showResult}
-              isCorrect={opt.isCorrect}
-              isPicked={pickedOptionId === opt.id}
-            />
+      }
 
-          ))}
-      </div>
-
-      {showResult && q.explanation && (
-        <div className="mt-4 rounded-xl bg-amber-50 p-3 text-amber-900 ring-1 ring-amber-200 dark:bg-amber-900/20 dark:text-amber-200 dark:ring-amber-800">
-          <div className="text-sm font-semibold">Giải thích</div>
-          <p className="mt-1 text-sm leading-relaxed">{q.explanation}</p>
-        </div>
-      )}
     </motion.div>
   );
 }
@@ -627,11 +802,55 @@ function OptionItem({
   );
 }
 
-// ====== Gợi ý sử dụng ======
-// 1) Lưu file này tại: src/pages/practice/PracticePage.tsx
-// 2) Thêm route vào router của bạn, ví dụ:
-//    <Route path="/practice" element={<PracticePage />} />
-// 3) Nếu bạn muốn fetch từ API thay vì dùng demoQuestions,
-//    - nhận props `questions` từ loader / từ parent
-//    - hoặc dùng useEffect để gọi API rồi set state.
-// 4) Có thể tái sử dụng gradient/hero từ trang HomePage để đồng bộ thẩm mỹ.
+
+
+
+
+// --- input inline cho từng blank ---
+function InlineBlank({
+  opt,
+  value,
+  onChange,
+  reveal,
+}: {
+  opt: QuestionOption | null;              // có thể null nếu thiếu option
+  value: string;
+  onChange?: (v: string) => void;
+  reveal: boolean;
+}) {
+  const isOk = reveal && opt && normalize(value) === normalize(opt.content);
+  const isErr = reveal && opt && !isOk;
+
+  return (
+   
+  <span
+    className={[
+      "mx-1 my-1 inline-flex items-center rounded-lg px-2 py-1 align-baseline",
+      "min-w-[8ch] max-w-[50ch]",                 // khung co giãn 8→50ch
+      "border transition",
+      reveal
+        ? isOk
+          ? "border-emerald-300 bg-emerald-50 dark:border-emerald-800/60 dark:bg-emerald-900/10"
+          : "border-rose-300 bg-rose-50 dark:border-rose-800/60 dark:bg-rose-900/10"
+        : "border-slate-300 dark:border-slate-600",
+    ].join(" ")}
+  >
+    <input
+      type="text"
+      aria-label={opt ? `Điền ô ${opt.label}` : "Ô trống"}
+      value={value}
+      onChange={(e) => onChange?.(e.target.value)}
+      disabled={reveal}
+      placeholder={opt ? `Ô ${opt.label}` : "Ô trống"}
+      // 🔑 bỏ w-full để không chiếm hết khung
+      className="bg-transparent outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 font-semibold"
+      // 🔑 auto-giãn theo độ dài hiện tại (8→50 ký tự)
+      style={{
+        width: `${Math.min(50, Math.max(8, (value?.length ?? 0) + 1))}ch`,
+      }}
+    />
+  </span>
+
+
+  );
+}

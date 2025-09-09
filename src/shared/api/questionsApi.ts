@@ -4,7 +4,7 @@ export type Question = {
   id: number;
   stem: string;
   explanation?: string | null;
-  questionType: "mcq_single" | "mcq_multi" | string;
+  questionType: 'mcq_single' | 'mcq_multiple' | 'fill_in' | string;
   status: "approved" | "draft" | "rejected" | string;
   createdAt: string;
   updatedAt?: string;

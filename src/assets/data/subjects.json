@@ -12,5 +12,19 @@
     "name": "Tư tưởng Hồ Chí Minh (2)",
     "description": "Ngân hàng câu hỏi ôn tập (Giáo trình Thầy Búa).",
     "createdAt": "2025-08-26T13:28:29"
+  },
+  {
+    "id": 6,
+    "code": "ML021",
+    "name": "Tư tưởng Hồ Chí Minh (3)",
+    "description": "Học phần TTHCM",
+    "createdAt": "2025-09-08T15:46:29"
+  },
+  {
+    "id": 7,
+    "code": "ML021",
+    "name": "Tư tưởng Hồ Chí Minh (4)",
+    "description": "Môn học về tư tưởng và di sản của Chủ tịch Hồ Chí Minh",
+    "createdAt": "2025-09-09T11:08:39"
   }
 ]
