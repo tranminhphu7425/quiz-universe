@@ -2841,14 +2841,14 @@
         "id": 1410,
         "label": "C",
         "content": "Vừa cứng rắn về nguyên tắc, vừa mềm dẻo về sách lược.",
-        "isCorrect": false,
+        "isCorrect": true,
         "sortOrder": 3
       },
       {
         "id": 1411,
         "label": "D",
         "content": "Dĩ bất biến, ứng vạn biến.",
-        "isCorrect": true,
+        "isCorrect": false,
         "sortOrder": 4
       }
     ]
