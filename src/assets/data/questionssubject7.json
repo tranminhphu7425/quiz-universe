@@ -4245,14 +4245,14 @@
         "id": 1554,
         "label": "C",
         "content": "Pháp",
-        "isCorrect": true,
+        "isCorrect": false,
         "sortOrder": 3
       },
       {
         "id": 1555,
         "label": "D",
         "content": "Liên Xô",
-        "isCorrect": false,
+        "isCorrect": true,
         "sortOrder": 4
       }
     ]
