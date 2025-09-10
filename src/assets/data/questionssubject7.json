@@ -4192,14 +4192,14 @@
         "id": 1548,
         "label": "A",
         "content": "Báo Pravda",
-        "isCorrect": false,
+        "isCorrect": true,
         "sortOrder": 1
       },
       {
         "id": 1549,
         "label": "B",
         "content": "Báo Le Paria",
-        "isCorrect": true,
+        "isCorrect": false,
         "sortOrder": 2
       },
       {
