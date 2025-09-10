@@ -50,17 +50,14 @@ function normalize(s: string) {
 
 // ====== Page ======
 export default function QuestionsPage() {
-  const [picked, setPicked] = useState<Record<number, number | null>>({}); // qId -> optionId
+  const [picked, setPicked] = useState<Record <number, number | null>>({}); // qId -> optionId
   const [fillAnswers, setFillAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
-  const [answers, setAnswers] = useState<{ [questionId: number]: number | null }>({});
   const { subjectId } = useParams<{ subjectId: string }>();
   const [data, setData] = useState<Question[]>([]);
   const [navOpen, setNavOpen] = useState(false); // ✅ trạng thái mở/đóng popup
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
-  const [q, setQ] = useState("");
-  const [showAns, setShowAns] = useState(false);
   const pageTopRef = useRef<HTMLDivElement | null>(null);
   const suppressTopScrollRef = useRef(false);
   const [page, setPage] = useState(1);
@@ -130,7 +127,7 @@ export default function QuestionsPage() {
   const PAGE_SIZE = 10;
   const pageSizeFAB = 50;
 
-  const reopenTimerRef = useRef<number | null>(null);
+  
   const total = data.length;
   const pageCount = Math.ceil(total / PAGE_SIZE);
   const start = (page - 1) * PAGE_SIZE;
@@ -202,19 +199,11 @@ export default function QuestionsPage() {
     setPicked({});
 
     setFillAnswers({});
-    setAnswers({});
+
     setSubmitted(false);
   };
 
 
-
-  // Hàm xử lý khi chọn đáp án
-  const handleSelectOption = (questionId: number, optionId: number) => {
-    setAnswers((prev) => ({
-      ...prev,
-      [questionId]: optionId,
-    }));
-  };
 
   // Tính số câu đã làm (có đáp án được chọn)
   const numAnswered = useMemo(
@@ -234,7 +223,7 @@ export default function QuestionsPage() {
         onClick={() => setNavOpen(false)}
       />)
       } */}
-
+      {err && (<div><h2>Lấy dữ liệu cục bộ</h2></div>)}
 
 
       {/* ====== HERO (phong cách giống trang chủ) ====== */}
@@ -318,11 +307,11 @@ export default function QuestionsPage() {
                       pickedOptionId={picked[q.id] ?? null}
                       onPick={(optionId) => {
                         setPicked((m) => ({ ...m, [q.id]: optionId }));
-                        setAnswers((m) => ({ ...m, [q.id]: optionId })); // giữ đồng bộ với numAnswered
+                      
                       }}
                       onClear={() => {
                         setPicked((m) => ({ ...m, [q.id]: null }));
-                        setAnswers((m) => ({ ...m, [q.id]: null }));     // cập nhật số câu đã làm
+            
                       }}
                       showResult={submitted}
                       answers={fillAnswers}
