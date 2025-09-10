@@ -3217,7 +3217,7 @@
         "id": 1448,
         "label": "A",
         "content": "4",
-        "isCorrect": false,
+        "isCorrect": true,
         "sortOrder": 1
       },
       {
@@ -3231,7 +3231,7 @@
         "id": 1450,
         "label": "C",
         "content": "5",
-        "isCorrect": true,
+        "isCorrect": false,
         "sortOrder": 3
       },
       {
