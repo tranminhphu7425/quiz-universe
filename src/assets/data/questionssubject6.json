@@ -1,0 +1,1133 @@
+[
+  {
+    "id": 252,
+    "stem": "Tiền đề tư tưởng, lý luận giữ vai trò xuất phát hình thành Tư tưởng Hồ Chí Minh là gì?",
+    "explanation": "Giá trị truyền thống dân tộc.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1003,
+        "label": "A",
+        "content": "Giá trị truyền thống dân tộc.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1004,
+        "label": "B",
+        "content": "Văn hóa phương Đông.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1005,
+        "label": "C",
+        "content": "Văn hóa phương Tây.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1006,
+        "label": "D",
+        "content": "Chủ nghĩa Mác – Lênin.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 253,
+    "stem": "Tiền đề tư tưởng, lý luận quyết định nội dung, bản chất Tư tưởng Hồ Chí Minh là gì?",
+    "explanation": "Chủ nghĩa Mác – Lênin.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1007,
+        "label": "A",
+        "content": "Chủ nghĩa Mác – Lênin.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1008,
+        "label": "B",
+        "content": "Truyền thống văn hóa phương Đông.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1009,
+        "label": "C",
+        "content": "Tinh hoa văn hóa phương Tây.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1010,
+        "label": "D",
+        "content": "Tôn giáo phương Tây.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 254,
+    "stem": "Sự kiện đánh dấu Nguyễn Ái Quốc tiếp thu chủ nghĩa Mác – Lênin và trở thành người cộng sản là gì?",
+    "explanation": "Bỏ phiếu tán thành Quốc tế Cộng sản.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1011,
+        "label": "A",
+        "content": "Gia nhập Đảng Xã hội Pháp năm 1918.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1012,
+        "label": "B",
+        "content": "Bỏ phiếu tán thành Quốc tế Cộng sản.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1013,
+        "label": "C",
+        "content": "Đọc Luận cương của Lênin (7/1920).",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1014,
+        "label": "D",
+        "content": "Viết Yêu sách 8 điểm (6/1919).",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 255,
+    "stem": "Sự kiện đánh dấu Nguyễn Ái Quốc trở thành chiến sĩ cộng sản, chiến sĩ của quốc tế vô sản là gì?",
+    "explanation": "Bỏ phiếu tán thành Quốc tế Cộng sản.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1015,
+        "label": "A",
+        "content": "Gia nhập Đảng Cộng sản Pháp.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1016,
+        "label": "B",
+        "content": "Bỏ phiếu tán thành Quốc tế Cộng sản.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1017,
+        "label": "C",
+        "content": "Tham dự Đại hội Tua 1920.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1018,
+        "label": "D",
+        "content": "Về Pác Bó năm 1941.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 256,
+    "stem": "Sự kiện đánh dấu bước ngoặt trong nhận thức tư tưởng của Nguyễn Ái Quốc là gì?",
+    "explanation": "Đọc “Sơ thảo lần thứ nhất…” của Lênin (Luận cương).",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1019,
+        "label": "A",
+        "content": "Gia nhập Đảng Xã hội Pháp (1918).",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1020,
+        "label": "B",
+        "content": "Đọc Luận cương của Lênin (7/1920).",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1021,
+        "label": "C",
+        "content": "Thành lập Hội VN Cách mạng Thanh niên (1925).",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1022,
+        "label": "D",
+        "content": "Viết “Đường Kách mệnh” (1927).",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 257,
+    "stem": "Nguyên tắc nào giúp mọi người tốt hơn, tiến bộ hơn, đoàn kết nhau hơn?",
+    "explanation": "Tự phê bình và phê bình.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1023,
+        "label": "A",
+        "content": "Kỷ luật nghiêm minh.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1024,
+        "label": "B",
+        "content": "Tự phê bình và phê bình.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1025,
+        "label": "C",
+        "content": "Thi đua khen thưởng.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1026,
+        "label": "D",
+        "content": "Công khai – minh bạch.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 258,
+    "stem": "Phẩm chất trí tuệ đặc sắc là điều kiện để Nguyễn Ái Quốc trở thành nhà tư tưởng là gì?",
+    "explanation": "Tư duy độc lập, tự chủ, sáng tạo với đầu óc phê bình tinh tường.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1027,
+        "label": "A",
+        "content": "Khả năng diễn thuyết.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1028,
+        "label": "B",
+        "content": "Tư duy độc lập, tự chủ sáng tạo, đầu óc phê bình tinh tường.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1029,
+        "label": "C",
+        "content": "Năng lực ngoại ngữ.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1030,
+        "label": "D",
+        "content": "Tài năng quân sự.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 259,
+    "stem": "Nguyên tắc nào được Hồ Chí Minh gọi là nguyên tắc tổ chức?",
+    "explanation": "Tập trung dân chủ.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1031,
+        "label": "A",
+        "content": "Tập trung dân chủ.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1032,
+        "label": "B",
+        "content": "Tập thể lãnh đạo, cá nhân phụ trách.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1033,
+        "label": "C",
+        "content": "Pháp chế XHCN.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1034,
+        "label": "D",
+        "content": "Thi đua – khen thưởng.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 260,
+    "stem": "Theo Hồ Chí Minh, yếu tố ban đầu đưa Người tin theo Lênin, tin theo Quốc tế III là gì?",
+    "explanation": "Chủ nghĩa yêu nước Việt Nam.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1035,
+        "label": "A",
+        "content": "Chủ nghĩa yêu nước Việt Nam.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1036,
+        "label": "B",
+        "content": "Chủ nghĩa cộng sản.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1037,
+        "label": "C",
+        "content": "Tư tưởng Khổng – Mạnh.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1038,
+        "label": "D",
+        "content": "Tôn giáo phương Tây.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 261,
+    "stem": "Tác phẩm “Bản án chế độ thực dân Pháp” xuất bản lần đầu vào năm nào, bằng tiếng gì?",
+    "explanation": "Năm 1925, bằng tiếng Pháp.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1039,
+        "label": "A",
+        "content": "1925 – tiếng Pháp.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1040,
+        "label": "B",
+        "content": "1925 – tiếng Việt.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1041,
+        "label": "C",
+        "content": "1927 – tiếng Pháp.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1042,
+        "label": "D",
+        "content": "1927 – tiếng Việt.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 262,
+    "stem": "Các bài giảng của Nguyễn Ái Quốc tập hợp và xuất bản thành tác phẩm nào?",
+    "explanation": "Đường Kách mệnh (1927).",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1043,
+        "label": "A",
+        "content": "Đường Kách mệnh (1927).",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1044,
+        "label": "B",
+        "content": "Nhật ký trong tù (1942–43).",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1045,
+        "label": "C",
+        "content": "Bản án chế độ thực dân Pháp (1925).",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1046,
+        "label": "D",
+        "content": "Tuyên ngôn độc lập (1945).",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 263,
+    "stem": "Nguyễn Ái Quốc bị thực dân Anh giam giữ ở Hồng Kông trong thời gian nào?",
+    "explanation": "Từ 6/1931 đến 1/1933.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1047,
+        "label": "A",
+        "content": "6/1931 – 1/1933.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1048,
+        "label": "B",
+        "content": "7/1930 – 7/1931.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1049,
+        "label": "C",
+        "content": "1/1933 – 12/1934.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1050,
+        "label": "D",
+        "content": "1942 – 1943.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 264,
+    "stem": "Nguyễn Ái Quốc thành lập Hội Việt Nam Cách mạng Thanh niên vào năm nào?",
+    "explanation": "Năm 1925 (tại Quảng Châu, Trung Quốc).",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-08T15:49:23",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1051,
+        "label": "A",
+        "content": "1924",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1052,
+        "label": "B",
+        "content": "1925",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1053,
+        "label": "C",
+        "content": "1926",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1054,
+        "label": "D",
+        "content": "1927",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 265,
+    "stem": "Nội dung nào sau đây là NHẦM LẪN khi nói về nguồn gốc văn hoá phương Đông trong TTHCM?",
+    "explanation": "\"Kế thừa lòng nhân ái, đức hy sinh của Hồi giáo\" (phát biểu sai).",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:15:17",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1055,
+        "label": "A",
+        "content": "Kế thừa lòng nhân ái, đức hy sinh của Hồi giáo.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1056,
+        "label": "B",
+        "content": "Tiếp thu chọn lọc tư tưởng Nho - Phật - Lão.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1057,
+        "label": "C",
+        "content": "Kế thừa truyền thống hiếu học của Á Đông.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1058,
+        "label": "D",
+        "content": "Vận dụng các giá trị phương Đông theo quan điểm Mác - Lênin.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 267,
+    "stem": "Nội dung nào sau đây là NHẦM LẪN khi nói về nguồn gốc văn hoá phương Đông trong TTHCM?",
+    "explanation": "\"Kế thừa lòng nhân ái, đức hy sinh của Hồi giáo\" (phát biểu sai).",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:19:48",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 1059,
+        "label": "A",
+        "content": "Kế thừa lòng nhân ái, đức hy sinh của Hồi giáo.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1060,
+        "label": "B",
+        "content": "Tiếp thu chọn lọc tư tưởng Nho - Phật - Lão.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1061,
+        "label": "C",
+        "content": "Kế thừa truyền thống hiếu học của Á Đông.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1062,
+        "label": "D",
+        "content": "Vận dụng các giá trị phương Đông theo quan điểm Mác - Lênin.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 269,
+    "stem": "Nội dung nào sau đây là NHẦM LẪN khi nói về nguồn gốc văn hoá phương Đông trong TTHCM?",
+    "explanation": "\"Kế thừa lòng nhân ái, đức hy sinh của Hồi giáo\" (phát biểu sai).",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1063,
+        "label": "A",
+        "content": "Kế thừa lòng nhân ái, đức hy sinh của Hồi giáo.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1064,
+        "label": "B",
+        "content": "Tiếp thu chọn lọc tư tưởng Nho - Phật - Lão.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1065,
+        "label": "C",
+        "content": "Kế thừa truyền thống hiếu học của Á Đông.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1066,
+        "label": "D",
+        "content": "Vận dụng các giá trị phương Đông theo quan điểm Mác - Lênin.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 270,
+    "stem": "Câu nói về CNTB “con đỉa hai vòi” được trích trong tác phẩm nào của Nguyễn Ái Quốc?",
+    "explanation": "\"Bản án chế độ thực dân Pháp\".",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1067,
+        "label": "A",
+        "content": "Đường Kách mệnh.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1068,
+        "label": "B",
+        "content": "Bản án chế độ thực dân Pháp.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1069,
+        "label": "C",
+        "content": "Tuyên ngôn độc lập.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1070,
+        "label": "D",
+        "content": "Sửa đổi lối làm việc.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 271,
+    "stem": "Vấn đề dân tộc trong TTHCM là sự kết hợp nhuần nhuyễn giữa các vấn đề nào?",
+    "explanation": "Cả A, B, C đều đúng.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1071,
+        "label": "A",
+        "content": "Dân tộc với giai cấp.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1072,
+        "label": "B",
+        "content": "Chủ nghĩa yêu nước với chủ nghĩa quốc tế.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1073,
+        "label": "C",
+        "content": "Độc lập dân tộc với chủ nghĩa xã hội.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1074,
+        "label": "D",
+        "content": "Cả A, B, C đều đúng.",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 272,
+    "stem": "Vấn đề dân tộc trong TTHCM là vấn đề gì?",
+    "explanation": "Dân tộc thuộc địa.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1075,
+        "label": "A",
+        "content": "Dân tộc thuộc địa.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1076,
+        "label": "B",
+        "content": "Dân tộc phong kiến.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1077,
+        "label": "C",
+        "content": "Dân tộc tư sản.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1078,
+        "label": "D",
+        "content": "Dân tộc công nghiệp.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 273,
+    "stem": "Thực chất của vấn đề dân tộc thuộc địa trong TTHCM là gì?",
+    "explanation": "Đấu tranh giải phóng dân tộc, thành lập nhà nước độc lập, nhân dân là chủ thể quyền lực.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1079,
+        "label": "A",
+        "content": "Đấu tranh giải phóng dân tộc, xây dựng nhà nước độc lập của nhân dân.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1080,
+        "label": "B",
+        "content": "Cải cách ruộng đất là nhiệm vụ trung tâm.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1081,
+        "label": "C",
+        "content": "Ưu tiên phát triển công nghiệp nặng.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1082,
+        "label": "D",
+        "content": "Hội nhập kinh tế quốc tế.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 274,
+    "stem": "Trong TTHCM, nhiệm vụ quan trọng hàng đầu của cách mạng Việt Nam là gì?",
+    "explanation": "Giải phóng dân tộc.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1083,
+        "label": "A",
+        "content": "Giải phóng dân tộc.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1084,
+        "label": "B",
+        "content": "Giải phóng giai cấp.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1085,
+        "label": "C",
+        "content": "Hiện đại hóa nông nghiệp.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1086,
+        "label": "D",
+        "content": "Công nghiệp hoá.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 275,
+    "stem": "HCM xác định cách mạng Việt Nam phải trải qua những thời kỳ nào?",
+    "explanation": "Cách mạng giải phóng dân tộc và cách mạng XHCN.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1087,
+        "label": "A",
+        "content": "Cách mạng tư sản và cách mạng XHCN.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1088,
+        "label": "B",
+        "content": "Cách mạng giải phóng dân tộc và cách mạng XHCN.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1089,
+        "label": "C",
+        "content": "Cải lương và hiện đại hoá.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1090,
+        "label": "D",
+        "content": "Đổi mới và hội nhập.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 276,
+    "stem": "Trong các mục tiêu giải phóng (dân tộc, giai cấp, con người, xã hội), HCM đặt lên hàng đầu nhiệm vụ nào?",
+    "explanation": "Giải phóng dân tộc.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1091,
+        "label": "A",
+        "content": "Giải phóng dân tộc.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1092,
+        "label": "B",
+        "content": "Giải phóng giai cấp.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1093,
+        "label": "C",
+        "content": "Giải phóng con người.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1094,
+        "label": "D",
+        "content": "Giải phóng xã hội.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 277,
+    "stem": "HCM dùng hình tượng nào để mô tả quan hệ giữa cách mạng thuộc địa và cách mạng vô sản ở chính quốc?",
+    "explanation": "Hai cánh của một con chim.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1095,
+        "label": "A",
+        "content": "Hai cánh của một con chim.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1096,
+        "label": "B",
+        "content": "Hai bánh răng cơ khí.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1097,
+        "label": "C",
+        "content": "Hai dòng sông hợp lưu.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1098,
+        "label": "D",
+        "content": "Hai bánh xe lịch sử.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 278,
+    "stem": "Trong TTHCM, vấn đề dân tộc và giai cấp có quan hệ như thế nào?",
+    "explanation": "Giải phóng dân tộc là tiền đề để giải phóng giai cấp.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1099,
+        "label": "A",
+        "content": "Giải phóng giai cấp là tiền đề để giải phóng dân tộc.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1100,
+        "label": "B",
+        "content": "Hai vấn đề tách rời nhau.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1101,
+        "label": "C",
+        "content": "Giải phóng dân tộc là tiền đề để giải phóng giai cấp.",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 1102,
+        "label": "D",
+        "content": "Không có mối quan hệ.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 279,
+    "stem": "“Tất cả các dân tộc trên thế giới đều sinh ra bình đẳng...” HCM nói trong văn kiện nào?",
+    "explanation": "Tuyên ngôn độc lập năm 1945.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1103,
+        "label": "A",
+        "content": "Lời kêu gọi Toàn quốc kháng chiến.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1104,
+        "label": "B",
+        "content": "Tuyên ngôn độc lập (2/9/1945).",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1105,
+        "label": "C",
+        "content": "Đường Kách mệnh.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1106,
+        "label": "D",
+        "content": "Sửa đổi lối làm việc.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 280,
+    "stem": "Theo TTHCM, cách mạng giải phóng dân tộc muốn giành thắng lợi phải theo con đường nào?",
+    "explanation": "Con đường cách mạng vô sản.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1107,
+        "label": "A",
+        "content": "Cải lương tư sản.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1108,
+        "label": "B",
+        "content": "Con đường cách mạng vô sản.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1109,
+        "label": "C",
+        "content": "Quân chủ lập hiến.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1110,
+        "label": "D",
+        "content": "Dân chủ tư sản.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 281,
+    "stem": "Trong TTHCM, cách mạng là sự nghiệp của ai?",
+    "explanation": "Toàn dân, trên cơ sở liên minh công – nông.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1111,
+        "label": "A",
+        "content": "Riêng giai cấp công nhân.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 1112,
+        "label": "B",
+        "content": "Toàn dân, liên minh công – nông là nền tảng.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 1113,
+        "label": "C",
+        "content": "Nhà nước và trí thức.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1114,
+        "label": "D",
+        "content": "Liên minh tư sản – tiểu tư sản.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 282,
+    "stem": "Phong trào Đông Du (1906–1908) do ai lãnh đạo?",
+    "explanation": "Cụ Phan Bội Châu.",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2025-09-09T09:27:02",
+    "updatedAt": "2025-09-09T11:13:21",
+    "options": [
+      {
+        "id": 1115,
+        "label": "A",
+        "content": "Phan Bội Châu.",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 1116,
+        "label": "B",
+        "content": "Phan Châu Trinh.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 1117,
+        "label": "C",
+        "content": "Lương Văn Can.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 1118,
+        "label": "D",
+        "content": "Huỳnh Thúc Kháng.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  }
+]
