@@ -3646,7 +3646,7 @@
         "id": 1492,
         "label": "A",
         "content": "Giữ vững độc lập dân tộc.",
-        "isCorrect": false,
+        "isCorrect": true,
         "sortOrder": 1
       },
       {
@@ -3667,7 +3667,7 @@
         "id": 1495,
         "label": "D",
         "content": "Không có xung đột sắc tộc, tôn giáo.",
-        "isCorrect": true,
+        "isCorrect": false,
         "sortOrder": 4
       }
     ]
