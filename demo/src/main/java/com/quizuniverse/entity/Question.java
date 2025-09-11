@@ -57,7 +57,8 @@ public class Question {
     public enum QuestionType {
         mcq_single,
         mcq_multiple,
-        true_false
+        true_false,
+        fill_in,
     }
 
     public enum QuestionStatus {

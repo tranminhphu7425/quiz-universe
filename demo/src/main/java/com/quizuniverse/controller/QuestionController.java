@@ -25,4 +25,10 @@ public class QuestionController {
         List<QuestionDTO> questions = questionService.getQuestionsBySubjectId(subjectId);
         return ResponseEntity.ok(questions);
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalQuestionCount() {
+        Long count = questionService.getTotalQuestionCount();
+        return ResponseEntity.ok(count);
+    }
 }

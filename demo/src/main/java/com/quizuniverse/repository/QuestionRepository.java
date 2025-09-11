@@ -17,4 +17,8 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     
     @Query("SELECT q FROM Question q JOIN FETCH q.options WHERE q.subject.id = :subjectId AND q.status = 'APPROVED'")
     List<Question> findBySubjectIdWithOptions(@Param("subjectId") Long subjectId);
+
+    @Query("SELECT COUNT(q) FROM Question q")
+    Long countAllQuestion();
+
 }

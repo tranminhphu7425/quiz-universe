@@ -2,7 +2,6 @@ D:.
 │   App.css
 │   App.tsx
 │   output.txt
-│   vite-env.d.ts
 │
 ├───app
 │   │   main.tsx
@@ -24,6 +23,14 @@ D:.
 ├───assets
 │   │   react.svg
 │   │
+│   ├───data
+│   │       questionssubject4.json
+│   │       questionssubject5.json
+│   │       questionssubject6.json
+│   │       questionssubject7.json
+│   │       questionssubject8.json
+│   │       subjects.json
+│   │
 │   └───images
 │       └───logo
 │               quizuniverse.png
@@ -31,10 +38,6 @@ D:.
 │
 ├───entities
 │   ├───exam
-│   │       index.ts
-│   │       model.ts
-│   │
-│   ├───question
 │   │       index.ts
 │   │       model.ts
 │   │
@@ -156,11 +159,12 @@ D:.
 │   ├───api
 │   │   │   endpoints.ts
 │   │   │   http.ts
+│   │   │   questionsApi.ts
+│   │   │   subjectApi.ts
 │   │   │
 │   │   └───hooks
 │   │           useApi.ts
 │   │
-│   ├───assets
 │   ├───config
 │   │       env.ts
 │   │       tenants.ts
@@ -172,6 +176,7 @@ D:.
 │   │
 │   ├───hooks
 │   │       useAuth.tsx
+│   │       useHMR.ts
 │   │       usePagination.ts
 │   │       useTenant.ts
 │   │
@@ -186,33 +191,33 @@ D:.
 │   │       common.ts
 │   │
 │   └───ui
+│       │   FadeInOnView.tsx
 │       │   Floatting.tsx
 │       │   ThemeToggle.tsx
 │       │
-│       ├───badge
 │       ├───form
 │       │       Form.tsx
 │       │       FormField.tsx
 │       │
-│       ├───modal
-│       ├───table
-│       │       DataTable.tsx
-│       │       useDataTable.ts
-│       │
-│       └───tabs
+│       └───table
+│               DataTable.tsx
+│               useDataTable.ts
+│
 ├───styles
 │       index.css
 │       theme.css
 │
 ├───test
-│   │   setup.ts
-│   │
-│   └───__mocks__
+│       setup.ts
+│       test.tsx
+│
 └───widgets
         Breadcrumbs.tsx
         FeatureCard.tsx
         Footer.tsx
         Header.tsx
         HeroIllustration.tsx
+        LoadingState.tsx
+        ScrollToTop.tsx
         Sidebar.tsx
         StepCard.tsx

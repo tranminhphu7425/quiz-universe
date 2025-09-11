@@ -50,6 +50,8 @@ public class QuestionService {
 
     }
 
-
+    public Long getTotalQuestionCount() {
+        return questionRepository.countAllQuestion();
+    }
     
 }

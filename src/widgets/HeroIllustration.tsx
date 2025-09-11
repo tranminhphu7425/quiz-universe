@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Database, FileText, Shuffle, BookOpen, Upload, CheckCircle2 } from "lucide-react";
 import { Printer } from 'lucide-react'; // or from your chosen icon library
 import { Users } from 'lucide-react';
+import {fetchTotalQuestionCount} from "@/shared/api/questionsApi";
+import { useEffect, useState } from "react";
 
 function Card({
   title,
@@ -43,6 +45,10 @@ function Card({
 }
 
 export function HeroIllustration() {
+  const [count, setCount] = useState<number | null>(null);
+  useEffect(() => {
+    fetchTotalQuestionCount().then(setCount).catch(console.error);
+  }), [];
   return (
     <div className="relative select-none">
       {/* Glowing border top */}
@@ -163,7 +169,7 @@ export function HeroIllustration() {
           </li>
           <li className="flex items-center justify-between">
             <span className="text-gray-600 dark:text-blue-200">Tổng số câu hỏi</span>
-            <span className="font-medium">15,842 câu</span>
+            <span className="font-medium">{count} câu</span>
           </li>
           <li className="flex items-center justify-between">
             <span className="text-gray-600 dark:text-blue-200">Đề thi đã tạo</span>

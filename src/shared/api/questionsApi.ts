@@ -31,3 +31,15 @@ export async function fetchQuestionsBySubjectId(subjectId: number, signal?: Abor
     const json = (await res.json()) as Question[];
     return Array.isArray(json) ? (json as Question[]) : [];
 }
+
+
+export async function fetchTotalQuestionCount(signal?: AbortSignal): Promise<number> {
+    const res = await fetch(`${API_BASE}/questions/count`, { signal });
+
+    if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(text || `HTTP ${res.status}`);
+    }
+    const json = (await res.json()) as number;
+    return typeof json === 'number' ? json : 0;
+}

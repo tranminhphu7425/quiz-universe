@@ -87,7 +87,9 @@ export const router =
         { path: "/select-tenant", element: withSuspense(<TenantsPage />), errorElement: <NotFoundPage /> },
         { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
-
+        { path: "/questions/subject/:subjectId/list", element: withSuspense(<ListQuestionsPage />), errorElement: <NotFoundPage /> },
+        { path: "/question/:questionID/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
+        
         { path: "*", element: <NotFoundPage /> },
       ],
     },
