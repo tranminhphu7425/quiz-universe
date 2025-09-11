@@ -223,7 +223,7 @@ export default function QuestionsPage() {
         onClick={() => setNavOpen(false)}
       />)
       } */}
-      {err && (<div><h2>Lấy dữ liệu cục bộ</h2></div>)}
+      
 
 
       {/* ====== HERO (phong cách giống trang chủ) ====== */}
@@ -236,6 +236,7 @@ export default function QuestionsPage() {
             </div>
             <h1 className="text-[2rem] md:text-[2.6rem] font-black leading-tight">
               Bộ câu hỏi ôn tập <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">{subjectName}</span>
+              {err && (<div><h2>Lấy dữ liệu cục bộ</h2></div>)}
             </h1>
             <p className="mt-2 text-white/90">Chọn đáp án cho từng câu. Nộp bài để xem điểm và lời giải.</p>
           </motion.div>
