@@ -236,7 +236,7 @@ export default function QuestionsPage() {
             </div>
             <h1 className="text-[2rem] md:text-[2.6rem] font-black leading-tight">
               Bộ câu hỏi ôn tập <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">{subjectName}</span>
-              {err && (<div><h2>Lấy dữ liệu cục bộ</h2></div>)}
+              {err && ` (Lấy dữ liệu cục bộ)`}
             </h1>
             <p className="mt-2 text-white/90">Chọn đáp án cho từng câu. Nộp bài để xem điểm và lời giải.</p>
           </motion.div>
@@ -384,7 +384,7 @@ export default function QuestionsPage() {
 
         </main>
         <div className="absolute right-5 top-10 w-fit h-full">
-          <div className="sticky top-20 w-fit">
+          <div className="sticky z-30 top-20 w-fit">
             {/* FAB mở popup ở góc phải - icon only */}
             {!navOpen && (<button
               type="button"
