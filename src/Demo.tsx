@@ -1,27 +1,19 @@
-import {useState, useCallback, memo}  from "react";
+import { P } from 'node_modules/framer-motion/dist/types.d-Cjd591yU';
+import {useMemo, useState} from 'react';
 
-const Button = memo( ({onClick, label}: {onClick: () => void, label: React.ReactNode}) => {
-
-    console.log('Button render');
-    return <button onClick={onClick}>{label}</button>;
-
-});
+import {memo} from 'react';
 
 
-export function Counter() {
+const Child = memo(({user}: {user: {name:string}}) => {
+    console.log('Child render');
+    return <p>Hello {user.name}</p>
+})
+
+
+export function Demo() { 
     const [count, setCount] = useState(0);
 
-    const onClickNew = ( ) => setCount(c => c + 1);
+    const user = useMemo(() => { name:  "Phú"}, []);
 
-    return (
-        <div>
-            <p>
-                Count: {count}
-            </p>
-            <Button onClick={onClickNew} label="New" />
-        </div>
-    );
 
 }
-
-

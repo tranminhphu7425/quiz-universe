@@ -73,6 +73,8 @@ export default function EditQuestionsPage() {
 
   const editorTopRef = useRef<HTMLDivElement | null>(null);
 
+
+
   // load list
   useEffect(() => {
     if (!subjectId) return;
@@ -105,14 +107,23 @@ export default function EditQuestionsPage() {
     };
   }, [subjectId]);
 
+  
+
   const total = list.length;
   const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const start = (page - 1) * PAGE_SIZE;
   const end = Math.min(total, start + PAGE_SIZE);
   const pageItems = list.slice(start, end);
 
+
+    useEffect(() => {
+    pickQuestion(pageItems[0]);
+  }, [page]);
+
+
   // switch question
   function pickQuestion(q: Question) {
+    console.log("pick", q.id);
     setSelectedId(q.id);
     setEditing(deepClone(q));
     setSaveOk(null);
