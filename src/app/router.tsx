@@ -23,12 +23,11 @@ const DashboardPage = React.lazy(() => import("@pages/dashboard/DashboardPage"))
 const TenantsPage = React.lazy(() => import("@pages/universities/TenantsPage"));
 const SubjectsPage = React.lazy(() => import("@pages/subjects/SubjectsPage"));
 const QuestionsPage = React.lazy(() => import("@pages/questions/QuestionsPage"));
-const ListQuestionsPage = React.lazy(() => import("@pages/questions/ListQuestionsPage"));
 const EditQuestionPage = React.lazy(() => import("@pages/questions/EditQuestionPage"));
 const CreateExamPage = React.lazy(() => import("@pages/exams/CreateExamPage"));
 const TakeExamPage = React.lazy(() => import("@pages/exams/TakeExamPage"));
 const ReviewExamPage = React.lazy(() => import("@pages/exams/ReviewExamPage"));
-const AdminPage = React.lazy(() => import("@pages/admin/AdminPage"));
+const AdminPage = React.lazy(() => import("@/pages/admin/AdminDashboardPage"));
 
 // src/shared/lib/withSuspense.tsx
 import { motion } from "framer-motion";
@@ -87,8 +86,7 @@ export const router =
         { path: "/select-tenant", element: withSuspense(<TenantsPage />), errorElement: <NotFoundPage /> },
         { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
-        { path: "/questions/subject/:subjectId/list", element: withSuspense(<ListQuestionsPage />), errorElement: <NotFoundPage /> },
-        { path: "/question/:questionID/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions/subject/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
         
         { path: "*", element: <NotFoundPage /> },
       ],

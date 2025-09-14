@@ -121,10 +121,7 @@ export default function HomePage() {
       {/* ====== HERO ====== */}
 
       <section className="relative overflow-hidden">
-
-
-
-
+        
         {/* Gradient nền lớn */}
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
 
@@ -278,7 +275,7 @@ export default function HomePage() {
           <FeatureCard
             title="Ngân hàng câu hỏi"
             description="Chứa các câu hỏi ôn tập theo từng môn, được thu thập từ nhiều nguồn tài liệu và giảng viên khác nhau."
-            to={`/app/questions`}
+            to={`/subjects`}
             cta="Xem danh sách"
             icon={<BookOpen className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />}
           />

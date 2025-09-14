@@ -138,4 +138,7 @@ public class Question {
     public void setOptions(List<QuestionOption> options) {
         this.options = options;
     }
+    public void setQuestionType(String questionType) {
+        this.questionType = QuestionType.valueOf(questionType);
+    }
 }

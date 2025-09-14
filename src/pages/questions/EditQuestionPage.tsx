@@ -1,461 +1,482 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
   CheckCircle2,
   Loader2,
   Plus,
+  RefreshCcw,
   Save,
   Trash2,
-  Wand2,
 } from "lucide-react";
-import { QuestionOption, Question } from "@/shared/api/questionsApi";
 
+import {
+  Question,
+  QuestionOption,
+  UpdateQuestionPayload,
+  fetchQuestionsBySubjectId, updateQuestionApi
+} from "@/shared/api/questionsApi";
+import { fetchSubjectNameById } from "@/shared/api/subjectApi";
 
+// If you already expose API_BASE from your shared api layer, you can import it.
+// To make this page self-contained, keep a local fallback:
+const API_BASE = (import.meta as any).env?.VITE_API_BASE || "/api";
 
-const API_BASE = import.meta.env.VITE_API_BASE ?? "http://localhost:8080/api";
-const BLANK_RE = /\.{5,}/g; // khớp với chuỗi gồm >= 5 dấu chấm
+// ===== Helpers reused from QuestionsPage =====
+const BLANK_RE = /\.{5,}/g; // 6 dots or more represent blanks
 
-function nextLabel(n: number) {
-  // A, B, C, ...
-  return String.fromCharCode("A".charCodeAt(0) + n);
-}
+type Segment = { type: "text"; text: string } | { type: "blank" };
 
-function countBlanks(stem: string): number {
-  let c = 0;
+function stemToSegments(stem: string): Segment[] {
+  const segs: Segment[] = [];
+  let lastIdx = 0;
   let m: RegExpExecArray | null;
-  while ((m = BLANK_RE.exec(stem)) !== null) c++;
-  return c;
+  while ((m = BLANK_RE.exec(stem)) !== null) {
+    const start = m.index;
+    if (start > lastIdx) segs.push({ type: "text", text: stem.slice(lastIdx, start) });
+    segs.push({ type: "blank" });
+    lastIdx = start + m[0].length;
+  }
+  if (lastIdx < stem.length) segs.push({ type: "text", text: stem.slice(lastIdx) });
+  return segs.length ? segs : [{ type: "text", text: stem }];
 }
 
-function sortOptions<T extends QuestionOption>(opts: T[]): T[] {
-  return opts
-    .slice()
-    .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
-    .map((o, i) => ({ ...o, sortOrder: i } as T));
+function deepClone<T>(x: T): T {
+  return structuredClone ? structuredClone(x) : JSON.parse(JSON.stringify(x));
 }
 
-export default function EditQuestionPage() {
-  const { subjectId, questionId } = useParams<{ subjectId: string; questionId: string }>();
-  const navigate = useNavigate();
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+function autoLabel(idx: number) {
+  return LETTERS[idx] || `Opt${idx + 1}`;
+}
 
-  const creating = !questionId || questionId === "new";
-  const sid = Number(subjectId);
-  const qid = creating ? null : Number(questionId);
+
+
+// ===== Page =====
+export default function EditQuestionsPage() {
+  const { subjectId } = useParams<{ subjectId: string }>();
 
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const [subjectName, setSubjectName] = useState<string>("");
+  const [list, setList] = useState<Question[]>([]);
 
-  const [model, setModel] = useState<Question>(() => ({
-    id: 0,
-    stem: "",
-    explanation: "",
-    questionType: "mcq_single",
-    status: "approved",
-    createdAt: "",
-    options: [0, 1, 2, 3].map((i) => ({
-      id: -1 - i, // temp negative id for new options
-      label: nextLabel(i),
-      content: "",
-      isCorrect: i === 0, // default A đúng
-      sortOrder: i,
-    })),
-  }));
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 10;
 
-  // ===== Fetch question when editing =====
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const selected = useMemo(() => list.find((q) => q.id === selectedId) || null, [list, selectedId]);
+  const [editing, setEditing] = useState<Question | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saveOk, setSaveOk] = useState<string | null>(null);
+
+  const editorTopRef = useRef<HTMLDivElement | null>(null);
+
+  // load list
   useEffect(() => {
-    let ac = new AbortController();
-    if (creating) {
-      setLoading(false);
-      return () => ac.abort();
-    }
-
+    if (!subjectId) return;
+    let cancelled = false;
+    setLoading(true);
+    setErr(null);
     (async () => {
       try {
-        setLoading(true);
-        setErr(null);
-        const res = await fetch(`${API_BASE}/questions/${qid}`, { signal: ac.signal });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = (await res.json()) as Question;
-        setModel((prev) => ({
-          ...json,
-          options: sortOptions(json.options ?? []),
-        }));
+        const idNum = Number(subjectId);
+        const [qs, sj] = await Promise.all([
+          fetchQuestionsBySubjectId(idNum),
+          fetchSubjectNameById(idNum).catch(() => ({ name: `Môn #${idNum}` })),
+        ]);
+        if (!cancelled) {
+          setList(qs);
+          setSubjectName(sj?.name || `Môn #${idNum}`);
+          if (qs.length) {
+            setSelectedId(qs[0].id);
+            setEditing(deepClone(qs[0]));
+          }
+        }
       } catch (e: any) {
-        if (e?.name === "AbortError") return;
-        setErr(e?.message || "Không thể tải dữ liệu câu hỏi.");
+        if (!cancelled) setErr(e?.message || "Không tải được dữ liệu.");
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     })();
+    return () => {
+      cancelled = true;
+    };
+  }, [subjectId]);
 
-    return () => ac.abort();
-  }, [creating, qid]);
+  const total = list.length;
+  const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const start = (page - 1) * PAGE_SIZE;
+  const end = Math.min(total, start + PAGE_SIZE);
+  const pageItems = list.slice(start, end);
 
-  // ===== Derived =====
-  const blanks = useMemo(() => countBlanks(model.stem ?? ""), [model.stem]);
-  const hasCorrect = useMemo(
-    () => model.questionType === "mcq_single" ? model.options.some((o) => o.isCorrect) : true,
-    [model.questionType, model.options]
-  );
+  // switch question
+  function pickQuestion(q: Question) {
+    setSelectedId(q.id);
+    setEditing(deepClone(q));
+    setSaveOk(null);
+    setTimeout(() => editorTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+  }
 
-  // ===== Handlers =====
-  const setStem = (v: string) => setModel((m) => ({ ...m, stem: v }));
-  const setExplanation = (v: string) => setModel((m) => ({ ...m, explanation: v }));
-  const setType = (tp: "mcq_single" | "fill_in") =>
-    setModel((m) => ({
-      ...m,
-      questionType: tp,
-      // reset flags phù hợp kiểu
-      options: sortOptions(
-        (m.options ?? []).map((o, i) => ({
-          ...o,
-          isCorrect: tp === "mcq_single" ? i === 0 : false,
-        }))
-      ),
-    }));
+  // mutations on editing state
+  function setStem(v: string) {
+    if (!editing) return;
+    const next = { ...editing, stem: v } as Question;
+    setEditing(next);
+  }
 
-  const addOption = () =>
-    setModel((m) => {
-      const n = (m.options?.length ?? 0);
-      const opt: QuestionOption = {
-        id: -1 - n,
-        label: nextLabel(n),
-        content: "",
-        isCorrect: m.questionType === "mcq_single" ? n === 0 : false,
-        sortOrder: n,
-      };
-      return { ...m, options: sortOptions([...(m.options ?? []), opt]) };
-    });
+  function setExplanation(v: string) {
+    if (!editing) return;
+    setEditing({ ...editing, explanation: v } as Question);
+  }
 
-  const removeOption = (idx: number) =>
-    setModel((m) => {
-      const arr = (m.options ?? []).slice();
-      arr.splice(idx, 1);
-      return {
-        ...m,
-        options: sortOptions(
-          arr.map((o, i) => ({ ...o, label: nextLabel(i) }))
-        ),
-      };
-    });
+  function setType(v: Question["questionType"]) {
+    if (!editing) return;
+    setEditing({ ...editing, questionType: v } as Question);
+  }
 
-  const updateOption = (idx: number, patch: Partial<QuestionOption>) =>
-    setModel((m) => {
-      const arr = (m.options ?? []).slice();
-      arr[idx] = { ...arr[idx], ...patch } as QuestionOption;
-      return { ...m, options: arr };
-    });
+  function addOption() {
+    if (!editing) return;
+    const opts = (editing.options || []).slice().sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+    const nextIdx = opts.length;
+    const newOpt: QuestionOption = {
+      id: Math.floor(Math.random() * 1e9) * -1, // temp negative id for UI
+      questionId: editing.id,
+      label: autoLabel(nextIdx),
+      content: "",
+      isCorrect: editing.questionType === "mcq_single" ? nextIdx === 0 : false,
+      sortOrder: nextIdx + 1,
+    } as any;
+    setEditing({ ...editing, options: [...opts, newOpt] });
+  }
 
-  const markCorrect = (idx: number) =>
-    setModel((m) => ({
-      ...m,
-      options: (m.options ?? []).map((o, i) => ({ ...o, isCorrect: i === idx })),
-    }));
+  function removeOption(optId: number) {
+    if (!editing) return;
+    const rest = (editing.options || []).filter((o) => o.id !== optId);
+    // re-label & re-order
+    const fixed = rest
+      .slice()
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+      .map((o, i) => ({ ...o, label: autoLabel(i), sortOrder: i + 1 }));
+    setEditing({ ...editing, options: fixed });
+  }
 
-  const validate = (): string | null => {
-    if (!model.stem.trim()) return "Vui lòng nhập đề bài (stem).";
-    if (model.questionType === "mcq_single") {
-      if ((model.options?.length ?? 0) < 2) return "Cần ít nhất 2 phương án trả lời.";
-      if (!hasCorrect) return "Hãy chọn một đáp án đúng.";
-      const anyEmpty = model.options.some((o) => !o.content.trim());
-      if (anyEmpty) return "Nội dung phương án không được để trống.";
+  function patchOption(optId: number, patch: Partial<QuestionOption>) {
+    if (!editing) return;
+    const next = (editing.options || []).map((o) => (o.id === optId ? { ...o, ...patch } : o));
+    setEditing({ ...editing, options: next });
+  }
+
+  function setCorrect(optId: number) {
+    if (!editing) return;
+    if (editing.questionType !== "mcq_single") return;
+    const next = (editing.options || []).map((o) => ({ ...o, isCorrect: o.id === optId }));
+    setEditing({ ...editing, options: next });
+  }
+
+  // For FILL_IN: ensure number of options matches number of blanks in stem
+  function syncFillInToStem() {
+    if (!editing) return;
+    const blanks = stemToSegments(editing.stem).filter((s) => s.type === "blank").length;
+    let opts = (editing.options || [])
+      .slice()
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+
+    // grow
+    while (opts.length < blanks) {
+      const idx = opts.length;
+      opts.push({
+        id: Math.floor(Math.random() * 1e9) * -1,
+        questionId: editing.id,
+        label: autoLabel(idx),
+        content: "", // correct text for this blank (pipe `|` to allow multiple answers)
+        isCorrect: false, // not used in fill_in; correctness = text match
+        sortOrder: idx + 1,
+      } as any);
     }
-    if (model.questionType === "fill_in") {
-      if (blanks === 0) return "Không phát hiện ô trống trong đề bài. Hãy dùng '.....' để tạo ô trống.";
-      if ((model.options?.length ?? 0) < blanks) return `Số đáp án hiện có (${model.options.length}) ít hơn số ô trống (${blanks}).`;
-      const anyEmpty = model.options.slice(0, blanks).some((o) => !o.content.trim());
-      if (anyEmpty) return "Vui lòng điền đáp án đúng cho tất cả ô trống.";
+    // shrink
+    if (opts.length > blanks) opts = opts.slice(0, blanks);
+
+    // re-label
+    opts = opts.map((o, i) => ({ ...o, label: autoLabel(i), sortOrder: i + 1 }));
+
+    setEditing({ ...editing, options: opts });
+  }
+
+  // validation
+  function validate(): string | null {
+    if (!editing) return "Không có dữ liệu để lưu.";
+    if (!editing.stem?.trim()) return "Vui lòng nhập nội dung câu hỏi (stem).";
+
+    const opts = (editing.options || []).slice();
+    if (editing.questionType === "mcq_single") {
+      if (opts.length < 2) return "Cần ít nhất 2 lựa chọn cho câu trắc nghiệm.";
+      const numCorrect = opts.filter((o) => o.isCorrect).length;
+      if (numCorrect !== 1) return "Câu trắc nghiệm phải có đúng 1 đáp án đúng.";
+    }
+    if (editing.questionType === "fill_in") {
+      const blanks = stemToSegments(editing.stem).filter((s) => s.type === "blank").length;
+      if (blanks === 0) return "Câu điền khuyết cần có ít nhất 1 ô trống (gõ ≥ 6 dấu chấm).";
+      if (opts.length !== blanks) return `Số đáp án (${opts.length}) chưa khớp số ô trống (${blanks}). Bấm \"Đồng bộ ô trống\".`;
+      if (opts.some((o) => !String(o.content || "").trim())) return "Mỗi ô trống cần cung cấp đáp án đúng (có thể nhiều phương án, ngăn bởi dấu |).";
     }
     return null;
-  };
+  }
 
-  const onSave = async () => {
+  // save
+  async function handleSave() {
     const v = validate();
     if (v) {
+      setSaveOk(null);
       setErr(v);
       return;
     }
-    try {
-      setSaving(true);
-      setErr(null);
+    if (!editing) return;
 
-      // chuẩn hóa payload
-      const payload: Question = {
-        ...model,
-        
-        options: sortOptions(model.options ?? []).map((o, i) => ({
-          ...o,
-          sortOrder: i,
-        })),
+    setSaving(true);
+    setErr(null);
+    setSaveOk(null);
+    try {
+      const payload: UpdateQuestionPayload = {
+        stem: editing.stem,
+        explanation: editing.explanation ?? null,
+        questionType: editing.questionType,
+        // keep only serializable fields for options
+        options: (editing.options || [])
+          .slice()
+          .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+          .map((o) => ({ id: o.id > 0 ? o.id : undefined, label: o.label, content: o.content, isCorrect: !!o.isCorrect, sortOrder: o.sortOrder })),
       };
+      const saved = await updateQuestionApi(editing.id, payload);
 
-      const url = creating ? `${API_BASE}/questions` : `${API_BASE}/questions/${qid}`;
-      const method = creating ? "POST" : "PUT";
-      const res = await fetch(url, {
-        method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-      // điều hướng về danh sách câu hỏi của môn học
-      navigate(`/questions/${sid}`);
+      // reflect to list
+      setList((cur) => cur.map((q) => (q.id === saved.id ? saved : q)));
+      setEditing(deepClone(saved));
+      setSaveOk("Đã lưu thay đổi.");
     } catch (e: any) {
-      setErr(e?.message || "Lưu thất bại");
+      setErr(e?.message || "Lưu thất bại.");
     } finally {
       setSaving(false);
+      setTimeout(() => setSaveOk(null), 2500);
     }
-  };
+  }
 
-  const onDelete = async () => {
-    if (creating || !qid) return;
-    if (!confirm("Bạn có chắc muốn xóa câu hỏi này?")) return;
-    try {
-      setSaving(true);
-      const res = await fetch(`${API_BASE}/questions/${qid}`, { method: "DELETE" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      navigate(`/questions/${sid}`);
-    } catch (e: any) {
-      setErr(e?.message || "Không thể xóa");
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  // ===== UI =====
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      {/* HERO */}
+      {/* Header */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-        <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-10 text-white">
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 text-white md:flex-row md:items-center md:justify-between">
           <div>
             <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur">
-              <Wand2 className="h-4 w-4" /> QuizUniverse • Chỉnh sửa câu hỏi
+              Trình chỉnh sửa câu hỏi
             </div>
-            <h1 className="text-[1.75rem] md:text-[2.2rem] font-black leading-tight">
-              {creating ? "Tạo câu hỏi mới" : `Sửa câu hỏi #${qid}`}
+            <h1 className="text-[1.9rem] md:text-[2.4rem] font-black leading-tight">
+              Sửa câu hỏi môn <span className="bg-gradient-to-r from-purple-300 to-amber-200 bg-clip-text text-transparent">{subjectName}</span>
             </h1>
-            <p className="mt-1 text-white/90">Môn học: <b>{sid}</b></p>
           </div>
           <div className="flex items-center gap-3">
-            <Link
-              to={`/questions/${sid}`}
-              className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:brightness-110"
-            >
-              <ArrowLeft className="h-4 w-4" /> Quay lại danh sách
+            <Link to={`/questions/subject/${subjectId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15">
+              <ArrowLeft className="h-4 w-4" />
+              Về trang làm bài
             </Link>
           </div>
         </div>
       </section>
 
-      <main className="mx-auto max-w-5xl px-6 py-8">
-        {err && (
-          <div className="mb-4 rounded-xl bg-rose-50 p-3 text-rose-700 ring-1 ring-rose-200 dark:bg-rose-900/20 dark:text-rose-300 dark:ring-rose-800">
-            {err}
+      <main className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-6 py-8 md:grid-cols-[minmax(280px,360px)_1fr]">
+        {/* Left: list */}
+        <motion.aside initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ type: "spring", stiffness: 140, damping: 18 }} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="mb-3 flex items-center justify-between">
+            <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">Danh sách câu hỏi</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400">{total} câu</div>
           </div>
-        )}
 
-        {loading ? (
-          <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
-            <Loader2 className="h-4 w-4 animate-spin" /> Đang tải...
-          </div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 160, damping: 18 }}
-            className="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-          >
-            {/* Basic fields */}
-            <div className="grid gap-5 md:grid-cols-2">
-              <div className="md:col-span-2">
+          {loading ? (
+            <div className="flex items-center gap-2 text-slate-500">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Đang tải…</div>
+          ) : err ? (
+            <div className="rounded-lg bg-rose-50 p-3 text-sm text-rose-700 ring-1 ring-rose-200 dark:bg-rose-900/20 dark:text-rose-300 dark:ring-rose-800">{err}</div>
+          ) : (
+            <>
+              <div className="overflow-auto pr-1">
+                <ol className="space-y-2">
+                  {pageItems.map((q, i) => {
+                    const n = start + i + 1;
+                    const active = q.id === selectedId;
+                    return (
+                      <li key={q.id}>
+                        <button type="button" onClick={() => pickQuestion(q)} className={`w-full rounded-xl border px-3 py-2 text-left text-sm transition ${active
+                          ? "border-emerald-400 bg-emerald-50 ring-1 ring-emerald-300 dark:border-emerald-700 dark:bg-emerald-900/20 dark:ring-emerald-800"
+                          : "border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+                          }`} title={`Sửa câu ${n}`}
+                        >
+                          <div className="mb-1 flex items-center gap-2 text-[13px] font-semibold text-slate-700 dark:text-slate-200">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-slate-100 text-xs text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                              {n}
+                            </span>
+                            <span className="truncate">{q.stem}</span>
+                          </div>
+                          <div className="text-[12px] text-slate-500 dark:text-slate-400">{q.questionType === "fill_in" ? "Điền khuyết" : "Trắc nghiệm"}</div>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+
+              {/* pager */}
+              <div className="mt-3 flex items-center gap-2">
+                <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1} className="rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">
+                  ← Trước
+                </button>
+                <div className="text-xs text-slate-600 dark:text-slate-300">
+                  Trang <b>{page}</b>/        <b>{pageCount}</b> • Câu <b>{start + 1}</b>–        <b>{end}</b>
+                </div>
+                <button onClick={() => setPage((p) => Math.min(pageCount, p + 1))} disabled={page === pageCount} className="ml-auto rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800">
+                  Sau →
+                </button>
+              </div>
+            </>
+          )}
+        </motion.aside>
+
+        {/* Right: editor */}
+        <motion.section initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 140, damping: 18 }} className="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div ref={editorTopRef} />
+
+          {!editing ? (
+            <div className="text-slate-600 dark:text-slate-300">Chọn một câu ở danh sách bên trái để chỉnh sửa.</div>
+          ) : (
+            <form className="space-y-5" onSubmit={(e) => {
+              e.preventDefault();
+              handleSave();
+            }}
+            >
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">Câu #{selectedId}</div>
+                {saveOk && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-xs text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800">
+                    <CheckCircle2 className="h-3.5 w-3.5" />
+                    {saveOk}
+                  </span>
+                )}
+                {err && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-rose-100 px-2 py-1 text-xs text-rose-700 ring-1 ring-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:ring-rose-800">
+                    {err}
+                  </span>
+                )}
+              </div>
+
+              {/* Type */}
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">Loại câu hỏi</label>
+                <div className="flex gap-3">
+                  <label className="inline-flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200">
+                    <input type="radio" name="type" value="mcq_single" checked={editing.questionType === "mcq_single"} onChange={() => setType("mcq_single")} className="h-4 w-4 accent-emerald-700" />
+                    Trắc nghiệm 1 đáp án đúng
+                  </label>
+                  <label className="inline-flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200">
+                    <input type="radio" name="type" value="fill_in" checked={editing.questionType === "fill_in"} onChange={() => setType("fill_in")} className="h-4 w-4 accent-emerald-700" />
+                    Điền khuyết (….. = ô trống)
+                  </label>
+                </div>
+              </div>
+
+              {/* Stem */}
+              <div>
                 <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">
-                  Đề bài (stem)
+                  Nội dung câu hỏi (Stem)
                 </label>
-                <textarea
-                  value={model.stem}
-                  onChange={(e) => setStem(e.target.value)}
-                  className="h-28 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-800 shadow-sm outline-none ring-emerald-200 focus:border-emerald-400 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
-                  placeholder={model.questionType === "fill_in" ? "Nhập đề và dùng '.....' để tạo ô trống" : "Nhập đề bài"}
+                <textarea value={editing.stem} onChange={(e) => setStem(e.target.value)} rows={3} className="w-full resize-y rounded-xl border border-slate-300 bg-white p-3 text-sm outline-none ring-emerald-300 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" placeholder={editing.questionType === "fill_in" ? "Ví dụ: 1 + ….. = ….. (dùng ≥ 6 dấu chấm để tạo ô trống)" : "Nhập câu hỏi"}
                 />
-                {model.questionType === "fill_in" && (
-                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    Phát hiện <b>{blanks}</b> ô trống trong đề bài (dựa vào dãy dấu chấm).
+                {editing.questionType === "fill_in" && (
+                  <div className="mt-2 flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+                    Có <b className="mx-1">{stemToSegments(editing.stem).filter((s) => s.type === "blank").length}</b> ô trống.
+                    <button type="button" onClick={syncFillInToStem} className="inline-flex items-center gap-1 rounded-md border px-2 py-1 text-[12px] hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">
+                      <RefreshCcw className="h-3.5 w-3.5" />
+                      Đồng bộ ô trống
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Explanation */}
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">Giải thích (tuỳ chọn)</label>
+                <textarea value={editing.explanation || ""} onChange={(e) => setExplanation(e.target.value)} rows={3} className="w-full resize-y rounded-xl border border-slate-300 bg-white p-3 text-sm outline-none ring-emerald-300 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" placeholder="Nhập giải thích/ghi chú cho câu hỏi" />
+              </div>
+
+              {/* Options */}
+              <div>
+                <div className="mb-2 flex items-center justify-between">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">Phương án trả lời</label>
+                  <button type="button" onClick={addOption} className="inline-flex items-center gap-1 rounded-md border px-2 py-1 text-sm hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">
+                    <Plus className="h-4 w-4" />
+                    Thêm lựa chọn
+                  </button>
+                </div>
+
+                <div className="space-y-2">
+                  {(editing.options || [])
+                    .slice()
+                    .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+                    .map((opt, idx) => (
+                      <div key={opt.id} className="flex items-start gap-2 rounded-xl border border-slate-200 p-3 dark:border-slate-800">
+                        <div className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                          {opt.label || autoLabel(idx)}
+                        </div>
+                        <div className="grid flex-1 gap-2 md:grid-cols-[1fr_auto]">
+                          <input type="text" value={opt.content || ""} onChange={(e) => patchOption(opt.id, { content: e.target.value })} placeholder={editing.questionType === "fill_in" ? "Đáp án đúng cho ô này (có thể \"a|b|c\")" : "Nội dung phương án"} className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-emerald-300 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" />
+
+                          {editing.questionType === "mcq_single" ? (
+                            <label className="inline-flex items-center justify-end gap-2 text-sm text-slate-700 dark:text-slate-200">
+                              <input type="radio" name="correct" checked={!!opt.isCorrect} onChange={() => setCorrect(opt.id)} className="h-4 w-4 accent-emerald-700" />
+                              Đúng
+                            </label>
+                          ) : (
+                            <div className="text-right text-[12px] text-slate-500 dark:text-slate-400 self-center">(Tự động chấm theo văn bản)</div>
+                          )}
+                        </div>
+                        <button type="button" onClick={() => removeOption(opt.id)} className="rounded-md p-2 text-slate-500 hover:bg-slate-100 hover:text-rose-600 dark:hover:bg-slate-800" title="Xoá">
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </div>
+                    ))}
+                </div>
+
+                {editing.questionType === "fill_in" && (
+                  <p className="mt-2 text-[12px] text-slate-600 dark:text-slate-400">
+                    Mẹo: Cho phép nhiều đáp án cho một ô bằng dấu <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">|</code>, ví dụ: <code className="rounded bg-slate-100 px-1 dark:bg-slate-800">"Hà Nội|Ha Noi"</code>.
                   </p>
                 )}
               </div>
 
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">
-                  Loại câu hỏi
-                </label>
-                <select
-                  value={model.questionType}
-                  onChange={(e) => setType(e.target.value as any)}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-800 shadow-sm outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
-                >
-                  <option value="mcq_single">Trắc nghiệm 1 đáp án</option>
-                  <option value="fill_in">Điền vào chỗ trống</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">
-                  Trạng thái
-                </label>
-                <select
-                  value={model.status ?? "draft"}
-                  onChange={(e) => setModel((m) => ({ ...m, status: e.target.value }))}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-800 shadow-sm outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
-                >
-                  <option value="draft">Bản nháp</option>
-                  <option value="approved">Duyệt</option>
-                </select>
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">
-                  Giải thích (tuỳ chọn)
-                </label>
-                <textarea
-                  value={model.explanation ?? ""}
-                  onChange={(e) => setExplanation(e.target.value)}
-                  className="h-24 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-800 shadow-sm outline-none ring-emerald-200 focus:border-emerald-400 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
-                  placeholder="Giải thích hoặc ghi chú..."
-                />
-              </div>
-            </div>
-
-            {/* Options editor */}
-            <div className="mt-6">
-              <div className="mb-2 flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">
-                  {model.questionType === "mcq_single" ? "Phương án trả lời" : "Đáp án cho các ô trống"}
-                </h3>
-                <div className="text-xs text-slate-500 dark:text-slate-400">
-                  {model.questionType === "mcq_single" ? (
-                    hasCorrect ? (
-                      <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
-                        <CheckCircle2 className="h-4 w-4" /> Đã chọn đáp án đúng
-                      </span>
-                    ) : (
-                      <span className="text-rose-600 dark:text-rose-400">Chưa chọn đáp án đúng</span>
-                    )
-                  ) : (
-                    <span>Hãy điền đúng {blanks} đáp án (theo thứ tự ô trống).</span>
-                  )}
+              {/* Actions */}
+              <div className="flex justify-between">
+                <div className="flex flex-wrap items-center gap-2">
+                  <button type="submit" disabled={saving} className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110 disabled:opacity-70">
+                    {saving ? <Loader2 className="h-4 w-4 animate-spin" />
+                      : <Save className="h-4 w-4" />
+                    } Lưu thay đổi
+                  </button>
+                  <button type="button" onClick={() => (editing ? setEditing(deepClone(list.find((q) => q.id === editing.id)!)) : null)} className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-slate-700">
+                    <RefreshCcw className="h-4 w-4" />
+                    Hoàn tác
+                  </button>
                 </div>
-              </div>
-
-              <div className="space-y-3">
-                {sortOptions(model.options).map((opt, idx) => (
-                  <div
-                    key={`${opt.id}-${idx}`}
-                    className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-800"
-                  >
-                    {model.questionType === "mcq_single" ? (
-                      <input
-                        type="radio"
-                        name="correct"
-                        className="mt-2 h-4 w-4 accent-emerald-700"
-                        checked={!!opt.isCorrect}
-                        onChange={() => markCorrect(idx)}
-                        title="Đánh dấu là đáp án đúng"
-                      />
-                    ) : (
-                      <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100 text-xs font-bold text-slate-700 dark:bg-slate-700 dark:text-slate-200">
-                        {nextLabel(idx)}
-                      </span>
-                    )}
-
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 text-sm">
-                        {model.questionType === "mcq_single" && (
-                          <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200">
-                            {nextLabel(idx)}
-                          </span>
-                        )}
-                        <input
-                          value={opt.content}
-                          onChange={(e) => updateOption(idx, { content: e.target.value })}
-                          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-800 outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
-                          placeholder={model.questionType === "mcq_single" ? `Nội dung phương án ${nextLabel(idx)}` : `Đáp án cho ô trống ${nextLabel(idx)}`}
-                        />
-                      </div>
-                      <div className="mt-2 flex items-center gap-3 text-xs text-slate-500">
-                        <label className="inline-flex items-center gap-1">
-                          Thứ tự:
-                          <input
-                            type="number"
-                            value={opt.sortOrder ?? idx}
-                            onChange={(e) => updateOption(idx, { sortOrder: Number(e.target.value) })}
-                            className="w-16 rounded-md border border-slate-300 bg-white px-2 py-1 text-slate-700 outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-200 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200"
-                          />
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="flex shrink-0 items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => removeOption(idx)}
-                        className="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
-                        title="Xóa phương án"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-3">
-                <button
-                  type="button"
-                  onClick={addOption}
-                  className="inline-flex items-center gap-2 rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-100 dark:border-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300"
-                >
-                  <Plus className="h-4 w-4" /> Thêm phương án
+                <button className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-yellow-600" >
+                  Tạo thêm câu hỏi
                 </button>
+
               </div>
-            </div>
 
-            {/* Actions */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={onSave}
-                disabled={saving}
-                className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110 disabled:opacity-60"
-              >
-                {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-                Lưu
-              </button>
 
-              {!creating && (
-                <button
-                  type="button"
-                  onClick={onDelete}
-                  disabled={saving}
-                  className="inline-flex items-center gap-2 rounded-xl bg-rose-600 px-5 py-2.5 text-white shadow hover:brightness-110 disabled:opacity-60"
-                >
-                  <Trash2 className="h-4 w-4" /> Xóa
-                </button>
-              )}
-
-              <Link
-                to={`/questions/${sid}`}
-                className="ml-auto inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-2.5 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              >
-                <ArrowLeft className="h-4 w-4" /> Hủy
-              </Link>
-            </div>
-          </motion.div>
-        )}
+            </form>
+          )}
+        </motion.section>
       </main>
     </div>
   );

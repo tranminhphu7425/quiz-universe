@@ -81,7 +81,7 @@ export default function Header({
   onLogin,
   links = [
     { label: "Câu hỏi", href: "/subjects" },
-    { label: "Đề thi", href: "/exams/create" },
+    // { label: "Đề thi", href: "/exams/create" },
     
   ],
 }: HeaderProps) {

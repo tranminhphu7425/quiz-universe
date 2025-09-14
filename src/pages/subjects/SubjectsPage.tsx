@@ -321,12 +321,12 @@ function SubjectCard({ s }: { s: Subject }) {
           </h3>
         </div>
         <div className="flex space-x-4">
-          <Link
-          to={`/questions/subject/${s.id}/list`}
+          {false &&  <Link
+          to={`/questions/subject/${s.id}/edit`}
           className="rounded-full bg-red-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
         >
           Sửa
-        </Link>
+        </Link>}
 
         <Link
           to={`/questions/subject/${s.id}`}

@@ -53,6 +53,11 @@ public class QuestionOption {
     public String getContent() {
         return content;
     }
+
+    public Question getQuestion() {
+        return question;
+    }
+
     
     public void setContent(String content) {
         this.content = content;
@@ -72,5 +77,9 @@ public class QuestionOption {
     
     public void setSortOrder(Integer sortOrder) {
         this.sortOrder = sortOrder;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

@@ -14,6 +14,19 @@ export default function LoginPage() {
   const [remember, setRemember] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+    const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      await login(email, password, { remember });
+      // Thành công, chuyển hướng handled bởi AuthProvider
+      
+    } catch (e: any) {
+      setError("Đăng nhập thất bại. Vui lòng kiểm tra lại email và mật khẩu.");
+    }
+  };
+
+
   // SVG tile giống HomePage để đồng bộ họa tiết nền
   const tileUrl = useMemo(
     () =>
@@ -33,16 +46,7 @@ export default function LoginPage() {
     []
   );
 
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    try {
-      // Tùy backend: login(email, password, { remember })
-      await login?.(email, password, { remember });
-    } catch (err: any) {
-      setError(err?.message ?? "Đăng nhập thất bại. Vui lòng thử lại.");
-    }
-  };
+
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">

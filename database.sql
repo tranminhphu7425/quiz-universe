@@ -119,7 +119,7 @@ CREATE TABLE questions (
   explanation     TEXT,                           -- lời giải/giải thích
   difficulty_id   TINYINT NOT NULL,
   bloom_id        TINYINT,
-  question_type   ENUM('mcq_single','mcq_multi','true_false') DEFAULT 'mcq_single',
+  question_type   ENUM('mcq_single','mcq_multi','true_false', 'fill_in') DEFAULT 'mcq_single',
   status          ENUM('draft','review','approved','retired') DEFAULT 'draft',
   source_id       BIGINT NULL,
   section_id      BIGINT NULL,
