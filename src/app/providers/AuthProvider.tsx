@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { fetchJson, setAuthToken } from "@/shared/api/apiClient";
 
 /** Vai trò & user */
 export type Role = "SYSTEM_ADMIN" | "SCHOOL_ADMIN" | "TEACHER" | "STUDENT";
@@ -32,34 +33,56 @@ export interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+/** Kiểu response backend kỳ vọng */
+type LoginResponse = { token: string; user: User };
+type RegisterResponse = { id: string; user: User } | { success: true };
+type VoidResponse = { success: true } | undefined;
+
+function pickStorage(remember?: boolean) {
+  return remember ? localStorage : sessionStorage;
+}
+
+function readFromStorage() {
+  const token = localStorage.getItem("auth_token") ?? sessionStorage.getItem("auth_token");
+  const cachedUser =
+    localStorage.getItem("auth_user") ?? sessionStorage.getItem("auth_user");
+  return { token, cachedUser };
+}
+
 export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // ví dụ: khôi phục phiên từ storage
+  // Khôi phục phiên từ storage khi load lần đầu
   useEffect(() => {
-    const token = localStorage.getItem("auth_token") ?? sessionStorage.getItem("auth_token");
-    const cachedUser = localStorage.getItem("auth_user") ?? sessionStorage.getItem("auth_user");
-    if (token && cachedUser) {
+    const { token, cachedUser } = readFromStorage();
+    if (token) setAuthToken(token);
+    if (cachedUser) {
       try {
         setUser(JSON.parse(cachedUser));
-      } catch {}
+      } catch {
+        // nếu parse lỗi thì clear
+        localStorage.removeItem("auth_user");
+        sessionStorage.removeItem("auth_user");
+      }
     }
   }, []);
 
   const login: AuthContextType["login"] = async (email, password, opts) => {
     setLoading(true);
     try {
-      // TODO: đổi URL cho đúng backend của bạn (Spring Boot)
-      const res = await fetch("http://localhost:8080/api/auth/login", {
+      // Mặc định API_BASE lấy từ VITE_API_URL, endpoint Spring Boot:
+      // POST /api/auth/login -> { token, user }
+      const data = await fetchJson<LoginResponse>("/api/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: { email, password },
       });
-      if (!res.ok) throw new Error("Login failed");
-      const data = await res.json(); // kỳ vọng { token: string, user: User }
-      const storage = opts?.remember ? localStorage : sessionStorage;
-      if (data.token) storage.setItem("auth_token", data.token);
+
+      const storage = pickStorage(opts?.remember);
+      if (data.token) {
+        storage.setItem("auth_token", data.token);
+        setAuthToken(data.token);
+      }
       if (data.user) storage.setItem("auth_user", JSON.stringify(data.user));
       setUser(data.user ?? null);
     } finally {
@@ -68,47 +91,47 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
   };
 
   const logout: AuthContextType["logout"] = async () => {
-    // tuỳ backend: có thể gọi /logout, ở đây chỉ xoá storage
+    // Optional: gọi /api/auth/logout nếu backend có
+    try {
+      await fetchJson<VoidResponse>("/api/auth/logout", { method: "POST" }).catch(() => {});
+    } catch {}
+    // Xoá storage cả 2 nơi để chắc chắn
     localStorage.removeItem("auth_token");
     localStorage.removeItem("auth_user");
     sessionStorage.removeItem("auth_token");
     sessionStorage.removeItem("auth_user");
+    setAuthToken(null);
     setUser(null);
   };
 
   const register: AuthContextType["register"] = async ({ name, email, password }) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/register", {
+      // POST /api/auth/register
+      await fetchJson<RegisterResponse>("/api/auth/register", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+        body: { name, email, password },
       });
-      if (!res.ok) throw new Error("Register failed");
-      // tuỳ ý: auto-login sau khi đăng kí
-      // const data = await res.json();
-      // setUser(data.user ?? null);
+      // Tuỳ ý: không auto-login để phù hợp nhiều flow (email verify, v.v.)
     } finally {
       setLoading(false);
     }
   };
 
   const requestPasswordReset: AuthContextType["requestPasswordReset"] = async (email) => {
-    const res = await fetch("/api/auth/password/request-reset", {
+    // POST /api/auth/password/request-reset
+    await fetchJson<VoidResponse>("/api/auth/password/request-reset", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: { email },
     });
-    if (!res.ok) throw new Error("Request password reset failed");
   };
 
   const resetPassword: AuthContextType["resetPassword"] = async (token, newPassword) => {
-    const res = await fetch("/api/auth/password/reset", {
+    // POST /api/auth/password/reset
+    await fetchJson<VoidResponse>("/api/auth/password/reset", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token, newPassword }),
+      body: { token, newPassword },
     });
-    if (!res.ok) throw new Error("Reset password failed");
   };
 
   const value = useMemo<AuthContextType>(

@@ -14,6 +14,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = { "Content-Type", "Authorization" }, methods = {
+        RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,
+        RequestMethod.OPTIONS }, allowCredentials = "true", // nếu có gửi cookie/authorization
+        maxAge = 3600)
 public class AuthController {
 
     @Autowired
@@ -27,10 +31,13 @@ public class AuthController {
 
         User user = userRepository.findByEmail(request.getEmail());
 
-        if (user == null || !user.getPasswordHash().equals(request.getPassword())) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+        String stored = user.getPassword();
+        if (stored == null || !stored.equals(request.getPassword())) {
+           return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body("Sai email hoặc mật khẩu");
         }
+
+        
 
         // Giả lập token (sau này dùng JWT thì thay ở đây)
         String token = UUID.randomUUID().toString();
@@ -39,7 +46,6 @@ public class AuthController {
 
         return ResponseEntity.ok(Map.of(
                 "token", token,
-                "user", userDTO
-        ));
+                "user", userDTO));
     }
 }

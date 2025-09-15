@@ -10,10 +10,10 @@ public class UserDTO {
     private String tenantId;
 
     public UserDTO(User user) {
-        this.id = String.valueOf(user.getUserID());
+        this.id = String.valueOf(user.getUserId());
         this.name = user.getFullName() != null ? user.getFullName() : user.getUsername();
         this.email = user.getEmail();
-        this.role = "TEACHER"; // hoặc bạn lấy từ DB nếu có cột role
+        this.role = user.getRole(); // hoặc bạn lấy từ DB nếu có cột role
         this.tenantId = ""; // nếu chưa có tính năng tenant
     }
 

@@ -83,7 +83,7 @@ export const router =
         { path: "/", element: withSuspense(<HomePage />), errorElement: <NotFoundPage /> },
         { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
         { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
-        { path: "/select-tenant", element: withSuspense(<TenantsPage />), errorElement: <NotFoundPage /> },
+        { path: "/dashboard", element: withSuspense(<DashboardPage />), errorElement: <NotFoundPage /> },
         { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },

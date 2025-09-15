@@ -2,26 +2,33 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Lock, Sparkles, ArrowRight, Heart } from "lucide-react";
+import { Mail, Lock, Sparkles, ArrowRight, Heart, EyeOff, Eye } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
+
 
 export default function LoginPage() {
-  const { login, loading } = useAuth?.() ?? { login: async () => { }, loading: false };
+  const { login, loading } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-    const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     try {
-      await login(email, password, { remember });
+      const res = await login(email, password, { remember });
       // Thành công, chuyển hướng handled bởi AuthProvider
-      
+      console.log("Đăng nhập thành công:", res);
+      navigate("/dashboard");
     } catch (e: any) {
+      console.error("Lỗi đăng nhập:", e);
       setError("Đăng nhập thất bại. Vui lòng kiểm tra lại email và mật khẩu.");
     }
   };
@@ -152,35 +159,31 @@ export default function LoginPage() {
             <label className="mb-2 block text-sm font-medium text-white dark:text-gray-200">
               Mật khẩu
             </label>
-            <div className="mb-2 flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 dark:bg-slate-900/70 dark:ring-white/10">
+            <div className="mb-2 flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 
+                      ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 
+                      dark:bg-slate-900/70 dark:ring-white/10">
               <Lock className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 required
                 placeholder="••••••••"
-                className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
+                className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 
+                     focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
-            </div>
-
-            <div className="mb-4 flex items-center justify-between">
-              <label className="inline-flex cursor-pointer items-center gap-2 text-xs text-white/90 dark:text-gray-300">
-                <input
-                  type="checkbox"
-                  checked={remember}
-                  onChange={(e) => setRemember(e.target.checked)}
-                  className="h-4 w-4 rounded border-white/20 bg-white/20 text-emerald-500 focus:ring-emerald-400 dark:border-gray-600"
-                />
-                Ghi nhớ đăng nhập
-              </label>
-              <Link
-                to="/forgot-password"
-                className="text-xs font-medium text-emerald-100 underline-offset-2 hover:underline dark:text-emerald-300"
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="p-1 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
               >
-                Quên mật khẩu?
-              </Link>
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </button>
             </div>
 
             {error && (
@@ -206,7 +209,7 @@ export default function LoginPage() {
             {/* Divider */}
             <div className="my-4 h-px bg-white/20 dark:bg-white/10" />
             {/* Google Login */}
-            
+
             {/* Link đăng ký */}
             <p className="text-center text-sm text-white/90 dark:text-gray-300">
               Chưa có tài khoản?{" "}
