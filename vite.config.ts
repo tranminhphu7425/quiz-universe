@@ -34,6 +34,14 @@ export default defineConfig(() => ({
     // Nếu chạy WSL/Docker/LAN mà WS không nối được, mở comment dưới:
     // host: true,
     // hmr: { protocol: "ws", host: "localhost", clientPort: 5173 },
+    proxy: {
+      // Chuyển tiếp /api sang backend
+      "/api": {
+        target: "http://localhost:8080", // 🧠 Spring Boot chạy tại đây
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
   preview: { port: 5173, strictPort: true },
 }))

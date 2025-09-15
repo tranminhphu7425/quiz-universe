@@ -51,7 +51,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     setLoading(true);
     try {
       // TODO: đổi URL cho đúng backend của bạn (Spring Boot)
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
