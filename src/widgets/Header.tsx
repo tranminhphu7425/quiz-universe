@@ -29,11 +29,14 @@ import {
   Headset,
   List,
   Plus,
-  LogOut
+  LogOut,
+  ShieldCheck,
+  Shield
 } from "lucide-react";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { FaCrown, FaPlus, FaStar } from "react-icons/fa";
+import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
 
 export type Tenant = { id: string; name: string; logo?: string };
 
@@ -98,6 +101,11 @@ export default function Header({
   const [tick, setTick] = useState(0);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const [err, setErr] = useState<string | null>(null);
+  const [subjects, setSubjects] = useState<any[]>([]);
+  const [results, setResults] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [isFocused, setIsFocused] = useState(false);
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Xử lý tìm kiếm, ví dụ chuyển trang hoặc gọi API
@@ -110,6 +118,69 @@ export default function Header({
     const id = setInterval(() => setTick((t) => (t + 1) % 3), 2400);
     return () => clearInterval(id);
   }, []);
+
+
+  useEffect(() => {
+    console.log("ket qua", results);
+  }, [results]);
+
+
+
+  useEffect(() => {
+    const kw = normalizeText(search);
+    if (!kw) {
+      setResults([]);
+      return;
+    }
+    setResults(
+      subjects.filter((s) =>
+        [s.code, s.name, s.description ?? ""].some((x) =>
+          normalizeText(x).includes(kw)
+        )
+      )
+    );
+  }, [search, subjects]);
+  function normalizeText(str: string) {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+  }
+
+  async function fetchData() {
+
+
+    const ac = new AbortController();
+    setLoading(true);
+    setErr(null);
+
+    (async () => {
+      try {
+        // 1) Ưu tiên lấy từ API
+        const list = await fetchAllSubjects(ac.signal);
+
+        setSubjects(list);
+      } catch (e: any) {
+        // Nếu bị hủy thì thôi
+        if (e?.name === "AbortError") return;
+
+        // 2) API lỗi -> fallback sang JSON cục bộ (dynamic import)
+        setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
+        const local = await import("@/assets/data/subjects.json");
+        setSubjects((local.default ?? []) as Subject[]);
+      } finally {
+        setLoading(false);
+      }
+    })();
+
+    return () => ac.abort();
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
 
 
   const navSubItems = [
@@ -127,7 +198,7 @@ export default function Header({
             whileTap={{ scale: 0.95 }}
             className="flex items-center"
           >
-            <Link to="/">
+            <Link to={user ? "/dashboard" : "/"}>
               <div className="flex space-x-2 items-center">
                 <motion.img
                   src={Logo}
@@ -156,6 +227,8 @@ export default function Header({
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setTimeout(() => setIsFocused(false), 200)}
               placeholder="Tìm kiếm môn học, đề thi.."
               className="w-35 xl:w-70 2xl:w-[400px] px-4 py-2 text-black dark:text-white rounded-lg 
                      border border-emerald-200 dark:border-slate-600 
@@ -163,15 +236,30 @@ export default function Header({
                      placeholder:text-gray-400 dark:placeholder:text-slate-400
                      focus:outline-none focus:ring-2 focus:ring-emerald-400"
             />
+            {isFocused && results.length > 0 && (
+              <ul className="absolute w-35 xl:w-70 2xl:w-[400px] top-full mt-2 bg-white dark:bg-slate-800 rounded-lg shadow-lg max-h-60 overflow-y-auto z-50">
+                {results.map((s) => (
+                  <li key={s.id}>
+                    <Link
+                      to={`/questions/subject/${s.id}`}
+                      className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700 text-gray-400 dark:text-text-slate-400"
+                      onClick={() => setSearch("")}
+                    >
+                      {s.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </form>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4">
             {/* Tenant Dropdown */}
-            <motion.div className="relative" whileHover={{ scale: 1.05 }}>
+            <motion.div className="relative" >
               <motion.button
                 className="flex items-center space-x-1 text-white dark:text-slate-200 p-3 rounded-lg hover:bg-green-700 dark:hover:bg-slate-700 transition-all"
-                onClick={() => setTenantOpen(!tenantOpen)}
+                onClick={() => setTenantOpen(!tenantOpen)} whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Building2 className="w-4 h-4" />
@@ -311,14 +399,18 @@ export default function Header({
                   </motion.div>
                 </>
               ) : (
-                <motion.div className="relative" whileHover={{ scale: 1.05 }}>
+                <motion.div className="relative" >
                   <motion.button
                     className="flex items-center space-x-1 text-white dark:text-slate-200 p-3 rounded-lg hover:bg-green-700 dark:hover:bg-slate-700 transition-all"
                     onClick={() => setMenuOpen(!menuOpen)}
                     whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.05 }}
                   >
                     <User className="w-4 h-4" />
                     <span className="font-medium">{user.name}</span>
+                    {user.role === "admin" && (
+                      <ShieldCheck className="w-5 h-5 text-red-500" />
+                    )}
                     <motion.span animate={{ rotate: menuOpen ? 180 : 0 }}>
                       <ChevronDown className="w-4 h-4" />
                     </motion.span>
@@ -351,8 +443,9 @@ export default function Header({
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                               >
-                                <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xl font-bold shadow-md dark:shadow-emerald-900/20">
-                                  {"U".charAt(0)}
+                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-md 
+    ${user.role === "admin" ? "bg-red-500" : "bg-emerald-500"}`}>
+                                  {user.name.charAt(0)}
                                 </div>
                                 <motion.div
                                   className="absolute -bottom-1 -right-1 bg-emerald-600 rounded-full p-1 dark:bg-emerald-500"
@@ -365,12 +458,21 @@ export default function Header({
 
                               <div className="ml-3">
                                 <motion.p
-                                  className="text-lg font-bold text-emerald-900 dark:text-emerald-200"
+                                  className="text-lg font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-2"
                                   initial={{ x: -10 }}
                                   animate={{ x: 0 }}
                                 >
+
                                   {user.name}
+                                  {user.role === "admin" && (
+                                    <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-300">
+                                      Admin
+                                    </span>
+                                  )}
+
+
                                 </motion.p>
+
                                 <motion.div
                                   className="flex items-center mt-1"
                                   initial={{ opacity: 0 }}
@@ -383,6 +485,7 @@ export default function Header({
                                   </span>
                                 </motion.div>
                               </div>
+
                             </div>
 
                             {/* Balance with pulse animation */}
@@ -417,27 +520,33 @@ export default function Header({
                             </motion.div>
                           </motion.div>
 
-                          {/* Trang chủ */}
-                          <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}>
-                            <Link
-                              to="/"
-                              onClick={() => setMenuOpen(false)}
-                              className="flex items-center px-4 py-3 text-gray-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 transition-all group"
-                            >
-                              <Home className="w-5 h-5 mr-2 text-emerald-500 group-hover:scale-110 transition-transform" />
-                              <span className="group-hover:font-medium group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-all">
-                                Trang chủ
-                              </span>
-                              <motion.span
-                                className="ml-auto opacity-0 group-hover:opacity-100 text-emerald-500"
-                                initial={{ x: -10 }}
-                                animate={{ x: 0 }}
-                                transition={{ delay: 0.1 }}
+
+
+                          {/* Trang quản trị (chỉ admin) */}
+                          {user?.role === "admin" && (
+                            <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}>
+                              <Link
+                                to="/admin"
+                                onClick={() => setMenuOpen(false)}
+                                className="flex items-center px-4 py-3 text-gray-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 transition-all group"
                               >
-                                <ChevronRight className="w-3 h-3" />
-                              </motion.span>
-                            </Link>
-                          </motion.div>
+                                <Shield className="w-5 h-5 mr-2 text-purple-500 group-hover:scale-110 transition-transform" />
+                                <span className="group-hover:font-medium group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-all">
+                                  Trang quản trị
+                                </span>
+                                <motion.span
+                                  className="ml-auto opacity-0 group-hover:opacity-100 text-purple-500"
+                                  initial={{ x: -10 }}
+                                  animate={{ x: 0 }}
+                                  transition={{ delay: 0.1 }}
+                                >
+                                  <ChevronRight className="w-3 h-3" />
+                                </motion.span>
+                              </Link>
+                            </motion.div>
+                          )}
+
+
 
                           {/* Dashboard */}
                           <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}>
@@ -492,7 +601,7 @@ export default function Header({
             </div>
           </nav>
           {/* Search Box (Mobile) */}
-          <form onSubmit={handleSearch} className="flex m-2 lg:hidden w-4/5">
+          {/* <form onSubmit={handleSearch} className="flex m-2 lg:hidden w-4/5">
             <input
               type="text"
               value={search}
@@ -516,7 +625,50 @@ export default function Header({
               </svg>
               Tìm
             </motion.button>
-          </form>
+          </form> */}
+          <div className="flex m-2 lg:hidden w-4/5 md:w-[450px]">
+            <form onSubmit={handleSearch} className="w-full">
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+                placeholder="Tìm kiếm môn học..."
+                className="w-full  md:m-auto px-4 py-2 rounded-lg border text-black dark:text-white rounded-lg 
+                     border border-emerald-200 dark:border-slate-600 
+                     bg-white dark:bg-slate-800 
+                     placeholder:text-gray-400 dark:placeholder:text-slate-400
+                     focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              />
+              <div className="absolute flex w-4/5 md:w-[450px] ">
+                {isFocused && results.length > 0 && (
+                  <ul className=" w-full top-full mt-2 bg-white dark:bg-slate-800 rounded-lg shadow-lg max-h-60 overflow-y-auto z-50">
+                    {results.map((s) => (
+                      <li key={s.id}>
+                        <Link
+                          to={`/questions/subject/${s.id}`}
+                          className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700 text-gray-400 dark:text-text-slate-400"
+                          onClick={() => setSearch("")}
+                        >
+                          {s.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+            </form>
+          </div>
+
+
+
+
+
+
+
+
           {/* Mobile Menu Button */}
           <motion.button
             className="lg:hidden text-white dark:text-slate-200 focus:outline-none"
@@ -538,7 +690,7 @@ export default function Header({
               variants={menuVariants}
               className="lg:hidden overflow-hidden bg-emerald-600 dark:bg-slate-900"
             >
-              <motion.div className="pt-4 pb-2 space-y-2" variants={menuVariants}>
+              <motion.div className="px-2 pt-4 pb-2 space-y-2" variants={menuVariants}>
 
 
                 {/* Tenant Dropdown (Mobile) */}
@@ -623,54 +775,80 @@ export default function Header({
 
                 {user ? (
                   <motion.div
-  variants={menuVariants}
-  initial="hidden"
-  animate="visible"
-  exit="hidden"
-  className="flex w-full items-center overflow-hidden rounded-lg border border-emerald-100 bg-white/95 shadow-md dark:border-slate-700 dark:bg-slate-800/95"
->
-  {/* Account button */}
-  <motion.button
-    variants={itemVariants}
-    className="flex flex-1 items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 px-3 py-2 text-white"
-    onClick={() => setMenuOpen(!menuOpen)}
-    whileTap={{ scale: 0.98 }}
-  >
-    <User className="h-4 w-4" />
-    <span className="text-sm font-semibold truncate">{user.name}</span>
-  </motion.button>
+                    variants={menuVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    className="flex w-full items-center overflow-hidden rounded-lg border border-emerald-100 bg-white/95 shadow-md dark:border-slate-700 dark:bg-slate-800/95"
+                  >
 
-  {/* Dashboard link */}
-  <motion.div variants={itemVariants} className="flex-1">
-    <Link
-      to="/dashboard"
-      onClick={() => {
-        setMenuOpen(false);
-        setIsOpen(false);
-      }}
-      className="flex w-full items-center justify-center gap-2 px-3 py-2 text-emerald-700 transition hover:bg-emerald-50 dark:text-slate-200 dark:hover:bg-slate-700/70"
-    >
-      <UserCircle className="h-4 w-4 text-yellow-500" />
-      <span className="text-sm font-medium">Bảng điều khiển</span>
-    </Link>
-  </motion.div>
 
-  {/* Logout button */}
-  <motion.div variants={itemVariants} className="flex-1">
-    <button
-      onClick={async () => {
-        await logout();
-        setMenuOpen(false);
-        setIsOpen(false);
-        navigate("/login");
-      }}
-      className="flex w-full items-center justify-center gap-2 px-3 py-2 text-red-600 transition hover:bg-red-50 dark:text-red-400 dark:hover:bg-slate-700/70"
-    >
-      <LogOut className="h-4 w-4" />
-      <span className="text-sm font-medium">Đăng xuất</span>
-    </button>
-  </motion.div>
-</motion.div>
+
+                    {/* Account button */}
+
+                    <div className=" flex flex-1  h-full bg-gradient-to-r from-orange-500 to-amber-500">
+
+                      <motion.button
+                        variants={itemVariants}
+                        className="flex items-center gap-2  px-3 py-2 text-white"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <User className="h-4 w-4" />
+                        <span className="text-sm font-semibold truncate">{user.name}</span>
+                      </motion.button>
+                    </div>
+
+                    {/* admin */}
+
+                    {user?.role === "admin"
+                      &&
+                      <motion.div variants={itemVariants} className="flex-1">
+                        <Link
+                          to="/admin"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setIsOpen(false);
+                          }}
+                          className="flex w-full items-center justify-center gap-2 px-3 py-2 text-emerald-700 transition hover:bg-emerald-50 dark:text-slate-200 dark:hover:bg-slate-700/70"
+                        >
+                          <Shield className="h-4 w-4 text-purple-500" />
+                          <span className="text-sm font-medium">Bảng điều khiển</span>
+                        </Link>
+                      </motion.div>
+                    }
+
+                    {/* Dashboard link */}
+                    <motion.div variants={itemVariants} className="flex-1">
+                      <Link
+                        to="/dashboard"
+                        onClick={() => {
+                          setMenuOpen(false);
+                          setIsOpen(false);
+                        }}
+                        className="flex w-full items-center justify-center gap-2 px-3 py-2 text-emerald-700 transition hover:bg-emerald-50 dark:text-slate-200 dark:hover:bg-slate-700/70"
+                      >
+                        <UserCircle className="h-4 w-4 text-yellow-500" />
+                        <span className="text-sm font-medium">Bảng điều khiển</span>
+                      </Link>
+                    </motion.div>
+
+                    {/* Logout button */}
+                    <motion.div variants={itemVariants} className="flex-1">
+                      <button
+                        onClick={async () => {
+                          await logout();
+                          setMenuOpen(false);
+                          setIsOpen(false);
+                          navigate("/login");
+                        }}
+                        className="flex w-full items-center justify-center gap-2 px-3 py-2 text-red-600 transition hover:bg-red-50 dark:text-red-400 dark:hover:bg-slate-700/70"
+                      >
+                        <LogOut className="h-4 w-4" />
+                        <span className="text-sm font-medium">Đăng xuất</span>
+                      </button>
+                    </motion.div>
+                  </motion.div>
 
                 ) :
                   <>

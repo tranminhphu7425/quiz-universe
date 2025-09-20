@@ -107,7 +107,7 @@ export default function EditQuestionsPage() {
     };
   }, [subjectId]);
 
-  
+
 
   const total = list.length;
   const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -116,14 +116,14 @@ export default function EditQuestionsPage() {
   const pageItems = list.slice(start, end);
 
 
-    useEffect(() => {
-    pickQuestion(pageItems[0]);
-  }, [page]);
+  // useEffect(() => {
+  //   pickQuestion(pageItems[0]);
+  // }, [page]);
 
 
   // switch question
   function pickQuestion(q: Question) {
-    console.log("pick", q.id);
+    // console.log("pick", q.id);
     setSelectedId(q.id);
     setEditing(deepClone(q));
     setSaveOk(null);

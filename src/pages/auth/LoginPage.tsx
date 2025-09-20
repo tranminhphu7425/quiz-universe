@@ -25,7 +25,6 @@ export default function LoginPage() {
     try {
       const res = await login(email, password, { remember });
       // Thành công, chuyển hướng handled bởi AuthProvider
-      console.log("Đăng nhập thành công:", res);
       navigate("/dashboard");
     } catch (e: any) {
       console.error("Lỗi đăng nhập:", e);

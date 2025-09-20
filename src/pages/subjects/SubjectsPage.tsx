@@ -3,8 +3,10 @@ import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  BookOpen, Search, Filter, CheckCircle2, Clock, Tag, PlusCircle, ChevronLeft, ChevronRight, FilePlus2
+  BookOpen, Search, Filter, CheckCircle2, Clock, Tag, PlusCircle, ChevronLeft, ChevronRight, FilePlus2,
+  User
 } from "lucide-react";
+import { Heart, HeartOff } from "lucide-react";
 import { AlertTriangle, RefreshCcw } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
 import { set } from "zod";
@@ -12,6 +14,9 @@ import { set } from "zod";
 type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
 import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
+import favoriteApi from "@/shared/api/favoriteApi";
+import { useAuth } from "@/app/providers/AuthProvider";
+
 
 
 
@@ -35,6 +40,9 @@ export default function SubjectPage() {
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Subject[]>([]);
+  const user = useAuth();
+  const User = user?.user;
+
 
   // ======= PAGINATION =======
   const [page, setPage] = useState(1);
@@ -44,12 +52,58 @@ export default function SubjectPage() {
   const types = ["all", "MCQ", "TRUE_FALSE", "FILL_BLANK"] as const;
   const diffs = ["all", "easy", "medium", "hard"] as const;
 
+  const [favorites, setFavorites] = useState<Set<number>>(new Set());
 
+  const toggleFavorite = async (subjectId: number) => {
+    const isFav = favorites.has(subjectId);
+    try {
+      if (isFav) {
+        await favoriteApi.delete(`/subjects/${subjectId}/favorite?userId=${User?.id}`);
+        setFavorites(prev => {
+          const next = new Set(prev);
+          next.delete(subjectId);
+          return next;
+        });
+      } else {
+        await favoriteApi.post(`/subjects/${subjectId}/favorite?userId=${User?.id}`);
+        setFavorites(prev => new Set(prev).add(subjectId));
+      }
+    } catch (err) {
+      console.error("Lỗi khi cập nhật yêu thích", err);
+    }
+  };
+
+
+
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+
+      const res = await fetch(`/api/subjects/favorites?userId=${User?.id}`);
+
+      if (res.ok) {
+        const data = await res.json();
+
+        setFavorites(new Set(data.map((s: Subject) => s.id)));
+
+
+      } else {
+        console.error("Lỗi khi lấy danh sách yêu thích");
+      }
+    };
+
+    fetchFavorites();
+  }, []);
+
+
+  useEffect(() => {
+    console.log("Favorite subjects updated:", favorites);
+  }, [favorites]);
 
 
   async function fetchData() {
 
-  
+
     const ac = new AbortController();
     setLoading(true);
     setErr(null);
@@ -58,7 +112,7 @@ export default function SubjectPage() {
       try {
         // 1) Ưu tiên lấy từ API
         const list = await fetchAllSubjects(ac.signal);
-       
+
         setData(list);
       } catch (e: any) {
         // Nếu bị hủy thì thôi
@@ -86,15 +140,28 @@ export default function SubjectPage() {
 
   // ======= FILTERING =======
   const filtered = useMemo(() => {
-    const kw = q.trim().toLowerCase();
+    const kw = normalizeText(q);
     if (!kw) return data;
+
     return data.filter((s) =>
-      [s.code, s.name, s.description ?? ""].some((x) => x.toLowerCase().includes(kw))
+      [s.code, s.name, s.description ?? ""].some((x) =>
+        normalizeText(x).includes(kw)
+      )
     );
   }, [q, data]);
 
+  function normalizeText(str: string) {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+  }
+
+
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const pageData = filtered.slice((page - 1) * pageSize, page * pageSize);
+
 
   // reset page khi filter đổi
   const handleFilterChange = <T,>(setter: (v: T) => void) => (v: T) => {
@@ -253,52 +320,61 @@ export default function SubjectPage() {
         {/* List */}
         {loading ? (
           <LoadingState />
-        ) 
-        // : err ? (
-        //   <ErrorState message={err} onRetry={fetchData} />
-        // ) 
-        :
-        filtered.length === 0 ? (
-          <EmptyState />
-        ) : (
-          <>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((s) => (
-                <SubjectCard key={s.id} s={s} />
-              ))}
+        )
+          // : err ? (
+          //   <ErrorState message={err} onRetry={fetchData} />
+          // ) 
+          :
+          filtered.length === 0 ? (
+            <EmptyState />
+          ) : (
+            <>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {filtered.map((subject) => (
+                  <SubjectCard
+                    key={subject.id}
+                    s={subject}
+                    isFavorite={favorites.has(subject.id)}
+                    onToggleFavorite={toggleFavorite}
+                  />
+                ))}
 
-            </div>
+              </div>
 
-            {/* Pagination */}
-            <div className="mt-6 flex items-center justify-center gap-2">
-              <button
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                disabled={page === 1}
-                className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white ring-1 ring-white/20 disabled:opacity-50 dark:bg-white/5 dark:ring-white/10"
-              >
-                <ChevronLeft className="h-4 w-4" /> Trước
-              </button>
-              <span className="text-sm text-white/90 dark:text-gray-300">
-                Trang {page}/{totalPages}
-              </span>
-              <button
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                disabled={page === totalPages}
-                className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white ring-1 ring-white/20 disabled:opacity-50 dark:bg-white/5 dark:ring-white/10"
-              >
-                Sau <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
-          </>
-        )}
+              {/* Pagination */}
+              <div className="mt-6 flex items-center justify-center gap-2">
+                <button
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                  className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white ring-1 ring-white/20 disabled:opacity-50 dark:bg-white/5 dark:ring-white/10"
+                >
+                  <ChevronLeft className="h-4 w-4" /> Trước
+                </button>
+                <span className="text-sm text-white/90 dark:text-gray-300">
+                  Trang {page}/{totalPages}
+                </span>
+                <button
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                  className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white ring-1 ring-white/20 disabled:opacity-50 dark:bg-white/5 dark:ring-white/10"
+                >
+                  Sau <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+            </>
+          )}
       </div>
     </div>
   );
 }
 
+type SubjectCardProps = {
+  s: Subject;
+  isFavorite: boolean;
+  onToggleFavorite: (subjectId: number) => void;
+};
 
-
-function SubjectCard({ s }: { s: Subject }) {
+function SubjectCard({ s, isFavorite, onToggleFavorite }: SubjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 18 }}
@@ -306,8 +382,10 @@ function SubjectCard({ s }: { s: Subject }) {
       viewport={{ once: true }}
       transition={{ type: "spring", stiffness: 160, damping: 16 }}
       whileHover={{ y: -4, scale: 1.01 }}
-      className="rounded-xl border border-emerald-100/60 bg-white p-4 shadow-lg transition dark:border-slate-800 dark:bg-slate-900"
+      className="relative rounded-xl border border-emerald-100/60 bg-white p-4 shadow-lg transition dark:border-slate-800 dark:bg-slate-900"
     >
+
+
       <div className="mb-2 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
@@ -321,19 +399,31 @@ function SubjectCard({ s }: { s: Subject }) {
           </h3>
         </div>
         <div className="flex space-x-4">
-          {true &&  <Link
-          to={`/questions/subject/${s.id}/edit`}
-          className="rounded-full bg-red-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
-        >
-          Sửa
-        </Link>}
 
-        <Link
-          to={`/questions/subject/${s.id}`}
-          className="rounded-full bg-yellow-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
-        >
-          Xem
-        </Link>
+          <Link
+            to={`/questions/subject/${s.id}/edit`}
+            className="rounded-full bg-red-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
+          >
+            Sửa
+          </Link>
+          <Link
+            to={`/questions/subject/${s.id}`}
+            className="rounded-full bg-yellow-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
+          >
+            Xem
+          </Link>
+          {/* Nút yêu thích */}
+          <button
+            onClick={() => onToggleFavorite(s.id)}
+            className="transition hover:scale-105 active:scale-95"
+            aria-label={isFavorite ? "Bỏ yêu thích" : "Thêm vào yêu thích"}
+          >
+            {isFavorite ? (
+              <Heart className="w-8 h-8 text-red-500 fill-red-500" />
+            ) : (
+              <Heart className="w-8 h-8 text-red-500" />
+            )}
+          </button>
         </div>
       </div>
 
@@ -350,7 +440,6 @@ function SubjectCard({ s }: { s: Subject }) {
     </motion.div>
   );
 }
-
 
 
 function LoadingState() {

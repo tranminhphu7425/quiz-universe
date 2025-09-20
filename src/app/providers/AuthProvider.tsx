@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 import { fetchJson, setAuthToken } from "@/shared/api/apiClient";
 
 /** Vai trò & user */
-export type Role = "SYSTEM_ADMIN" | "SCHOOL_ADMIN" | "TEACHER" | "STUDENT";
+export type Role = "admin" | "user" | "TEACHER" | "STUDENT";
 
 export interface User {
   id: string;
@@ -81,6 +81,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
       const storage = pickStorage(opts?.remember);
       if (data.token) {
         storage.setItem("auth_token", data.token);
+        console.log("data.token", data.token);
         setAuthToken(data.token);
       }
       if (data.user) storage.setItem("auth_user", JSON.stringify(data.user));

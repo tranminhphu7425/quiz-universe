@@ -28,6 +28,7 @@ const CreateExamPage = React.lazy(() => import("@pages/exams/CreateExamPage"));
 const TakeExamPage = React.lazy(() => import("@pages/exams/TakeExamPage"));
 const ReviewExamPage = React.lazy(() => import("@pages/exams/ReviewExamPage"));
 const AdminPage = React.lazy(() => import("@/pages/admin/AdminDashboardPage"));
+import AdminDashboardPage from "@/pages/admin/AdminDashboardPage";
 
 // src/shared/lib/withSuspense.tsx
 import { motion } from "framer-motion";
@@ -87,7 +88,7 @@ export const router =
         { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
-        
+        { path: "/admin", element: withSuspense(<AdminDashboardPage />), errorElement: <NotFoundPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],
     },

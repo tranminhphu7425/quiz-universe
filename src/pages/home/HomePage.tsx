@@ -35,7 +35,7 @@ import FadeInOnView from "@/shared/ui/FadeInOnView";
 export default function HomePage() {
 
   const { user } = useAuth();
-  console.log("Current user in HomePage:", user);
+  
   const testimonials = useMemo(
     () => [
       {

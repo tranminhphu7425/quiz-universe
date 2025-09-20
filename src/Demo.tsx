@@ -1,4 +1,4 @@
-import { P } from 'node_modules/framer-motion/dist/types.d-Cjd591yU';
+
 import {useMemo, useState} from 'react';
 
 import {memo} from 'react';

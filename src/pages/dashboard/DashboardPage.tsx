@@ -12,11 +12,14 @@ import {
   ExternalLink,
   Star,
   Clock,
+  Tag,
 } from "lucide-react";
 
 import LoadingState from "@/widgets/LoadingState";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
+import { Subject } from "@/shared/api/subjectApi";
+import favoriteApi from "@/shared/api/favoriteApi";
 
 // =============================
 // Types & mockable interfaces
@@ -34,107 +37,54 @@ export type QuestionSet = {
   ownerName?: string;
 };
 
-// LocalStorage keys (can be swapped to API later)
-const LS_FAVORITES_KEY = "quizuv_favorite_sets";
-const LS_MYSETS_KEY = "quizuv_my_sets";
 
-function loadFromLS<T>(key: string, fallback: T): T {
-  try {
-    const raw = localStorage.getItem(key);
-    return raw ? (JSON.parse(raw) as T) : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-function saveToLS<T>(key: string, value: T) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch {}
-}
 
 // =============================
 // Dashboard Page
 // =============================
 export default function DashboardPage() {
-  const { user } = useAuth();
+  const user = useAuth();
 
-  const [favSets, setFavSets] = useState<QuestionSet[]>([]);
-  const [mySets, setMySets] = useState<QuestionSet[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  // mock initial seed for demo if empty
+  const [loading, setLoading] = useState(false);
+  const [favorites, setFavorites] = useState<Subject[]>([]);
+  const User = user?.user;
+
+
   useEffect(() => {
-    const fav = loadFromLS<QuestionSet[]>(LS_FAVORITES_KEY, []);
-    const mine = loadFromLS<QuestionSet[]>(LS_MYSETS_KEY, []);
+    const fetchFavorites = async () => {
 
-    // Minimal demo seeds (only if both empty)
-    if (!fav.length && !mine.length) {
-      const seedFav: QuestionSet[] = [
-        {
-          id: 101,
-          name: "Cơ sở Lập trình • Giữa kì ôn tập",
-          subjectId: 4,
-          subjectName: "CS101 – Cơ sở Lập trình",
-          questionsCount: 50,
-          createdAt: new Date().toISOString(),
-        },
-        {
-          id: 102,
-          name: "CT175 – Đồ thị (Chương 1–3)",
-          subjectId: 12,
-          subjectName: "CT175 – Lý thuyết đồ thị",
-          questionsCount: 40,
-          createdAt: new Date().toISOString(),
-        },
-      ];
-      const seedMine: QuestionSet[] = [
-        {
-          id: 201,
-          name: "OOP – Chương 2: Kế thừa & Đa hình",
-          subjectId: 8,
-          subjectName: "CSE201 – Lập trình Hướng Đối Tượng",
-          questionsCount: 35,
-          createdAt: new Date().toISOString(),
-          ownerId: user?.id ?? 1,
-          ownerName: user?.name ?? "Tôi",
-        },
-      ];
-      saveToLS(LS_FAVORITES_KEY, seedFav);
-      saveToLS(LS_MYSETS_KEY, seedMine);
-      setFavSets(seedFav);
-      setMySets(seedMine);
-      setLoading(false);
-      return;
+      const res = await fetch(`/api/subjects/favorites?userId=${User?.id}`);
+
+      if (res.ok) {
+        const data = await res.json();
+
+        setFavorites(data);
+
+
+      } else {
+        console.error("Lỗi khi lấy danh sách yêu thích");
+      }
+    };
+
+    fetchFavorites();
+  }, []);
+
+  useEffect(() => {
+    console.log("Favorite subjects updated:", favorites);
+  }, [favorites]);
+
+  async function removeFavorite(s: Subject) {
+    try {
+      await favoriteApi.delete(`/subjects/${s.id}/favorite?userId=${User?.id}`);
+    setFavorites(prev => prev.filter(fav => fav.id !== s.id));
     }
-
-    setFavSets(fav);
-    setMySets(mine);
-    setLoading(false);
-  }, [user?.id, user?.name]);
-
-  const totalFav = favSets.length;
-  const totalMine = mySets.length;
-  const totalQuestions = useMemo(
-    () => favSets.reduce((s, x) => s + (x.questionsCount || 0), 0) + mySets.reduce((s, x) => s + (x.questionsCount || 0), 0),
-    [favSets, mySets]
-  );
-
-  function removeFavorite(id: number) {
-    setFavSets((cur) => {
-      const next = cur.filter((x) => x.id !== id);
-      saveToLS(LS_FAVORITES_KEY, next);
-      return next;
-    });
+    catch (e){
+      console.error("Failed to remove favorite:", e);
+    }
   }
 
-  function removeMySet(id: number) {
-    setMySets((cur) => {
-      const next = cur.filter((x) => x.id !== id);
-      saveToLS(LS_MYSETS_KEY, next);
-      return next;
-    });
-  }
+
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
@@ -153,7 +103,7 @@ export default function DashboardPage() {
               <Star className="h-4 w-4" /> Bảng điều khiển
             </div>
             <h1 className="text-[2rem] md:text-[2.4rem] font-black leading-tight text-white">
-              Xin chào{user?.name ? `, ${user.name}` : "!"} 👋
+              Xin chào{User?.name ? `, ${User.name}` : "!"} 👋
             </h1>
             <p className="mt-1 max-w-xl text-white/90">
               Tóm tắt nhanh những bộ câu hỏi bạn yêu thích và bạn đã tạo.
@@ -187,9 +137,9 @@ export default function DashboardPage() {
       {/* ===== STATS ===== */}
       <section className="mx-auto max-w-7xl px-6 -mt-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <StatCard icon={<Heart className="h-4 w-4" />} label="Yêu thích" value={totalFav} hint="bộ câu hỏi" />
-          <StatCard icon={<ListChecks className="h-4 w-4" />} label="Của tôi" value={totalMine} hint="bộ câu hỏi" />
-          <StatCard icon={<BookOpen className="h-4 w-4" />} label="Tổng số câu" value={totalQuestions} hint="ước tính" />
+          <StatCard icon={<Heart className="h-4 w-4" />} label="Yêu thích" value={favorites.length} hint="bộ câu hỏi" />
+          <StatCard icon={<ListChecks className="h-4 w-4" />} label="Của tôi" value={1} hint="bộ câu hỏi" />
+          <StatCard icon={<BookOpen className="h-4 w-4" />} label="Tổng số câu" value={1} hint="ước tính" />
           <StatCard icon={<Clock className="h-4 w-4" />} label="Hoạt động" value={new Date().toLocaleDateString()} hint="ngày cập nhật" />
         </div>
       </section>
@@ -206,9 +156,9 @@ export default function DashboardPage() {
                 <h2 className="text-base font-bold text-emerald-900 dark:text-emerald-200 inline-flex items-center gap-2">
                   <Heart className="h-4 w-4" /> Bộ câu hỏi yêu thích
                 </h2>
-                <span className="text-xs text-slate-500 dark:text-slate-400">{totalFav} mục</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400">{favorites.length} mục</span>
               </header>
-              {favSets.length === 0 ? (
+              {favorites.length === 0 ? (
                 <EmptyBox
                   title="Chưa có bộ câu hỏi yêu thích"
                   desc="Hãy đánh dấu ♥ ở danh sách đề hoặc câu hỏi để lưu tại đây."
@@ -216,11 +166,11 @@ export default function DashboardPage() {
                 />
               ) : (
                 <ul className="divide-y divide-slate-100 dark:divide-slate-800">
-                  {favSets.map((s) => (
+                  {favorites.map((s) => (
                     <li key={s.id} className="py-3">
                       <SetRow s={s}
-                        onRemove={() => removeFavorite(s.id)}
-                        primaryAction={{ to: s.subjectId ? `/questions/subject/${s.subjectId}` : `#`, label: "Làm ngay" }}
+                        onRemove={() => removeFavorite(s)}
+                        primaryAction={{ to: s.id ? `/questions/subject/${s.id}` : `#`, label: "Làm ngay" }}
                       />
                     </li>
                   ))}
@@ -240,7 +190,7 @@ export default function DashboardPage() {
                   </Link>
                 </div>
               </header>
-              {mySets.length === 0 ? (
+              {/* {mySets.length === 0 ? (
                 <EmptyBox
                   title="Bạn chưa tạo bộ câu hỏi nào"
                   desc="Bắt đầu bằng cách tạo bộ mới rồi thêm câu hỏi."
@@ -258,7 +208,7 @@ export default function DashboardPage() {
                     </li>
                   ))}
                 </ul>
-              )}
+              )} */}
             </section>
           </div>
         )}
@@ -298,7 +248,7 @@ function EmptyBox({ title, desc, action }: { title: string; desc: string; action
 }
 
 function SetRow({ s, onRemove, primaryAction, removableLabel = "Bỏ khỏi yêu thích" }: {
-  s: QuestionSet;
+  s: Subject;
   onRemove?: () => void;
   primaryAction?: { to: string; label: string };
   removableLabel?: string;
@@ -311,22 +261,20 @@ function SetRow({ s, onRemove, primaryAction, removableLabel = "Bỏ khỏi yêu
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
           <div className="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">{s.name}</div>
-          {s.subjectName && (
+          {s.name && (
             <span className="inline-flex items-center gap-1 rounded-md bg-emerald-100 px-2 py-0.5 text-[11px] font-medium text-emerald-800 ring-1 ring-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-100 dark:ring-emerald-800">
-              <BookOpen className="h-3 w-3" /> {s.subjectName}
+              <Tag className="h-3 w-3" /> {s.code}
             </span>
           )}
         </div>
-        <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{s.questionsCount} câu hỏi</div>
+        {/* <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{s.} câu hỏi</div> */}
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {primaryAction && (
-            <Link to={primaryAction.to} className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1.5 text-xs text-white hover:brightness-110">
+            <Link to={s.id ? `/questions/subject/${s.id}` : `#`} className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1.5 text-xs text-white hover:brightness-110">
               {primaryAction.label} <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           )}
-          <Link to={s.subjectId ? `/questions/subject/${s.subjectId}` : `#`} className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1.5 text-xs text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-700">
-            Xem <ExternalLink className="h-3.5 w-3.5" />
-          </Link>
+
           {onRemove && (
             <button onClick={onRemove} className="inline-flex items-center gap-1 rounded-full bg-rose-50 px-3 py-1.5 text-xs text-rose-700 ring-1 ring-rose-200 hover:bg-rose-100 dark:bg-rose-900/20 dark:text-rose-300 dark:ring-rose-800">
               <Trash2 className="h-3.5 w-3.5" /> {removableLabel}

@@ -28,11 +28,14 @@ export default defineConfig(() => ({
   },
 
   plugins: [react()],
+  define: {
+    global: "window", // fix sockjs-client
+  },
   server: {
     port: 5173,
     strictPort: true,
     // Nếu chạy WSL/Docker/LAN mà WS không nối được, mở comment dưới:
-    // host: true,
+    host: true,
     // hmr: { protocol: "ws", host: "localhost", clientPort: 5173 },
     proxy: {
       // Chuyển tiếp /api sang backend

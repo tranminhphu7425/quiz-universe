@@ -1,276 +1,504 @@
--- Tạo database & cấu hình
-CREATE DATABASE IF NOT EXISTS quiz_universe
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-USE quiz_universe;
+-- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
+--
+-- Host: localhost    Database: quiz_universe
+-- ------------------------------------------------------
+-- Server version	8.0.42
 
--- =========================
--- DANH MỤC CƠ BẢN
--- =========================
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Người dùng/tác giả/biên tập viên
-CREATE TABLE users (
-  user_id       BIGINT PRIMARY KEY AUTO_INCREMENT,
-  full_name     VARCHAR(120) NOT NULL,
-  email         VARCHAR(160) UNIQUE,
-  role          ENUM('author','editor','reviewer','admin') DEFAULT 'author',
-  created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+--
+-- Table structure for table `bloom_levels`
+--
 
--- Môn học
-CREATE TABLE subjects (
-  subject_id    BIGINT PRIMARY KEY AUTO_INCREMENT,
-  code          VARCHAR(32)  NOT NULL,
-  name          VARCHAR(160) NOT NULL,
-  description   TEXT,
-  created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `bloom_levels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bloom_levels` (
+  `bloom_id` tinyint NOT NULL,
+  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`bloom_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Chủ đề/chương (có thể phân cấp)
-CREATE TABLE topics (
-  topic_id      BIGINT PRIMARY KEY AUTO_INCREMENT,
-  subject_id    BIGINT NOT NULL,
-  parent_id     BIGINT NULL,
-  code          VARCHAR(64) NULL,
-  name          VARCHAR(200) NOT NULL,
-  description   TEXT,
-  sort_order    INT DEFAULT 0,
-  CONSTRAINT fk_topics_subject FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
-  CONSTRAINT fk_topics_parent  FOREIGN KEY (parent_id)  REFERENCES topics(topic_id)
-) ENGINE=InnoDB;
+--
+-- Table structure for table `difficulty_levels`
+--
 
-CREATE INDEX idx_topics_subject ON topics(subject_id);
-CREATE INDEX idx_topics_parent  ON topics(parent_id);
+DROP TABLE IF EXISTS `difficulty_levels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `difficulty_levels` (
+  `difficulty_id` tinyint NOT NULL,
+  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `weight` decimal(4,2) NOT NULL DEFAULT '1.00',
+  PRIMARY KEY (`difficulty_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Tag từ khóa cho câu hỏi
-CREATE TABLE tags (
-  tag_id        BIGINT PRIMARY KEY AUTO_INCREMENT,
-  tag           VARCHAR(64) UNIQUE NOT NULL
-) ENGINE=InnoDB;
+--
+-- Table structure for table `exam_questions`
+--
 
--- Mức độ khó & Bloom (tham chiếu mềm)
-CREATE TABLE difficulty_levels (
-  difficulty_id TINYINT PRIMARY KEY,
-  name          VARCHAR(32) NOT NULL,
-  weight        DECIMAL(4,2) NOT NULL DEFAULT 1.00  -- có thể dùng khi tạo đề
-) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `exam_questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `exam_questions` (
+  `eq_id` bigint NOT NULL AUTO_INCREMENT,
+  `exam_id` bigint NOT NULL,
+  `section_id` bigint DEFAULT NULL,
+  `question_id` bigint NOT NULL,
+  `points` decimal(5,2) DEFAULT '1.00',
+  `display_order` int DEFAULT '0',
+  `shuffle_options` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`eq_id`),
+  KEY `fk_eq_sec` (`section_id`),
+  KEY `fk_eq_q` (`question_id`),
+  KEY `idx_eq_exam` (`exam_id`),
+  CONSTRAINT `fk_eq_exam` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`exam_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_eq_q` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`),
+  CONSTRAINT `fk_eq_sec` FOREIGN KEY (`section_id`) REFERENCES `exam_sections` (`section_id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE TABLE bloom_levels (
-  bloom_id      TINYINT PRIMARY KEY,
-  name          VARCHAR(32) NOT NULL,   -- Remember, Understand, Apply, Analyze, Evaluate, Create
-  description   VARCHAR(255)
-) ENGINE=InnoDB;
+--
+-- Table structure for table `exam_sections`
+--
 
--- =========================
--- NGUỒN DỮ LIỆU & NGÂN HÀNG
--- =========================
+DROP TABLE IF EXISTS `exam_sections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `exam_sections` (
+  `section_id` bigint NOT NULL AUTO_INCREMENT,
+  `exam_id` bigint NOT NULL,
+  `name` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instructions` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `weight` decimal(5,2) DEFAULT '1.00',
+  PRIMARY KEY (`section_id`),
+  KEY `idx_es_exam` (`exam_id`),
+  CONSTRAINT `fk_es_exam` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`exam_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Nguồn: tài liệu/giáo trình/ngân hàng bên ngoài
-CREATE TABLE sources (
-  source_id     BIGINT PRIMARY KEY AUTO_INCREMENT,
-  source_type   ENUM('document','external_bank','webpage','manual') NOT NULL,
-  title         VARCHAR(255) NOT NULL,
-  origin        VARCHAR(255),     -- ví dụ: NXB, URL, trường/đơn vị cung cấp
-  file_path     VARCHAR(500),     -- nếu có file đính kèm trên hệ thống
-  notes         TEXT,
-  created_by    BIGINT,
-  created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  CONSTRAINT fk_sources_user FOREIGN KEY (created_by) REFERENCES users(user_id)
-) ENGINE=InnoDB;
+--
+-- Table structure for table `exams`
+--
 
--- Nếu là tài liệu có các phần/tiểu mục (để map câu hỏi về đúng đoạn)
-CREATE TABLE source_sections (
-  section_id    BIGINT PRIMARY KEY AUTO_INCREMENT,
-  source_id     BIGINT NOT NULL,
-  label         VARCHAR(128),           -- Chương 1, Mục 2.3...
-  title         VARCHAR(255),
-  page_start    INT,
-  page_end      INT,
-  CONSTRAINT fk_sections_source FOREIGN KEY (source_id) REFERENCES sources(source_id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `exams`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `exams` (
+  `exam_id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` bigint NOT NULL,
+  `duration_min` int NOT NULL DEFAULT '45',
+  `total_marks` decimal(6,2) DEFAULT '10.00',
+  `created_by` bigint DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `notes` text COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`exam_id`),
+  KEY `fk_exam_subject` (`subject_id`),
+  KEY `fk_exam_cby` (`created_by`),
+  CONSTRAINT `fk_exam_cby` FOREIGN KEY (`created_by`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `fk_exam_subject` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE INDEX idx_sections_source ON source_sections(source_id);
+--
+-- Table structure for table `import_items`
+--
 
--- Khái niệm "ngân hàng" nội bộ để gom nhóm câu hỏi (có thể là theo môn/kỳ/đơn vị…)
-CREATE TABLE question_banks (
-  bank_id       BIGINT PRIMARY KEY AUTO_INCREMENT,
-  name          VARCHAR(200) NOT NULL,
-  subject_id    BIGINT NOT NULL,
-  description   TEXT,
-  visibility    ENUM('private','org','public') DEFAULT 'private',
-  created_by    BIGINT,
-  created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  CONSTRAINT fk_banks_subject FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
-  CONSTRAINT fk_banks_user    FOREIGN KEY (created_by)  REFERENCES users(user_id)
-) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `import_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `import_items` (
+  `item_id` bigint NOT NULL AUTO_INCREMENT,
+  `job_id` bigint NOT NULL,
+  `section_id` bigint DEFAULT NULL,
+  `raw_text` mediumtext COLLATE utf8mb4_unicode_ci,
+  `parsed_stem` text COLLATE utf8mb4_unicode_ci,
+  `parsed_options` json DEFAULT NULL,
+  `parsed_answer` json DEFAULT NULL,
+  `status` enum('draft','reviewed','converted','rejected') COLLATE utf8mb4_unicode_ci DEFAULT 'draft',
+  `mapped_question_id` bigint DEFAULT NULL,
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`item_id`),
+  KEY `fk_ii_sect` (`section_id`),
+  KEY `fk_ii_mq` (`mapped_question_id`),
+  KEY `idx_ii_job` (`job_id`),
+  CONSTRAINT `fk_ii_job` FOREIGN KEY (`job_id`) REFERENCES `import_jobs` (`job_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_ii_mq` FOREIGN KEY (`mapped_question_id`) REFERENCES `questions` (`question_id`),
+  CONSTRAINT `fk_ii_sect` FOREIGN KEY (`section_id`) REFERENCES `source_sections` (`section_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE INDEX idx_banks_subject ON question_banks(subject_id);
+--
+-- Table structure for table `import_jobs`
+--
 
--- =========================
--- CÂU HỎI & PHIÊN BẢN
--- =========================
+DROP TABLE IF EXISTS `import_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `import_jobs` (
+  `job_id` bigint NOT NULL AUTO_INCREMENT,
+  `source_id` bigint NOT NULL,
+  `initiated_by` bigint DEFAULT NULL,
+  `status` enum('pending','running','done','failed') COLLATE utf8mb4_unicode_ci DEFAULT 'pending',
+  `started_at` timestamp NULL DEFAULT NULL,
+  `finished_at` timestamp NULL DEFAULT NULL,
+  `stats_json` json DEFAULT NULL,
+  `log_text` mediumtext COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`job_id`),
+  KEY `fk_job_source` (`source_id`),
+  KEY `fk_job_user` (`initiated_by`),
+  CONSTRAINT `fk_job_source` FOREIGN KEY (`source_id`) REFERENCES `sources` (`source_id`),
+  CONSTRAINT `fk_job_user` FOREIGN KEY (`initiated_by`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Câu hỏi trắc nghiệm (stem + metadata)
-CREATE TABLE questions (
-  question_id     BIGINT PRIMARY KEY AUTO_INCREMENT,
-  bank_id         BIGINT NOT NULL,
-  subject_id      BIGINT NOT NULL,
-  stem            TEXT NOT NULL,                  -- nội dung câu hỏi
-  explanation     TEXT,                           -- lời giải/giải thích
-  difficulty_id   TINYINT NOT NULL,
-  bloom_id        TINYINT,
-  question_type   ENUM('mcq_single','mcq_multi','true_false', 'fill_in') DEFAULT 'mcq_single',
-  status          ENUM('draft','review','approved','retired') DEFAULT 'draft',
-  source_id       BIGINT NULL,
-  section_id      BIGINT NULL,
-  created_by      BIGINT,
-  updated_by      BIGINT,
-  created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at      TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  version_no      INT NOT NULL DEFAULT 1,
-  CONSTRAINT fk_q_bank     FOREIGN KEY (bank_id)       REFERENCES question_banks(bank_id),
-  CONSTRAINT fk_q_subject  FOREIGN KEY (subject_id)    REFERENCES subjects(subject_id),
-  CONSTRAINT fk_q_diff     FOREIGN KEY (difficulty_id) REFERENCES difficulty_levels(difficulty_id),
-  CONSTRAINT fk_q_bloom    FOREIGN KEY (bloom_id)      REFERENCES bloom_levels(bloom_id),
-  CONSTRAINT fk_q_source   FOREIGN KEY (source_id)     REFERENCES sources(source_id),
-  CONSTRAINT fk_q_section  FOREIGN KEY (section_id)    REFERENCES source_sections(section_id),
-  CONSTRAINT fk_q_cby      FOREIGN KEY (created_by)    REFERENCES users(user_id),
-  CONSTRAINT fk_q_uby      FOREIGN KEY (updated_by)    REFERENCES users(user_id)
-) ENGINE=InnoDB;
+--
+-- Table structure for table `question_banks`
+--
 
-CREATE INDEX idx_q_bank         ON questions(bank_id);
-CREATE INDEX idx_q_subject      ON questions(subject_id);
-CREATE INDEX idx_q_status       ON questions(status);
-CREATE INDEX idx_q_source       ON questions(source_id);
+DROP TABLE IF EXISTS `question_banks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `question_banks` (
+  `bank_id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` bigint NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `visibility` enum('private','org','public') COLLATE utf8mb4_unicode_ci DEFAULT 'private',
+  `created_by` bigint DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`bank_id`),
+  KEY `fk_banks_user` (`created_by`),
+  KEY `idx_banks_subject` (`subject_id`),
+  CONSTRAINT `fk_banks_subject` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
+  CONSTRAINT `fk_banks_user` FOREIGN KEY (`created_by`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Lựa chọn phương án cho câu hỏi (giữ thứ tự)
-CREATE TABLE question_options (
-  option_id     BIGINT PRIMARY KEY AUTO_INCREMENT,
-  question_id   BIGINT NOT NULL,
-  label         VARCHAR(8) NOT NULL,           -- A,B,C,D...
-  content       TEXT NOT NULL,
-  is_correct    BOOLEAN NOT NULL DEFAULT 0,
-  feedback      VARCHAR(255),                  -- nhận xét riêng cho lựa chọn
-  sort_order    INT DEFAULT 0,
-  CONSTRAINT fk_opt_q FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+--
+-- Table structure for table `question_options`
+--
 
-CREATE INDEX idx_opt_q ON question_options(question_id);
+DROP TABLE IF EXISTS `question_options`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `question_options` (
+  `option_id` bigint NOT NULL AUTO_INCREMENT,
+  `question_id` bigint NOT NULL,
+  `label` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_correct` tinyint(1) NOT NULL DEFAULT '0',
+  `feedback` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sort_order` int DEFAULT '0',
+  PRIMARY KEY (`option_id`),
+  KEY `idx_opt_q` (`question_id`),
+  CONSTRAINT `fk_opt_q` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2419 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Gắn tag cho câu hỏi (n-n)
-CREATE TABLE question_tags (
-  question_id BIGINT NOT NULL,
-  tag_id      BIGINT NOT NULL,
-  PRIMARY KEY (question_id, tag_id),
-  CONSTRAINT fk_qt_q   FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE,
-  CONSTRAINT fk_qt_tag FOREIGN KEY (tag_id)      REFERENCES tags(tag_id)         ON DELETE CASCADE
-) ENGINE=InnoDB;
+--
+-- Table structure for table `question_tags`
+--
 
--- Gắn câu hỏi vào nhiều topic (n-n), mỗi câu tối đa 3-4 topic nên thêm unique
-CREATE TABLE question_topics (
-  question_id BIGINT NOT NULL,
-  topic_id    BIGINT NOT NULL,
-  PRIMARY KEY (question_id, topic_id),
-  CONSTRAINT fk_qtp_q  FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE,
-  CONSTRAINT fk_qtp_tp FOREIGN KEY (topic_id)    REFERENCES topics(topic_id)       ON DELETE CASCADE
-) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `question_tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `question_tags` (
+  `question_id` bigint NOT NULL,
+  `tag_id` bigint NOT NULL,
+  PRIMARY KEY (`question_id`,`tag_id`),
+  KEY `fk_qt_tag` (`tag_id`),
+  CONSTRAINT `fk_qt_q` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_qt_tag` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`tag_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Lịch sử phiên bản (lưu chênh lệch note)
-CREATE TABLE question_versions (
-  qv_id        BIGINT PRIMARY KEY AUTO_INCREMENT,
-  question_id  BIGINT NOT NULL,
-  version_no   INT NOT NULL,
-  stem         TEXT,
-  explanation  TEXT,
-  updated_by   BIGINT,
-  updated_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  change_note  VARCHAR(255),
-  CONSTRAINT fk_qv_q   FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE,
-  CONSTRAINT fk_qv_uby FOREIGN KEY (updated_by)  REFERENCES users(user_id)
-) ENGINE=InnoDB;
+--
+-- Table structure for table `question_topics`
+--
 
-CREATE UNIQUE INDEX uq_qv ON question_versions(question_id, version_no);
+DROP TABLE IF EXISTS `question_topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `question_topics` (
+  `question_id` bigint NOT NULL,
+  `topic_id` bigint NOT NULL,
+  PRIMARY KEY (`question_id`,`topic_id`),
+  KEY `fk_qtp_tp` (`topic_id`),
+  CONSTRAINT `fk_qtp_q` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_qtp_tp` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`topic_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- =========================
--- ĐỀ THI & CẤU HÌNH XÁO TRỘN
--- =========================
+--
+-- Table structure for table `question_versions`
+--
 
--- Đề thi
-CREATE TABLE exams (
-  exam_id        BIGINT PRIMARY KEY AUTO_INCREMENT,
-  title          VARCHAR(255) NOT NULL,
-  subject_id     BIGINT NOT NULL,
-  duration_min   INT NOT NULL DEFAULT 45,
-  total_marks    DECIMAL(6,2) DEFAULT 10.00,
-  created_by     BIGINT,
-  created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  notes          TEXT,
-  CONSTRAINT fk_exam_subject FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
-  CONSTRAINT fk_exam_cby     FOREIGN KEY (created_by)  REFERENCES users(user_id)
-) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `question_versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `question_versions` (
+  `qv_id` bigint NOT NULL AUTO_INCREMENT,
+  `question_id` bigint NOT NULL,
+  `version_no` int NOT NULL,
+  `stem` text COLLATE utf8mb4_unicode_ci,
+  `explanation` text COLLATE utf8mb4_unicode_ci,
+  `updated_by` bigint DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `change_note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`qv_id`),
+  UNIQUE KEY `uq_qv` (`question_id`,`version_no`),
+  KEY `fk_qv_uby` (`updated_by`),
+  CONSTRAINT `fk_qv_q` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_qv_uby` FOREIGN KEY (`updated_by`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Phần trong đề thi (theo chương/độ khó…)
-CREATE TABLE exam_sections (
-  section_id     BIGINT PRIMARY KEY AUTO_INCREMENT,
-  exam_id        BIGINT NOT NULL,
-  name           VARCHAR(160) NOT NULL,
-  instructions   VARCHAR(255),
-  weight         DECIMAL(5,2) DEFAULT 1.0,
-  CONSTRAINT fk_es_exam FOREIGN KEY (exam_id) REFERENCES exams(exam_id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+--
+-- Table structure for table `questions`
+--
 
-CREATE INDEX idx_es_exam ON exam_sections(exam_id);
+DROP TABLE IF EXISTS `questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `questions` (
+  `question_id` bigint NOT NULL AUTO_INCREMENT,
+  `bank_id` bigint NOT NULL,
+  `subject_id` bigint NOT NULL,
+  `stem` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `explanation` text COLLATE utf8mb4_unicode_ci,
+  `difficulty_id` tinyint NOT NULL,
+  `bloom_id` tinyint DEFAULT NULL,
+  `question_type` enum('mcq_single','mcq_multi','true_false','fill_in') COLLATE utf8mb4_unicode_ci DEFAULT 'mcq_single',
+  `status` enum('draft','review','approved','retired') COLLATE utf8mb4_unicode_ci DEFAULT 'draft',
+  `source_id` bigint DEFAULT NULL,
+  `section_id` bigint DEFAULT NULL,
+  `created_by` bigint DEFAULT NULL,
+  `updated_by` bigint DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `version_no` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`question_id`),
+  KEY `fk_q_diff` (`difficulty_id`),
+  KEY `fk_q_bloom` (`bloom_id`),
+  KEY `fk_q_section` (`section_id`),
+  KEY `fk_q_cby` (`created_by`),
+  KEY `fk_q_uby` (`updated_by`),
+  KEY `idx_q_bank` (`bank_id`),
+  KEY `idx_q_subject` (`subject_id`),
+  KEY `idx_q_status` (`status`),
+  KEY `idx_q_source` (`source_id`),
+  CONSTRAINT `fk_q_bank` FOREIGN KEY (`bank_id`) REFERENCES `question_banks` (`bank_id`),
+  CONSTRAINT `fk_q_bloom` FOREIGN KEY (`bloom_id`) REFERENCES `bloom_levels` (`bloom_id`),
+  CONSTRAINT `fk_q_cby` FOREIGN KEY (`created_by`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `fk_q_diff` FOREIGN KEY (`difficulty_id`) REFERENCES `difficulty_levels` (`difficulty_id`),
+  CONSTRAINT `fk_q_section` FOREIGN KEY (`section_id`) REFERENCES `source_sections` (`section_id`),
+  CONSTRAINT `fk_q_source` FOREIGN KEY (`source_id`) REFERENCES `sources` (`source_id`),
+  CONSTRAINT `fk_q_subject` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
+  CONSTRAINT `fk_q_uby` FOREIGN KEY (`updated_by`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=610 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Câu hỏi trong đề thi (có thể đến từ nhiều ngân hàng/nguồn)
-CREATE TABLE exam_questions (
-  eq_id          BIGINT PRIMARY KEY AUTO_INCREMENT,
-  exam_id        BIGINT NOT NULL,
-  section_id     BIGINT NULL,
-  question_id    BIGINT NOT NULL,
-  points         DECIMAL(5,2) DEFAULT 1.00,
-  display_order  INT DEFAULT 0,
-  shuffle_options BOOLEAN DEFAULT 1,
-  CONSTRAINT fk_eq_exam   FOREIGN KEY (exam_id)     REFERENCES exams(exam_id) ON DELETE CASCADE,
-  CONSTRAINT fk_eq_sec    FOREIGN KEY (section_id)  REFERENCES exam_sections(section_id) ON DELETE SET NULL,
-  CONSTRAINT fk_eq_q      FOREIGN KEY (question_id) REFERENCES questions(question_id)
-) ENGINE=InnoDB;
+--
+-- Table structure for table `source_sections`
+--
 
-CREATE INDEX idx_eq_exam ON exam_questions(exam_id);
+DROP TABLE IF EXISTS `source_sections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `source_sections` (
+  `section_id` bigint NOT NULL AUTO_INCREMENT,
+  `source_id` bigint NOT NULL,
+  `label` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `page_start` int DEFAULT NULL,
+  `page_end` int DEFAULT NULL,
+  PRIMARY KEY (`section_id`),
+  KEY `idx_sections_source` (`source_id`),
+  CONSTRAINT `fk_sections_source` FOREIGN KEY (`source_id`) REFERENCES `sources` (`source_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- =========================
--- JOB NHẬP LIỆU & CHUYỂN ĐỔI (DOC → MCQ)
--- =========================
+--
+-- Table structure for table `sources`
+--
 
--- Job nhập liệu (ví dụ OCR/PDF parser → câu hỏi nháp)
-CREATE TABLE import_jobs (
-  job_id        BIGINT PRIMARY KEY AUTO_INCREMENT,
-  source_id     BIGINT NOT NULL,
-  initiated_by  BIGINT,
-  status        ENUM('pending','running','done','failed') DEFAULT 'pending',
-  started_at    TIMESTAMP NULL,
-  finished_at   TIMESTAMP NULL,
-  stats_json    JSON,                   -- đếm số câu, số lỗi, vv.
-  log_text      MEDIUMTEXT,
-  CONSTRAINT fk_job_source FOREIGN KEY (source_id)    REFERENCES sources(source_id),
-  CONSTRAINT fk_job_user   FOREIGN KEY (initiated_by) REFERENCES users(user_id)
-) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `sources`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sources` (
+  `source_id` bigint NOT NULL AUTO_INCREMENT,
+  `source_type` enum('document','external_bank','webpage','manual') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `origin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_path` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci,
+  `created_by` bigint DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`source_id`),
+  KEY `fk_sources_user` (`created_by`),
+  CONSTRAINT `fk_sources_user` FOREIGN KEY (`created_by`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Kết quả từng mục khi trích xuất (để rà soát)
-CREATE TABLE import_items (
-  item_id       BIGINT PRIMARY KEY AUTO_INCREMENT,
-  job_id        BIGINT NOT NULL,
-  section_id    BIGINT NULL,
-  raw_text      MEDIUMTEXT,            -- đoạn văn bản gốc
-  parsed_stem   TEXT,
-  parsed_options JSON,                 -- mảng lựa chọn tạm thời
-  parsed_answer JSON,                  -- mảng/nhãn đáp án đúng tạm thời
-  status        ENUM('draft','reviewed','converted','rejected') DEFAULT 'draft',
-  mapped_question_id BIGINT NULL,
-  note          VARCHAR(255),
-  CONSTRAINT fk_ii_job   FOREIGN KEY (job_id)   REFERENCES import_jobs(job_id) ON DELETE CASCADE,
-  CONSTRAINT fk_ii_sect  FOREIGN KEY (section_id) REFERENCES source_sections(section_id),
-  CONSTRAINT fk_ii_mq    FOREIGN KEY (mapped_question_id) REFERENCES questions(question_id)
-) ENGINE=InnoDB;
+--
+-- Table structure for table `subjects`
+--
 
-CREATE INDEX idx_ii_job ON import_items(job_id);
+DROP TABLE IF EXISTS `subjects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `subjects` (
+  `subject_id` bigint NOT NULL AUTO_INCREMENT,
+  `code` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(160) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`subject_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `tags`
+--
+
+DROP TABLE IF EXISTS `tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tags` (
+  `tag_id` bigint NOT NULL AUTO_INCREMENT,
+  `tag` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`tag_id`),
+  UNIQUE KEY `tag` (`tag`)
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `topics`
+--
+
+DROP TABLE IF EXISTS `topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `topics` (
+  `topic_id` bigint NOT NULL AUTO_INCREMENT,
+  `subject_id` bigint NOT NULL,
+  `parent_id` bigint DEFAULT NULL,
+  `code` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `sort_order` int DEFAULT '0',
+  PRIMARY KEY (`topic_id`),
+  KEY `idx_topics_subject` (`subject_id`),
+  KEY `idx_topics_parent` (`parent_id`),
+  CONSTRAINT `fk_topics_parent` FOREIGN KEY (`parent_id`) REFERENCES `topics` (`topic_id`),
+  CONSTRAINT `fk_topics_subject` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `user_favorite_subjects`
+--
+
+DROP TABLE IF EXISTS `user_favorite_subjects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_favorite_subjects` (
+  `user_id` bigint NOT NULL,
+  `subject_id` bigint NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`,`subject_id`),
+  KEY `idx_ufs_subject` (`subject_id`),
+  CONSTRAINT `fk_ufs_subject` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_ufs_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `user_id` bigint NOT NULL AUTO_INCREMENT,
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `last_login` datetime(6) DEFAULT NULL,
+  `password_hash` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_at` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Temporary view structure for view `v_question_full`
+--
+
+DROP TABLE IF EXISTS `v_question_full`;
+/*!50001 DROP VIEW IF EXISTS `v_question_full`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `v_question_full` AS SELECT 
+ 1 AS `question_id`,
+ 1 AS `stem`,
+ 1 AS `explanation`,
+ 1 AS `status`,
+ 1 AS `question_type`,
+ 1 AS `subject_name`,
+ 1 AS `bank_name`,
+ 1 AS `difficulty`,
+ 1 AS `bloom`,
+ 1 AS `source_title`,
+ 1 AS `source_section`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `v_question_full`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_question_full`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_question_full` AS select `q`.`question_id` AS `question_id`,`q`.`stem` AS `stem`,`q`.`explanation` AS `explanation`,`q`.`status` AS `status`,`q`.`question_type` AS `question_type`,`s`.`name` AS `subject_name`,`b`.`name` AS `bank_name`,`dl`.`name` AS `difficulty`,`bl`.`name` AS `bloom`,`src`.`title` AS `source_title`,`sec`.`label` AS `source_section` from ((((((`questions` `q` join `subjects` `s` on((`s`.`subject_id` = `q`.`subject_id`))) join `question_banks` `b` on((`b`.`bank_id` = `q`.`bank_id`))) join `difficulty_levels` `dl` on((`dl`.`difficulty_id` = `q`.`difficulty_id`))) left join `bloom_levels` `bl` on((`bl`.`bloom_id` = `q`.`bloom_id`))) left join `sources` `src` on((`src`.`source_id` = `q`.`source_id`))) left join `source_sections` `sec` on((`sec`.`section_id` = `q`.`section_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-09-19 21:57:36
