@@ -19,7 +19,8 @@ import LoadingState from "@/widgets/LoadingState";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { Subject } from "@/shared/api/subjectApi";
-import favoriteApi from "@/shared/api/favoriteApi";
+import favoriteApi, {fetchFavorites} from "@/shared/api/favoriteApi";
+
 
 // =============================
 // Types & mockable interfaces
@@ -49,25 +50,21 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(false);
   const [favorites, setFavorites] = useState<Subject[]>([]);
   const User = user?.user;
+  const token = localStorage.getItem("auth_token");
 
 
   useEffect(() => {
-    const fetchFavorites = async () => {
+    const loadFavorite = async () => {
 
-      const res = await fetch(`/api/subjects/favorites?userId=${User?.id}`);
-
-      if (res.ok) {
-        const data = await res.json();
-
+      try {
+        const data = await fetchFavorites(User?.id, token!);
         setFavorites(data);
-
-
-      } else {
-        console.error("Lỗi khi lấy danh sách yêu thích");
+      } catch (err) {
+        console.error(err);
       }
     };
 
-    fetchFavorites();
+    loadFavorite();
   }, []);
 
   useEffect(() => {
@@ -77,9 +74,9 @@ export default function DashboardPage() {
   async function removeFavorite(s: Subject) {
     try {
       await favoriteApi.delete(`/subjects/${s.id}/favorite?userId=${User?.id}`);
-    setFavorites(prev => prev.filter(fav => fav.id !== s.id));
+      setFavorites(prev => prev.filter(fav => fav.id !== s.id));
     }
-    catch (e){
+    catch (e) {
       console.error("Failed to remove favorite:", e);
     }
   }

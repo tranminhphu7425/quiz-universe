@@ -1,9 +1,11 @@
 package com.quizuniverse.controller;
 
 import com.quizuniverse.dto.LoginRequest;
+import com.quizuniverse.dto.LoginResponse;
 import com.quizuniverse.dto.UserDTO;
 import com.quizuniverse.entity.User;
 import com.quizuniverse.repository.UserRepository;
+import com.quizuniverse.service.AuthService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -14,38 +16,15 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = { "Content-Type", "Authorization" }, methods = {
-        RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,
-        RequestMethod.OPTIONS }, allowCredentials = "true", // nếu có gửi cookie/authorization
-        maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+
 public class AuthController {
 
     @Autowired
-    private UserRepository userRepository;
+    private AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        if (request.getEmail() == null || request.getPassword() == null) {
-            return ResponseEntity.badRequest().body("Thiếu email hoặc mật khẩu");
-        }
-
-        User user = userRepository.findByEmail(request.getEmail());
-
-        String stored = user.getPassword();
-        if (stored == null || !stored.equals(request.getPassword())) {
-           return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body("Sai email hoặc mật khẩu");
-        }
-
-        
-
-        // Giả lập token (sau này dùng JWT thì thay ở đây)
-        String token = UUID.randomUUID().toString();
-
-        UserDTO userDTO = new UserDTO(user);
-
-        return ResponseEntity.ok(Map.of(
-                "token", token,
-                "user", userDTO));
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.login(request));
     }
 }

@@ -81,6 +81,7 @@ export default function ThemeToggle() {
         {MODES.map(({ key, Icon }) => (
           <button key={key} className="h-8 w-8 opacity-0">
             <Icon />
+            <span className="sr-only">Delete</span>
           </button>
         ))}
       </div>

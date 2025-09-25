@@ -19,7 +19,19 @@ import Floating from "@/shared/ui/Floatting";
 import { Heart } from "lucide-react";
 import { ClipboardList, Send, CheckCircle2 } from "lucide-react";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
+import React, { ReactNode } from 'react';
+import  { useState, useEffect } from 'react';
 
+
+interface TypewriterTextProps {
+  text?: string;
+  speed?: number;
+  deleteSpeed?: number;
+  pauseDuration?: number;
+  loop?: boolean;
+  className?: string;
+  showCursor?: boolean;
+}
 
 
 /**
@@ -31,6 +43,146 @@ import FadeInOnView from "@/shared/ui/FadeInOnView";
  * - Testimonials
  * - Final CTA
  */
+
+
+interface GradientTextProps {
+    children: ReactNode;
+    className?: string;
+    colors?: string[];
+    animationSpeed?: number;
+    showBorder?: boolean;
+}
+
+const gradientKeyframes = `
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  animation: gradient 8s linear infinite;
+}
+`;
+
+
+
+
+const TypewriterText: React.FC<TypewriterTextProps> = ({
+  text = "",
+  speed = 100,
+  deleteSpeed = 50,
+  pauseDuration = 5000,
+  loop = false,
+  className = "",
+  showCursor = true
+}) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    if (isPaused) {
+      timeout = setTimeout(() => {
+        setIsPaused(false);
+        if (loop) {
+          setIsDeleting(true);
+        }
+      }, pauseDuration);
+    } else if (isDeleting) {
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(text.substring(0, displayText.length - 1));
+        }, deleteSpeed);
+      } else {
+        setIsDeleting(false);
+      }
+    } else {
+      if (displayText.length < text.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(text.substring(0, displayText.length + 1));
+        }, speed);
+      } else if (loop) {
+        setIsPaused(true);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, isPaused, text, speed, deleteSpeed, pauseDuration, loop]);
+
+  return (
+    <div className={`font-mono ${className}`}>
+      <span className="text-[2.5rem] md:text-[3rem] font-bold text-slate-800 dark:text-slate-200">
+        {displayText}
+        {showCursor && (
+          <motion.span
+            animate={{ opacity: [1, 0] }}
+            transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+            className="text-blue-500"
+          >
+            |
+          </motion.span>
+        )}
+      </span>
+    </div>
+  );
+};
+
+
+
+function GradientText({
+    children,
+    className = "",
+    colors = ["#4a2bffff", "#ff4089ff", "#ff8d02ff"],
+    animationSpeed = 8,
+    showBorder = false,
+}: GradientTextProps) {
+    const gradientStyle = {
+        backgroundImage: `linear-gradient(to right, ${colors.join(", ")})`,
+        backgroundSize: "300% 100%",
+        animation: `gradient ${animationSpeed}s linear infinite`,
+    };
+
+    return (
+        <>
+            {/* Inject keyframes styles */}
+            <style dangerouslySetInnerHTML={{ __html: gradientKeyframes }} />
+            <div
+                className={`relative flx max-w-fit flex-row items-center justify-center rounded-[1.25rem] backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
+            >
+            {showBorder && (
+                <div
+                    className="absolute inset-0 bg-cover z-0 pointer-events-none"
+                    style={gradientStyle}
+                >
+                    <div
+                        className="absolute inset-0 bg-black rounded-[1.25rem] z-[-1]"
+                        style={{
+                            width: "calc(100% - 2px)",
+                            height: "calc(100% - 2px)",
+                            left: "50%",
+                            top: "50%",
+                            transform: "translate(-50%, -50%)",
+                        }}
+                    ></div>
+                </div>
+            )}
+            <div
+                className="inline-block relative z-2 text-transparent bg-cover"
+                style={{
+                    ...gradientStyle,
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                }}
+            >
+                {children}
+            </div>
+        </div>
+        </>
+    );
+}
+
+
 
 export default function HomePage() {
 
@@ -163,19 +315,11 @@ export default function HomePage() {
               transition={{ delay: 0.05 }}
               className="text-[2.5rem] md:text-[3rem] font-black leading-tight"
             >
-              {`Chào mừng đến với `}
-              <span
-                className="
-            bg-gradient-to-r 
-            from-purple-500 via-pink-500 to-amber-500 
-            bg-clip-text 
-            text-transparent
-            animate-gradient
-            glow-text font-[Poppins]
-          "
-              >
+              <TypewriterText  text="Chào mừng đến với"/>
+              {/* {`Chào mừng đến với `} */}
+              <GradientText className="flex mx-auto md:mx-0 text-[2.5rem] md:text-[3rem] font-[Poppins]">
                 QuizUniverse
-              </span>
+            </GradientText>
             </motion.h1>
 
             <motion.p

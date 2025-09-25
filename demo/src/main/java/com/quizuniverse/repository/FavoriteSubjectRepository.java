@@ -23,11 +23,17 @@ public interface FavoriteSubjectRepository extends JpaRepository<Subject, Long> 
     void deleteByUserIdAndSubjectId(@Param("userId") Long userId, @Param("subjectId") Long subjectId);
 
     @Query(value = """
-        SELECT s.* FROM subjects s
-        JOIN user_favorite_subjects ufs ON s.subject_id = ufs.subject_id
-        WHERE ufs.user_id = :userId
-    """, nativeQuery = true)
+                SELECT s.* FROM subjects s
+                JOIN user_favorite_subjects ufs ON s.subject_id = ufs.subject_id
+                WHERE ufs.user_id = :userId
+            """, nativeQuery = true)
     List<Subject> findFavoriteSubjectsByUserId(@Param("userId") Long userId);
 
+    @Query(value = """
+                SELECT COUNT(*)
+                FROM user_favorite_subjects ufs
+                WHERE ufs.subject_id = :subjectId
+            """, nativeQuery = true)
+    int countFavoritesBySubjectId(@Param("subjectId") Long subjectId);
 
 }

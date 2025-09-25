@@ -1,13 +1,133 @@
 // Auto-generated
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Twitter, MessageCircle, Mail, Heart, Sparkles, Send, ShieldCheck, BookOpen } from "lucide-react";
 import Logo from "@/assets/images/logo/quizuniverselogo.png";
 import ThemeToggle from "@/shared/ui/ThemeToggle";
 import Floating from "@/shared/ui/Floatting";
 import { Link } from "react-router-dom";
+import {
+  useMotionValue,
+  useSpring,
+  useTransform,
+  MotionValue,
+} from "framer-motion";
+import React from "react";
 
 
+
+interface DockIconProps {
+  mouseX?: MotionValue<number>;
+  href: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+const DockIcon: React.FC<DockIconProps> = ({
+  mouseX,
+  href,
+  children,
+  onClick,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const defaultMouseX = useMotionValue(Infinity);
+
+  const iconSize = 36;
+  const iconMagnification = 60;
+  const iconDistance = 140;
+
+  const distance = useTransform(mouseX ?? defaultMouseX, (val) => {
+    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    return val - bounds.x - bounds.width / 2;
+  });
+
+  const widthSync = useTransform(
+    distance,
+    [-iconDistance, 0, iconDistance],
+    [iconSize, iconMagnification, iconSize]
+  );
+
+  const width = useSpring(widthSync, {
+    mass: 0.1,
+    stiffness: 150,
+    damping: 12,
+  });
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ width }}
+      className="flex aspect-square items-center justify-center rounded-full"
+    >
+      <a
+        href={href}
+        className="flex h-full w-full items-center justify-center"
+        onClick={handleClick}
+      >
+        {children}
+      </a>
+    </motion.div>
+  );
+};
+
+interface DockProps {
+  children: React.ReactNode;
+}
+
+const SimpleDock: React.FC<DockProps> = ({ children }) => {
+  const mouseX = useMotionValue(Infinity);
+
+  return (
+    <motion.div
+      onMouseMove={(e) => mouseX.set(e.pageX)}
+      onMouseLeave={() => mouseX.set(Infinity)}
+      className="flex h-[58px] items-center gap-2 rounded-lg "
+    >
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement(child) && child.type === DockIcon) {
+          return React.cloneElement(
+            child as React.ReactElement<DockIconProps>,
+            {
+              ...(child.props as DockIconProps),
+              mouseX: mouseX,
+            }
+          );
+        }
+        return child;
+      })}
+    </motion.div>
+  );
+};
+
+const SimpleDockApp: React.FC = () => {
+  const icons = [
+   
+    { name: "GitHub", component: Github, href: "" },
+    { name: "Twitter", component: Twitter, href: "#" },
+    { name: "MessageCircle", component: MessageCircle, href: "#" },
+    { name: "Mail", component: Mail, href: "#" },
+  ];
+
+  return (
+    <div className="flex flex-col items-center justify-end font-sans">
+      <SimpleDock>
+        {icons.map((icon) => (
+          <DockIcon key={icon.name} href={icon.href}>
+            <icon.component className="h-full w-full p-2 bg-sky-100 rounded-full text-sky-700 hover:bg-sky-200
+                             dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700" />
+          </DockIcon>
+        ))}
+      </SimpleDock>
+    </div>
+  );
+};
 export interface FooterLinkGroup {
   title: string;
   links: { label: string; href: string; external?: boolean }[];
@@ -123,46 +243,7 @@ export default function Footer({
 
             {/* Nút mạng XH có dark */}
             <div className="flex items-center gap-2">
-              <Wobble>
-                <a
-                  href="#"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-sky-700 hover:bg-sky-200
-                             dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-              </Wobble>
-              <Wobble>
-                <a
-                  href="#"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-sky-700 hover:bg-sky-200
-                             dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-5 w-5" />
-                </a>
-              </Wobble>
-              <Wobble>
-                <a
-                  href="#"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-sky-700 hover:bg-sky-200
-                             dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-                  aria-label="Community"
-                >
-                  <MessageCircle className="h-5 w-5" />
-                </a>
-              </Wobble>
-              <Wobble>
-                <a
-                  href="mailto:hello@example.com"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-sky-100 text-sky-700 hover:bg-sky-200
-                             dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-                  aria-label="Email"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
-              </Wobble>
+              <SimpleDockApp/>
             </div>
           </div>
 

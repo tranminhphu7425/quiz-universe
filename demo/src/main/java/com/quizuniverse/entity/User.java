@@ -3,6 +3,8 @@ package com.quizuniverse.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+import com.quizuniverse.dto.UserDTO;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -85,4 +87,8 @@ public class User {
 
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+
+    public UserDTO convertToDTO(){
+        return new UserDTO(this);
+    }
 }

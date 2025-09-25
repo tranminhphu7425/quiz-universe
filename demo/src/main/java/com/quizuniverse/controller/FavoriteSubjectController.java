@@ -38,6 +38,11 @@ public class FavoriteSubjectController {
         favoriteSubjectService.removeFavorite(userId, subjectId);
         return ResponseEntity.ok().body("Đã xóa khỏi yêu thích");
     }
+
+    @GetMapping("/{id}/favorites/count")
+    public int getFavoriteCount(@PathVariable Long id ){
+        return favoriteSubjectService.getFavoriteCount(id);
+    }
 }
 
 

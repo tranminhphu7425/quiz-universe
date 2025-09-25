@@ -14,7 +14,7 @@ import { set } from "zod";
 type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
 import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
-import favoriteApi from "@/shared/api/favoriteApi";
+import favoriteApi, {fetchFavorites} from "@/shared/api/favoriteApi";
 import { useAuth } from "@/app/providers/AuthProvider";
 
 
@@ -42,6 +42,8 @@ export default function SubjectPage() {
   const [data, setData] = useState<Subject[]>([]);
   const user = useAuth();
   const User = user?.user;
+
+  const token = localStorage.getItem("auth_token");
 
 
   // ======= PAGINATION =======
@@ -77,23 +79,22 @@ export default function SubjectPage() {
 
 
   useEffect(() => {
-    const fetchFavorites = async () => {
-
-      const res = await fetch(`/api/subjects/favorites?userId=${User?.id}`);
-
-      if (res.ok) {
-        const data = await res.json();
-
-        setFavorites(new Set(data.map((s: Subject) => s.id)));
-
-
-      } else {
-        console.error("Lỗi khi lấy danh sách yêu thích");
-      }
-    };
-
-    fetchFavorites();
-  }, []);
+      const loadFavorite = async () => {
+  
+        try {
+          const data = await fetchFavorites(User?.id, token!);
+          setFavorites(new Set(data.map((s: Subject) => s.id)));
+        } catch (err) {
+          console.error(err);
+        }
+      };
+  
+      loadFavorite();
+    }, []);
+  
+    useEffect(() => {
+      console.log("Favorite subjects updated:", favorites);
+    }, [favorites]);
 
 
   useEffect(() => {

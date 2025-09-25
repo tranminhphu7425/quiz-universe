@@ -28,4 +28,9 @@ public class FavoriteSubjectService {
     public void removeFavorite(Long userId, Long subjectId) {
         favoriteSubjectRepository.deleteByUserIdAndSubjectId(userId, subjectId);
     }
+
+
+    public int getFavoriteCount(Long subjectId){
+        return favoriteSubjectRepository.countFavoritesBySubjectId(subjectId);
+    }
 }
