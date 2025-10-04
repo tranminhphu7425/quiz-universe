@@ -19,7 +19,7 @@ export default function StepCard({ step, title, desc, icon, accent = "from-emera
 }) {
   return (
     <motion.div
-      whileHover={{ y: -3 }}
+      whileHover={{ y: -10 }}
       className={`
     rounded-xl relative
     bg-white shadow-md p-6 transition hover:shadow-xl 

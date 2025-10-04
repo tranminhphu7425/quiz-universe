@@ -145,13 +145,15 @@ export default function LoginPage() {
               <Mail className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
               <input
                 type="email"
+                name="email"
+                autoComplete="email"
                 required
                 placeholder="you@example.com"
                 className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
               />
+
             </div>
 
             {/* Password */}

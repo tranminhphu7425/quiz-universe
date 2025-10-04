@@ -14,8 +14,9 @@ import { set } from "zod";
 type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
 import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
-import favoriteApi, {fetchFavorites} from "@/shared/api/favoriteApi";
 import { useAuth } from "@/app/providers/AuthProvider";
+
+import { fetchFavorites, addFavorite, removeFavorite } from "@/shared/api/favoriteApi";
 
 
 
@@ -57,23 +58,23 @@ export default function SubjectPage() {
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
 
   const toggleFavorite = async (subjectId: number) => {
-    const isFav = favorites.has(subjectId);
-    try {
-      if (isFav) {
-        await favoriteApi.delete(`/subjects/${subjectId}/favorite?userId=${User?.id}`);
-        setFavorites(prev => {
-          const next = new Set(prev);
-          next.delete(subjectId);
-          return next;
-        });
-      } else {
-        await favoriteApi.post(`/subjects/${subjectId}/favorite?userId=${User?.id}`);
-        setFavorites(prev => new Set(prev).add(subjectId));
-      }
-    } catch (err) {
-      console.error("Lỗi khi cập nhật yêu thích", err);
+  const isFav = favorites.has(subjectId);
+  try {
+    if (isFav) {
+      await removeFavorite(subjectId, User?.id, token!);
+      setFavorites(prev => {
+        const next = new Set(prev);
+        next.delete(subjectId);
+        return next;
+      });
+    } else {
+      await addFavorite(subjectId, User?.id, token!);
+      setFavorites(prev => new Set(prev).add(subjectId));
     }
-  };
+  } catch (err) {
+    console.error("Lỗi khi cập nhật yêu thích", err);
+  }
+};
 
 
 

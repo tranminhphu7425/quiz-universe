@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import Logo from "@/assets/images/logo/quizuniverselogo.png";
 import type { Variants } from "framer-motion";
+import { Settings } from "lucide-react";
 
 
 import {
@@ -77,22 +78,20 @@ const bounceTransition = {
 } as const;
 
 export default function Header({
-  tenants = [
-    { id: "hcmus", name: "ĐH KHTN" },
-    { id: "hust", name: "ĐH BKHN" },
-    { id: "vnu", name: "ĐHQG" },
-  ],
-  currentTenant = null,
-  onChangeTenant,
+ 
   onGetStarted,
   onLogin,
-  links = [
-    { label: "Câu hỏi", href: "/subjects" },
-    // { label: "Đề thi", href: "/exams/create" },
-
-  ],
+  links ,
 }: HeaderProps) {
   const { user, logout } = useAuth();
+  links = user? [
+    { label: "Câu hỏi", href: "/subjects" },
+    { label: "Đề thi", href: "/exams/create" },
+    {label: "Diễn đàn", href: "/forum"}
+
+  ] : [ { label: "Liên hệ", href: "/contact" },
+    { label: "Hướng dẫn nhanh", href: "/quickguide" },
+    {label: "Diễn đàn", href: "/forum"}];
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -181,6 +180,11 @@ export default function Header({
     fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log("Xin chao", user);
+
+  }, [user])
+
 
 
   const navSubItems = [
@@ -255,80 +259,7 @@ export default function Header({
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4">
-            {/* Tenant Dropdown */}
-            <motion.div className="relative" >
-              <motion.button
-                className="flex items-center space-x-1 text-white dark:text-slate-200 p-3 rounded-lg hover:bg-green-700 dark:hover:bg-slate-700 transition-all"
-                onClick={() => setTenantOpen(!tenantOpen)} whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Building2 className="w-4 h-4" />
-                <span className="font-medium">{currentTenant || "Chọn trường"}</span>
-                <motion.span animate={{ rotate: tenantOpen ? 180 : 0 }}>
-                  <ChevronDown className="w-4 h-4" />
-                </motion.span>
-              </motion.button>
-
-              <AnimatePresence>
-                {tenantOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ type: "spring", damping: 20, stiffness: 300 }}
-                    className="absolute left-0 mt-2 w-56 bg-white dark:bg-slate-900 rounded-xl shadow-2xl overflow-hidden z-50 border border-emerald-100 dark:border-slate-700"
-                  >
-                    <motion.div
-                      className="divide-y divide-emerald-50 dark:divide-slate-700"
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        visible: { transition: { staggerChildren: 0.05 } },
-                      }}
-                    >
-                      {tenants.map((tenant) => (
-                        <motion.div
-                          key={tenant.id}
-                          variants={{
-                            hidden: { opacity: 0, x: -20 },
-                            visible: { opacity: 1, x: 0 },
-                          }}
-                        >
-                          <Link
-                            to="#"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              onChangeTenant?.(tenant.id);
-                              setTenantOpen(false);
-                            }}
-                            className="flex items-center px-4 py-3 text-gray-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 transition-all group"
-                          >
-                            <motion.span
-                              className="mr-3 text-lg group-hover:scale-110 transition-transform"
-                              whileHover={{ scale: 1.2 }}
-                            >
-                              <Building2 className="text-emerald-500" />
-                            </motion.span>
-                            <span className="group-hover:font-medium group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-all">
-                              {tenant.name}
-                            </span>
-                            <motion.span
-                              className="ml-auto opacity-0 group-hover:opacity-100 text-emerald-500"
-                              initial={{ x: -10 }}
-                              animate={{ x: 0 }}
-                              transition={{ delay: 0.1 }}
-                            >
-                              <ChevronRight className="w-3 h-3" />
-                            </motion.span>
-                          </Link>
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-
+           
             {/* Main Nav Items */}
             {navSubItems.map((item) => {
               const active = location.pathname === item.to;
@@ -571,6 +502,37 @@ export default function Header({
                           </motion.div>
 
 
+                          {/* Cài đặt */}
+
+
+                          <motion.div
+                            variants={{
+                              hidden: { opacity: 0, x: -20 },
+                              visible: { opacity: 1, x: 0 },
+                            }}
+                          >
+                            <Link
+                              to="/settings"
+                              onClick={() => setMenuOpen(false)}
+                              className="flex items-center px-4 py-3 text-gray-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 transition-all group"
+                            >
+                              <Settings className="w-5 h-5 mr-2 text-blue-500 group-hover:scale-110 transition-transform" />
+                              <span className="group-hover:font-medium group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-all">
+                                Cài đặt
+                              </span>
+                              <motion.span
+                                className="ml-auto opacity-0 group-hover:opacity-100 text-emerald-500"
+                                initial={{ x: -10 }}
+                                animate={{ x: 0 }}
+                                transition={{ delay: 0.1 }}
+                              >
+                                <ChevronRight className="w-3 h-3" />
+                              </motion.span>
+                            </Link>
+                          </motion.div>
+
+
+
                           {/* Đăng xuất */}
                           <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}>
                             <button
@@ -693,7 +655,7 @@ export default function Header({
               <motion.div className="px-2 pt-4 pb-2 space-y-2" variants={menuVariants}>
 
 
-                {/* Tenant Dropdown (Mobile) */}
+                {/* Tenant Dropdown (Mobile)
                 <motion.div variants={itemVariants}>
                   <motion.button
                     className="w-full flex justify-between items-center rounded-lg text-white dark:text-slate-200 hover:bg-emerald-700 dark:hover:bg-slate-700 py-3 px-4 transition"
@@ -736,7 +698,7 @@ export default function Header({
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </motion.div>
+                </motion.div> */}
 
                 {/* Mobile Nav Items */}
                 {navSubItems.map((item) => (

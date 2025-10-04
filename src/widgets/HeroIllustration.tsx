@@ -4,8 +4,34 @@ import { motion } from "framer-motion";
 import { Database, FileText, Shuffle, BookOpen, Upload, CheckCircle2 } from "lucide-react";
 import { Printer } from 'lucide-react'; // or from your chosen icon library
 import { Users } from 'lucide-react';
-import {fetchTotalQuestionCount} from "@/shared/api/questionsApi";
+import { fetchTotalQuestionCount } from "@/shared/api/questionsApi";
 import { useEffect, useState } from "react";
+import React from "react";
+
+
+const coderData = {
+  name: "Zane Whitaker",
+  role: "Frontend Developer",
+  seniority: "Mid-Level",
+  location: "Bangladesh",
+  skills: [
+    "React",
+    "Next.js",
+    "JavaScript",
+    "TypeScript",
+    "TailwindCSS",
+    "CSS",
+    "Figma",
+    "GitHub",
+    "HTML",
+    "Astro",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Firebase",
+    "Git",
+  ],
+};
 
 function Card({
   title,
@@ -51,8 +77,27 @@ export function HeroIllustration() {
   }), [];
   return (
     <div className="relative select-none">
+    
       {/* Glowing border top */}
-      <div className="absolute -top-px right-11 left-20 h-px bg-gradient-to-r from-white/0 via-white/70 to-white/0 dark:via-blue-500" />
+      <div className="flex flex-row absolute -top-px left-0 right-0">
+        <div className="h-[2px] w-1/2 bg-gradient-to-r 
+                  from-transparent via-emerald-300 to-sky-300 
+                  dark:via-red-400 dark:to-yellow-400" />
+        <div className="h-[2px] w-1/2 bg-gradient-to-r 
+                  from-sky-300 to-transparent 
+                  dark:from-yellow-400 dark:to-transparent" />
+      </div>
+
+      {/* Glowing border bottom */}
+      <div className="flex flex-row absolute -bottom-px left-0 right-0">
+        <div className="h-[2px] w-1/2 bg-gradient-to-r 
+                  from-transparent via-emerald-300 to-sky-300 
+                  dark:via-yellow-300 dark:to-green-300" />
+        <div className="h-[2px] w-1/2 bg-gradient-to-r 
+                  from-sky-300 to-transparent 
+                  dark:from-green-300 dark:to-transparent" />
+      </div>
+
 
       {/* Main container */}
       <div className="relative rounded-2xl border border-white/30 bg-gradient-to-br from-blue-50 to-white/20 p-5 text-gray-800 shadow-xl backdrop-blur

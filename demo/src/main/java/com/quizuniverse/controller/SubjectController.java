@@ -10,7 +10,7 @@ import com.quizuniverse.service.SubjectNotFoundException;
 
 @RestController
 @RequestMapping("/api/subjects")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class SubjectController {
     
     private final SubjectService subjectService;

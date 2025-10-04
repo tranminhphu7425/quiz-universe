@@ -29,7 +29,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
+    <div className="relative flex items-center  min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
       {/* Gradient nền */}
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
       </Floating>
 
       {/* Nội dung */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 py-20">
+      <div className="h-min-screen relative z-10 mx-auto max-w-5xl px-6 py-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}

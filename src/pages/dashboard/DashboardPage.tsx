@@ -20,6 +20,8 @@ import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { Subject } from "@/shared/api/subjectApi";
 import favoriteApi, {fetchFavorites} from "@/shared/api/favoriteApi";
+import TypewriterText from "@/shared/ui/TypewriterText";
+import OrbitingSkills from "@/shared/ui/OrbitingSkills";
 
 
 // =============================
@@ -73,7 +75,12 @@ export default function DashboardPage() {
 
   async function removeFavorite(s: Subject) {
     try {
-      await favoriteApi.delete(`/subjects/${s.id}/favorite?userId=${User?.id}`);
+      await favoriteApi.delete(`/subjects/${s.id}/favorite?userId=${User?.id}`, {
+        headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${token}`, // ✅ gửi token trong header
+  },
+      });
       setFavorites(prev => prev.filter(fav => fav.id !== s.id));
     }
     catch (e) {
@@ -84,12 +91,12 @@ export default function DashboardPage() {
 
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="relative z-9 min-h-screen bg-slate-50 dark:bg-slate-900">
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden">
         {/* Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-
+        <OrbitingSkills/>
         {/* Soft blobs */}
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-2xl dark:bg-emerald-400/10" />
         <div className="pointer-events-none absolute -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/10" />
@@ -99,9 +106,9 @@ export default function DashboardPage() {
             <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur">
               <Star className="h-4 w-4" /> Bảng điều khiển
             </div>
-            <h1 className="text-[2rem] md:text-[2.4rem] font-black leading-tight text-white">
-              Xin chào{User?.name ? `, ${User.name}` : "!"} 👋
-            </h1>
+            <TypewriterText text={`Xin chào${User?.name ? `, ${User.name}` : "!"} 👋`}  className="text-[2rem] md:text-[2.4rem] font-black leading-tight text-white"/>
+              
+          
             <p className="mt-1 max-w-xl text-white/90">
               Tóm tắt nhanh những bộ câu hỏi bạn yêu thích và bạn đã tạo.
             </p>
@@ -132,7 +139,7 @@ export default function DashboardPage() {
       </section>
 
       {/* ===== STATS ===== */}
-      <section className="mx-auto max-w-7xl px-6 -mt-6">
+      <section className="relative z-9 mx-auto max-w-7xl px-6 mt-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard icon={<Heart className="h-4 w-4" />} label="Yêu thích" value={favorites.length} hint="bộ câu hỏi" />
           <StatCard icon={<ListChecks className="h-4 w-4" />} label="Của tôi" value={1} hint="bộ câu hỏi" />
@@ -142,7 +149,7 @@ export default function DashboardPage() {
       </section>
 
       {/* ===== CONTENT ===== */}
-      <main className="mx-auto max-w-7xl px-6 py-10">
+      <main className="relative mx-auto max-w-7xl px-6 py-10">
         {loading ? (
           <LoadingState count={6} />
         ) : (

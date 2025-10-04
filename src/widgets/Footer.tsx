@@ -33,7 +33,7 @@ const DockIcon: React.FC<DockIconProps> = ({
   const defaultMouseX = useMotionValue(Infinity);
 
   const iconSize = 36;
-  const iconMagnification = 60;
+  const iconMagnification = 45;
   const iconDistance = 140;
 
   const distance = useTransform(mouseX ?? defaultMouseX, (val) => {
@@ -159,7 +159,7 @@ export default function Footer({
     {
       title: "Sản phẩm",
       links: [
-        { label: "Ngân hàng câu hỏi", href: "#" },
+        { label: "Ngân hàng câu hỏi", href: "/subjects" },
         { label: "Tạo đề", href: "#" },
         { label: "Chấm & Báo cáo", href: "#" },
       ],
@@ -167,8 +167,8 @@ export default function Footer({
     {
       title: "Tài nguyên",
       links: [
-        { label: "Tài liệu", href: "#" },
-        { label: "Hướng dẫn nhanh", href: "#" },
+        { label: "Tài liệu", href: "/documents" },
+        { label: "Hướng dẫn nhanh", href: "/quickguide" },
         { label: "Cộng đồng", href: "#" },
       ],
     },
@@ -177,15 +177,15 @@ export default function Footer({
       links: [
         { label: "Giới thiệu", href: "/about" },
         { label: "Liên hệ", href: "/contact" },
-        { label: "Tuyển dụng", href: "#" },
+        { label: "Tuyển dụng", href: "/recruits" },
       ],
     },
     {
       title: "Pháp lý",
       links: [
-        { label: "Điều khoản", href: "#" },
-        { label: "Bảo mật", href: "#" },
-        { label: "Cookies", href: "#" },
+        { label: "Điều khoản", href: "/terms" },
+        { label: "Bảo mật", href: "/security" },
+        { label: "Cookies", href: "/cookies" },
       ],
     },
   ],
@@ -363,9 +363,9 @@ export default function Footer({
             <ThemeToggle />
             <div>© {new Date().getFullYear()} QuizUniverse. All rights reserved.</div>
             <div className="flex items-center gap-3">
-              <a href="#" className="hover:text-sky-900 dark:hover:text-sky-200">Điều khoản</a>
-              <a href="#" className="hover:text-sky-900 dark:hover:text-sky-200">Bảo mật</a>
-              <a href="#" className="hover:text-sky-900 dark:hover:text-sky-200">Cookies</a>
+              <Link to="/terms" className="hover:text-sky-900 dark:hover:text-sky-200">Điều khoản</Link>
+              <Link to="/security" className="hover:text-sky-900 dark:hover:text-sky-200">Bảo mật</Link>
+              <Link to="/cookies" className="hover:text-sky-900 dark:hover:text-sky-200">Cookies</Link>
             </div>
           </div>
         </div>

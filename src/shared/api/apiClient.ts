@@ -22,7 +22,7 @@ export async function fetchJson<T>(
     ...(options.headers || {}),
   };
   if (authToken) headers["Authorization"] = `Bearer ${authToken}`;
-
+  console.log("Token: ", authToken);
   const res = await fetch(url, {
     method: options.method || "GET",
     headers,
@@ -43,3 +43,18 @@ export async function fetchJson<T>(
 
   return (isJson ? res.json() : (undefined as unknown)) as T;
 }
+
+
+// ====== (tuỳ chọn) Gọi API thật ======
+export async function saveProfile(payload: { university: string; major: string; intakeYear?: number }) {
+  // API gợi ý: POST /api/users/me/profile or /api/profile/setup
+  console.log(payload);
+  
+  return await fetchJson<any>("/api/profile/setup", {
+    method: "POST",
+    body: payload,
+  }); // tuỳ backend trả về
+}
+
+
+

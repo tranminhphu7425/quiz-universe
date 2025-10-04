@@ -25,5 +25,23 @@ export async function fetchFavorites(userId: string | undefined, token: string) 
 }
 
 
+// ✅ Thêm favorite
+export async function addFavorite(subjectId: number, userId: string  | undefined, token: string) {
+  await favoriteApi.post(`/subjects/${subjectId}/favorite?userId=${userId}`, null, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
+
+
+// ✅ Xoá favorite
+export async function removeFavorite(subjectId: number, userId: string | undefined, token: string) {
+  await favoriteApi.delete(`/subjects/${subjectId}/favorite?userId=${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
+
+
 
 export default favoriteApi;

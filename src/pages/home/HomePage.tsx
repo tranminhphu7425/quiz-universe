@@ -20,18 +20,11 @@ import { Heart } from "lucide-react";
 import { ClipboardList, Send, CheckCircle2 } from "lucide-react";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import React, { ReactNode } from 'react';
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import TypewriterText from "@/shared/ui/TypewriterText";
+import OrbitingSkills from "@/shared/ui/OrbitingSkills";
 
 
-interface TypewriterTextProps {
-  text?: string;
-  speed?: number;
-  deleteSpeed?: number;
-  pauseDuration?: number;
-  loop?: boolean;
-  className?: string;
-  showCursor?: boolean;
-}
 
 
 /**
@@ -46,11 +39,11 @@ interface TypewriterTextProps {
 
 
 interface GradientTextProps {
-    children: ReactNode;
-    className?: string;
-    colors?: string[];
-    animationSpeed?: number;
-    showBorder?: boolean;
+  children: ReactNode;
+  className?: string;
+  colors?: string[];
+  animationSpeed?: number;
+  showBorder?: boolean;
 }
 
 const gradientKeyframes = `
@@ -65,121 +58,56 @@ const gradientKeyframes = `
 `;
 
 
-
-
-const TypewriterText: React.FC<TypewriterTextProps> = ({
-  text = "",
-  speed = 100,
-  deleteSpeed = 50,
-  pauseDuration = 5000,
-  loop = false,
+function GradientText({
+  children,
   className = "",
-  showCursor = true
-}) => {
-  const [displayText, setDisplayText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    if (isPaused) {
-      timeout = setTimeout(() => {
-        setIsPaused(false);
-        if (loop) {
-          setIsDeleting(true);
-        }
-      }, pauseDuration);
-    } else if (isDeleting) {
-      if (displayText.length > 0) {
-        timeout = setTimeout(() => {
-          setDisplayText(text.substring(0, displayText.length - 1));
-        }, deleteSpeed);
-      } else {
-        setIsDeleting(false);
-      }
-    } else {
-      if (displayText.length < text.length) {
-        timeout = setTimeout(() => {
-          setDisplayText(text.substring(0, displayText.length + 1));
-        }, speed);
-      } else if (loop) {
-        setIsPaused(true);
-      }
-    }
-
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, isPaused, text, speed, deleteSpeed, pauseDuration, loop]);
+  colors = ["#4a2bffff", "#ff4089ff", "#ff8d02ff"],
+  animationSpeed = 8,
+  showBorder = false,
+}: GradientTextProps) {
+  const gradientStyle = {
+    backgroundImage: `linear-gradient(to right, ${colors.join(", ")})`,
+    backgroundSize: "300% 100%",
+    animation: `gradient ${animationSpeed}s linear infinite`,
+  };
 
   return (
-    <div className={`font-mono ${className}`}>
-      <span className="text-[2.5rem] md:text-[3rem] font-bold text-slate-800 dark:text-slate-200">
-        {displayText}
-        {showCursor && (
-          <motion.span
-            animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
-            className="text-blue-500"
+    <>
+      {/* Inject keyframes styles */}
+      <style dangerouslySetInnerHTML={{ __html: gradientKeyframes }} />
+      <div
+        className={`relative flx max-w-fit flex-row items-center justify-center rounded-[1.25rem] backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
+      >
+        {showBorder && (
+          <div
+            className="absolute inset-0 bg-cover z-0 pointer-events-none"
+            style={gradientStyle}
           >
-            |
-          </motion.span>
+            <div
+              className="absolute inset-0 bg-black rounded-[1.25rem] z-[-1]"
+              style={{
+                width: "calc(100% - 2px)",
+                height: "calc(100% - 2px)",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            ></div>
+          </div>
         )}
-      </span>
-    </div>
-  );
-};
-
-
-
-function GradientText({
-    children,
-    className = "",
-    colors = ["#4a2bffff", "#ff4089ff", "#ff8d02ff"],
-    animationSpeed = 8,
-    showBorder = false,
-}: GradientTextProps) {
-    const gradientStyle = {
-        backgroundImage: `linear-gradient(to right, ${colors.join(", ")})`,
-        backgroundSize: "300% 100%",
-        animation: `gradient ${animationSpeed}s linear infinite`,
-    };
-
-    return (
-        <>
-            {/* Inject keyframes styles */}
-            <style dangerouslySetInnerHTML={{ __html: gradientKeyframes }} />
-            <div
-                className={`relative flx max-w-fit flex-row items-center justify-center rounded-[1.25rem] backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
-            >
-            {showBorder && (
-                <div
-                    className="absolute inset-0 bg-cover z-0 pointer-events-none"
-                    style={gradientStyle}
-                >
-                    <div
-                        className="absolute inset-0 bg-black rounded-[1.25rem] z-[-1]"
-                        style={{
-                            width: "calc(100% - 2px)",
-                            height: "calc(100% - 2px)",
-                            left: "50%",
-                            top: "50%",
-                            transform: "translate(-50%, -50%)",
-                        }}
-                    ></div>
-                </div>
-            )}
-            <div
-                className="inline-block relative z-2 text-transparent bg-cover"
-                style={{
-                    ...gradientStyle,
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                }}
-            >
-                {children}
-            </div>
+        <div
+          className="inline-block relative z-2 text-transparent bg-cover"
+          style={{
+            ...gradientStyle,
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+          }}
+        >
+          {children}
         </div>
-        </>
-    );
+      </div>
+    </>
+  );
 }
 
 
@@ -187,7 +115,7 @@ function GradientText({
 export default function HomePage() {
 
   const { user } = useAuth();
-  
+
   const testimonials = useMemo(
     () => [
       {
@@ -214,9 +142,106 @@ export default function HomePage() {
         rating: 5,
         role: "Quản trị",
       },
+      {
+        id: 4,
+        name: "Phạm Thị D",
+        comment:
+          "Hệ thống cho phép luyện tập nhiều lần, nhờ vậy tôi nắm chắc kiến thức hơn.",
+        rating: 5,
+        role: "Sinh viên",
+      },
+      {
+        id: 5,
+        name: "Hoàng Văn E",
+        comment:
+          "Tốc độ phản hồi nhanh, không bị giật lag ngay cả khi có nhiều người thi cùng lúc.",
+        rating: 4,
+        role: "Giảng viên",
+      },
+      {
+        id: 6,
+        name: "Vũ Thị F",
+        comment:
+          "Thiết kế giao diện thân thiện, dễ dùng ngay cả với người mới. Tôi không mất thời gian làm quen.",
+        rating: 5,
+        role: "Sinh viên",
+      },
+      {
+        id: 7,
+        name: "Đặng Văn G",
+        comment:
+          "Chức năng thống kê chi tiết, giúp quản lý nắm bắt kết quả học tập của sinh viên.",
+        rating: 5,
+        role: "Quản trị",
+      },
+      {
+        id: 8,
+        name: "Ngô Thị H",
+        comment:
+          "Có thể làm bài thi thử trước khi vào kỳ thi thật, giúp giảm căng thẳng rất nhiều.",
+        rating: 4,
+        role: "Sinh viên",
+      },
+      {
+        id: 9,
+        name: "Phan Văn I",
+        comment:
+          "Hệ thống phân loại câu hỏi theo độ khó rất hữu ích cho việc luyện thi.",
+        rating: 5,
+        role: "Giảng viên",
+      },
+      {
+        id: 10,
+        name: "Trương Thị J",
+        comment:
+          "Dễ dàng truy cập bằng điện thoại, không bị giới hạn thiết bị. Tôi thường làm bài khi rảnh.",
+        rating: 4,
+        role: "Sinh viên",
+      },
+      {
+        id: 11,
+        name: "Bùi Văn K",
+        comment:
+          "Có thể xuất báo cáo kết quả chi tiết cho từng sinh viên, rất tiện khi họp phụ huynh.",
+        rating: 5,
+        role: "Quản trị",
+      },
+      {
+        id: 12,
+        name: "Đỗ Thị L",
+        comment:
+          "Chức năng tìm kiếm câu hỏi nhanh chóng, tiết kiệm nhiều thời gian khi ôn tập.",
+        rating: 5,
+        role: "Sinh viên",
+      },
+      {
+        id: 13,
+        name: "Nguyễn Văn M",
+        comment:
+          "Khi có sự cố đường truyền, hệ thống tự lưu bài, tránh bị mất dữ liệu. Rất yên tâm.",
+        rating: 5,
+        role: "Sinh viên",
+      },
+      {
+        id: 14,
+        name: "Lý Thị N",
+        comment:
+          "Đề thi có thể tùy chỉnh nhiều dạng câu hỏi khác nhau, không bị nhàm chán.",
+        rating: 4,
+        role: "Giảng viên",
+      },
+      {
+        id: 15,
+        name: "Mai Văn O",
+        comment:
+          "Tôi là phụ huynh, có thể xem điểm và tiến bộ của con dễ dàng. Thật sự yên tâm hơn.",
+        rating: 5,
+        role: "Phụ huynh",
+      },
     ],
     []
   );
+
 
   // SVG tile (data URL) dùng làm họa tiết nền mờ như Home.jsx
   const tileUrl = encodeURIComponent(`
@@ -266,6 +291,7 @@ export default function HomePage() {
       transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     }
   };
+  const looped = [...testimonials, ...testimonials];
 
 
   return (
@@ -291,7 +317,7 @@ export default function HomePage() {
               "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
           }}
         />
-
+        <OrbitingSkills />
         {/* Blur blobs */}
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-2xl dark:bg-emerald-400/10" />
         <div className="pointer-events-none absolute -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/10" />
@@ -315,11 +341,11 @@ export default function HomePage() {
               transition={{ delay: 0.05 }}
               className="text-[2.5rem] md:text-[3rem] font-black leading-tight"
             >
-              <TypewriterText  text="Chào mừng đến với"/>
+              <TypewriterText text="Chào mừng đến với" />
               {/* {`Chào mừng đến với `} */}
               <GradientText className="flex mx-auto md:mx-0 text-[2.5rem] md:text-[3rem] font-[Poppins]">
                 QuizUniverse
-            </GradientText>
+              </GradientText>
             </motion.h1>
 
             <motion.p
@@ -506,64 +532,48 @@ export default function HomePage() {
           </motion.p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t, idx) => (
-            <motion.div
-              key={t.id}
-              initial={{ opacity: 0, y: 40, rotate: -2 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-              transition={{ delay: idx * 0.15, type: "spring", stiffness: 140, damping: 15 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              className="rounded-xl border border-emerald-100 dark:border-slate-800 
-                   bg-gradient-to-br from-white to-emerald-50 dark:from-slate-900 dark:to-slate-800
-                   p-6 shadow-lg hover:shadow-xl transition-transform duration-300"
-            >
-              {/* Info người đánh giá */}
-              <div className="mb-3">
-                <div className="font-semibold text-emerald-700 dark:text-emerald-300">
-                  {t.name}
-                </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">
-                  {t.role}
-                </div>
-              </div>
-
-              {/* Rating sao */}
-              <div className="mb-3 flex items-center gap-1">
-                {Array.from({ length: t.rating }).map((_, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.2 + i * 0.05, type: "spring" }}
-                    className="text-amber-400"
-                  >
-                    ★
-                  </motion.span>
-                ))}
-                {Array.from({ length: 5 - t.rating }).map((_, i) => (
-                  <span
-                    key={i}
-                    className="text-gray-300 dark:text-gray-600"
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-
-              {/* Comment */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                viewport={{ once: true }}
-                className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed italic"
+        <div className="overflow-hidden relative w-full">
+          <motion.div
+            className="flex gap-6"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              ease: "linear",
+              duration: 30, // tốc độ (có thể chỉnh nhanh/chậm)
+              repeat: Infinity,
+            }}
+          >
+            {looped.map((t, idx) => (
+              <div
+                key={t.id + "-" + idx}
+                className="min-w-[320px] max-w-sm rounded-xl border border-emerald-100 dark:border-slate-800 
+              bg-gradient-to-br from-white to-emerald-50 dark:from-slate-900 dark:to-slate-800
+              p-6 shadow-lg"
               >
-                “{t.comment}”
-              </motion.p>
-            </motion.div>
-          ))}
+                {/* Info */}
+                <div className="mb-3">
+                  <div className="font-semibold text-emerald-700 dark:text-emerald-300">
+                    {t.name}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">{t.role}</div>
+                </div>
+
+                {/* Stars */}
+                <div className="mb-3 flex items-center gap-1">
+                  {Array.from({ length: t.rating }).map((_, i) => (
+                    <span key={i} className="text-amber-400">★</span>
+                  ))}
+                  {Array.from({ length: 5 - t.rating }).map((_, i) => (
+                    <span key={i} className="text-gray-300 dark:text-gray-600">★</span>
+                  ))}
+                </div>
+
+                {/* Comment */}
+                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed italic">
+                  “{t.comment}”
+                </p>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -583,7 +593,7 @@ export default function HomePage() {
               Tạo đề ngay <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              to={`/app`}
+              to={`/dashboard`}
               className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-2.5 font-medium text-white ring-1 ring-white/30 hover:bg-white/15 dark:bg-emerald-800 dark:text-gray-100 dark:ring-emerald-700 dark:hover:bg-emerald-700/60"
             >
               Xem bảng điều khiển

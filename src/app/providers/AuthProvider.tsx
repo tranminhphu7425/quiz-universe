@@ -1,16 +1,24 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { fetchJson, setAuthToken } from "@/shared/api/apiClient";
 
+import { Major, University } from "@/shared/api/major-universityApi";
+
+
 /** Vai trò & user */
 export type Role = "admin" | "user" | "TEACHER" | "STUDENT";
 
 export interface User {
   id: string;
   name: string;
+  username: string;
   role: Role;
-  tenantId: string;
+  phone: string;
   email?: string;
+  university?: University;
+  major?: Major;
+  intakeYear?: number;
 }
+
 
 /** Kiểu context mà các page sẽ dùng */
 export interface AuthContextType {
@@ -35,7 +43,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 /** Kiểu response backend kỳ vọng */
 type LoginResponse = { token: string; user: User };
-type RegisterResponse = { id: string; user: User } | { success: true };
+type RegisterResponse = { token: string; id: string; name: string; email: string };
 type VoidResponse = { success: true } | undefined;
 
 function pickStorage(remember?: boolean) {
@@ -85,6 +93,8 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
         setAuthToken(data.token);
       }
       if (data.user) storage.setItem("auth_user", JSON.stringify(data.user));
+      console.log("Cap nhat tu back: ", data.user);
+      
       setUser(data.user ?? null);
     } finally {
       setLoading(false);
@@ -94,8 +104,8 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
   const logout: AuthContextType["logout"] = async () => {
     // Optional: gọi /api/auth/logout nếu backend có
     try {
-      await fetchJson<VoidResponse>("/api/auth/logout", { method: "POST" }).catch(() => {});
-    } catch {}
+      await fetchJson<VoidResponse>("/api/auth/logout", { method: "POST" }).catch(() => { });
+    } catch { }
     // Xoá storage cả 2 nơi để chắc chắn
     localStorage.removeItem("auth_token");
     localStorage.removeItem("auth_user");
@@ -109,11 +119,28 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     setLoading(true);
     try {
       // POST /api/auth/register
-      await fetchJson<RegisterResponse>("/api/auth/register", {
+
+      const data = await fetchJson<RegisterResponse>("/api/auth/register", {
         method: "POST",
         body: { name, email, password },
       });
       // Tuỳ ý: không auto-login để phù hợp nhiều flow (email verify, v.v.)
+
+      if (data.token) {
+        localStorage.setItem("auth_token", data.token);
+        console.log("data.token", data.token);
+        setAuthToken(data.token);
+        setUser({
+          id: data.id,
+          name: data.name,
+          username: "",
+          role:  "user",   // mặc định user
+          phone: "",
+          email: data.email
+        });
+
+      }
+
     } finally {
       setLoading(false);
     }
@@ -149,3 +176,5 @@ export function useAuth(): AuthContextType {
   if (!ctx) throw new Error("useAuth must be used within <AuthProvider>");
   return ctx;
 }
+
+

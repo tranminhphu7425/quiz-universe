@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Lock, User2, Sparkles, ArrowRight, Heart, ShieldCheck } from "lucide-react";
+import { Mail, Lock, User2, Sparkles, ArrowRight, Heart, ShieldCheck, EyeOff, Eye } from "lucide-react";
 import Floating from "@/shared/ui/Floatting"; // giữ nguyên import nếu bạn đã dùng tên này
 import { useAuth } from "@/app/providers/AuthProvider";
 
@@ -16,6 +16,8 @@ export default function RegisterPage() {
   const [pwd2, setPwd2] = useState("");
   const [agree, setAgree] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const tileUrl = useMemo(
     () =>
@@ -46,7 +48,8 @@ export default function RegisterPage() {
     try {
       // Tùy backend của bạn: signup({ name: fullName, email, password: pwd })
       await signup?.({ name: fullName, email, password: pwd });
-      navigate("/app"); // hoặc chuyển đến /login nếu bạn muốn
+      
+      navigate("/setup", { state: { fromRegister: true } }); // hoặc chuyển đến /login nếu bạn muốn
     } catch (err: any) {
       setError(err?.message ?? "Đăng ký thất bại. Vui lòng thử lại.");
     }
@@ -162,6 +165,7 @@ export default function RegisterPage() {
               <Mail className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
               <input
                 type="email"
+                name="email"
                 required
                 placeholder="you@example.com"
                 className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
@@ -178,7 +182,7 @@ export default function RegisterPage() {
             <div className="mb-2 flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 dark:bg-slate-900/70 dark:ring-white/10">
               <Lock className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 required
                 placeholder="••••••••"
                 className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
@@ -187,6 +191,17 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 minLength={6}
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="p-1 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
+              >
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </button>
             </div>
 
             {/* Nhập lại mật khẩu */}
@@ -196,7 +211,7 @@ export default function RegisterPage() {
             <div className="mb-3 flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 dark:bg-slate-900/70 dark:ring-white/10">
               <Lock className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
               <input
-                type="password"
+                type={showConfirmPassword ? "text" : "password"}
                 required
                 placeholder="••••••••"
                 className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
@@ -205,6 +220,17 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 minLength={6}
               />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="p-1 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
+              >
+                {showConfirmPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </button>
             </div>
 
             {/* Agree */}
