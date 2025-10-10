@@ -1,5 +1,5 @@
-import React from "react";
-import { createBrowserRouter, createHashRouter, Outlet, Navigate  } from "react-router-dom";
+import React, { useState } from "react";
+import { createBrowserRouter, createHashRouter, Outlet, Navigate } from "react-router-dom";
 import { Suspense } from "react";
 
 
@@ -35,13 +35,15 @@ const AdminPage = React.lazy(() => import("@/pages/admin/AdminDashboardPage"));
 const SettingsPage = React.lazy(() => import("@/pages/auth/SettingsPage"));
 const RecruitmentPage = React.lazy(() => import("@/pages/recruit/RecruitmentPage"));
 const DocumentationPage = React.lazy(() => import("@/pages/documents/DocumentationPage"));
-const UserGuidePage =  React.lazy(() => import("@/pages/documents/UserGuidePage"));
+const UserGuidePage = React.lazy(() => import("@/pages/documents/UserGuidePage"));
+const ExplorePage = React.lazy(() => import("@/pages/resources/ExplorePage"));
 
 import AdminDashboardPage from "@/pages/admin/AdminDashboardPage";
 
 // src/shared/lib/withSuspense.tsx
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
+
 
 const FancyFallback = () => {
   return (
@@ -77,7 +79,13 @@ export function RequireAuth() {
 
   if (!user) {
     // Nếu chưa login thì redirect về trang 404
-    return <NotFoundPage/>;
+    sessionStorage.setItem("auth_redirect", "true");
+    return (
+      <>
+        
+        <Navigate to="/login" replace />
+      </>
+    );
     // hoặc: return <Navigate to="/login" replace />; nếu muốn đưa về login
   }
 
@@ -105,7 +113,7 @@ export const router = createBrowserRouter(
 
         // Protected routes
         {
-          element: <RequireAuth />, // 👈 bọc ở đây
+          element: <RequireAuth />, 
           children: [
             { path: "/dashboard", element: withSuspense(<DashboardPage />), errorElement: <NotFoundPage /> },
             { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
@@ -114,6 +122,8 @@ export const router = createBrowserRouter(
             { path: "/settings", element: withSuspense(<SettingsPage />), errorElement: <NotFoundPage /> },
             { path: "/admin", element: withSuspense(<AdminDashboardPage />), errorElement: <NotFoundPage /> },
             { path: "/setup", element: withSuspense(<SetupProfilePage />), errorElement: <NotFoundPage /> },
+            { path: "/resources",element: withSuspense(<ExplorePage />), errorElement: <NotFoundPage /> },
+          
           ],
         },
 

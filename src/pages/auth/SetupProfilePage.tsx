@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Building2, GraduationCap, CheckCircle2, Loader2, Sparkles, ArrowRight } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
-import {saveProfile} from "@/shared/api/apiClient"
+import { saveProfile } from "@/shared/api/apiClient"
 
 import { fetchUniversities, fetchMajors, University, Major } from "@/shared/api/major-universityApi";
 
@@ -16,28 +16,26 @@ export default function SetupProfilePage() {
     const { user } = useAuth();
     const location = useLocation();
     const [universities, setUniversities] = useState<University[]>([]);
-    const [university, setUniversity] = useState<string>();
-
-
-
+    const [universityCode, setUniversityCode] = useState<string |undefined| null>(null);
     const [majors, setMajors] = useState<Major[]>([]);
+    const [majorId, setMajorId] = useState<number | undefined | null>(null);
     // nếu không phải từ đăng ký -> 404
     if (!(location.state as any)?.fromRegister) {
         return <Navigate to="/404" replace />;
     }
     useEffect(() => {
-    console.log("Xin chao", user);
+        console.log("Xin chao", user);
 
-  }, [user])
+    }, [user])
 
 
     const token = typeof window !== "undefined" ? localStorage.getItem("auth_token") : null;
-    
+
     // const storedUserRaw = typeof window !== "undefined" ? localStorage.getItem("auth_user") : null;
     // const storedUser = storedUserRaw ? JSON.parse(storedUserRaw) : null;
 
 
-    const [major, setMajor] = useState<string>(user?.major?.majorId ?? "");
+
     const [intakeYear, setIntakeYear] = useState<number | undefined>(user?.intakeYear ?? undefined);
     const [saving, setSaving] = useState(false);
     const [okMsg, setOkMsg] = useState<string | null>(null);
@@ -52,7 +50,7 @@ export default function SetupProfilePage() {
         if (!intakeYear) setIntakeYear(new Date().getFullYear());
     }, []);
 
-    const canSubmit = !!university && !!major.trim();
+    const canSubmit = !!universityCode && !!majorId;
 
     async function onSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -61,14 +59,14 @@ export default function SetupProfilePage() {
         setErr(null);
         setOkMsg(null);
         try {
-            const payload = { university: university!, major: major.trim(), intakeYear };
+            const payload = { university: universityCode, major: majorId, intakeYear };
             console.log(payload);
-            
+
             // Gọi API thật (nếu có). Nếu bạn chưa có endpoint, có thể comment dòng dưới để chỉ cập nhật localStorage.
             await saveProfile(payload).catch(() => undefined);
 
             // ====== Cập nhật localStorage auth_user (đồng bộ với AuthProvider của bạn) ======
-            const nextUser = { ...( user || {}), university: university!, major: major.trim(), intakeYear };
+            const nextUser = { ...(user || {}), university: universityCode!, major: majorId, intakeYear };
             localStorage.setItem("auth_user", JSON.stringify(nextUser));
 
             setOkMsg("Đã lưu thiết lập.");
@@ -140,11 +138,11 @@ export default function SetupProfilePage() {
                     <label className="mb-2 block text-sm font-medium text-white dark:text-slate-100">Trường của bạn</label>
                     <div className="mb-4 grid gap-2 sm:grid-cols-[1fr_auto]">
                         <select title="university"
-                            value={university ?? ""}
-                            onChange={(e) => setUniversity(e.target.value)}
+                            
+                            onChange={(e) => setUniversityCode(e.target.value)}
                             className="w-full rounded-xl bg-white/85 px-3 py-2 text-sm text-slate-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-slate-100 dark:ring-white/10"
                         >
-                            <option value="" disabled>— Chọn trường —</option>
+                            <option value="">— Chọn trường —</option>
                             {universities.map(u => (
                                 <option key={u.universityCode} value={u.universityCode}>{u.universityName}</option>
                             ))}
@@ -168,29 +166,29 @@ export default function SetupProfilePage() {
                         <div className="mb-4 grid gap-2 sm:grid-cols-[1fr_auto]">
                             <select
                                 title="major"
-                                value={major}
-                                onChange={(e) => setMajor(e.target.value)}
+                                // value={majorId}
+                                onChange={(e) => setMajorId(Number(e.target.value))}
                                 className="w-full rounded-xl bg-white/85 px-3 py-2 text-sm text-slate-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-slate-100 dark:ring-white/10"
                             >
-                                <option value="">— Chọn chuyên ngành —</option>
+                                <option value={0}>— Chọn chuyên ngành —</option>
                                 {majors.map(m => (
                                     <option key={m.majorId} value={m.majorId}>{m.majorName}</option>
                                 ))}
-                                <option value="__other__">Khác (tự nhập)…</option>
+                                <option value={undefined}>Khác (tự nhập)…</option>
                             </select>
-                            {major === "__other__" && (
+                            {majorId === undefined && (
                                 <input
                                     autoFocus
                                     placeholder="Nhập chuyên ngành của bạn"
                                     className="w-full rounded-xl bg-white/85 px-3 py-2 text-sm text-slate-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-slate-100 dark:ring-white/10 sm:col-start-1"
-                                    onChange={(e) => setMajor(e.target.value)}
+                                    onChange={(e) => setMajorId(Number(e.target.value))}
                                 />
                             )}
                         </div>
                     ) : (
                         <input
-                            value={major}
-                            onChange={(e) => setMajor(e.target.value)}
+                            // value={majorId}
+                            onChange={(e) => setMajorId(Number(e.target.value))}
                             placeholder="VD: Kỹ thuật phần mềm"
                             className="mb-4 w-full rounded-xl bg-white/85 px-3 py-2 text-sm text-slate-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-slate-100 dark:ring-white/10"
                         />

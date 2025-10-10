@@ -137,25 +137,41 @@ const OrbitingSkill = memo(({ config, angle }: OrbitingSkillProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`
-          relative w-full h-full p-2 bg-gray-800/90 backdrop-blur-sm
-          rounded-full flex items-center justify-center
-          transition-all duration-300 cursor-pointer
-          ${isHovered ? 'scale-125 shadow-2xl' : 'shadow-lg hover:shadow-xl'}
-        `}
-        style={{
-          boxShadow: isHovered
-            ? `0 0 30px ${iconComponents[iconType]?.color}40, 0 0 60px ${iconComponents[iconType]?.color}20`
-            : undefined
-        }}
-      >
-        <SkillIcon type={iconType} />
-        {isHovered && (
-          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900/95 backdrop-blur-sm rounded text-xs text-white whitespace-nowrap pointer-events-none">
-            {label}
-          </div>
-        )}
-      </div>
+  className={`
+    relative w-full h-full p-2 
+    rounded-full flex items-center justify-center
+    transition-all duration-300 cursor-pointer
+    backdrop-blur-sm
+    bg-gray-100/90 dark:bg-gray-800/90
+    ${isHovered ? 'scale-125 shadow-2xl' : 'shadow-lg hover:shadow-xl'}
+  `}
+  style={{
+    boxShadow: isHovered
+      ? `0 0 30px ${iconComponents[iconType]?.color}40, 
+         0 0 60px ${iconComponents[iconType]?.color}20`
+      : undefined,
+  }}
+>
+  {/* Icon */}
+  <SkillIcon type={iconType} />
+
+  {/* Tooltip hiển thị tên kỹ năng */}
+  {isHovered && (
+    <div
+      className="
+        absolute -bottom-8 left-1/2 -translate-x-1/2 
+        px-2 py-1 text-xs rounded whitespace-nowrap pointer-events-none 
+        backdrop-blur-md
+        bg-white/90 text-gray-800 shadow-sm
+        dark:bg-gray-900/95 dark:text-white
+        border border-gray-200/40 dark:border-gray-700/60
+      "
+    >
+      {label}
+    </div>
+  )}
+</div>
+
     </div>
   );
 });
@@ -241,63 +257,85 @@ export default function OrbitingSkills() {
 
   return (
     <main className="absolute z-10 right-5 md:right-10 lg:right-18 xl:right-48 top-8 flex items-center justify-center overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-0">
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, #374151 0%, transparent 50%),
-                             radial-gradient(circle at 75% 75%, #4B5563 0%, transparent 50%)`,
-          }}
+  {/* Background pattern */}
+  <div className="absolute inset-0 opacity-0 transition-all duration-700">
+    <div
+      className="absolute inset-0 dark:opacity-40 opacity-80"
+      style={{
+        backgroundImage: `
+          radial-gradient(circle at 25% 25%, var(--pattern-color-1, #e5e7eb) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, var(--pattern-color-2, #d1d5db) 0%, transparent 50%)
+        `,
+      }}
+    />
+  </div>
+
+  <div
+    className="relative w-[calc(100vw-40px)] h-[calc(100vw-40px)] md:w-[450px] md:h-[450px] flex items-center justify-center"
+    onMouseEnter={() => setIsPaused(true)}
+    onMouseLeave={() => setIsPaused(false)}
+  >
+    {/* 🌙☀️ Central "Code" Icon with glow adaptable to theme */}
+    <div className="w-20 h-20 bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-700 dark:to-gray-900 rounded-full flex items-center justify-center z-10 relative shadow-2xl transition-all duration-700">
+      <div className="absolute inset-0 rounded-full bg-cyan-400/30 dark:bg-cyan-500/30 blur-xl animate-pulse"></div>
+      <div
+        className="absolute inset-0 rounded-full bg-purple-400/20 dark:bg-purple-500/20 blur-2xl animate-pulse"
+        style={{ animationDelay: "1s" }}
+      ></div>
+      <div className="relative z-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="url(#gradient)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              {/* Màu gradient thay đổi theo theme */}
+              <stop
+                offset="0%"
+                stopColor="var(--grad-start, #06B6D4)"
+              />
+              <stop
+                offset="100%"
+                stopColor="var(--grad-end, #9333EA)"
+              />
+            </linearGradient>
+          </defs>
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </div>
+    </div>
+
+    {/* Orbit paths */}
+    {orbitConfigs.map((config) => (
+      <GlowingOrbitPath
+        key={`path-${config.radius}`}
+        radius={config.radius}
+        glowColor={config.glowColor}
+        animationDelay={config.delay}
+      />
+    ))}
+
+    {/* Orbiting skills */}
+    {skillsConfig.map((config) => {
+      const angle = time * config.speed + (config.phaseShift || 0);
+      return (
+        <OrbitingSkill
+          key={config.id}
+          config={config}
+          angle={angle}
         />
-      </div>
+      );
+    })}
+  </div>
+</main>
 
-      <div 
-        className="relative w-[calc(100vw-40px)] h-[calc(100vw-40px)] md:w-[450px] md:h-[450px] flex items-center justify-center"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        
-        {/* Central "Code" Icon with enhanced glow */}
-        <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center z-10 relative shadow-2xl">
-          <div className="absolute inset-0 rounded-full bg-cyan-500/30 blur-xl animate-pulse"></div>
-          <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="relative z-10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#06B6D4" />
-                  <stop offset="100%" stopColor="#9333EA" />
-                </linearGradient>
-              </defs>
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-          </div>
-        </div>
-
-        {/* Render glowing orbit paths */}
-        {orbitConfigs.map((config) => (
-          <GlowingOrbitPath
-            key={`path-${config.radius}`}
-            radius={config.radius}
-            glowColor={config.glowColor}
-            animationDelay={config.delay}
-          />
-        ))}
-
-        {/* Render orbiting skill icons */}
-        {skillsConfig.map((config) => {
-          const angle = time * config.speed + (config.phaseShift || 0);
-          return (
-            <OrbitingSkill
-              key={config.id}
-              config={config}
-              angle={angle}
-            />
-          );
-        })}
-      </div>
-    </main>
   );
 }

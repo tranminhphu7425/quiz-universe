@@ -1,0 +1,229 @@
+{
+  "folders": [
+    {
+      "name": "CT112 - Mạng máy tính",
+      "path": "/resources/CT112 - Mạng máy tính",
+      "children": [
+        {
+          "name": "Andrew S. Tanenbaum - Computer Networks.pdf",
+          "type": "pdf",
+          "path": "/resources/CT112 - Mạng máy tính/Andrew S. Tanenbaum - Computer Networks.pdf"
+        },
+        {
+          "name": "AnswerTheQuestion.txt",
+          "type": "txt",
+          "path": "/resources/CT112 - Mạng máy tính/AnswerTheQuestion.txt"
+        },
+        {
+          "name": "Chapter 1 - Overview.pdf",
+          "type": "pdf",
+          "path": "/resources/CT112 - Mạng máy tính/Chapter 1 - Overview.pdf"
+        },
+        {
+          "name": "Chapter 2 - Computer Network components.pdf",
+          "type": "pdf",
+          "path": "/resources/CT112 - Mạng máy tính/Chapter 2 - Computer Network components.pdf"
+        },
+        {
+          "name": "Chapter 3 - Physical Layer.pdf",
+          "type": "pdf",
+          "path": "/resources/CT112 - Mạng máy tính/Chapter 3 - Physical Layer.pdf"
+        },
+        {
+          "name": "Chapter 4 - Data Link Layer.pdf",
+          "type": "pdf",
+          "path": "/resources/CT112 - Mạng máy tính/Chapter 4 - Data Link Layer.pdf"
+        },
+        {
+          "name": "Chapter 5 - LAN-MAC.pdf",
+          "type": "pdf",
+          "path": "/resources/CT112 - Mạng máy tính/Chapter 5 - LAN-MAC.pdf"
+        },
+        {
+          "name": "Chapter 7 - Transport Layer.pdf",
+          "type": "pdf",
+          "path": "/resources/CT112 - Mạng máy tính/Chapter 7 - Transport Layer.pdf"
+        },
+        {
+          "name": "Chater 06 - Network Layer.pdf",
+          "type": "pdf",
+          "path": "/resources/CT112 - Mạng máy tính/Chater 06 - Network Layer.pdf"
+        },
+        {
+          "name": "NHVL",
+          "type": "folder",
+          "children": [
+            {
+              "name": "1-Overview.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/1-Overview.pdf"
+            },
+            {
+              "name": "2-NetworkComponents.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/2-NetworkComponents.pdf"
+            },
+            {
+              "name": "3-LAN.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/3-LAN.pdf"
+            },
+            {
+              "name": "3-OSIModel.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/3-OSIModel.pdf"
+            },
+            {
+              "name": "4-PhysicalLayer.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/4-PhysicalLayer.pdf"
+            },
+            {
+              "name": "5-DataLinkLayer.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/5-DataLinkLayer.pdf"
+            },
+            {
+              "name": "6-LANMAC.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/6-LANMAC.pdf"
+            },
+            {
+              "name": "7-NetworkLayer.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/7-NetworkLayer.pdf"
+            },
+            {
+              "name": "8-TransportLayer.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/8-TransportLayer.pdf"
+            },
+            {
+              "name": "9-ApplicationLayer.pdf",
+              "type": "pdf",
+              "path": "/resources/CT112 - Mạng máy tính/NHVL/9-ApplicationLayer.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CT182 - Ngôn ngữ mô hình hóa",
+      "path": "/resources/CT182 - Ngôn ngữ mô hình hóa",
+      "children": [
+        {
+          "name": "baitap-thamkhao-thiCK-2025.pdf.pdf",
+          "type": "pdf",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/baitap-thamkhao-thiCK-2025.pdf.pdf"
+        },
+        {
+          "name": "Chuong1-UML-CT182-Gioithieu-tu-hk2-2024-2025.pdf",
+          "type": "pdf",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Chuong1-UML-CT182-Gioithieu-tu-hk2-2024-2025.pdf"
+        },
+        {
+          "name": "Chuong2-UC Diagram-2025-v2.pdf",
+          "type": "pdf",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Chuong2-UC Diagram-2025-v2.pdf"
+        },
+        {
+          "name": "Chuong3-Class Diagram-2025.pdf",
+          "type": "pdf",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Chuong3-Class Diagram-2025.pdf"
+        },
+        {
+          "name": "fd8854b0-9a8d-4620-8803-4f21e602ac4a.pdf",
+          "type": "pdf",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/fd8854b0-9a8d-4620-8803-4f21e602ac4a.pdf"
+        },
+        {
+          "name": "Untitled.mdj",
+          "type": "mdj",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Untitled.mdj"
+        },
+        {
+          "name": "Untitled.pdf",
+          "type": "pdf",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Untitled.pdf"
+        }
+      ]
+    },
+    {
+      "name": "CT296 - Phân tích và thiết kế hệ thống thông tin",
+       "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin",
+      "children": [
+        {
+          "name": "Chuong0_GioiThieuHocPhan.pdf",
+          "type": "pdf",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Chuong0_GioiThieuHocPhan.pdf"
+        },
+        {
+          "name": "Chuong1_MoiTruongPhatTrienHeThong.pdf",
+          "type": "pdf",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Chuong1_MoiTruongPhatTrienHeThong.pdf"
+        },
+        {
+          "name": "Chuong2_QuanTriYeuCauNguoiDung.pdf",
+          "type": "pdf",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Chuong2_QuanTriYeuCauNguoiDung.pdf"
+        },
+        {
+          "name": "Chuong3_MoHinhHoa_QuyTrinhNghiepVu.pdf",
+          "type": "pdf",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Chuong3_MoHinhHoa_QuyTrinhNghiepVu.pdf"
+        },
+        {
+          "name": "Chuong4_ThietKeDuLieu.pdf",
+          "type": "pdf",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Chuong4_ThietKeDuLieu.pdf"
+        },
+        {
+          "name": "Chuong5_ThietKeXuLy.pdf",
+          "type": "pdf",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Chuong5_ThietKeXuLy.pdf"
+        },
+        {
+          "name": "Nội dung ghi chép CT296.docx",
+          "type": "docx",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Nội dung ghi chép CT296.docx"
+        },
+        {
+          "name": "Thực hành",
+          "type": "folder",
+          "children": [
+            {
+              "name": "ieee-guide-for-developing-system-requirements-specifications.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/ieee-guide-for-developing-system-requirements-specifications.pdf"
+            },
+            {
+              "name": "Quan Tri Yeu Cau Nguoi Dung_mau tai lieu.docx",
+              "type": "docx",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/Quan Tri Yeu Cau Nguoi Dung_mau tai lieu.docx"
+            },
+            {
+              "name": "Thuc hanh 4+5.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/Thuc hanh 4+5.pdf"
+            },
+            {
+              "name": "thuc hanh buoi 1.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/thuc hanh buoi 1.pdf"
+            },
+            {
+              "name": "Thuc hanh buoi 2.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/Thuc hanh buoi 2.pdf"
+            },
+            {
+              "name": "Thuc hanh buoi 3.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/Thuc hanh buoi 3.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

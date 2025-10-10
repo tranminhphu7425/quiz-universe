@@ -46,7 +46,7 @@ export async function fetchJson<T>(
 
 
 // ====== (tuỳ chọn) Gọi API thật ======
-export async function saveProfile(payload: { university: string; major: string; intakeYear?: number }) {
+export async function saveProfile(payload: { university: string; major: number; intakeYear?: number }) {
   // API gợi ý: POST /api/users/me/profile or /api/profile/setup
   console.log(payload);
   

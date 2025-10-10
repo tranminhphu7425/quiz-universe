@@ -49,9 +49,9 @@ export default function SettingsPage() {
   const [focusMode, setFocusMode] = useState<boolean | null>(null);
   const { user, logout } = useAuth();
   const [universities, setUniversities] = useState<University[]>([]);
-  const [university, setUniversity] = useState<University | undefined>(user?.university);
+  const [university, setUniversity] = useState<University | undefined | null>(user?.university);
   const [majors, setMajors] = useState<Major[]>([]);
-  const [major, setMajor] = useState<Major | undefined>(user?.major);
+  const [major, setMajor] = useState<Major | undefined | null>(user?.major);
   const [loading, setLoading] = useState(true);
   const [majorQuery, setMajorQuery] = useState("");
   const [universityQuery, setUniversityQuery] = useState("");

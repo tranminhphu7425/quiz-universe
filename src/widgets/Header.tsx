@@ -87,7 +87,8 @@ export default function Header({
   links = user? [
     { label: "Câu hỏi", href: "/subjects" },
     { label: "Đề thi", href: "/exams/create" },
-    {label: "Diễn đàn", href: "/forum"}
+    {label: "Diễn đàn", href: "/forum"},
+    {label: "Thư viện", href: "/resources"}
 
   ] : [ { label: "Liên hệ", href: "/contact" },
     { label: "Hướng dẫn nhanh", href: "/quickguide" },
@@ -775,7 +776,7 @@ export default function Header({
                           className="flex w-full items-center justify-center gap-2 px-3 py-2 text-emerald-700 transition hover:bg-emerald-50 dark:text-slate-200 dark:hover:bg-slate-700/70"
                         >
                           <Shield className="h-4 w-4 text-purple-500" />
-                          <span className="text-sm font-medium">Bảng điều khiển</span>
+                          <span className="text-sm font-medium">Trang quản trị</span>
                         </Link>
                       </motion.div>
                     }

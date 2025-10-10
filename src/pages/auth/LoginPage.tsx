@@ -1,5 +1,5 @@
 // Auto-generated
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Lock, Sparkles, ArrowRight, Heart, EyeOff, Eye } from "lucide-react";
@@ -7,6 +7,8 @@ import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
 
 
 export default function LoginPage() {
@@ -31,6 +33,13 @@ export default function LoginPage() {
       setError("Đăng nhập thất bại. Vui lòng kiểm tra lại email và mật khẩu.");
     }
   };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("auth_redirect")) {
+      toast("🔒 Vui lòng đăng nhập để tiếp tục.");
+      sessionStorage.removeItem("auth_redirect");
+    }
+  }, []);
 
 
   // SVG tile giống HomePage để đồng bộ họa tiết nền

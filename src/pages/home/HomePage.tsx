@@ -23,6 +23,7 @@ import React, { ReactNode } from 'react';
 import { useState, useEffect } from 'react';
 import TypewriterText from "@/shared/ui/TypewriterText";
 import OrbitingSkills from "@/shared/ui/OrbitingSkills";
+import { IoLibrary } from "react-icons/io5";
 
 
 
@@ -457,11 +458,11 @@ export default function HomePage() {
             icon={<ListChecks className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />}
           />
           <FeatureCard
-            title="Quản trị"
-            description="Quản lý người dùng & vai trò (Admin hệ thống / Admin trường)."
-            to={`/app/admin`}
-            cta="Vào trang quản trị"
-            icon={<ShieldCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />}
+            title="Kho tài nguyên học tập"
+            description="Một thư viện tài liệu, giáo trình của các tình nguyện viên đóng góp."
+            to={`/resources`}
+            cta="Vào trang tài nguyên"
+            icon={<IoLibrary  className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />}
           />
         </div>
       </section>
