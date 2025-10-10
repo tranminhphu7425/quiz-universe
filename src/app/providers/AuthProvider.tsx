@@ -5,7 +5,7 @@ import { Major, University } from "@/shared/api/major-universityApi";
 
 
 /** Vai trò & user */
-export type Role = "admin" | "user" | "TEACHER" | "STUDENT";
+export type Role = "admin" | "user" | "teacher";
 
 export interface User {
   id: string;
@@ -24,7 +24,7 @@ export interface User {
 export interface AuthContextType {
   user: User | null;
   loading: boolean;
-
+  
   login: (
     email: string,
     password: string,
@@ -59,10 +59,12 @@ function readFromStorage() {
 
 export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [initialized, setInitialized] = useState(false);
 
   // Khôi phục phiên từ storage khi load lần đầu
   useEffect(() => {
+    setLoading(true);
     const { token, cachedUser } = readFromStorage();
     if (token) setAuthToken(token);
     if (cachedUser) {
@@ -74,6 +76,8 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
         sessionStorage.removeItem("auth_user");
       }
     }
+      setLoading(false);
+      setInitialized(true);
   }, []);
 
   const login: AuthContextType["login"] = async (email, password, opts) => {
@@ -162,10 +166,13 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     });
   };
 
-  const value = useMemo<AuthContextType>(
+  const value =  useMemo<AuthContextType>(
     () => ({ user, loading, login, logout, register, requestPasswordReset, resetPassword }),
-    [user, loading]
+    [user, loading] 
   );
+  if (!initialized) {
+    return <div></div>;
+  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

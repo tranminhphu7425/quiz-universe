@@ -75,14 +75,14 @@ const withSuspense = (element: React.ReactElement) => (
 );
 
 export function RequireAuth() {
-  const { user } = useAuth(); // lấy user từ AuthContext
+  const { user, loading } = useAuth(); // lấy user từ AuthContext
 
-  if (!user) {
+  if (!user && !loading) {
     // Nếu chưa login thì redirect về trang 404
     sessionStorage.setItem("auth_redirect", "true");
     return (
       <>
-        
+
         <Navigate to="/login" replace />
       </>
     );
@@ -111,19 +111,24 @@ export const router = createBrowserRouter(
         { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
         { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
 
+
+
+        //auth
+        { path: "/dashboard", element: withSuspense(<DashboardPage />), errorElement: <NotFoundPage /> },
+        { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions/subject/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
+        { path: "/settings", element: withSuspense(<SettingsPage />), errorElement: <NotFoundPage /> },
+        { path: "/admin", element: withSuspense(<AdminDashboardPage />), errorElement: <NotFoundPage /> },
+        { path: "/setup", element: withSuspense(<SetupProfilePage />), errorElement: <NotFoundPage /> },
+        { path: "/resources", element: withSuspense(<ExplorePage />), errorElement: <NotFoundPage /> },
+
         // Protected routes
         {
-          element: <RequireAuth />, 
+          element: <RequireAuth />,
           children: [
-            { path: "/dashboard", element: withSuspense(<DashboardPage />), errorElement: <NotFoundPage /> },
-            { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
-            { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
-            { path: "/questions/subject/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
-            { path: "/settings", element: withSuspense(<SettingsPage />), errorElement: <NotFoundPage /> },
-            { path: "/admin", element: withSuspense(<AdminDashboardPage />), errorElement: <NotFoundPage /> },
-            { path: "/setup", element: withSuspense(<SetupProfilePage />), errorElement: <NotFoundPage /> },
-            { path: "/resources",element: withSuspense(<ExplorePage />), errorElement: <NotFoundPage /> },
-          
+
+
           ],
         },
 

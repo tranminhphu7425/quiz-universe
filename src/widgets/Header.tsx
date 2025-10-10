@@ -90,7 +90,8 @@ export default function Header({
     {label: "Diễn đàn", href: "/forum"},
     {label: "Thư viện", href: "/resources"}
 
-  ] : [ { label: "Liên hệ", href: "/contact" },
+  ] : [{ label: "Câu hỏi", href: "/subjects" }, 
+    { label: "Liên hệ", href: "/contact" },
     { label: "Hướng dẫn nhanh", href: "/quickguide" },
     {label: "Diễn đàn", href: "/forum"}];
   const location = useLocation();
@@ -120,9 +121,6 @@ export default function Header({
   }, []);
 
 
-  useEffect(() => {
-    console.log("ket qua", results);
-  }, [results]);
 
 
 
