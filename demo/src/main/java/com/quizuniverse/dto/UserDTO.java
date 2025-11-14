@@ -14,6 +14,9 @@ public class UserDTO {
     private University university;
     private Major major;
 
+    public UserDTO() {
+    }
+
     public UserDTO(User user) {
         this.id = String.valueOf(user.getUserId());
         this.name = user.getFullName() != null ? user.getFullName() : user.getUsername();
@@ -89,6 +92,5 @@ public class UserDTO {
     public void setMajor(Major major) {
         this.major = major;
     }
-    
 
 }

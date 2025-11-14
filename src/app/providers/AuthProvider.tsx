@@ -14,8 +14,8 @@ export interface User {
   role: Role;
   phone: string;
   email?: string;
-  university?: University;
-  major?: Major;
+  university?: University | null | undefined;
+  major?: Major | null | undefined;
   intakeYear?: number;
 }
 

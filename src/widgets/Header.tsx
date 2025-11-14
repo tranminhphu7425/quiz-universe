@@ -38,16 +38,17 @@ import { useAuth } from "@/app/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { FaCrown, FaPlus, FaStar } from "react-icons/fa";
 import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
+import { normalizeText } from "@/shared/utils/textUtils";
 
-export type Tenant = { id: string; name: string; logo?: string };
+
 
 export interface HeaderProps {
-  tenants?: Tenant[];
+ 
   currentTenant?: string | null;
   onChangeTenant?: (tenantId: string) => void;
   onGetStarted?: () => void;
   onLogin?: () => void;
-  links?: { label: string; href: string }[];
+  links?: { label: string; href: string; icon?:  React.ReactNode}[];
 }
 
 const menuVariants = {
@@ -85,15 +86,17 @@ export default function Header({
 }: HeaderProps) {
   const { user, logout } = useAuth();
   links = user? [
-    { label: "Câu hỏi", href: "/subjects" },
+    { label: "Câu hỏi", href: "/subjects"  },
     { label: "Đề thi", href: "/exams/create" },
     {label: "Diễn đàn", href: "/forum"},
     {label: "Thư viện", href: "/resources"}
 
-  ] : [{ label: "Câu hỏi", href: "/subjects" }, 
+  ] : [{ href: "/about",  label: "Giới thiệu",  icon: <Contact className="w-4 h-4" />},
+    { label: "Câu hỏi", href: "/subjects" }, 
     { label: "Liên hệ", href: "/contact" },
     { label: "Hướng dẫn nhanh", href: "/quickguide" },
-    {label: "Diễn đàn", href: "/forum"}];
+    // {label: "Diễn đàn", href: "/forum"}
+  ];
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -138,13 +141,7 @@ export default function Header({
       )
     );
   }, [search, subjects]);
-  function normalizeText(str: string) {
-    return str
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
-  }
+
 
   async function fetchData() {
 
@@ -179,16 +176,9 @@ export default function Header({
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log("Xin chao", user);
-
-  }, [user])
 
 
-
-  const navSubItems = [
-    { to: "/about", icon: <Contact className="w-4 h-4" />, text: "Giới thiệu" },
-  ];
+ 
 
   return (
     <header className="w-full bg-gradient-to-r from-green-600 to-emerald-600 dark:from-slate-900 dark:to-slate-800 shadow-lg sticky top-0 z-50">
@@ -259,28 +249,7 @@ export default function Header({
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4">
            
-            {/* Main Nav Items */}
-            {navSubItems.map((item) => {
-              const active = location.pathname === item.to;
-              return (
-                <motion.div
-                  key={item.to}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    to={item.to}
-                    className={`flex items-center space-x-2 p-3 rounded-lg transition-all ${active
-                      ? "bg-white text-emerald-600 dark:bg-slate-200 dark:text-emerald-700"
-                      : "text-white dark:text-slate-200 hover:bg-green-700 dark:hover:bg-slate-700"
-                      }`}
-                  >
-                    <span className="text-lg">{item.icon}</span>
-                    <span className="font-medium">{item.text}</span>
-                  </Link>
-                </motion.div>
-              );
-            })}
+          
 
             {/* Custom Links */}
             {links.map((link) => {
@@ -298,6 +267,7 @@ export default function Header({
                       : "text-white dark:text-slate-200 hover:bg-green-700 dark:hover:bg-slate-700"
                       }`}
                   >
+                    {link.icon && <span>{link.icon}</span>}
                     <span className="font-medium">{link.label}</span>
                   </Link>
                 </motion.div>
@@ -699,22 +669,7 @@ export default function Header({
                   </AnimatePresence>
                 </motion.div> */}
 
-                {/* Mobile Nav Items */}
-                {navSubItems.map((item) => (
-                  <motion.div key={item.to} variants={itemVariants}>
-                    <Link
-                      to={item.to}
-                      className={`flex items-center py-3 px-4 rounded-lg ${location.pathname === item.to
-                        ? "bg-white text-emerald-600 dark:bg-slate-200 dark:text-emerald-700"
-                        : "text-white dark:text-slate-200 hover:bg-emerald-700 dark:hover:bg-slate-700"
-                        }`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <span className="mr-3">{item.icon}</span>
-                      <span className="font-medium">{item.text}</span>
-                    </Link>
-                  </motion.div>
-                ))}
+             
 
                 {/* Custom Links Mobile */}
                 {links.map((link) => (

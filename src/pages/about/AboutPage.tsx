@@ -35,6 +35,11 @@ const team = [
 ];
 
 export default function AboutPage() {
+
+
+
+
+
   const tileUrl = useMemo(
     () =>
       encodeURIComponent(`
@@ -170,7 +175,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {team.map((m, i) => (
+            {team.map((m) => (
               <motion.div
                 key={m.name}
                 className="rounded-2xl border border-white/20 bg-white/10 p-5 shadow-lg backdrop-blur-md

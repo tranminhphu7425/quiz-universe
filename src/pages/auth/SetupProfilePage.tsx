@@ -29,7 +29,7 @@ export default function SetupProfilePage() {
     }, [user])
 
 
-    const token = typeof window !== "undefined" ? localStorage.getItem("auth_token") : null;
+    
 
     // const storedUserRaw = typeof window !== "undefined" ? localStorage.getItem("auth_user") : null;
     // const storedUser = storedUserRaw ? JSON.parse(storedUserRaw) : null;
@@ -66,7 +66,7 @@ export default function SetupProfilePage() {
             await saveProfile(payload).catch(() => undefined);
 
             // ====== Cập nhật localStorage auth_user (đồng bộ với AuthProvider của bạn) ======
-            const nextUser = { ...(user || {}), university: universityCode!, major: majorId, intakeYear };
+            const nextUser = { ...(user || {}), university: {universityCode}, major: majorId, intakeYear };
             localStorage.setItem("auth_user", JSON.stringify(nextUser));
 
             setOkMsg("Đã lưu thiết lập.");
