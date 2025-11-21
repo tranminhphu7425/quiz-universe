@@ -4152,7 +4152,7 @@
                 "id": 445,
                 "label": "C",
                 "content": "Tự phê bình và phê bình.",
-                "isCorrect": true,
+                "isCorrect": false,
                 "sortOrder": 3
             },
             {
