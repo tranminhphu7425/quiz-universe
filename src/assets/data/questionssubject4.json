@@ -1948,7 +1948,7 @@
                 "id": 213,
                 "label": "A",
                 "content": "Gửi Yêu sách 8 điểm đến Hội nghị Versailles.",
-                "isCorrect": true,
+                "isCorrect": false,
                 "sortOrder": 1
             },
             {
@@ -1962,7 +1962,7 @@
                 "id": 215,
                 "label": "C",
                 "content": "Bỏ phiếu tán thành Quốc tế Cộng sản.",
-                "isCorrect": false,
+                "isCorrect": true,
                 "sortOrder": 3
             },
             {
