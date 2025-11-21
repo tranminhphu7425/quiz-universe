@@ -3354,7 +3354,7 @@
                 "id": 361,
                 "label": "A",
                 "content": "Kim Liên – Nam Đàn – Nghệ An.",
-                "isCorrect": false,
+                "isCorrect": true,
                 "sortOrder": 1
             },
             {
@@ -3368,7 +3368,7 @@
                 "id": 363,
                 "label": "C",
                 "content": "Kim Liên – Nam Đàn – Nghệ Tĩnh.",
-                "isCorrect": true,
+                "isCorrect": false,
                 "sortOrder": 3
             },
             {
