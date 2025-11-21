@@ -43,8 +43,6 @@ import AdminDashboardPage from "@/pages/admin/AdminDashboardPage";
 // src/shared/lib/withSuspense.tsx
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
-import { AdminLayout } from "@/layouts/AdminLayout";
-import AdminUsersPage from "@/pages/admin/AdminUsersPage";
 
 
 const FancyFallback = () => {
@@ -126,19 +124,6 @@ export const router = createBrowserRouter(
         { path: "/resources", element: withSuspense(<ExplorePage />), errorElement: <NotFoundPage /> },
 
         // Protected routes
-
-
-        {
-          path: "/admin",
-          element: <AdminLayout />,
-          children: [
-            { index: true, element: withSuspense(<AdminDashboardPage />) },
-            { path: "users", element: withSuspense(<AdminUsersPage />) }, // sau này bạn có thể thay = UserManagementPage
-            { path: "settings", element: withSuspense(<AdminDashboardPage />) },
-          ],
-        },
-
-
         {
           element: <RequireAuth />,
           children: [
@@ -150,12 +135,6 @@ export const router = createBrowserRouter(
         // Fallback
         { path: "*", element: <NotFoundPage /> },
       ],
-    },
-
-
-    {
-      element: <AdminLayout />,
-      
     },
   ],
   {

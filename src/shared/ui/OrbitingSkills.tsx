@@ -34,8 +34,6 @@ interface GlowingOrbitPathProps {
 type IconType = 'browser' | 'layout' | 'seo' | 'analytics' | 'server' | 'security';
 
 
-
-
 // --- Improved SVG Icon Components ---
 const iconComponents: Record<IconType, { component: () => React.JSX.Element; color: string }> = {
   browser: {

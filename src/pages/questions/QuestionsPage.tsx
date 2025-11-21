@@ -62,7 +62,9 @@ export default function QuestionsPage() {
   const suppressTopScrollRef = useRef(false);
   const [page, setPage] = useState(1);
   const [subjectName, setSubjectName] = useState<string>("");
- 
+  useEffect(() => {
+    console.log(subjectId);
+  }, [subjectId]);
   const fetchData = async () => {
     if (subjectId == null) return;
     const ac = new AbortController();

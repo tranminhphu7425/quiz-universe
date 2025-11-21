@@ -47,8 +47,6 @@ export default function RegisterPage() {
 
     try {
       // Tùy backend của bạn: signup({ name: fullName, email, password: pwd })
-      console.log({ name: fullName, email, password: pwd });
-      
       await signup?.({ name: fullName, email, password: pwd });
       
       navigate("/setup", { state: { fromRegister: true } }); // hoặc chuyển đến /login nếu bạn muốn

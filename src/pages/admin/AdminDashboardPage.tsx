@@ -4,7 +4,6 @@ import { Loader2, Users, BookOpen, Database, CheckCircle, Clock, ClipboardList, 
 import { motion } from "framer-motion";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell } from "recharts";
 import { getAdminStats } from "@/shared/api/adminApi";
-import DashboardAdminSidebar from "@/widgets/DashboardAdminSidebar";
 
 const sampleStats = {
   users: 25,
@@ -38,11 +37,8 @@ export default function AdminDashboardPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen">
-    
-    <div className="min-h-screen flex-grow bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       {/* ===== HERO ===== */}
-       
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
 
@@ -149,7 +145,6 @@ export default function AdminDashboardPage() {
           </div>
         )}
       </main>
-    </div>
     </div>
   );
 }
