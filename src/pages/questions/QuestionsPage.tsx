@@ -62,9 +62,7 @@ export default function QuestionsPage() {
   const suppressTopScrollRef = useRef(false);
   const [page, setPage] = useState(1);
   const [subjectName, setSubjectName] = useState<string>("");
-  useEffect(() => {
-    console.log(subjectId);
-  }, [subjectId]);
+ 
   const fetchData = async () => {
     if (subjectId == null) return;
     const ac = new AbortController();
@@ -84,12 +82,25 @@ export default function QuestionsPage() {
         setData(qRes.value);
       } else if (qRes.reason?.name !== "AbortError") {
         setErr("Không thể lấy câu hỏi từ API. Đang dùng dữ liệu cục bộ!");
-        try {
-          const local = await import(`@/assets/data/questionssubject${id}.json`);
-          setData((local.default ?? []) as Question[]);
-        } catch {
-          setData([]);
-        }
+        console.log("Không thể lấy câu hỏi từ API. Đang dùng dữ liệu cục bộ!");
+        // try {
+        //   const local = await import(`@/assets/data/questionssubject${id}.json`);
+        //   setData((local.default ?? []) as Question[]);
+        // } catch {
+        //   setData([]);
+        // }
+        
+      const url = `/quiz-universe/data/questionssubject${id}.json`;
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const json: Question[] = await res.json();
+        setData(json);
+      } catch (err) {
+        console.error("Failed to load questions:", err);
+        setData([]);
+      }
       }
 
       // Subject name
