@@ -4256,14 +4256,14 @@
         "id": 444,
         "label": "B",
         "content": "Tập thể lãnh đạo, cá nhân phụ trách.",
-        "isCorrect": false,
+        "isCorrect": true,
         "sortOrder": 2
       },
       {
         "id": 445,
         "label": "C",
         "content": "Tự phê bình và phê bình.",
-        "isCorrect": true,
+        "isCorrect": false,
         "sortOrder": 3
       },
       {
