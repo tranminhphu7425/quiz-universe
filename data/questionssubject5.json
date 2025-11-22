@@ -1302,7 +1302,7 @@
                 "id": 619,
                 "label": "A",
                 "content": "giai cấp nông dân",
-                "isCorrect": false,
+                "isCorrect": true,
                 "sortOrder": 1
             },
             {
@@ -1323,7 +1323,7 @@
                 "id": 622,
                 "label": "D",
                 "content": "tầng lớp tư sản dân tộc",
-                "isCorrect": true,
+                "isCorrect": false,
                 "sortOrder": 4
             }
         ]
