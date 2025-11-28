@@ -45,13 +45,14 @@
           "path": "/resources/CT112 - Mạng máy tính/Chapter 7 - Transport Layer.pdf"
         },
         {
-          "name": "Chater 06 - Network Layer.pdf",
+          "name": "Chater  06  - Network Layer.pdf",
           "type": "pdf",
-          "path": "/resources/CT112 - Mạng máy tính/Chater 06 - Network Layer.pdf"
+          "path": "/resources/CT112 - Mạng máy tính/Chater  06  - Network Layer.pdf"
         },
         {
           "name": "NHVL",
           "type": "folder",
+          "path": "/resources/CT112 - Mạng máy tính/NHVL",
           "children": [
             {
               "name": "1-Overview.pdf",
@@ -150,8 +151,35 @@
     },
     {
       "name": "CT296 - Phân tích và thiết kế hệ thống thông tin",
-       "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin",
+      "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin",
       "children": [
+        {
+          "name": "Bài ôn",
+          "type": "folder",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Bài ôn",
+          "children": [
+            {
+              "name": "Bai tap 1-2-3.doc",
+              "type": "doc",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Bài ôn/Bai tap 1-2-3.doc"
+            },
+            {
+              "name": "Bai tap 4.docx",
+              "type": "docx",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Bài ôn/Bai tap 4.docx"
+            },
+            {
+              "name": "Bai tap 5.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Bài ôn/Bai tap 5.pdf"
+            },
+            {
+              "name": "Bai tap 6.docx",
+              "type": "docx",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Bài ôn/Bai tap 6.docx"
+            }
+          ]
+        },
         {
           "name": "Chuong0_GioiThieuHocPhan.pdf",
           "type": "pdf",
@@ -188,8 +216,186 @@
           "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Nội dung ghi chép CT296.docx"
         },
         {
+          "name": "Thi",
+          "type": "folder",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi",
+          "children": [
+            {
+              "name": "CT296_De thi tham khao (1).pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/CT296_De thi tham khao (1).pdf"
+            },
+            {
+              "name": "DE THAY TAI.docx",
+              "type": "docx",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/DE THAY TAI.docx"
+            },
+            {
+              "name": "dethicoNhung.bpm",
+              "type": "bpm",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/dethicoNhung.bpm"
+            },
+            {
+              "name": "dethicoNhung.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/dethicoNhung.pdf"
+            },
+            {
+              "name": "HK1 - 2122",
+              "type": "folder",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2122",
+              "children": [
+                {
+                  "name": "DA_DeThiGiuaKy_NhomS5.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2122/DA_DeThiGiuaKy_NhomS5.docx"
+                },
+                {
+                  "name": "DeThiCuoiKy_NhomC5.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2122/DeThiCuoiKy_NhomC5.docx"
+                },
+                {
+                  "name": "DeThiCuoiKy_NhomS2.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2122/DeThiCuoiKy_NhomS2.docx"
+                },
+                {
+                  "name": "DeThiGiuaKy_NhomS5.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2122/DeThiGiuaKy_NhomS5.docx"
+                }
+              ]
+            },
+            {
+              "name": "HK1 - 2223",
+              "type": "folder",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2223",
+              "children": [
+                {
+                  "name": "1.1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2223/1.1.jpg"
+                },
+                {
+                  "name": "1.2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2223/1.2.jpg"
+                }
+              ]
+            },
+            {
+              "name": "HK1 - 2324",
+              "type": "folder",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2324",
+              "children": [
+                {
+                  "name": "1.1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2324/1.1.jpg"
+                },
+                {
+                  "name": "1.2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2324/1.2.jpg"
+                },
+                {
+                  "name": "2.1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2324/2.1.jpg"
+                },
+                {
+                  "name": "2.2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK1 - 2324/2.2.jpg"
+                }
+              ]
+            },
+            {
+              "name": "HK2 - 2324",
+              "type": "folder",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324",
+              "children": [
+                {
+                  "name": "1.1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/1.1.jpg"
+                },
+                {
+                  "name": "1.2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/1.2.jpg"
+                },
+                {
+                  "name": "2.1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/2.1.jpg"
+                },
+                {
+                  "name": "2.2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/2.2.jpg"
+                },
+                {
+                  "name": "3.1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/3.1.jpg"
+                },
+                {
+                  "name": "3.2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/3.2.jpg"
+                },
+                {
+                  "name": "4.1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/4.1.jpg"
+                },
+                {
+                  "name": "4.2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/4.2.jpg"
+                },
+                {
+                  "name": "Đề 1.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/Đề 1.docx"
+                },
+                {
+                  "name": "Đề 2.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/Đề 2.docx"
+                },
+                {
+                  "name": "Đề 3.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/HK2 - 2324/Đề 3.docx"
+                }
+              ]
+            },
+            {
+              "name": "Tham khảo",
+              "type": "folder",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/Tham khảo",
+              "children": [
+                {
+                  "name": "Cây phân rã Quản lý quán ăn.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/Tham khảo/Cây phân rã Quản lý quán ăn.docx"
+                },
+                {
+                  "name": "THAM KHẢO ERD.docx",
+                  "type": "docx",
+                  "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/Tham khảo/THAM KHẢO ERD.docx"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "name": "Thực hành",
           "type": "folder",
+          "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành",
           "children": [
             {
               "name": "ieee-guide-for-developing-system-requirements-specifications.pdf",
