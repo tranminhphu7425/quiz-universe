@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phân biệt target và currentTarget</title>
+  
+</head>
+<body>
+    <form id="regform" action="#" method="post" enctype="multipart/form-data">
+        <label for="username">Username:</label> <input type="text" id="username" name="username">
+        <label for="password">Password:</label> <input type="password" id="password" name="password">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        var form = document.getElementById("regform");
+        form.addEventListener("focusin", function(event) {
+            if(event.target.id == "username" || event.target.id == "password" ) {
+                event.target.style.backgroundColor = 'yellow';
+            }   
+        });
+        form.addEventListener("focusout", function(event) {
+            if(event.target.id == "username" || event.target.id == "password") {
+                event.target.style.backgroundColor = 'initial';
+            }   
+        });
+    </script>
+</body>
+</html>

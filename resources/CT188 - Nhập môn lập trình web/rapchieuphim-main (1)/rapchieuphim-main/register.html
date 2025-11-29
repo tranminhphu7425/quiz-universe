@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img class="logo-icon" src="images/logo.png" alt="" width="50px" height="50px">
+                </a>
+                <img class="menu-icon" src="images/menu.png" alt="" class="menu-icon" onclick="toggleMenu()">
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="cart.html">Giỏ hàng</a></li>
+                    <li><a href="login.html">Đăng nhập</a></li>
+                    <li><a href="#" class="active">Đăng ký</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+    <main>
+        <div class="form-container">
+            <div class="form-box">
+                <div class=" form">
+                    <h2>Tạo tài khoản mới</h2>
+                    <form id="frm">
+
+                        <div class="form-group">
+                            <label for="user-name" class="form-label">Tên tài khoản</label>
+                            <span class="input-icon"><img class="input-form-icon" src="images/user.png"></span>
+                            <input class="input-box need-validate" type="textbox" placeholder="Tên tài khoản"
+                                id="user-name" name="userName">
+                            <span class="error-mess"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <span class="input-icon"><img class="input-form-icon" src="images/email.png"></span>
+                            <input class="input-box need-validate" type="email" placeholder="Email" id="email"
+                                name="email">
+                            <span class="error-mess"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone-number" class="form-label">Số điện thoại</label>
+                            <span class="input-icon"><img class="input-form-icon" src="images/phone.png"></span>
+                            <input class="input-box need-validate" type="textbox" placeholder="Số điện thoại"
+                                id="phone-number" name="phoneNumber" onkeypress="return isNumber(event)">
+                            <span class="error-mess"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birth-day" class="form-label">Ngày sinh</label>
+                            <input class="input-box need-validate" type="date" id="birth-day" name="birthDay">
+                            <span class="error-mess"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <span class="input-icon"><img class="input-form-icon" src="images/lock.png"></span>
+                            <input class="input-box need-validate" type="password" placeholder="Mật khẩu" id="password"
+                                name="password">
+                            <span class="error-mess"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password" class="form-label">Nhập lại mật khẩu</label>
+                            <span class="input-icon"><img class="input-form-icon" src="images/lock.png"></span>
+                            <input class="input-box need-validate" type="password" placeholder="Nhập lại mật khẩu"
+                                id="confirm-password" name="confirmPassword">
+                            <span class="error-mess"></span>
+                        </div>
+
+                        <div>
+                            <button type="button" onclick="formValidate()" class="btn btn-dark">Đăng ký</button>
+                        </div>
+                    </form>
+
+                    <div class="alr-have-acc">
+                        <p>Đã có tài khoản? <a href="./login.html">Đăng nhập</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <div class="footer-nav">
+
+            <div>
+                <h3>CGA Việt Nam</h3>
+                <ul>
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                    <li><a href="#">Chính sách</a></li>
+                    <li><a href="#">Quảng cáo</a></li>
+                    <li><a href="#">Câu hỏi thường gặp</a></li>
+                </ul>
+            </div>
+            <div>
+
+                <h3>Các mạng xã hội của chúng tôi</h3>
+                <div class="social-icon">
+                    <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-instagram-square fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-youtube-square fa-2x"></i></a>
+                </div>
+
+            </div>
+            <div>
+                <h3>Chăm sóc khách hàng</h3>
+                <ul>
+                    <li>Hotline: 123-456-78</li>
+                    <li>Email hỗ trợ: hotro@cga.vn</li>
+                    <li>Trung tâm hỗ trợ trực tiếp: 123, Ninh Kiều, Cần Thơ</li>
+                </ul>
+            </div>
+        </div>
+
+    </footer>
+    <script src="./js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bài tập jQuery</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            border: 5px solid red;
+            margin: 20px;
+        }
+        #div2 {
+            background-color: lightblue;
+            width: 500px;
+            height: 200px;
+        }
+        
+        
+        table, td, th{
+            border: 1px solid black;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr id="screenSize">
+            <td>Window size</td>
+            <td id="screenWidth"></td>
+            <td id="screenHeight"></td>
+        </tr>
+        <tr id="div1Size">
+            <td>Div 1 size</td>
+            <td id="div1Width"></td>
+            <td id="div1Height"></td>
+        </tr>
+        <tr id="div1InnerSize">
+            <td>Div 1 inner size</td>
+            <td id="div1InnerWidth"></td>
+            <td id="div1InnerHeight"></td>
+        </tr>
+        <tr id="div1OuterSizeFalse">
+            <td>Div 1 outer size 1</td>
+            <td id="div1OuterWidthFalse"></td>
+            <td id="div1OuterHeightFalse"></td>
+        </tr>
+        <tr id="div1OuterSizeTrue">
+            <td>Div 1 outer size 2</td>
+            <td id="div1OuterWidthTrue"></td>
+            <td id="div1OuterHeightTrue"></td>
+        </tr>
+        <tr id="emptySpace">
+            <td>Khoảng trống</td>
+            <td id="emptyWidth"></td>
+            <td id="emptyHeight"></td>
+        </tr>
+    </table>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+
+    <script>
+
+        $(document).ready(function() {
+            var screenWidth = $(window).width();
+            var screenHeight = $(window).height();
+            $('#screenWidth').text(screenWidth);
+            $('#screenHeight').text(screenHeight);
+            
+            var div1Width = $('#div1').width();
+            var div1Height = $('#div1').height();
+            $('#div1Width').text(div1Width);
+            $('#div1Height').text(div1Height);
+            
+            var div1InnerWidth = $('#div1').innerWidth();
+            var div1InnerHeight = $('#div1').innerHeight();
+            $('#div1InnerWidth').text(div1InnerWidth);
+            $('#div1InnerHeight').text(div1InnerHeight);
+            
+            var div1OuterWidthFalse = $('#div1').outerWidth(false);
+            var div1OuterHeightFalse = $('#div1').outerHeight(false);
+            $('#div1OuterWidthFalse').text(div1OuterWidthFalse);
+            $('#div1OuterHeightFalse').text(div1OuterHeightFalse);
+            
+            var div1OuterWidthTrue = $('#div1').outerWidth(true);
+            var div1OuterHeightTrue = $('#div1').outerHeight(true);
+            $('#div1OuterWidthTrue').text(div1OuterWidthTrue);
+            $('#div1OuterHeightTrue').text(div1OuterHeightTrue);
+            
+            var emptyWidth = screenWidth - div1OuterWidthTrue;
+            var emptyHeight = screenHeight - div1OuterHeightTrue;
+            $('#emptyWidth').text(emptyWidth);
+            $('#emptyHeight').text(emptyHeight);
+        });
+    </script>
+</body>
+</html>
