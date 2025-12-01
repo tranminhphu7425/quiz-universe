@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ về các phương thức DOM</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script>
+        var element = document.getElementById("list");
+        var browsers = ["chrome", "edge", "firefox"];
+
+        var textul = document.createTextNode("xin chao the gioi"); //tao doan text
+        element.appendChild(textul); // = element.innerText = "Xin chao the gioi";
+        var attribute = document.createAttribute("name");
+        attribute.value = "Xin chao the gioi"; 
+        element.setAttributeNode(attribute); // = element.name = "newName";
+        
+        let clone = element.cloneNode(true); // Sao chép toàn bộ nội dung
+        let clone1 = element.cloneNode(false); 
+        //Chỉ sao chép phần tử, không sao chép nội dung con
+        var frag = document.createDocumentFragment(); //vùng nhớ tạm
+        for (var i = 0; i < browsers.length; i++) {
+            var li = document.createElement("li");
+            li.textContent = browsers[i];
+            frag.appendChild(li);
+        }
+        element.appendChild(frag);
+        //output:   chrome
+        //          edge
+        //          firefox
+    </script>
+</body>
+</html>

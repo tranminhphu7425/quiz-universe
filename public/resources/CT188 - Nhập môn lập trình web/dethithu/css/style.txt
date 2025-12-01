@@ -1,0 +1,150 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+    display: flex;
+    background-color: #be7fe3;
+    text-align: center;
+    justify-content: space-between;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    padding: 10px;
+}
+
+#header span{
+    position: relative;
+    bottom: 20px;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(69, 48, 205);
+}
+
+#header .rightHeader{
+    margin-right: 5%;
+}
+
+
+#nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(108, 144, 210);
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+
+}
+#nav ul{ 
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-weight: bold;
+}
+#nav li a {
+    text-decoration: none;
+    color: white;
+}
+
+#contentWrapper{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: 
+    "leftSide1 mainContent"
+    "leftSide2 mainContent"
+    ". .";
+    background-color: #f0f0f0;
+    grid-template-rows: min-content min-content 40px;
+    width: 100%;
+    height: fit-content;
+    margin-top: 10px;
+}
+
+#leftSide1{
+    grid-area: leftSide1;
+}
+#leftSide2{
+    grid-area: leftSide2;
+}
+
+#leftSide1, #leftSide2{
+    background-color: rgb(229, 229, 229);
+    height: fit-content;
+    box-shadow: 0 0 5px #000000;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 5px;
+}
+
+#leftSide1 ul, #leftSide2 ul{
+    padding-left: 16px;
+    
+}
+
+
+#leftSide1 li, #leftSide2 li{
+    list-style-type: none;
+    font-weight: bold;
+    margin: 10px 0;
+}
+#leftSide1 ul a, #leftSide2 ul a{
+    text-decoration: none;
+    color: rgb(51, 51, 207);
+}
+
+
+#mainContent{
+    grid-area: mainContent;
+    height: fit-content;
+    margin: 5px;
+    background-color: rgb(226, 226, 226);
+}
+
+
+#mainContent .content {
+    text-align: center;
+}
+
+
+#mainContent {
+    box-shadow: 0 0 5px #000000;
+}
+#mainContent .content, #mainContent .title{
+    padding: 10px;
+}
+
+.title{
+    text-align: left;
+    align-content: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    height: 30px;
+    padding-left: 5px;
+    background-color: rgb(108, 144, 210);
+}
+
+#mainContent .title{
+    text-align: center;
+}
+
+#footer{
+    margin: 0 5px 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(108, 144, 210);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 50px
+
+}
+

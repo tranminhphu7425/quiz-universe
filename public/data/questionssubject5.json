@@ -1302,7 +1302,7 @@
                 "id": 619,
                 "label": "A",
                 "content": "giai cấp nông dân",
-                "isCorrect": false,
+                "isCorrect": true,
                 "sortOrder": 1
             },
             {
@@ -1323,7 +1323,7 @@
                 "id": 622,
                 "label": "D",
                 "content": "tầng lớp tư sản dân tộc",
-                "isCorrect": true,
+                "isCorrect": false,
                 "sortOrder": 4
             }
         ]
@@ -2632,14 +2632,14 @@
                 "id": 759,
                 "label": "A",
                 "content": "Bốn",
-                "isCorrect": true,
+                "isCorrect": false,
                 "sortOrder": 1
             },
             {
                 "id": 760,
                 "label": "B",
                 "content": "Năm",
-                "isCorrect": false,
+                "isCorrect": true,
                 "sortOrder": 2
             },
             {
@@ -3278,7 +3278,7 @@
                 "id": 827,
                 "label": "A",
                 "content": "Thể xác",
-                "isCorrect": true,
+                "isCorrect": false,
                 "sortOrder": 1
             },
             {
@@ -3292,7 +3292,7 @@
                 "id": 829,
                 "label": "C",
                 "content": "Cốt lõi",
-                "isCorrect": false,
+                "isCorrect": true,
                 "sortOrder": 3
             },
             {
@@ -3830,7 +3830,7 @@
             {
                 "id": 886,
                 "label": "D",
-                "content": "Các mạng vô sản",
+                "content": "Cách mạng vô sản",
                 "isCorrect": false,
                 "sortOrder": 4
             }
@@ -3906,7 +3906,7 @@
             {
                 "id": 894,
                 "label": "D",
-                "content": "Từ phong trào yêu nước 15 Downloaded by Phú Tr?n Minh (tranminhphu7.4.2005@gmail.com) lOMoARcPSD|29791048",
+                "content": "Từ phong trào yêu nước",
                 "isCorrect": false,
                 "sortOrder": 4
             }
@@ -4165,7 +4165,7 @@
             {
                 "id": 921,
                 "label": "C",
-                "content": "Là một bộ phận của cách mạng vô sản trên thế giới 16 Downloaded by Phú Tr?n Minh (tranminhphu7.4.2005@gmail.com) lOMoARcPSD|29791048",
+                "content": "Là một bộ phận của cách mạng vô sản trên thế giới",
                 "isCorrect": false,
                 "sortOrder": 3
             },

@@ -2,20 +2,27 @@
 <html lang="vi">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0ea5e9" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="robots" href="/robots.txt" />
-  <link rel="shortcut icon" href="src\assets\images\logo\quizuniverselogo.png" type="image/x-icon">
-  <title>QuizUniverse</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="robots" href="/robots.txt" />
+    <link rel="shortcut icon" href="src\assets\images\logo\quizuniverselogo.png" type="image/x-icon">
+    <title>QuizUniverse</title>
+    <script>
+        var path = window.location.pathname;
+        if (path.startsWith('/graphbuilder/') && !location.hash) {
+            window.location.replace('/graphbuilder/' + '#!' + path.substring(13));
+        }
+    </script>
+
 </head>
 
 <body class="bg-background text-foreground bg-slate-50 dark:bg-slate-800">
-  <div id="root"></div>
-  <!-- Entry: điều hướng ở /src/app/main.tsx -->
-  <script type="module" src="/src/app/main.tsx"></script>
-  
+    <div id="root"></div>
+    <!-- Entry: điều hướng ở /src/app/main.tsx -->
+    <script type="module" src="/src/app/main.tsx"></script>
+
 
 </body>
 

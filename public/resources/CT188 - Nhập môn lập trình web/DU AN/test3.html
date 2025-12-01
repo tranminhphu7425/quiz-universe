@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quảng cáo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+
+    
+
+</head>
+<h1>Chọn tất cả các checkbox</h1>
+<body id="body"> 
+    <div class="hi">
+        <main>
+            <p>This is an element node</p>
+            This is an text node
+            <h3>This is an heading element</h3>
+        </main>
+    </div>
+    <script>
+        var root = document.getElementsByTagName("main")[0];
+        var childNodes = root.childNodes; // trả về danh sách các node con
+        //tức là bao gồm cả This is an text node
+        var element = root.children; //trả về danh sách các element node con
+        var firstChild = root.firstChild; //Node con đầu tiên, có thể là cả text
+        var firstElementChild = root.firstElementChild; //Element con đầu tiên (p)
+        var lastChild = root.lastChild; //Node con cuối cùng, có thể là cả text
+        var lastElementChild = root.lastElementChild; //Element con cuối cùng (h3)
+        
+        var parentNode = root.parentNode; //Node cha, có thể cả text (div)
+        var parentElement = root.parentElement; //element node cha (div)
+        var cloest = root.closest("#body"); //Tìm node tổ tiên ancestor của node hiện tại (body)
+        var nextSibling = root.nextSibling; //Node anh em tiếp theo ruột phải, có thể là cả text
+        var nextElementSibling = root.nextElementSibling; //Element node anh em tiếp theo ruột phải
+        var previousSibling = root.previousSibling; //Node anh em ruột trái, có thể là cả text
+        var previousElementSibling = root.previousElementSibling; //Element node anh em ruột trái
+        
+        for(let i = 0; i < element.length; i++) {
+            console.log(element[i].innerText);  
+            //Nội dung của node, không bao gồm HTML, khoảng trắng và nội dung có thuộc tính css ẩn
+            console.log(element[i].textContent); 
+            //Tương tự như innerText nhưng bao gồm cả khoảng trắng, nội dung có thuộc tính CSS ẩn
+            console.log(element[i].innerHTML);  
+            //Trả về toàn bộ text, mã html và khoảng trắng
+        }
+    </script>
+</body>
+
+</html>

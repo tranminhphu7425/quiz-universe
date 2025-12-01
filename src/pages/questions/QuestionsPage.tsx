@@ -18,7 +18,9 @@ import { ArrowRight, LayoutGrid, RefreshCcw, Sparkles, XCircle } from "lucide-re
 import LoadingState from "@/widgets/LoadingState";
 import { Question, QuestionOption, fetchQuestionsBySubjectId } from "@/shared/api/questionsApi";
 import { fetchSubjectNameById, Subject } from "@/shared/api/subjectApi";
-import localSubjects from "@/assets/data/subjects.json"; // import file JSON cục bộ
+import { Flag } from "lucide-react";
+
+
 
 
 const BLANK_RE = /\.{5,}/g; // 6 dấu chấm trở lên
@@ -50,7 +52,7 @@ function normalize(s: string) {
 
 // ====== Page ======
 export default function QuestionsPage() {
-  const [picked, setPicked] = useState<Record <number, number | null>>({}); // qId -> optionId
+  const [picked, setPicked] = useState<Record<number, number | null>>({}); // qId -> optionId
   const [fillAnswers, setFillAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const { subjectId } = useParams<{ subjectId: string }>();
@@ -62,7 +64,16 @@ export default function QuestionsPage() {
   const suppressTopScrollRef = useRef(false);
   const [page, setPage] = useState(1);
   const [subjectName, setSubjectName] = useState<string>("");
- 
+  var localSubjects: Subject[] = [];
+  const [flaggedQuestions, setFlaggedQuestions] = useState<Record<number, boolean>>({});
+
+  const toggleFlag = (qId: number) => {
+    setFlaggedQuestions(prev => ({
+      ...prev,
+      [qId]: !prev[qId],
+    }));
+  };
+
   const fetchData = async () => {
     if (subjectId == null) return;
     const ac = new AbortController();
@@ -89,18 +100,22 @@ export default function QuestionsPage() {
         // } catch {
         //   setData([]);
         // }
-        
-      const url = `/quiz-universe/data/questionssubject${id}.json`;
 
-      try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        const json: Question[] = await res.json();
-        setData(json);
-      } catch (err) {
-        console.error("Failed to load questions:", err);
-        setData([]);
-      }
+
+
+        const url = `/quiz-universe/data/questionssubject${id}.json`;
+
+        try {
+          const res = await fetch(url);
+          const local = await fetch("/quiz-universe/data/subjects.json");
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+          const json: Question[] = await res.json();
+          setData(json);
+          localSubjects = await local.json();
+        } catch (err) {
+          console.error("Failed to load questions:", err);
+          setData([]);
+        }
       }
 
       // Subject name
@@ -138,7 +153,7 @@ export default function QuestionsPage() {
   const PAGE_SIZE = 10;
   const pageSizeFAB = 50;
 
-  
+
   const total = data.length;
   const pageCount = Math.ceil(total / PAGE_SIZE);
   const start = (page - 1) * PAGE_SIZE;
@@ -234,7 +249,7 @@ export default function QuestionsPage() {
         onClick={() => setNavOpen(false)}
       />)
       } */}
-      
+
 
 
       {/* ====== HERO (phong cách giống trang chủ) ====== */}
@@ -319,15 +334,17 @@ export default function QuestionsPage() {
                       pickedOptionId={picked[q.id] ?? null}
                       onPick={(optionId) => {
                         setPicked((m) => ({ ...m, [q.id]: optionId }));
-                      
+
                       }}
                       onClear={() => {
                         setPicked((m) => ({ ...m, [q.id]: null }));
-            
+
                       }}
                       showResult={submitted}
                       answers={fillAnswers}
                       onFill={(optionId, value) => { setFillAnswers((m) => ({ ...m, [optionId]: value })); }}
+                      flagged={flaggedQuestions[q.id]}
+                      onToggleFlag={() => toggleFlag(q.id)}
                     />
                   ))}
                 </div>
@@ -450,16 +467,18 @@ export default function QuestionsPage() {
                       const qNumber = globalIndex + 1;        // số thứ tự câu
                       const pickedId = picked[q.id];
                       const hasPicked = pickedId != null;
-
+                      const flagged = flaggedQuestions[q.id];
                       let color = "";
                       if (submitted && hasPicked) {
                         const isCorrect = q.options.find(o => o.isCorrect)?.id === pickedId;
                         color = isCorrect ? "bg-emerald-500 text-white" : "bg-rose-500 text-white";
                       } else if (hasPicked) {
                         color = "bg-emerald-700 text-white ";
+
                       } else {
                         color = "border border-slate-300 text-slate-700 dark:text-slate-300 dark:border-slate-700";
                       }
+
 
                       let finalColor = color;
                       if (finalColor === "border border-slate-300 text-slate-700 dark:text-slate-300 dark:border-slate-700" && isZone(globalIndex)) {
@@ -471,10 +490,16 @@ export default function QuestionsPage() {
                         <button
                           key={q.id}
                           onClick={() => goToQuestion(globalIndex, q.id)}
-                          className={`h-8 rounded-md text-sm font-semibold  ${finalColor}  `}
+                          className={`relative h-8 rounded-md text-sm font-semibold ${finalColor}`}
                           title={`Tới câu ${qNumber}`}
                         >
                           {qNumber}
+
+                          {/* Cờ vàng nếu flagged */}
+                          {flagged && (
+                            <span className="absolute top-0 left-0 w-0 h-0 border-t-[10px] border-r-transparent border-r-[10px] border-t-amber-400 border-l-0 border-b-0"></span>
+
+                          )}
                         </button>
                       );
                     })}
@@ -528,7 +553,9 @@ function QuestionCard({
   onClear,
   showResult,
   answers,                    // { [optionId]: "user text" }
-  onFill,                     // (optionId, value) => void
+  onFill,
+  flagged,
+  onToggleFlag,                  // (optionId, value) => void
 }: {
   index: number;
   q: Question;
@@ -539,6 +566,8 @@ function QuestionCard({
   showResult: boolean;
   answers?: Record<number, string>;
   onFill?: (optionId: number, value: string) => void;
+  flagged: boolean;
+  onToggleFlag: (optionId: number, value: boolean) => void;
 }) {
   const correct = q.options.find((o) => o.isCorrect);
   const isCorrect = showResult && pickedOptionId && correct && pickedOptionId === correct.id;
@@ -550,6 +579,8 @@ function QuestionCard({
     showResult &&
     q.options.length > 0 &&
     q.options.every((opt) => normalize(answers?.[opt.id] ?? "") === normalize(opt.content));
+
+
 
 
   return (
@@ -585,16 +616,43 @@ function QuestionCard({
                 </span>
               ) : null
             ) : (
-              pickedOptionId !== null && (
-                <button
-                  type="button"
-                  onClick={onClear}
-                  className="rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-                  title="Xóa lựa chọn của câu này"
-                >
-                  Xóa lựa chọn
-                </button>
-              )
+              // pickedOptionId !== null && (
+              //   <button
+              //     type="button"
+              //     onClick={onClear}
+              //     className="rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+              //     title="Xóa lựa chọn của câu này"
+              //   >
+              //     Xóa lựa chọn
+              //   </button>
+              // )
+
+              <div className="flex items-center gap-2">
+                {/* Nút Xóa lựa chọn */}
+                {pickedOptionId !== null && (
+                  <button
+                    type="button"
+                    onClick={onClear}
+                    className="rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                    title="Xóa lựa chọn của câu này"
+                  >
+                    Xóa lựa chọn
+                  </button>
+                )}
+
+                {/* Nút cờ */}
+                {onToggleFlag && (
+                  <button
+                    type="button"
+                    onClick={() => onToggleFlag?.(q.id, !flagged)}
+                    className={`p-1 rounded-full ${flagged ? "bg-amber-400 text-white" : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300"}`}
+                    title={flagged ? "Bỏ cờ" : "Đánh dấu cờ"}
+                  >
+                    <Flag className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
+
             )}
           </div>
 
@@ -823,34 +881,34 @@ function InlineBlank({
   const isErr = reveal && opt && !isOk;
 
   return (
-   
-  <span
-    className={[
-      "mx-1 my-1 inline-flex items-center rounded-lg px-2 py-1 align-baseline",
-      "min-w-[8ch] max-w-[50ch]",                 // khung co giãn 8→50ch
-      "border transition",
-      reveal
-        ? isOk
-          ? "border-emerald-300 bg-emerald-50 dark:border-emerald-800/60 dark:bg-emerald-900/10"
-          : "border-rose-300 bg-rose-50 dark:border-rose-800/60 dark:bg-rose-900/10"
-        : "border-slate-300 dark:border-slate-600",
-    ].join(" ")}
-  >
-    <input
-      type="text"
-      aria-label={opt ? `Điền ô ${opt.label}` : "Ô trống"}
-      value={value}
-      onChange={(e) => onChange?.(e.target.value)}
-      disabled={reveal}
-      placeholder={opt ? `Ô ${opt.label}` : "Ô trống"}
-      // 🔑 bỏ w-full để không chiếm hết khung
-      className="bg-transparent outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 font-semibold"
-      // 🔑 auto-giãn theo độ dài hiện tại (8→50 ký tự)
-      style={{
-        width: `${Math.min(50, Math.max(8, (value?.length ?? 0) + 1))}ch`,
-      }}
-    />
-  </span>
+
+    <span
+      className={[
+        "mx-1 my-1 inline-flex items-center rounded-lg px-2 py-1 align-baseline",
+        "min-w-[8ch] max-w-[50ch]",                 // khung co giãn 8→50ch
+        "border transition",
+        reveal
+          ? isOk
+            ? "border-emerald-300 bg-emerald-50 dark:border-emerald-800/60 dark:bg-emerald-900/10"
+            : "border-rose-300 bg-rose-50 dark:border-rose-800/60 dark:bg-rose-900/10"
+          : "border-slate-300 dark:border-slate-600",
+      ].join(" ")}
+    >
+      <input
+        type="text"
+        aria-label={opt ? `Điền ô ${opt.label}` : "Ô trống"}
+        value={value}
+        onChange={(e) => onChange?.(e.target.value)}
+        disabled={reveal}
+        placeholder={opt ? `Ô ${opt.label}` : "Ô trống"}
+        // 🔑 bỏ w-full để không chiếm hết khung
+        className="bg-transparent outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 font-semibold"
+        // 🔑 auto-giãn theo độ dài hiện tại (8→50 ký tự)
+        style={{
+          width: `${Math.min(50, Math.max(8, (value?.length ?? 0) + 1))}ch`,
+        }}
+      />
+    </span>
 
 
   );

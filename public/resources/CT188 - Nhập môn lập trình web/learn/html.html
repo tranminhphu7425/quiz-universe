@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .item-top {
+            grid-area: top;
+
+        }
+        .item-left {
+            grid-area: left;
+        }
+        .item-right {
+            grid-area: right;
+        }
+        .item-bottom {
+            grid-area: bottom;
+        }
+        .item-center {
+            grid-area: center;
+        }
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "top top top"
+                "left center right"
+                "bottom bottom bottom";
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 1fr 2fr 1fr;
+            gap: 10px;
+            height: 100vh;
+        }
+
+    </style>
+
+   
+</head>
+<body>
+    <div class="container">
+        <div class="item-top" style="background-color: red;">Top</div>
+        <div class="item-left" style="background-color: blue;">Left</div>
+        <div class="item-right " style="background-color: green;">Right</div>
+        <div class="item-bottom" style="background-color: yellow;">Bottom</div>
+    
+</body>
+</html>

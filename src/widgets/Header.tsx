@@ -78,22 +78,22 @@ const bounceTransition = {
 } as const;
 
 export default function Header({
- 
+
   onGetStarted,
   onLogin,
-  links ,
+  links,
 }: HeaderProps) {
   const { user, logout } = useAuth();
-  links = user? [
+  links = user ? [
     { label: "Câu hỏi", href: "/subjects" },
     { label: "Đề thi", href: "/exams/create" },
-    {label: "Diễn đàn", href: "/forum"},
-    {label: "Thư viện", href: "/resources"}
+    { label: "Diễn đàn", href: "/forum" },
+    { label: "Thư viện", href: "/resources" }
 
-  ] : [{ label: "Câu hỏi", href: "/subjects" }, 
-    { label: "Liên hệ", href: "/contact" },
-    { label: "Hướng dẫn nhanh", href: "/quickguide" },
-    {label: "Diễn đàn", href: "/forum"}];
+  ] : [{ label: "Câu hỏi", href: "/subjects" },
+  { label: "Thư viện", href: "/resources" },
+  // { label: "Hướng dẫn nhanh", href: "/quickguide" },
+  { label: "Diễn đàn", href: "/forum" }];
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -165,8 +165,8 @@ export default function Header({
 
         // 2) API lỗi -> fallback sang JSON cục bộ (dynamic import)
         setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
-        const local = await import("@/assets/data/subjects.json");
-        setSubjects((local.default ?? []) as Subject[]);
+        const local = await fetch("/quiz-universe/assets/data/subjects.json");
+        setSubjects((await local.json()) as Subject[]);
       } finally {
         setLoading(false);
       }
@@ -258,7 +258,7 @@ export default function Header({
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4">
-           
+
             {/* Main Nav Items */}
             {navSubItems.map((item) => {
               const active = location.pathname === item.to;

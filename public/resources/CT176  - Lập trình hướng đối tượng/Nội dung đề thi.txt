@@ -1,0 +1,7 @@
+Cho 4 lớp
+- Chủ yếu hỏi cú pháp constructor
+- Chú ý đến phạm vi truy cập của các thành phần trong lớp (có thể truy cập được từ hàm main, lớp con kế thừa lớp cha hay không)
+- Chú ý đến đó là composition aggregation (sẽ liên quan đến cách khai báo constructor)
+- Cách dùng super và this trong mọi trường hợp
+- Cách tạo mảng đối tượng (tạo như thế nào)
+- Nạp chồng, nạp đè (cú pháp nào gây lỗi)

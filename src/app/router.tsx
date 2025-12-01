@@ -92,9 +92,10 @@ export function RequireAuth() {
   return <Outlet />;
 }
 
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   [
     {
+ 
       element: <Layout />,
       children: [
         // Public
@@ -138,6 +139,6 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/quiz-universe",
+    // basename: "/quiz-universe",
   }
 );

@@ -122,8 +122,8 @@ export default function SubjectPage() {
 
         // 2) API lỗi -> fallback sang JSON cục bộ (dynamic import)
         setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
-        const local = await import("@/assets/data/subjects.json");
-        setData((local.default ?? []) as Subject[]);
+        const local = await fetch("/quiz-universe/data/subjects.json");
+        setData((await local.json()) as Subject[]);
       } finally {
         setLoading(false);
       }

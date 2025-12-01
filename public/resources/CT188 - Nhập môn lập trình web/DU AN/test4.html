@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ về các phương thức DOM</title>
+</head>
+<body>
+    <h1 id="myTitle" class="title">Hello, world!</h1>
+    <button onclick="changeProperties()">Thay đổi thuộc tính</button>
+    <a href="" id="a-link"></a>
+    <script>
+        function changeProperties() {
+            let node = document.getElementById("myTitle");
+
+            // 1. document.write() - Ghi giá trị trực tiếp vào trang HTML 
+            //(lưu ý: sẽ thay thế toàn bộ nội dung trang nếu dùng sau khi DOM đã tải)
+            document.write("<p>Đây là văn bản mới!</p>");
+            // 2. node.attribute - Truy xuất hoặc gán giá trị trực tiếp cho thuộc tính
+            console.log(node.className);  // Lấy giá trị của class (title)
+            node.className = "new-class"; // Gán giá trị mới cho class
+            // 3. node.getAttribute(attrib) - Lấy giá trị của một thuộc tính cụ thể
+            console.log(node.getAttribute("id")); // Kết quả: "myTitle"
+            // 4. node.setAttribute(attrib, val) - Gán giá trị cho một thuộc tính cụ thể
+            node.setAttribute("data-info", "Thông tin mới"); // Thêm thuộc tính `data-info`
+            // 5. node.style.property - Thay đổi giá trị định dạng của node
+            node.style.color = "red";  // Thay đổi màu chữ thành đỏ
+            node.style.fontSize = "24px"; // Tăng kích thước chữ
+        }
+
+        document.getElementById("a-link").setAttribute("href", "https://example.com");
+        document.getElementById("a-link").innerText = "Link đến Example.com"; // Thay đổi văn bản hiển thị của link
+
+    </script>
+</body>
+</html>
