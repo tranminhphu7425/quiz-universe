@@ -208,14 +208,14 @@
               "path": "/resources/CT172 - Toán rời rạc/Bai tap/UCLNBCNNSNT.pdf"
             },
             {
-              "name": "Vitu(1).pdf",
-              "type": "pdf",
-              "path": "/resources/CT172 - Toán rời rạc/Bai tap/Vitu(1).pdf"
-            },
-            {
               "name": "ViTu(2).pdf",
               "type": "pdf",
               "path": "/resources/CT172 - Toán rời rạc/Bai tap/ViTu(2).pdf"
+            },
+            {
+              "name": "Vitu(1).pdf",
+              "type": "pdf",
+              "path": "/resources/CT172 - Toán rời rạc/Bai tap/Vitu(1).pdf"
             }
           ]
         },
@@ -257,39 +257,14 @@
           ]
         },
         {
-          "name": "baitapmaunhapth.pdf",
+          "name": "CT172_HK3_2023_2024.pdf",
           "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/baitapmaunhapth.pdf"
-        },
-        {
-          "name": "baitaptoanroiracchuongii.pdf",
-          "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/baitaptoanroiracchuongii.pdf"
-        },
-        {
-          "name": "bt-sh-bt-sh.pdf",
-          "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/bt-sh-bt-sh.pdf"
+          "path": "/resources/CT172 - Toán rời rạc/CT172_HK3_2023_2024.pdf"
         },
         {
           "name": "Chapter_7_Counting_4in1.pdf",
           "type": "pdf",
           "path": "/resources/CT172 - Toán rời rạc/Chapter_7_Counting_4in1.pdf"
-        },
-        {
-          "name": "chuong-1-menh-de-va-vi-tu-chuong-1-menh-de-va-vi-tu-toan-roi-rac.pdf",
-          "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/chuong-1-menh-de-va-vi-tu-chuong-1-menh-de-va-vi-tu-toan-roi-rac.pdf"
-        },
-        {
-          "name": "chuong-2-giao-trinh.pdf",
-          "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/chuong-2-giao-trinh.pdf"
-        },
-        {
-          "name": "CT172_HK3_2023_2024.pdf",
-          "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/CT172_HK3_2023_2024.pdf"
         },
         {
           "name": "File_BaiTap_ToanRoiRac- đã note.pdf",
@@ -305,6 +280,51 @@
           "name": "File_BaiTap_ToanRoiRac_250210_073808.pdf",
           "type": "pdf",
           "path": "/resources/CT172 - Toán rời rạc/File_BaiTap_ToanRoiRac_250210_073808.pdf"
+        },
+        {
+          "name": "Rosen_Discrete_Mathematics_and_Its_Applications_7th_Edition.pdf",
+          "type": "pdf",
+          "path": "/resources/CT172 - Toán rời rạc/Rosen_Discrete_Mathematics_and_Its_Applications_7th_Edition.pdf"
+        },
+        {
+          "name": "Tổng hợp toán rời rạc(1).pdf",
+          "type": "pdf",
+          "path": "/resources/CT172 - Toán rời rạc/Tổng hợp toán rời rạc(1).pdf"
+        },
+        {
+          "name": "Tổng hợp toán rời rạc.docx",
+          "type": "docx",
+          "path": "/resources/CT172 - Toán rời rạc/Tổng hợp toán rời rạc.docx"
+        },
+        {
+          "name": "Tổng hợp toán rời rạc.pdf",
+          "type": "pdf",
+          "path": "/resources/CT172 - Toán rời rạc/Tổng hợp toán rời rạc.pdf"
+        },
+        {
+          "name": "baitapmaunhapth.pdf",
+          "type": "pdf",
+          "path": "/resources/CT172 - Toán rời rạc/baitapmaunhapth.pdf"
+        },
+        {
+          "name": "baitaptoanroiracchuongii.pdf",
+          "type": "pdf",
+          "path": "/resources/CT172 - Toán rời rạc/baitaptoanroiracchuongii.pdf"
+        },
+        {
+          "name": "bt-sh-bt-sh.pdf",
+          "type": "pdf",
+          "path": "/resources/CT172 - Toán rời rạc/bt-sh-bt-sh.pdf"
+        },
+        {
+          "name": "chuong-1-menh-de-va-vi-tu-chuong-1-menh-de-va-vi-tu-toan-roi-rac.pdf",
+          "type": "pdf",
+          "path": "/resources/CT172 - Toán rời rạc/chuong-1-menh-de-va-vi-tu-chuong-1-menh-de-va-vi-tu-toan-roi-rac.pdf"
+        },
+        {
+          "name": "chuong-2-giao-trinh.pdf",
+          "type": "pdf",
+          "path": "/resources/CT172 - Toán rời rạc/chuong-2-giao-trinh.pdf"
         },
         {
           "name": "logic-1-tai-lieu-tu-soan-va-suu-tam.pdf",
@@ -327,29 +347,9 @@
           "path": "/resources/CT172 - Toán rời rạc/ltpd-trr-chuong-45-quan-he-dai-so-bool-shared-hk-2-20-21.pdf"
         },
         {
-          "name": "Rosen_Discrete_Mathematics_and_Its_Applications_7th_Edition.pdf",
-          "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/Rosen_Discrete_Mathematics_and_Its_Applications_7th_Edition.pdf"
-        },
-        {
           "name": "toanroirac-c6.pdf",
           "type": "pdf",
           "path": "/resources/CT172 - Toán rời rạc/toanroirac-c6.pdf"
-        },
-        {
-          "name": "Tổng hợp toán rời rạc(1).pdf",
-          "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/Tổng hợp toán rời rạc(1).pdf"
-        },
-        {
-          "name": "Tổng hợp toán rời rạc.docx",
-          "type": "docx",
-          "path": "/resources/CT172 - Toán rời rạc/Tổng hợp toán rời rạc.docx"
-        },
-        {
-          "name": "Tổng hợp toán rời rạc.pdf",
-          "type": "pdf",
-          "path": "/resources/CT172 - Toán rời rạc/Tổng hợp toán rời rạc.pdf"
         }
       ]
     },
@@ -368,16 +368,6 @@
           "path": "/resources/CT173 - Kiến trúc máy tính/Andrew S. Tanenbaum - Structured Computer Organization.pdf"
         },
         {
-          "name": "bai3-nguyen-minh-thuan-b2207568.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/bai3-nguyen-minh-thuan-b2207568.pdf"
-        },
-        {
-          "name": "bai4-nguyen-minh-thuan-b2207568.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/bai4-nguyen-minh-thuan-b2207568.pdf"
-        },
-        {
           "name": "Baitapchuong1.docx",
           "type": "docx",
           "path": "/resources/CT173 - Kiến trúc máy tính/Baitapchuong1.docx"
@@ -386,11 +376,6 @@
           "name": "Baitapchuong2. (1).docx",
           "type": "docx",
           "path": "/resources/CT173 - Kiến trúc máy tính/Baitapchuong2. (1).docx"
-        },
-        {
-          "name": "bt-ktmt-bai-tap.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/bt-ktmt-bai-tap.pdf"
         },
         {
           "name": "Bài tập chương 5_250525_093131.pdf",
@@ -475,36 +460,6 @@
           "path": "/resources/CT173 - Kiến trúc máy tính/BỘ NHỚ PHÂN CẤP.docx"
         },
         {
-          "name": "ch1.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/ch1.pdf"
-        },
-        {
-          "name": "ch2.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/ch2.pdf"
-        },
-        {
-          "name": "ch3.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/ch3.pdf"
-        },
-        {
-          "name": "ch4.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/ch4.pdf"
-        },
-        {
-          "name": "ch5.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/ch5.pdf"
-        },
-        {
-          "name": "ch6.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/ch6.pdf"
-        },
-        {
           "name": "Chapter 4 - solutions (1).pdf",
           "type": "pdf",
           "path": "/resources/CT173 - Kiến trúc máy tính/Chapter 4 - solutions (1).pdf"
@@ -525,61 +480,9 @@
           "path": "/resources/CT173 - Kiến trúc máy tính/Công thức kiến trúc máy tính.pdf"
         },
         {
-          "name": "de-on-tap-kien-truc-may-tinh-1.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/de-on-tap-kien-truc-may-tinh-1.pdf"
-        },
-        {
           "name": "Dethi_32425.pdf",
           "type": "pdf",
           "path": "/resources/CT173 - Kiến trúc máy tính/Dethi_32425.pdf"
-        },
-        {
-          "name": "download (14).png",
-          "type": "png",
-          "path": "/resources/CT173 - Kiến trúc máy tính/download (14).png"
-        },
-        {
-          "name": "ec.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/ec.pdf"
-        },
-        {
-          "name": "en",
-          "type": "folder",
-          "path": "/resources/CT173 - Kiến trúc máy tính/en",
-          "children": [
-            {
-              "name": "En1 - Computer Architecture - Chapter 1.pdf",
-              "type": "pdf",
-              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 1.pdf"
-            },
-            {
-              "name": "En1 - Computer Architecture - Chapter 2.pdf",
-              "type": "pdf",
-              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 2.pdf"
-            },
-            {
-              "name": "En1 - Computer Architecture - Chapter 3.pdf",
-              "type": "pdf",
-              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 3.pdf"
-            },
-            {
-              "name": "En1 - Computer Architecture - Chapter 4.pdf",
-              "type": "pdf",
-              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 4.pdf"
-            },
-            {
-              "name": "En1 - Computer Architecture - Chapter 5.pdf",
-              "type": "pdf",
-              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 5.pdf"
-            },
-            {
-              "name": "En1 - Computer Architecture - Chapter 6.pdf",
-              "type": "pdf",
-              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 6.pdf"
-            }
-          ]
         },
         {
           "name": "Giáo Trình Môn Kiến Trúc Máy Tính.docx",
@@ -659,11 +562,6 @@
           ]
         },
         {
-          "name": "mips-green-sheet-mips.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/mips-green-sheet-mips.pdf"
-        },
-        {
           "name": "MIPS_Instruction_Set.pdf",
           "type": "pdf",
           "path": "/resources/CT173 - Kiến trúc máy tính/MIPS_Instruction_Set.pdf"
@@ -677,11 +575,6 @@
           "name": "MIPS_Reference_Data_page1.png",
           "type": "png",
           "path": "/resources/CT173 - Kiến trúc máy tính/MIPS_Reference_Data_page1.png"
-        },
-        {
-          "name": "nasm.pdf",
-          "type": "pdf",
-          "path": "/resources/CT173 - Kiến trúc máy tính/nasm.pdf"
         },
         {
           "name": "New Text Document.txt",
@@ -784,6 +677,113 @@
           "name": "Ych5_250525_092439.pdf",
           "type": "pdf",
           "path": "/resources/CT173 - Kiến trúc máy tính/Ych5_250525_092439.pdf"
+        },
+        {
+          "name": "bai3-nguyen-minh-thuan-b2207568.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/bai3-nguyen-minh-thuan-b2207568.pdf"
+        },
+        {
+          "name": "bai4-nguyen-minh-thuan-b2207568.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/bai4-nguyen-minh-thuan-b2207568.pdf"
+        },
+        {
+          "name": "bt-ktmt-bai-tap.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/bt-ktmt-bai-tap.pdf"
+        },
+        {
+          "name": "ch1.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/ch1.pdf"
+        },
+        {
+          "name": "ch2.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/ch2.pdf"
+        },
+        {
+          "name": "ch3.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/ch3.pdf"
+        },
+        {
+          "name": "ch4.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/ch4.pdf"
+        },
+        {
+          "name": "ch5.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/ch5.pdf"
+        },
+        {
+          "name": "ch6.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/ch6.pdf"
+        },
+        {
+          "name": "de-on-tap-kien-truc-may-tinh-1.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/de-on-tap-kien-truc-may-tinh-1.pdf"
+        },
+        {
+          "name": "download (14).png",
+          "type": "png",
+          "path": "/resources/CT173 - Kiến trúc máy tính/download (14).png"
+        },
+        {
+          "name": "ec.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/ec.pdf"
+        },
+        {
+          "name": "en",
+          "type": "folder",
+          "path": "/resources/CT173 - Kiến trúc máy tính/en",
+          "children": [
+            {
+              "name": "En1 - Computer Architecture - Chapter 1.pdf",
+              "type": "pdf",
+              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 1.pdf"
+            },
+            {
+              "name": "En1 - Computer Architecture - Chapter 2.pdf",
+              "type": "pdf",
+              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 2.pdf"
+            },
+            {
+              "name": "En1 - Computer Architecture - Chapter 3.pdf",
+              "type": "pdf",
+              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 3.pdf"
+            },
+            {
+              "name": "En1 - Computer Architecture - Chapter 4.pdf",
+              "type": "pdf",
+              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 4.pdf"
+            },
+            {
+              "name": "En1 - Computer Architecture - Chapter 5.pdf",
+              "type": "pdf",
+              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 5.pdf"
+            },
+            {
+              "name": "En1 - Computer Architecture - Chapter 6.pdf",
+              "type": "pdf",
+              "path": "/resources/CT173 - Kiến trúc máy tính/en/En1 - Computer Architecture - Chapter 6.pdf"
+            }
+          ]
+        },
+        {
+          "name": "mips-green-sheet-mips.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/mips-green-sheet-mips.pdf"
+        },
+        {
+          "name": "nasm.pdf",
+          "type": "pdf",
+          "path": "/resources/CT173 - Kiến trúc máy tính/nasm.pdf"
         },
         {
           "name": "z6053288903395_9e6abcb0c3d37a7e6b2dfebc8e7a9d49.jpg",
@@ -970,30 +970,10 @@
               ]
             },
             {
-              "name": "desktop.ini",
-              "type": "ini",
-              "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/desktop.ini"
-            },
-            {
               "name": "Nhanhcan",
               "type": "folder",
               "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan",
               "children": [
-                {
-                  "name": "balo1.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/balo1.c"
-                },
-                {
-                  "name": "balo2.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/balo2.c"
-                },
-                {
-                  "name": "balo3.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/balo3.c"
-                },
                 {
                   "name": "CaiBalo1.TXT",
                   "type": "txt",
@@ -1010,6 +990,26 @@
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/CaiBalo3.TXT"
                 },
                 {
+                  "name": "TSP.txt",
+                  "type": "txt",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/TSP.txt"
+                },
+                {
+                  "name": "balo1.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/balo1.c"
+                },
+                {
+                  "name": "balo2.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/balo2.c"
+                },
+                {
+                  "name": "balo3.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/balo3.c"
+                },
+                {
                   "name": "desktop.ini",
                   "type": "ini",
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/desktop.ini"
@@ -1018,11 +1018,6 @@
                   "name": "tsp.c",
                   "type": "c",
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/tsp.c"
-                },
-                {
-                  "name": "TSP.txt",
-                  "type": "txt",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Nhanhcan/TSP.txt"
                 }
               ]
             },
@@ -1031,21 +1026,6 @@
               "type": "folder",
               "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Quyhoachdong",
               "children": [
-                {
-                  "name": "balo1.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Quyhoachdong/balo1.c"
-                },
-                {
-                  "name": "balo2.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Quyhoachdong/balo2.c"
-                },
-                {
-                  "name": "balo3.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Quyhoachdong/balo3.c"
-                },
                 {
                   "name": "CaiBalo1.TXT",
                   "type": "txt",
@@ -1060,6 +1040,21 @@
                   "name": "CaiBalo3.TXT",
                   "type": "txt",
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Quyhoachdong/CaiBalo3.TXT"
+                },
+                {
+                  "name": "balo1.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Quyhoachdong/balo1.c"
+                },
+                {
+                  "name": "balo2.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Quyhoachdong/balo2.c"
+                },
+                {
+                  "name": "balo3.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Quyhoachdong/balo3.c"
                 },
                 {
                   "name": "desktop.ini",
@@ -1111,16 +1106,6 @@
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Sapxep/BubbleSort.c"
                 },
                 {
-                  "name": "data.txt",
-                  "type": "txt",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Sapxep/data.txt"
-                },
-                {
-                  "name": "desktop.ini",
-                  "type": "ini",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Sapxep/desktop.ini"
-                },
-                {
                   "name": "HeapSort.c",
                   "type": "c",
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Sapxep/HeapSort.c"
@@ -1146,6 +1131,16 @@
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Sapxep/SelectionSort.c"
                 },
                 {
+                  "name": "data.txt",
+                  "type": "txt",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Sapxep/data.txt"
+                },
+                {
+                  "name": "desktop.ini",
+                  "type": "ini",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Sapxep/desktop.ini"
+                },
+                {
                   "name": "test.html",
                   "type": "html",
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Sapxep/test.html"
@@ -1158,29 +1153,14 @@
               "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman",
               "children": [
                 {
-                  "name": "ATM.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/ATM.c"
-                },
-                {
                   "name": "ATM.TXT",
                   "type": "txt",
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/ATM.TXT"
                 },
                 {
-                  "name": "balo1.c",
+                  "name": "ATM.c",
                   "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/balo1.c"
-                },
-                {
-                  "name": "balo2.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/balo2.c"
-                },
-                {
-                  "name": "balo3.c",
-                  "type": "c",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/balo3.c"
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/ATM.c"
                 },
                 {
                   "name": "CaiBalo1.TXT",
@@ -1198,11 +1178,6 @@
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/CaiBalo3.TXT"
                 },
                 {
-                  "name": "desktop.ini",
-                  "type": "ini",
-                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/desktop.ini"
-                },
-                {
                   "name": "TSP.c",
                   "type": "c",
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/TSP.c"
@@ -1211,8 +1186,33 @@
                   "name": "TSP.txt",
                   "type": "txt",
                   "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/TSP.txt"
+                },
+                {
+                  "name": "balo1.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/balo1.c"
+                },
+                {
+                  "name": "balo2.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/balo2.c"
+                },
+                {
+                  "name": "balo3.c",
+                  "type": "c",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/balo3.c"
+                },
+                {
+                  "name": "desktop.ini",
+                  "type": "ini",
+                  "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/Thaman/desktop.ini"
                 }
               ]
+            },
+            {
+              "name": "desktop.ini",
+              "type": "ini",
+              "path": "/resources/CT174 - Phân tích và thiết kế thuật toán/LT/desktop.ini"
             }
           ]
         },
@@ -1387,11 +1387,6 @@
       "path": "/resources/CT176  - Lập trình hướng đối tượng",
       "children": [
         {
-          "name": "bai-tap-ly-thuyet-java-2021-cau-hoi-dap-an-chi-tiet.pdf",
-          "type": "pdf",
-          "path": "/resources/CT176  - Lập trình hướng đối tượng/bai-tap-ly-thuyet-java-2021-cau-hoi-dap-an-chi-tiet.pdf"
-        },
-        {
           "name": "BaiTap1_CT176.pdf",
           "type": "pdf",
           "path": "/resources/CT176  - Lập trình hướng đối tượng/BaiTap1_CT176.pdf"
@@ -1474,14 +1469,19 @@
           "path": "/resources/CT176  - Lập trình hướng đối tượng/Nội dung đề thi.txt"
         },
         {
-          "name": "thi-thu-oop-oop.pdf",
-          "type": "pdf",
-          "path": "/resources/CT176  - Lập trình hướng đối tượng/thi-thu-oop-oop.pdf"
-        },
-        {
           "name": "YT.txt",
           "type": "txt",
           "path": "/resources/CT176  - Lập trình hướng đối tượng/YT.txt"
+        },
+        {
+          "name": "bai-tap-ly-thuyet-java-2021-cau-hoi-dap-an-chi-tiet.pdf",
+          "type": "pdf",
+          "path": "/resources/CT176  - Lập trình hướng đối tượng/bai-tap-ly-thuyet-java-2021-cau-hoi-dap-an-chi-tiet.pdf"
+        },
+        {
+          "name": "thi-thu-oop-oop.pdf",
+          "type": "pdf",
+          "path": "/resources/CT176  - Lập trình hướng đối tượng/thi-thu-oop-oop.pdf"
         }
       ]
     },
@@ -1489,11 +1489,6 @@
       "name": "CT177 - Cấu trúc dữ liệu",
       "path": "/resources/CT177 - Cấu trúc dữ liệu",
       "children": [
-        {
-          "name": "cau-truc-du-lieu-va-giai-thuat__giao-trinh-ctdl-&-gt---dh-can-tho - [cuuduongthancong.com].pdf",
-          "type": "pdf",
-          "path": "/resources/CT177 - Cấu trúc dữ liệu/cau-truc-du-lieu-va-giai-thuat__giao-trinh-ctdl-&-gt---dh-can-tho - [cuuduongthancong.com].pdf"
-        },
         {
           "name": "Chương 1 - Mo dau.pdf",
           "type": "pdf",
@@ -1530,39 +1525,14 @@
           "path": "/resources/CT177 - Cấu trúc dữ liệu/DELTCTDL_HK2_12_13_DE1.pdf"
         },
         {
-          "name": "dethiCTDL_HK2_09_10 (noted).pdf",
-          "type": "pdf",
-          "path": "/resources/CT177 - Cấu trúc dữ liệu/dethiCTDL_HK2_09_10 (noted).pdf"
-        },
-        {
-          "name": "dethiCTDL_HK2_09_10.pdf",
-          "type": "pdf",
-          "path": "/resources/CT177 - Cấu trúc dữ liệu/dethiCTDL_HK2_09_10.pdf"
-        },
-        {
           "name": "Giới thiệu môn học.pdf",
           "type": "pdf",
           "path": "/resources/CT177 - Cấu trúc dữ liệu/Giới thiệu môn học.pdf"
         },
         {
-          "name": "một số lỗi lầm.txt",
-          "type": "txt",
-          "path": "/resources/CT177 - Cấu trúc dữ liệu/một số lỗi lầm.txt"
-        },
-        {
           "name": "Summery of error usually of Else.docx",
           "type": "docx",
           "path": "/resources/CT177 - Cấu trúc dữ liệu/Summery of error usually of Else.docx"
-        },
-        {
-          "name": "tn-ctdl-trac-nghiem.pdf",
-          "type": "pdf",
-          "path": "/resources/CT177 - Cấu trúc dữ liệu/tn-ctdl-trac-nghiem.pdf"
-        },
-        {
-          "name": "tnctdltracnghiem_250525_094811.pdf",
-          "type": "pdf",
-          "path": "/resources/CT177 - Cấu trúc dữ liệu/tnctdltracnghiem_250525_094811.pdf"
         },
         {
           "name": "Tự điển.pdf",
@@ -1583,6 +1553,36 @@
           "name": "XCây_AVL_250525_093440.pdf",
           "type": "pdf",
           "path": "/resources/CT177 - Cấu trúc dữ liệu/XCây_AVL_250525_093440.pdf"
+        },
+        {
+          "name": "cau-truc-du-lieu-va-giai-thuat__giao-trinh-ctdl-&-gt---dh-can-tho - [cuuduongthancong.com].pdf",
+          "type": "pdf",
+          "path": "/resources/CT177 - Cấu trúc dữ liệu/cau-truc-du-lieu-va-giai-thuat__giao-trinh-ctdl-&-gt---dh-can-tho - [cuuduongthancong.com].pdf"
+        },
+        {
+          "name": "dethiCTDL_HK2_09_10 (noted).pdf",
+          "type": "pdf",
+          "path": "/resources/CT177 - Cấu trúc dữ liệu/dethiCTDL_HK2_09_10 (noted).pdf"
+        },
+        {
+          "name": "dethiCTDL_HK2_09_10.pdf",
+          "type": "pdf",
+          "path": "/resources/CT177 - Cấu trúc dữ liệu/dethiCTDL_HK2_09_10.pdf"
+        },
+        {
+          "name": "một số lỗi lầm.txt",
+          "type": "txt",
+          "path": "/resources/CT177 - Cấu trúc dữ liệu/một số lỗi lầm.txt"
+        },
+        {
+          "name": "tn-ctdl-trac-nghiem.pdf",
+          "type": "pdf",
+          "path": "/resources/CT177 - Cấu trúc dữ liệu/tn-ctdl-trac-nghiem.pdf"
+        },
+        {
+          "name": "tnctdltracnghiem_250525_094811.pdf",
+          "type": "pdf",
+          "path": "/resources/CT177 - Cấu trúc dữ liệu/tnctdltracnghiem_250525_094811.pdf"
         },
         {
           "name": "Ôn tập cấu trúc dữ liệu trắc nghiêm.docx",
@@ -1631,11 +1631,6 @@
               "path": "/resources/CT178 - Nguyên lý hệ điều hành/Books/Abraham-Silberschatz-Operating-System-Concepts-10th-2018.pdf"
             },
             {
-              "name": "de-thi-thu-de-thi-thu-mon-nguyen-ly-he-dieu-hanh.pdf",
-              "type": "pdf",
-              "path": "/resources/CT178 - Nguyên lý hệ điều hành/Books/de-thi-thu-de-thi-thu-mon-nguyen-ly-he-dieu-hanh.pdf"
-            },
-            {
               "name": "Lecture22.pdf",
               "type": "pdf",
               "path": "/resources/CT178 - Nguyên lý hệ điều hành/Books/Lecture22.pdf"
@@ -1644,6 +1639,11 @@
               "name": "Linux Shell Scripting Tutorial.pdf",
               "type": "pdf",
               "path": "/resources/CT178 - Nguyên lý hệ điều hành/Books/Linux Shell Scripting Tutorial.pdf"
+            },
+            {
+              "name": "de-thi-thu-de-thi-thu-mon-nguyen-ly-he-dieu-hanh.pdf",
+              "type": "pdf",
+              "path": "/resources/CT178 - Nguyên lý hệ điều hành/Books/de-thi-thu-de-thi-thu-mon-nguyen-ly-he-dieu-hanh.pdf"
             },
             {
               "name": "mau-cau-hoi-hdh-he-dieu-hanh.pdf",
@@ -1663,11 +1663,6 @@
           "path": "/resources/CT178 - Nguyên lý hệ điều hành/CT107-CT178",
           "children": [
             {
-              "name": "BaitapDongbo.pdf",
-              "type": "pdf",
-              "path": "/resources/CT178 - Nguyên lý hệ điều hành/CT107-CT178/BaitapDongbo.pdf"
-            },
-            {
               "name": "BaiTapKhongCoLoiGiai-noted.pdf",
               "type": "pdf",
               "path": "/resources/CT178 - Nguyên lý hệ điều hành/CT107-CT178/BaiTapKhongCoLoiGiai-noted.pdf"
@@ -1681,6 +1676,11 @@
               "name": "BaiTapKhongCoLoiGiai.pdf",
               "type": "pdf",
               "path": "/resources/CT178 - Nguyên lý hệ điều hành/CT107-CT178/BaiTapKhongCoLoiGiai.pdf"
+            },
+            {
+              "name": "BaitapDongbo.pdf",
+              "type": "pdf",
+              "path": "/resources/CT178 - Nguyên lý hệ điều hành/CT107-CT178/BaitapDongbo.pdf"
             },
             {
               "name": "Nội dung ghi chép nguyên lý hệ điều hành.docx",
@@ -1974,41 +1974,6 @@
           "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4",
           "children": [
             {
-              "name": "apex oracle.pdf",
-              "type": "pdf",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/apex oracle.pdf"
-            },
-            {
-              "name": "Chuong I. Tong quan ve CSDL.pdf",
-              "type": "pdf",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong I. Tong quan ve CSDL.pdf"
-            },
-            {
-              "name": "Chuong II. Mo hinh quan he.pdf",
-              "type": "pdf",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong II. Mo hinh quan he.pdf"
-            },
-            {
-              "name": "Chuong III. Dai so quan he.pdf",
-              "type": "pdf",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong III. Dai so quan he.pdf"
-            },
-            {
-              "name": "Chuong IV. Cac loai phu thuoc du lieu.pdf",
-              "type": "pdf",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong IV. Cac loai phu thuoc du lieu.pdf"
-            },
-            {
-              "name": "Chuong V. Chuan hoa.pdf",
-              "type": "pdf",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong V. Chuan hoa.pdf"
-            },
-            {
-              "name": "Chuong VI Ngon ngu SQL.pdf",
-              "type": "pdf",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong VI Ngon ngu SQL.pdf"
-            },
-            {
               "name": "CSDL 23.4",
               "type": "folder",
               "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/CSDL 23.4",
@@ -2131,9 +2096,44 @@
               "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/CSDL 60TH3 (1) - ôn tập có đáp án có thể tham khảo bài này.pdf"
             },
             {
+              "name": "Chuong I. Tong quan ve CSDL.pdf",
+              "type": "pdf",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong I. Tong quan ve CSDL.pdf"
+            },
+            {
+              "name": "Chuong II. Mo hinh quan he.pdf",
+              "type": "pdf",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong II. Mo hinh quan he.pdf"
+            },
+            {
+              "name": "Chuong III. Dai so quan he.pdf",
+              "type": "pdf",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong III. Dai so quan he.pdf"
+            },
+            {
+              "name": "Chuong IV. Cac loai phu thuoc du lieu.pdf",
+              "type": "pdf",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong IV. Cac loai phu thuoc du lieu.pdf"
+            },
+            {
+              "name": "Chuong V. Chuan hoa.pdf",
+              "type": "pdf",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong V. Chuan hoa.pdf"
+            },
+            {
+              "name": "Chuong VI Ngon ngu SQL.pdf",
+              "type": "pdf",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/Chuong VI Ngon ngu SQL.pdf"
+            },
+            {
               "name": "GKY.docx",
               "type": "docx",
               "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/GKY.docx"
+            },
+            {
+              "name": "apex oracle.pdf",
+              "type": "pdf",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/CSDL 23.4/apex oracle.pdf"
             }
           ]
         },
@@ -2142,6 +2142,28 @@
           "type": "folder",
           "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe",
           "children": [
+            {
+              "name": "BT cuối kỳ",
+              "type": "folder",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/BT cuối kỳ",
+              "children": [
+                {
+                  "name": "B2306598_NguyenMinhTuan_BTCUOIKY.sql",
+                  "type": "sql",
+                  "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/BT cuối kỳ/B2306598_NguyenMinhTuan_BTCUOIKY.sql"
+                },
+                {
+                  "name": "B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.docx",
+                  "type": "docx",
+                  "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/BT cuối kỳ/B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.docx"
+                },
+                {
+                  "name": "B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.pdf",
+                  "type": "pdf",
+                  "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/BT cuối kỳ/B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.pdf"
+                }
+              ]
+            },
             {
               "name": "Baitapthuchanh",
               "type": "folder",
@@ -2193,14 +2215,14 @@
                   "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/Baitapthuchanh/CSDLfilm.sql"
                 },
                 {
-                  "name": "mysql_insert_statements.sql",
-                  "type": "sql",
-                  "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/Baitapthuchanh/mysql_insert_statements.sql"
-                },
-                {
                   "name": "Sua bai tap buoi 8 - CSDL Film.docx",
                   "type": "docx",
                   "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/Baitapthuchanh/Sua bai tap buoi 8 - CSDL Film.docx"
+                },
+                {
+                  "name": "mysql_insert_statements.sql",
+                  "type": "sql",
+                  "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/Baitapthuchanh/mysql_insert_statements.sql"
                 },
                 {
                   "name": "zzz BT CSDL.docx",
@@ -2216,28 +2238,6 @@
                   "name": "zzz Bài tập cuối kỳ - CT180.docx",
                   "type": "docx",
                   "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/Baitapthuchanh/zzz Bài tập cuối kỳ - CT180.docx"
-                }
-              ]
-            },
-            {
-              "name": "BT cuối kỳ",
-              "type": "folder",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/BT cuối kỳ",
-              "children": [
-                {
-                  "name": "B2306598_NguyenMinhTuan_BTCUOIKY.sql",
-                  "type": "sql",
-                  "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/BT cuối kỳ/B2306598_NguyenMinhTuan_BTCUOIKY.sql"
-                },
-                {
-                  "name": "B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.docx",
-                  "type": "docx",
-                  "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/BT cuối kỳ/B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.docx"
-                },
-                {
-                  "name": "B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.pdf",
-                  "type": "pdf",
-                  "path": "/resources/CT180 - Cơ sở dữ liệu/Cơ Sở Dữ Liệu - thầy Nghe/BT cuối kỳ/B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.pdf"
                 }
               ]
             },
@@ -2378,11 +2378,6 @@
               "name": "797732e9-d0ff-4efa-bfa2-be15ecde4998_copy.pdf",
               "type": "pdf",
               "path": "/resources/CT180 - Cơ sở dữ liệu/Đề/797732e9-d0ff-4efa-bfa2-be15ecde4998_copy.pdf"
-            },
-            {
-              "name": "de tong hop da suacsdl moi nhat.pdf",
-              "type": "pdf",
-              "path": "/resources/CT180 - Cơ sở dữ liệu/Đề/de tong hop da suacsdl moi nhat.pdf"
             },
             {
               "name": "IMG_1701184795854_1704287756819 (1).jpg",
@@ -2565,6 +2560,11 @@
               "path": "/resources/CT180 - Cơ sở dữ liệu/Đề/IMG_1746931264382_1746931281850.jpg"
             },
             {
+              "name": "de tong hop da suacsdl moi nhat.pdf",
+              "type": "pdf",
+              "path": "/resources/CT180 - Cơ sở dữ liệu/Đề/de tong hop da suacsdl moi nhat.pdf"
+            },
+            {
               "name": "z6855635423208_84771b72eb4819ad782be0188aed9eaa.jpg",
               "type": "jpg",
               "path": "/resources/CT180 - Cơ sở dữ liệu/Đề/z6855635423208_84771b72eb4819ad782be0188aed9eaa.jpg"
@@ -2723,11 +2723,6 @@
       "path": "/resources/CT182 - Ngôn ngữ mô hình hóa",
       "children": [
         {
-          "name": "baitap-thamkhao-thiCK-2025.pdf.pdf",
-          "type": "pdf",
-          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/baitap-thamkhao-thiCK-2025.pdf.pdf"
-        },
-        {
           "name": "Chuong1-UML-CT182-Gioithieu-tu-hk2-2024-2025.pdf",
           "type": "pdf",
           "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Chuong1-UML-CT182-Gioithieu-tu-hk2-2024-2025.pdf"
@@ -2743,11 +2738,6 @@
           "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Chuong3-Class Diagram-2025.pdf"
         },
         {
-          "name": "fd8854b0-9a8d-4620-8803-4f21e602ac4a.pdf",
-          "type": "pdf",
-          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/fd8854b0-9a8d-4620-8803-4f21e602ac4a.pdf"
-        },
-        {
           "name": "Untitled.mdj",
           "type": "mdj",
           "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Untitled.mdj"
@@ -2756,6 +2746,16 @@
           "name": "Untitled.pdf",
           "type": "pdf",
           "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/Untitled.pdf"
+        },
+        {
+          "name": "baitap-thamkhao-thiCK-2025.pdf.pdf",
+          "type": "pdf",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/baitap-thamkhao-thiCK-2025.pdf.pdf"
+        },
+        {
+          "name": "fd8854b0-9a8d-4620-8803-4f21e602ac4a.pdf",
+          "type": "pdf",
+          "path": "/resources/CT182 - Ngôn ngữ mô hình hóa/fd8854b0-9a8d-4620-8803-4f21e602ac4a.pdf"
         }
       ]
     },
@@ -2772,6 +2772,316 @@
               "name": "settings.json",
               "type": "json",
               "path": "/resources/CT188 - Nhập môn lập trình web/.vscode/settings.json"
+            }
+          ]
+        },
+        {
+          "name": "CT188 Bai_tap_nhom.pdf",
+          "type": "pdf",
+          "path": "/resources/CT188 - Nhập môn lập trình web/CT188 Bai_tap_nhom.pdf"
+        },
+        {
+          "name": "CT188-TAI_LIEU_THUC_HANH.pdf",
+          "type": "pdf",
+          "path": "/resources/CT188 - Nhập môn lập trình web/CT188-TAI_LIEU_THUC_HANH.pdf"
+        },
+        {
+          "name": "CT18802_05",
+          "type": "folder",
+          "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05",
+          "children": [
+            {
+              "name": ".hintrc",
+              "type": "unknown",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/.hintrc"
+            },
+            {
+              "name": ".vscode",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/.vscode",
+              "children": [
+                {
+                  "name": "settings.json",
+                  "type": "json",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/.vscode/settings.json"
+                }
+              ]
+            },
+            {
+              "name": "README.md",
+              "type": "md",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/README.md"
+            },
+            {
+              "name": "about.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/about.html"
+            },
+            {
+              "name": "cart.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/cart.html"
+            },
+            {
+              "name": "contact.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/contact.html"
+            },
+            {
+              "name": "css",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/css",
+              "children": [
+                {
+                  "name": "style-min.css",
+                  "type": "css",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/css/style-min.css"
+                },
+                {
+                  "name": "style.css",
+                  "type": "css",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/css/style.css"
+                }
+              ]
+            },
+            {
+              "name": "images",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images",
+              "children": [
+                {
+                  "name": "BongMo.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/BongMo.png"
+                },
+                {
+                  "name": "BongNgo.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/BongNgo.png"
+                },
+                {
+                  "name": "ComBo.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/ComBo.jpg"
+                },
+                {
+                  "name": "DoUong.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/DoUong.jpg"
+                },
+                {
+                  "name": "conanmovie27poster.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/conanmovie27poster.jpg"
+                },
+                {
+                  "name": "email.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/email.png"
+                },
+                {
+                  "name": "flowposter.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/flowposter.jpg"
+                },
+                {
+                  "name": "giamhoadon.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/giamhoadon.png"
+                },
+                {
+                  "name": "lock.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/lock.png"
+                },
+                {
+                  "name": "logo.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/logo.png"
+                },
+                {
+                  "name": "menu.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/menu.png"
+                },
+                {
+                  "name": "mienphinuocbanh.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/mienphinuocbanh.png"
+                },
+                {
+                  "name": "nhagiatienposter.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/nhagiatienposter.jpg"
+                },
+                {
+                  "name": "phim1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim1.jpg"
+                },
+                {
+                  "name": "phim10.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim10.jpg"
+                },
+                {
+                  "name": "phim11.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim11.jpg"
+                },
+                {
+                  "name": "phim12.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim12.jpg"
+                },
+                {
+                  "name": "phim13.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim13.jpg"
+                },
+                {
+                  "name": "phim14.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim14.jpg"
+                },
+                {
+                  "name": "phim15.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim15.jpg"
+                },
+                {
+                  "name": "phim16.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim16.jpg"
+                },
+                {
+                  "name": "phim2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim2.jpg"
+                },
+                {
+                  "name": "phim3.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim3.jpg"
+                },
+                {
+                  "name": "phim4.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim4.jpg"
+                },
+                {
+                  "name": "phim5.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim5.jpg"
+                },
+                {
+                  "name": "phim6.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim6.jpg"
+                },
+                {
+                  "name": "phim7.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim7.jpg"
+                },
+                {
+                  "name": "phim8.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim8.jpg"
+                },
+                {
+                  "name": "phim9.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim9.jpg"
+                },
+                {
+                  "name": "pho1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/pho1.jpg"
+                },
+                {
+                  "name": "pho2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/pho2.jpg"
+                },
+                {
+                  "name": "pho3.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/pho3.jpg"
+                },
+                {
+                  "name": "pho4.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/pho4.jpg"
+                },
+                {
+                  "name": "phone.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phone.png"
+                },
+                {
+                  "name": "thumbnail.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/thumbnail.jpg"
+                },
+                {
+                  "name": "user.png",
+                  "type": "png",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/user.png"
+                },
+                {
+                  "name": "venomposter.jpg",
+                  "type": "jpg",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/venomposter.jpg"
+                },
+                {
+                  "name": "video_gioithieu.mp4",
+                  "type": "mp4",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/video_gioithieu.mp4"
+                }
+              ]
+            },
+            {
+              "name": "index.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/index.html"
+            },
+            {
+              "name": "js",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/js",
+              "children": [
+                {
+                  "name": "script-min.js",
+                  "type": "js",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/js/script-min.js"
+                },
+                {
+                  "name": "scripts.js",
+                  "type": "js",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/js/scripts.js"
+                }
+              ]
+            },
+            {
+              "name": "login.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/login.html"
+            },
+            {
+              "name": "phan_cong.txt",
+              "type": "txt",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/phan_cong.txt"
+            },
+            {
+              "name": "products.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/products.html"
+            },
+            {
+              "name": "register.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/register.html"
             }
           ]
         },
@@ -3024,375 +3334,6 @@
           "name": "Chuong_5_Bai_tap_bootstrap_data.zip",
           "type": "zip",
           "path": "/resources/CT188 - Nhập môn lập trình web/Chuong_5_Bai_tap_bootstrap_data.zip"
-        },
-        {
-          "name": "CT188 Bai_tap_nhom.pdf",
-          "type": "pdf",
-          "path": "/resources/CT188 - Nhập môn lập trình web/CT188 Bai_tap_nhom.pdf"
-        },
-        {
-          "name": "CT188-TAI_LIEU_THUC_HANH.pdf",
-          "type": "pdf",
-          "path": "/resources/CT188 - Nhập môn lập trình web/CT188-TAI_LIEU_THUC_HANH.pdf"
-        },
-        {
-          "name": "CT18802_05",
-          "type": "folder",
-          "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05",
-          "children": [
-            {
-              "name": ".hintrc",
-              "type": "unknown",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/.hintrc"
-            },
-            {
-              "name": ".vscode",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/.vscode",
-              "children": [
-                {
-                  "name": "settings.json",
-                  "type": "json",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/.vscode/settings.json"
-                }
-              ]
-            },
-            {
-              "name": "about.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/about.html"
-            },
-            {
-              "name": "cart.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/cart.html"
-            },
-            {
-              "name": "contact.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/contact.html"
-            },
-            {
-              "name": "css",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/css",
-              "children": [
-                {
-                  "name": "style-min.css",
-                  "type": "css",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/css/style-min.css"
-                },
-                {
-                  "name": "style.css",
-                  "type": "css",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/css/style.css"
-                }
-              ]
-            },
-            {
-              "name": "images",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images",
-              "children": [
-                {
-                  "name": "BongMo.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/BongMo.png"
-                },
-                {
-                  "name": "BongNgo.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/BongNgo.png"
-                },
-                {
-                  "name": "ComBo.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/ComBo.jpg"
-                },
-                {
-                  "name": "conanmovie27poster.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/conanmovie27poster.jpg"
-                },
-                {
-                  "name": "DoUong.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/DoUong.jpg"
-                },
-                {
-                  "name": "email.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/email.png"
-                },
-                {
-                  "name": "flowposter.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/flowposter.jpg"
-                },
-                {
-                  "name": "giamhoadon.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/giamhoadon.png"
-                },
-                {
-                  "name": "lock.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/lock.png"
-                },
-                {
-                  "name": "logo.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/logo.png"
-                },
-                {
-                  "name": "menu.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/menu.png"
-                },
-                {
-                  "name": "mienphinuocbanh.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/mienphinuocbanh.png"
-                },
-                {
-                  "name": "nhagiatienposter.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/nhagiatienposter.jpg"
-                },
-                {
-                  "name": "phim1.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim1.jpg"
-                },
-                {
-                  "name": "phim10.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim10.jpg"
-                },
-                {
-                  "name": "phim11.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim11.jpg"
-                },
-                {
-                  "name": "phim12.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim12.jpg"
-                },
-                {
-                  "name": "phim13.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim13.jpg"
-                },
-                {
-                  "name": "phim14.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim14.jpg"
-                },
-                {
-                  "name": "phim15.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim15.jpg"
-                },
-                {
-                  "name": "phim16.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim16.jpg"
-                },
-                {
-                  "name": "phim2.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim2.jpg"
-                },
-                {
-                  "name": "phim3.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim3.jpg"
-                },
-                {
-                  "name": "phim4.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim4.jpg"
-                },
-                {
-                  "name": "phim5.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim5.jpg"
-                },
-                {
-                  "name": "phim6.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim6.jpg"
-                },
-                {
-                  "name": "phim7.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim7.jpg"
-                },
-                {
-                  "name": "phim8.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim8.jpg"
-                },
-                {
-                  "name": "phim9.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phim9.jpg"
-                },
-                {
-                  "name": "pho1.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/pho1.jpg"
-                },
-                {
-                  "name": "pho2.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/pho2.jpg"
-                },
-                {
-                  "name": "pho3.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/pho3.jpg"
-                },
-                {
-                  "name": "pho4.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/pho4.jpg"
-                },
-                {
-                  "name": "phone.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/phone.png"
-                },
-                {
-                  "name": "thumbnail.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/thumbnail.jpg"
-                },
-                {
-                  "name": "user.png",
-                  "type": "png",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/user.png"
-                },
-                {
-                  "name": "venomposter.jpg",
-                  "type": "jpg",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/venomposter.jpg"
-                },
-                {
-                  "name": "video_gioithieu.mp4",
-                  "type": "mp4",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/images/video_gioithieu.mp4"
-                }
-              ]
-            },
-            {
-              "name": "index.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/index.html"
-            },
-            {
-              "name": "js",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/js",
-              "children": [
-                {
-                  "name": "script-min.js",
-                  "type": "js",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/js/script-min.js"
-                },
-                {
-                  "name": "scripts.js",
-                  "type": "js",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/js/scripts.js"
-                }
-              ]
-            },
-            {
-              "name": "login.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/login.html"
-            },
-            {
-              "name": "phan_cong.txt",
-              "type": "txt",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/phan_cong.txt"
-            },
-            {
-              "name": "products.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/products.html"
-            },
-            {
-              "name": "README.md",
-              "type": "md",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/README.md"
-            },
-            {
-              "name": "register.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/CT18802_05/register.html"
-            }
-          ]
-        },
-        {
-          "name": "ct188h01-adas.pdf",
-          "type": "pdf",
-          "path": "/resources/CT188 - Nhập môn lập trình web/ct188h01-adas.pdf"
-        },
-        {
-          "name": "dethithu",
-          "type": "folder",
-          "path": "/resources/CT188 - Nhập môn lập trình web/dethithu",
-          "children": [
-            {
-              "name": "0305-logo-ctu.png",
-              "type": "png",
-              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/0305-logo-ctu.png"
-            },
-            {
-              "name": "cau1.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/cau1.html"
-            },
-            {
-              "name": "cau2.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/cau2.html"
-            },
-            {
-              "name": "css",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/css",
-              "children": [
-                {
-                  "name": "style.css",
-                  "type": "css",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/css/style.css"
-                },
-                {
-                  "name": "style.txt",
-                  "type": "txt",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/css/style.txt"
-                },
-                {
-                  "name": "style2.css",
-                  "type": "css",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/css/style2.css"
-                }
-              ]
-            },
-            {
-              "name": "javascript.js",
-              "type": "js",
-              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/javascript.js"
-            },
-            {
-              "name": "temp.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/temp.html"
-            }
-          ]
         },
         {
           "name": "DU AN",
@@ -3916,421 +3857,6 @@
           ]
         },
         {
-          "name": "javascipt_scope.js",
-          "type": "js",
-          "path": "/resources/CT188 - Nhập môn lập trình web/javascipt_scope.js"
-        },
-        {
-          "name": "jquery.js",
-          "type": "js",
-          "path": "/resources/CT188 - Nhập môn lập trình web/jquery.js"
-        },
-        {
-          "name": "learn",
-          "type": "folder",
-          "path": "/resources/CT188 - Nhập môn lập trình web/learn",
-          "children": [
-            {
-              "name": "html.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/learn/html.html"
-            },
-            {
-              "name": "js.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/learn/js.html"
-            }
-          ]
-        },
-        {
-          "name": "rapchieuphim",
-          "type": "folder",
-          "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim",
-          "children": [
-            {
-              "name": "about.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/about.html"
-            },
-            {
-              "name": "cart.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/cart.html"
-            },
-            {
-              "name": "contact.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/contact.html"
-            },
-            {
-              "name": "css",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/css",
-              "children": [
-                {
-                  "name": "style.css",
-                  "type": "css",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/css/style.css"
-                }
-              ]
-            },
-            {
-              "name": "index.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/index.html"
-            },
-            {
-              "name": "js",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/js",
-              "children": [
-                {
-                  "name": "scripts.js",
-                  "type": "js",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/js/scripts.js"
-                }
-              ]
-            },
-            {
-              "name": "login.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/login.html"
-            },
-            {
-              "name": "products.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/products.html"
-            },
-            {
-              "name": "README.md",
-              "type": "md",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/README.md"
-            },
-            {
-              "name": "register.html",
-              "type": "html",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/register.html"
-            }
-          ]
-        },
-        {
-          "name": "rapchieuphim-main (1)",
-          "type": "folder",
-          "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)",
-          "children": [
-            {
-              "name": "rapchieuphim-main",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main",
-              "children": [
-                {
-                  "name": ".hintrc",
-                  "type": "unknown",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/.hintrc"
-                },
-                {
-                  "name": ".vscode",
-                  "type": "folder",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/.vscode",
-                  "children": [
-                    {
-                      "name": "settings.json",
-                      "type": "json",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/.vscode/settings.json"
-                    }
-                  ]
-                },
-                {
-                  "name": "about.html",
-                  "type": "html",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/about.html"
-                },
-                {
-                  "name": "cart.html",
-                  "type": "html",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/cart.html"
-                },
-                {
-                  "name": "contact.html",
-                  "type": "html",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/contact.html"
-                },
-                {
-                  "name": "css",
-                  "type": "folder",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/css",
-                  "children": [
-                    {
-                      "name": "style.css",
-                      "type": "css",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/css/style.css"
-                    },
-                    {
-                      "name": "style.min.css",
-                      "type": "css",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/css/style.min.css"
-                    }
-                  ]
-                },
-                {
-                  "name": "images",
-                  "type": "folder",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images",
-                  "children": [
-                    {
-                      "name": "BongMo.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/BongMo.png"
-                    },
-                    {
-                      "name": "BongNgo.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/BongNgo.png"
-                    },
-                    {
-                      "name": "ComBo.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/ComBo.jpg"
-                    },
-                    {
-                      "name": "conanmovie27poster.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/conanmovie27poster.jpg"
-                    },
-                    {
-                      "name": "DoUong.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/DoUong.jpg"
-                    },
-                    {
-                      "name": "email.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/email.png"
-                    },
-                    {
-                      "name": "flowposter.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/flowposter.jpg"
-                    },
-                    {
-                      "name": "giamhoadon.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/giamhoadon.png"
-                    },
-                    {
-                      "name": "lock.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/lock.png"
-                    },
-                    {
-                      "name": "logo.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/logo.png"
-                    },
-                    {
-                      "name": "menu.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/menu.png"
-                    },
-                    {
-                      "name": "mienphinuocbanh.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/mienphinuocbanh.png"
-                    },
-                    {
-                      "name": "nhagiatienposter.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/nhagiatienposter.jpg"
-                    },
-                    {
-                      "name": "phim1.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim1.jpg"
-                    },
-                    {
-                      "name": "phim10.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim10.jpg"
-                    },
-                    {
-                      "name": "phim11.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim11.jpg"
-                    },
-                    {
-                      "name": "phim12.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim12.jpg"
-                    },
-                    {
-                      "name": "phim13.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim13.jpg"
-                    },
-                    {
-                      "name": "phim14.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim14.jpg"
-                    },
-                    {
-                      "name": "phim15.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim15.jpg"
-                    },
-                    {
-                      "name": "phim16.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim16.jpg"
-                    },
-                    {
-                      "name": "phim2.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim2.jpg"
-                    },
-                    {
-                      "name": "phim3.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim3.jpg"
-                    },
-                    {
-                      "name": "phim4.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim4.jpg"
-                    },
-                    {
-                      "name": "phim5.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim5.jpg"
-                    },
-                    {
-                      "name": "phim6.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim6.jpg"
-                    },
-                    {
-                      "name": "phim7.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim7.jpg"
-                    },
-                    {
-                      "name": "phim8.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim8.jpg"
-                    },
-                    {
-                      "name": "phim9.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim9.jpg"
-                    },
-                    {
-                      "name": "pho1.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/pho1.jpg"
-                    },
-                    {
-                      "name": "pho2.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/pho2.jpg"
-                    },
-                    {
-                      "name": "pho3.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/pho3.jpg"
-                    },
-                    {
-                      "name": "pho4.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/pho4.jpg"
-                    },
-                    {
-                      "name": "phone.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phone.png"
-                    },
-                    {
-                      "name": "thumbnail.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/thumbnail.jpg"
-                    },
-                    {
-                      "name": "user.png",
-                      "type": "png",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/user.png"
-                    },
-                    {
-                      "name": "venomposter.jpg",
-                      "type": "jpg",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/venomposter.jpg"
-                    },
-                    {
-                      "name": "video_gioithieu.mp4",
-                      "type": "mp4",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/video_gioithieu.mp4"
-                    }
-                  ]
-                },
-                {
-                  "name": "index.html",
-                  "type": "html",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/index.html"
-                },
-                {
-                  "name": "js",
-                  "type": "folder",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/js",
-                  "children": [
-                    {
-                      "name": "scripts.js",
-                      "type": "js",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/js/scripts.js"
-                    },
-                    {
-                      "name": "scripts.min.js",
-                      "type": "js",
-                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/js/scripts.min.js"
-                    }
-                  ]
-                },
-                {
-                  "name": "login.html",
-                  "type": "html",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/login.html"
-                },
-                {
-                  "name": "phan_cong.txt",
-                  "type": "txt",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/phan_cong.txt"
-                },
-                {
-                  "name": "products.html",
-                  "type": "html",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/products.html"
-                },
-                {
-                  "name": "README.md",
-                  "type": "md",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/README.md"
-                },
-                {
-                  "name": "register.html",
-                  "type": "html",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/register.html"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "script-basis.js",
-          "type": "js",
-          "path": "/resources/CT188 - Nhập môn lập trình web/script-basis.js"
-        },
-        {
-          "name": "test.html",
-          "type": "html",
-          "path": "/resources/CT188 - Nhập môn lập trình web/test.html"
-        },
-        {
           "name": "TH_B1_Data",
           "type": "folder",
           "path": "/resources/CT188 - Nhập môn lập trình web/TH_B1_Data",
@@ -4715,6 +4241,18 @@
           "path": "/resources/CT188 - Nhập môn lập trình web/TH_B4_Data",
           "children": [
             {
+              "name": "Lab4_data",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/TH_B4_Data/Lab4_data",
+              "children": [
+                {
+                  "name": "jquery_basic.html",
+                  "type": "html",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/TH_B4_Data/Lab4_data/jquery_basic.html"
+                }
+              ]
+            },
+            {
               "name": "images",
               "type": "folder",
               "path": "/resources/CT188 - Nhập môn lập trình web/TH_B4_Data/images",
@@ -4747,18 +4285,6 @@
                       ]
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "name": "Lab4_data",
-              "type": "folder",
-              "path": "/resources/CT188 - Nhập môn lập trình web/TH_B4_Data/Lab4_data",
-              "children": [
-                {
-                  "name": "jquery_basic.html",
-                  "type": "html",
-                  "path": "/resources/CT188 - Nhập môn lập trình web/TH_B4_Data/Lab4_data/jquery_basic.html"
                 }
               ]
             }
@@ -4966,6 +4492,480 @@
           "name": "Tổng hợp nội dung thi thực hành Web.pdf",
           "type": "pdf",
           "path": "/resources/CT188 - Nhập môn lập trình web/Tổng hợp nội dung thi thực hành Web.pdf"
+        },
+        {
+          "name": "ct188h01-adas.pdf",
+          "type": "pdf",
+          "path": "/resources/CT188 - Nhập môn lập trình web/ct188h01-adas.pdf"
+        },
+        {
+          "name": "dethithu",
+          "type": "folder",
+          "path": "/resources/CT188 - Nhập môn lập trình web/dethithu",
+          "children": [
+            {
+              "name": "0305-logo-ctu.png",
+              "type": "png",
+              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/0305-logo-ctu.png"
+            },
+            {
+              "name": "cau1.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/cau1.html"
+            },
+            {
+              "name": "cau2.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/cau2.html"
+            },
+            {
+              "name": "css",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/css",
+              "children": [
+                {
+                  "name": "style.css",
+                  "type": "css",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/css/style.css"
+                },
+                {
+                  "name": "style.txt",
+                  "type": "txt",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/css/style.txt"
+                },
+                {
+                  "name": "style2.css",
+                  "type": "css",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/css/style2.css"
+                }
+              ]
+            },
+            {
+              "name": "javascript.js",
+              "type": "js",
+              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/javascript.js"
+            },
+            {
+              "name": "temp.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/dethithu/temp.html"
+            }
+          ]
+        },
+        {
+          "name": "javascipt_scope.js",
+          "type": "js",
+          "path": "/resources/CT188 - Nhập môn lập trình web/javascipt_scope.js"
+        },
+        {
+          "name": "jquery.js",
+          "type": "js",
+          "path": "/resources/CT188 - Nhập môn lập trình web/jquery.js"
+        },
+        {
+          "name": "learn",
+          "type": "folder",
+          "path": "/resources/CT188 - Nhập môn lập trình web/learn",
+          "children": [
+            {
+              "name": "html.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/learn/html.html"
+            },
+            {
+              "name": "js.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/learn/js.html"
+            }
+          ]
+        },
+        {
+          "name": "rapchieuphim",
+          "type": "folder",
+          "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim",
+          "children": [
+            {
+              "name": "README.md",
+              "type": "md",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/README.md"
+            },
+            {
+              "name": "about.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/about.html"
+            },
+            {
+              "name": "cart.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/cart.html"
+            },
+            {
+              "name": "contact.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/contact.html"
+            },
+            {
+              "name": "css",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/css",
+              "children": [
+                {
+                  "name": "style.css",
+                  "type": "css",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/css/style.css"
+                }
+              ]
+            },
+            {
+              "name": "index.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/index.html"
+            },
+            {
+              "name": "js",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/js",
+              "children": [
+                {
+                  "name": "scripts.js",
+                  "type": "js",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/js/scripts.js"
+                }
+              ]
+            },
+            {
+              "name": "login.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/login.html"
+            },
+            {
+              "name": "products.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/products.html"
+            },
+            {
+              "name": "register.html",
+              "type": "html",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim/register.html"
+            }
+          ]
+        },
+        {
+          "name": "rapchieuphim-main (1)",
+          "type": "folder",
+          "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)",
+          "children": [
+            {
+              "name": "rapchieuphim-main",
+              "type": "folder",
+              "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main",
+              "children": [
+                {
+                  "name": ".hintrc",
+                  "type": "unknown",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/.hintrc"
+                },
+                {
+                  "name": ".vscode",
+                  "type": "folder",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/.vscode",
+                  "children": [
+                    {
+                      "name": "settings.json",
+                      "type": "json",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/.vscode/settings.json"
+                    }
+                  ]
+                },
+                {
+                  "name": "README.md",
+                  "type": "md",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/README.md"
+                },
+                {
+                  "name": "about.html",
+                  "type": "html",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/about.html"
+                },
+                {
+                  "name": "cart.html",
+                  "type": "html",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/cart.html"
+                },
+                {
+                  "name": "contact.html",
+                  "type": "html",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/contact.html"
+                },
+                {
+                  "name": "css",
+                  "type": "folder",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/css",
+                  "children": [
+                    {
+                      "name": "style.css",
+                      "type": "css",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/css/style.css"
+                    },
+                    {
+                      "name": "style.min.css",
+                      "type": "css",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/css/style.min.css"
+                    }
+                  ]
+                },
+                {
+                  "name": "images",
+                  "type": "folder",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images",
+                  "children": [
+                    {
+                      "name": "BongMo.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/BongMo.png"
+                    },
+                    {
+                      "name": "BongNgo.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/BongNgo.png"
+                    },
+                    {
+                      "name": "ComBo.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/ComBo.jpg"
+                    },
+                    {
+                      "name": "DoUong.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/DoUong.jpg"
+                    },
+                    {
+                      "name": "conanmovie27poster.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/conanmovie27poster.jpg"
+                    },
+                    {
+                      "name": "email.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/email.png"
+                    },
+                    {
+                      "name": "flowposter.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/flowposter.jpg"
+                    },
+                    {
+                      "name": "giamhoadon.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/giamhoadon.png"
+                    },
+                    {
+                      "name": "lock.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/lock.png"
+                    },
+                    {
+                      "name": "logo.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/logo.png"
+                    },
+                    {
+                      "name": "menu.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/menu.png"
+                    },
+                    {
+                      "name": "mienphinuocbanh.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/mienphinuocbanh.png"
+                    },
+                    {
+                      "name": "nhagiatienposter.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/nhagiatienposter.jpg"
+                    },
+                    {
+                      "name": "phim1.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim1.jpg"
+                    },
+                    {
+                      "name": "phim10.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim10.jpg"
+                    },
+                    {
+                      "name": "phim11.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim11.jpg"
+                    },
+                    {
+                      "name": "phim12.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim12.jpg"
+                    },
+                    {
+                      "name": "phim13.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim13.jpg"
+                    },
+                    {
+                      "name": "phim14.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim14.jpg"
+                    },
+                    {
+                      "name": "phim15.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim15.jpg"
+                    },
+                    {
+                      "name": "phim16.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim16.jpg"
+                    },
+                    {
+                      "name": "phim2.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim2.jpg"
+                    },
+                    {
+                      "name": "phim3.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim3.jpg"
+                    },
+                    {
+                      "name": "phim4.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim4.jpg"
+                    },
+                    {
+                      "name": "phim5.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim5.jpg"
+                    },
+                    {
+                      "name": "phim6.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim6.jpg"
+                    },
+                    {
+                      "name": "phim7.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim7.jpg"
+                    },
+                    {
+                      "name": "phim8.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim8.jpg"
+                    },
+                    {
+                      "name": "phim9.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phim9.jpg"
+                    },
+                    {
+                      "name": "pho1.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/pho1.jpg"
+                    },
+                    {
+                      "name": "pho2.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/pho2.jpg"
+                    },
+                    {
+                      "name": "pho3.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/pho3.jpg"
+                    },
+                    {
+                      "name": "pho4.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/pho4.jpg"
+                    },
+                    {
+                      "name": "phone.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/phone.png"
+                    },
+                    {
+                      "name": "thumbnail.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/thumbnail.jpg"
+                    },
+                    {
+                      "name": "user.png",
+                      "type": "png",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/user.png"
+                    },
+                    {
+                      "name": "venomposter.jpg",
+                      "type": "jpg",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/venomposter.jpg"
+                    },
+                    {
+                      "name": "video_gioithieu.mp4",
+                      "type": "mp4",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/images/video_gioithieu.mp4"
+                    }
+                  ]
+                },
+                {
+                  "name": "index.html",
+                  "type": "html",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/index.html"
+                },
+                {
+                  "name": "js",
+                  "type": "folder",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/js",
+                  "children": [
+                    {
+                      "name": "scripts.js",
+                      "type": "js",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/js/scripts.js"
+                    },
+                    {
+                      "name": "scripts.min.js",
+                      "type": "js",
+                      "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/js/scripts.min.js"
+                    }
+                  ]
+                },
+                {
+                  "name": "login.html",
+                  "type": "html",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/login.html"
+                },
+                {
+                  "name": "phan_cong.txt",
+                  "type": "txt",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/phan_cong.txt"
+                },
+                {
+                  "name": "products.html",
+                  "type": "html",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/products.html"
+                },
+                {
+                  "name": "register.html",
+                  "type": "html",
+                  "path": "/resources/CT188 - Nhập môn lập trình web/rapchieuphim-main (1)/rapchieuphim-main/register.html"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "script-basis.js",
+          "type": "js",
+          "path": "/resources/CT188 - Nhập môn lập trình web/script-basis.js"
+        },
+        {
+          "name": "test.html",
+          "type": "html",
+          "path": "/resources/CT188 - Nhập môn lập trình web/test.html"
         }
       ]
     },
@@ -4982,11 +4982,6 @@
           "name": "BaiTapTimKiem.pdf",
           "type": "pdf",
           "path": "/resources/CT190 - Nhập môn trí tuệ nhân tạo/BaiTapTimKiem.pdf"
-        },
-        {
-          "name": "chương 3-4.txt",
-          "type": "txt",
-          "path": "/resources/CT190 - Nhập môn trí tuệ nhân tạo/chương 3-4.txt"
         },
         {
           "name": "Câu hỏi kiểm tra.docx",
@@ -5076,6 +5071,11 @@
               "path": "/resources/CT190 - Nhập môn trí tuệ nhân tạo/Trắc nghiệm/Trắc nghiệm 28 trang.pdf"
             }
           ]
+        },
+        {
+          "name": "chương 3-4.txt",
+          "type": "txt",
+          "path": "/resources/CT190 - Nhập môn trí tuệ nhân tạo/chương 3-4.txt"
         }
       ]
     },
@@ -5159,16 +5159,6 @@
               "name": "DE THAY TAI.docx",
               "type": "docx",
               "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/DE THAY TAI.docx"
-            },
-            {
-              "name": "dethicoNhung.bpm",
-              "type": "bpm",
-              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/dethicoNhung.bpm"
-            },
-            {
-              "name": "dethicoNhung.pdf",
-              "type": "pdf",
-              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/dethicoNhung.pdf"
             },
             {
               "name": "HK1 - 2122",
@@ -5319,6 +5309,16 @@
                   "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/Tham khảo/THAM KHẢO ERD.docx"
                 }
               ]
+            },
+            {
+              "name": "dethicoNhung.bpm",
+              "type": "bpm",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/dethicoNhung.bpm"
+            },
+            {
+              "name": "dethicoNhung.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thi/dethicoNhung.pdf"
             }
           ]
         },
@@ -5327,11 +5327,6 @@
           "type": "folder",
           "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành",
           "children": [
-            {
-              "name": "ieee-guide-for-developing-system-requirements-specifications.pdf",
-              "type": "pdf",
-              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/ieee-guide-for-developing-system-requirements-specifications.pdf"
-            },
             {
               "name": "Quan Tri Yeu Cau Nguoi Dung_mau tai lieu.docx",
               "type": "docx",
@@ -5343,11 +5338,6 @@
               "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/Thuc hanh 4+5.pdf"
             },
             {
-              "name": "thuc hanh buoi 1.pdf",
-              "type": "pdf",
-              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/thuc hanh buoi 1.pdf"
-            },
-            {
               "name": "Thuc hanh buoi 2.pdf",
               "type": "pdf",
               "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/Thuc hanh buoi 2.pdf"
@@ -5356,6 +5346,16 @@
               "name": "Thuc hanh buoi 3.pdf",
               "type": "pdf",
               "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/Thuc hanh buoi 3.pdf"
+            },
+            {
+              "name": "ieee-guide-for-developing-system-requirements.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/ieee-guide-for-developing-system-requirements.pdf"
+            },
+            {
+              "name": "thuc hanh buoi 1.pdf",
+              "type": "pdf",
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/thuc hanh buoi 1.pdf"
             }
           ]
         }
@@ -5423,19 +5423,9 @@
           "path": "/resources/ML014 - Triết học Mac lênin/Một sô câu nói .pdf"
         },
         {
-          "name": "trac-nghiem-chuong-2.pdf",
-          "type": "pdf",
-          "path": "/resources/ML014 - Triết học Mac lênin/trac-nghiem-chuong-2.pdf"
-        },
-        {
           "name": "TRIẾT (1).pdf",
           "type": "pdf",
           "path": "/resources/ML014 - Triết học Mac lênin/TRIẾT (1).pdf"
-        },
-        {
-          "name": "triết trắc nghiệm.pdf",
-          "type": "pdf",
-          "path": "/resources/ML014 - Triết học Mac lênin/triết trắc nghiệm.pdf"
         },
         {
           "name": "Tài liệu của trường",
@@ -5473,26 +5463,36 @@
               "path": "/resources/ML014 - Triết học Mac lênin/Tài liệu của trường/NHÀ NƯỚC VÀ CÁCH MẠNG XÃ HỘI.docx"
             },
             {
-              "name": "Thuyết trình triết 1.4. - Chức năng của nhà nước ( Trần Anh Vũ).docx",
-              "type": "docx",
-              "path": "/resources/ML014 - Triết học Mac lênin/Tài liệu của trường/Thuyết trình triết 1.4. - Chức năng của nhà nước ( Trần Anh Vũ).docx"
-            },
-            {
-              "name": "triet-hoc__de-cuong-triet-1-part-2 - [cuuduongthancong.com].pdf",
-              "type": "pdf",
-              "path": "/resources/ML014 - Triết học Mac lênin/Tài liệu của trường/triet-hoc__de-cuong-triet-1-part-2 - [cuuduongthancong.com].pdf"
-            },
-            {
               "name": "TRIẾT (1).docx",
               "type": "docx",
               "path": "/resources/ML014 - Triết học Mac lênin/Tài liệu của trường/TRIẾT (1).docx"
             },
             {
+              "name": "Thuyết trình triết 1.4. - Chức năng của nhà nước ( Trần Anh Vũ).docx",
+              "type": "docx",
+              "path": "/resources/ML014 - Triết học Mac lênin/Tài liệu của trường/Thuyết trình triết 1.4. - Chức năng của nhà nước ( Trần Anh Vũ).docx"
+            },
+            {
               "name": "Triết học mác - lenin tóm tắt ôn thi.docx",
               "type": "docx",
               "path": "/resources/ML014 - Triết học Mac lênin/Tài liệu của trường/Triết học mác - lenin tóm tắt ôn thi.docx"
+            },
+            {
+              "name": "triet-hoc__de-cuong-triet-1-part-2 - [cuuduongthancong.com].pdf",
+              "type": "pdf",
+              "path": "/resources/ML014 - Triết học Mac lênin/Tài liệu của trường/triet-hoc__de-cuong-triet-1-part-2 - [cuuduongthancong.com].pdf"
             }
           ]
+        },
+        {
+          "name": "trac-nghiem-chuong-2.pdf",
+          "type": "pdf",
+          "path": "/resources/ML014 - Triết học Mac lênin/trac-nghiem-chuong-2.pdf"
+        },
+        {
+          "name": "triết trắc nghiệm.pdf",
+          "type": "pdf",
+          "path": "/resources/ML014 - Triết học Mac lênin/triết trắc nghiệm.pdf"
         },
         {
           "name": "tổng ôn triết học.pdf",
@@ -5505,16 +5505,6 @@
       "name": "ML016 - Kinh tế chính trị Mác Lenin",
       "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin",
       "children": [
-        {
-          "name": "2eae0e86-e7c6-431d-aa08-b8f89ba71921_giaotrinhkinhtechinhtri.pdf",
-          "type": "pdf",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/2eae0e86-e7c6-431d-aa08-b8f89ba71921_giaotrinhkinhtechinhtri.pdf"
-        },
-        {
-          "name": "AI am sharing chuong 4ppt with you_250525_093227.pdf",
-          "type": "pdf",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/AI am sharing chuong 4ppt with you_250525_093227.pdf"
-        },
         {
           "name": "Chapter_3.pdf",
           "type": "pdf",
@@ -5573,14 +5563,48 @@
           ]
         },
         {
-          "name": "I am sharing chuong 3 with you_250525_092949.pdf",
-          "type": "pdf",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/I am sharing chuong 3 with you_250525_092949.pdf"
-        },
-        {
-          "name": "in.pdf",
-          "type": "pdf",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/in.pdf"
+          "name": "Kinh Tế Chính Trị",
+          "type": "folder",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị",
+          "children": [
+            {
+              "name": "Kinh Tế Chính Trị",
+              "type": "folder",
+              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị",
+              "children": [
+                {
+                  "name": "KINH TẾ CHÍNH TRỊ.docx",
+                  "type": "docx",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/KINH TẾ CHÍNH TRỊ.docx"
+                },
+                {
+                  "name": "Quy luật cạnh tranh tr68.docx",
+                  "type": "docx",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/Quy luật cạnh tranh tr68.docx"
+                },
+                {
+                  "name": "ĐỀ_GK_1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/ĐỀ_GK_1.jpg"
+                },
+                {
+                  "name": "Đề_GK_2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/Đề_GK_2.jpg"
+                },
+                {
+                  "name": "đề 1,2.docx",
+                  "type": "docx",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/đề 1,2.docx"
+                }
+              ]
+            },
+            {
+              "name": "Thi KTCT.pdf",
+              "type": "pdf",
+              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Thi KTCT.pdf"
+            }
+          ]
         },
         {
           "name": "Kinh tế chính trị tài liệu tự soạn.docx",
@@ -5591,55 +5615,6 @@
           "name": "Kinh tế chính trị tài liệu tự soạn.pdf",
           "type": "pdf",
           "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh tế chính trị tài liệu tự soạn.pdf"
-        },
-        {
-          "name": "Kinh Tế Chính Trị-20240629T153934Z-001",
-          "type": "folder",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001",
-          "children": [
-            {
-              "name": "Kinh Tế Chính Trị",
-              "type": "folder",
-              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị",
-              "children": [
-                {
-                  "name": "KINH TẾ CHÍNH TRỊ.docx",
-                  "type": "docx",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/KINH TẾ CHÍNH TRỊ.docx"
-                },
-                {
-                  "name": "Quy luật cạnh tranh tr68.docx",
-                  "type": "docx",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/Quy luật cạnh tranh tr68.docx"
-                },
-                {
-                  "name": "đề 1,2.docx",
-                  "type": "docx",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/đề 1,2.docx"
-                },
-                {
-                  "name": "ĐỀ_GK_1.jpg",
-                  "type": "jpg",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/ĐỀ_GK_1.jpg"
-                },
-                {
-                  "name": "Đề_GK_2.jpg",
-                  "type": "jpg",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/Đề_GK_2.jpg"
-                }
-              ]
-            },
-            {
-              "name": "Thi KTCT.pdf",
-              "type": "pdf",
-              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Thi KTCT.pdf"
-            }
-          ]
-        },
-        {
-          "name": "Political_Economy (final_chapter 1 to chapter 5).pdf",
-          "type": "pdf",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Political_Economy (final_chapter 1 to chapter 5).pdf"
         },
         {
           "name": "PPT",
@@ -5655,6 +5630,26 @@
               "name": "Chuong 1.pptx",
               "type": "pptx",
               "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 1.pptx"
+            },
+            {
+              "name": "Chuong 5 KTCT.pdf",
+              "type": "pdf",
+              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 5 KTCT.pdf"
+            },
+            {
+              "name": "Chuong 5 KTCT.pptx",
+              "type": "pptx",
+              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 5 KTCT.pptx"
+            },
+            {
+              "name": "Chuong 6 KTCT.pdf",
+              "type": "pdf",
+              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 6 KTCT.pdf"
+            },
+            {
+              "name": "Chuong 6 KTCT.pptx",
+              "type": "pptx",
+              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 6 KTCT.pptx"
             },
             {
               "name": "chuong 2.pdf",
@@ -5685,28 +5680,33 @@
               "name": "chuong 4.ppt",
               "type": "ppt",
               "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/chuong 4.ppt"
-            },
-            {
-              "name": "Chuong 5 KTCT.pdf",
-              "type": "pdf",
-              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 5 KTCT.pdf"
-            },
-            {
-              "name": "Chuong 5 KTCT.pptx",
-              "type": "pptx",
-              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 5 KTCT.pptx"
-            },
-            {
-              "name": "Chuong 6 KTCT.pdf",
-              "type": "pdf",
-              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 6 KTCT.pdf"
-            },
-            {
-              "name": "Chuong 6 KTCT.pptx",
-              "type": "pptx",
-              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/PPT/Chuong 6 KTCT.pptx"
             }
           ]
+        },
+        {
+          "name": "Political_Economy (final_chapter 1 to chapter 5).pdf",
+          "type": "pdf",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Political_Economy (final_chapter 1 to chapter 5).pdf"
+        },
+        {
+          "name": "chuong 3.pdf",
+          "type": "pdf",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/chuong 3.pdf"
+        },
+        {
+          "name": "chuong 4ppt.pdf",
+          "type": "pdf",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/chuong 4ppt.pdf"
+        },
+        {
+          "name": "giaotrinhkinhtechinhtri.pdf",
+          "type": "pdf",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/giaotrinhkinhtechinhtri.pdf"
+        },
+        {
+          "name": "in.pdf",
+          "type": "pdf",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/in.pdf"
         },
         {
           "name": "ôntap.pdf",
@@ -5735,11 +5735,6 @@
           "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/5k CNXH khoa học.pdf"
         },
         {
-          "name": "Chủ nghĩa XHKH.docx",
-          "type": "docx",
-          "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/Chủ nghĩa XHKH.docx"
-        },
-        {
           "name": "CNXH hoàn chỉnh.docx",
           "type": "docx",
           "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/CNXH hoàn chỉnh.docx"
@@ -5750,9 +5745,9 @@
           "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/CNXHKH (cuối kì).docx"
         },
         {
-          "name": "câu khó nhớ.docx",
+          "name": "Chủ nghĩa XHKH.docx",
           "type": "docx",
-          "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/câu khó nhớ.docx"
+          "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/Chủ nghĩa XHKH.docx"
         },
         {
           "name": "FILE_20220430_143901_CNXH1-7-Tr.docx",
@@ -5812,6 +5807,11 @@
           "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/Trắc nghiệm (1).docx"
         },
         {
+          "name": "câu khó nhớ.docx",
+          "type": "docx",
+          "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/câu khó nhớ.docx"
+        },
+        {
           "name": "trắc nghiệm CNXH đầy đủ.docx",
           "type": "docx",
           "path": "/resources/ML018 - Chủ nghĩa xã hội khoa học/trắc nghiệm CNXH đầy đủ.docx"
@@ -5853,16 +5853,6 @@
               "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng/CHƯƠNG 1.pdf"
             },
             {
-              "name": "lsd.docx",
-              "type": "docx",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng/lsd.docx"
-            },
-            {
-              "name": "lsd.pdf",
-              "type": "pdf",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng/lsd.pdf"
-            },
-            {
               "name": "Trắc nghiệm Lịch sử Đảng Cộng sản Việt Nam.docx",
               "type": "docx",
               "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng/Trắc nghiệm Lịch sử Đảng Cộng sản Việt Nam.docx"
@@ -5871,6 +5861,16 @@
               "name": "Trắc nghiệm Lịch sử Đảng Cộng sản Việt Nam.pdf",
               "type": "pdf",
               "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng/Trắc nghiệm Lịch sử Đảng Cộng sản Việt Nam.pdf"
+            },
+            {
+              "name": "lsd.docx",
+              "type": "docx",
+              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng/lsd.docx"
+            },
+            {
+              "name": "lsd.pdf",
+              "type": "pdf",
+              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng/lsd.pdf"
             }
           ]
         },
@@ -5895,14 +5895,14 @@
                   "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/LICH SU DANG-Cô Phương Anh/KIỂM TRA GIỮA KỲ LSĐCSVN.pdf"
                 },
                 {
-                  "name": "lsd.docx",
-                  "type": "docx",
-                  "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/LICH SU DANG-Cô Phương Anh/lsd.docx"
-                },
-                {
                   "name": "Trong tam thi.doc",
                   "type": "doc",
                   "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/LICH SU DANG-Cô Phương Anh/Trong tam thi.doc"
+                },
+                {
+                  "name": "lsd.docx",
+                  "type": "docx",
+                  "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/LICH SU DANG-Cô Phương Anh/lsd.docx"
                 }
               ]
             },
@@ -5957,206 +5957,6 @@
               "name": "Trắc nghiệm.docx",
               "type": "docx",
               "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/Trắc nghiệm.docx"
-            },
-            {
-              "name": "z6299354447387_68202ca3cb26ec51275ee2ee1e7a164d.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354447387_68202ca3cb26ec51275ee2ee1e7a164d.jpg"
-            },
-            {
-              "name": "z6299354449740_c7336c3e2c92cf0c53cc1de034486532.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354449740_c7336c3e2c92cf0c53cc1de034486532.jpg"
-            },
-            {
-              "name": "z6299354451947_a974d45e0a1a714dcc2580850290621c.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354451947_a974d45e0a1a714dcc2580850290621c.jpg"
-            },
-            {
-              "name": "z6299354452183_b570b2d071e372568866da256dea5b3f.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354452183_b570b2d071e372568866da256dea5b3f.jpg"
-            },
-            {
-              "name": "z6299354452561_91f7e96e3f6707b03cb4db077528c6b0.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354452561_91f7e96e3f6707b03cb4db077528c6b0.jpg"
-            },
-            {
-              "name": "z6299354459096_fb22bd79f30ecb190bb54c5fc4951b63.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354459096_fb22bd79f30ecb190bb54c5fc4951b63.jpg"
-            },
-            {
-              "name": "z6299354461519_1ec87c82e63c6d5cf0a8a3a8f7deda27.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354461519_1ec87c82e63c6d5cf0a8a3a8f7deda27.jpg"
-            },
-            {
-              "name": "z6299354462241_407ecb485bc4454b32d944fab84b31fc.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354462241_407ecb485bc4454b32d944fab84b31fc.jpg"
-            },
-            {
-              "name": "z6299354462351_7f49e4df8979bc5a4614415e35f730aa.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354462351_7f49e4df8979bc5a4614415e35f730aa.jpg"
-            },
-            {
-              "name": "z6299354467124_c264ddb173dbd040ea1dec2c875f2cca.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354467124_c264ddb173dbd040ea1dec2c875f2cca.jpg"
-            },
-            {
-              "name": "z6299354470249_976bdceeb192315e7ec53fe55bdb50e7.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354470249_976bdceeb192315e7ec53fe55bdb50e7.jpg"
-            },
-            {
-              "name": "z6299354471951_05dbe862e5f8593f94d68052b172cfa8.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354471951_05dbe862e5f8593f94d68052b172cfa8.jpg"
-            },
-            {
-              "name": "z6299354472401_950fb96b09514424256e9f993c4ca87b.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354472401_950fb96b09514424256e9f993c4ca87b.jpg"
-            },
-            {
-              "name": "z6299354477199_ee573689ee52811e70266be202d9f6cb.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354477199_ee573689ee52811e70266be202d9f6cb.jpg"
-            },
-            {
-              "name": "z6299354477312_28c2a9cac827b1c3371c7172f96e39a2.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354477312_28c2a9cac827b1c3371c7172f96e39a2.jpg"
-            },
-            {
-              "name": "z6299354479671_6d5a3b9b3911047a8ea97fc4c901c727.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354479671_6d5a3b9b3911047a8ea97fc4c901c727.jpg"
-            },
-            {
-              "name": "z6299354485715_5157aef9fef6cdc84458a7528203df93.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354485715_5157aef9fef6cdc84458a7528203df93.jpg"
-            },
-            {
-              "name": "z6299354485819_11f78f0f7736f05aba61cfd037e52b05.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354485819_11f78f0f7736f05aba61cfd037e52b05.jpg"
-            },
-            {
-              "name": "z6299354485942_e599e0a1ee8fe5fa2502fa863e2bc874.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354485942_e599e0a1ee8fe5fa2502fa863e2bc874.jpg"
-            },
-            {
-              "name": "z6299354492409_6c2cdef7dfcd5438b7b976f949d6cc64.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354492409_6c2cdef7dfcd5438b7b976f949d6cc64.jpg"
-            },
-            {
-              "name": "z6299354492657_0fe4b23a9456e312bb3b081dac63ee86.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354492657_0fe4b23a9456e312bb3b081dac63ee86.jpg"
-            },
-            {
-              "name": "z6299354493000_6a2cc519df272913f22f88696ffc8680.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354493000_6a2cc519df272913f22f88696ffc8680.jpg"
-            },
-            {
-              "name": "z6299354493231_915fab846895833d01226065694dca74.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354493231_915fab846895833d01226065694dca74.jpg"
-            },
-            {
-              "name": "z6299354499577_984058fa2373ef06bc833ef31166b7f3.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354499577_984058fa2373ef06bc833ef31166b7f3.jpg"
-            },
-            {
-              "name": "z6299354502054_35beb893b1aee3536deb6d1534eff421.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354502054_35beb893b1aee3536deb6d1534eff421.jpg"
-            },
-            {
-              "name": "z6299354502166_1c8ead9f1ba41b59870d41b483ee1b07.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354502166_1c8ead9f1ba41b59870d41b483ee1b07.jpg"
-            },
-            {
-              "name": "z6299354502273_7f3f984ba7cd0d1e56705725e99a93a2.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354502273_7f3f984ba7cd0d1e56705725e99a93a2.jpg"
-            },
-            {
-              "name": "z6299354508912_2f115046bda218db1ca0d6d7d8c8b12c.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354508912_2f115046bda218db1ca0d6d7d8c8b12c.jpg"
-            },
-            {
-              "name": "z6299354509023_d85c0ee103e7a54676d635ed50d2d630.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354509023_d85c0ee103e7a54676d635ed50d2d630.jpg"
-            },
-            {
-              "name": "z6299354512621_d112f06469ca860f69c5286519483c83.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354512621_d112f06469ca860f69c5286519483c83.jpg"
-            },
-            {
-              "name": "z6299354518223_fc205d598d36be4b01aacf6eee2f80d6.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354518223_fc205d598d36be4b01aacf6eee2f80d6.jpg"
-            },
-            {
-              "name": "z6299354518703_013e656f4d4c68ef949910c1e5e2fdf5.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354518703_013e656f4d4c68ef949910c1e5e2fdf5.jpg"
-            },
-            {
-              "name": "z6299354521018_e1582938df96a5df8983747cc09133a5.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354521018_e1582938df96a5df8983747cc09133a5.jpg"
-            },
-            {
-              "name": "z6299354521126_e0838f740cabd581bb4208f01ff6311f.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354521126_e0838f740cabd581bb4208f01ff6311f.jpg"
-            },
-            {
-              "name": "z6299354523582_d93b843f5e494e291559d2c0e7dc99ef.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354523582_d93b843f5e494e291559d2c0e7dc99ef.jpg"
-            },
-            {
-              "name": "z6299354528333_f6cc9e5cf9fe74b4621cf41ef9e1e25b.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354528333_f6cc9e5cf9fe74b4621cf41ef9e1e25b.jpg"
-            },
-            {
-              "name": "z6299354530900_88ff1187a103cf6b6028539665d3564d.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354530900_88ff1187a103cf6b6028539665d3564d.jpg"
-            },
-            {
-              "name": "z6299354534536_40069ce18a0c7e0361a3c8260810d475.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354534536_40069ce18a0c7e0361a3c8260810d475.jpg"
-            },
-            {
-              "name": "z6299354535604_c1583e4d843893f15374532595d90be2.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354535604_c1583e4d843893f15374532595d90be2.jpg"
-            },
-            {
-              "name": "z6299354535660_476ef3b0bc84dee0e374adf565eb635f.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354535660_476ef3b0bc84dee0e374adf565eb635f.jpg"
             },
             {
               "name": "ĐỀ ÔN LỊCH SỬ ĐẢNG.pdf",
@@ -6332,29 +6132,9 @@
           "path": "/resources/TN010 - Xác suất thống kê/Chương 1 19092023_230926_143558.pdf"
         },
         {
-          "name": "chương 2 sxtk.pdf",
-          "type": "pdf",
-          "path": "/resources/TN010 - Xác suất thống kê/chương 2 sxtk.pdf"
-        },
-        {
-          "name": "chương 2 sxtk_230927_154321.pdf",
-          "type": "pdf",
-          "path": "/resources/TN010 - Xác suất thống kê/chương 2 sxtk_230927_154321.pdf"
-        },
-        {
           "name": "De kt D04-01.pdf",
           "type": "pdf",
           "path": "/resources/TN010 - Xác suất thống kê/De kt D04-01.pdf"
-        },
-        {
-          "name": "gtxstk_dhnn1.pdf",
-          "type": "pdf",
-          "path": "/resources/TN010 - Xác suất thống kê/gtxstk_dhnn1.pdf"
-        },
-        {
-          "name": "k2_attachments_PHAN-PHOI-NHI-THUC.pdf",
-          "type": "pdf",
-          "path": "/resources/TN010 - Xác suất thống kê/k2_attachments_PHAN-PHOI-NHI-THUC.pdf"
         },
         {
           "name": "NHCH-XSTKBphan-de.pdf",
@@ -6382,6 +6162,31 @@
           "path": "/resources/TN010 - Xác suất thống kê/TN010 - DS-Kiểm tra giữa kỳ - e-learning.pdf"
         },
         {
+          "name": "Xác suất thống kê note.pdf",
+          "type": "pdf",
+          "path": "/resources/TN010 - Xác suất thống kê/Xác suất thống kê note.pdf"
+        },
+        {
+          "name": "chương 2 sxtk.pdf",
+          "type": "pdf",
+          "path": "/resources/TN010 - Xác suất thống kê/chương 2 sxtk.pdf"
+        },
+        {
+          "name": "chương 2 sxtk_230927_154321.pdf",
+          "type": "pdf",
+          "path": "/resources/TN010 - Xác suất thống kê/chương 2 sxtk_230927_154321.pdf"
+        },
+        {
+          "name": "gtxstk_dhnn1.pdf",
+          "type": "pdf",
+          "path": "/resources/TN010 - Xác suất thống kê/gtxstk_dhnn1.pdf"
+        },
+        {
+          "name": "k2_attachments_PHAN-PHOI-NHI-THUC.pdf",
+          "type": "pdf",
+          "path": "/resources/TN010 - Xác suất thống kê/k2_attachments_PHAN-PHOI-NHI-THUC.pdf"
+        },
+        {
           "name": "trac-nghiem-ly-thuyet-xac-suat-thong-ke-co-dap-an559.pdf",
           "type": "pdf",
           "path": "/resources/TN010 - Xác suất thống kê/trac-nghiem-ly-thuyet-xac-suat-thong-ke-co-dap-an559.pdf"
@@ -6390,11 +6195,6 @@
           "name": "xac-suat-thong-ke__giai-bai-tap-xstk - [cuuduongthancong.com].pdf",
           "type": "pdf",
           "path": "/resources/TN010 - Xác suất thống kê/xac-suat-thong-ke__giai-bai-tap-xstk - [cuuduongthancong.com].pdf"
-        },
-        {
-          "name": "Xác suất thống kê note.pdf",
-          "type": "pdf",
-          "path": "/resources/TN010 - Xác suất thống kê/Xác suất thống kê note.pdf"
         },
         {
           "name": "Đề_thi_XSTK_D04__1_2324__Đề_1_.pdf",
