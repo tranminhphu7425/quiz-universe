@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        "use strict";
+        myFunction();
+        function myFunction(){
+            console.log("Hello world!");
+            y = 3.14;
+        }
+    </script> -->
+    <script>
+        function test(){
+            var x = 5;
+            console.log(x);
+            let y = 10;
+            console.log(y);
+            console.log(z);
+            var z = 15;
+            console.log(a);
+            let a = 32;
+
+        }
+        test();
+        console.log(x);
+        console.log(x);
+        console.log(x);
+    </script>
+
+    <script>
+        var counter =1;
+        let found = true;
+        const PI  = 3.14;
+        if(found == true){
+            var fruit1 = "apple";
+            let fruit2 = "banana";
+            const fruit3 = "cherry";
+        }
+        console.log(fruit1);
+        console.log(fruit2);
+        console.log(fruit3);
+        function outerFunct(){
+            let outerVar = "I am from outside!";
+            function innerFunc(){
+                console.log(outerVar);
+                console.log(counter);
+                console.log(found);
+                console.log(PI);
+            }
+            return innerFunc();
+        }
+        outerFunct();
+        console.log(outerVar);
+        alert(typeof counter);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

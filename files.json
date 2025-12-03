@@ -5328,9 +5328,9 @@
           "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành",
           "children": [
             {
-              "name": "ieee-guide-for-developing-system-requirements-specifications.pdf",
+              "name": "ieee-guide-for-developing-system-requirements.pdf",
               "type": "pdf",
-              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/ieee-guide-for-developing-system-requirements-specifications.pdf"
+              "path": "/resources/CT296 - Phân tích và thiết kế hệ thống thông tin/Thực hành/ieee-guide-for-developing-system-requirements.pdf"
             },
             {
               "name": "Quan Tri Yeu Cau Nguoi Dung_mau tai lieu.docx",
@@ -5506,19 +5506,19 @@
       "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin",
       "children": [
         {
-          "name": "2eae0e86-e7c6-431d-aa08-b8f89ba71921_giaotrinhkinhtechinhtri.pdf",
-          "type": "pdf",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/2eae0e86-e7c6-431d-aa08-b8f89ba71921_giaotrinhkinhtechinhtri.pdf"
-        },
-        {
-          "name": "AI am sharing chuong 4ppt with you_250525_093227.pdf",
-          "type": "pdf",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/AI am sharing chuong 4ppt with you_250525_093227.pdf"
-        },
-        {
           "name": "Chapter_3.pdf",
           "type": "pdf",
           "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Chapter_3.pdf"
+        },
+        {
+          "name": "chuong 3.pdf",
+          "type": "pdf",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/chuong 3.pdf"
+        },
+        {
+          "name": "chuong 4ppt.pdf",
+          "type": "pdf",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/chuong 4ppt.pdf"
         },
         {
           "name": "Chuong 5 KTCT_250525_093315.pdf",
@@ -5573,14 +5573,58 @@
           ]
         },
         {
-          "name": "I am sharing chuong 3 with you_250525_092949.pdf",
+          "name": "giaotrinhkinhtechinhtri.pdf",
           "type": "pdf",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/I am sharing chuong 3 with you_250525_092949.pdf"
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/giaotrinhkinhtechinhtri.pdf"
         },
         {
           "name": "in.pdf",
           "type": "pdf",
           "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/in.pdf"
+        },
+        {
+          "name": "Kinh Tế Chính Trị",
+          "type": "folder",
+          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị",
+          "children": [
+            {
+              "name": "Kinh Tế Chính Trị",
+              "type": "folder",
+              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị",
+              "children": [
+                {
+                  "name": "KINH TẾ CHÍNH TRỊ.docx",
+                  "type": "docx",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/KINH TẾ CHÍNH TRỊ.docx"
+                },
+                {
+                  "name": "Quy luật cạnh tranh tr68.docx",
+                  "type": "docx",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/Quy luật cạnh tranh tr68.docx"
+                },
+                {
+                  "name": "đề 1,2.docx",
+                  "type": "docx",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/đề 1,2.docx"
+                },
+                {
+                  "name": "ĐỀ_GK_1.jpg",
+                  "type": "jpg",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/ĐỀ_GK_1.jpg"
+                },
+                {
+                  "name": "Đề_GK_2.jpg",
+                  "type": "jpg",
+                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Kinh Tế Chính Trị/Đề_GK_2.jpg"
+                }
+              ]
+            },
+            {
+              "name": "Thi KTCT.pdf",
+              "type": "pdf",
+              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị/Thi KTCT.pdf"
+            }
+          ]
         },
         {
           "name": "Kinh tế chính trị tài liệu tự soạn.docx",
@@ -5591,50 +5635,6 @@
           "name": "Kinh tế chính trị tài liệu tự soạn.pdf",
           "type": "pdf",
           "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh tế chính trị tài liệu tự soạn.pdf"
-        },
-        {
-          "name": "Kinh Tế Chính Trị-20240629T153934Z-001",
-          "type": "folder",
-          "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001",
-          "children": [
-            {
-              "name": "Kinh Tế Chính Trị",
-              "type": "folder",
-              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị",
-              "children": [
-                {
-                  "name": "KINH TẾ CHÍNH TRỊ.docx",
-                  "type": "docx",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/KINH TẾ CHÍNH TRỊ.docx"
-                },
-                {
-                  "name": "Quy luật cạnh tranh tr68.docx",
-                  "type": "docx",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/Quy luật cạnh tranh tr68.docx"
-                },
-                {
-                  "name": "đề 1,2.docx",
-                  "type": "docx",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/đề 1,2.docx"
-                },
-                {
-                  "name": "ĐỀ_GK_1.jpg",
-                  "type": "jpg",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/ĐỀ_GK_1.jpg"
-                },
-                {
-                  "name": "Đề_GK_2.jpg",
-                  "type": "jpg",
-                  "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Kinh Tế Chính Trị/Đề_GK_2.jpg"
-                }
-              ]
-            },
-            {
-              "name": "Thi KTCT.pdf",
-              "type": "pdf",
-              "path": "/resources/ML016 - Kinh tế chính trị Mác Lenin/Kinh Tế Chính Trị-20240629T153934Z-001/Thi KTCT.pdf"
-            }
-          ]
         },
         {
           "name": "Political_Economy (final_chapter 1 to chapter 5).pdf",
@@ -5957,206 +5957,6 @@
               "name": "Trắc nghiệm.docx",
               "type": "docx",
               "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/Trắc nghiệm.docx"
-            },
-            {
-              "name": "z6299354447387_68202ca3cb26ec51275ee2ee1e7a164d.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354447387_68202ca3cb26ec51275ee2ee1e7a164d.jpg"
-            },
-            {
-              "name": "z6299354449740_c7336c3e2c92cf0c53cc1de034486532.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354449740_c7336c3e2c92cf0c53cc1de034486532.jpg"
-            },
-            {
-              "name": "z6299354451947_a974d45e0a1a714dcc2580850290621c.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354451947_a974d45e0a1a714dcc2580850290621c.jpg"
-            },
-            {
-              "name": "z6299354452183_b570b2d071e372568866da256dea5b3f.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354452183_b570b2d071e372568866da256dea5b3f.jpg"
-            },
-            {
-              "name": "z6299354452561_91f7e96e3f6707b03cb4db077528c6b0.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354452561_91f7e96e3f6707b03cb4db077528c6b0.jpg"
-            },
-            {
-              "name": "z6299354459096_fb22bd79f30ecb190bb54c5fc4951b63.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354459096_fb22bd79f30ecb190bb54c5fc4951b63.jpg"
-            },
-            {
-              "name": "z6299354461519_1ec87c82e63c6d5cf0a8a3a8f7deda27.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354461519_1ec87c82e63c6d5cf0a8a3a8f7deda27.jpg"
-            },
-            {
-              "name": "z6299354462241_407ecb485bc4454b32d944fab84b31fc.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354462241_407ecb485bc4454b32d944fab84b31fc.jpg"
-            },
-            {
-              "name": "z6299354462351_7f49e4df8979bc5a4614415e35f730aa.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354462351_7f49e4df8979bc5a4614415e35f730aa.jpg"
-            },
-            {
-              "name": "z6299354467124_c264ddb173dbd040ea1dec2c875f2cca.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354467124_c264ddb173dbd040ea1dec2c875f2cca.jpg"
-            },
-            {
-              "name": "z6299354470249_976bdceeb192315e7ec53fe55bdb50e7.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354470249_976bdceeb192315e7ec53fe55bdb50e7.jpg"
-            },
-            {
-              "name": "z6299354471951_05dbe862e5f8593f94d68052b172cfa8.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354471951_05dbe862e5f8593f94d68052b172cfa8.jpg"
-            },
-            {
-              "name": "z6299354472401_950fb96b09514424256e9f993c4ca87b.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354472401_950fb96b09514424256e9f993c4ca87b.jpg"
-            },
-            {
-              "name": "z6299354477199_ee573689ee52811e70266be202d9f6cb.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354477199_ee573689ee52811e70266be202d9f6cb.jpg"
-            },
-            {
-              "name": "z6299354477312_28c2a9cac827b1c3371c7172f96e39a2.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354477312_28c2a9cac827b1c3371c7172f96e39a2.jpg"
-            },
-            {
-              "name": "z6299354479671_6d5a3b9b3911047a8ea97fc4c901c727.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354479671_6d5a3b9b3911047a8ea97fc4c901c727.jpg"
-            },
-            {
-              "name": "z6299354485715_5157aef9fef6cdc84458a7528203df93.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354485715_5157aef9fef6cdc84458a7528203df93.jpg"
-            },
-            {
-              "name": "z6299354485819_11f78f0f7736f05aba61cfd037e52b05.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354485819_11f78f0f7736f05aba61cfd037e52b05.jpg"
-            },
-            {
-              "name": "z6299354485942_e599e0a1ee8fe5fa2502fa863e2bc874.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354485942_e599e0a1ee8fe5fa2502fa863e2bc874.jpg"
-            },
-            {
-              "name": "z6299354492409_6c2cdef7dfcd5438b7b976f949d6cc64.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354492409_6c2cdef7dfcd5438b7b976f949d6cc64.jpg"
-            },
-            {
-              "name": "z6299354492657_0fe4b23a9456e312bb3b081dac63ee86.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354492657_0fe4b23a9456e312bb3b081dac63ee86.jpg"
-            },
-            {
-              "name": "z6299354493000_6a2cc519df272913f22f88696ffc8680.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354493000_6a2cc519df272913f22f88696ffc8680.jpg"
-            },
-            {
-              "name": "z6299354493231_915fab846895833d01226065694dca74.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354493231_915fab846895833d01226065694dca74.jpg"
-            },
-            {
-              "name": "z6299354499577_984058fa2373ef06bc833ef31166b7f3.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354499577_984058fa2373ef06bc833ef31166b7f3.jpg"
-            },
-            {
-              "name": "z6299354502054_35beb893b1aee3536deb6d1534eff421.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354502054_35beb893b1aee3536deb6d1534eff421.jpg"
-            },
-            {
-              "name": "z6299354502166_1c8ead9f1ba41b59870d41b483ee1b07.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354502166_1c8ead9f1ba41b59870d41b483ee1b07.jpg"
-            },
-            {
-              "name": "z6299354502273_7f3f984ba7cd0d1e56705725e99a93a2.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354502273_7f3f984ba7cd0d1e56705725e99a93a2.jpg"
-            },
-            {
-              "name": "z6299354508912_2f115046bda218db1ca0d6d7d8c8b12c.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354508912_2f115046bda218db1ca0d6d7d8c8b12c.jpg"
-            },
-            {
-              "name": "z6299354509023_d85c0ee103e7a54676d635ed50d2d630.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354509023_d85c0ee103e7a54676d635ed50d2d630.jpg"
-            },
-            {
-              "name": "z6299354512621_d112f06469ca860f69c5286519483c83.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354512621_d112f06469ca860f69c5286519483c83.jpg"
-            },
-            {
-              "name": "z6299354518223_fc205d598d36be4b01aacf6eee2f80d6.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354518223_fc205d598d36be4b01aacf6eee2f80d6.jpg"
-            },
-            {
-              "name": "z6299354518703_013e656f4d4c68ef949910c1e5e2fdf5.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354518703_013e656f4d4c68ef949910c1e5e2fdf5.jpg"
-            },
-            {
-              "name": "z6299354521018_e1582938df96a5df8983747cc09133a5.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354521018_e1582938df96a5df8983747cc09133a5.jpg"
-            },
-            {
-              "name": "z6299354521126_e0838f740cabd581bb4208f01ff6311f.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354521126_e0838f740cabd581bb4208f01ff6311f.jpg"
-            },
-            {
-              "name": "z6299354523582_d93b843f5e494e291559d2c0e7dc99ef.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354523582_d93b843f5e494e291559d2c0e7dc99ef.jpg"
-            },
-            {
-              "name": "z6299354528333_f6cc9e5cf9fe74b4621cf41ef9e1e25b.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354528333_f6cc9e5cf9fe74b4621cf41ef9e1e25b.jpg"
-            },
-            {
-              "name": "z6299354530900_88ff1187a103cf6b6028539665d3564d.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354530900_88ff1187a103cf6b6028539665d3564d.jpg"
-            },
-            {
-              "name": "z6299354534536_40069ce18a0c7e0361a3c8260810d475.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354534536_40069ce18a0c7e0361a3c8260810d475.jpg"
-            },
-            {
-              "name": "z6299354535604_c1583e4d843893f15374532595d90be2.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354535604_c1583e4d843893f15374532595d90be2.jpg"
-            },
-            {
-              "name": "z6299354535660_476ef3b0bc84dee0e374adf565eb635f.jpg",
-              "type": "jpg",
-              "path": "/resources/ML019 - Lịch sử Đảng Cộng Sản Việt Nam/Lịch Sử Đảng - Cô Phương Anh/z6299354535660_476ef3b0bc84dee0e374adf565eb635f.jpg"
             },
             {
               "name": "ĐỀ ÔN LỊCH SỬ ĐẢNG.pdf",

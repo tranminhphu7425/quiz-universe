@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phân biệt target và currentTarget</title>
+    <style>
+        #parent {
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+        }
+        #child {
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            margin: 50px;
+            color: black;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cấu trúc DOM với phần tử cha và con -->
+    <div id="parent">
+        Parent Div (Click vào vùng xanh)
+        <div id="child">Child Div (Click vào vùng vàng)</div>
+    </div>
+
+    <script>
+        const parent = document.getElementById('parent');
+        const child = document.getElementById('child');
+
+        // Xử lý sự kiện cho phần tử cha (sử dụng bubbling phase)
+        parent.addEventListener('click', function(event) {
+            console.log('--- PARENT EVENT HANDLER ---');
+            console.log('event.target      :', event.target.id); // Phần tử gốc gây ra sự kiện
+            console.log('event.currentTarget:', event.currentTarget.id); // Phần tử đang xử lý sự kiện (luôn là parent)
+        });
+        
+    </script>
+</body>
+</html>

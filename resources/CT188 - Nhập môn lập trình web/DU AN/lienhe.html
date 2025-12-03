@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/favicon.ico" type="image/vnd.microsoft.ico">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Giới thiệu</title>
+
+</head>
+
+<body>
+    <header>
+        <img src="images/logo.png" alt="" id="logo"><br>
+        <div class="taskbar">
+            <nav class="navigation">
+                <ul>
+                    <li><a href="trangchu.html">Trang chủ</a></li>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="sanpham.html">Sản phẩm</a></li>
+                    <li><a href="tintuc.html">Tin tức</a></li>
+                    <li><a href="dangnhap.html">Đăng nhập</a></li>
+                    <li><a href="dangki.html">Đăng kí</a></li>
+                    <li
+                        style="background: linear-gradient(90deg, rgba(181,130,21,1) 0%, rgba(148,51,187,1) 33%, rgba(40,124,184,1) 66%, rgba(74,134,205,1) 100%);">
+                        <a href="lienhe.html">Liên hệ</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="search-bar">
+
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                </div>
+
+                <div class="search-icon">
+                    <button type="submit" style="border: none; background-color: transparent  "><img
+                            src="images/icons8-search-64.png" alt="" width="35px" height="auto" id="search"></button>
+                    <a href="item.html"><img src="images/icons8-buy-64.png" alt="" width="35px" height="auto"
+                            id="buy"></a>
+                </div>
+
+            </div>
+
+
+        </div>
+        <img src="header-img1.png" alt="" id="header-img1">
+        <img src="header-img2.png" alt="" id="header-img2">
+        <img src="header-img3.png" alt="" id="header-img3">
+
+    </header>
+    <main>
+
+
+
+
+
+        <fieldset style="border: 1px solid #b7b7b7; border-radius: 5px; margin-top: 30px">
+            <h1>Liên hệ</h1>
+            <p style="width: 80%; margin: 0 auto;">
+                <span
+                    style="display: inline-flex; justify-content: center; align-items: center; width: 30px; height: 20px; background-color: rgb(179, 238, 134); margin-right: 5px; margin-bottom: 2px; vertical-align: middle;">
+                    <img src="images/lienhe/check-in.png" alt="" width="10px">
+                </span>
+                <b>Địa chỉ:</b> 0123, Tòa Nhà ABC, TP. Cần Thơ. Nếu bạn có góp ý, vui lòng liên hệ bằng thư biểu mẫu bên
+                dưới. Xin cảm ơn.
+            </p>
+
+            
+            <div style="width: 50%; margin:auto">
+                <form action="gopy.php" id="gopyform" onsubmit="return frmValiddate5()">
+                    <div>
+                        <img width="30" height="30" src="https://img.icons8.com/dusk/30/user.png" alt="user" />
+                        <input type="text" name="name" id="hoten" placeholder="Vui lòng nhập Họ tên của bạn"
+                            class="input">
+                    </div>
+                    <div>
+                        <img width="30" height="30" src="https://img.icons8.com/dusk/30/apple-mail.png" alt="apple-mail"
+                            style="margin: auto" />
+                        <input type="email" name="email" id="email" placeholder="Vui lòng nhập địa chỉ Email"
+                            class="input">
+                    </div>
+                    <div>
+                        <img width="30" height="30" src="https://img.icons8.com/dusk/30/reminders.png" alt="reminders"
+                            style="margin:0; margin-top: auto" />
+
+                        <select name="chude" id="chude">
+                            <option value="0">Về Sản Phẩm/ Dịch Vụ</option>
+                            <option value="1">Về Ưu Đãi Thành Viên</option>
+                            <option value="2">Về Tin Tuyển Dụng</option>
+                        </select>
+
+                    </div>
+                    <div style="margin-top: 2px">
+                        <img width="30" height="30" src="https://img.icons8.com/dusk/30/note.png" alt="note" style="margin-top: auto;">
+                        <textarea name="noidung" id="noidung"  style="margin-right: 300px; min-width: 162px"
+                            placeholder="Nội dung cần liên hệ"></textarea>
+                    </div>
+                    <br>
+                    <input type="submit" value="Gửi">
+                        
+                </form>
+            </div>
+
+
+        </fieldset>
+
+    </main>
+    <footer>
+        <div>
+            &copy; 2021 Bản quyền thuộc về FreeezeVN.
+            <a href=""><img width="18" height="18" src="https://img.icons8.com/dusk/64/facebook-new--v2.png"
+                    alt="facebook-new--v2" /></a>
+            <a href=""><img width="18" height="18" src="https://img.icons8.com/dusk/100/twitter-circled.png"
+                    alt="twitter-circled" /></a>
+            <a href=""><img width="18" height="18" src="https://img.icons8.com/dusk/18/pinterest--v1.png"
+                    alt="pinterest--v1" /></a>
+
+        </div>
+        <a href="#logo"><img src="images/top.png" alt="" width="64px" height="64px"
+                style="position:absolute; right: 5px; "></a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
