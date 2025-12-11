@@ -1,0 +1,1389 @@
+Folder PATH listing for volume Data
+Volume serial number is 682B-634E
+D:\DOCUMENTS\GITHUB\QUIZ-UNIVERSE\DIST
+|   favicon.svg
+|   files.json
+|   index.html
+|   robots.txt
+|   vite.svg
+|   
++---assets
+|       AboutPage-um8tFNNz.js
+|       arrow-right-B9243ZC4.js
+|       building-2-Nj0Qr6vL.js
+|       circle-arrow-right-j8clwZ0G.js
+|       circle-check-CC_DhDQ5.js
+|       circle-question-mark-CtfNqUo4.js
+|       ContactPage-f-8giQVQ.js
+|       cookie-DDQi0eCg.js
+|       CookiesPage-crDP7pES.js
+|       CreateExamPage-DHP32X28.js
+|       DashboardPage-CAOfPhTl.js
+|       DocumentationPage-CTJ7ZVHE.js
+|       EditQuestionPage-CB9lLEdS.js
+|       ExplorePage-mQxxMDkb.js
+|       eye-off-CXwiak2C.js
+|       favoriteApi-BvCOtOmi.js
+|       file-text-BdAynE7N.js
+|       ForgotPasswordPage-D-s4TUEU.js
+|       HomePage-JcxrsKxQ.js
+|       index-6ZiO4uqz.css
+|       index-CuBEx6CZ.js
+|       key-round-CksthkcO.js
+|       LoadingState-Eblv3-_0.js
+|       lock-FK56Y22K.js
+|       LoginPage-BeakfKse.js
+|       major-universityApi-DRwnjaAL.js
+|       OrbitingSkills-C17Q-WtI.js
+|       questionsApi-Bd07Af2O.js
+|       QuestionsPage-D1CGIGT2.js
+|       QuickGuidePage-C-NZsqhm.js
+|       QuickGuidePage-DvB2Xm2x.css
+|       quizuniverselogo-BenyQcW6.png
+|       RecruitmentPage-BAcr2mvW.js
+|       refresh-ccw-BYi7tBzx.js
+|       RegisterPage-F_GE5Xkf.js
+|       ReviewExamPage-BGkD2BEI.js
+|       rocket-CKhrESe6.js
+|       SecurityPage-DGY4suym.js
+|       SettingsPage-C4D4NykF.js
+|       SetupProfilePage-SrEsyjMM.js
+|       SubjectsPage-CqUGfL7m.js
+|       TakeExamPage-B2ZGWiU9.js
+|       TenantsPage-Chs4LEs7.js
+|       TermsPage-F0gnotcI.js
+|       trash-2-Cv70ENNa.js
+|       UserGuidePage-bjv03AP6.js
+|       
++---data
+|       questionssubject11.json
+|       questionssubject4.json
+|       questionssubject5.json
+|       questionssubject6.json
+|       questionssubject7.json
+|       questionssubject8.json
+|       subjects.json
+|       
++---resources
+|   +---CT112 - M?ng máy tính
+|   |   |   Andrew S. Tanenbaum - Computer Networks.pdf
+|   |   |   AnswerTheQuestion.txt
+|   |   |   Chapter 1 - Overview.pdf
+|   |   |   Chapter 2 - Computer Network components.pdf
+|   |   |   Chapter 3 - Physical Layer.pdf
+|   |   |   Chapter 4 - Data Link Layer.pdf
+|   |   |   Chapter 5 - LAN-MAC.pdf
+|   |   |   Chapter 7 - Transport Layer.pdf
+|   |   |   Chater  06  - Network Layer.pdf
+|   |   |   
+|   |   \---NHVL
+|   |           1-Overview.pdf
+|   |           2-NetworkComponents.pdf
+|   |           3-LAN.pdf
+|   |           3-OSIModel.pdf
+|   |           4-PhysicalLayer.pdf
+|   |           5-DataLinkLayer.pdf
+|   |           6-LANMAC.pdf
+|   |           7-NetworkLayer.pdf
+|   |           8-TransportLayer.pdf
+|   |           9-ApplicationLayer.pdf
+|   |           
+|   +---CT172 - Toán r?i r?c
+|   |   |   01-menh-de-va-vi-tu-ly-thuyet-menh-de-va-vi-tu-mon-toan-roi-rac.pdf
+|   |   |   57055195-cau-hoi-on-tap-toan-roi-rac.pdf
+|   |   |   baitapmaunhapth.pdf
+|   |   |   baitaptoanroiracchuongii.pdf
+|   |   |   bt-sh-bt-sh.pdf
+|   |   |   Chapter_7_Counting_4in1.pdf
+|   |   |   chuong-1-menh-de-va-vi-tu-chuong-1-menh-de-va-vi-tu-toan-roi-rac.pdf
+|   |   |   chuong-2-giao-trinh.pdf
+|   |   |   CT172_HK3_2023_2024.pdf
+|   |   |   File_BaiTap_ToanRoiRac- dã note.pdf
+|   |   |   File_BaiTap_ToanRoiRac.pdf
+|   |   |   File_BaiTap_ToanRoiRac_250210_073808.pdf
+|   |   |   logic-1-tai-lieu-tu-soan-va-suu-tam.pdf
+|   |   |   ltpd-trr-chuong-1-menh-de-vi-tu-shared-hk-2-20-21.pdf
+|   |   |   ltpd-trr-chuong-3-phep-dem-shared-hk2-20-21.pdf
+|   |   |   ltpd-trr-chuong-45-quan-he-dai-so-bool-shared-hk-2-20-21.pdf
+|   |   |   Rosen_Discrete_Mathematics_and_Its_Applications_7th_Edition.pdf
+|   |   |   toanroirac-c6.pdf
+|   |   |   T?ng h?p toán r?i r?c(1).pdf
+|   |   |   T?ng h?p toán r?i r?c.docx
+|   |   |   T?ng h?p toán r?i r?c.pdf
+|   |   |   
+|   |   +---Bai tap
+|   |   |       34_B2306573_TranMinhPhu.pdf
+|   |   |       ChiaHetVaChiaCoDu.pdf
+|   |   |       DongDu.pdf
+|   |   |       HePhuongTrinhBool.pdf
+|   |   |       HePhuongTrinhPhuongPhapThe.pdf
+|   |   |       Lapbangchantri.pdf
+|   |   |       Menhde.pdf
+|   |   |       PhepDem.pdf
+|   |   |       PhuongTrinhHePhuongTrinh.pdf
+|   |   |       PhuongTrinhNguyen.pdf
+|   |   |       QuyNap.pdf
+|   |   |       QuyNap2.pdf
+|   |   |       QuyNap3.pdf
+|   |   |       QuyTacSuyLuanPPCM.pdf
+|   |   |       TuongDuongLogic.pdf
+|   |   |       UCLNBCNNSNT.pdf
+|   |   |       Vitu(1).pdf
+|   |   |       ViTu(2).pdf
+|   |   |       
+|   |   \---Bai tap theo chuong
+|   |           Chuong 1 - M?nh d? và v? t?.pdf
+|   |           Chuong 2 - Suy lu?n và ch?ng minh.pdf
+|   |           Chuong 3 - Quan h?.pdf
+|   |           Chuong 4, 5 - Hàm bool, don gi?n công th?c.pdf
+|   |           Chuong 6 - Lý thuy?t chia và d?ng du.pdf
+|   |           Chuong 7 - Phép d?m.pdf
+|   |           
+|   +---CT173 - Ki?n trúc máy tính
+|   |   |   6.-Hennessy-and-Patterson.-Computer-Architecture-A-Quantitative-Approach.pdf
+|   |   |   Andrew S. Tanenbaum - Structured Computer Organization.pdf
+|   |   |   bai3-nguyen-minh-thuan-b2207568.pdf
+|   |   |   bai4-nguyen-minh-thuan-b2207568.pdf
+|   |   |   Baitapchuong1.docx
+|   |   |   Baitapchuong2. (1).docx
+|   |   |   bt-ktmt-bai-tap.pdf
+|   |   |   Bài t?p chuong 5_250525_093131.pdf
+|   |   |   B? NH? PHÂN C?P.docx
+|   |   |   ch1.pdf
+|   |   |   ch2.pdf
+|   |   |   ch3.pdf
+|   |   |   ch4.pdf
+|   |   |   ch5.pdf
+|   |   |   ch6.pdf
+|   |   |   Chapter 4 - solutions (1).pdf
+|   |   |   Chapter 4 - solutions.pdf
+|   |   |   Computer Orgranization and Design.pdf
+|   |   |   Công th?c ki?n trúc máy tính.pdf
+|   |   |   de-on-tap-kien-truc-may-tinh-1.pdf
+|   |   |   Dethi_32425.pdf
+|   |   |   download (14).png
+|   |   |   ec.pdf
+|   |   |   Giáo Trình Môn Ki?n Trúc Máy Tính.docx
+|   |   |   Giáo Trình Môn Ki?n Trúc Máy Tính.pdf
+|   |   |   HW6_Spring2022_Solution.pdf
+|   |   |   mips-green-sheet-mips.pdf
+|   |   |   MIPS_Instruction_Set.pdf
+|   |   |   MIPS_Reference_Data_page1.pdf
+|   |   |   MIPS_Reference_Data_page1.png
+|   |   |   nasm.pdf
+|   |   |   New Text Document.txt
+|   |   |   Picture1.png
+|   |   |   Picture2.png
+|   |   |   Picture3.png
+|   |   |   Picture4.png
+|   |   |   Picture5.png
+|   |   |   Picture6.png
+|   |   |   Picture7.png
+|   |   |   Publication.pub
+|   |   |   Screenshot 2024-11-02 223020.png
+|   |   |   Screenshot 2024-11-02 224905.png
+|   |   |   VAN M?U KTMT.docx
+|   |   |   Ych5_250525_092439.pdf
+|   |   |   z6053288903395_9e6abcb0c3d37a7e6b2dfebc8e7a9d49.jpg
+|   |   |   z6053289116313_ddccae6543b900a70bb0a7f4c792feeb.jpg
+|   |   |   
+|   |   +---Bài t?p ki?n trúc máy tính t? làm
+|   |   |       Bài t?p chuong 1.docx
+|   |   |       Bài t?p chuong 1.pdf
+|   |   |       Bài t?p chuong 2.docx
+|   |   |       Bài t?p chuong 2.pdf
+|   |   |       Bài t?p chuong 3.docx
+|   |   |       Bài t?p chuong 3.pdf
+|   |   |       Bài t?p chuong 4.docx
+|   |   |       Bài t?p chuong 4.pdf
+|   |   |       Bài t?p chuong 5.docx
+|   |   |       Bài t?p chuong 5.pdf
+|   |   |       Bài t?p chuong 6.docx
+|   |   |       Bài t?p chuong 6.pdf
+|   |   |       Ðáp án chuong 2.txt
+|   |   |       
+|   |   +---en
+|   |   |       En1 - Computer Architecture - Chapter 1.pdf
+|   |   |       En1 - Computer Architecture - Chapter 2.pdf
+|   |   |       En1 - Computer Architecture - Chapter 3.pdf
+|   |   |       En1 - Computer Architecture - Chapter 4.pdf
+|   |   |       En1 - Computer Architecture - Chapter 5.pdf
+|   |   |       En1 - Computer Architecture - Chapter 6.pdf
+|   |   |       
+|   |   +---KTMT
+|   |   |       1.2-Bieu dien du lieu (noted).pdf
+|   |   |       1.2-Bieu dien du lieu.pdf
+|   |   |       1.3-Hieu suat may tinh.pdf
+|   |   |       Bài t?p chuong 1.3 Performance.pdf
+|   |   |       Bài t?p chuong 1.3.docx
+|   |   |       Bài t?p chuong 2 MIPS va Ma may (noted).pdf
+|   |   |       Bài t?p chuong 2 MIPS va Ma may.pdf
+|   |   |       Bài t?p chuong 2 NNCC va Assembly MIPS.pdf
+|   |   |       Bài t?p chuong 3.pdf
+|   |   |       Bài t?p chuong 4 - Bai giai (tham khao) datapath , the procesor.pdf
+|   |   |       Bài t?p chuong 4.pdf
+|   |   |       
+|   |   +---N?p bài t?p
+|   |   |       Chuong 1.pdf
+|   |   |       Chuong 2.pdf
+|   |   |       Chuong 3.pdf
+|   |   |       Chuong 4.pdf
+|   |   |       Chuong 5.pdf
+|   |   |       Chuong 6.pdf
+|   |   |       
+|   |   \---Ðáp án bài t?p t? làm
+|   |           CT173-chuong1.pdf
+|   |           CT173-chuong2.pdf
+|   |           CT173-chuong3.pdf
+|   |           CT173-chuong4.pdf
+|   |           CT173-chuong5.pdf
+|   |           CT173-chuong6.pdf
+|   |           
+|   +---CT174 - Phân tích và thi?t k? thu?t toán
+|   |   |   Chuong 1_KTPhantichTT_Tuan 1_SV.pdf
+|   |   |   Chuong 1_KTPhantichTT_Tuan 2_SV.pdf
+|   |   |   Chuong 1_KTPhantichTT_Tuan 3_SV.pdf
+|   |   |   Chuong 2_Sapxep_Tuan 4 _SV.pdf
+|   |   |   Chuong 2_Sapxep_Tuan 5_SV.pdf
+|   |   |   Chuong 3_KTThietkeTT_Tuan 6_SV.pdf
+|   |   |   Chuong 3_KTThietkeTT_Tuan 7_SV.pdf
+|   |   |   Chuong 3_KTThietkeTT_Tuan 8_SV.pdf
+|   |   |   Chuong 3_KTThietkeTT_Tuan 9_SV.pdf
+|   |   |   Chuong 4 - B cây_Tuan 10_SV.pdf
+|   |   |   Chuong 2_250820_112320.pdf
+|   |   |   Chuong I_Phan tich thuat toan_SV.pdf
+|   |   |   Ontap_CT174.ppt
+|   |   |   Tr?c nghi?m gi?a kì CT174.pdf
+|   |   |   T?ng h?p n?i dung phân tích thi?t k? thu?t toán.docx
+|   |   |   T?ng h?p n?i dung phân tích thi?t k? thu?t toán.pdf
+|   |   |   Ôn t?p ktgk CT174.pdf
+|   |   |   
+|   |   +---Bài t?p
+|   |   |       CT174_Bai tap Chuong 1.pdf
+|   |   |       CT174_Bai tap Chuong 2.pdf
+|   |   |       
+|   |   +---Giáo trình
+|   |   |       GiaoTrinh_Phan tich thiet ke thuat toan (CT174)_Chuong 1.pdf
+|   |   |       GiaoTrinh_Phan tich thiet ke thuat toan (CT174)_Chuong 2.pdf
+|   |   |       GiaoTrinh_Phan tich thiet ke thuat toan (CT174)_Chuong 3.pdf
+|   |   |       GiaoTrinh_Phan tich thiet ke thuat toan (CT174)_Chuong 4.pdf
+|   |   |       
+|   |   +---LT
+|   |   |   |   desktop.ini
+|   |   |   |   
+|   |   |   +---.vscode
+|   |   |   |       desktop.ini
+|   |   |   |       launch.json
+|   |   |   |       tasks.json
+|   |   |   |       
+|   |   |   +---Nhanhcan
+|   |   |   |       balo1.c
+|   |   |   |       balo2.c
+|   |   |   |       balo3.c
+|   |   |   |       CaiBalo1.TXT
+|   |   |   |       CaiBalo2.TXT
+|   |   |   |       CaiBalo3.TXT
+|   |   |   |       desktop.ini
+|   |   |   |       tsp.c
+|   |   |   |       TSP.txt
+|   |   |   |       
+|   |   |   +---Quyhoachdong
+|   |   |   |       balo1.c
+|   |   |   |       balo2.c
+|   |   |   |       balo3.c
+|   |   |   |       CaiBalo1.TXT
+|   |   |   |       CaiBalo2.TXT
+|   |   |   |       CaiBalo3.TXT
+|   |   |   |       desktop.ini
+|   |   |   |       tamgiacso.c
+|   |   |   |       tamgiacso.txt
+|   |   |   |       
+|   |   |   +---Sapxep
+|   |   |   |   |   BubbleSort.c
+|   |   |   |   |   data.txt
+|   |   |   |   |   desktop.ini
+|   |   |   |   |   HeapSort.c
+|   |   |   |   |   InsertionSort.c
+|   |   |   |   |   QuickSort.c
+|   |   |   |   |   QuickSortbienthe.c
+|   |   |   |   |   SelectionSort.c
+|   |   |   |   |   test.html
+|   |   |   |   |   
+|   |   |   |   \---.vscode
+|   |   |   |           desktop.ini
+|   |   |   |           settings.json
+|   |   |   |           tasks.json
+|   |   |   |           
+|   |   |   \---Thaman
+|   |   |           ATM.c
+|   |   |           ATM.TXT
+|   |   |           balo1.c
+|   |   |           balo2.c
+|   |   |           balo3.c
+|   |   |           CaiBalo1.TXT
+|   |   |           CaiBalo2.TXT
+|   |   |           CaiBalo3.TXT
+|   |   |           desktop.ini
+|   |   |           TSP.c
+|   |   |           TSP.txt
+|   |   |           
+|   |   +---Th?c hành
+|   |   |       Baitapthuchanh 1_CT174_Sap xep.pdf
+|   |   |       Baitapthuchanh 3_CT174_Nhanh can.pdf
+|   |   |       Baitapthuchanh 4_CT174_Quy hoach dong.pdf
+|   |   |       baitapthuchanh-2-ct174-tham-an.pdf
+|   |   |       
+|   |   \---Ð? gi?a kì
+|   |           IMG_1740368170241_1740368203506.jpg
+|   |           IMG_1740368170570_1740368203939.jpg
+|   |           IMG_1740368170887_1740368204130.jpg
+|   |           IMG_1740368171462_1740368204380.jpg
+|   |           IMG_1740368172208_1740368204597.jpg
+|   |           IMG_1740368172609_1740368204846.jpg
+|   |           IMG_1740368173171_1740368205058.jpg
+|   |           IMG_1740368173827_1740368205271.jpg
+|   |           IMG_1740368174601_1740368205545.jpg
+|   |           IMG_1740368175386_1740368205828.jpg
+|   |           IMG_1740368176318_1740368206039.jpg
+|   |           IMG_1740368177034_1740368206287.jpg
+|   |           IMG_1740368177652_1740368206770.jpg
+|   |           IMG_1740368178240_1740368207055.jpg
+|   |           IMG_1740368178739_1740368207234.jpg
+|   |           IMG_1740368179316_1740368207436.jpg
+|   |           IMG_1740368180331_1740368207688.jpg
+|   |           IMG_1740368180840_1740368207880.jpg
+|   |           IMG_1740368181364_1740368208088.jpg
+|   |           IMG_1740368182146_1740368208336.jpg
+|   |           IMG_1740368182853_1740368208525.jpg
+|   |           
+|   +---CT176  - L?p trình hu?ng d?i tu?ng
+|   |   |   bai-tap-ly-thuyet-java-2021-cau-hoi-dap-an-chi-tiet.pdf
+|   |   |   BaiTap1_CT176.pdf
+|   |   |   Bài t?p lý thuy?t.pdf
+|   |   |   CT176-OOP_with_Java_Ch1_Java - Noted.pdf
+|   |   |   CT176-OOP_with_Java_Ch1_Java.pdf
+|   |   |   CT176-OOP_with_Java_Ch2_OOP - Noted.pdf
+|   |   |   CT176-OOP_with_Java_Ch2_OOP.pdf
+|   |   |   CT176-OOP_with_Java_Ch3_Thuake - Noted.pdf
+|   |   |   CT176-OOP_with_Java_Ch3_Thuake.pdf
+|   |   |   CT176-OOP_with_Java_Ch4_InOut - Noted.pdf
+|   |   |   CT176-OOP_with_Java_Ch4_InOut.pdf
+|   |   |   DeCuongTH_Hk1_2223.pdf
+|   |   |   N?i dung ghi chép l?p trình hu?ng d?i tu?ng.docx
+|   |   |   N?i dung ghi chép l?p trình hu?ng d?i tu?ng.pdf
+|   |   |   N?i dung d? thi.txt
+|   |   |   thi-thu-oop-oop.pdf
+|   |   |   YT.txt
+|   |   |   
+|   |   \---Books
+|   |           OOP_2013.pdf
+|   |           
+|   +---CT177 - C?u trúc d? li?u
+|   |       cau-truc-du-lieu-va-giai-thuat__giao-trinh-ctdl-&-gt---dh-can-tho - [cuuduongthancong.com].pdf
+|   |       Chuong 1 - Mo dau.pdf
+|   |       Chuong 2 - ADTs - CT177.pdf
+|   |       Chuong 3_CâyTKNP.pdf
+|   |       Chuong 3_CâyTKNP_250525_093446.pdf
+|   |       Cây_AVL.pdf
+|   |       DELTCTDL_HK2_12_13_DE1 (noted).pdf
+|   |       DELTCTDL_HK2_12_13_DE1.pdf
+|   |       dethiCTDL_HK2_09_10 (noted).pdf
+|   |       dethiCTDL_HK2_09_10.pdf
+|   |       Gi?i thi?u môn h?c.pdf
+|   |       m?t s? l?i l?m.txt
+|   |       Summery of error usually of Else.docx
+|   |       tn-ctdl-trac-nghiem.pdf
+|   |       tnctdltracnghiem_250525_094811.pdf
+|   |       T? di?n.pdf
+|   |       T? di?n_250525_093436.pdf
+|   |       Warm up.pdf
+|   |       XCây_AVL_250525_093440.pdf
+|   |       Ôn t?p c?u trúc d? li?u tr?c nghiêm.docx
+|   |       Ôn t?p c?u trúc d? li?u tr?c nghiêm.pdf
+|   |       Ð? thi th? lý thuy?t_ Xem l?i l?n làm th? _ CTU e-Learning.html
+|   |       
+|   +---CT178 - Nguyên lý h? di?u hành
+|   |   |   9750ceca-621d-4350-8ced-27e7c1935f1c.pdf
+|   |   |   BaiTapKhongCoLoiGiai_250820_105626.pdf
+|   |   |   THOS_2025_TH_TongHop_VHVL_thang 04.doc
+|   |   |   THOS_2025_TH_TongHop_VHVL_thang 04.pdf
+|   |   |   
+|   |   +---Books
+|   |   |       Abraham Silberschatz-Operating System Concepts (9th,2012_12).pdf
+|   |   |       Abraham-Silberschatz-Operating-System-Concepts-10th-2018.pdf
+|   |   |       de-thi-thu-de-thi-thu-mon-nguyen-ly-he-dieu-hanh.pdf
+|   |   |       Lecture22.pdf
+|   |   |       Linux Shell Scripting Tutorial.pdf
+|   |   |       mau-cau-hoi-hdh-he-dieu-hanh.pdf
+|   |   |       pdfcoffee.com_linux-bible-9th-editionpdf-pdf-free.pdf
+|   |   |       
+|   |   \---CT107-CT178
+|   |       |   BaitapDongbo.pdf
+|   |       |   BaiTapKhongCoLoiGiai-noted.pdf
+|   |       |   BaiTapKhongCoLoiGiai.docx
+|   |       |   BaiTapKhongCoLoiGiai.pdf
+|   |       |   N?i dung ghi chép nguyên lý h? di?u hành.docx
+|   |       |   N?i dung ghi chép nguyên lý h? di?u hành.pdf
+|   |       |   Operating System Concepts 9th Edition.pdf
+|   |       |   
+|   |       +---Slides-English
+|   |       |       ch1-Introduction.pdf
+|   |       |       ch1-Introduction.pptx
+|   |       |       ch2-Structures.pdf
+|   |       |       ch2-Structures.pptx
+|   |       |       ch3-Processes.pdf
+|   |       |       ch3-Processes.pptx
+|   |       |       ch5-ProcessSyn.pdf
+|   |       |       ch5-ProcessSyn.ppt
+|   |       |       ch6-CPUScheduling.pdf
+|   |       |       ch6-CPUScheduling.ppt
+|   |       |       ch7-Deadlocks.pdf
+|   |       |       ch7-Deadlocks.ppt
+|   |       |       ch8-MainMemory.pdf
+|   |       |       ch8-MainMemory.ppt
+|   |       |       ch9-VirtualMemory.pdf
+|   |       |       ch9-VirtualMemory.ppt
+|   |       |       ct1178-chuong4.pdf
+|   |       |       
+|   |       +---Slides-Viet
+|   |       |       6 chuong dau.pdf
+|   |       |       [CT107] Ch1 - Gioi thieu HDH - Noted.pdf
+|   |       |       [CT107] Ch1 - Gioi thieu HDH.pdf
+|   |       |       [CT107] Ch2 - Cau truc HDH - Noted.pdf
+|   |       |       [CT107] Ch2 - Cau truc HDH.pdf
+|   |       |       [CT107] Ch3 - Tien trinh - Noted.pdf
+|   |       |       [CT107] Ch3 - Tien trinh.pdf
+|   |       |       [CT107] Ch4 - Dinh thoi bieu CPU - Noted.pdf
+|   |       |       [CT107] Ch4 - Dinh thoi bieu CPU.pdf
+|   |       |       [CT107] Ch5 - Dong bo hoa tien trinh - Noted.pdf
+|   |       |       [CT107] Ch5 - Dong bo hoa tien trinh.pdf
+|   |       |       [CT107] Ch6 - Khoa chet - Noted.pdf
+|   |       |       [CT107] Ch6 - Khoa chet.pdf
+|   |       |       [CT107] Ch7 - Quan ly bo nho - Noted.pdf
+|   |       |       [CT107] Ch7 - Quan ly bo nho.pdf
+|   |       |       
+|   |       +---ThucHanh
+|   |       |       Excercise1.pdf
+|   |       |       Excercise2.pdf
+|   |       |       Excercise3.pdf
+|   |       |       Exercise4_ProcessManage.pdf
+|   |       |       Exercise5_FileManage.pdf
+|   |       |       L?nh.docx
+|   |       |       
+|   |       \---Tr?c nghi?m ôn t?p
+|   |               Câu h?i ôn t?p Chuong 1.pdf
+|   |               Câu h?i ôn t?p Chuong 2.pdf
+|   |               Câu h?i ôn t?p Chuong 3.pdf
+|   |               Câu h?i ôn t?p Chuong 4.pdf
+|   |               
+|   +---CT180 - Co s? d? li?u
+|   |   |   B2306573_TranMinhPhu_BTCUOIKY_CT180_04.docx
+|   |   |   B2306573_TranMinhPhu_BTCUOIKY_CT180_04.pdf
+|   |   |   B2306573_TranMinhPhu_BTCUOIKY_CT180_04.sql
+|   |   |   Co s? d? li?u_250702_160232.pdf
+|   |   |   Mã l?nh SQL.docx
+|   |   |   T?ng h?p n?i dung ghi chép Co s? d? li?u.docx
+|   |   |   
+|   |   +---CSDL 23.4
+|   |   |   |   apex oracle.pdf
+|   |   |   |   Chuong I. Tong quan ve CSDL.pdf
+|   |   |   |   Chuong II. Mo hinh quan he.pdf
+|   |   |   |   Chuong III. Dai so quan he.pdf
+|   |   |   |   Chuong IV. Cac loai phu thuoc du lieu.pdf
+|   |   |   |   Chuong V. Chuan hoa.pdf
+|   |   |   |   Chuong VI Ngon ngu SQL.pdf
+|   |   |   |   CSDL 60TH3 (1) - ôn t?p có dáp án có th? tham kh?o bài này.pdf
+|   |   |   |   GKY.docx
+|   |   |   |   
+|   |   |   \---CSDL 23.4
+|   |   |           IMG_1701184795854_1704287756819 (1).jpg
+|   |   |           IMG_1701184795854_1704287756819 (2).jpg
+|   |   |           IMG_1701184795854_1704287756819.jpg
+|   |   |           IMG_1701184795855_1704287756991 (1).jpg
+|   |   |           IMG_1701184795855_1704287756991.jpg
+|   |   |           IMG_1701184795857_1704287757103 (1).jpg
+|   |   |           IMG_1701184795857_1704287757103 (2).jpg
+|   |   |           IMG_1701184795857_1704287757103.jpg
+|   |   |           IMG_1701184795859_1704287757199 (1).jpg
+|   |   |           IMG_1701184795859_1704287757199.jpg
+|   |   |           IMG_1701184795860_1704287757270 (1).jpg
+|   |   |           IMG_1701184795860_1704287757270.jpg
+|   |   |           IMG_1701184795861_1704287757355 (1).jpg
+|   |   |           IMG_1701184795861_1704287757355.jpg
+|   |   |           IMG_1701184795863_1704287757504 (1).jpg
+|   |   |           IMG_1701184795863_1704287757504.jpg
+|   |   |           IMG_1701184795865_1704287757697 (1).jpg
+|   |   |           IMG_1701184795865_1704287757697.jpg
+|   |   |           IMG_1701184795868_1704287757812 (1).jpg
+|   |   |           IMG_1701184795868_1704287757812.jpg
+|   |   |           IMG_1701184795869_1704287757889 (1).jpg
+|   |   |           IMG_1701184795869_1704287757889.jpg
+|   |   |           
+|   |   +---Co S? D? Li?u - th?y Nghe
+|   |   |   |   Bài t?p cu?i k?.docx
+|   |   |   |   C1 Gioi thieu - Noted.pdf
+|   |   |   |   C1 Gioi thieu.pdf
+|   |   |   |   C1 Gioi thieu.pptx
+|   |   |   |   C2 Mo hinh quan he - Noted.pdf
+|   |   |   |   C2 Mo hinh quan he.pdf
+|   |   |   |   C2 Mo hinh quan he.pptx
+|   |   |   |   C3 Dai so quan he - Noted.pdf
+|   |   |   |   C3 Dai so quan he.pdf
+|   |   |   |   C3 Dai so quan he.pptx
+|   |   |   |   C4 Ngon ngu hoi SQL - Noted.pdf
+|   |   |   |   C4 Ngon ngu hoi SQL.pdf
+|   |   |   |   C4 Ngon ngu hoi SQL.pptx
+|   |   |   |   C5 Cac loai phu thuoc du lieu.pptx
+|   |   |   |   C5 Ca´c loai phu thuoc du lieu - Noted.pdf
+|   |   |   |   C5 Ca´c loai phu thuoc du lieu.pdf
+|   |   |   |   C6 Chuan hoa - Noted.pdf
+|   |   |   |   C6 Chuan hoa.pdf
+|   |   |   |   C6 Chuan hoa.pptx
+|   |   |   |   Gioi thieu mon hoc.pptx
+|   |   |   |   Note vào t?p sau.docx
+|   |   |   |   
+|   |   |   +---Baitapthuchanh
+|   |   |   |       Buoi 2.docx
+|   |   |   |       Buoi 3 - tu lam o nha.docx
+|   |   |   |       Buoi 3.pdf
+|   |   |   |       Buoi 5.docx
+|   |   |   |       Buoi 6.pdf
+|   |   |   |       Buoi 7.pdf
+|   |   |   |       Buoi 8.pdf
+|   |   |   |       CSDLBib.sql
+|   |   |   |       CSDLfilm.sql
+|   |   |   |       mysql_insert_statements.sql
+|   |   |   |       Sua bai tap buoi 8 - CSDL Film.docx
+|   |   |   |       zzz BT CSDL.docx
+|   |   |   |       zzz BT TIM KHOA.jpg
+|   |   |   |       zzz Bài t?p cu?i k? - CT180.docx
+|   |   |   |       
+|   |   |   \---BT cu?i k?
+|   |   |           B2306598_NguyenMinhTuan_BTCUOIKY.sql
+|   |   |           B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.docx
+|   |   |           B2306598_NguyenMinhTuan_BTCUOIKY_CT180_03.pdf
+|   |   |           
+|   |   +---Slides
+|   |   \---Ð?
+|   |           797732e9-d0ff-4efa-bfa2-be15ecde4998_copy.pdf
+|   |           de tong hop da suacsdl moi nhat.pdf
+|   |           IMG_1701184795854_1704287756819 (1).jpg
+|   |           IMG_1701184795854_1704287756819 (2).jpg
+|   |           IMG_1701184795854_1704287756819.jpg
+|   |           IMG_1701184795855_1704287756991 (1).jpg
+|   |           IMG_1701184795855_1704287756991.jpg
+|   |           IMG_1701184795857_1704287757103 (1).jpg
+|   |           IMG_1701184795857_1704287757103 (2).jpg
+|   |           IMG_1701184795857_1704287757103.jpg
+|   |           IMG_1701184795859_1704287757199 (1).jpg
+|   |           IMG_1701184795859_1704287757199.jpg
+|   |           IMG_1701184795860_1704287757270 (1).jpg
+|   |           IMG_1701184795860_1704287757270.jpg
+|   |           IMG_1701184795861_1704287757355 (1).jpg
+|   |           IMG_1701184795861_1704287757355.jpg
+|   |           IMG_1701184795863_1704287757504 (1).jpg
+|   |           IMG_1701184795863_1704287757504.jpg
+|   |           IMG_1701184795865_1704287757697 (1).jpg
+|   |           IMG_1701184795865_1704287757697.jpg
+|   |           IMG_1701184795868_1704287757812 (1).jpg
+|   |           IMG_1701184795868_1704287757812.jpg
+|   |           IMG_1701184795869_1704287757889 (1).jpg
+|   |           IMG_1701184795869_1704287757889.jpg
+|   |           IMG_1746931264073_1746931274643.jpg
+|   |           IMG_1746931264098_1746931275128.jpg
+|   |           IMG_1746931264122_1746931275613.jpg
+|   |           IMG_1746931264145_1746931276176.jpg
+|   |           IMG_1746931264168_1746931276802.jpg
+|   |           IMG_1746931264191_1746931277452.jpg
+|   |           IMG_1746931264214_1746931278176.jpg
+|   |           IMG_1746931264237_1746931279482.jpg
+|   |           IMG_1746931264260_1746931279915.jpg
+|   |           IMG_1746931264283_1746931280287.jpg
+|   |           IMG_1746931264308_1746931280629.jpg
+|   |           IMG_1746931264334_1746931280951.jpg
+|   |           IMG_1746931264357_1746931281416.jpg
+|   |           IMG_1746931264382_1746931281850.jpg
+|   |           z6855635423208_84771b72eb4819ad782be0188aed9eaa.jpg
+|   |           z6855635426779_eeeb0f0a9cc838d353b9e8ffc43b770d.jpg
+|   |           z6855635431670_60f1b8250cdc968868c701cf2c83ce2b.jpg
+|   |           z6855635433496_ef214eda2b82ebec9b7ab377bda3606d.jpg
+|   |           z6855635434842_bfa453f2434f7f6e5b6c47e4fcaa1216.jpg
+|   |           z6855635435097_4ae189e8519e800837f15859fc5065e9.jpg
+|   |           z6855635436486_fcd5edc5afe2e2a5c237d8e87a4dca91.jpg
+|   |           z6855635440124_8ca20215ec14cee9e778ea568191e95e.jpg
+|   |           z6855635445702_51ca83f69377a85dd96050f0195896d0.jpg
+|   |           z6855635448339_7fdec4f6c4516f3ab3b0a9bb2118aeb2.jpg
+|   |           z6855635448451_b1217d560422ade06df5fbbc43e81488.jpg
+|   |           z6855635448676_04a123d6d0ca388c876ce7768d45230d.jpg
+|   |           z6855635452716_408c8f7d614a78e94cf503084a65d49e.jpg
+|   |           z6855635452768_0e7941e7aa602ad01c34114a8aae8631.jpg
+|   |           z6855635458441_579f866d14877b7cd010e9cb0e171834.jpg
+|   |           z6855635458551_339d507a18a40c28e539493b4e2dd560.jpg
+|   |           z6855635459085_3ed0892c7f88a95d324daed02d963f27.jpg
+|   |           z6855635462333_c5f179a322a117d2b79e2a2665c78c42.jpg
+|   |           z6855635464162_abd774bd107b899116228a77d69ae5b4.jpg
+|   |           z6855635466038_19eccf9e3e6861ef9e9008ba1c2c85d8.jpg
+|   |           z6855635466264_24c9c7195c151ba2c5ae0f93baf7b835.jpg
+|   |           z6855635472639_692bc5629a8115f2070576de3bc8de53.jpg
+|   |           z6855635473415_87f8695d3ec943b9bdc3bf74aa08fb56.jpg
+|   |           z6855635473633_08848e3ba65b51b39b8b3cd874151f83.jpg
+|   |           z6855635474429_adda60e41a7496e0ebf89a7dc010bb4f.jpg
+|   |           z6855635479645_2c53b22a8b9b4b34604a0494cf9141fa.jpg
+|   |           z6855635482305_93644091e61a7884441ed981848a7c1e.jpg
+|   |           z6855635482665_7d728fe1088119c3f14563816810dfe3.jpg
+|   |           z6855635485321_4158df74a98616042120cbffe5f515bf.jpg
+|   |           Ð? tr?c nghi?m.pdf
+|   |           
+|   +---CT182 - Ngôn ng? mô hình hóa
+|   |       baitap-thamkhao-thiCK-2025.pdf.pdf
+|   |       Chuong1-UML-CT182-Gioithieu-tu-hk2-2024-2025.pdf
+|   |       Chuong2-UC Diagram-2025-v2.pdf
+|   |       Chuong3-Class Diagram-2025.pdf
+|   |       fd8854b0-9a8d-4620-8803-4f21e602ac4a.pdf
+|   |       Untitled.mdj
+|   |       Untitled.pdf
+|   |       
+|   +---CT188 - Nh?p môn l?p trình web
+|   |   |   Chuong 1_4s.pdf
+|   |   |   Chuong 2 HTML_4s.pdf
+|   |   |   Chuong 3 CSS_phan 1_4s.pdf
+|   |   |   Chuong 3 CSS_phan 2_4s.pdf
+|   |   |   Chuong 3 CSS_phan 2_4s.pdf - Shortcut.lnk
+|   |   |   Chuong 3 CSS_phan 3_4s.pdf
+|   |   |   Chuong 4 JS_4s.pdf
+|   |   |   Chuong_5_Bai_tap_bootstrap-read.pdf
+|   |   |   Chuong_5_Bai_tap_bootstrap_data.zip
+|   |   |   CT188 Bai_tap_nhom.pdf
+|   |   |   CT188-TAI_LIEU_THUC_HANH.pdf
+|   |   |   ct188h01-adas.pdf
+|   |   |   javascipt_scope.js
+|   |   |   jquery.js
+|   |   |   script-basis.js
+|   |   |   test.html
+|   |   |   TH_B1_Data.zip
+|   |   |   TH_B2_Data.zip
+|   |   |   TH_B4_Data.zip
+|   |   |   TH_B5_Data.zip
+|   |   |   TH_B6_Data.zip
+|   |   |   T?ng h?p n?i dung thi th?c hành Web -nocolor.docx
+|   |   |   T?ng h?p n?i dung thi th?c hành Web -nocolor.pdf
+|   |   |   T?ng h?p n?i dung thi th?c hành Web.docx
+|   |   |   T?ng h?p n?i dung thi th?c hành Web.pdf
+|   |   |   
+|   |   +---.vscode
+|   |   |       settings.json
+|   |   |       
+|   |   +---Chuong_5_Bai_tap_bootstrap_data
+|   |   |   +---assets
+|   |   |   |   +---css
+|   |   |   |   |       app.css
+|   |   |   |   |       
+|   |   |   |   +---imgs
+|   |   |   |   |   |   favicon.ico
+|   |   |   |   |   |   logo.png
+|   |   |   |   |   |   
+|   |   |   |   |   +---sanpham
+|   |   |   |   |   |       1.jpg
+|   |   |   |   |   |       2.jpg
+|   |   |   |   |   |       3.jpg
+|   |   |   |   |   |       4.jpg
+|   |   |   |   |   |       5.jpg
+|   |   |   |   |   |       6.jpg
+|   |   |   |   |   |       
+|   |   |   |   |   +---slider
+|   |   |   |   |   |       1.jpg
+|   |   |   |   |   |       2.jpg
+|   |   |   |   |   |       3.jpg
+|   |   |   |   |   |       
+|   |   |   |   |   \---trangchu
+|   |   |   |   |           bg-home.jpg
+|   |   |   |   |           order_1.png
+|   |   |   |   |           order_2.png
+|   |   |   |   |           order_3.png
+|   |   |   |   |           order_4.png
+|   |   |   |   |           yogurt.jpg
+|   |   |   |   |           yogurt.mp4
+|   |   |   |   |           
+|   |   |   |   \---js
+|   |   |   |           app.js
+|   |   |   |           sanpham.html
+|   |   |   |           
+|   |   |   +---minh_hoa
+|   |   |   |       hinh_1_sanpham.png
+|   |   |   |       
+|   |   |   \---vendor
+|   |   |       +---bootstrap
+|   |   |       |   +---css
+|   |   |       |   \---js
+|   |   |       \---jquery
+|   |   +---CT18802_05
+|   |   |   |   .hintrc
+|   |   |   |   about.html
+|   |   |   |   cart.html
+|   |   |   |   contact.html
+|   |   |   |   index.html
+|   |   |   |   login.html
+|   |   |   |   phan_cong.txt
+|   |   |   |   products.html
+|   |   |   |   README.md
+|   |   |   |   register.html
+|   |   |   |   
+|   |   |   +---.vscode
+|   |   |   |       settings.json
+|   |   |   |       
+|   |   |   +---css
+|   |   |   |       style-min.css
+|   |   |   |       style.css
+|   |   |   |       
+|   |   |   +---images
+|   |   |   |       BongMo.png
+|   |   |   |       BongNgo.png
+|   |   |   |       ComBo.jpg
+|   |   |   |       conanmovie27poster.jpg
+|   |   |   |       DoUong.jpg
+|   |   |   |       email.png
+|   |   |   |       flowposter.jpg
+|   |   |   |       giamhoadon.png
+|   |   |   |       lock.png
+|   |   |   |       logo.png
+|   |   |   |       menu.png
+|   |   |   |       mienphinuocbanh.png
+|   |   |   |       nhagiatienposter.jpg
+|   |   |   |       phim1.jpg
+|   |   |   |       phim10.jpg
+|   |   |   |       phim11.jpg
+|   |   |   |       phim12.jpg
+|   |   |   |       phim13.jpg
+|   |   |   |       phim14.jpg
+|   |   |   |       phim15.jpg
+|   |   |   |       phim16.jpg
+|   |   |   |       phim2.jpg
+|   |   |   |       phim3.jpg
+|   |   |   |       phim4.jpg
+|   |   |   |       phim5.jpg
+|   |   |   |       phim6.jpg
+|   |   |   |       phim7.jpg
+|   |   |   |       phim8.jpg
+|   |   |   |       phim9.jpg
+|   |   |   |       pho1.jpg
+|   |   |   |       pho2.jpg
+|   |   |   |       pho3.jpg
+|   |   |   |       pho4.jpg
+|   |   |   |       phone.png
+|   |   |   |       thumbnail.jpg
+|   |   |   |       user.png
+|   |   |   |       venomposter.jpg
+|   |   |   |       video_gioithieu.mp4
+|   |   |   |       
+|   |   |   \---js
+|   |   |           script-min.js
+|   |   |           scripts.js
+|   |   |           
+|   |   +---dethithu
+|   |   |   |   0305-logo-ctu.png
+|   |   |   |   cau1.html
+|   |   |   |   cau2.html
+|   |   |   |   javascript.js
+|   |   |   |   temp.html
+|   |   |   |   
+|   |   |   \---css
+|   |   |           style.css
+|   |   |           style.txt
+|   |   |           style2.css
+|   |   |           
+|   |   +---DU AN
+|   |   |   |   dangki.html
+|   |   |   |   dangnhap.html
+|   |   |   |   donhang.html
+|   |   |   |   dulieu.txt
+|   |   |   |   gioithieu.html
+|   |   |   |   header-img1.png
+|   |   |   |   header-img2.png
+|   |   |   |   header-img3.png
+|   |   |   |   jquery_basic.html
+|   |   |   |   lienhe.html
+|   |   |   |   sanpham.html
+|   |   |   |   script.js
+|   |   |   |   tempCodeRunnerFile.js
+|   |   |   |   test-child-flex.html
+|   |   |   |   test.html
+|   |   |   |   test.js
+|   |   |   |   test1.html
+|   |   |   |   test10.html
+|   |   |   |   test11_json.html
+|   |   |   |   test12_storage.html
+|   |   |   |   test13.html
+|   |   |   |   test14.html
+|   |   |   |   test15.html
+|   |   |   |   test16.html
+|   |   |   |   test17.html
+|   |   |   |   test2.html
+|   |   |   |   test3.html
+|   |   |   |   test4.html
+|   |   |   |   test5.html
+|   |   |   |   test6.html
+|   |   |   |   test7.html
+|   |   |   |   test8.html
+|   |   |   |   test9.html
+|   |   |   |   timkiem.html
+|   |   |   |   tintuc.html
+|   |   |   |   trangchu.html
+|   |   |   |   
+|   |   |   +---.vscode
+|   |   |   |       settings.json
+|   |   |   |       
+|   |   |   +---fig
+|   |   |   |       hinh_1.10.a.png
+|   |   |   |       hinh_1.10.b.png
+|   |   |   |       hinh_1.4.png
+|   |   |   |       hinh_1.5.png
+|   |   |   |       hinh_1.6.png
+|   |   |   |       hinh_1.7.png
+|   |   |   |       hinh_1.8.png
+|   |   |   |       hinh_1.9.png
+|   |   |   |       
+|   |   |   +---image
+|   |   |   |       Off-white-background-image.jpg
+|   |   |   |       
+|   |   |   +---images
+|   |   |   |   |   favicon.ico
+|   |   |   |   |   icons8-buy-64.png
+|   |   |   |   |   icons8-search-64.png
+|   |   |   |   |   logo.png
+|   |   |   |   |   search.svg
+|   |   |   |   |   top.png
+|   |   |   |   |   
+|   |   |   |   +---dangnhap
+|   |   |   |   |       userlogin.png
+|   |   |   |   |       
+|   |   |   |   +---gioithieu
+|   |   |   |   |       bg-header-about.jpg
+|   |   |   |   |       
+|   |   |   |   +---lienhe
+|   |   |   |   |       check-in.png
+|   |   |   |   |       
+|   |   |   |   +---sanpham
+|   |   |   |   |       blackberry.jpg
+|   |   |   |   |       blueberry.jpg
+|   |   |   |   |       cantaloupe.jpg
+|   |   |   |   |       grapes.jpg
+|   |   |   |   |       green-apple.jpg
+|   |   |   |   |       kiwi.jpg
+|   |   |   |   |       mango.jpg
+|   |   |   |   |       pineapple.jpg
+|   |   |   |   |       strawberry.jpg
+|   |   |   |   |       
+|   |   |   |   +---tintuc
+|   |   |   |   |       hotnews.jpg
+|   |   |   |   |       news1.jpg
+|   |   |   |   |       news2.jpg
+|   |   |   |   |       news3.jpg
+|   |   |   |   |       news4.jpg
+|   |   |   |   |       news5.jpg
+|   |   |   |   |       news6.jpg
+|   |   |   |   |       
+|   |   |   |   \---trangchu
+|   |   |   |           bg-home.jpg
+|   |   |   |           order_1.png
+|   |   |   |           order_2.png
+|   |   |   |           order_3.png
+|   |   |   |           order_4.png
+|   |   |   |           yogurt.jpg
+|   |   |   |           yogurt.mp4
+|   |   |   |           
+|   |   |   +---style
+|   |   |   |       style.css
+|   |   |   |       
+|   |   |   \---text
+|   |   |           dangky.txt
+|   |   |           dangnhap.txt
+|   |   |           gioithieu.txt
+|   |   |           lienhe.txt
+|   |   |           sanpham.txt
+|   |   |           tintuc.txt
+|   |   |           trangchu.txt
+|   |   |           
+|   |   +---learn
+|   |   |       html.html
+|   |   |       js.html
+|   |   |       
+|   |   +---rapchieuphim
+|   |   |   |   about.html
+|   |   |   |   cart.html
+|   |   |   |   contact.html
+|   |   |   |   index.html
+|   |   |   |   login.html
+|   |   |   |   products.html
+|   |   |   |   README.md
+|   |   |   |   register.html
+|   |   |   |   
+|   |   |   +---css
+|   |   |   |       style.css
+|   |   |   |       
+|   |   |   \---js
+|   |   |           scripts.js
+|   |   |           
+|   |   +---rapchieuphim-main (1)
+|   |   |   \---rapchieuphim-main
+|   |   |       |   .hintrc
+|   |   |       |   about.html
+|   |   |       |   cart.html
+|   |   |       |   contact.html
+|   |   |       |   index.html
+|   |   |       |   login.html
+|   |   |       |   phan_cong.txt
+|   |   |       |   products.html
+|   |   |       |   README.md
+|   |   |       |   register.html
+|   |   |       |   
+|   |   |       +---.vscode
+|   |   |       |       settings.json
+|   |   |       |       
+|   |   |       +---css
+|   |   |       |       style.css
+|   |   |       |       style.min.css
+|   |   |       |       
+|   |   |       +---images
+|   |   |       |       BongMo.png
+|   |   |       |       BongNgo.png
+|   |   |       |       ComBo.jpg
+|   |   |       |       conanmovie27poster.jpg
+|   |   |       |       DoUong.jpg
+|   |   |       |       email.png
+|   |   |       |       flowposter.jpg
+|   |   |       |       giamhoadon.png
+|   |   |       |       lock.png
+|   |   |       |       logo.png
+|   |   |       |       menu.png
+|   |   |       |       mienphinuocbanh.png
+|   |   |       |       nhagiatienposter.jpg
+|   |   |       |       phim1.jpg
+|   |   |       |       phim10.jpg
+|   |   |       |       phim11.jpg
+|   |   |       |       phim12.jpg
+|   |   |       |       phim13.jpg
+|   |   |       |       phim14.jpg
+|   |   |       |       phim15.jpg
+|   |   |       |       phim16.jpg
+|   |   |       |       phim2.jpg
+|   |   |       |       phim3.jpg
+|   |   |       |       phim4.jpg
+|   |   |       |       phim5.jpg
+|   |   |       |       phim6.jpg
+|   |   |       |       phim7.jpg
+|   |   |       |       phim8.jpg
+|   |   |       |       phim9.jpg
+|   |   |       |       pho1.jpg
+|   |   |       |       pho2.jpg
+|   |   |       |       pho3.jpg
+|   |   |       |       pho4.jpg
+|   |   |       |       phone.png
+|   |   |       |       thumbnail.jpg
+|   |   |       |       user.png
+|   |   |       |       venomposter.jpg
+|   |   |       |       video_gioithieu.mp4
+|   |   |       |       
+|   |   |       \---js
+|   |   |               scripts.js
+|   |   |               scripts.min.js
+|   |   |               
+|   |   +---TH_B1_Data
+|   |   |   +---fig
+|   |   |   |       hinh_1.10.a.png
+|   |   |   |       hinh_1.10.b.png
+|   |   |   |       hinh_1.4.png
+|   |   |   |       hinh_1.5.png
+|   |   |   |       hinh_1.6.png
+|   |   |   |       hinh_1.7.png
+|   |   |   |       hinh_1.8.png
+|   |   |   |       hinh_1.9.png
+|   |   |   |       
+|   |   |   +---images
+|   |   |   |   |   favicon.ico
+|   |   |   |   |   logo.png
+|   |   |   |   |   
+|   |   |   |   +---dangnhap
+|   |   |   |   |       userlogin.png
+|   |   |   |   |       
+|   |   |   |   +---gioithieu
+|   |   |   |   |       bg-header-about.jpg
+|   |   |   |   |       
+|   |   |   |   +---lienhe
+|   |   |   |   |       check-in.png
+|   |   |   |   |       
+|   |   |   |   +---sanpham
+|   |   |   |   |       blackberry.jpg
+|   |   |   |   |       blueberry.jpg
+|   |   |   |   |       cantaloupe.jpg
+|   |   |   |   |       grapes.jpg
+|   |   |   |   |       green-apple.jpg
+|   |   |   |   |       kiwi.jpg
+|   |   |   |   |       mango.jpg
+|   |   |   |   |       pineapple.jpg
+|   |   |   |   |       strawberry.jpg
+|   |   |   |   |       
+|   |   |   |   +---tintuc
+|   |   |   |   |       hotnews.jpg
+|   |   |   |   |       news1.jpg
+|   |   |   |   |       news2.jpg
+|   |   |   |   |       news3.jpg
+|   |   |   |   |       news4.jpg
+|   |   |   |   |       news5.jpg
+|   |   |   |   |       news6.jpg
+|   |   |   |   |       
+|   |   |   |   \---trangchu
+|   |   |   |           bg-home.jpg
+|   |   |   |           order_1.png
+|   |   |   |           order_2.png
+|   |   |   |           order_3.png
+|   |   |   |           order_4.png
+|   |   |   |           yogurt.jpg
+|   |   |   |           yogurt.mp4
+|   |   |   |           
+|   |   |   \---text
+|   |   |           dangky.txt
+|   |   |           dangnhap.txt
+|   |   |           gioithieu.txt
+|   |   |           lienhe.txt
+|   |   |           sanpham.txt
+|   |   |           tintuc.txt
+|   |   |           trangchu.txt
+|   |   |           
+|   |   +---TH_B2_Data
+|   |   |   |   demo_display_grid.html
+|   |   |   |   grid_template_example.xlsx
+|   |   |   |   header-img1.png
+|   |   |   |   header-img2.png
+|   |   |   |   header-img3.png
+|   |   |   |   header.png
+|   |   |   |   top.png
+|   |   |   |   
+|   |   |   \---hinh_ket_qua
+|   |   |           hinh_2.1.png
+|   |   |           hinh_2.2.png
+|   |   |           hinh_2.3.png
+|   |   |           hinh_2.4.png
+|   |   |           hinh_2.5.png
+|   |   |           hinh_2.6.png
+|   |   |           hinh_2.7.png
+|   |   |           
+|   |   +---TH_B4_Data
+|   |   |   +---images
+|   |   |   |   \---trangchu
+|   |   |   |       \---headline
+|   |   |   |               headline1.jpg
+|   |   |   |               headline2.jpg
+|   |   |   |               headline3.jpg
+|   |   |   |               
+|   |   |   \---Lab4_data
+|   |   |           jquery_basic.html
+|   |   |           
+|   |   +---TH_B5_Data
+|   |   |   |   index.html
+|   |   |   |   text.txt
+|   |   |   |   
+|   |   |   +---css
+|   |   |   |       main.css
+|   |   |   |       
+|   |   |   +---images
+|   |   |   |       jupiter.png
+|   |   |   |       logo.png
+|   |   |   |       mars.png
+|   |   |   |       mercury.png
+|   |   |   |       neptune.png
+|   |   |   |       saturn.png
+|   |   |   |       tm-astro-bg.jpg
+|   |   |   |       uranus.png
+|   |   |   |       venus.png
+|   |   |   |       
+|   |   |   \---video
+|   |   |           gfp-astro-timelapse.mp4
+|   |   |           
+|   |   +---TH_B6_Data
+|   |   |   +---css
+|   |   |   |       main.css
+|   |   |   |       
+|   |   |   +---images
+|   |   |   |       us.png
+|   |   |   |       vn.png
+|   |   |   |       
+|   |   |   \---js
+|   |   |           courselist_js.txt
+|   |   |           labels_js.txt
+|   |   |           
+|   |   \---Trac nghiem
+|   |           ct188-40cau-tham-khao.pdf
+|   |           de-thi-thu-tham-khao.pdf
+|   |           on-tap-thi-trac-nghiem-1-copy.pdf
+|   |           
+|   +---CT190 - Nh?p môn trí tu? nhân t?o
+|   |   |   571fb52a-efc6-49f6-a4ee-1d44ce99473b.jpg
+|   |   |   BaiTapTimKiem.pdf
+|   |   |   chuong 3-4.txt
+|   |   |   Câu h?i ki?m tra.docx
+|   |   |   Nhom09.txt
+|   |   |   Nh?p môn trí tu? nhân t?o_250816_112659.pdf
+|   |   |   N?i dung ghi chép nh?p môn AI.docx
+|   |   |   
+|   |   +---Slide th?y Thành
+|   |   |       Chapter_0_MTTHANH.pdf
+|   |   |       Chapter_1_GioiThieuAI.pdf
+|   |   |       Chapter_2_2_TimKiemMu.pdf
+|   |   |       Chapter_2_3_1_Heuristic_BestFirstSearch_Greedy.pdf
+|   |   |       Chapter_2_3_2_AStar_HillClimbing.pdf
+|   |   |       Chapter_2_4_CayTroChoi.pdf
+|   |   |       Chapter_2_5_BaiToanCSP.pdf
+|   |   |       Chapter_4_HocTuDuLieu.pdf
+|   |   |       
+|   |   \---Tr?c nghi?m
+|   |           MSSV_CT190XY_STT_MachineLearning.pdf
+|   |           Tr?c nghi?m 14 trang.pdf
+|   |           Tr?c nghi?m 28 trang.pdf
+|   |           
+|   +---CT296 - Phân tích và thi?t k? h? th?ng thông tin
+|   |   |   Chuong0_GioiThieuHocPhan.pdf
+|   |   |   Chuong1_MoiTruongPhatTrienHeThong.pdf
+|   |   |   Chuong2_QuanTriYeuCauNguoiDung.pdf
+|   |   |   Chuong3_MoHinhHoa_QuyTrinhNghiepVu.pdf
+|   |   |   Chuong4_ThietKeDuLieu.pdf
+|   |   |   Chuong5_ThietKeXuLy.pdf
+|   |   |   N?i dung ghi chép CT296.docx
+|   |   |   
+|   |   +---Bài ôn
+|   |   |       Bai tap 1-2-3.doc
+|   |   |       Bai tap 4.docx
+|   |   |       Bai tap 5.pdf
+|   |   |       Bai tap 6.docx
+|   |   |       
+|   |   +---Thi
+|   |   |   |   CT296_De thi tham khao (1).pdf
+|   |   |   |   DE THAY TAI.docx
+|   |   |   |   dethicoNhung.bpm
+|   |   |   |   dethicoNhung.pdf
+|   |   |   |   
+|   |   |   +---HK1 - 2122
+|   |   |   |       DA_DeThiGiuaKy_NhomS5.docx
+|   |   |   |       DeThiCuoiKy_NhomC5.docx
+|   |   |   |       DeThiCuoiKy_NhomS2.docx
+|   |   |   |       DeThiGiuaKy_NhomS5.docx
+|   |   |   |       
+|   |   |   +---HK1 - 2223
+|   |   |   |       1.1.jpg
+|   |   |   |       1.2.jpg
+|   |   |   |       
+|   |   |   +---HK1 - 2324
+|   |   |   |       1.1.jpg
+|   |   |   |       1.2.jpg
+|   |   |   |       2.1.jpg
+|   |   |   |       2.2.jpg
+|   |   |   |       
+|   |   |   +---HK2 - 2324
+|   |   |   |       1.1.jpg
+|   |   |   |       1.2.jpg
+|   |   |   |       2.1.jpg
+|   |   |   |       2.2.jpg
+|   |   |   |       3.1.jpg
+|   |   |   |       3.2.jpg
+|   |   |   |       4.1.jpg
+|   |   |   |       4.2.jpg
+|   |   |   |       Ð? 1.docx
+|   |   |   |       Ð? 2.docx
+|   |   |   |       Ð? 3.docx
+|   |   |   |       
+|   |   |   \---Tham kh?o
+|   |   |           Cây phân rã Qu?n lý quán an.docx
+|   |   |           THAM KH?O ERD.docx
+|   |   |           
+|   |   \---Th?c hành
+|   |           ieee-guide-for-developing-system-requirements.pdf
+|   |           Quan Tri Yeu Cau Nguoi Dung_mau tai lieu.docx
+|   |           Thuc hanh 4+5.pdf
+|   |           thuc hanh buoi 1.pdf
+|   |           Thuc hanh buoi 2.pdf
+|   |           Thuc hanh buoi 3.pdf
+|   |           
+|   +---ML014 - Tri?t h?c Mac lênin
+|   |   |   001773_ML014_13_053049_03012024.xlsx
+|   |   |   300 CÂU H?I TR?C NGHI?M TRI?T H?C MÁC LÊ NIN(chua có dáp án).pdf
+|   |   |   300 CÂU H?I TR?C NGHI?M TRI?T H?C MÁC LÊ NIN.pdf
+|   |   |   B? câu h?i tr?c nghi?m Tri?t h?c.pdf
+|   |   |   Ca 1 (sáng th? Hai 06-05.docx.docx
+|   |   |   Các web làm tr?c nghi?m.xlsx
+|   |   |   M?t sô câu nói .pdf
+|   |   |   trac-nghiem-chuong-2.pdf
+|   |   |   TRI?T (1).pdf
+|   |   |   tri?t tr?c nghi?m.pdf
+|   |   |   t?ng ôn tri?t h?c.pdf
+|   |   |   
+|   |   +---Báo cáo nhóm
+|   |   |       GIAIOCHUFINAL.pptx
+|   |   |       Nhà nu?c và cách m?ng xã h?i - Nhóm 10- ML014 ( Nhóm h?c ph?n 13).docx
+|   |   |       Nhà nu?c và cách m?ng xã h?i - Nhóm 10- ML014 ( Nhóm h?c ph?n 13)_final.pdf
+|   |   |       
+|   |   \---Tài li?u c?a tru?ng
+|   |           001773_ML014_13_053049_03012024.xlsx
+|   |           Chuong 3 CH? NGHIÃ DUY V?T L?CH S?.ppt
+|   |           Chuong 1 tri?t.pptx
+|   |           Chuong 1, 2. Tri?t h?c (không chuyên).pptx
+|   |           Giáo trình Tri?t h?c Mác Lênin 2019 (Không chuyên)(USE).pdf
+|   |           NHÀ NU?C VÀ CÁCH M?NG XÃ H?I.docx
+|   |           Thuy?t trình tri?t 1.4. - Ch?c nang c?a nhà nu?c ( Tr?n Anh Vu).docx
+|   |           triet-hoc__de-cuong-triet-1-part-2 - [cuuduongthancong.com].pdf
+|   |           TRI?T (1).docx
+|   |           Tri?t h?c mác - lenin tóm t?t ôn thi.docx
+|   |           
+|   +---ML016 - Kinh t? chính tr? Mác Lenin
+|   |   |   Chapter_3.pdf
+|   |   |   chuong 3.pdf
+|   |   |   chuong 4ppt.pdf
+|   |   |   Chuong 5 KTCT_250525_093315.pdf
+|   |   |   Chuong 6 KTCT_250525_094429.pdf
+|   |   |   giaotrinhkinhtechinhtri.pdf
+|   |   |   in.pdf
+|   |   |   Kinh t? chính tr? tài li?u t? so?n.docx
+|   |   |   Kinh t? chính tr? tài li?u t? so?n.pdf
+|   |   |   Political_Economy (final_chapter 1 to chapter 5).pdf
+|   |   |   ôntap.pdf
+|   |   |   
+|   |   +---File tr?c nghi?m
+|   |   |       de-minh-hoa-ktct-trac-nghiem - 1.pdf
+|   |   |       file-20220521-215444-file-20211228-192446-kinh-te-chinh-tri-mac-lenin - 2.pdf
+|   |   |       kinh-te-chinh-tri-thay-hieu.pdf
+|   |   |       ktct-1-2-trac-nghiem-thay-hieu.pdf
+|   |   |       on-tap-ktct-120-trac-nghiem-ktct-100-cau.pdf
+|   |   |       trac-nghiem-chuong-12.pdf
+|   |   |       trac-nghiem-kinh-te-chinh-tri.pdf
+|   |   |       
+|   |   +---Kinh T? Chính Tr?
+|   |   |   |   Thi KTCT.pdf
+|   |   |   |   
+|   |   |   \---Kinh T? Chính Tr?
+|   |   |           KINH T? CHÍNH TR?.docx
+|   |   |           Quy lu?t c?nh tranh tr68.docx
+|   |   |           d? 1,2.docx
+|   |   |           Ð?_GK_1.jpg
+|   |   |           Ð?_GK_2.jpg
+|   |   |           
+|   |   \---PPT
+|   |           Chuong 1.pdf
+|   |           Chuong 1.pptx
+|   |           chuong 2.pdf
+|   |           chuong 2.ppt
+|   |           chuong 3.pdf
+|   |           chuong 3.ppt
+|   |           chuong 4.pdf
+|   |           chuong 4.ppt
+|   |           Chuong 5 KTCT.pdf
+|   |           Chuong 5 KTCT.pptx
+|   |           Chuong 6 KTCT.pdf
+|   |           Chuong 6 KTCT.pptx
+|   |           
+|   +---ML018 - Ch? nghia xã h?i khoa h?c
+|   |   |   200 câu CNXHKH dã note.docx
+|   |   |   200 câu CNXHKH dã note.pdf
+|   |   |   5k CNXH khoa h?c.pdf
+|   |   |   Ch? nghia XHKH.docx
+|   |   |   CNXH hoàn ch?nh.docx
+|   |   |   CNXHKH (cu?i kì).docx
+|   |   |   câu khó nh?.docx
+|   |   |   FILE_20220430_143901_CNXH1-7-Tr.docx
+|   |   |   M?c l?c ch? nghia xã h?i và khoa h?c.docx
+|   |   |   Tr?c nghi?m (1).docx
+|   |   |   tr?c nghi?m CNXH d?y d?.docx
+|   |   |   tr?c nghi?m_blank.docx
+|   |   |   
+|   |   \---SLIDE CNXHKH 5-6-9
+|   |           Chuong 1 -Nhap mon CNXHKH.pptx
+|   |           Chuong 2- SMLSGCCN.pptx
+|   |           Chuong 3-CNXH&TKQÐLCNXH.pptx
+|   |           Chuong 4 Dan chu XHCN&NN XHCN.pptx
+|   |           chuong 5-co cau xh gc.ppt
+|   |           chuong 6-van de dan toc va ton giao.ppt
+|   |           chuong 7-van de gia dinh.pptx
+|   |           
+|   +---ML019 - L?ch s? Ð?ng C?ng S?n Vi?t Nam
+|   |   |   Giáo trình L?ch s? Ð?ng - noted.pdf
+|   |   |   Giáo trình L?ch s? Ð?ng.pdf
+|   |   |   Note.docx
+|   |   |   N?i dung ghi chép L?ch s? Ð?ng.docx
+|   |   |   N?i dung ghi chép L?ch s? Ð?ng.pdf
+|   |   |   tóm t?t lsd.docx
+|   |   |   
+|   |   +---L?ch S? Ð?ng
+|   |   |       CHUONG 1.docx
+|   |   |       CHUONG 1.pdf
+|   |   |       lsd.docx
+|   |   |       lsd.pdf
+|   |   |       Tr?c nghi?m Li?ch su?? Ða?ng Co?^ng sa?n Vie?^t Nam.docx
+|   |   |       Tr?c nghi?m Li?ch su?? Ða?ng Co?^ng sa?n Vie?^t Nam.pdf
+|   |   |       
+|   |   +---L?ch S? Ð?ng - Cô Phuong Anh
+|   |   |   |   L?ch s? Ð?ng .pdf
+|   |   |   |   Tr?c nghi?m LSD.docx
+|   |   |   |   Tr?c nghi?m.docx
+|   |   |   |   Ð? ÔN L?CH S? Ð?NG.pdf
+|   |   |   |   
+|   |   |   +---LICH SU DANG-Cô Phuong Anh
+|   |   |   |       KI?M TRA GI?A K? LSÐCSVN.docx
+|   |   |   |       KI?M TRA GI?A K? LSÐCSVN.pdf
+|   |   |   |       lsd.docx
+|   |   |   |       Trong tam thi.doc
+|   |   |   |       
+|   |   |   \---Slide
+|   |   |           CHUONG 2 GUI LOP.pdf
+|   |   |           CHUONG 2 GUI LOP.pptx
+|   |   |           CHUONG 1.pdf
+|   |   |           CHUONG 3. P1.pdf
+|   |   |           CHUONG 3. P1.pptx
+|   |   |           FULL SLIDE.pdf
+|   |   |           
+|   |   \---Tr?c nghi?m
+|   |       |   Tr?c nghi?m chuong 3.docx
+|   |       |   
+|   |       +---Bình
+|   |       |       LI?CH-SU??-ÐA?NG-THI-CUO^´I-KY` TN (1).docx
+|   |       |       LI?CH-SU??-ÐA?NG-THI-CUO^´I-KY` TN.docx
+|   |       |       LSÐ 1.docx
+|   |       |       LSÐ 2.docx
+|   |       |       
+|   |       +---Hà
+|   |       |       TR?C-NGHI?M-THI-CU?I-KÌ-L?CH-S?-Ð?NG.docx
+|   |       |       ÔN-TN-LSÐ.docx
+|   |       |       
+|   |       +---Vu
+|   |       |       T?ng h?p Tr?c Nghi?m LSÐ cô Phuong Anh.docx
+|   |       |       Ôn thi LSD.docx
+|   |       |       
+|   |       \---V?
+|   |               lsd.docx
+|   |               
+|   \---TN010 - Xác su?t th?ng kê
+|           (??) 2022-Chuong 4.pdf
+|           002171_TN010_D04_011047_Ði?m BT.xlsx
+|           15_TN010 Xac suat thong ke - Ð? cuong.pdf
+|           2023_09_25 11_46 Office Lens_230926_155749.pdf
+|           Chap - 05 - 19102023.pdf
+|           Chap - 05-17-10-2023.pdf
+|           Chuong 3 - 05102023.pdf
+|           Chuong 1 - ngà 21092023.pdf
+|           Chuong 1 19092023.pdf
+|           Chuong 1 19092023_230926_143558 2023-10-10 06_45_19.pdf
+|           Chuong 1 19092023_230926_143558.pdf
+|           chuong 2 sxtk.pdf
+|           chuong 2 sxtk_230927_154321.pdf
+|           De kt D04-01.pdf
+|           gtxstk_dhnn1.pdf
+|           k2_attachments_PHAN-PHOI-NHI-THUC.pdf
+|           NHCH-XSTKBphan-de.pdf
+|           SP585.pdf
+|           Syllabus - Xác su?t th?ng kê.pdf
+|           TN010 - DS-Ki?m tra gi?a k? - e-learning (1).pdf
+|           TN010 - DS-Ki?m tra gi?a k? - e-learning.pdf
+|           trac-nghiem-ly-thuyet-xac-suat-thong-ke-co-dap-an559.pdf
+|           xac-suat-thong-ke__giai-bai-tap-xstk - [cuuduongthancong.com].pdf
+|           Xác su?t th?ng kê note.pdf
+|           Ð?_thi_XSTK_D04__1_2324__Ð?_1_.pdf
+|           
+\---tenant-assets
+        .gitkeep
+        

@@ -37,6 +37,7 @@ const RecruitmentPage = React.lazy(() => import("@/pages/recruit/RecruitmentPage
 const DocumentationPage = React.lazy(() => import("@/pages/documents/DocumentationPage"));
 const UserGuidePage = React.lazy(() => import("@/pages/documents/UserGuidePage"));
 const ExplorePage = React.lazy(() => import("@/pages/resources/ExplorePage"));
+const ForumPage = React.lazy(() => import("@/pages/forum/ForumPage"));
 
 import AdminDashboardPage from "@/pages/admin/AdminDashboardPage";
 
@@ -111,6 +112,7 @@ export const router = createHashRouter(
         { path: "/", element: withSuspense(<HomePage />), errorElement: <NotFoundPage /> },
         { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
         { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
+        { path: "/forum", element: withSuspense(<ForumPage />), errorElement: <NotFoundPage /> },
 
 
 

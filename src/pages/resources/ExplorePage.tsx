@@ -6,6 +6,7 @@ type FileItem = {
     name: string;
     path: string;
     type: string; // pdf | docx
+    link: string;
 };
 
 type Folder = {
@@ -108,7 +109,7 @@ function FolderCard({ node }: any ) {
             ) : (
               <li key={i}>
                 <a
-                  href={`${import.meta.env.BASE_URL}${file.path}`}
+                  href={file.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 rounded-md px-2 py-1 text-sm text-slate-700 hover:bg-emerald-50 dark:text-slate-200 dark:hover:bg-slate-800"
