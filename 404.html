@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <script>
+        (function() {
+            // Lấy path sau /quiz-universe/
+            var path = window.location.pathname;
+            var base = "/quiz-universe/";
+
+            if (path.startsWith(base)) {
+                var subPath = path.substring(base.length); // ví dụ resources/abc
+                window.location.replace(base + "#/" + subPath);
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    Redirecting...
+</body>
+
+</html>
