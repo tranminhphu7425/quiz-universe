@@ -25,6 +25,10 @@ public class UserDTO {
         this.major = user.getMajor();
     }
 
+    public UserDTO() {
+    }
+
+
     // Getters và setters
     public String getId() {
         return id;

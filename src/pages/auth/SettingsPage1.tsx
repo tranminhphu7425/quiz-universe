@@ -26,7 +26,6 @@ import { useAuth } from "@/app/providers/AuthProvider";
 import { fetchUniversities, fetchMajors, University, Major } from "@/shared/api/major-universityApi";
 import { Combobox } from "@headlessui/react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { updateUserProfile } from "@/shared/api/userApi";
 
 /**
  * SettingsPage – Trang Cài đặt toàn diện cho QuizUniverse
@@ -48,20 +47,15 @@ export default function SettingsPage() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [soundEnabled, setSoundEnabled] = useState<boolean | null>(null);
   const [focusMode, setFocusMode] = useState<boolean | null>(null);
-  const { user, logout, ...auth } = useAuth();
-  const [fullName, setFullName] = useState(user?.name ?? "");
-  const [username, setUsername] = useState(user?.username ?? "");
-  const [email, setEmail] = useState(user?.email ?? "");
-  const [phone, setPhone] = useState(user?.phone ?? "");
+  const { user, logout } = useAuth();
   const [universities, setUniversities] = useState<University[]>([]);
-  const [university, setUniversity] = useState<University | undefined>(user?.university);
+  const [university, setUniversity] = useState<University | undefined | null>(user?.university);
   const [majors, setMajors] = useState<Major[]>([]);
-  const [major, setMajor] = useState<Major | undefined >(user?.major);
+  const [major, setMajor] = useState<Major | undefined | null>(user?.major);
   const [loading, setLoading] = useState(true);
   const [majorQuery, setMajorQuery] = useState("");
   const [universityQuery, setUniversityQuery] = useState("");
   const navigate = useNavigate();
-
 
   useEffect(() => {
     async function loadUniversitiesAndMajors() {
@@ -89,44 +83,6 @@ export default function SettingsPage() {
       .replace(/đ/g, "d")
       .replace(/Đ/g, "D");
   }
-
-  async function handleSaveProfile() {
-    try {
-      setLoading(true);
-
-      const payload = {
-
-        name: fullName,
-        username,
-        email,
-        phone,
-        university: university,
-        major: major
-
-
-
-      };
-      console.log(payload);
-      const updatedUser = await updateUserProfile(user!.id, payload);
-
-
-      localStorage.setItem("auth_user", JSON.stringify(updatedUser)); // ✅ cập nhật localStorage
-
-    }
-
-    catch (err) {
-
-    }
-    finally {
-      setLoading(false);
-    }
-  }
-
-
-
-
-
-
 
   const universityFiltered =
     universityQuery === ""
@@ -212,9 +168,7 @@ export default function SettingsPage() {
                       <input
                         title="text"
                         type="text"
-
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
+                        defaultValue={user?.name}
                         className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
                       />
                     </div>
@@ -227,8 +181,7 @@ export default function SettingsPage() {
                       <input
                         title="username"
                         type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        defaultValue={user?.username}
                         className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
                       />
                     </div>
@@ -241,8 +194,7 @@ export default function SettingsPage() {
                       <input
                         title="email"
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        defaultValue={user?.email}
                         className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
                       />
                     </div>
@@ -255,8 +207,7 @@ export default function SettingsPage() {
                       <input
                         title="tel"
                         type="tel"
-                        onChange={(e) => setPhone(e.target.value)}
-                        value={phone}
+                        defaultValue={user?.phone}
                         placeholder="0123 456 789"
                         className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
                       />
@@ -349,7 +300,7 @@ export default function SettingsPage() {
                       <button
                         onClick={() => {
                           // TODO: gọi API lưu thông tin
-                          handleSaveProfile();
+                          console.log("Lưu thay đổi thông tin cá nhân");
                         }}
                         className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
                       >
@@ -542,9 +493,9 @@ export default function SettingsPage() {
                     <button
                       className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400"
                       onClick={async () => {
-                        await logout();
-                        navigate("/login");
-                      }} // 👈 gọi hàm logout từ AuthContext
+                                await logout();
+                                navigate("/login");
+                              }} // 👈 gọi hàm logout từ AuthContext
                     >
                       Đăng xuất
                     </button>
