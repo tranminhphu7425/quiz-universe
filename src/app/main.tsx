@@ -1,11 +1,10 @@
 // src/app/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "@/App";          // App.tsx nằm ở src/App.tsx
-import "@/styles/index.css";      // Tailwind & biến theme
+import App from "@/App";         
+import "@/styles/index.css";      
 
 
-// Tạo root và render App
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     

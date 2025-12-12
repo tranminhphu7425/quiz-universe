@@ -54,9 +54,9 @@ export default function SettingsPage() {
   const [email, setEmail] = useState(user?.email ?? "");
   const [phone, setPhone] = useState(user?.phone ?? "");
   const [universities, setUniversities] = useState<University[]>([]);
-  const [university, setUniversity] = useState<University | undefined>(user?.university);
+  const [university, setUniversity] = useState<University | null>(user?.university ?? null);
   const [majors, setMajors] = useState<Major[]>([]);
-  const [major, setMajor] = useState<Major | undefined >(user?.major);
+  const [major, setMajor] = useState<Major | null>(user?.major ?? null);
   const [loading, setLoading] = useState(true);
   const [majorQuery, setMajorQuery] = useState("");
   const [universityQuery, setUniversityQuery] = useState("");
