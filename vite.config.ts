@@ -13,7 +13,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 
 export default defineConfig(() => ({
-  // base: "/quiz-universe/", // đổi theo tên repo
+  base: "/quiz-universe/", // đổi theo tên repo
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

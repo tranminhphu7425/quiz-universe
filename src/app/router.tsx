@@ -154,6 +154,6 @@ export const router = createHashRouter(
     },
   ],
   {
-    // basename: "/quiz-universe",
+    // basename: "/quiz-universe/",
   }
 );
