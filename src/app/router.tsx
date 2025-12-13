@@ -8,10 +8,6 @@ import { Suspense } from "react";
 import NotFoundPage from "@pages/not-found/NotFoundPage"; // bạn tạo sẵn file này
 import { Layout } from "@/layouts/Layout"; // Tạo một layout component mới
 import { useAuth } from "@/app/providers/AuthProvider";
-import { AdminLayout } from "@/layouts/AdminLayout";
-import AdminUsersPage from "@/pages/admin/AdminUsersPage";
-
-
 
 
 
@@ -134,19 +130,10 @@ export const router = createHashRouter(
         {
           element: <RequireAuth />,
           children: [
-             {
-          path: "/admin",
-          element: <AdminLayout />,
-          children: [
-            { index: true, element: withSuspense(<AdminDashboardPage />) },
-            { path: "users", element: withSuspense(<AdminUsersPage />) }, // sau này bạn có thể thay = UserManagementPage
-            { path: "settings", element: withSuspense(<AdminDashboardPage />) },
-          ],
-        },
+
 
           ],
         },
-       
 
         // Fallback
         { path: "*", element: <NotFoundPage /> },

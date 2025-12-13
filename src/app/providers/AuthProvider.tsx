@@ -14,8 +14,8 @@ export interface User {
   role: Role;
   phone: string;
   email?: string;
-  university: University | null;
-  major: Major | null;
+  university?: University;
+  major?: Major;
   intakeYear?: number;
 }
 
@@ -140,9 +140,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
           username: "",
           role:  "user",   // mặc định user
           phone: "",
-          email: data.email,
-          university: null,
-          major: null,
+          email: data.email
         });
 
       }

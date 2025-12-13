@@ -29,7 +29,7 @@ export default function SetupProfilePage() {
     }, [user])
 
 
-  
+    const token = typeof window !== "undefined" ? localStorage.getItem("auth_token") : null;
 
     // const storedUserRaw = typeof window !== "undefined" ? localStorage.getItem("auth_user") : null;
     // const storedUser = storedUserRaw ? JSON.parse(storedUserRaw) : null;
