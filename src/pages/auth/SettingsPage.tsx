@@ -48,7 +48,7 @@ export default function SettingsPage() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [soundEnabled, setSoundEnabled] = useState<boolean | null>(null);
   const [focusMode, setFocusMode] = useState<boolean | null>(null);
-  const { user, logout, ...auth } = useAuth();
+  const { user, updateUser , logout, ...auth } = useAuth();
   const [fullName, setFullName] = useState(user?.name ?? "");
   const [username, setUsername] = useState(user?.username ?? "");
   const [email, setEmail] = useState(user?.email ?? "");
@@ -110,7 +110,7 @@ export default function SettingsPage() {
       const updatedUser = await updateUserProfile(user!.id, payload);
 
 
-      localStorage.setItem("auth_user", JSON.stringify(updatedUser)); // ✅ cập nhật localStorage
+      updateUser(updatedUser);
 
     }
 
@@ -121,10 +121,6 @@ export default function SettingsPage() {
       setLoading(false);
     }
   }
-
-
-
-
 
 
 

@@ -5,7 +5,7 @@ import { Major, University } from "@/shared/api/major-universityApi";
 
 
 /** Vai trò & user */
-export type Role = "admin" | "user" | "teacher";
+export type Role = "admin" | "user" | "teacher" ;
 
 export interface User {
   id: string;
@@ -24,7 +24,7 @@ export interface User {
 export interface AuthContextType {
   user: User | null;
   loading: boolean;
-  
+
   login: (
     email: string,
     password: string,
@@ -37,6 +37,7 @@ export interface AuthContextType {
 
   requestPasswordReset: (email: string) => Promise<void>;
   resetPassword: (token: string, newPassword: string) => Promise<void>;
+  updateUser: (user: User) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -76,8 +77,8 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
         sessionStorage.removeItem("auth_user");
       }
     }
-      setLoading(false);
-      setInitialized(true);
+    setLoading(false);
+    setInitialized(true);
   }, []);
 
   const login: AuthContextType["login"] = async (email, password, opts) => {
@@ -98,7 +99,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
       }
       if (data.user) storage.setItem("auth_user", JSON.stringify(data.user));
       console.log("Cap nhat tu back: ", data.user);
-      
+
       setUser(data.user ?? null);
     } finally {
       setLoading(false);
@@ -138,7 +139,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
           id: data.id,
           name: data.name,
           username: "",
-          role:  "user",   // mặc định user
+          role: "user",   // mặc định user
           phone: "",
           email: data.email,
           university: null,
@@ -167,10 +168,15 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
       body: { token, newPassword },
     });
   };
+  const updateUser = (user: User) => {
+    setUser(user);
+    localStorage.setItem("auth_user", JSON.stringify(user));
+  };
 
-  const value =  useMemo<AuthContextType>(
-    () => ({ user, loading, login, logout, register, requestPasswordReset, resetPassword }),
-    [user, loading] 
+
+  const value = useMemo<AuthContextType>(
+    () => ({ user, loading, login, logout, register, requestPasswordReset, resetPassword, updateUser }),
+    [user, loading]
   );
   if (!initialized) {
     return <div></div>;

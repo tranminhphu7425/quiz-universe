@@ -160,7 +160,7 @@ export default function Footer({
       title: "Sản phẩm",
       links: [
         { label: "Ngân hàng câu hỏi", href: "/subjects" },
-        { label: "Tạo đề", href: "#" },
+        { label: "Tạo bộ câu hỏi", href: "/subjects/create" },
         { label: "Chấm & Báo cáo", href: "#" },
       ],
     },
@@ -169,7 +169,7 @@ export default function Footer({
       links: [
         { label: "Tài liệu", href: "/documents" },
         { label: "Hướng dẫn nhanh", href: "/quickguide" },
-        { label: "Cộng đồng", href: "#" },
+        { label: "Cộng đồng", href: "/forum" },
       ],
     },
     {
@@ -363,6 +363,8 @@ export default function Footer({
             <ThemeToggle />
             <div>© {new Date().getFullYear()} QuizUniverse. All rights reserved.</div>
             <div className="flex items-center gap-3">
+              <Link to="/feedback" className="hover:text-sky-900 dark:hover:text-sky-200">Feedback</Link>
+              <Link to="/faq" className="hover:text-sky-900 dark:hover:text-sky-200">FAQ</Link>
               <Link to="/terms" className="hover:text-sky-900 dark:hover:text-sky-200">Điều khoản</Link>
               <Link to="/security" className="hover:text-sky-900 dark:hover:text-sky-200">Bảo mật</Link>
               <Link to="/cookies" className="hover:text-sky-900 dark:hover:text-sky-200">Cookies</Link>

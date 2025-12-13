@@ -400,10 +400,10 @@ export default function HomePage() {
             icon={<BookOpen className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />}
           />
           <FeatureCard
-            title="Tạo đề thi"
-            description="Cho phép tạo đề thi từ ngân hàng câu hỏi hoặc upload tài liệu cá nhân và tạo trắc nghiệm từ tài liệu đó."
-            to={`/app/exams/create`}
-            cta="Tạo đề"
+            title="Tạo bộ câu hỏi"
+            description="Cho phép tạo bộ câu hỏi mới qua upload tài liệu trắc nghiệm cá nhân hoặc tạo thủ công và tạo trắc nghiệm từ tài liệu đó."
+            to={`/subjects/create`}
+            cta="Tạo bộ câu hỏi"
             icon={<ListChecks className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />}
           />
           <FeatureCard
@@ -537,16 +537,16 @@ export default function HomePage() {
           </p>
           <div className="mt-6 flex items-center justify-center gap-3">
             <Link
-              to={`/app/exams/create`}
+              to={`/subjects/create`}
               className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-semibold text-emerald-700 hover:brightness-95 dark:bg-emerald-400 dark:text-emerald-900 dark:hover:brightness-110"
             >
-              Tạo đề ngay <ArrowRight className="h-4 w-4" />
+              Tạo bộ câu hỏi cho riêng mình ngay <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               to={`/dashboard`}
               className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-2.5 font-medium text-white ring-1 ring-white/30 hover:bg-white/15 dark:bg-emerald-800 dark:text-gray-100 dark:ring-emerald-700 dark:hover:bg-emerald-700/60"
             >
-              Xem bảng điều khiển
+              Truy cập vào bảng điều khiển
             </Link>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   BookOpen, Search, Filter, CheckCircle2, Clock, Tag, PlusCircle, ChevronLeft, ChevronRight, FilePlus2,
-  User
+  
 } from "lucide-react";
 import { Heart, HeartOff } from "lucide-react";
 import { AlertTriangle, RefreshCcw } from "lucide-react";
@@ -41,8 +41,8 @@ export default function SubjectPage() {
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Subject[]>([]);
-  const user = useAuth();
-  const User = user?.user;
+  
+
 
   const token = localStorage.getItem("auth_token");
 
@@ -56,46 +56,47 @@ export default function SubjectPage() {
   const diffs = ["all", "easy", "medium", "hard"] as const;
 
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
+  const { user, logout } = useAuth();
 
   const toggleFavorite = async (subjectId: number) => {
-  const isFav = favorites.has(subjectId);
-  try {
-    if (isFav) {
-      await removeFavorite(subjectId, User?.id, token!);
-      setFavorites(prev => {
-        const next = new Set(prev);
-        next.delete(subjectId);
-        return next;
-      });
-    } else {
-      await addFavorite(subjectId, User?.id, token!);
-      setFavorites(prev => new Set(prev).add(subjectId));
+    const isFav = favorites.has(subjectId);
+    try {
+      if (isFav) {
+        await removeFavorite(subjectId, user?.id, token!);
+        setFavorites(prev => {
+          const next = new Set(prev);
+          next.delete(subjectId);
+          return next;
+        });
+      } else {
+        await addFavorite(subjectId, user?.id, token!);
+        setFavorites(prev => new Set(prev).add(subjectId));
+      }
+    } catch (err) {
+      console.error("Lỗi khi cập nhật yêu thích", err);
     }
-  } catch (err) {
-    console.error("Lỗi khi cập nhật yêu thích", err);
-  }
-};
+  };
 
 
 
 
   useEffect(() => {
-      const loadFavorite = async () => {
-  
-        try {
-          const data = await fetchFavorites(User?.id, token!);
-          setFavorites(new Set(data.map((s: Subject) => s.id)));
-        } catch (err) {
-          console.error(err);
-        }
-      };
-  
-      loadFavorite();
-    }, []);
-  
-    useEffect(() => {
-      console.log("Favorite subjects updated:", favorites);
-    }, [favorites]);
+    const loadFavorite = async () => {
+
+      try {
+        const data = await fetchFavorites(user?.id, token!);
+        setFavorites(new Set(data.map((s: Subject) => s.id)));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadFavorite();
+  }, []);
+
+  useEffect(() => {
+    console.log("Favorite subjects updated:", favorites);
+  }, [favorites]);
 
 
   useEffect(() => {
@@ -338,6 +339,7 @@ export default function SubjectPage() {
                     s={subject}
                     isFavorite={favorites.has(subject.id)}
                     onToggleFavorite={toggleFavorite}
+                    userRole={user?.role}
                   />
                 ))}
 
@@ -374,9 +376,10 @@ type SubjectCardProps = {
   s: Subject;
   isFavorite: boolean;
   onToggleFavorite: (subjectId: number) => void;
+  userRole?: string;
 };
 
-function SubjectCard({ s, isFavorite, onToggleFavorite }: SubjectCardProps) {
+function SubjectCard({ s, isFavorite, onToggleFavorite, userRole }: SubjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 18 }}
@@ -402,12 +405,14 @@ function SubjectCard({ s, isFavorite, onToggleFavorite }: SubjectCardProps) {
         </div>
         <div className="flex space-x-4">
 
-          <Link
-            to={`/questions/subject/${s.id}/edit`}
-            className="rounded-full bg-red-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
-          >
-            Sửa
-          </Link>
+          {(userRole === "admin" || userRole === "editor") &&
+            <Link
+              to={`/questions/subject/${s.id}/edit`}
+              className="rounded-full bg-red-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
+            >
+              Sửa
+            </Link>
+          }
           <Link
             to={`/questions/subject/${s.id}`}
             className="rounded-full bg-yellow-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"

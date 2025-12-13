@@ -87,7 +87,7 @@ export default function Header({
   const { user, logout } = useAuth();
   links = user ? [
     { label: "Câu hỏi", href: "/subjects" },
-    { label: "Đề thi", href: "/exams/create" },
+    // { label: "Đề thi", href: "/exams/create" },
     { label: "Diễn đàn", href: "/forum" },
     { label: "Thư viện", href: "/resources" }
 
@@ -387,12 +387,14 @@ export default function Header({
                                   animate={{ x: 0 }}
                                 >
 
+                                  <Link to="/profile"> 
                                   {user.name}
                                   {user.role === "admin" && (
                                     <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-300">
                                       Admin
                                     </span>
                                   )}
+                                  </Link>
 
 
                                 </motion.p>
@@ -494,6 +496,7 @@ export default function Header({
                             </Link>
                           </motion.div>
 
+                          
 
                           {/* Cài đặt */}
 

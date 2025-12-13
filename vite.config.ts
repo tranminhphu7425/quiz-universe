@@ -13,7 +13,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 
 export default defineConfig(() => ({
-  base: "/quiz-universe/", // đổi theo tên repo
+  base: '/quiz-universe/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -40,11 +40,11 @@ export default defineConfig(() => ({
     proxy: {
       // Chuyển tiếp /api sang backend
       "/api": {
-        target: "http://localhost:8080", // 🧠 Spring Boot chạy tại đây
+        target: "http://localhost:8080", 
         changeOrigin: true,
         secure: false,
       },
     },
   },
-  preview: { port: 5173, strictPort: true },
+  // preview: { port: 5173, strictPort: true },
 }))

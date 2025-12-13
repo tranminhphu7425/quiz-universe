@@ -27,23 +27,28 @@ const TermsPage = React.lazy(() => import("@pages/legal/TermsPage"));
 const SecurityPage = React.lazy(() => import("@pages/security/SecurityPage"));
 const CookiesPage = React.lazy(() => import("@pages/cookies/CookiesPage"));
 const QuickGuidePage = React.lazy(() => import("@pages/documents/QuickGuidePage"));
-const DashboardPage = React.lazy(() => import("@pages/dashboard/DashboardPage"));
-const TenantsPage = React.lazy(() => import("@pages/universities/TenantsPage"));
+const DashboardPage = React.lazy(() => import("@/pages/auth/DashboardPage"));
+const ProfilePage = React.lazy(() => import("@/pages/auth/ProfilePage"));
 const SubjectsPage = React.lazy(() => import("@pages/subjects/SubjectsPage"));
+const CreateSubject = React.lazy(() => import("@pages/subjects/CreateSubject"));
 const QuestionsPage = React.lazy(() => import("@pages/questions/QuestionsPage"));
 const EditQuestionPage = React.lazy(() => import("@pages/questions/EditQuestionPage"));
 const CreateExamPage = React.lazy(() => import("@pages/exams/CreateExamPage"));
 const TakeExamPage = React.lazy(() => import("@pages/exams/TakeExamPage"));
 const ReviewExamPage = React.lazy(() => import("@pages/exams/ReviewExamPage"));
-const AdminPage = React.lazy(() => import("@/pages/admin/AdminDashboardPage"));
+const AdminDashboardPage = React.lazy(() => import("@/pages/admin/AdminDashboardPage"));
 const SettingsPage = React.lazy(() => import("@/pages/auth/SettingsPage"));
 const RecruitmentPage = React.lazy(() => import("@/pages/recruit/RecruitmentPage"));
 const DocumentationPage = React.lazy(() => import("@/pages/documents/DocumentationPage"));
 const UserGuidePage = React.lazy(() => import("@/pages/documents/UserGuidePage"));
 const ExplorePage = React.lazy(() => import("@/pages/resources/ExplorePage"));
 const ForumPage = React.lazy(() => import("@/pages/forum/ForumPage"));
+const FaqPage = React.lazy(() => import("@/pages/faq/FaqPage"));
+const FeedbackPage = React.lazy(() => import("@/pages/feedback/FeedbackPage"));
 
-import AdminDashboardPage from "@/pages/admin/AdminDashboardPage";
+
+
+
 
 // src/shared/lib/withSuspense.tsx
 import { motion } from "framer-motion";
@@ -100,7 +105,7 @@ export function RequireAuth() {
 export const router = createHashRouter(
   [
     {
- 
+
       element: <Layout />,
       children: [
         // Public
@@ -117,36 +122,46 @@ export const router = createHashRouter(
         { path: "/about", element: withSuspense(<AboutPage />), errorElement: <NotFoundPage /> },
         { path: "/contact", element: withSuspense(<ContactPage />), errorElement: <NotFoundPage /> },
         { path: "/forum", element: withSuspense(<ForumPage />), errorElement: <NotFoundPage /> },
+        { path: "/faq", element: withSuspense(<FaqPage />), errorElement: <NotFoundPage /> },
+        { path: "/recruits", element: withSuspense(<RecruitmentPage />), errorElement: <NotFoundPage /> },
+        { path: "/feedback", element: withSuspense(<FeedbackPage />), errorElement: <NotFoundPage /> },
 
 
 
         //auth
-        { path: "/dashboard", element: withSuspense(<DashboardPage />), errorElement: <NotFoundPage /> },
+
         { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
+        { path: "/subjects/create", element: withSuspense(<CreateSubject />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
-        { path: "/settings", element: withSuspense(<SettingsPage />), errorElement: <NotFoundPage /> },
-        { path: "/admin", element: withSuspense(<AdminDashboardPage />), errorElement: <NotFoundPage /> },
-        { path: "/setup", element: withSuspense(<SetupProfilePage />), errorElement: <NotFoundPage /> },
+        
+        // { path: "/admin", element: withSuspense(<AdminDashboardPage />), errorElement: <NotFoundPage /> },
+        
         { path: "/resources", element: withSuspense(<ExplorePage />), errorElement: <NotFoundPage /> },
 
         // Protected routes
         {
           element: <RequireAuth />,
           children: [
-             {
-          path: "/admin",
-          element: <AdminLayout />,
-          children: [
-            { index: true, element: withSuspense(<AdminDashboardPage />) },
-            { path: "users", element: withSuspense(<AdminUsersPage />) }, // sau này bạn có thể thay = UserManagementPage
-            { path: "settings", element: withSuspense(<AdminDashboardPage />) },
-          ],
-        },
+            {
+              path: "/admin",
+              element: <AdminLayout />,
+              children: [
+                { index: true, element: withSuspense(<AdminDashboardPage />) },
+                { path: "users", element: withSuspense(<AdminUsersPage />) }, // sau này bạn có thể thay = UserManagementPage
+                { path: "settings", element: withSuspense(<AdminDashboardPage />) },
+              ],
+            },
+
+            { path: "/dashboard", element: withSuspense(<DashboardPage />), errorElement: <NotFoundPage /> },
+            { path: "/settings", element: withSuspense(<SettingsPage />), errorElement: <NotFoundPage /> },
+            { path: "/setup", element: withSuspense(<SetupProfilePage />), errorElement: <NotFoundPage /> },
+            { path: "/profile", element: withSuspense(<ProfilePage />), errorElement: <NotFoundPage /> },
+
 
           ],
         },
-       
+
 
         // Fallback
         { path: "*", element: <NotFoundPage /> },
