@@ -38,6 +38,7 @@ import { useAuth } from "@/app/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { FaCrown, FaPlus, FaStar } from "react-icons/fa";
 import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
+import { normalizeText } from "@/shared/utils/textUtils";
 
 export type Tenant = { id: string; name: string; logo?: string };
 
@@ -138,14 +139,7 @@ export default function Header({
       )
     );
   }, [search, subjects]);
-  function normalizeText(str: string) {
-    return str
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
-  }
-
+ 
   async function fetchData() {
 
 

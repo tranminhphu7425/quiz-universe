@@ -11,8 +11,8 @@
     <title>QuizUniverse</title>
     <script>
         var path = window.location.pathname;
-        if (path.startsWith('/graphbuilder/') && !location.hash) {
-            window.location.replace('/graphbuilder/' + '#!' + path.substring(13));
+        if (path.startsWith('/quiz-universe/') && !location.hash) {
+            window.location.replace('/quiz-universe/' + '#' + path.substring(14));
         }
     </script>
 

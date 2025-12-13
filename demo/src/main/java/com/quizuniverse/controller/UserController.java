@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://127.0.0.1:5173", allowedHeaders = { "Content-Type", "Authorization" }, methods = {
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = { "Content-Type", "Authorization" }, methods = {
         RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,
         RequestMethod.OPTIONS }, allowCredentials = "true", // nếu có gửi cookie/authorization
         maxAge = 3600)
