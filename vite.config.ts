@@ -46,5 +46,8 @@ export default defineConfig(() => ({
       },
     },
   },
+  build: {
+    outDir: "docs"
+  },
   // preview: { port: 5173, strictPort: true },
 }))
