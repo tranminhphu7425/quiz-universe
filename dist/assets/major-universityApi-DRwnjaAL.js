@@ -1,0 +1,1 @@
+async function r(){const n=await fetch("/api/universities");if(!n.ok)throw new Error("Lỗi khi lấy danh sách trường");return n.json()}async function i(){const n=await fetch("/api/majors");if(!n.ok)throw new Error("Lỗi khi lấy danh sách ngành");return n.json()}export{i as a,r as f};
