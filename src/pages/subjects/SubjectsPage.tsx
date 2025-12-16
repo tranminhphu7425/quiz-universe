@@ -222,17 +222,12 @@ export default function SubjectPage() {
             </div>
 
             <div className="flex items-center gap-3 justify-center w-full lg:w-auto">
+             
               <Link
-                to="/app/questions/import"
-                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white ring-1 ring-white/30 hover:bg-white/15 dark:bg-white/5 dark:ring-white/10"
-              >
-                <FilePlus2 className="h-4 w-4" /> Nhập từ tài liệu
-              </Link>
-              <Link
-                to="/app/questions/create"
+                to="/subjects/create"
                 className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
               >
-                <PlusCircle className="h-4 w-4" /> Thêm câu hỏi
+                <PlusCircle className="h-4 w-4" /> Thêm bộ câu hỏi mới
               </Link>
             </div>
           </div>

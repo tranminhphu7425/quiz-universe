@@ -61,3 +61,44 @@ export async function updateQuestionApi(qId: number, payload: UpdateQuestionPayl
 
 
 export type UpdateQuestionPayload = Omit<Partial<Question>, 'options'> & { options?: Array<Partial<QuestionOption>>; };
+
+
+
+// ===== API: Create question =====
+export async function createQuestionApi(
+  subjectId: number,
+  payload: UpdateQuestionPayload
+): Promise<Question> {
+  const res = await fetch(`${API_BASE}/questions/subject/${subjectId}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(text || `HTTP ${res.status}`);
+  }
+
+  return (await res.json()) as Question;
+}
+
+
+
+// Thêm hàm này vào cuối file questionsApi.ts (sau createQuestionApi)
+
+export async function deleteQuestionApi(qId: number): Promise<void> {
+  const res = await fetch(`${API_BASE}/questions/${qId}`, {
+    method: "DELETE",
+  });
+  
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(text || `HTTP ${res.status}`);
+  }
+  
+  // DELETE thường không trả về body, nếu backend trả về JSON thì parse
+  if (res.status !== 204) {
+    await res.json();
+  }
+}

@@ -8,20 +8,19 @@ import {
   Plus,
   RefreshCcw,
   Save,
-  Trash2,
+  Trash2, AlertTriangle
 } from "lucide-react";
 
 import {
   Question,
   QuestionOption,
   UpdateQuestionPayload,
-  fetchQuestionsBySubjectId, updateQuestionApi
+  fetchQuestionsBySubjectId, updateQuestionApi, createQuestionApi, deleteQuestionApi
 } from "@/shared/api/questionsApi";
 import { fetchSubjectNameById } from "@/shared/api/subjectApi";
 
 // If you already expose API_BASE from your shared api layer, you can import it.
 // To make this page self-contained, keep a local fallback:
-const API_BASE = (import.meta as any).env?.VITE_API_BASE || "/api";
 
 // ===== Helpers reused from QuestionsPage =====
 const BLANK_RE = /\.{5,}/g; // 6 dots or more represent blanks
@@ -66,12 +65,14 @@ export default function EditQuestionsPage() {
   const PAGE_SIZE = 10;
 
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const selected = useMemo(() => list.find((q) => q.id === selectedId) || null, [list, selectedId]);
-  const [editing, setEditing] = useState<Question | null>(null);
+
+  const [editing, setEditing] = useState<Question | null>(null); // currently editing question
   const [saving, setSaving] = useState(false);
   const [saveOk, setSaveOk] = useState<string | null>(null);
 
   const editorTopRef = useRef<HTMLDivElement | null>(null);
+  const [deleting, setDeleting] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
 
 
@@ -162,6 +163,20 @@ export default function EditQuestionsPage() {
     setEditing({ ...editing, options: [...opts, newOpt] });
   }
 
+
+  // Thêm hàm này sau các helper functions
+  function getQuestionIndex(questionId: number | null, list: Question[]): number | null {
+    if (!questionId) return null;
+    const index = list.findIndex(q => q.id === questionId);
+    return index >= 0 ? index + 1 : null; // +1 để bắt đầu từ 1 thay vì 0
+  }
+
+  // Thêm biến này trong component, sau các state khác
+  const selectedIndex = useMemo(() => {
+    return getQuestionIndex(selectedId, list);
+  }, [selectedId, list]);
+
+
   function removeOption(optId: number) {
     if (!editing) return;
     const rest = (editing.options || []).filter((o) => o.id !== optId);
@@ -235,6 +250,31 @@ export default function EditQuestionsPage() {
     return null;
   }
 
+  // add Question
+  async function newQuestion() {
+
+
+    // (Tuỳ chọn) Nếu backend có API tạo câu hỏi:
+    try {
+      const created = await createQuestionApi(Number(subjectId), {
+        stem: "",
+        explanation: "",
+        questionType: "mcq_single",
+        options: [],
+      });
+      setList((cur) => [...cur, created]);
+      setSelectedId(created.id);
+      setEditing(deepClone(created));
+    } catch (e: any) {
+      setErr(e?.message || "Không tạo được câu hỏi mới.");
+    }
+  }
+
+
+
+
+
+
   // save
   async function handleSave() {
     const v = validate();
@@ -270,8 +310,51 @@ export default function EditQuestionsPage() {
     } finally {
       setSaving(false);
       setTimeout(() => setSaveOk(null), 2500);
+
     }
   }
+
+  // Thêm hàm này sau hàm handleSave
+
+  async function handleDelete() {
+    if (!editing || !selectedId) return;
+
+    setDeleting(true);
+    setErr(null);
+
+    try {
+      await deleteQuestionApi(selectedId);
+
+      // Cập nhật danh sách
+      const newList = list.filter(q => q.id !== selectedId);
+      setList(newList);
+
+      // Chọn câu hỏi khác (nếu có)
+      if (newList.length > 0) {
+        const nextQuestion = newList[0];
+        setSelectedId(nextQuestion.id);
+        setEditing(deepClone(nextQuestion));
+      } else {
+        // Không còn câu hỏi nào
+        setSelectedId(null);
+        setEditing(null);
+      }
+
+      // Đóng modal xác nhận
+      setShowDeleteConfirm(false);
+
+      // Hiển thị thông báo thành công
+      setSaveOk("Đã xóa câu hỏi thành công.");
+      setTimeout(() => setSaveOk(null), 2500);
+
+    } catch (e: any) {
+      setErr(e?.message || "Xóa thất bại. Vui lòng thử lại.");
+    } finally {
+      setDeleting(false);
+    }
+  }
+
+
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
@@ -286,15 +369,71 @@ export default function EditQuestionsPage() {
             <h1 className="text-[1.9rem] md:text-[2.4rem] font-black leading-tight">
               Sửa câu hỏi môn <span className="bg-gradient-to-r from-purple-300 to-amber-200 bg-clip-text text-transparent">{subjectName}</span>
             </h1>
+            <div ref={editorTopRef}></div>
           </div>
           <div className="flex items-center gap-3">
             <Link to={`/questions/subject/${subjectId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15">
               <ArrowLeft className="h-4 w-4" />
               Về trang làm bài
+
             </Link>
           </div>
+
         </div>
       </section>
+
+
+
+      {/* Modal xác nhận xóa */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900"
+          >
+            <div className="mb-4 flex items-center gap-3">
+              <div className="rounded-full bg-rose-100 p-2 dark:bg-rose-900/30">
+                <AlertTriangle className="h-6 w-6 text-rose-600 dark:text-rose-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                Xác nhận xóa
+              </h3>
+            </div>
+
+            <p className="mb-6 text-slate-600 dark:text-slate-300">
+              Bạn có chắc chắn muốn xóa câu hỏi này? Hành động này không thể hoàn tác.
+            </p>
+
+            <div className="flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setShowDeleteConfirm(false)}
+                className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                disabled={deleting}
+              >
+                Hủy
+              </button>
+              <button
+                type="button"
+                onClick={handleDelete}
+                disabled={deleting}
+                className="rounded-lg bg-rose-600 px-4 py-2 text-sm font-medium text-white hover:bg-rose-700 disabled:opacity-70"
+              >
+                {deleting ? (
+                  <>
+                    <Loader2 className="mr-2 inline h-4 w-4 animate-spin" />
+                    Đang xóa...
+                  </>
+                ) : (
+                  "Xác nhận xóa"
+                )}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
 
       <main className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-6 py-8 md:grid-cols-[minmax(280px,360px)_1fr]">
         {/* Left: list */}
@@ -356,18 +495,19 @@ export default function EditQuestionsPage() {
 
         {/* Right: editor */}
         <motion.section initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 140, damping: 18 }} className="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <div ref={editorTopRef} />
+
 
           {!editing ? (
             <div className="text-slate-600 dark:text-slate-300">Chọn một câu ở danh sách bên trái để chỉnh sửa.</div>
           ) : (
+
             <form className="space-y-5" onSubmit={(e) => {
               e.preventDefault();
               handleSave();
             }}
             >
               <div className="flex flex-wrap items-center gap-2">
-                <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">Câu #{selectedId}</div>
+                <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">Câu {selectedIndex !== null ? `${selectedIndex}` : 'Chưa chọn'}</div>
                 {saveOk && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-xs text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800">
                     <CheckCircle2 className="h-3.5 w-3.5" />
@@ -424,8 +564,8 @@ export default function EditQuestionsPage() {
               <div>
                 <div className="mb-2 flex items-center justify-between">
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">Phương án trả lời</label>
-                  <button type="button" onClick={addOption} className="inline-flex items-center gap-1 rounded-md border px-2 py-1 text-sm hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">
-                    <Plus className="h-4 w-4" />
+                  <button type="button" onClick={addOption} className="dark:text-slate-200 inline-flex items-center gap-1 rounded-md border px-2 py-1 text-sm hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">
+                    <Plus className="h-4 w-4 " />
                     Thêm lựa chọn
                   </button>
                 </div>
@@ -465,23 +605,59 @@ export default function EditQuestionsPage() {
                 )}
               </div>
 
+
+
+
               {/* Actions */}
               <div className="flex justify-between">
                 <div className="flex flex-wrap items-center gap-2">
-                  <button type="submit" disabled={saving} className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110 disabled:opacity-70">
-                    {saving ? <Loader2 className="h-4 w-4 animate-spin" />
-                      : <Save className="h-4 w-4" />
-                    } Lưu thay đổi
+                  <button
+                    type="submit"
+                    disabled={saving}
+                    className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110 disabled:opacity-70"
+                  >
+                    {saving ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Save className="h-4 w-4" />
+                    )}{" "}
+                    Lưu thay đổi
                   </button>
-                  <button type="button" onClick={() => (editing ? setEditing(deepClone(list.find((q) => q.id === editing.id)!)) : null)} className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-slate-700">
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      editing
+                        ? setEditing(deepClone(list.find((q) => q.id === editing.id)!))
+                        : null
+                    }
+                    className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-slate-700"
+                  >
                     <RefreshCcw className="h-4 w-4" />
                     Hoàn tác
                   </button>
+
+                  {/* Nút xóa - chỉ hiển thị khi có câu hỏi đang chọn */}
+                  {selectedId && selectedId > 0 && ( // Chỉ cho phép xóa câu hỏi thật (ID dương)
+                    <button
+                      type="button"
+                      onClick={() => setShowDeleteConfirm(true)}
+                      disabled={deleting || saving}
+                      className="inline-flex items-center gap-2 rounded-full bg-rose-600 px-5 py-2.5 text-white shadow hover:bg-rose-700 disabled:opacity-70"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                      Xóa câu hỏi
+                    </button>
+                  )}
                 </div>
-                <button className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-yellow-600" >
+
+                <button
+                  type="button"
+                  onClick={() => newQuestion()}
+                  className="inline-flex items-center gap-2 rounded-full bg-yellow-500 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-yellow-600"
+                >
                   Tạo thêm câu hỏi
                 </button>
-
               </div>
 
 

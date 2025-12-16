@@ -51,7 +51,11 @@ public class Question {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // private List<QuestionOption> options;
+
+    // Thay đổi annotation @OneToMany trong entity Question
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<QuestionOption> options;
 
     public enum QuestionType {
@@ -138,6 +142,7 @@ public class Question {
     public void setOptions(List<QuestionOption> options) {
         this.options = options;
     }
+
     public void setQuestionType(String questionType) {
         this.questionType = QuestionType.valueOf(questionType);
     }

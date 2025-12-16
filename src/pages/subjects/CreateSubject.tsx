@@ -318,19 +318,7 @@ export default function CreateSubjectPage() {
                                 {/* Tab Selection */}
                                 <div className="border-b border-emerald-100 dark:border-slate-700">
                                     <div className="grid grid-cols-2">
-                                        <button
-                                            onClick={() => setActiveTab("ai")}
-                                            className={`flex items-center justify-center gap-2 px-6 py-4 font-semibold transition-all ${activeTab === "ai"
-                                                ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border-b-2 border-emerald-500"
-                                                : "text-gray-600 dark:text-gray-400 hover:bg-slate-50 dark:hover:bg-slate-800"
-                                                }`}
-                                        >
-                                            <Wand2 className="h-5 w-5" />
-                                            AI Tự động
-                                            <span className="ml-2 rounded-full bg-emerald-100 dark:bg-emerald-900 px-2 py-0.5 text-xs font-medium">
-                                                Nhanh
-                                            </span>
-                                        </button>
+                                        
                                         <button
                                             onClick={() => setActiveTab("manual")}
                                             className={`flex items-center justify-center gap-2 px-6 py-4 font-semibold transition-all ${activeTab === "manual"
@@ -344,6 +332,21 @@ export default function CreateSubjectPage() {
                                                 Chi tiết
                                             </span>
                                         </button>
+
+                                        <button
+                                            onClick={() => setActiveTab("ai")}
+                                            className={`flex items-center justify-center gap-2 px-6 py-4 font-semibold transition-all ${activeTab === "ai"
+                                                ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border-b-2 border-emerald-500"
+                                                : "text-gray-600 dark:text-gray-400 hover:bg-slate-50 dark:hover:bg-slate-800"
+                                                }`}
+                                        >
+                                            <Wand2 className="h-5 w-5" />
+                                            AI Tự động
+                                            <span className="ml-2 rounded-full bg-emerald-100 dark:bg-emerald-900 px-2 py-0.5 text-xs font-medium">
+                                                Nhanh (Sắp ra mắt)
+                                            </span>
+                                        </button>
+
                                     </div>
                                 </div>
 
@@ -705,10 +708,34 @@ export default function CreateSubjectPage() {
                                     <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-emerald-100 dark:border-slate-700">
                                         <button
                                             onClick={handleCreateSubject}
-                                            className="flex-1 rounded-xl bg-gradient-to-r from-emerald-500 to-green-500 dark:from-emerald-600 dark:to-green-600 px-6 py-4 font-bold text-white shadow-lg hover:from-emerald-600 hover:to-green-600 dark:hover:from-emerald-700 dark:hover:to-green-700 transition-all"
+                                            disabled={activeTab === "ai"}
+                                            title={
+                                                activeTab === "ai"
+                                                    ? "Tính năng tạo bộ câu hỏi với AI đang được phát triển. Vui lòng sử dụng phương thức tạo thủ công."
+                                                    : undefined
+                                            } 
+                                            className="
+    flex-1 rounded-xl
+    bg-gradient-to-r from-emerald-500 to-green-500
+    dark:from-emerald-600 dark:to-green-600
+    px-6 py-4 font-bold text-white shadow-lg
+    hover:from-emerald-600 hover:to-green-600
+    dark:hover:from-emerald-700 dark:hover:to-green-700
+    transition-all
+
+    disabled:opacity-50
+    disabled:cursor-not-allowed
+    disabled:hover:from-emerald-500
+    disabled:hover:to-green-500
+    dark:disabled:hover:from-emerald-600
+    dark:disabled:hover:to-green-600
+  "
                                         >
                                             {activeTab === "ai" ? "Tạo với AI" : "Tạo thủ công"}
+
+
                                         </button>
+
                                         <Link
                                             to="/subjects"
                                             className="rounded-xl border-2 border-emerald-200 dark:border-slate-600 px-6 py-4 font-medium text-emerald-700 dark:text-emerald-300 text-center hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all"

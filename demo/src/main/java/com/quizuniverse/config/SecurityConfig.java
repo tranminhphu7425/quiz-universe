@@ -36,6 +36,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/api/universities", "/api/majors", "/api/subjects/**", "/api/questions/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/questions/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/questions/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
