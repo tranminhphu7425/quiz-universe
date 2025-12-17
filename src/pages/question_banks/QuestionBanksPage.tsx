@@ -317,186 +317,185 @@ export default function QuestionBanksPage() {
       </section>
 
       {/* ===== CONTROL BAR ===== */}
-      {!loading && filtered.length > 0 && (
-        <div className="sticky mb-5 top-12 z-20 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700">
-          <div className="mx-auto max-w-7xl px-6 py-3">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              {/* Left: View Toggle & Bulk Selection */}
-              <div className="flex items-center gap-4">
-                {/* View Toggle */}
-                <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`p-2 rounded-md transition-colors ${viewMode === 'grid'
-                      ? 'bg-white dark:bg-slate-600 shadow-sm'
-                      : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
-                      }`}
-                    title="Chế độ lưới"
-                  >
-                    <Grid className={`h-4 w-4 ${viewMode === 'grid' ? 'text-emerald-600' : 'text-slate-500'}`} />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`p-2 rounded-md transition-colors ${viewMode === 'list'
-                      ? 'bg-white dark:bg-slate-600 shadow-sm'
-                      : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
-                      }`}
-                    title="Chế độ danh sách"
-                  >
-                    <List className={`h-4 w-4 ${viewMode === 'list' ? 'text-emerald-600' : 'text-slate-500'}`} />
-                  </button>
-                </div>
 
-                {/* Bulk Selection */}
-                {selectedBanks.size > 0 && (
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="checkbox"
-                        checked={selectedBanks.size === filtered.length}
-                        onChange={selectAllBanks}
-                        className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
-                      />
-                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                        {selectedBanks.size} mục đã chọn
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={handleBulkFavorite}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-400"
-                        title="Thêm vào yêu thích"
-                      >
-                        <Star className="h-3 w-3" />
-                        Yêu thích
-                      </button>
-                      <button
-                        onClick={() => setShowBulkActions(!showBulkActions)}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400"
-                      >
-                        <MoreVertical className="h-3 w-3" />
-                        Thao tác
-                      </button>
-                      {showBulkActions && (
-                        <div className="absolute mt-10 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 p-2 z-30">
-                          <button
-                            onClick={() => handleBulkVisibilityChange('PUBLIC')}
-                            className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
-                          >
-                            <Globe className="h-4 w-4 text-emerald-600" />
-                            Đặt công khai
-                          </button>
-                          <button
-                            onClick={() => handleBulkVisibilityChange('ORG')}
-                            className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
-                          >
-                            <Users className="h-4 w-4 text-blue-600" />
-                            Đặt nội bộ
-                          </button>
-                          <button
-                            onClick={() => handleBulkVisibilityChange('PRIVATE')}
-                            className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
-                          >
-                            <Lock className="h-4 w-4 text-amber-600" />
-                            Đặt riêng tư
-                          </button>
-                          <button
-                            onClick={handleBulkExport}
-                            className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
-                          >
-                            <Download className="h-4 w-4" />
-                            Xuất
-                          </button>
-                        </div>
-                      )}
-                      <button
-                        onClick={clearSelection}
-                        className="px-3 py-1.5 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400"
-                      >
-                        Bỏ chọn
-                      </button>
-                    </div>
-                  </div>
-                )}
+      <div className="sticky mb-5 top-12 z-20 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700">
+        <div className="mx-auto max-w-7xl px-6 py-3">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            {/* Left: View Toggle & Bulk Selection */}
+            <div className="flex items-center gap-4">
+              {/* View Toggle */}
+              <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-2 rounded-md transition-colors ${viewMode === 'grid'
+                    ? 'bg-white dark:bg-slate-600 shadow-sm'
+                    : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
+                    }`}
+                  title="Chế độ lưới"
+                >
+                  <Grid className={`h-4 w-4 ${viewMode === 'grid' ? 'text-emerald-600' : 'text-slate-500'}`} />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`p-2 rounded-md transition-colors ${viewMode === 'list'
+                    ? 'bg-white dark:bg-slate-600 shadow-sm'
+                    : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
+                    }`}
+                  title="Chế độ danh sách"
+                >
+                  <List className={`h-4 w-4 ${viewMode === 'list' ? 'text-emerald-600' : 'text-slate-500'}`} />
+                </button>
               </div>
 
-              {/* Middle: Sort Options */}
-              {/* <div className="flex items-center gap-3">
+              {/* Bulk Selection */}
+              {selectedBanks.size > 0 && (
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={selectedBanks.size === filtered.length}
+                      onChange={selectAllBanks}
+                      className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                    />
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                      {selectedBanks.size} mục đã chọn
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handleBulkFavorite}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/30 dark:text-amber-400"
+                      title="Thêm vào yêu thích"
+                    >
+                      <Star className="h-3 w-3" />
+                      Yêu thích
+                    </button>
+                    <button
+                      onClick={() => setShowBulkActions(!showBulkActions)}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400"
+                    >
+                      <MoreVertical className="h-3 w-3" />
+                      Thao tác
+                    </button>
+                    {showBulkActions && (
+                      <div className="absolute mt-10 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 p-2 z-30">
+                        <button
+                          onClick={() => handleBulkVisibilityChange('PUBLIC')}
+                          className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
+                        >
+                          <Globe className="h-4 w-4 text-emerald-600" />
+                          Đặt công khai
+                        </button>
+                        <button
+                          onClick={() => handleBulkVisibilityChange('ORG')}
+                          className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
+                        >
+                          <Users className="h-4 w-4 text-blue-600" />
+                          Đặt nội bộ
+                        </button>
+                        <button
+                          onClick={() => handleBulkVisibilityChange('PRIVATE')}
+                          className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
+                        >
+                          <Lock className="h-4 w-4 text-amber-600" />
+                          Đặt riêng tư
+                        </button>
+                        <button
+                          onClick={handleBulkExport}
+                          className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
+                        >
+                          <Download className="h-4 w-4" />
+                          Xuất
+                        </button>
+                      </div>
+                    )}
+                    <button
+                      onClick={clearSelection}
+                      className="px-3 py-1.5 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400"
+                    >
+                      Bỏ chọn
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Middle: Sort Options */}
+            {/* <div className="flex items-center gap-3">
                 
               </div> */}
 
-              {/* Right: Stats */}
-              {/* Trong Control Bar, thêm vào phần Right: Stats */}
-              <div className="flex items-center gap-6">
-                <span className="text-sm text-slate-600 dark:text-slate-400">Sắp xếp:</span>
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
-                    className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
-                      ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                      }`}
-                  >
-                    {sortOption === 'name-asc' ? <SortAsc className="h-3 w-3" /> : <SortDesc className="h-3 w-3" />}
-                    Tên
-                  </button>
-                  <button
-                    onClick={() => setSortOption(sortOption === 'date-desc' ? 'date-asc' : 'date-desc')}
-                    className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('date')
-                      ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                      }`}
-                  >
-                    <Calendar className="h-3 w-3" />
-                    Ngày {sortOption === 'date-desc' ? '↓' : '↑'}
-                  </button>
-                  <button
-                    onClick={() => setSortOption(sortOption === 'questions-desc' ? 'questions-asc' : 'questions-desc')}
-                    className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('questions')
-                      ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                      }`}
-                  >
-                    <BookOpen className="h-3 w-3" />
-                    Số câu {sortOption === 'questions-desc' ? '↓' : '↑'}
-                  </button>
-                  <button
-                    onClick={() => setSortOption('visibility')}
-                    className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'visibility'
-                      ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                      }`}
-                  >
-                    <Eye className="h-3 w-3" />
-                    Quyền xem
-                  </button>
-                </div>
-                
-
-                {/* Nút toggle filters */}
+            {/* Right: Stats */}
+            {/* Trong Control Bar, thêm vào phần Right: Stats */}
+            <div className="flex items-center gap-6">
+              <span className="text-sm text-slate-600 dark:text-slate-400">Sắp xếp:</span>
+              <div className="flex flex-wrap gap-2">
                 <button
-                  onClick={() => setShowFilters(!showFilters)}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${showFilters
+                  onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
                     ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
                     }`}
                 >
-                  <Filter className="h-4 w-4" />
-                  Bộ lọc
-                  {showFilters ? (
-                    <ChevronUp className="h-3 w-3" />
-                  ) : (
-                    <ChevronDown className="h-3 w-3" />
-                  )}
+                  {sortOption === 'name-asc' ? <SortAsc className="h-3 w-3" /> : <SortDesc className="h-3 w-3" />}
+                  Tên
                 </button>
-                <div className="text-sm text-slate-600 dark:text-slate-400">
-                  {filtered.length} mục
-                </div>
+                <button
+                  onClick={() => setSortOption(sortOption === 'date-desc' ? 'date-asc' : 'date-desc')}
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('date')
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                    }`}
+                >
+                  <Calendar className="h-3 w-3" />
+                  Ngày {sortOption === 'date-desc' ? '↓' : '↑'}
+                </button>
+                <button
+                  onClick={() => setSortOption(sortOption === 'questions-desc' ? 'questions-asc' : 'questions-desc')}
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('questions')
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                    }`}
+                >
+                  <BookOpen className="h-3 w-3" />
+                  Số câu {sortOption === 'questions-desc' ? '↓' : '↑'}
+                </button>
+                <button
+                  onClick={() => setSortOption('visibility')}
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'visibility'
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                    }`}
+                >
+                  <Eye className="h-3 w-3" />
+                  Quyền xem
+                </button>
+              </div>
+
+
+              {/* Nút toggle filters */}
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${showFilters
+                  ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                  }`}
+              >
+                <Filter className="h-4 w-4" />
+                Bộ lọc
+                {showFilters ? (
+                  <ChevronUp className="h-3 w-3" />
+                ) : (
+                  <ChevronDown className="h-3 w-3" />
+                )}
+              </button>
+              <div className="text-sm text-slate-600 dark:text-slate-400">
+                {filtered.length} mục
               </div>
             </div>
           </div>
         </div>
-      )}
+      </div>
 
       {/* CONTENT */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 pb-20">
@@ -516,117 +515,117 @@ export default function QuestionBanksPage() {
               animate={{ opacity: 1, y: 0 }}
               className=" mb-5 rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-md dark:border-gray-700 dark:bg-gray-800/50"
             >
-           
-                <div className="grid gap-3 md:grid-cols-5">
-                  {/* Search */}
-                  <div className="md:col-span-2">
-                    <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
-                      Tìm kiếm
-                    </label>
-                    <div className="flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 dark:bg-slate-900/70 dark:ring-white/10">
-                      <Search className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
-                      <input
-                        value={q}
-                        onChange={(e) => handleFilterChange(setQ)(e.target.value)}
-                        placeholder="Từ khóa: tên, mô tả, môn học…"
-                        className="w-full bg-transparent p-1 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
-                      />
-                    </div>
-                  </div>
 
-                  {/* Visibility Filter */}
-                  <div>
-                    <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
-                      Quyền xem
-                    </label>
-                    <select
-                      value={visibilityFilter}
-                      onChange={(e) => handleFilterChange(setVisibilityFilter)(e.target.value as any)}
-                      className="w-full rounded-xl bg-white/80 px-3 py-2 text-sm text-gray-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-gray-100 dark:ring-white/10"
-                    >
-                      {visibilityOptions.map(option => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Type filter (placeholders) */}
-                  <div>
-                    <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
-                      Loại câu hỏi
-                    </label>
-                    <select
-                      value={type}
-                      onChange={(e) => handleFilterChange(setType)(e.target.value as any)}
-                      className="w-full rounded-xl bg-white/80 px-3 py-2 text-sm text-gray-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-gray-100 dark:ring-white/10"
-                    >
-                      {types.map(op => (
-                        <option key={op} value={op}>
-                          {op === "all" ? "Tất cả" : op}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Difficulty filter (placeholder) */}
-                  <div>
-                    <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
-                      Độ khó
-                    </label>
-                    <select
-                      value={diff}
-                      onChange={(e) => handleFilterChange(setDiff)(e.target.value as any)}
-                      className="w-full rounded-xl bg-white/80 px-3 py-2 text-sm text-gray-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-gray-100 dark:ring-white/10"
-                    >
-                      {diffs.map(op => (
-                        <option key={op} value={op}>
-                          {op === "all" ? "Tất cả" : op}
-                        </option>
-                      ))}
-                    </select>
+              <div className="grid gap-3 md:grid-cols-5">
+                {/* Search */}
+                <div className="md:col-span-2">
+                  <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
+                    Tìm kiếm
+                  </label>
+                  <div className="flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 dark:bg-slate-900/70 dark:ring-white/10">
+                    <Search className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
+                    <input
+                      value={q}
+                      onChange={(e) => handleFilterChange(setQ)(e.target.value)}
+                      placeholder="Từ khóa: tên, mô tả, môn học…"
+                      className="w-full bg-transparent p-1 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
+                    />
                   </div>
                 </div>
 
-                {/* Approved toggle */}
-                <div className="mt-3 flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                {/* Visibility Filter */}
+                <div>
+                  <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
+                    Quyền xem
+                  </label>
+                  <select
+                    value={visibilityFilter}
+                    onChange={(e) => handleFilterChange(setVisibilityFilter)(e.target.value as any)}
+                    className="w-full rounded-xl bg-white/80 px-3 py-2 text-sm text-gray-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-gray-100 dark:ring-white/10"
+                  >
+                    {visibilityOptions.map(option => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Type filter (placeholders) */}
+                <div>
+                  <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
+                    Loại câu hỏi
+                  </label>
+                  <select
+                    value={type}
+                    onChange={(e) => handleFilterChange(setType)(e.target.value as any)}
+                    className="w-full rounded-xl bg-white/80 px-3 py-2 text-sm text-gray-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-gray-100 dark:ring-white/10"
+                  >
+                    {types.map(op => (
+                      <option key={op} value={op}>
+                        {op === "all" ? "Tất cả" : op}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Difficulty filter (placeholder) */}
+                <div>
+                  <label className="mb-1 block text-xs font-medium text-white/90 dark:text-gray-200">
+                    Độ khó
+                  </label>
+                  <select
+                    value={diff}
+                    onChange={(e) => handleFilterChange(setDiff)(e.target.value as any)}
+                    className="w-full rounded-xl bg-white/80 px-3 py-2 text-sm text-gray-800 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 dark:bg-slate-900/70 dark:text-gray-100 dark:ring-white/10"
+                  >
+                    {diffs.map(op => (
+                      <option key={op} value={op}>
+                        {op === "all" ? "Tất cả" : op}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Approved toggle */}
+              <div className="mt-3 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <label className="inline-flex cursor-pointer items-center gap-2 text-xs text-gray-700 dark:text-gray-300">
+                    <input
+                      type="checkbox"
+                      checked={onlyApproved}
+                      onChange={(e) => handleFilterChange(setOnlyApproved)(e.target.checked)}
+                      className="h-4 w-4 rounded border-white/20 bg-white/20 text-emerald-500 focus:ring-emerald-400 dark:border-gray-600"
+                    />
+                    Chỉ hiển thị ngân hàng đã kiểm duyệt
+                  </label>
+
+                  {/* Select all checkbox for mobile */}
+                  {filtered.length > 0 && (
                     <label className="inline-flex cursor-pointer items-center gap-2 text-xs text-gray-700 dark:text-gray-300">
                       <input
                         type="checkbox"
-                        checked={onlyApproved}
-                        onChange={(e) => handleFilterChange(setOnlyApproved)(e.target.checked)}
+                        checked={selectedBanks.size === filtered.length}
+                        onChange={selectAllBanks}
                         className="h-4 w-4 rounded border-white/20 bg-white/20 text-emerald-500 focus:ring-emerald-400 dark:border-gray-600"
                       />
-                      Chỉ hiển thị ngân hàng đã kiểm duyệt
+                      Chọn tất cả
                     </label>
-
-                    {/* Select all checkbox for mobile */}
-                    {filtered.length > 0 && (
-                      <label className="inline-flex cursor-pointer items-center gap-2 text-xs text-gray-700 dark:text-gray-300">
-                        <input
-                          type="checkbox"
-                          checked={selectedBanks.size === filtered.length}
-                          onChange={selectAllBanks}
-                          className="h-4 w-4 rounded border-white/20 bg-white/20 text-emerald-500 focus:ring-emerald-400 dark:border-gray-600"
-                        />
-                        Chọn tất cả
-                      </label>
-                    )}
-                  </div>
-
-                  <div className="hidden items-center gap-2 text-xs text-white/90 dark:text-gray-300 md:flex">
-                    <Filter className="h-4 w-4" /> {filtered.length} kết quả
-                    {selectedBanks.size > 0 && (
-                      <span className="ml-2 px-2 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium">
-                        {selectedBanks.size} đã chọn
-                      </span>
-                    )}
-                  </div>
+                  )}
                 </div>
-              </motion.div>
+
+                <div className="hidden items-center gap-2 text-xs text-white/90 dark:text-gray-300 md:flex">
+                  <Filter className="h-4 w-4" /> {filtered.length} kết quả
+                  {selectedBanks.size > 0 && (
+                    <span className="ml-2 px-2 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium">
+                      {selectedBanks.size} đã chọn
+                    </span>
+                  )}
+                </div>
+              </div>
             </motion.div>
+          </motion.div>
         )}
 
 
