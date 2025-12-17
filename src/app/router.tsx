@@ -9,8 +9,6 @@ import NotFoundPage from "@pages/not-found/NotFoundPage"; // bạn tạo sẵn f
 import { Layout } from "@/layouts/Layout"; // Tạo một layout component mới
 import { useAuth } from "@/app/providers/AuthProvider";
 import { AdminLayout } from "@/layouts/AdminLayout";
-import AdminUsersPage from "@/pages/admin/AdminUsersPage";
-
 
 
 
@@ -30,7 +28,9 @@ const QuickGuidePage = React.lazy(() => import("@pages/documents/QuickGuidePage"
 const DashboardPage = React.lazy(() => import("@/pages/auth/DashboardPage"));
 const ProfilePage = React.lazy(() => import("@/pages/auth/ProfilePage"));
 const SubjectsPage = React.lazy(() => import("@pages/subjects/SubjectsPage"));
-const CreateSubject = React.lazy(() => import("@pages/subjects/CreateSubject"));
+const CreateSubject = React.lazy(() => import("@/pages/subjects/CreateSubjectPage"));
+const QuestionBanksPage = React.lazy(() => import("@pages/question_banks/QuestionBanksPage"));
+const CreateQuestionBankPage = React.lazy(() => import("@pages/question_banks/CreateQuestionBankPage"));
 const QuestionsPage = React.lazy(() => import("@pages/questions/QuestionsPage"));
 const EditQuestionPage = React.lazy(() => import("@pages/questions/EditQuestionPage"));
 const CreateExamPage = React.lazy(() => import("@pages/exams/CreateExamPage"));
@@ -45,6 +45,7 @@ const ExplorePage = React.lazy(() => import("@/pages/resources/ExplorePage"));
 const ForumPage = React.lazy(() => import("@/pages/forum/ForumPage"));
 const FaqPage = React.lazy(() => import("@/pages/faq/FaqPage"));
 const FeedbackPage = React.lazy(() => import("@/pages/feedback/FeedbackPage"));
+const AdminUsersPage = React.lazy(() => import("@/pages/admin/AdminUsersPage"));
 
 
 
@@ -130,8 +131,16 @@ export const router = createHashRouter(
 
         //auth
 
+        { path: "/question_banks", element: withSuspense(<QuestionBanksPage />), errorElement: <NotFoundPage /> },
+        { path: "/question_bank/create", element: withSuspense(<CreateQuestionBankPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions/question_bank/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions/question_bank/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
+
+
+
+
         { path: "/subjects", element: withSuspense(<SubjectsPage />), errorElement: <NotFoundPage /> },
-        { path: "/subjects/create", element: withSuspense(<CreateSubject />), errorElement: <NotFoundPage /> },
+        { path: "/subject/create", element: withSuspense(<CreateSubject />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
         

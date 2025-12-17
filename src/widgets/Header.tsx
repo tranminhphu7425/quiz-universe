@@ -86,12 +86,12 @@ export default function Header({
 }: HeaderProps) {
   const { user, logout } = useAuth();
   links = user ? [
-    { label: "Câu hỏi", href: "/subjects" },
+    { label: "Câu hỏi", href: "/question_banks" },
     // { label: "Đề thi", href: "/exams/create" },
     { label: "Diễn đàn", href: "/forum" },
     { label: "Thư viện", href: "/resources" }
 
-  ] : [{ label: "Câu hỏi", href: "/subjects" },
+  ] : [{ label: "Câu hỏi", href: "/question_banks" },
   { label: "Thư viện", href: "/resources" },
   // { label: "Hướng dẫn nhanh", href: "/quickguide" },
   { label: "Diễn đàn", href: "/forum" }];

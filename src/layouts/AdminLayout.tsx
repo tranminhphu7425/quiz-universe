@@ -13,5 +13,5 @@ export function AdminLayout() {
           <Outlet /> {/* Nội dung các route sẽ render ở đây */}
         </main>
     </div>
-  );
+  ); 
 }

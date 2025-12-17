@@ -2,6 +2,7 @@ package com.quizuniverse.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import com.quizuniverse.entity.QuestionBank;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -26,6 +27,13 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "question_id")
     private Long id;
+
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bank_id", nullable = false)
+    private QuestionBank bank; // ← Tên này phải khớp với mappedBy trong QuestionBank
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id", nullable = false)

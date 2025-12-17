@@ -160,7 +160,7 @@ export default function Footer({
       title: "Sản phẩm",
       links: [
         { label: "Ngân hàng câu hỏi", href: "/subjects" },
-        { label: "Tạo bộ câu hỏi", href: "/subjects/create" },
+        { label: "Tạo bộ câu hỏi", href: "/subject/create" },
         { label: "Chấm & Báo cáo", href: "#" },
       ],
     },
