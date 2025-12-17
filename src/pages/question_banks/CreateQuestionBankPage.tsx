@@ -30,7 +30,7 @@ import FadeInOnView from "@/shared/ui/FadeInOnView";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { toast } from "sonner";
 
-export default function CreateSubjectPage() {
+export default function CreateQuestionBankPage() {
     const { user } = useAuth();
     const navigate = useNavigate();
 

@@ -395,14 +395,14 @@ export default function HomePage() {
           <FeatureCard
             title="Ngân hàng câu hỏi"
             description="Chứa các câu hỏi ôn tập theo từng môn, được thu thập từ nhiều nguồn tài liệu và giảng viên khác nhau."
-            to={`/subjects`}
+            to={`/question_banks`}
             cta="Xem danh sách"
             icon={<BookOpen className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />}
           />
           <FeatureCard
             title="Tạo bộ câu hỏi"
             description="Cho phép tạo bộ câu hỏi mới qua upload tài liệu trắc nghiệm cá nhân hoặc tạo thủ công và tạo trắc nghiệm từ tài liệu đó."
-            to={`/subjects/create`}
+            to={`/question_bank/create`}
             cta="Tạo bộ câu hỏi"
             icon={<ListChecks className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />}
           />

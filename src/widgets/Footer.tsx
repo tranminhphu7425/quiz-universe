@@ -159,8 +159,8 @@ export default function Footer({
     {
       title: "Sản phẩm",
       links: [
-        { label: "Ngân hàng câu hỏi", href: "/subjects" },
-        { label: "Tạo bộ câu hỏi", href: "/subject/create" },
+        { label: "Ngân hàng câu hỏi", href: "/question_banks" },
+        { label: "Tạo bộ câu hỏi", href: "/question_bank/create" },
         { label: "Chấm & Báo cáo", href: "#" },
       ],
     },
