@@ -6,6 +6,7 @@ import com.quizuniverse.dto.QuestionBankDTO;
 import com.quizuniverse.dto.UpdateQuestionBankRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface QuestionBankService {
     
@@ -30,4 +31,10 @@ public interface QuestionBankService {
     Long countQuestionsInBank(Long bankId);
     
     boolean isBankAccessible(Long bankId, Long userId);
+
+
+   
+    String getQuestionBankNameById(Long bankId);
+        
+
 }

@@ -16,8 +16,11 @@ import {
 } from "lucide-react";
 import { ArrowRight, LayoutGrid, RefreshCcw, Sparkles, XCircle } from "lucide-react";
 import LoadingState from "@/widgets/LoadingState";
-import { Question, QuestionOption, fetchQuestionsBySubjectId } from "@/shared/api/questionsApi";
+import { Question, QuestionOption, fetchQuestionsByBankId } from "@/shared/api/questionsApi";
 import { fetchSubjectNameById, Subject } from "@/shared/api/subjectApi";
+
+import { fetchQuestionBankNameById, QuestionBank } from "@/shared/api/questionBanksApi";
+
 import { Flag } from "lucide-react";
 
 
@@ -55,16 +58,16 @@ export default function QuestionsPage() {
   const [picked, setPicked] = useState<Record<number, number | null>>({}); // qId -> optionId
   const [fillAnswers, setFillAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
-  const { subjectId } = useParams<{ subjectId: string }>();
+  const { bankId } = useParams<{ bankId: string }>();
   const [data, setData] = useState<Question[]>([]);
   const [navOpen, setNavOpen] = useState(false); // ✅ trạng thái mở/đóng popup
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const pageTopRef = useRef<HTMLDivElement | null>(null);
   const suppressTopScrollRef = useRef(false);
   const [page, setPage] = useState(1);
-  const [subjectName, setSubjectName] = useState<string>("");
-  var localSubjects: Subject[] = [];
+  const [questionBankName, setQuestionBankName] = useState<string>("");
+  var localSubjects: QuestionBank[] = [];
   const [flaggedQuestions, setFlaggedQuestions] = useState<Record<number, boolean>>({});
 
   const toggleFlag = (qId: number) => {
@@ -75,17 +78,17 @@ export default function QuestionsPage() {
   };
 
   const fetchData = async () => {
-    if (subjectId == null) return;
+    if (bankId == null) return;
     const ac = new AbortController();
     setLoading(true);
     setErr(null);
-    const id = Number(subjectId);
+    const id = Number(bankId);
 
 
     (async () => {
       const [qRes, sRes] = await Promise.allSettled([
-        fetchQuestionsBySubjectId(id, ac.signal),
-        fetchSubjectNameById(id), // nhớ nhận signal
+        fetchQuestionsByBankId(id, ac.signal),
+        fetchQuestionBankNameById(id), // nhớ nhận signal
       ]);
 
       // Questions
@@ -103,11 +106,11 @@ export default function QuestionsPage() {
 
 
 
-        const url = `/quiz-universe/data/questionssubject${id}.json`;
+        const url = `/quiz-universe/data/questionBank${id}.json`;
 
         try {
           const res = await fetch(url);
-          const local = await fetch("/quiz-universe/data/subjects.json");
+          const local = await fetch("/quiz-universe/data/questionBanks.json");
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
           const json: Question[] = await res.json();
           setData(json);
@@ -120,12 +123,12 @@ export default function QuestionsPage() {
 
       // Subject name
       if (sRes.status === "fulfilled") {
-        setSubjectName(sRes.value.name);
+        setQuestionBankName(sRes.value.name);
       } else if (sRes.reason?.name !== "AbortError") {
-        const idNum = Number(subjectId);
-        const sj = (localSubjects as Subject[]).find(s => s.id === idNum);
+        const idNum = Number(bankId);
+        const sj = (localSubjects as QuestionBank[]).find(s => s.bankId === idNum);
 
-        setSubjectName(sj?.name ?? `[Môn #${idNum}]`); // placeholder khi API tên môn lỗi
+        setQuestionBankName(sj?.name ?? `[Môn #${idNum}]`); // placeholder khi API tên môn lỗi
         setErr((prev) => prev ?? "Một số dữ liệu không tải được từ API.");
       }
     })()
@@ -261,7 +264,7 @@ export default function QuestionsPage() {
               <Sparkles className="h-4 w-4" /> QuizUniverse • Làm trắc nghiệm
             </div>
             <h1 className="text-[2rem] md:text-[2.6rem] font-black leading-tight">
-              Bộ câu hỏi ôn tập <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">{subjectName}</span>
+              Bộ câu hỏi ôn tập <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">{questionBankName}</span>
               {err && ` (Lấy dữ liệu cục bộ)`}
             </h1>
             <p className="mt-2 text-white/90">Chọn đáp án cho từng câu. Nộp bài để xem điểm và lời giải.</p>

@@ -16,10 +16,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.Map;
 @RestController
 @RequestMapping("/api/question-banks")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 @RequiredArgsConstructor
+
 @Tag(name = "Question Bank Management", description = "APIs for managing question banks")
 public class QuestionBankController {
     
@@ -131,5 +133,12 @@ public class QuestionBankController {
         
         boolean accessible = questionBankService.isBankAccessible(bankId, userId);
         return ResponseEntity.ok(accessible);
+    }
+
+
+    @GetMapping("/{id}/name")
+    public ResponseEntity<Map<String, Object>> getSubjectName(@PathVariable long id){
+        String name = questionBankService.getQuestionBankNameById(id);
+        return ResponseEntity.ok(Map.of("id", id, "name", name));
     }
 }

@@ -13,13 +13,15 @@ import { set } from "zod";
 
 type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
-import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
+import { getAllQuestionBanks, QuestionBank } from "@/shared/api/questionBanksApi";
+  
 
 
 
 import { useAuth } from "@/app/providers/AuthProvider";
 
-import { fetchFavorites, addFavorite, removeFavorite } from "@/shared/api/favoriteApi";
+import { fetchFavoriteQuestionBanks, addFavorite, removeFavorite } from "@/shared/api/favoriteApi";
+
 
 
 
@@ -43,7 +45,7 @@ export default function SubjectPage() {
   const [onlyApproved, setOnlyApproved] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<Subject[]>([]);
+  const [data, setData] = useState<QuestionBank[]>([]);
   
 
 
@@ -87,8 +89,8 @@ export default function SubjectPage() {
     const loadFavorite = async () => {
 
       try {
-        const data = await fetchFavorites(user?.id, token!);
-        setFavorites(new Set(data.map((s: Subject) => s.id)));
+        const data = await fetchFavoriteQuestionBanks(user?.id, token!);
+        setFavorites(new Set(data.map((s: QuestionBank) => s.bankId)));
       } catch (err) {
         console.error(err);
       }
@@ -110,30 +112,30 @@ export default function SubjectPage() {
   async function fetchData() {
 
 
-    const ac = new AbortController();
+   
     setLoading(true);
     setErr(null);
 
     (async () => {
       try {
         // 1) Ưu tiên lấy từ API
-        const list = await fetchAllSubjects(ac.signal);
+        const list = await getAllQuestionBanks();
 
-        setData(list);
+        setData(list.content);
       } catch (e: any) {
         // Nếu bị hủy thì thôi
         if (e?.name === "AbortError") return;
 
         // 2) API lỗi -> fallback sang JSON cục bộ (dynamic import)
         setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
-        const local = await fetch("/quiz-universe/data/subjects.json");
-        setData((await local.json()) as Subject[]);
+        const local = await fetch("/quiz-universe/data/questionBanks.json");
+        setData((await local.json()) as QuestionBank[]);
       } finally {
         setLoading(false);
       }
     })();
 
-    return () => ac.abort();
+    return ;
   }
 
   useEffect(() => {
@@ -150,7 +152,7 @@ export default function SubjectPage() {
     if (!kw) return data;
 
     return data.filter((s) =>
-      [s.code, s.name, s.description ?? ""].some((x) =>
+      [ s.name, s.description ?? ""].some((x) =>
         normalizeText(x).includes(kw)
       )
     );
@@ -333,9 +335,9 @@ export default function SubjectPage() {
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((subject) => (
                   <SubjectCard
-                    key={subject.id}
+                    key={subject.bankId}
                     s={subject}
-                    isFavorite={favorites.has(subject.id)}
+                    isFavorite={favorites.has(subject.bankId)}
                     onToggleFavorite={toggleFavorite}
                     userRole={user?.role}
                   />
@@ -371,7 +373,7 @@ export default function SubjectPage() {
 }
 
 type SubjectCardProps = {
-  s: Subject;
+  s: QuestionBank;
   isFavorite: boolean;
   onToggleFavorite: (subjectId: number) => void;
   userRole?: string;
@@ -392,10 +394,10 @@ function SubjectCard({ s, isFavorite, onToggleFavorite, userRole }: SubjectCardP
       <div className="mb-2 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-100">
+            {/* <span className="inline-flex items-center gap-1 rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-100">
               <Tag className="h-3 w-3" />
               {s.code}
-            </span>
+            </span> */}
           </div>
           <h3 className="mt-1 truncate text-base font-bold text-emerald-900 dark:text-emerald-200">
             {s.name}
@@ -405,21 +407,21 @@ function SubjectCard({ s, isFavorite, onToggleFavorite, userRole }: SubjectCardP
 
           {(userRole === "admin" || userRole === "editor") &&
             <Link
-              to={`/questions/question_bank/${s.id}/edit`}
+              to={`/questions/question_bank/${s.bankId}/edit`}
               className="rounded-full bg-red-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
             >
               Sửa
             </Link>
           }
           <Link
-            to={`/questions/question_bank/${s.id}`}
+            to={`/questions/question_bank/${s.bankId}`}
             className="rounded-full bg-yellow-400 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
           >
             Xem
           </Link>
           {/* Nút yêu thích */}
           <button
-            onClick={() => onToggleFavorite(s.id)}
+            onClick={() => onToggleFavorite(s.bankId)}
             className="transition hover:scale-105 active:scale-95"
             aria-label={isFavorite ? "Bỏ yêu thích" : "Thêm vào yêu thích"}
           >

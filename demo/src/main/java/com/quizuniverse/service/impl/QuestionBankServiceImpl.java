@@ -13,6 +13,8 @@ import com.quizuniverse.repository.QuestionBankRepository;
 import com.quizuniverse.repository.SubjectRepository;
 import com.quizuniverse.repository.UserRepository;
 import com.quizuniverse.service.QuestionBankService;
+import com.quizuniverse.service.SubjectNotFoundException;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -205,4 +207,16 @@ public class QuestionBankServiceImpl implements QuestionBankService {
                 .questionCount(countQuestionsInBank(questionBank.getBankId()).intValue())
                 .build();
     }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public String getQuestionBankNameById(Long bankId){
+        String name = questionBankRepository.findNameById(bankId);
+        if(name == null){
+            throw new SubjectNotFoundException(bankId);
+        }
+        return name;
+    }
+
 }

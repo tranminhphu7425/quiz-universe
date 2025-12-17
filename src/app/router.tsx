@@ -133,8 +133,8 @@ export const router = createHashRouter(
 
         { path: "/question_banks", element: withSuspense(<QuestionBanksPage />), errorElement: <NotFoundPage /> },
         { path: "/question_bank/create", element: withSuspense(<CreateQuestionBankPage />), errorElement: <NotFoundPage /> },
-        { path: "/questions/question_bank/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
-        { path: "/questions/question_bank/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions/question_bank/:bankId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
+        { path: "/questions/question_bank/:bankId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
 
 
 

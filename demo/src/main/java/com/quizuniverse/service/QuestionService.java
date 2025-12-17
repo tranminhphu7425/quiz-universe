@@ -40,6 +40,14 @@ public class QuestionService {
                 .collect(Collectors.toList());
     }
 
+    public List<QuestionDTO> getQuestionsByBankId(Long bankId) {
+        return questionRepository.findByBankIdWithOptions(bankId)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+
     private QuestionDTO convertToDTO(Question question) {
         QuestionDTO dto = new QuestionDTO();
         dto.setId(question.getId());

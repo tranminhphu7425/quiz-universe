@@ -47,6 +47,14 @@ public class QuestionController {
         return ResponseEntity.ok(questions);
     }
 
+    @GetMapping("/question-bank/{bankId}")
+    public ResponseEntity<List<QuestionDTO>> getQuestionsByQuestionBank(
+            @PathVariable Long bankId) {
+        List<QuestionDTO> questions = questionService.getQuestionsByBankId(bankId);
+        return ResponseEntity.ok(questions);
+    }
+
+
     @GetMapping("/count")
     public ResponseEntity<Long> getTotalQuestionCount() {
         Long count = questionService.getTotalQuestionCount();
@@ -83,5 +91,8 @@ public class QuestionController {
             ));
         }
     }
+
+
+    
 
 }

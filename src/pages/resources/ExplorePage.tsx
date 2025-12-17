@@ -1,15 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { 
-  Folder, 
-  FileText, 
-  ArrowRight, 
-  Home, 
-  ChevronRight, 
-  Search, 
-  Grid, 
-  List, 
-  SortAsc, 
+import {
+  Folder,
+  FileText,
+  ArrowRight,
+  Home,
+  ChevronRight,
+  Search,
+  Grid,
+  List,
+  SortAsc,
   SortDesc,
   FolderOpen,
   File,
@@ -56,14 +56,14 @@ export default function ExplorePage() {
 
   const navigateToPath = (path: string) => {
     setCurrentPath(path);
-    
+
     const pathIndex = pathHistory.indexOf(path);
     if (pathIndex === -1) {
       setPathHistory([...pathHistory, path]);
     } else {
       setPathHistory(pathHistory.slice(0, pathIndex + 1));
     }
-    
+
     if (!path) {
       setCurrentItems(folders);
       return;
@@ -98,12 +98,12 @@ export default function ExplorePage() {
 
   const getSortedItems = (items: any[]) => {
     const sorted = [...items];
-    
+
     sorted.sort((a, b) => {
       // Ưu tiên thư mục trước
       if (a.type === 'folder' && b.type !== 'folder') return -1;
       if (a.type !== 'folder' && b.type === 'folder') return 1;
-      
+
       switch (sortOption) {
         case 'name-asc':
           return a.name.localeCompare(b.name);
@@ -124,28 +124,28 @@ export default function ExplorePage() {
           return 0;
       }
     });
-    
+
     return sorted;
   };
 
   const filteredItems = getSortedItems(
-    currentItems.filter(item => 
+    currentItems.filter(item =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
   );
 
   const getBreadcrumbItems = () => {
-    if (!currentPath) return [{ name: "Trang chủ", path: "" }];
-    
+    if (!currentPath) return [];
+
     const parts = currentPath.split('/').filter(part => part);
-    const breadcrumb = [{ name: "Trang chủ", path: "" }];
-    
+    const breadcrumb = [];
+
     let current = "";
     for (const part of parts) {
       current = current ? `${current}/${part}` : `/${part}`;
       breadcrumb.push({ name: part, path: current });
     }
-    
+
     return breadcrumb;
   };
 
@@ -168,7 +168,7 @@ export default function ExplorePage() {
       ldb: { icon: "🗂️", color: "text-pink-500" },
       sws: { icon: "💼", color: "text-yellow-500" },
     };
-    
+
     return icons[type.toLowerCase()] || { icon: "📄", color: "text-slate-500" };
   };
 
@@ -189,7 +189,7 @@ export default function ExplorePage() {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Khám phá và mở tài liệu từ các học phần một cách dễ dàng
           </p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -208,49 +208,6 @@ export default function ExplorePage() {
         </div>
       </section>
 
-      {/* ===== BREADCRUMB ===== */}
-      <div className="sticky top-0 z-30 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700 shadow-sm">
-        <div className="mx-auto max-w-7xl px-6 py-3">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2 flex-wrap flex-1 min-w-0">
-              <button
-                onClick={() => navigateToPath("")}
-                className="flex items-center gap-1 text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 shrink-0"
-              >
-                <Home className="h-4 w-4" />
-                Trang chủ
-              </button>
-              
-              {getBreadcrumbItems().map((item, index) => (
-                <React.Fragment key={item.path}>
-                  <ChevronRight className="h-4 w-4 text-slate-400 shrink-0" />
-                  <button
-                    onClick={() => navigateToPath(item.path)}
-                    className={`text-sm truncate max-w-[150px] sm:max-w-[200px] shrink-0 ${
-                      index === getBreadcrumbItems().length - 1
-                        ? "font-semibold text-emerald-700 dark:text-emerald-300"
-                        : "text-slate-600 dark:text-slate-400 hover:text-emerald-600"
-                    }`}
-                    title={item.name}
-                  >
-                    {item.name}
-                  </button>
-                </React.Fragment>
-              ))}
-            </div>
-            
-            {pathHistory.length > 1 && (
-              <button
-                onClick={goBack}
-                className="ml-2 text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 flex items-center gap-1 shrink-0"
-              >
-                ← Quay lại
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-
       {/* ===== CONTROL BAR ===== */}
       <div className="sticky top-12 z-20 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700">
         <div className="mx-auto max-w-7xl px-6 py-3">
@@ -259,21 +216,19 @@ export default function ExplorePage() {
             <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-md transition-colors ${
-                  viewMode === 'grid' 
-                    ? 'bg-white dark:bg-slate-600 shadow-sm' 
+                className={`p-2 rounded-md transition-colors ${viewMode === 'grid'
+                    ? 'bg-white dark:bg-slate-600 shadow-sm'
                     : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
-                }`}
+                  }`}
               >
                 <Grid className={`h-4 w-4 ${viewMode === 'grid' ? 'text-emerald-600' : 'text-slate-500'}`} />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded-md transition-colors ${
-                  viewMode === 'list' 
-                    ? 'bg-white dark:bg-slate-600 shadow-sm' 
+                className={`p-2 rounded-md transition-colors ${viewMode === 'list'
+                    ? 'bg-white dark:bg-slate-600 shadow-sm'
                     : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
-                }`}
+                  }`}
               >
                 <List className={`h-4 w-4 ${viewMode === 'list' ? 'text-emerald-600' : 'text-slate-500'}`} />
               </button>
@@ -285,32 +240,29 @@ export default function ExplorePage() {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                    sortOption.startsWith('name')
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
                       ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                  }`}
+                    }`}
                 >
                   {sortOption === 'name-asc' ? <SortAsc className="h-3 w-3" /> : <SortDesc className="h-3 w-3" />}
                   Tên
                 </button>
                 <button
                   onClick={() => setSortOption('type')}
-                  className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                    sortOption === 'type'
+                  className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'type'
                       ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                  }`}
+                    }`}
                 >
                   Loại
                 </button>
                 <button
                   onClick={() => setSortOption('date')}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                    sortOption === 'date'
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'date'
                       ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                  }`}
+                    }`}
                 >
                   <Calendar className="h-3 w-3" />
                   Ngày
@@ -325,6 +277,50 @@ export default function ExplorePage() {
           </div>
         </div>
       </div>
+
+      {/* ===== BREADCRUMB ===== */}
+      <div className="sticky top-0 z-30 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="mx-auto max-w-7xl px-6 py-3">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2 flex-wrap flex-1 min-w-0">
+              <button
+                onClick={() => navigateToPath("")}
+                className="flex items-center gap-1 text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 shrink-0"
+              >
+                <Home className="h-4 w-4" />
+                Trang chủ
+              </button>
+
+              {getBreadcrumbItems().map((item, index) => (
+                <React.Fragment key={item.path}>
+                  <ChevronRight className="h-4 w-4 text-slate-400 shrink-0" />
+                  <button
+                    onClick={() => navigateToPath(item.path)}
+                    className={`text-sm truncate max-w-[150px] sm:max-w-[200px] shrink-0 ${index === getBreadcrumbItems().length - 1
+                        ? "font-semibold text-emerald-700 dark:text-emerald-300"
+                        : "text-slate-600 dark:text-slate-400 hover:text-emerald-600"
+                      }`}
+                    title={item.name}
+                  >
+                    {item.name}
+                  </button>
+                </React.Fragment>
+              ))}
+            </div>
+
+            {pathHistory.length > 1 && (
+              <button
+                onClick={goBack}
+                className="ml-2 text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 flex items-center gap-1 shrink-0"
+              >
+                ← Quay lại
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+
 
       {/* ===== CONTENT ===== */}
       <main className="mx-auto max-w-7xl px-6 py-8">
@@ -348,6 +344,7 @@ export default function ExplorePage() {
                       onClick={() => {
                         if (item.type === "folder") {
                           navigateToPath(item.path);
+                          setSearchQuery("");
                         } else {
                           window.open(item.link, "_blank");
                         }
@@ -402,13 +399,13 @@ export default function ExplorePage() {
   );
 }
 
-function ItemCard({ 
-  item, 
-  viewMode, 
-  getFileIcon, 
-  onClick 
-}: { 
-  item: any; 
+function ItemCard({
+  item,
+  viewMode,
+  getFileIcon,
+  onClick
+}: {
+  item: any;
   viewMode: 'grid' | 'list';
   getFileIcon: (type: string) => { icon: string, color: string };
   onClick: () => void;
@@ -423,11 +420,10 @@ function ItemCard({
         animate={{ opacity: 1, scale: 1 }}
         whileHover={{ y: -4, transition: { duration: 0.2 } }}
         onClick={onClick}
-        className={`group cursor-pointer rounded-xl p-4 transition-all duration-300 ${
-          isFolder
+        className={`group cursor-pointer rounded-xl p-4 transition-all duration-300 ${isFolder
             ? "bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-emerald-900/10 border border-emerald-200 dark:border-emerald-800 hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-lg"
             : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-md"
-        }`}
+          }`}
       >
         <div className="flex items-start gap-3">
           <div className={`text-2xl ${!isFolder ? fileIcon.color : ''}`}>
@@ -438,11 +434,10 @@ function ItemCard({
               {item.name}
             </h3>
             <div className="flex items-center gap-2 mt-1">
-              <span className={`text-xs px-2 py-0.5 rounded-full ${
-                isFolder
+              <span className={`text-xs px-2 py-0.5 rounded-full ${isFolder
                   ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                   : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400"
-              }`}>
+                }`}>
                 {isFolder ? "Thư mục" : item.type.toUpperCase()}
               </span>
               {!isFolder && item.lastModified && (
@@ -470,17 +465,16 @@ function ItemCard({
       animate={{ opacity: 1, x: 0 }}
       whileHover={{ x: 4, transition: { duration: 0.2 } }}
       onClick={onClick}
-      className={`group cursor-pointer rounded-lg p-4 transition-all duration-300 ${
-        isFolder
+      className={`group cursor-pointer rounded-lg p-4 transition-all duration-300 ${isFolder
           ? "bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/10 dark:to-emerald-900/5 border border-emerald-100 dark:border-emerald-800/50 hover:border-emerald-300 dark:hover:border-emerald-700"
           : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700"
-      }`}
+        }`}
     >
       <div className="flex items-center gap-4">
         <div className={`text-2xl ${!isFolder ? fileIcon.color : ''} flex-shrink-0`}>
           {isFolder ? "📁" : fileIcon.icon}
         </div>
-        
+
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
@@ -488,11 +482,10 @@ function ItemCard({
                 {item.name}
               </h3>
               <div className="flex items-center gap-3 mt-1">
-                <span className={`text-xs px-2 py-0.5 rounded-full ${
-                  isFolder
+                <span className={`text-xs px-2 py-0.5 rounded-full ${isFolder
                     ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                     : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400"
-                }`}>
+                  }`}>
                   {isFolder ? "Thư mục" : item.type.toUpperCase()}
                 </span>
                 <span className="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[200px]">
@@ -500,7 +493,7 @@ function ItemCard({
                 </span>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-4 ml-4">
               {item.lastModified && (
                 <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 whitespace-nowrap">
@@ -508,7 +501,7 @@ function ItemCard({
                   {new Date(item.lastModified).toLocaleDateString()}
                 </span>
               )}
-              
+
               {isFolder ? (
                 <FolderOpen className="h-5 w-5 text-slate-400 group-hover:text-emerald-500 transition-colors" />
               ) : (

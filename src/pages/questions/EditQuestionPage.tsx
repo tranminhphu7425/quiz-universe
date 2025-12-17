@@ -15,9 +15,9 @@ import {
   Question,
   QuestionOption,
   UpdateQuestionPayload,
-  fetchQuestionsBySubjectId, updateQuestionApi, createQuestionApi, deleteQuestionApi
+  fetchQuestionsByBankId, updateQuestionApi, createQuestionApi, deleteQuestionApi
 } from "@/shared/api/questionsApi";
-import { fetchSubjectNameById } from "@/shared/api/subjectApi";
+import { fetchQuestionBankNameById } from "@/shared/api/questionBanksApi";
 
 // If you already expose API_BASE from your shared api layer, you can import it.
 // To make this page self-contained, keep a local fallback:
@@ -86,8 +86,8 @@ export default function EditQuestionsPage() {
       try {
         const idNum = Number(subjectId);
         const [qs, sj] = await Promise.all([
-          fetchQuestionsBySubjectId(idNum),
-          fetchSubjectNameById(idNum).catch(() => ({ name: `Môn #${idNum}` })),
+          fetchQuestionsByBankId(idNum),
+          fetchQuestionBankNameById(idNum).catch(() => ({ name: `Môn #${idNum}` })),
         ]);
         if (!cancelled) {
           setList(qs);
@@ -611,6 +611,7 @@ export default function EditQuestionsPage() {
               {/* Actions */}
               <div className="flex justify-between">
                 <div className="flex flex-wrap items-center gap-2">
+
                   <button
                     type="submit"
                     disabled={saving}
@@ -649,8 +650,9 @@ export default function EditQuestionsPage() {
                       Xóa câu hỏi
                     </button>
                   )}
-                </div>
 
+
+                </div>
                 <button
                   type="button"
                   onClick={() => newQuestion()}
@@ -658,6 +660,7 @@ export default function EditQuestionsPage() {
                 >
                   Tạo thêm câu hỏi
                 </button>
+
               </div>
 
 

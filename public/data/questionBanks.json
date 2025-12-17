@@ -1,0 +1,80 @@
+ [
+    {
+      "bankId": 3,
+      "name": "NH TTHCM - Demo Import",
+      "subjectId": 4,
+      "subjectName": "Tư tưởng Hồ Chí Minh (1)",
+      "description": "Import tự động từ PDF",
+      "visibility": "ORG",
+      "createdBy": 1,
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2025-08-19T10:07:54",
+      "updatedAt": null,
+      "questionCount": 119
+    },
+    {
+      "bankId": 4,
+      "name": "Ôn tập Tư tưởng Hồ Chí Minh (Giáo trình Thầy Búa)",
+      "subjectId": 5,
+      "subjectName": "Tư tưởng Hồ Chí Minh (2)",
+      "description": "Tập câu hỏi trắc nghiệm từ giáo trình đã upload.",
+      "visibility": "ORG",
+      "createdBy": 1,
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2025-08-26T06:28:29",
+      "updatedAt": null,
+      "questionCount": 130
+    },
+    {
+      "bankId": 5,
+      "name": "TTHCM - Thi Cuối Kỳ",
+      "subjectId": 6,
+      "subjectName": "Tư tưởng Hồ Chí Minh (3)",
+      "description": "Ngân hàng MCQ TTHCM",
+      "visibility": "ORG",
+      "createdBy": 1,
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2025-09-08T08:49:23",
+      "updatedAt": null,
+      "questionCount": 31
+    },
+    {
+      "bankId": 7,
+      "name": "Ngân hàng câu hỏi TTHCM - Trường Đại học Cần Thơ",
+      "subjectId": 7,
+      "subjectName": "Tư tưởng Hồ Chí Minh (4)",
+      "description": "Tổng hợp câu hỏi trắc nghiệm môn Tư tưởng Hồ Chí Minh",
+      "visibility": "ORG",
+      "createdBy": 1,
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2025-09-09T04:08:39",
+      "updatedAt": null,
+      "questionCount": 122
+    },
+    {
+      "bankId": 8,
+      "name": "Ngân hàng câu hỏi CNXH - Đầy đủ",
+      "subjectId": 8,
+      "subjectName": "Chủ nghĩa xã hội khoa học",
+      "description": "Ngân hàng câu hỏi trắc nghiệm môn Chủ nghĩa xã hội khoa học, tổng hợp từ tài liệu đầy đủ.",
+      "visibility": "ORG",
+      "createdBy": 1,
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2025-09-10T10:52:42",
+      "updatedAt": null,
+      "questionCount": 203
+    },
+    {
+      "bankId": 10,
+      "name": "Ngân hàng câu hỏi Tư Tưởng Hồ Chí Minh",
+      "subjectId": 11,
+      "subjectName": "Tư Tưởng Hồ Chí Minh",
+      "description": "Tổng hợp các câu hỏi trắc nghiệm môn Tư Tưởng Hồ Chí Minh",
+      "visibility": "PUBLIC",
+      "createdBy": 1,
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2025-12-01T04:53:08",
+      "updatedAt": null,
+      "questionCount": 149
+    }
+  ]

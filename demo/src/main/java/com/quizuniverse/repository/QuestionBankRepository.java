@@ -23,6 +23,9 @@ public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long
     Page<QuestionBank> findBySubject_IdAndCreatedBy_UserId(Long subjectId, Long userId, Pageable pageable);
     
     Page<QuestionBank> findByVisibility(Visibility visibility, Pageable pageable);
+
+    @Query("select s.name from QuestionBank s where s.bankId = :bankId")
+    String findNameById(@Param("bankId") Long bankId);
     
     @Query("SELECT qb FROM QuestionBank qb WHERE " +
            "(qb.visibility = 'PUBLIC' OR " +
@@ -31,7 +34,7 @@ public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long
            "AND qb.subject.id = :id")
     Page<QuestionBank> findAccessibleBanks(@Param("id") Long subjectId,
                                           @Param("userId") Long userId,
-                                          @Param("orgId") Long orgId,
+                                          
                                           Pageable pageable);
     
     @Query("SELECT COUNT(q) FROM Question q WHERE q.bank.bankId = :bankId")
