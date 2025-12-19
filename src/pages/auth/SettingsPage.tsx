@@ -23,7 +23,9 @@ import {
 } from "lucide-react";
 import React from "react";
 import { useAuth } from "@/app/providers/AuthProvider";
-import { fetchUniversities, fetchMajors, University, Major } from "@/shared/api/major-universityApi";
+import { EducationApi} from "@/shared/api/major-universityApi";
+import { Major } from "@/shared/types/major";
+import { University } from "@/shared/types/university";
 import { Combobox } from "@headlessui/react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { updateUserProfile } from "@/shared/api/userApi";
@@ -67,8 +69,8 @@ export default function SettingsPage() {
     async function loadUniversitiesAndMajors() {
       try {
         const [unis, majors] = await Promise.all([
-          fetchUniversities(),
-          fetchMajors(),
+          EducationApi.getUniversities(),
+          EducationApi.getMajors(),
         ]);
         setUniversities(unis);
         setMajors(majors);

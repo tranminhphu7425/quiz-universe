@@ -537,7 +537,7 @@ export default function HomePage() {
           </p>
           <div className="mt-6 flex items-center justify-center gap-3">
             <Link
-              to={`/subject/create`}
+              to={`/question_bank/create`}
               className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-semibold text-emerald-700 hover:brightness-95 dark:bg-emerald-400 dark:text-emerald-900 dark:hover:brightness-110"
             >
               Tạo bộ câu hỏi cho riêng mình ngay <ArrowRight className="h-4 w-4" />

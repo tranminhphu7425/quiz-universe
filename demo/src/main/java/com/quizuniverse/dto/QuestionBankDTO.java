@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -20,7 +21,7 @@ public class QuestionBankDTO {
     private String subjectName;
     private String description;
     private Visibility visibility;
-    private Long createdBy;
+    private UUID createdBy;
     private String creatorName;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

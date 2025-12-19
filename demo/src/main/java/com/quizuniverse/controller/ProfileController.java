@@ -1,6 +1,9 @@
 package com.quizuniverse.controller;
 
 import java.util.List;
+import java.util.UUID;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import com.quizuniverse.dto.ProfileSetupRequest;
@@ -11,11 +14,6 @@ import com.quizuniverse.security.JwtUtil;
 import com.quizuniverse.service.MajorService;
 import com.quizuniverse.service.ProfileService;
 import com.quizuniverse.service.UniversityService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-
-
 
 @RestController
 @RequestMapping("/api")
@@ -25,7 +23,8 @@ public class ProfileController {
     private final MajorService majorService;
     private final ProfileService profileService;
 
-    public ProfileController(UniversityService universityService, MajorService majorService, ProfileService profileService) {
+    public ProfileController(UniversityService universityService, MajorService majorService,
+            ProfileService profileService) {
         this.universityService = universityService;
         this.majorService = majorService;
         this.profileService = profileService;
@@ -41,26 +40,21 @@ public class ProfileController {
         return majorService.getAll();
     }
 
-     @PostMapping("/profile/setup")
-    public User setupProfile(@RequestBody ProfileSetupRequest req,
-                             @RequestHeader("Authorization") String authHeader) {
-        // Lấy userId từ token (ở đây mình giả sử bạn đã có JWT Filter gán userId vào SecurityContext)
-        Long userId = JwtUtil.getUserIdFromHeader(authHeader); // bạn viết JwtUtil riêng
+    @PostMapping("/profile/setup")
+    public User setupProfile(
+            @RequestBody ProfileSetupRequest req,
+            Authentication authentication) {
+                System.out.println(">>> authentication = " + authentication.getName());
+        UUID userId = UUID.fromString(authentication.getName());
         System.out.println(">>> userId from token = " + userId);
         return profileService.updateProfile(userId, req);
     }
 
-
     @PostMapping("/profile/update")
     public String updateProfile(@RequestBody ProfileSetupRequest req,
-                             @RequestHeader("Authorization") String authHeader) {
-        
+            @RequestHeader("Authorization") String authHeader) {
 
-
-                                return "A";
+        return "A";
     }
-    
-
-
 
 }

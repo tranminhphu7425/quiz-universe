@@ -1,7 +1,8 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+ import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { fetchJson, setAuthToken } from "@/shared/api/apiClient";
 
-import { Major, University } from "@/shared/api/major-universityApi";
+import { Major } from "@/shared/types/major";
+import { University } from "@/shared/types/university";
 
 
 /** Vai trò & user */

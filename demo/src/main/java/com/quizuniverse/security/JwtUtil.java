@@ -10,14 +10,14 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET = "quizuniverse-secret-key-should-be-longer-1234567890"; 
+    private static final String SECRET = "quizuniverse-secret-key-should-be-longer-1234567890";
     private final long EXPIRATION = 1000 * 60 * 60 * 24; // 1 ngày
     private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
     /** Sinh token với userId nằm trong subject */
-    public String generateToken(Long userId) {
+    public String generateToken(String userId) {
         return Jwts.builder()
-                .setSubject(userId.toString())   // 👈 userId trong subject
+                .setSubject(userId) // 👈 userId trong subject
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -25,15 +25,14 @@ public class JwtUtil {
     }
 
     /** Lấy userId từ token (subject) */
-    public Long extractUserId(String token) {
-        return Long.parseLong(
-                Jwts.parserBuilder()
-                        .setSigningKey(key)
-                        .build()
-                        .parseClaimsJws(token)
-                        .getBody()
-                        .getSubject()
-        );
+    public String extractUserId(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+
     }
 
     /** Kiểm tra token hợp lệ */
@@ -50,19 +49,17 @@ public class JwtUtil {
     }
 
     /** Lấy userId từ Authorization header */
-    public static Long getUserIdFromHeader(String authHeader) {
-    if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-        throw new IllegalArgumentException("Invalid Authorization header");
+    public static String getUserIdFromHeader(String authHeader) {
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new IllegalArgumentException("Invalid Authorization header");
+        }
+        String token = authHeader.substring(7);
+        return Jwts.parserBuilder()
+                .setSigningKey(SECRET.getBytes()) // dùng SECRET static
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
-    String token = authHeader.substring(7);
-    return Long.parseLong(
-        Jwts.parserBuilder()
-            .setSigningKey(SECRET.getBytes()) // dùng SECRET static
-            .build()
-            .parseClaimsJws(token)
-            .getBody()
-            .getSubject()
-    );
-}
 
 }

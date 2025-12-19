@@ -16,11 +16,12 @@ import {
 } from "lucide-react";
 import { ArrowRight, LayoutGrid, RefreshCcw, Sparkles, XCircle } from "lucide-react";
 import LoadingState from "@/widgets/LoadingState";
-import { Question, QuestionOption, fetchQuestionsByBankId } from "@/shared/api/questionsApi";
-import { fetchSubjectNameById, Subject } from "@/shared/api/subjectApi";
 
-import { fetchQuestionBankNameById, QuestionBank } from "@/shared/api/questionBanksApi";
-
+import { } from "@/shared/api/questionBanksApi";
+import {fetchQuestionsByBankId} from "@/shared/api/questionsApi";
+import {QuestionBankApi} from "@/shared/api/questionBanksApi";
+import { QuestionBank } from "@/shared/types/questionBank";
+import {Question, QuestionOption} from "@/shared/types/question";
 import { Flag } from "lucide-react";
 
 
@@ -87,8 +88,9 @@ export default function QuestionsPage() {
 
     (async () => {
       const [qRes, sRes] = await Promise.allSettled([
-        fetchQuestionsByBankId(id, ac.signal),
-        fetchQuestionBankNameById(id), // nhớ nhận signal
+        fetchQuestionsByBankId(id),
+        QuestionBankApi.getById(id),
+         // nhớ nhận signal
       ]);
 
       // Questions

@@ -1,117 +1,59 @@
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8080/api";
+import { apiService } from "@/shared/api/api";
+import { Question, UpdateQuestionPayload } from "../types/question";
 
-export type Question = {
-  id: number;
-  stem: string;
-  explanation?: string | null;
-  questionType: 'mcq_single' | 'mcq_multiple' | 'fill_in' | string;
-  status: "approved" | "draft" | "rejected" | string;
-  createdAt: string;
-  updatedAt?: string;
-  options: QuestionOption[];
-};
+/* ===================== QUERY ===================== */
 
-
-export type QuestionOption = {
-  id: number;
-  label: string;        // "A" | "B" | ...
-  content: string;
-  isCorrect: boolean;
-  sortOrder?: number;
-};
-
-
-export async function fetchQuestionsBySubjectId(subjectId: number, signal?: AbortSignal): Promise<Question[]> {
-  const res = await fetch(`${API_BASE}/questions/subject/${subjectId}`, { signal });
-
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(text || `HTTP ${res.status}`);
-  }
-  const json = (await res.json()) as Question[];
-  return Array.isArray(json) ? (json as Question[]) : [];
-}
-
-
-export async function fetchQuestionsByBankId(subjectId: number, signal?: AbortSignal): Promise<Question[]> {
-  const res = await fetch(`${API_BASE}/questions/question-bank/${subjectId}`, { signal });
-
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(text || `HTTP ${res.status}`);
-  }
-  const json = (await res.json()) as Question[];
-  return Array.isArray(json) ? (json as Question[]) : [];
+export function fetchQuestionsBySubjectId(
+  subjectId: number,
+  signal?: AbortSignal
+): Promise<Question[]> {
+  return apiService.get<Question[]>(
+    `/questions/subject/${subjectId}`,
+    { signal }
+  );
 }
 
 
 
-export async function fetchTotalQuestionCount(signal?: AbortSignal): Promise<number> {
-  const res = await fetch(`${API_BASE}/questions/count`, { signal });
 
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(text || `HTTP ${res.status}`);
-  }
-  const json = (await res.json()) as number;
-  return typeof json === 'number' ? json : 0;
+export function fetchQuestionsByBankId(
+  bankId: number,
+  signal?: AbortSignal
+): Promise<Question[]> {
+  return apiService.get<Question[]>(
+    `/questions/question-bank/${bankId}`,
+    { signal }
+  );
 }
 
-
-// ===== API (minimal) =====
-export async function updateQuestionApi(qId: number, payload: UpdateQuestionPayload ) {
-  const res = await fetch(`${API_BASE}/questions/${qId}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(text || `HTTP ${res.status}`);
-  }
-  return (await res.json()) as Question;
+export function fetchTotalQuestionCount(
+  signal?: AbortSignal
+): Promise<number> {
+  return apiService.get<number>(`/questions/count`, { signal });
 }
 
+/* ===================== MUTATION ===================== */
 
-export type UpdateQuestionPayload = Omit<Partial<Question>, 'options'> & { options?: Array<Partial<QuestionOption>>; };
-
-
-
-// ===== API: Create question =====
-export async function createQuestionApi(
+export function createQuestionApi(
   subjectId: number,
   payload: UpdateQuestionPayload
 ): Promise<Question> {
-  const res = await fetch(`${API_BASE}/questions/subject/${subjectId}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(text || `HTTP ${res.status}`);
-  }
-
-  return (await res.json()) as Question;
+  return apiService.post<Question>(
+    `/questions/subject/${subjectId}`,
+    payload
+  );
 }
 
+export function updateQuestionApi(
+  qId: number,
+  payload: UpdateQuestionPayload
+): Promise<Question> {
+  return apiService.put<Question>(
+    `/questions/${qId}`,
+    payload
+  );
+}
 
-
-// Thêm hàm này vào cuối file questionsApi.ts (sau createQuestionApi)
-
-export async function deleteQuestionApi(qId: number): Promise<void> {
-  const res = await fetch(`${API_BASE}/questions/${qId}`, {
-    method: "DELETE",
-  });
-  
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(text || `HTTP ${res.status}`);
-  }
-  
-  // DELETE thường không trả về body, nếu backend trả về JSON thì parse
-  if (res.status !== 204) {
-    await res.json();
-  }
+export function deleteQuestionApi(qId: number): Promise<void> {
+  return apiService.delete<void>(`/questions/${qId}`);
 }

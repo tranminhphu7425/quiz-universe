@@ -1,6 +1,7 @@
 package com.quizuniverse.entity;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.quizuniverse.dto.UserDTO;
 
@@ -18,9 +19,8 @@ import jakarta.persistence.Table;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "user_id", length = 36, nullable = false, updatable = false)
+    private String userId;
 
     @Column(name = "full_name", length = 255)
     private String fullName;
@@ -65,9 +65,6 @@ public class User {
 
     private Integer intakeYear;
 
-
-
-
     public University getUniversity() {
         return university;
     }
@@ -93,11 +90,11 @@ public class User {
     }
 
     // ===== Getters và Setters =====
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -134,11 +131,11 @@ public class User {
     }
 
     // public String getPassword() {
-    //     return password;
+    // return password;
     // }
 
     // public void setPassword(String password) {
-    //     this.password = password;
+    // this.password = password;
     // }
 
     public String getUsername() {

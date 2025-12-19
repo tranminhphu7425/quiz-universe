@@ -37,8 +37,11 @@ import {
 import { useAuth } from "@/app/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { FaCrown, FaPlus, FaStar } from "react-icons/fa";
-import { fetchAllSubjects, Subject } from "@/shared/api/subjectApi";
+import { fetchAllSubjects } from "@/shared/api/subjectApi";
 import { normalizeText } from "@/shared/utils/textUtils";
+import type { Subject } from "@/shared/types/subject";
+import {QuestionBankApi} from "@/shared/api/questionBanksApi";
+import {QuestionBank} from "@/shared/types/questionBank";
 
 export type Tenant = { id: string; name: string; logo?: string };
 
@@ -94,6 +97,7 @@ export default function Header({
   ] : [{ label: "Câu hỏi", href: "/question_banks" },
   { label: "Thư viện", href: "/resources" },
   // { label: "Hướng dẫn nhanh", href: "/quickguide" },
+  { label: "Giới thiệu", href: "/about" },
   { label: "Diễn đàn", href: "/forum" }];
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -104,7 +108,8 @@ export default function Header({
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [err, setErr] = useState<string | null>(null);
-  const [subjects, setSubjects] = useState<any[]>([]);
+  const [subjects, setSubjects] = useState<Subject[]>([]);
+  const [question_banks, setQuestionBanks] = useState<any[]>([]);
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isFocused, setIsFocused] = useState(false);
@@ -151,8 +156,9 @@ export default function Header({
       try {
         // 1) Ưu tiên lấy từ API
         const list = await fetchAllSubjects(ac.signal);
-
+        const qbList = await QuestionBankApi.getAll();
         setSubjects(list);
+        setQuestionBanks(qbList.content);
       } catch (e: any) {
         // Nếu bị hủy thì thôi
         if (e?.name === "AbortError") return;
@@ -180,9 +186,7 @@ export default function Header({
 
 
 
-  const navSubItems = [
-    { to: "/about", icon: <Contact className="w-4 h-4" />, text: "Giới thiệu" },
-  ];
+  
 
   return (
     <header className="w-full bg-gradient-to-r from-green-600 to-emerald-600 dark:from-slate-900 dark:to-slate-800 shadow-lg sticky top-0 z-50">
@@ -227,7 +231,7 @@ export default function Header({
               onFocus={() => setIsFocused(true)}
               onBlur={() => setTimeout(() => setIsFocused(false), 200)}
               placeholder="Tìm kiếm môn học, đề thi.."
-              className="w-35 xl:w-70 2xl:w-[400px] px-4 py-2 text-black dark:text-white rounded-lg 
+              className="w-full xl:w-70 2xl:w-[400px] px-4 py-2 text-black dark:text-white rounded-lg 
                      border border-emerald-200 dark:border-slate-600 
                      bg-white dark:bg-slate-800 
                      placeholder:text-gray-400 dark:placeholder:text-slate-400
@@ -253,28 +257,7 @@ export default function Header({
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4">
 
-            {/* Main Nav Items */}
-            {navSubItems.map((item) => {
-              const active = location.pathname === item.to;
-              return (
-                <motion.div
-                  key={item.to}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    to={item.to}
-                    className={`flex items-center space-x-2 p-3 rounded-lg transition-all ${active
-                      ? "bg-white text-emerald-600 dark:bg-slate-200 dark:text-emerald-700"
-                      : "text-white dark:text-slate-200 hover:bg-green-700 dark:hover:bg-slate-700"
-                      }`}
-                  >
-                    <span className="text-lg">{item.icon}</span>
-                    <span className="font-medium">{item.text}</span>
-                  </Link>
-                </motion.div>
-              );
-            })}
+           
 
             {/* Custom Links */}
             {links.map((link) => {
@@ -584,7 +567,7 @@ export default function Header({
               Tìm
             </motion.button>
           </form> */}
-          <div className="flex m-2 lg:hidden w-4/5 md:w-[450px]">
+          <div className="flex m-2 lg:hidden w-4/5">
             <form onSubmit={handleSearch} className="w-full">
               <input
                 type="text"
@@ -696,22 +679,7 @@ export default function Header({
                   </AnimatePresence>
                 </motion.div> */}
 
-                {/* Mobile Nav Items */}
-                {navSubItems.map((item) => (
-                  <motion.div key={item.to} variants={itemVariants}>
-                    <Link
-                      to={item.to}
-                      className={`flex items-center py-3 px-4 rounded-lg ${location.pathname === item.to
-                        ? "bg-white text-emerald-600 dark:bg-slate-200 dark:text-emerald-700"
-                        : "text-white dark:text-slate-200 hover:bg-emerald-700 dark:hover:bg-slate-700"
-                        }`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <span className="mr-3">{item.icon}</span>
-                      <span className="font-medium">{item.text}</span>
-                    </Link>
-                  </motion.div>
-                ))}
+              
 
                 {/* Custom Links Mobile */}
                 {links.map((link) => (

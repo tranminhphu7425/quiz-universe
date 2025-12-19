@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -35,7 +36,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     
     @Override
     @Transactional
-    public QuestionBankDTO createQuestionBank(CreateQuestionBankRequest request, Long userId) {
+    public QuestionBankDTO createQuestionBank(CreateQuestionBankRequest request, UUID userId) {
         // Check if bank name already exists for this subject
         if (questionBankRepository.existsByNameAndSubject_Id(request.getName(), request.getSubjectId())) {
             throw new IllegalArgumentException("Question bank with this name already exists for the subject");
@@ -44,7 +45,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
         Subject subject = subjectRepository.findById(request.getSubjectId())
                 .orElseThrow(() -> new ResourceNotFoundException("Subject not found"));
         
-        User creator = userRepository.findByUserId(userId)
+        User creator = userRepository.findByUserId(userId.toString())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         
         QuestionBank questionBank = QuestionBank.builder()
@@ -64,8 +65,8 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     
     @Override
     @Transactional
-    public QuestionBankDTO updateQuestionBank(Long bankId, UpdateQuestionBankRequest request, Long userId) {
-        QuestionBank questionBank = questionBankRepository.findByBankIdAndCreatedBy_UserId(bankId, userId)
+    public QuestionBankDTO updateQuestionBank(Long bankId, UpdateQuestionBankRequest request, UUID userId) {
+        QuestionBank questionBank = questionBankRepository.findByBankIdAndCreatedBy_UserId(bankId, userId.toString())
                 .orElseThrow(() -> new UnauthorizedAccessException("You are not authorized to update this question bank"));
         
         // Check name uniqueness (excluding current bank)
@@ -91,7 +92,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     
     @Override
     @Transactional(readOnly = true)
-    public QuestionBankDTO getQuestionBankById(Long bankId, Long userId) {
+    public QuestionBankDTO getQuestionBankById(Long bankId, UUID userId) {
         QuestionBank questionBank = questionBankRepository.findById(bankId)
                 .orElseThrow(() -> new ResourceNotFoundException("Question bank not found"));
         
@@ -119,8 +120,8 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     
     @Override
     @Transactional(readOnly = true)
-    public Page<QuestionBankDTO> getQuestionBanksByUser(Long userId, Pageable pageable) {
-        return questionBankRepository.findByCreatedBy_UserId(userId, pageable)
+    public Page<QuestionBankDTO> getQuestionBanksByUser(UUID userId, Pageable pageable) {
+        return questionBankRepository.findByCreatedBy_UserId(userId.toString(), pageable)
                 .map(this::convertToDTO);
     }
     
@@ -133,8 +134,8 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     
     @Override
     @Transactional
-    public void deleteQuestionBank(Long bankId, Long userId) {
-        QuestionBank questionBank = questionBankRepository.findByBankIdAndCreatedBy_UserId(bankId, userId)
+    public void deleteQuestionBank(Long bankId, UUID userId) {
+        QuestionBank questionBank = questionBankRepository.findByBankIdAndCreatedBy_UserId(bankId, userId.toString())
                 .orElseThrow(() -> new UnauthorizedAccessException("You are not authorized to delete this question bank"));
         
         questionBankRepository.delete(questionBank);
@@ -143,8 +144,8 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     
     @Override
     @Transactional
-    public QuestionBankDTO changeVisibility(Long bankId, String visibility, Long userId) {
-        QuestionBank questionBank = questionBankRepository.findByBankIdAndCreatedBy_UserId(bankId, userId)
+    public QuestionBankDTO changeVisibility(Long bankId, String visibility, UUID userId) {
+        QuestionBank questionBank = questionBankRepository.findByBankIdAndCreatedBy_UserId(bankId, userId.toString())
                 .orElseThrow(() -> new UnauthorizedAccessException("You are not authorized to change visibility of this question bank"));
         
         try {
@@ -169,7 +170,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     
     @Override
     @Transactional(readOnly = true)
-    public boolean isBankAccessible(Long bankId, Long userId) {
+    public boolean isBankAccessible(Long bankId, UUID userId) {
         QuestionBank questionBank = questionBankRepository.findById(bankId)
                 .orElseThrow(() -> new ResourceNotFoundException("Question bank not found"));
         
@@ -180,6 +181,13 @@ public class QuestionBankServiceImpl implements QuestionBankService {
         
         // Check if user is the creator
         if (questionBank.getCreatedBy().getUserId().equals(userId)) {
+            return true;
+        }
+
+        // If admin user, grant access (assuming a method isAdminUser exists)
+        User user = userRepository.findByUserId(userId.toString())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));   
+        if (user.getRole().equals("admin")) {
             return true;
         }
         
@@ -200,7 +208,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
                 .subjectName(questionBank.getSubject().getName())
                 .description(questionBank.getDescription())
                 .visibility(questionBank.getVisibility())
-                .createdBy(questionBank.getCreatedBy().getUserId())
+                .createdBy(UUID.fromString(questionBank.getCreatedBy().getUserId()))
                 .creatorName(questionBank.getCreatedBy().getFullName())
                 .createdAt(questionBank.getCreatedAt())
                 .updatedAt(questionBank.getUpdatedAt())

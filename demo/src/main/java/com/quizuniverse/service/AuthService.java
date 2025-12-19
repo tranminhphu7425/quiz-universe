@@ -9,6 +9,7 @@ import com.quizuniverse.repository.UserRepository;
 import com.quizuniverse.security.JwtUtil;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,7 +33,7 @@ public class AuthService {
             throw new RuntimeException("Invalid email or password");
         }
 
-        String token = jwtUtil.generateToken(user.getUserId());
+        String token = jwtUtil.generateToken(user.getUserId().toString());
         return new LoginResponse(token, user.convertToDTO());
     }
 
@@ -41,6 +42,7 @@ public class AuthService {
             throw new RuntimeException("Email đã tồn tại");
         }
         User user = new User();
+        user.setUserId(UUID.randomUUID().toString());
         user.setFullName(request.getName());
         user.setEmail(request.getEmail());
         user.setPasswordHash(passwordEncoder.encode(request.getPassword())); // mã hoá
@@ -49,9 +51,9 @@ public class AuthService {
         user.setCreatedAt(LocalDateTime.now()); // ✅ thêm dòng này
 
         User saved = userRepository.save(user);
-        String token = jwtUtil.generateToken(saved.getUserId());
+        String token = jwtUtil.generateToken(saved.getUserId().toString());
 
-        return new RegisterResponse(token, saved.getUserId(), saved.getFullName(), saved.getEmail());
+        return new RegisterResponse(token, UUID.fromString(saved.getUserId()), saved.getFullName(), saved.getEmail());
     }
 
 }

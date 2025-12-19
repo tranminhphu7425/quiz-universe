@@ -12,48 +12,68 @@ export function setAuthToken(token: string | null) {
   authToken = token;
 }
 
+
 export async function fetchJson<T>(
   path: string,
-  options: { method?: HttpMethod; body?: any; headers?: Record<string, string> } = {}
+  options: {
+    method?: HttpMethod;
+    body?: any;
+    headers?: Record<string, string>;
+  } = {}
 ): Promise<T> {
   const url = path.startsWith("http") ? path : `${API_BASE}${path}`;
+
   const headers: Record<string, string> = {
-    "Content-Type": "application/json",
     ...(options.headers || {}),
   };
-  if (authToken) headers["Authorization"] = `Bearer ${authToken}`;
-  console.log("Token: ", authToken);
+
+  // 👉 Chỉ set Content-Type khi có body
+  if (options.body !== undefined) {
+    headers["Content-Type"] = "application/json";
+  }
+
+  // 👉 Gắn JWT token
+  const authToken = localStorage.getItem("auth_token");
+  if (authToken) {
+    headers["Authorization"] = `Bearer ${authToken}`;
+  }
+
+  console.log("➡️ Fetch:", options.method || "GET", url);
+  console.log("➡️ Token:", authToken);
+
   const res = await fetch(url, {
     method: options.method || "GET",
     headers,
     body: options.body ? JSON.stringify(options.body) : undefined,
   });
-  
-  // console.log("Response data:", res.json());
-  // cố gắng parse lỗi JSON nếu có
-  const isJson = res.headers.get("content-type")?.includes("application/json");
+
+  const contentType = res.headers.get("content-type");
+  const isJson = contentType?.includes("application/json");
+
+  // ❌ Lỗi HTTP
   if (!res.ok) {
-    const errBody = isJson ? await res.json().catch(() => ({})) : await res.text();
-    const message =
-      (typeof errBody === "object" && errBody?.message) ||
-      (typeof errBody === "string" && errBody) ||
-      `HTTP ${res.status}`;
-    throw new Error(message);
+    let errorMessage = `HTTP ${res.status}`;
+
+    try {
+      if (isJson) {
+        const err = await res.json();
+        errorMessage = err?.message || JSON.stringify(err);
+      } else {
+        errorMessage = await res.text();
+      }
+    } catch {
+      // ignore parse error
+    }
+
+    throw new Error(errorMessage);
   }
 
-  return (isJson ? res.json() : (undefined as unknown)) as T;
-}
+  // ✅ Không có body (204 No Content)
+  if (res.status === 204) {
+    return undefined as T;
+  }
 
-
-// ====== (tuỳ chọn) Gọi API thật ======
-export async function saveProfile(payload: { university: string; major: number; intakeYear?: number }) {
-  // API gợi ý: POST /api/users/me/profile or /api/profile/setup
-  console.log(payload);
-  
-  return await fetchJson<any>("/api/profile/setup", {
-    method: "POST",
-    body: payload,
-  }); // tuỳ backend trả về
+  return (isJson ? await res.json() : undefined) as T;
 }
 
 

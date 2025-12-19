@@ -12,12 +12,12 @@ import {
 } from "lucide-react";
 
 import {
-  Question,
-  QuestionOption,
-  UpdateQuestionPayload,
+  
   fetchQuestionsByBankId, updateQuestionApi, createQuestionApi, deleteQuestionApi
 } from "@/shared/api/questionsApi";
-import { fetchQuestionBankNameById } from "@/shared/api/questionBanksApi";
+import { QuestionBankApi } from "@/shared/api/questionBanksApi";
+
+import {UpdateQuestionPayload, Question, QuestionOption} from "@/shared/types/question";
 
 // If you already expose API_BASE from your shared api layer, you can import it.
 // To make this page self-contained, keep a local fallback:
@@ -54,7 +54,7 @@ function autoLabel(idx: number) {
 
 // ===== Page =====
 export default function EditQuestionsPage() {
-  const { subjectId } = useParams<{ subjectId: string }>();
+  const { bankId } = useParams<{ bankId: string }>();
 
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
@@ -78,16 +78,16 @@ export default function EditQuestionsPage() {
 
   // load list
   useEffect(() => {
-    if (!subjectId) return;
+    if (!bankId) return;
     let cancelled = false;
     setLoading(true);
     setErr(null);
     (async () => {
       try {
-        const idNum = Number(subjectId);
+        const idNum = Number(bankId);
         const [qs, sj] = await Promise.all([
           fetchQuestionsByBankId(idNum),
-          fetchQuestionBankNameById(idNum).catch(() => ({ name: `Môn #${idNum}` })),
+          QuestionBankApi.getById(idNum),
         ]);
         if (!cancelled) {
           setList(qs);
@@ -106,7 +106,7 @@ export default function EditQuestionsPage() {
     return () => {
       cancelled = true;
     };
-  }, [subjectId]);
+  }, [bankId]);
 
 
 
@@ -256,7 +256,7 @@ export default function EditQuestionsPage() {
 
     // (Tuỳ chọn) Nếu backend có API tạo câu hỏi:
     try {
-      const created = await createQuestionApi(Number(subjectId), {
+      const created = await createQuestionApi(Number(bankId), {
         stem: "",
         explanation: "",
         questionType: "mcq_single",
@@ -372,7 +372,7 @@ export default function EditQuestionsPage() {
             <div ref={editorTopRef}></div>
           </div>
           <div className="flex items-center gap-3">
-            <Link to={`/questions/subject/${subjectId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15">
+            <Link to={`/questions/subject/${bankId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15">
               <ArrowLeft className="h-4 w-4" />
               Về trang làm bài
 

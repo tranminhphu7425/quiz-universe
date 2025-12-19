@@ -16,9 +16,13 @@ import { set } from "zod";
 
 type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
-import { getAllQuestionBanks, QuestionBank } from "@/shared/api/questionBanksApi";
+
+
+import { QuestionBankApi } from "@/shared/api/questionBanksApi";
+import type { QuestionBank } from "@/shared/types/questionBank";
 import { useAuth } from "@/app/providers/AuthProvider";
-import { fetchFavoriteQuestionBanks, addFavorite, removeFavorite } from "@/shared/api/favoriteApi";
+import { favoriteService } from "@/shared/api/favoriteApi";
+import { FavoriteQuestionBank } from "@/shared/types/favorite";
 
 // Map màu theo độ khó
 const DIFFICULTY_MAP: Record<Difficulty, { text: string; bg: string; ring: string }> = {
@@ -68,18 +72,36 @@ export default function QuestionBanksPage() {
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
   const { user, logout } = useAuth();
 
+
+  const handleSortChange = (value: string) => {
+  const validOptions: SortOption[] = [
+    'name-asc', 'name-desc', 
+    'date-asc', 'date-desc',
+    'questions-asc', 'questions-desc',
+    'visibility'
+  ];
+  
+  if (validOptions.includes(value as SortOption)) {
+    setSortOption(value as SortOption);
+  } else {
+    // Fallback nếu giá trị không hợp lệ
+    setSortOption('date-desc');
+  }
+};
+
   const toggleFavorite = async (bankId: number) => {
     const isFav = favorites.has(bankId);
+    if (!user) return;
     try {
       if (isFav) {
-        await removeFavorite(bankId, user?.id, token!);
+        await favoriteService.removeFavoriteQuestionBank(bankId);
         setFavorites(prev => {
           const next = new Set(prev);
           next.delete(bankId);
           return next;
         });
       } else {
-        await addFavorite(bankId, user?.id, token!);
+        await favoriteService.addFavoriteQuestionBank(bankId);
         setFavorites(prev => new Set(prev).add(bankId));
       }
     } catch (err) {
@@ -114,8 +136,9 @@ export default function QuestionBanksPage() {
   useEffect(() => {
     const loadFavorite = async () => {
       try {
-        const data = await fetchFavoriteQuestionBanks(user?.id, token!);
-        setFavorites(new Set(data.map((s: QuestionBank) => s.bankId)));
+        if (!user) return;
+        const data = await favoriteService.getFavoriteQuestionBanks();
+        setFavorites(new Set(data.map((s: FavoriteQuestionBank) => s.bankId)));
       } catch (err) {
         console.error(err);
       }
@@ -130,7 +153,7 @@ export default function QuestionBanksPage() {
 
     (async () => {
       try {
-        const list = await getAllQuestionBanks();
+        const list = await QuestionBankApi.getAll();
         setData(list.content);
       } catch (e: any) {
         if (e?.name === "AbortError") return;
@@ -298,6 +321,16 @@ export default function QuestionBanksPage() {
               >
                 <PlusCircle className="h-4 w-4" /> Thêm bộ câu hỏi mới
               </Link>
+
+              <Link
+                to="/subjects"
+                className="inline-flex items-center gap-2 rounded-full bg-red-400 px-5 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
+              >
+                <BookOpen className="h-4 w-4" /> Hiển thị tất cả các môn học
+              </Link>
+              
+
+
             </div>
           </div>
 
@@ -427,72 +460,95 @@ export default function QuestionBanksPage() {
 
             {/* Right: Stats */}
             {/* Trong Control Bar, thêm vào phần Right: Stats */}
-            <div className="flex items-center gap-6">
-              <span className="text-sm text-slate-600 dark:text-slate-400">Sắp xếp:</span>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
-                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                    }`}
-                >
-                  {sortOption === 'name-asc' ? <SortAsc className="h-3 w-3" /> : <SortDesc className="h-3 w-3" />}
-                  Tên
-                </button>
-                <button
-                  onClick={() => setSortOption(sortOption === 'date-desc' ? 'date-asc' : 'date-desc')}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('date')
-                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                    }`}
-                >
-                  <Calendar className="h-3 w-3" />
-                  Ngày {sortOption === 'date-desc' ? '↓' : '↑'}
-                </button>
-                <button
-                  onClick={() => setSortOption(sortOption === 'questions-desc' ? 'questions-asc' : 'questions-desc')}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('questions')
-                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                    }`}
-                >
-                  <BookOpen className="h-3 w-3" />
-                  Số câu {sortOption === 'questions-desc' ? '↓' : '↑'}
-                </button>
-                <button
-                  onClick={() => setSortOption('visibility')}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'visibility'
-                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                    }`}
-                >
-                  <Eye className="h-3 w-3" />
-                  Quyền xem
-                </button>
-              </div>
+            <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+  <div className="flex items-center justify-between md:justify-start gap-4">
+    {/* Mobile: Dropdown sắp xếp */}
+    <div className="md:hidden flex-1">
+      <select
+        value={sortOption}
+        onChange={(e) => handleSortChange(e.target.value)}
+        className="w-full px-3 py-1.5 rounded-lg text-sm bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 transition-colors"
+      >
+        <option value="name-asc">Tên (A → Z)</option>
+        <option value="name-desc">Tên (Z → A)</option>
+        <option value="date-desc">Ngày (mới nhất)</option>
+        <option value="date-asc">Ngày (cũ nhất)</option>
+        <option value="questions-desc">Số câu (nhiều nhất)</option>
+        <option value="questions-asc">Số câu (ít nhất)</option>
+        <option value="visibility">Quyền xem</option>
+      </select>
+    </div>
 
+    {/* Desktop: Vẫn giữ các button như cũ */}
+    <div className="hidden md:flex md:items-center md:gap-6">
+      <span className="text-sm text-slate-600 dark:text-slate-400">Sắp xếp:</span>
+      <div className="flex flex-wrap gap-2">
+        <button
+          onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
+          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
+              ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+            }`}
+        >
+          {sortOption === 'name-asc' ? <SortAsc className="h-3 w-3" /> : <SortDesc className="h-3 w-3" />}
+          Tên
+        </button>
+        <button
+          onClick={() => setSortOption(sortOption === 'date-desc' ? 'date-asc' : 'date-desc')}
+          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('date')
+              ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+            }`}
+        >
+          <Calendar className="h-3 w-3" />
+          Ngày {sortOption === 'date-desc' ? '↓' : '↑'}
+        </button>
+        <button
+          onClick={() => setSortOption(sortOption === 'questions-desc' ? 'questions-asc' : 'questions-desc')}
+          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('questions')
+              ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+            }`}
+        >
+          <BookOpen className="h-3 w-3" />
+          Số câu {sortOption === 'questions-desc' ? '↓' : '↑'}
+        </button>
+        <button
+          onClick={() => setSortOption('visibility')}
+          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'visibility'
+              ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+            }`}
+        >
+          <Eye className="h-3 w-3" />
+          Quyền xem
+        </button>
+      </div>
+    </div>
 
-              {/* Nút toggle filters */}
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${showFilters
-                  ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-                  }`}
-              >
-                <Filter className="h-4 w-4" />
-                Bộ lọc
-                {showFilters ? (
-                  <ChevronUp className="h-3 w-3" />
-                ) : (
-                  <ChevronDown className="h-3 w-3" />
-                )}
-              </button>
-              <div className="text-sm text-slate-600 dark:text-slate-400">
-                {filtered.length} mục
-              </div>
-            </div>
+    {/* Nút toggle filters (luôn hiển thị) */}
+    <button
+      onClick={() => setShowFilters(!showFilters)}
+      className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${showFilters
+          ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+          : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+        }`}
+    >
+      <Filter className="h-4 w-4" />
+      <span className="hidden sm:inline">Bộ lọc</span>
+      {showFilters ? (
+        <ChevronUp className="h-3 w-3" />
+      ) : (
+        <ChevronDown className="h-3 w-3" />
+      )}
+    </button>
+  </div>
+
+  {/* Hiển thị số lượng mục */}
+  {/* <div className="text-sm text-slate-600 dark:text-slate-400">
+    {filtered.length} mục
+  </div> */}
+</div>
           </div>
         </div>
       </div>
@@ -715,62 +771,70 @@ function SubjectCardGrid({ bank, isFavorite, isSelected, onToggleFavorite, onTog
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ type: "spring", stiffness: 160, damping: 16 }}
-      whileHover={{ y: -4, scale: 1.01 }}
-      className={`relative rounded-xl border ${isSelected
+      
+      className={`flex flex-col justify-between relative rounded-xl border ${isSelected
         ? 'border-emerald-400 dark:border-emerald-500 ring-2 ring-emerald-200 dark:ring-emerald-500/30'
         : 'border-emerald-100/60 dark:border-slate-800'
         } bg-white p-4 shadow-lg transition dark:bg-slate-900`}
     >
-      {/* Selection checkbox */}
-      <div className="absolute top-3 right-3">
-        <input
-          type="checkbox"
-          checked={isSelected}
-          onChange={onToggleSelect}
-          className="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
-        />
-      </div>
+      <div className="grow flex flex-col">
 
-      <div className="mb-2 flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          {/* Visibility badge */}
-          <div className="mb-1 flex items-center gap-2">
-            <span className={`inline-flex items-center gap-1 rounded-md ${visibilityIcon.bg} px-2 py-0.5 text-xs font-semibold ${visibilityIcon.color}`}>
-              <visibilityIcon.icon className="h-3 w-3" />
-              {bank.visibility === 'PUBLIC' ? 'Công khai' : bank.visibility === 'ORG' ? 'Nội bộ' : 'Riêng tư'}
-            </span>
-            {bank.questionCount > 0 && (
-              <span className="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-300">
-                <BookOpen className="h-3 w-3" />
-                {bank.questionCount} câu
-              </span>
-            )}
+        <div>
+          {/* Selection checkbox */}
+          <div className="absolute top-3 right-3">
+            <input
+              type="checkbox"
+              checked={isSelected}
+              onChange={onToggleSelect}
+              className="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+            />
           </div>
 
-          <h3 className="mt-1 truncate text-base font-bold text-emerald-900 dark:text-emerald-200">
-            {bank.name}
-          </h3>
+          <div className="mb-2 flex flex-col items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              {/* Visibility badge */}
+              <div className="mb-1 flex items-center gap-2">
+                <span className={`inline-flex items-center gap-1 rounded-md ${visibilityIcon.bg} px-2 py-0.5 text-xs font-semibold ${visibilityIcon.color}`}>
+                  <visibilityIcon.icon className="h-3 w-3" />
+                  {bank.visibility === 'PUBLIC' ? 'Công khai' : bank.visibility === 'ORG' ? 'Nội bộ' : 'Riêng tư'}
+                </span>
+                {bank.questionCount > 0 && (
+                  <span className="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-300">
+                    <BookOpen className="h-3 w-3" />
+                    {bank.questionCount} câu
+                  </span>
+                )}
+              </div>
+
+              <h3 className="mt-1 text-base font-bold text-emerald-900 dark:text-emerald-200">
+                {bank.name}
+              </h3>
+            </div>
+          </div>
         </div>
+        <div className="flex flex-col grow justify-between">
+
+          {bank.description ? (
+            <p className="line-clamp-3 text-sm text-gray-700 dark:text-gray-300 mb-3">{bank.description}</p>
+          ) : (
+            <p className="text-sm italic text-gray-500 dark:text-gray-400 mb-3">Chưa có mô tả</p>
+          )}
+
+          {/* Subject info */}
+          <div className="mb-3">
+            <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+              <span className="font-medium">Môn:</span>
+              <span className="truncate">{bank.subjectName}</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+              <span className="font-medium">Người tạo:</span>
+              <span className="truncate">{bank.creatorName}</span>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-
-      {bank.description ? (
-        <p className="line-clamp-3 text-sm text-gray-700 dark:text-gray-300 mb-3">{bank.description}</p>
-      ) : (
-        <p className="text-sm italic text-gray-500 dark:text-gray-400 mb-3">Chưa có mô tả</p>
-      )}
-
-      {/* Subject info */}
-      <div className="mb-3">
-        <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
-          <span className="font-medium">Môn:</span>
-          <span className="truncate">{bank.subjectName}</span>
-        </div>
-        <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
-          <span className="font-medium">Người tạo:</span>
-          <span className="truncate">{bank.creatorName}</span>
-        </div>
-      </div>
-
       <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-3">
         <div className="flex items-center gap-2 text-xs text-emerald-900/70 dark:text-slate-300/70">
           <Clock className="h-3.5 w-3.5" />

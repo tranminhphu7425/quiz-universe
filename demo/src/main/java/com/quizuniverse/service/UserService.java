@@ -1,6 +1,7 @@
 package com.quizuniverse.service;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,14 +16,14 @@ public class UserService {
     private UserRepository userRepository;
 
 
-    public UserDTO getUserById(Long id) {
-        return userRepository.findByUserId(id)
+    public UserDTO getUserById(UUID id) {
+        return userRepository.findByUserId(id.toString())
                 .map(User::convertToDTO)
                 .orElse(null);
     }
 
-    public UserDTO updateUserInfo(Long userId, UserDTO userDTO) {
-        User user = userRepository.findByUserId(userId)
+    public UserDTO updateUserInfo(UUID userId, UserDTO userDTO) {
+        User user = userRepository.findByUserId(userId.toString())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         user.setFullName(userDTO.getName());

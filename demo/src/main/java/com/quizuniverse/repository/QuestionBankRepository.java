@@ -10,17 +10,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+
 import java.util.Optional;
+
 
 @Repository
 public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long> {
     
     Page<QuestionBank> findBySubject_Id(Long subjectId, Pageable pageable);
     
-    Page<QuestionBank> findByCreatedBy_UserId(Long userId, Pageable pageable);
+    Page<QuestionBank> findByCreatedBy_UserId(String userId, Pageable pageable);
     
-    Page<QuestionBank> findBySubject_IdAndCreatedBy_UserId(Long subjectId, Long userId, Pageable pageable);
+    Page<QuestionBank> findBySubject_IdAndCreatedBy_UserId(Long subjectId, String userId, Pageable pageable);
     
     Page<QuestionBank> findByVisibility(Visibility visibility, Pageable pageable);
 
@@ -33,7 +34,7 @@ public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long
            "qb.createdBy.userId = :userId) " +
            "AND qb.subject.id = :id")
     Page<QuestionBank> findAccessibleBanks(@Param("id") Long subjectId,
-                                          @Param("userId") Long userId,
+                                          @Param("userId") String userId,
                                           
                                           Pageable pageable);
     
@@ -47,5 +48,5 @@ public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long
     
     boolean existsByNameAndSubject_Id(String name, Long subjectId);
     
-    Optional<QuestionBank> findByBankIdAndCreatedBy_UserId(Long bankId, Long userId);
+    Optional<QuestionBank> findByBankIdAndCreatedBy_UserId(Long bankId, String userId);
 }

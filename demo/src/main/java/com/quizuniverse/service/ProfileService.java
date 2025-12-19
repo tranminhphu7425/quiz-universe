@@ -1,5 +1,7 @@
 package com.quizuniverse.service;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +26,8 @@ public class ProfileService {
     }
 
     @Transactional
-    public User updateProfile(Long userId, ProfileSetupRequest req) {
-        User user = userRepo.findByUserId(userId)
+    public User updateProfile(UUID userId, ProfileSetupRequest req) {
+        User user = userRepo.findByUserId(userId.toString())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         // University

@@ -24,7 +24,9 @@ import {
     Download,
     Settings
 } from "lucide-react";
-import GradientText from "@/shared/ui/GradientText";
+
+
+
 import Floating from "@/shared/ui/Floatting";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import { useAuth } from "@/app/providers/AuthProvider";
@@ -34,7 +36,7 @@ export default function CreateQuestionBankPage() {
     const { user } = useAuth();
     const navigate = useNavigate();
 
-    const [activeTab, setActiveTab] = useState<"ai" | "manual">("ai");
+    const [activeTab, setActiveTab] = useState<"ai" | "manual">("manual");
     const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [uploadProgress, setUploadProgress] = useState(0);
     const [isUploading, setIsUploading] = useState(false);

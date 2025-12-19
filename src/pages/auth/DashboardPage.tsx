@@ -41,10 +41,10 @@ import {
 import LoadingState from "@/widgets/LoadingState";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
-import { Subject } from "@/shared/api/subjectApi";
-import favoriteApi, { fetchFavorites } from "@/shared/api/favoriteApi";
+import { favoriteService } from "@/shared/api/favoriteApi";
 import TypewriterText from "@/shared/ui/TypewriterText";
-import OrbitingSkills from "@/shared/ui/OrbitingSkills";
+// import OrbitingSkills from "@/shared/ui/OrbitingSkills";
+import { FavoriteQuestionBank, FavoriteSubject } from "@/shared/types/favorite";
 
 // =============================
 // Types & interfaces
@@ -89,7 +89,8 @@ type RecentActivity = {
 export default function DashboardPage() {
   const user = useAuth();
   const [loading, setLoading] = useState(false);
-  const [favorites, setFavorites] = useState<Subject[]>([]);
+  const [questionBankFavorites, setQuestionBankFavorites] = useState<FavoriteQuestionBank[]>([]);
+  const [subjectFavorites, setSubjectFavorites] = useState<FavoriteSubject[]>([]);
   const [activeTab, setActiveTab] = useState<'overview' | 'stats' | 'recent'>('overview');
   const [userStats, setUserStats] = useState<UserStats>({
     totalQuestions: 0,
@@ -102,7 +103,7 @@ export default function DashboardPage() {
   });
 
   const User = user?.user;
-  const token = localStorage.getItem("auth_token");
+
 
   // Mock recent activities
   const recentActivities: RecentActivity[] = [
@@ -140,8 +141,13 @@ export default function DashboardPage() {
   useEffect(() => {
     const loadFavorite = async () => {
       try {
-        const data = await fetchFavorites(User?.id, token!);
-        setFavorites(data);
+        if (!User) return;
+        const questionBankData = await favoriteService.getFavoriteQuestionBanks();
+        const subjectData = await favoriteService.getFavoriteSubjects();
+        setQuestionBankFavorites(questionBankData);
+        setSubjectFavorites(subjectData);
+        console.log("Chay subject data", subjectData);
+        
       } catch (err) {
         console.error(err);
       }
@@ -150,15 +156,16 @@ export default function DashboardPage() {
     loadFavorite();
   }, []);
 
-  async function removeFavorite(s: Subject) {
+  async function removeFavorite(s: FavoriteQuestionBank | FavoriteSubject) {
     try {
-      await favoriteApi.delete(`/subjects/${s.id}/favorite?userId=${User?.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-      });
-      setFavorites(prev => prev.filter(fav => fav.id !== s.id));
+      if (!User) return;
+      if ('bankId' in s) {
+        await favoriteService.removeFavoriteQuestionBank(s.bankId);
+        setQuestionBankFavorites(prev => prev.filter(fav => fav.bankId !== s.bankId));
+      } else {
+        await favoriteService.removeFavoriteSubject(s.subjectId);
+        setSubjectFavorites(prev => prev.filter(fav => fav.subjectId !== s.subjectId));
+      }
     }
     catch (e) {
       console.error("Failed to remove favorite:", e);
@@ -177,7 +184,8 @@ export default function DashboardPage() {
   const upcomingDeadlines = [
     { title: 'Bài tập CT296', dueDate: '2024-06-15', subject: 'CT296', priority: 'high' },
     { title: 'Ôn thi cuối kỳ', dueDate: '2024-06-20', subject: 'Toàn bộ', priority: 'medium' },
-    { title: 'Bài tập lớn', dueDate: '2024-06-25', subject: 'CTDL', priority: 'high' }
+    { title: 'Bài tập lớn', dueDate: '2024-06-25', subject: 'CTDL', priority: 'high' },
+    { title: 'Bài tập lớn', dueDate: '2024-06-25', subject: 'CTDL', priority: 'high' },
   ];
 
   return (
@@ -196,7 +204,7 @@ export default function DashboardPage() {
           <div className="absolute bottom-10 left-1/3 h-64 w-64 animate-pulse rounded-full bg-white/5 blur-3xl dark:bg-blue-400/10" />
         </div>
 
-        <OrbitingSkills />
+        {/* <OrbitingSkills /> */}
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-16">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
@@ -256,7 +264,7 @@ export default function DashboardPage() {
                 backdrop-blur-md px-4 py-3
                transition-all hover:bg-white/15" ${action.color} `}
                   >
-                   
+
 
                     {/* Icon */}
                     <div className="relative z-10 flex-shrink-0">
@@ -342,24 +350,24 @@ export default function DashboardPage() {
                     ))}
                   </div>
 
-                  {/* Favorites Section */}
+                  {/* Favorites Queston_bank Section */}
                   <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
                     <div className="mb-6 flex items-center justify-between">
                       <div>
                         <h2 className="text-lg font-bold text-slate-900 dark:text-white inline-flex items-center gap-2">
                           <Heart className="h-5 w-5 text-rose-500" />
-                          Môn học yêu thích
+                          Bộ câu hỏi yêu thích
                         </h2>
                         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                           Truy cập nhanh các môn học bạn yêu thích
                         </p>
                       </div>
                       <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-                        {favorites.length} môn
+                        {questionBankFavorites.length} môn
                       </span>
                     </div>
 
-                    {favorites.length === 0 ? (
+                    {questionBankFavorites.length === 0 ? (
                       <div className="rounded-xl border-2 border-dashed border-slate-300 p-8 text-center dark:border-slate-700">
                         <Heart className="mx-auto h-12 w-12 text-slate-300 dark:text-slate-700" />
                         <p className="mt-3 font-medium text-slate-700 dark:text-slate-300">Chưa có môn học yêu thích</p>
@@ -376,9 +384,103 @@ export default function DashboardPage() {
                       </div>
                     ) : (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {favorites.map((subject) => (
+                        {questionBankFavorites.map((questionBank) => (
                           <motion.div
-                            key={subject.id}
+                            key={questionBank.bankId}
+                            whileHover={{ y: -4 }}
+                            className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-50 to-white p-4 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700"
+                          >
+                            <button
+                              onClick={() => removeFavorite(questionBank)}
+                              className="absolute right-3 top-3 rounded-full p-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-500 dark:hover:bg-rose-900/20"
+                              title="Bỏ yêu thích"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+
+                            <div className="flex items-start gap-3">
+                              <div className="rounded-lg bg-emerald-100 p-2 dark:bg-emerald-900/30">
+                                <BookMarked className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                              </div>
+
+
+
+                              <div className="flex-1">
+                                <p className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                                  {questionBank.subjectName || 'Không có tên môn'}
+                                </p>
+                                <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
+                                  {questionBank.bankName}
+                                </h3>
+
+
+
+
+                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                  {questionBank.bankDescription || 'Không có mã môn'}
+                                </p>
+                                <div className="mt-3 flex items-center gap-2">
+                                  <Link
+                                    to={`/questions/subject/${questionBank.bankId}`}
+                                    className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white hover:bg-emerald-700"
+                                  >
+                                    Học ngay
+                                    <ArrowRight className="h-3 w-3" />
+                                  </Link>
+                                  <Link
+                                    to={`/files/subject/${questionBank.bankId}`}
+                                    className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300"
+                                  >
+                                    <FileQuestion className="h-3 w-3" />
+                                    Tài liệu
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+
+                  {/* Favorites Subject Section */}
+                  <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                    <div className="mb-6 flex items-center justify-between">
+                      <div>
+                        <h2 className="text-lg font-bold text-slate-900 dark:text-white inline-flex items-center gap-2">
+                          <Heart className="h-5 w-5 text-rose-500" />
+                          Bộ môn yêu thích
+                        </h2>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                          Truy cập nhanh các môn học bạn yêu thích
+                        </p>
+                      </div>
+                      <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                        {subjectFavorites.length} môn
+                      </span>
+                    </div>
+
+                    {subjectFavorites.length === 0 ? (
+                      <div className="rounded-xl border-2 border-dashed border-slate-300 p-8 text-center dark:border-slate-700">
+                        <Heart className="mx-auto h-12 w-12 text-slate-300 dark:text-slate-700" />
+                        <p className="mt-3 font-medium text-slate-700 dark:text-slate-300">Chưa có môn học yêu thích</p>
+                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                          Bấm vào ♥ ở các môn học để thêm vào đây
+                        </p>
+                        <Link
+                          to="/subjects"
+                          className="mt-4 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700"
+                        >
+                          <BookOpen className="h-4 w-4" />
+                          Khám phá môn học
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {subjectFavorites.map((subject) => (
+                          <motion.div
+                            key={subject.subjectId}
                             whileHover={{ y: -4 }}
                             className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-50 to-white p-4 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700"
                           >
@@ -396,21 +498,21 @@ export default function DashboardPage() {
                               </div>
                               <div className="flex-1">
                                 <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
-                                  {subject.name}
+                                  {subject.subjectName}
                                 </h3>
                                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                                  {subject.code || 'Không có mã môn'}
+                                  {subject.subjectCode || 'Không có mã môn'}
                                 </p>
                                 <div className="mt-3 flex items-center gap-2">
                                   <Link
-                                    to={`/questions/subject/${subject.id}`}
+                                    to={`/questions/subject/${subject.subjectId}`}
                                     className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white hover:bg-emerald-700"
                                   >
-                                    Học ngay
+                                    Thông tin
                                     <ArrowRight className="h-3 w-3" />
                                   </Link>
                                   <Link
-                                    to={`/files/subject/${subject.id}`}
+                                    to={`/files/subject/${subject.subjectId}`}
                                     className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300"
                                   >
                                     <FileQuestion className="h-3 w-3" />
@@ -574,7 +676,7 @@ export default function DashboardPage() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              to="/app/questions/create"
+              to="/question_bank/create"
               className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-semibold text-emerald-600 hover:bg-emerald-50"
             >
               <FilePlus2 className="h-4 w-4" />

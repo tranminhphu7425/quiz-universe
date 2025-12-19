@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { Building2, GraduationCap, CheckCircle2, Loader2, Sparkles, ArrowRight } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
-import { saveProfile } from "@/shared/api/apiClient"
+import { ProfileApi } from "@/shared/api/profileApi";
 
-import { fetchUniversities, fetchMajors, University, Major } from "@/shared/api/major-universityApi";
-
-
+import {EducationApi} from "@/shared/api/major-universityApi";
+import type { University } from "@/shared/types/university";
+import type { Major } from "@/shared/types/major";
 
 
 export default function SetupProfilePage() {
@@ -63,7 +63,7 @@ export default function SetupProfilePage() {
             console.log(payload);
 
             // Gọi API thật (nếu có). Nếu bạn chưa có endpoint, có thể comment dòng dưới để chỉ cập nhật localStorage.
-            await saveProfile(payload).catch(() => undefined);
+            await ProfileApi.setupProfile(payload).catch(() => undefined);
 
             // ====== Cập nhật localStorage auth_user (đồng bộ với AuthProvider của bạn) ======
             const nextUser = { ...(user || {}), university: universityCode!, major: majorId, intakeYear };
@@ -84,8 +84,8 @@ export default function SetupProfilePage() {
         async function load() {
             try {
                 const [unis, majors] = await Promise.all([
-                    fetchUniversities(),
-                    fetchMajors(),
+                    EducationApi.getUniversities(),
+                    EducationApi.getMajors(),
                 ]);
                 setUniversities(unis);
                 setMajors(majors);

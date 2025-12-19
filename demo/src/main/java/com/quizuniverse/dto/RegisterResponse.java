@@ -1,17 +1,19 @@
 package com.quizuniverse.dto;
 
+import java.util.UUID;
+
 public class RegisterResponse  {
      private String token;
-    private Long id;
+    private UUID id;
     private String name;
     private String email;
-    public RegisterResponse(String token, Long id, String name, String email) {
+    public RegisterResponse(String token, UUID id, String name, String email) {
         this.token = token;
         this.id = id;
         this.name = name;
         this.email = email;
     }
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
     public String getName() {
@@ -26,7 +28,7 @@ public class RegisterResponse  {
     public void setToken(String token) {
         this.token = token;
     }
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
     
