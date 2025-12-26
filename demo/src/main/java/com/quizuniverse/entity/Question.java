@@ -1,26 +1,19 @@
 package com.quizuniverse.entity;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import com.quizuniverse.entity.QuestionBank;
+import jakarta.persistence.*;
+import lombok.*;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "questions")
-
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Question {
 
     @Id
@@ -28,13 +21,12 @@ public class Question {
     @Column(name = "question_id")
     private Long id;
 
-
-
+    // Mỗi question thuộc về 1 question bank
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bank_id", nullable = false)
-    private QuestionBank bank; // ← Tên này phải khớp với mappedBy trong QuestionBank
+    private QuestionBank bank;
 
-
+    // Mỗi question thuộc về 1 subject
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
@@ -46,112 +38,77 @@ public class Question {
     private String explanation;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "question_type")
+    @Column(name = "question_type", nullable = false)
     private QuestionType questionType;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private QuestionStatus status;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    // @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // private List<QuestionOption> options;
+    /**
+     * Một question có nhiều option
+     * - mappedBy = "question": FK nằm ở QuestionOption
+     * - cascade = ALL: lưu/xóa question → option đi theo
+     * - orphanRemoval = true: remove option khỏi list → xóa DB
+     */
+    @OneToMany(
+        mappedBy = "question",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true,
+        fetch = FetchType.LAZY
+    )
+    @Builder.Default
+    private List<QuestionOption> options = new ArrayList<>();
 
-    // Thay đổi annotation @OneToMany trong entity Question
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<QuestionOption> options;
-
+    // ===== Enum =====
     public enum QuestionType {
         mcq_single,
         mcq_multiple,
         true_false,
-        fill_in,
+        fill_in
     }
 
     public enum QuestionStatus {
-        draft, review, approved, retired
+        draft,
+        review,
+        approved,
+        retired
     }
 
-    // Getter methods
-    public Long getId() {
-        return id;
+    // ===== Lifecycle =====
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = this.createdAt;
     }
 
-    public Subject getSubject() {
-        return subject;
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
     }
 
-    public String getStem() {
-        return stem;
+    // ===== Business methods (rất nên có) =====
+    public void addOption(QuestionOption option) {
+        options.add(option);
+        option.setQuestion(this);
     }
 
-    public String getExplanation() {
-        return explanation;
+    public void removeOption(QuestionOption option) {
+        options.remove(option);
+        option.setQuestion(null);
     }
 
-    public QuestionType getQuestionType() {
-        return questionType;
+    public void changeType(QuestionType type) {
+        this.questionType = type;
     }
 
-    public QuestionStatus getStatus() {
-        return status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public List<QuestionOption> getOptions() {
-        return options;
-    }
-
-    // Setter methods
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
-
-    public void setStem(String stem) {
-        this.stem = stem;
-    }
-
-    public void setExplanation(String explanation) {
-        this.explanation = explanation;
-    }
-
-    public void setQuestionType(QuestionType questionType) {
-        this.questionType = questionType;
-    }
-
-    public void setStatus(QuestionStatus status) {
+    public void changeStatus(QuestionStatus status) {
         this.status = status;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public void setOptions(List<QuestionOption> options) {
-        this.options = options;
-    }
-
-    public void setQuestionType(String questionType) {
-        this.questionType = QuestionType.valueOf(questionType);
     }
 }

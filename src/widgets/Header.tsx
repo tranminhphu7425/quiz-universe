@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import Logo from "@/assets/images/logo/quizuniverselogo.png";
 import type { Variants } from "framer-motion";
-import { Settings } from "lucide-react";
+import { Bell, Settings } from "lucide-react";
 
 
 import {
@@ -40,8 +40,8 @@ import { FaCrown, FaPlus, FaStar } from "react-icons/fa";
 import { fetchAllSubjects } from "@/shared/api/subjectApi";
 import { normalizeText } from "@/shared/utils/textUtils";
 import type { Subject } from "@/shared/types/subject";
-import {QuestionBankApi} from "@/shared/api/questionBanksApi";
-import {QuestionBank} from "@/shared/types/questionBank";
+import { QuestionBankApi } from "@/shared/api/questionBanksApi";
+import { QuestionBank } from "@/shared/types/questionBank";
 
 export type Tenant = { id: string; name: string; logo?: string };
 
@@ -89,12 +89,12 @@ export default function Header({
 }: HeaderProps) {
   const { user, logout } = useAuth();
   links = user ? [
-    { label: "Câu hỏi", href: "/question_banks" },
+    { label: "Câu hỏi", href: "/question-banks" },
     // { label: "Đề thi", href: "/exams/create" },
     { label: "Diễn đàn", href: "/forum" },
     { label: "Thư viện", href: "/resources" }
 
-  ] : [{ label: "Câu hỏi", href: "/question_banks" },
+  ] : [{ label: "Câu hỏi", href: "/question-banks" },
   { label: "Thư viện", href: "/resources" },
   // { label: "Hướng dẫn nhanh", href: "/quickguide" },
   { label: "Giới thiệu", href: "/about" },
@@ -108,11 +108,68 @@ export default function Header({
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [err, setErr] = useState<string | null>(null);
-  const [subjects, setSubjects] = useState<Subject[]>([]);
-  const [question_banks, setQuestionBanks] = useState<any[]>([]);
-  const [results, setResults] = useState<any[]>([]);
+  const [searchSource, setSearchSource] = useState<{
+    subjects: Subject[];
+    questionBanks: QuestionBank[];
+  }>({
+    subjects: [],
+    questionBanks: [],
+  });
+  const [notificationOpen, setNotificationOpen] = useState(false);
+
+  const [hasNewNotification, setHasNewNotification] = useState(true);
+  const [notificationCount, setNotificationCount] = useState(2);
+  const notifications = [
+    {
+      id: 1,
+      title: "Đơn hàng thành công",
+      content: "Bạn đã nạp tiền thành công 50.000đ",
+      time: "2 phút trước",
+      unread: true,
+    },
+    {
+      id: 2,
+      title: "Cập nhật hệ thống",
+      content: "Hệ thống sẽ bảo trì lúc 23:00",
+      time: "1 giờ trước",
+      unread: false,
+    },
+    {
+      id: 3,
+      title: "Cập nhật hệ thống",
+      content: "Hệ thống sẽ bảo trì lúc 23:00",
+      time: "1 giờ trước",
+      unread: false,
+    },
+    {
+      id: 4,
+      title: "Đơn hàng thành công",
+      content: "Bạn đã nạp tiền thành công 50.000đ",
+      time: "2 phút trước",
+      unread: true,
+    },
+    {
+      id: 5,
+      title: "Cập nhật hệ thống",
+      content: "Hệ thống sẽ bảo trì lúc 23:00",
+      time: "1 giờ trước",
+      unread: false,
+    },
+    {
+      id: 6,
+      title: "Cập nhật hệ thống",
+      content: "Hệ thống sẽ bảo trì lúc 23:00",
+      time: "1 giờ trước",
+      unread: false,
+    },
+  ];
+  // const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isFocused, setIsFocused] = useState(false);
+  type SearchResult =
+    | { type: "subject"; data: Subject }
+    | { type: "question-bank"; data: QuestionBank };
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Xử lý tìm kiếm, ví dụ chuyển trang hoặc gọi API
@@ -129,22 +186,31 @@ export default function Header({
 
 
 
-
-  useEffect(() => {
+  const results = useMemo<SearchResult[]>(() => {
     const kw = normalizeText(search);
-    if (!kw) {
-      setResults([]);
-      return;
-    }
-    setResults(
-      subjects.filter((s) =>
+    if (!kw) return [];
+
+    const subjects = searchSource.subjects
+      .filter((s) =>
         [s.code, s.name, s.description ?? ""].some((x) =>
           normalizeText(x).includes(kw)
         )
       )
-    );
-  }, [search, subjects]);
- 
+      .map((s) => ({ type: "subject", data: s } as const));
+
+    const questionBanks = searchSource.questionBanks
+      .filter((q) =>
+        [q.subjectName, q.name, q.description ?? ""].some((x) =>
+          normalizeText(x).includes(kw)
+        )
+      )
+      .map((q) => ({ type: "question-bank", data: q } as const));
+
+    return [...subjects, ...questionBanks];
+  }, [search, searchSource.subjects, searchSource.questionBanks]);
+
+
+
   async function fetchData() {
 
 
@@ -157,16 +223,21 @@ export default function Header({
         // 1) Ưu tiên lấy từ API
         const list = await fetchAllSubjects(ac.signal);
         const qbList = await QuestionBankApi.getAll();
-        setSubjects(list);
-        setQuestionBanks(qbList.content);
+        setSearchSource({
+          subjects: list,
+          questionBanks: qbList.content
+        });
       } catch (e: any) {
         // Nếu bị hủy thì thôi
         if (e?.name === "AbortError") return;
 
         // 2) API lỗi -> fallback sang JSON cục bộ (dynamic import)
         setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
-        const local = await fetch("/quiz-universe/assets/data/subjects.json");
-        setSubjects((await local.json()) as Subject[]);
+        const local = await fetch("/quiz-universe/assets/data/questionBanks.json");
+        setSearchSource({
+          subjects: [],
+          questionBanks: (await local.json()) as QuestionBank[]
+        });
       } finally {
         setLoading(false);
       }
@@ -186,7 +257,7 @@ export default function Header({
 
 
 
-  
+
 
   return (
     <header className="w-full bg-gradient-to-r from-green-600 to-emerald-600 dark:from-slate-900 dark:to-slate-800 shadow-lg sticky top-0 z-50">
@@ -220,44 +291,84 @@ export default function Header({
           </motion.div>
 
           {/* Search Box (Desktop) */}
-          <form
-            onSubmit={handleSearch}
-            className="hidden lg:flex flex-1 justify-center mx-8"
-          >
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-              placeholder="Tìm kiếm môn học, đề thi.."
-              className="w-full xl:w-70 2xl:w-[400px] px-4 py-2 text-black dark:text-white rounded-lg 
+          <div className="hidden lg:flex flex-1 justify-center mx-8 w-full xl:w-70 2xl:w-[400px]">
+            <form
+              onSubmit={handleSearch}
+              className="w-full"
+            >
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+                placeholder="Tìm kiếm môn học, đề thi.."
+                className="w-full px-4 py-2 text-black dark:text-white rounded-lg 
                      border border-emerald-200 dark:border-slate-600 
                      bg-white dark:bg-slate-800 
                      placeholder:text-gray-400 dark:placeholder:text-slate-400
                      focus:outline-none focus:ring-2 focus:ring-emerald-400"
-            />
-            {isFocused && results.length > 0 && (
-              <ul className="absolute w-35 xl:w-70 2xl:w-[400px] top-full mt-2 bg-white dark:bg-slate-800 rounded-lg shadow-lg max-h-60 overflow-y-auto z-50">
-                {results.map((s) => (
-                  <li key={s.id}>
-                    <Link
-                      to={`/questions/subject/${s.id}`}
-                      className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700 text-gray-400 dark:text-text-slate-400"
-                      onClick={() => setSearch("")}
-                    >
-                      {s.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </form>
+              />
+              <div className="absolute flex w-70 lg:w-[400px] xl:w-[450px] 2xl:w-[700px]">
+                {isFocused &&
+                  results.length > 0 && (
+                    <ul className="w-full top-full mt-2 bg-white dark:bg-slate-800 rounded-lg shadow-lg max-h-60 overflow-y-auto ">
+                      {results.map((item) => {
+                        if (item.type === "subject") {
+                          return (
+                            <li key={`subject-${item.data.id}`}>
+                              <Link
+                                to={`/subject/${item.data.id}`}
+                                className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
+                                onClick={() => setSearch("")}
+                              >
+                                <div className="text-xs text-emerald-500 font-semibold">
+                                  📘 Subject
+                                </div>
+                                <div className="flex items-center gap-5 text-gray-700 dark:text-slate-200 font-medium">
+                                  <div className="text-gray-700 dark:text-slate-200 font-medium">
+                                    {item.data.name}
+                                  </div>
+                                  <div className="text-xs text-gray-400">
+                                    {item.data.code}
+                                  </div>
+                                </div>
+                              </Link>
+                            </li>
+                          );
+                        }
 
+                        // Question Bank
+                        return (
+                          <li key={`qb-${item.data.bankId}`}>
+                            <Link
+                              to={`/questions/question-bank/${item.data.bankId}`}
+                              className="block px-4 py-2 hover:bg-blue-100 dark:hover:bg-slate-700"
+                              onClick={() => setSearch("")}
+                            >
+                              <div className="text-xs text-blue-500 font-semibold">
+                                🗂 Question Bank
+                              </div>
+                              <div className="text-gray-700 dark:text-slate-200 font-medium">
+                                {item.data.name}
+                              </div>
+                              <div className="text-xs text-gray-400">
+                                {item.data.subjectName}
+                              </div>
+                            </Link>
+                          </li>
+                        );
+                      })}
+
+                    </ul>
+                  )}
+              </div>
+            </form>
+          </div>
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4">
 
-           
+
 
             {/* Custom Links */}
             {links.map((link) => {
@@ -330,7 +441,7 @@ export default function Header({
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 20 }}
                         transition={{ type: "spring", damping: 20, stiffness: 300 }}
-                        className="absolute right-0 mt-2 w-60 bg-white dark:bg-slate-900 rounded-xl shadow-2xl overflow-hidden z-50 border border-emerald-100 dark:border-slate-700"
+                        className="absolute right-0 mt-2 w-60 bg-white dark:bg-slate-900 rounded-xl shadow-2xl  z-50 border border-emerald-100 dark:border-slate-700"
                       >
                         <motion.div
                           className="divide-y divide-emerald-50 dark:divide-slate-700"
@@ -370,13 +481,13 @@ export default function Header({
                                   animate={{ x: 0 }}
                                 >
 
-                                  <Link to="/profile"> 
-                                  {user.name}
-                                  {user.role === "admin" && (
-                                    <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-300">
-                                      Admin
-                                    </span>
-                                  )}
+                                  <Link to="/profile">
+                                    {user.name}
+                                    {user.role === "admin" && (
+                                      <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-300">
+                                        Admin
+                                      </span>
+                                    )}
                                   </Link>
 
 
@@ -430,6 +541,133 @@ export default function Header({
                           </motion.div>
 
 
+                          {/* Nút mở thông báo */}
+                          <motion.div
+                            variants={{
+                              hidden: { opacity: 0, x: -20 },
+                              visible: { opacity: 1, x: 0 },
+                            }}
+                            onMouseEnter={() => setNotificationOpen(true)}
+  onMouseLeave={() => setNotificationOpen(false)}
+                          >
+                            <button
+                              // onClick={() => setNotificationOpen((prev) => !prev)}
+                              className="relative w-full flex items-center px-4 py-3
+               text-gray-700 dark:text-slate-200
+               hover:bg-emerald-50 dark:hover:bg-slate-800
+               transition-all group"
+                            >
+                              {/* Icon chuông */}
+                              <motion.span
+                                animate={{ rotate: hasNewNotification ? [0, -10, 10, -10, 0] : 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="relative"
+                              >
+                                <Bell className="w-5 h-5 mr-2 text-emerald-500 group-hover:scale-110 transition-transform" />
+
+                                {/* Badge số thông báo */}
+                                {notificationCount > 0 && (
+                                  <span
+                                    className="absolute -top-1 -right-1
+                     bg-red-500 text-white text-[10px]
+                     rounded-full px-1.5 leading-tight"
+                                  >
+                                    {notificationCount}
+                                  </span>
+                                )}
+                              </motion.span>
+
+                              {/* Text */}
+                              <span className="group-hover:font-medium group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-all">
+                                Thông báo
+                              </span>
+
+                              {/* Mũi tên */}
+                              <motion.span
+                                className="ml-auto opacity-0 group-hover:opacity-100 text-emerald-500"
+                                initial={{ x: -8 }}
+                                animate={{ x: 0 }}
+                                transition={{ delay: 0.1 }}
+                              >
+                                <ChevronRight className="w-3 h-3" />
+                              </motion.span>
+                            </button>
+                                 <AnimatePresence>
+                            {notificationOpen && (
+                              <motion.div
+                                initial={{ opacity: 0, x: 20, scale: 0.95 }}
+                                animate={{ opacity: 1, x: 0, scale: 1 }}
+                                exit={{ opacity: 0, x: 20, scale: 0.95 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                                className="absolute right-full mr-3 top-1 -translate-y-1/2
+                 w-80 bg-white dark:bg-slate-900 
+                 rounded-xl shadow-2xl border
+                 border-emerald-100 dark:border-slate-700
+                 z-600"
+                              >
+                                {/* Header */}
+                                <div className="px-4 py-3 border-b border-emerald-100 dark:border-slate-700 flex justify-between items-center">
+                                  <h4 className="font-semibold text-emerald-700 dark:text-emerald-300">
+                                    Thông báo
+                                  </h4>
+                                  <button
+                                    onClick={() => setNotificationOpen(false)}
+                                    className="text-xs text-gray-400 hover:text-red-500"
+                                  >
+                                    Đóng
+                                  </button>
+                                </div>
+
+                                {/* List */}
+                                <div className="max-h-80 overflow-y-auto">
+                                  {notifications.length === 0 && (
+                                    <p className="text-center text-sm text-gray-400 py-6">
+                                      Không có thông báo
+                                    </p>
+                                  )}
+
+                                  {notifications.map((noti) => (
+                                    <motion.div
+                                      key={noti.id}
+                                      whileHover={{ backgroundColor: "rgba(16,185,129,0.08)" }}
+                                      className={`px-4 py-3 cursor-pointer transition-all
+              ${noti.unread ? "bg-emerald-50 dark:bg-emerald-900/20" : ""}
+            `}
+                                    >
+                                      <div className="flex justify-between items-start">
+                                        <p className="font-medium text-sm text-gray-800 dark:text-slate-200">
+                                          {noti.title}
+                                        </p>
+                                        {noti.unread && (
+                                          <span className="w-2 h-2 mt-1 bg-emerald-500 rounded-full" />
+                                        )}
+                                      </div>
+
+                                      <p className="text-xs text-gray-500 dark:text-slate-400 mt-1">
+                                        {noti.content}
+                                      </p>
+
+                                      <p className="text-[10px] text-gray-400 mt-1">
+                                        {noti.time}
+                                      </p>
+                                    </motion.div>
+                                  ))}
+                                </div>
+
+                                {/* Footer */}
+                                <div className="px-4 py-2 border-t border-emerald-100 dark:border-slate-700 text-center">
+                                  <button className="text-xs text-emerald-600 hover:underline">
+                                    Xem tất cả
+                                  </button>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                          </motion.div>
+
+                         
+
+
 
                           {/* Trang quản trị (chỉ admin) */}
                           {user?.role === "admin" && (
@@ -479,7 +717,7 @@ export default function Header({
                             </Link>
                           </motion.div>
 
-                          
+
 
                           {/* Cài đặt */}
 
@@ -576,28 +814,77 @@ export default function Header({
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setTimeout(() => setIsFocused(false), 200)}
                 placeholder="Tìm kiếm môn học..."
-                className="w-full  md:m-auto px-4 py-2 rounded-lg border text-black dark:text-white rounded-lg 
+                className="w-full md:m-auto px-4 py-2 rounded-lg border text-black
+                 dark:text-white rounded-lg 
                      border border-emerald-200 dark:border-slate-600 
                      bg-white dark:bg-slate-800 
                      placeholder:text-gray-400 dark:placeholder:text-slate-400
                      focus:outline-none focus:ring-2 focus:ring-emerald-400"
               />
-              <div className="absolute flex w-4/5 md:w-[450px] ">
-                {isFocused && results.length > 0 && (
-                  <ul className=" w-full top-full mt-2 bg-white dark:bg-slate-800 rounded-lg shadow-lg max-h-60 overflow-y-auto z-50">
-                    {results.map((s) => (
-                      <li key={s.id}>
+              <div className="absolute flex w-4/5">
+                {isFocused &&
+                  results.length > 0 && (
+                    <ul className="w-full top-full mt-2 bg-white dark:bg-slate-800 rounded-lg shadow-lg max-h-60 overflow-y-auto z-50">
+                      {/* {results.map((s) => (
+                      <li key={s.}>
                         <Link
-                          to={`/questions/subject/${s.id}`}
+                          to={`/questions/question-bank/${s.id}`}
                           className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700 text-gray-400 dark:text-text-slate-400"
                           onClick={() => setSearch("")}
                         >
                           {s.name}
                         </Link>
                       </li>
-                    ))}
-                  </ul>
-                )}
+                    ))} */}
+                      {results.map((item) => {
+                        if (item.type === "subject") {
+                          return (
+                            <li key={`subject-${item.data.id}`} className="w-full">
+                              <Link
+                                to={`/subject/${item.data.id}`}
+                                className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
+                                onClick={() => setSearch("")}
+                              >
+                                <div className="text-xs text-emerald-500 font-semibold">
+                                  📘 Subject
+                                </div>
+                                <div className="flex items-center gap-5 text-gray-700 dark:text-slate-200 font-medium">
+                                  <div className="text-gray-700 dark:text-slate-200 font-medium">
+                                    {item.data.name}
+                                  </div>
+                                  <div className="text-xs text-gray-400">
+                                    {item.data.code}
+                                  </div>
+                                </div>
+                              </Link>
+                            </li>
+                          );
+                        }
+
+                        // Question Bank
+                        return (
+                          <li key={`qb-${item.data.bankId}`}>
+                            <Link
+                              to={`/questions/question-bank/${item.data.bankId}`}
+                              className="block px-4 py-2 hover:bg-blue-100 dark:hover:bg-slate-700"
+                              onClick={() => setSearch("")}
+                            >
+                              <div className="text-xs text-blue-500 font-semibold">
+                                🗂 Question Bank
+                              </div>
+                              <div className="text-gray-700 dark:text-slate-200 font-medium">
+                                {item.data.name}
+                              </div>
+                              <div className="text-xs text-gray-400">
+                                {item.data.subjectName}
+                              </div>
+                            </Link>
+                          </li>
+                        );
+                      })}
+
+                    </ul>
+                  )}
               </div>
 
             </form>
@@ -679,7 +966,7 @@ export default function Header({
                   </AnimatePresence>
                 </motion.div> */}
 
-              
+
 
                 {/* Custom Links Mobile */}
                 {links.map((link) => (
@@ -720,8 +1007,10 @@ export default function Header({
                         onClick={() => setMenuOpen(!menuOpen)}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <User className="h-4 w-4" />
-                        <span className="text-sm font-semibold truncate">{user.name}</span>
+                        <Link to="/profile" className="flex items-center gap-2">
+                          <User className="h-4 w-4" />
+                          <span className="text-sm font-semibold truncate">{user.name}</span>
+                        </Link>
                       </motion.button>
                     </div>
 

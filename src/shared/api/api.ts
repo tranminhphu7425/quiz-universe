@@ -1,4 +1,4 @@
-// src/services/api.ts
+// src/shared/api/api.ts
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 

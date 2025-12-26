@@ -14,6 +14,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.quizuniverse.dto.ChangePasswordRequest;
 
 @Service
 public class AuthService {
@@ -55,5 +56,18 @@ public class AuthService {
 
         return new RegisterResponse(token, UUID.fromString(saved.getUserId()), saved.getFullName(), saved.getEmail());
     }
+
+    public void changePassword(UUID userId, ChangePasswordRequest payload) {
+        User user = userRepository.findById(userId.toString())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (!passwordEncoder.matches(payload.getCurrentPassword(), user.getPasswordHash())) {
+            throw new RuntimeException("Old password is incorrect");
+        }
+
+        user.setPasswordHash(passwordEncoder.encode(payload.getNewPassword()));
+        userRepository.save(user);
+    }
+
 
 }

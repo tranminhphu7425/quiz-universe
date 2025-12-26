@@ -47,7 +47,6 @@ public class QuestionService {
                 .collect(Collectors.toList());
     }
 
-
     private QuestionDTO convertToDTO(Question question) {
         QuestionDTO dto = new QuestionDTO();
         dto.setId(question.getId());
@@ -86,7 +85,9 @@ public class QuestionService {
         // cập nhật fields chính
         q.setStem(payload.getStem());
         q.setExplanation(payload.getExplanation());
-        q.setQuestionType(payload.getQuestionType());
+        q.setQuestionType(
+                Question.QuestionType.valueOf(payload.getQuestionType())
+        );
 
         // đồng bộ options
         Map<Long, QuestionOption> current = q.getOptions().stream()
@@ -130,7 +131,7 @@ public class QuestionService {
         question.setSubject(subject);
         question.setStem(dto.getStem());
         question.setExplanation(dto.getExplanation());
-        question.setQuestionType(dto.getQuestionType());
+        question.setQuestionType(Question.QuestionType.valueOf(dto.getQuestionType()));
         question.setStatus(Question.QuestionStatus.approved);
         question.setCreatedAt(LocalDateTime.now());
         question.setUpdatedAt(LocalDateTime.now());

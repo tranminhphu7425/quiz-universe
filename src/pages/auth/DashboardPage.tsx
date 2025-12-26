@@ -173,7 +173,7 @@ export default function DashboardPage() {
   }
 
   const quickActions = [
-    { icon: <FilePlus2 />, label: 'Tạo bộ câu hỏi mới', to: '/question_bank/create', color: 'bg-yellow-500' },
+    { icon: <FilePlus2 />, label: 'Tạo bộ câu hỏi mới', to: '/question-bank/create', color: 'bg-yellow-500' },
 
     { icon: <Brain />, label: 'Ôn tập', to: '/review', color: 'bg-red-400' },
 
@@ -676,7 +676,7 @@ export default function DashboardPage() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              to="/question_bank/create"
+              to="/question-bank/create"
               className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-semibold text-emerald-600 hover:bg-emerald-50"
             >
               <FilePlus2 className="h-4 w-4" />

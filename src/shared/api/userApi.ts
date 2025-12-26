@@ -1,17 +1,29 @@
 // src/shared/api/userApi.ts
-import { fetchJson } from "@/shared/api/apiClient";
-import { User } from "@/app/providers/AuthProvider";
 
-export async function getUserProfile(userId: string): Promise<User> {
-  return await fetchJson<User>(`/api/users/${userId}`);
-}
+import { apiService } from "@/shared/api/api";
+import type { ProfileSetupPayload } from "@/shared/types/profile";
+import type { User } from "@/shared/types/user";
 
-export async function updateUserProfile(userId: string, payload: Partial<User>): Promise<User> {
-  console.log("Updating user profile with payload:", payload);
-  return await fetchJson<User>(`/api/users/${userId}`, {
-    method: "PUT",
-    body: payload,
-  });
+export const UserApi = {
+  /**
+   * Setup user profile (authenticated)
+   */
+  setupProfile(payload: ProfileSetupPayload) {
+    return apiService.post<void>("/profile/setup", payload);
+  },
 
-  
-}
+  /**
+   * Get user profile by userId
+   */
+  getUserProfile() {
+    return apiService.get<User>(`/users`);
+  },
+
+  /**
+   * Update user profile
+   */
+  updateUserProfile(payload: Partial<User>) {
+    console.log("Updating user profile with payload:", payload);
+    return apiService.put<User>(`/users`, payload);
+  },
+};

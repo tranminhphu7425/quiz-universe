@@ -1,1 +1,0 @@
-import{w as n}from"./index-BNV7LtHh.js";function s(t,e){return n.get(`/questions/question-bank/${t}`,{signal:e})}function o(t){return n.get("/questions/count",{signal:t})}function i(t,e){return n.post(`/questions/subject/${t}`,e)}function r(t,e){return n.put(`/questions/${t}`,e)}function a(t){return n.delete(`/questions/${t}`)}export{s as a,i as c,a as d,o as f,r as u};

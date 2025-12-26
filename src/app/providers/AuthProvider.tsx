@@ -1,24 +1,29 @@
- import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { fetchJson, setAuthToken } from "@/shared/api/apiClient";
+// src/app/providers/AuthProvider.tsx
+
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+
+
+import { apiService, publicApiService } from "@/shared/api/api"; // Thay đổi import
 
 import { Major } from "@/shared/types/major";
 import { University } from "@/shared/types/university";
 
+import { User } from "@/shared/types/user";
+import { ChangePasswordRequest } from "@/shared/types/authUser";
 
-/** Vai trò & user */
-export type Role = "admin" | "user" | "teacher" ;
 
-export interface User {
-  id: string;
-  name: string;
-  username: string;
-  role: Role;
-  phone: string;
-  email?: string;
-  university: University | null;
-  major: Major | null;
-  intakeYear?: number;
+
+// Hàm helper để thiết lập token cho axios instance
+function setAuthToken(token: string | null) {
+  if (token) {
+    // Token sẽ được tự động thêm vào header qua interceptor
+    localStorage.setItem("auth_token", token);
+  } else {
+    localStorage.removeItem("auth_token");
+  }
 }
+
+
 
 
 /** Kiểu context mà các page sẽ dùng */
@@ -39,6 +44,10 @@ export interface AuthContextType {
   requestPasswordReset: (email: string) => Promise<void>;
   resetPassword: (token: string, newPassword: string) => Promise<void>;
   updateUser: (user: User) => void;
+
+
+  changePassword: ({ currentPassword, newPassword } : ChangePasswordRequest) => Promise<void>;
+
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -87,9 +96,9 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     try {
       // Mặc định API_BASE lấy từ VITE_API_URL, endpoint Spring Boot:
       // POST /api/auth/login -> { token, user }
-      const data = await fetchJson<LoginResponse>("/api/auth/login", {
-        method: "POST",
-        body: { email, password },
+      const data = await publicApiService.post<LoginResponse>("/auth/login", {
+        email,
+        password,
       });
 
       const storage = pickStorage(opts?.remember);
@@ -110,7 +119,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
   const logout: AuthContextType["logout"] = async () => {
     // Optional: gọi /api/auth/logout nếu backend có
     try {
-      await fetchJson<VoidResponse>("/api/auth/logout", { method: "POST" }).catch(() => { });
+      await apiService.post<VoidResponse>("/auth/logout").catch(() => { });
     } catch { }
     // Xoá storage cả 2 nơi để chắc chắn
     localStorage.removeItem("auth_token");
@@ -126,9 +135,10 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     try {
       // POST /api/auth/register
 
-      const data = await fetchJson<RegisterResponse>("/api/auth/register", {
-        method: "POST",
-        body: { name, email, password },
+      const data = await publicApiService.post<RegisterResponse>("/auth/register", {
+        name,
+        email,
+        password,
       });
       // Tuỳ ý: không auto-login để phù hợp nhiều flow (email verify, v.v.)
 
@@ -154,29 +164,50 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     }
   };
 
+
+  const changePassword: AuthContextType["changePassword"] = async ({ currentPassword, newPassword } : ChangePasswordRequest) => {
+    if (!user) {
+      throw new Error("User not authenticated");
+    }
+
+    try {
+      await apiService.post<void>("/auth/change-password", { currentPassword, newPassword });
+      // Có thể thêm thông báo thành công ở đây
+    } catch (error) {
+      console.error("Change password failed:", error);
+      throw error;
+    }
+  };
+
+
   const requestPasswordReset: AuthContextType["requestPasswordReset"] = async (email) => {
     // POST /api/auth/password/request-reset
-    await fetchJson<VoidResponse>("/api/auth/password/request-reset", {
-      method: "POST",
-      body: { email },
+    await publicApiService.post<VoidResponse>("/auth/password/request-reset", {
+      email,
     });
   };
 
   const resetPassword: AuthContextType["resetPassword"] = async (token, newPassword) => {
     // POST /api/auth/password/reset
-    await fetchJson<VoidResponse>("/api/auth/password/reset", {
-      method: "POST",
-      body: { token, newPassword },
+    await publicApiService.post<VoidResponse>("/auth/password/reset", {
+      token,
+      newPassword,
     });
   };
+
+
+
+
   const updateUser = (user: User) => {
     setUser(user);
     localStorage.setItem("auth_user", JSON.stringify(user));
   };
 
+  
+
 
   const value = useMemo<AuthContextType>(
-    () => ({ user, loading, login, logout, register, requestPasswordReset, resetPassword, updateUser }),
+    () => ({ user, loading, login, logout, register, requestPasswordReset, resetPassword, updateUser, changePassword }),
     [user, loading]
   );
   if (!initialized) {

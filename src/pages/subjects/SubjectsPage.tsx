@@ -307,10 +307,10 @@ export default function SubjectsPage() {
           <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center ">
             <div className="w-full lg:w-auto">
               <h1 className="text-3xl font-black leading-tight text-white text-center lg:text-left">
-                Ngân hàng câu hỏi
+                Tất cả các môn
               </h1>
               <p className="mt-1 text-white/90 dark:text-gray-300 text-center lg:text-left">
-                Tìm kiếm, lọc theo môn/chương/độ khó/loại. Tạo đề từ nhiều nguồn.
+                Tìm kiếm, lọc theo trường/ bộ môn.
               </p>
             </div>
 
@@ -319,7 +319,7 @@ export default function SubjectsPage() {
                 to="subject/create"
                 className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
               >
-                <PlusCircle className="h-4 w-4" /> Thêm bộ câu hỏi mới
+                <PlusCircle className="h-4 w-4" /> Thêm môn mới
               </Link>
             </div>
           </div>
@@ -327,7 +327,7 @@ export default function SubjectsPage() {
           {/* Floating decor */}
           <Floating distance={12} duration={7} className="pointer-events-none absolute top-16 left-8">
             <div className="rounded-xl bg-gradient-to-br from-amber-300 to-rose-300 px-3 py-1 shadow-lg -rotate-6">
-              <span className="text-xs font-black text-rose-700">QUESTIONS</span>
+              <span className="text-xs font-black text-rose-700">SUBJECT</span>
             </div>
           </Floating>
 

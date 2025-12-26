@@ -20,15 +20,19 @@ import {
   Focus,
   KeyRound,
   LogOut,
+  Save,
+  EyeOff,
 } from "lucide-react";
 import React from "react";
 import { useAuth } from "@/app/providers/AuthProvider";
-import { EducationApi} from "@/shared/api/major-universityApi";
+import { EducationApi } from "@/shared/api/major-universityApi";
 import { Major } from "@/shared/types/major";
 import { University } from "@/shared/types/university";
 import { Combobox } from "@headlessui/react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { updateUserProfile } from "@/shared/api/userApi";
+import { UserApi } from "@/shared/api/userApi";
+import { toast } from "react-hot-toast";
+
 
 /**
  * SettingsPage – Trang Cài đặt toàn diện cho QuizUniverse
@@ -50,7 +54,7 @@ export default function SettingsPage() {
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [soundEnabled, setSoundEnabled] = useState<boolean | null>(null);
   const [focusMode, setFocusMode] = useState<boolean | null>(null);
-  const { user, updateUser , logout, ...auth } = useAuth();
+  const { user, updateUser, logout, ...auth } = useAuth();
   const [fullName, setFullName] = useState(user?.name ?? "");
   const [username, setUsername] = useState(user?.username ?? "");
   const [email, setEmail] = useState(user?.email ?? "");
@@ -63,6 +67,17 @@ export default function SettingsPage() {
   const [majorQuery, setMajorQuery] = useState("");
   const [universityQuery, setUniversityQuery] = useState("");
   const navigate = useNavigate();
+  const [isSavingProfile, setIsSavingProfile] = useState<boolean>(false);
+  const [formData, setFormData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmNewPassword: ""
+  });
+
+
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
 
 
   useEffect(() => {
@@ -95,7 +110,7 @@ export default function SettingsPage() {
   async function handleSaveProfile() {
     try {
       setLoading(true);
-
+      setIsSavingProfile(true);
       const payload = {
 
         name: fullName,
@@ -109,22 +124,74 @@ export default function SettingsPage() {
 
       };
       console.log(payload);
-      const updatedUser = await updateUserProfile(user!.id, payload);
+      const updatedUser = await UserApi.updateUserProfile(payload);
 
-
+      toast.success("Thông tin đã được lưu thành công!", {
+        duration: 4000,
+        style: {
+          background: '#10b981',
+          color: '#fff',
+        },
+        icon: (
+          <div className="h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center">
+            <svg className="h-3 w-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        ),
+      });
       updateUser(updatedUser);
 
     }
 
     catch (err) {
-
+      toast.error("Không thể lưu thông tin", {
+        duration: 4000,
+      });
     }
     finally {
       setLoading(false);
+      setIsSavingProfile(false);
     }
   }
 
+  async function handleChangePassword() {
 
+     if (formData.newPassword !== formData.confirmNewPassword){
+      toast.error("Mật khẩu mới và xác nhận mật khẩu không khớp", {
+        duration: 4000,
+      });
+      return;
+    }
+
+    try {
+      await auth.changePassword({
+        currentPassword: formData.currentPassword,
+        newPassword: formData.newPassword
+      });
+      toast.success("Mật khẩu đã được thay đổi thành công!", {
+        duration: 4000,
+        style: {
+          background: '#10b981',
+          color: '#fff',
+        },
+        icon: (
+          <div className="h-5 w-5 rounded-full bg-emerald-100 flex items-center justify-center">
+            <svg className="h-3 w-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+        ),
+      });
+    } catch (err) {
+      toast.error("Không thể thay đổi mật khẩu", {
+        duration: 4000,
+      });
+    }
+
+
+
+  }
 
   const universityFiltered =
     universityQuery === ""
@@ -345,13 +412,24 @@ export default function SettingsPage() {
                     {/* Nút lưu thay đổi */}
                     <div className="flex justify-end pt-4">
                       <button
-                        onClick={() => {
-                          // TODO: gọi API lưu thông tin
-                          handleSaveProfile();
-                        }}
-                        className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                        onClick={handleSaveProfile}
+                        disabled={isSavingProfile} // Thêm state isSaving nếu cần
+                        className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-2"
                       >
-                        Lưu thay đổi
+                        {isSavingProfile ? (
+                          <>
+                            <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Đang lưu...
+                          </>
+                        ) : (
+                          <>
+                            <Save className="h-4 w-4" />
+                            Lưu thay đổi
+                          </>
+                        )}
                       </button>
                     </div>
                   </div>
@@ -377,11 +455,30 @@ export default function SettingsPage() {
                       <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                         Mật khẩu hiện tại
                       </label>
-                      <input
-                        type="password"
-                        placeholder="••••••••"
-                        className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
-                      />
+                      <div className="mb-2 flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 
+                      ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 
+                      dark:bg-slate-900/70 dark:ring-white/10">
+                        <input
+                          type = {showCurrentPassword ? "text" : "password"}
+                          value={formData.currentPassword}
+                          placeholder="••••••••"
+                          onChange={(e) =>
+                            setFormData({ ...formData, currentPassword: e.target.value })
+                          }
+                          className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 
+                     focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"  />
+                        <button
+                          type="button"
+                          onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                          className="p-1 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
+                        >
+                          {showCurrentPassword ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
+                        </button>
+                      </div>
                     </div>
 
                     {/* Mật khẩu mới */}
@@ -389,11 +486,32 @@ export default function SettingsPage() {
                       <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                         Mật khẩu mới
                       </label>
-                      <input
-                        type="password"
-                        placeholder="••••••••"
-                        className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
-                      />
+                      <div className="mb-2 flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 
+                      ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 
+                      dark:bg-slate-900/70 dark:ring-white/10">
+                        <input
+                          type={showNewPassword ? "text" : "password"}
+
+                          placeholder="••••••••"
+                          value={formData.newPassword}
+                          onChange={(e) =>
+                            setFormData({ ...formData, newPassword: e.target.value })
+                          }
+                          className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 
+                     focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowNewPassword(!showNewPassword)}
+                          className="p-1 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
+                        >
+                          {showNewPassword ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
+                        </button>
+                      </div>
                     </div>
 
                     {/* Xác nhận mật khẩu mới */}
@@ -401,16 +519,36 @@ export default function SettingsPage() {
                       <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                         Xác nhận mật khẩu mới
                       </label>
-                      <input
-                        type="password"
-                        placeholder="••••••••"
-                        className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
-                      />
+                      <div className="mb-2 flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 
+                      ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 
+                      dark:bg-slate-900/70 dark:ring-white/10">
+                        <input
+                          type={showConfirmNewPassword ? "text" : "password"}
+                          placeholder="••••••••"
+                          value={formData.confirmNewPassword}
+                          onChange={(e) =>
+                            setFormData({ ...formData, confirmNewPassword: e.target.value })
+                          }
+                          className="w-full bg-transparent p-2 text-sm text-gray-800 placeholder:text-gray-500 
+                     focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"    />
+                        <button
+                          type="button"
+                          onClick={() => setShowConfirmNewPassword(!showConfirmNewPassword)}
+                          className="p-1 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
+                        >
+                          {showConfirmNewPassword ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
+                        </button>
+                      </div>
                     </div>
 
                     {/* Nút lưu */}
                     <div className="flex justify-end">
-                      <button className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                      <button onClick={handleChangePassword}
+                        className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400">
                         Cập nhật mật khẩu
                       </button>
                     </div>

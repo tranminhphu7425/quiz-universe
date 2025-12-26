@@ -1,1 +1,0 @@
-import{w as e}from"./index-BNV7LtHh.js";const s={setupProfile(r){return e.post("/profile/setup",r)},getUserProfile(){return e.get("/users")},updateUserProfile(r){return console.log("Updating user profile with payload:",r),e.put("/users",r)}},i={getUniversities(){return e.get("/universities")},getMajors(){return e.get("/majors")}};export{i as E,s as U};
