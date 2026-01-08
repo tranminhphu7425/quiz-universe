@@ -336,6 +336,13 @@ export default function HomePage() {
                   >
                     Đăng ký
                   </Link>
+                  <Link
+                    to={`/ctu`}
+                    className="inline-flex items-center gap-2 rounded-full bg-blue-400 px-6 py-2.5 font-semibold text-emerald-950 shadow hover:brightness-105"
+                  >
+                    Các công cụ dành cho sinh viên CTU
+                  </Link>
+
                 </>
               )}
 

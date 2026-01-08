@@ -10,7 +10,7 @@ import { Layout } from "@/layouts/Layout"; // Tạo một layout component mới
 import { LayoutNoFooter } from "@/layouts/LayoutNoFooter";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { AdminLayout } from "@/layouts/AdminLayout";
-
+import {CTULayout} from "@/layouts/CTULayout";
 
 
 
@@ -48,6 +48,8 @@ const ForumPage = React.lazy(() => import("@/pages/forum/ForumPage"));
 const FaqPage = React.lazy(() => import("@/pages/faq/FaqPage"));
 const FeedbackPage = React.lazy(() => import("@/pages/feedback/FeedbackPage"));
 const AdminUsersPage = React.lazy(() => import("@/pages/admin/AdminUsersPage"));
+const CTUHomePage = React.lazy(() => import("@/pages/ctu/CTUHomePage"));
+const CTUCalendarPage = React.lazy(() => import("@/pages/ctu/CTUCalendarPage"));
 
 
 
@@ -146,6 +148,12 @@ export const router = createHashRouter(
         { path: "/subject/create", element: withSuspense(<CreateSubject />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId", element: withSuspense(<QuestionsPage />), errorElement: <NotFoundPage /> },
         { path: "/questions/subject/:subjectId/edit", element: withSuspense(<EditQuestionPage />), errorElement: <NotFoundPage /> },
+
+
+
+        //ctu
+        
+
         
         // { path: "/admin", element: withSuspense(<AdminDashboardPage />), errorElement: <NotFoundPage /> },
         
@@ -193,6 +201,13 @@ export const router = createHashRouter(
       
     ],
     },
+      {
+        element: <CTULayout/>,
+        children: [
+          { path: "/ctu", element: withSuspense(<CTUHomePage />), errorElement: <NotFoundPage /> },
+          { path: "/ctu/calendar", element: withSuspense(<CTUCalendarPage />), errorElement: <NotFoundPage />  }
+        ]
+      },
   ],
   {
     // basename: "/quiz-universe/",

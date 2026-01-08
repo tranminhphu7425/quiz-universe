@@ -177,6 +177,8 @@ export default function DashboardPage() {
 
     { icon: <Brain />, label: 'Ôn tập', to: '/review', color: 'bg-red-400' },
 
+    { icon: <Brain />, label: 'Các công cụ cho sinh viên CTU', to: '/ctu', color: 'bg-blue-400', className: 'col-span-2' },
+
     // { icon: <FolderPlus />, label: 'Tải lên tài liệu', to: '/files/upload', color: 'bg-blue-400' },
 
   ];
@@ -257,6 +259,7 @@ export default function DashboardPage() {
                   key={index}
                   whileHover={{ y: -4 }}
                   whileTap={{ scale: 0.98 }}
+                  className={action.className}
                 >
                   <Link
                     to={action.to}
