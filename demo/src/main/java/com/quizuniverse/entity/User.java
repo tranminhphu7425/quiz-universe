@@ -11,8 +11,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import lombok.Setter;
+import lombok.Getter;
+
 @Entity
 @Table(name = "users")
+@Setter
+@Getter
 public class User {
 
     @Id
@@ -60,128 +65,9 @@ public class User {
     @JoinColumn(name = "major_id")
     private Major major;
 
+    @Column(name = "intake_year")
     private Integer intakeYear;
 
-    public University getUniversity() {
-        return university;
-    }
-
-    public void setUniversity(University university) {
-        this.university = university;
-    }
-
-    public Major getMajor() {
-        return major;
-    }
-
-    public void setMajor(Major major) {
-        this.major = major;
-    }
-
-    public Integer getIntakeYear() {
-        return intakeYear;
-    }
-
-    public void setIntakeYear(Integer intakeYear) {
-        this.intakeYear = intakeYear;
-    }
-
-    // ===== Getters và Setters =====
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    // public String getPassword() {
-    // return password;
-    // }
-
-    // public void setPassword(String password) {
-    // this.password = password;
-    // }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Boolean getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(Boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public LocalDateTime getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(LocalDateTime lastLogin) {
-        this.lastLogin = lastLogin;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 
     public UserDTO convertToDTO() {
         return new UserDTO(this);

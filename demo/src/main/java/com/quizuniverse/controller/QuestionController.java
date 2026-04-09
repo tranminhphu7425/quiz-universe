@@ -24,13 +24,13 @@ import com.quizuniverse.service.QuestionService;
 
 @RestController
 @RequestMapping("/api/questions")
-@CrossOrigin(
-        origins = "http://localhost:5173",
-        allowedHeaders = {"Content-Type", "Authorization"},
-        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS},
-        allowCredentials = "true", // nếu có gửi cookie/authorization
-        maxAge = 3600
-)
+// @CrossOrigin(
+//         origins = "http://localhost:5173",
+//         allowedHeaders = {"Content-Type", "Authorization"},
+//         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS},
+//         allowCredentials = "true", // nếu có gửi cookie/authorization
+//         maxAge = 3600
+// )
 public class QuestionController {
 
     private final QuestionService questionService;
