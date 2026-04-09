@@ -1,7 +1,7 @@
 import { useMemo, useState, useRef, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -18,10 +18,10 @@ import { ArrowRight, LayoutGrid, RefreshCcw, Sparkles, XCircle } from "lucide-re
 import LoadingState from "@/widgets/LoadingState";
 
 import { } from "@/shared/api/questionBanksApi";
-import {fetchQuestionsByBankId} from "@/shared/api/questionsApi";
-import {QuestionBankApi} from "@/shared/api/questionBanksApi";
+import { fetchQuestionsByBankId } from "@/shared/api/questionsApi";
+import { QuestionBankApi } from "@/shared/api/questionBanksApi";
 import { QuestionBank } from "@/shared/types/questionBank";
-import {Question, QuestionOption} from "@/shared/types/question";
+import { Question, QuestionOption } from "@/shared/types/question";
 import { Flag } from "lucide-react";
 
 
@@ -59,6 +59,7 @@ export default function QuestionsPage() {
   const [picked, setPicked] = useState<Record<number, number | null>>({}); // qId -> optionId
   const [fillAnswers, setFillAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const { bankId } = useParams<{ bankId: string }>();
   const [data, setData] = useState<Question[]>([]);
   const [navOpen, setNavOpen] = useState(false); // ✅ trạng thái mở/đóng popup
@@ -90,7 +91,7 @@ export default function QuestionsPage() {
       const [qRes, sRes] = await Promise.allSettled([
         fetchQuestionsByBankId(id),
         QuestionBankApi.getById(id),
-         // nhớ nhận signal
+        // nhớ nhận signal
       ]);
 
       // Questions
@@ -301,9 +302,9 @@ export default function QuestionsPage() {
           <div ref={pageTopRef} />
 
           <div className="mb-6 flex flex-wrap items-center gap-3">
-            {!submitted ? (
+             {!submitted ? (
               <button
-                onClick={() => setSubmitted(true)}
+                onClick={() => setShowConfirmModal(true)}
                 className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110"
               >
                 Nộp bài <ArrowRight className="h-4 w-4" />
@@ -406,10 +407,36 @@ export default function QuestionsPage() {
                   </button>
 
                   {/* Hiển thị phạm vi câu trên trang */}
-                  <div className="ml-auto text-sm text-slate-600 dark:text-slate-300">
-                    Trang <b>{page}</b>/<b>{pageCount}</b> • Câu <b>{start + 1}</b>–<b>{Math.min(end, total)}</b> / {total}
+                  <div className="flex items-center gap-5 ml-auto text-sm text-slate-600 dark:text-slate-300">
+                    <div>
+                      Trang <b>{page}</b>/<b>{pageCount}</b> • Câu <b>{start + 1}</b>–<b>{Math.min(end, total)}</b> / {total}
+                    </div>
+                    <div className="flex flex-wrap items-center gap-3">
+                       {!submitted ? (
+                        <button
+                          onClick={() => setShowConfirmModal(true)}
+                          className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110"
+                        >
+                          Nộp bài <ArrowRight className="h-4 w-4" />
+                        </button>
+                      ) : (
+                        <>
+                          <div className="mr-2 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:ring-emerald-800">
+                            Điểm: <b>{score}</b>/<b>{total}</b>
+                          </div>
+                          <button
+                            onClick={reset}
+                            className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-slate-700"
+                          >
+                            Làm lại <RefreshCcw className="h-4 w-4" />
+                          </button>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
+
+
               </>
             )
           }
@@ -535,15 +562,63 @@ export default function QuestionsPage() {
                       </button>
                     </div>
                   </div>
-
                 </motion.div>
               </div>
             )}
           </div>
-
         </div>
       </div>
 
+      {/* Xác nhận nộp bài Modal */}
+      <AnimatePresence>
+        {showConfirmModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+              onClick={() => setShowConfirmModal(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white p-8 shadow-2xl dark:bg-slate-900"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400">
+                  <AlertTriangle className="h-8 w-8" />
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">
+                  Xác nhận nộp bài?
+                </h3>
+                <p className="mb-8 text-slate-600 dark:text-slate-400">
+                  Bạn có chắc chắn muốn nộp bài không? Bạn sẽ không thể thay đổi đáp án sau khi đã nộp.
+                </p>
+                <div className="flex w-full gap-3">
+                  <button
+                    onClick={() => setShowConfirmModal(false)}
+                    className="flex-1 rounded-2xl border border-slate-200 py-3 font-semibold text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-400 dark:hover:bg-slate-800/50"
+                  >
+                    Hủy bỏ
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSubmitted(true);
+                      setShowConfirmModal(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="flex-1 rounded-2xl bg-emerald-600 py-3 font-semibold text-white shadow-lg shadow-emerald-500/20 hover:brightness-110"
+                  >
+                    Xác nhận nộp
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
