@@ -18,34 +18,36 @@ async function listFiles(parentId) {
         "https://www.googleapis.com/drive/v3/files" +
         `?q=${encodeURIComponent(q)}&fields=files(id,name,mimeType)&key=${API_KEY}`;
 
-    const res = await axios.get(url);
-    return res.data.files;
+    try {
+        const res = await axios.get(url);
+        return res.data.files || [];
+    } catch (error) {
+        console.error(`❌ Lỗi khi đọc folder ${parentId}:`, error.response ? error.response.data : error.message);
+        return [];
+    }
 }
 
-/** Build cây thư mục */
+/** Build cây thư mục (đệ quy) */
 async function buildTree(folderId, basePath = "") {
     const files = await listFiles(folderId);
-
-    const folderTree = {
-        name: "",
-        type: "folder",
-        path: "",
-        children: []
-    };
+    const children = [];
 
     for (const f of files) {
         const currentPath = `${basePath}/${f.name}`;
 
         if (f.mimeType === "application/vnd.google-apps.folder") {
-            const subTree = await buildTree(f.id, currentPath);
-
-            subTree.name = f.name;
-            subTree.type = "folder";
-            subTree.path = currentPath;
-
-            folderTree.children.push(subTree);
+            // In ra tiến trình để người dùng không cảm thấy bị treo
+            console.log(`📂 Đang quét: ${currentPath}`);
+            
+            const subChildren = await buildTree(f.id, currentPath);
+            children.push({
+                name: f.name,
+                type: "folder",
+                path: currentPath,
+                children: subChildren
+            });
         } else {
-            folderTree.children.push({
+            children.push({
                 name: f.name,
                 type: getExt(f.name),
                 path: currentPath,
@@ -54,7 +56,7 @@ async function buildTree(folderId, basePath = "") {
         }
     }
 
-    return folderTree;
+    return children;
 }
 
 /** Lấy extension file */
@@ -63,23 +65,31 @@ function getExt(name) {
     return parts.length > 1 ? parts.pop().toLowerCase() : "unknown";
 }
 
-/** Chạy chương trình */
+/** Chạy chương trình chính */
 async function main() {
+    console.log("🚀 Bắt đầu quét Google Drive... (Vui lòng đợi, quá trình này có thể mất vài phút)");
+    
     const folderId = extractId(FOLDER_URL);
     if (!folderId) return console.error("❌ Không tìm thấy ID trong URL!");
 
     const tree = await buildTree(folderId);
 
-    // 👉 Xuất thẳng danh sách children, không tạo node gốc
+    // Xuất danh sách thư mục con vào key 'folders'
     const output = {
-        folders: tree.children
+        folders: tree
     };
 
-    // ---- Xuất ra file public/files.json ----
-    const filePath = path.join(process.cwd(), "public/files.json");
+    // Đảm bảo thư mục public tồn tại
+    const publicDir = path.join(process.cwd(), "public");
+    if (!fs.existsSync(publicDir)) {
+        fs.mkdirSync(publicDir);
+    }
+
+    const filePath = path.join(publicDir, "files.json");
     fs.writeFileSync(filePath, JSON.stringify(output, null, 2), "utf8");
 
-    console.log("✅ Đã tạo file:", filePath);
+    console.log("\n✅ Hoàn thành! Đã tạo file:", filePath);
+    console.log("📊 Bây giờ bạn có thể dùng dữ liệu này để hiển thị trên giao diện.");
 }
 
-main();
+main();
