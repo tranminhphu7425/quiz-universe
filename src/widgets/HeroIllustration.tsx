@@ -74,7 +74,7 @@ export function HeroIllustration() {
   const [count, setCount] = useState<number | null>(null);
   useEffect(() => {
     fetchTotalQuestionCount().then(setCount).catch(console.error);
-  }), [];
+  }, []);
   return (
     <div className="relative select-none">
     

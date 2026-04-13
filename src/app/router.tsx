@@ -163,15 +163,7 @@ export const router = createHashRouter(
         {
           element: <RequireAuth />,
           children: [
-            {
-              path: "/admin",
-              element: <AdminLayout />,
-              children: [
-                { index: true, element: withSuspense(<AdminDashboardPage />) },
-                { path: "users", element: withSuspense(<AdminUsersPage />) }, // sau này bạn có thể thay = UserManagementPage
-                { path: "settings", element: withSuspense(<AdminDashboardPage />) },
-              ],
-            },
+            
 
             { path: "/dashboard", element: withSuspense(<DashboardPage />), errorElement: <NotFoundPage /> },
             { path: "/settings", element: withSuspense(<SettingsPage />), errorElement: <NotFoundPage /> },
@@ -200,6 +192,16 @@ export const router = createHashRouter(
       },  
       
     ],
+
+    },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+        { index: true, element: withSuspense(<AdminDashboardPage />) },
+        { path: "users", element: withSuspense(<AdminUsersPage />) }, // sau này bạn có thể thay = UserManagementPage
+        { path: "settings", element: withSuspense(<AdminDashboardPage />) },
+      ],
     },
       {
         element: <CTULayout/>,

@@ -6,6 +6,8 @@ import DashboardAdminSidebar from "@/widgets/DashboardAdminSidebar";
 
 export function AdminLayout() {
   return (
+    <>
+    <Header/>
     <div className="flex min-h-screen">
      
         <DashboardAdminSidebar />
@@ -13,5 +15,7 @@ export function AdminLayout() {
           <Outlet /> {/* Nội dung các route sẽ render ở đây */}
         </main>
     </div>
+   
+    </>
   ); 
 }

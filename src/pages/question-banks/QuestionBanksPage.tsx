@@ -279,7 +279,7 @@ export default function QuestionBanksPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="relative min-h-screen bg-slate-50 dark:bg-slate-900">
       <section className="relative overflow-hidden">
         {/* Gradient nền */}
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-400
@@ -303,7 +303,7 @@ export default function QuestionBanksPage() {
         <div className="pointer-events-none absolute z-0 -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/20" />
 
         {/* Hero section */}
-        <motion.div className="relative z-10 text-center mx-auto max-w-6xl px-6 py-20">
+        <motion.div className="relative z-10 text-center mx-auto max-w-6xl px-6 py-12">
           <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center ">
             <div className="w-full lg:w-auto">
               <h1 className="text-3xl font-black leading-tight text-white text-center lg:text-left">
@@ -726,17 +726,17 @@ export default function QuestionBanksPage() {
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white ring-1 ring-white/20 disabled:opacity-50 dark:bg-white/5 dark:ring-white/10"
+                className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-slate-200 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700"
               >
                 <ChevronLeft className="h-4 w-4" /> Trước
               </button>
-              <span className="text-sm text-white/90 dark:text-gray-300">
+              <span className="text-sm text-slate-600 dark:text-slate-300">
                 Trang {page}/{totalPages}
               </span>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
-                className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white ring-1 ring-white/20 disabled:opacity-50 dark:bg-white/5 dark:ring-white/10"
+                className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-slate-200 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700"
               >
                 Sau <ChevronRight className="h-4 w-4" />
               </button>

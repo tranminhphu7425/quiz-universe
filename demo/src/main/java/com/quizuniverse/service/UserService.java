@@ -1,7 +1,9 @@
 package com.quizuniverse.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,4 +41,51 @@ public class UserService {
 
     }
 
-}
+    /* ================= ADMIN ================= */
+
+    /**
+     * Lấy danh sách tất cả users (cho admin)
+     */
+    public List<UserDTO> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(User::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Cập nhật vai trò của user
+     */
+    public UserDTO updateUserRole(String userId, String newRole) {
+        User user = userRepository.findByUserId(userId)
+                .orElseThrow(() -> new RuntimeException("User not found: " + userId));
+
+        user.setRole(newRole);
+        user.setUpdatedAt(LocalDateTime.now());
+        userRepository.save(user);
+        return new UserDTO(user);
+    }
+
+    /**
+     * Bật/tắt trạng thái hoạt động của user
+     */
+    public UserDTO toggleUserActive(String userId) {
+        User user = userRepository.findByUserId(userId)
+                .orElseThrow(() -> new RuntimeException("User not found: " + userId));
+
+        Boolean current = user.getIsActive();
+        user.setIsActive(current == null || !current);
+        user.setUpdatedAt(LocalDateTime.now());
+        userRepository.save(user);
+        return new UserDTO(user);
+    }
+
+    /**
+     * Xóa user (cho admin)
+     */
+    public void deleteUser(String userId) {
+        User user = userRepository.findByUserId(userId)
+                .orElseThrow(() -> new RuntimeException("User not found: " + userId));
+        userRepository.delete(user);
+    }
+}

@@ -1,5 +1,7 @@
 package com.quizuniverse.dto;
 
+import java.time.LocalDateTime;
+
 import com.quizuniverse.entity.Major;
 import com.quizuniverse.entity.University;
 import com.quizuniverse.entity.User;
@@ -13,16 +15,20 @@ public class UserDTO {
     private String role;
     private University university;
     private Major major;
+    private Boolean isActive;
+    private LocalDateTime createdAt;
 
     public UserDTO(User user) {
         this.id = String.valueOf(user.getUserId());
         this.name = user.getFullName() != null ? user.getFullName() : user.getUsername();
         this.email = user.getEmail();
-        this.role = user.getRole(); // hoặc bạn lấy từ DB nếu có cột role
-        this.university = user.getUniversity(); // nếu chưa có tính năng tenant
+        this.role = user.getRole();
+        this.university = user.getUniversity();
         this.username = user.getUsername();
         this.phone = user.getPhone();
         this.major = user.getMajor();
+        this.isActive = user.getIsActive();
+        this.createdAt = user.getCreatedAt();
     }
 
     public UserDTO() {
@@ -93,6 +99,20 @@ public class UserDTO {
     public void setMajor(Major major) {
         this.major = major;
     }
-    
 
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }

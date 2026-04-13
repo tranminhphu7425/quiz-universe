@@ -44,6 +44,7 @@ async function buildTree(folderId, basePath = "") {
                 name: f.name,
                 type: "folder",
                 path: currentPath,
+                driveId: f.id,
                 children: subChildren
             });
         } else {

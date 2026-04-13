@@ -15,7 +15,8 @@ import {
   File,
   Download,
   Calendar,
-  Clock
+  Clock,
+  ExternalLink
 } from "lucide-react";
 
 type FileItem = {
@@ -26,10 +27,11 @@ type FileItem = {
   lastModified?: string;
 };
 
-type Folder = {
+type FolderItem = {
   name: string;
   type: string;
   path: string;
+  driveId?: string;
   children?: any[];
   lastModified?: string;
 };
@@ -44,6 +46,24 @@ export default function ExplorePage() {
   const [pathHistory, setPathHistory] = useState<string[]>([""]);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortOption, setSortOption] = useState<SortOption>('name-asc');
+  const [currentDriveId, setCurrentDriveId] = useState<string | null>(null);
+
+  // Root folder ID từ Google Drive URL trong generate-tree.cjs
+  const ROOT_DRIVE_ID = "1NqnO17ZVH91Np0aCKXvBwIMOowt5bh6c";
+
+  /** Tìm driveId của folder theo path */
+  const findDriveIdByPath = (items: any[], targetPath: string): string | null => {
+    for (const item of items) {
+      if (item.path === targetPath && item.type === "folder") {
+        return item.driveId || null;
+      }
+      if (item.children) {
+        const result = findDriveIdByPath(item.children, targetPath);
+        if (result) return result;
+      }
+    }
+    return null;
+  };
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}/files.json`)
@@ -51,6 +71,7 @@ export default function ExplorePage() {
       .then((data) => {
         setFolders(data.folders);
         setCurrentItems(data.folders);
+        setCurrentDriveId(ROOT_DRIVE_ID);
       });
   }, []);
 
@@ -66,6 +87,7 @@ export default function ExplorePage() {
 
     if (!path) {
       setCurrentItems(folders);
+      setCurrentDriveId(ROOT_DRIVE_ID);
       return;
     }
 
@@ -84,6 +106,10 @@ export default function ExplorePage() {
 
     const items = findItemsByPath(folders, path);
     setCurrentItems(items || folders);
+
+    // Tìm driveId cho folder hiện tại
+    const driveId = findDriveIdByPath(folders, path);
+    setCurrentDriveId(driveId);
   };
 
   const goBack = () => {
@@ -308,14 +334,31 @@ export default function ExplorePage() {
               ))}
             </div>
 
-            {pathHistory.length > 1 && (
-              <button
-                onClick={goBack}
-                className="ml-2 text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 flex items-center gap-1 shrink-0"
-              >
-                ← Quay lại
-              </button>
-            )}
+            <div className="flex items-center gap-2 shrink-0">
+              {currentDriveId && (
+                <a
+                  href={`https://drive.google.com/drive/folders/${currentDriveId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-600 hover:bg-blue-100
+                    dark:bg-blue-900/20 dark:text-blue-400 dark:hover:bg-blue-900/40
+                    transition-colors border border-blue-200 dark:border-blue-800"
+                  title="Mở thư mục này trong Google Drive"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  Mở trong Drive
+                </a>
+              )}
+              {pathHistory.length > 1 && (
+                <button
+                  onClick={goBack}
+                  className="text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 flex items-center gap-1"
+                >
+                  ← Quay lại
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

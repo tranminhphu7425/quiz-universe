@@ -42,19 +42,17 @@ export default function AdminDashboardPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-14 text-center">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 160, damping: 18 }}
           >
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur">
-              <ClipboardList className="h-4 w-4" /> Quản trị hệ thống
-            </div>
-            <h1 className="text-[2rem] md:text-[2.4rem] font-black leading-tight text-white">
+            
+            <h1 className="text-3xl md:text-4xl font-black leading-tight text-white">
               🛠️ Bảng điều khiển quản trị
             </h1>
-            <p className="mt-1 max-w-xl mx-auto text-white/90">
+            <p className="mt-2 max-w-xl mx-auto text-white/80">
               Theo dõi toàn bộ người dùng, môn học, câu hỏi và kỳ thi trong hệ thống.
             </p>
           </motion.div>
@@ -155,7 +153,7 @@ function StatCard({ icon, label, value, hint }: { icon: React.ReactNode; label: 
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 140, damping: 16 }}
-      className="rounded-2xl border border-white/40 bg-white/80 p-4 shadow-sm backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/60"
+      className="rounded-xl border border-white/40 bg-white/80 p-4 shadow-sm backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/60"
     >
       <div className="flex items-center gap-3">
         <div className="grid h-9 w-9 place-items-center rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200">

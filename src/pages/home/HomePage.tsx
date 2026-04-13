@@ -245,7 +245,7 @@ export default function HomePage() {
 
 
   return (
-    <div className="home-page bg-slate-50 dark:bg-slate-800">
+    <div className="home-page bg-slate-50 dark:bg-slate-900">
       {/* ====== HERO ====== */}
 
       <section className="relative overflow-hidden">

@@ -1,12 +1,15 @@
 package com.quizuniverse.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -94,6 +97,47 @@ public class UserController {
     ) {
         UUID userId = UUID.fromString(authentication.getName());
         return profileService.updateProfile(userId, req);
+    }
+
+    /* ================= ADMIN ================= */
+
+    /**
+     * [ADMIN] Lấy danh sách tất cả users
+     */
+    @GetMapping("/admin/users")
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    /**
+     * [ADMIN] Cập nhật vai trò user
+     */
+    @PutMapping("/admin/users/{userId}/role")
+    public ResponseEntity<UserDTO> updateUserRole(
+            @PathVariable String userId,
+            @RequestBody Map<String, String> body
+    ) {
+        String newRole = body.get("role");
+        UserDTO updated = userService.updateUserRole(userId, newRole);
+        return ResponseEntity.ok(updated);
+    }
+
+    /**
+     * [ADMIN] Bật/tắt trạng thái user
+     */
+    @PutMapping("/admin/users/{userId}/toggle-active")
+    public ResponseEntity<UserDTO> toggleUserActive(@PathVariable String userId) {
+        UserDTO updated = userService.toggleUserActive(userId);
+        return ResponseEntity.ok(updated);
+    }
+
+    /**
+     * [ADMIN] Xóa user
+     */
+    @DeleteMapping("/admin/users/{userId}")
+    public ResponseEntity<Map<String, String>> deleteUser(@PathVariable String userId) {
+        userService.deleteUser(userId);
+        return ResponseEntity.ok(Map.of("message", "User deleted successfully"));
     }
 
 }
