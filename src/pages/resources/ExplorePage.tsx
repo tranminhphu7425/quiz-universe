@@ -18,6 +18,7 @@ import {
   Clock,
   ExternalLink
 } from "lucide-react";
+import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
 
 type FileItem = {
   name: string;
@@ -200,37 +201,102 @@ export default function ExplorePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50 dark:from-slate-900 dark:to-gray-900">
+
+
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 120, damping: 18 }}
-            className="text-5xl font-black text-white mb-4"
-          >
-            📂 Trình duyệt tài nguyên
-          </motion.h1>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Khám phá và mở tài liệu từ các học phần một cách dễ dàng
-          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="relative max-w-2xl mx-auto"
-          >
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-500" />
-            <input
-              type="text"
-              placeholder="Tìm kiếm tài liệu, thư mục..."
-              className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-emerald-300"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+        <AnimatedGradientBackground />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-10 md:py-12">
+          <div className="text-center">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 160, damping: 18 }}
+              className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur dark:bg-white/5 dark:ring-white/10"
+            >
+              <span className="text-base">📚</span>
+              <span className="text-white/90 dark:text-gray-200 text-[11px]">Thư viện tài nguyên • Dành cho sinh viên CTU</span>
+            </motion.div>
+
+            {/* Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 120, damping: 18 }}
+              className="text-3xl md:text-4xl font-black text-white mb-2"
+            >
+              <span className="text-white dark:text-gray-100">
+                Trình duyệt tài nguyên
+              </span>
+            </motion.h1>
+
+            {/* Decorative line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "60px" }}
+              transition={{ delay: 0.15, duration: 0.5 }}
+              className="h-0.5 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full mx-auto mb-3"
             />
-          </motion.div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-white/85 dark:text-gray-300 text-sm md:text-base max-w-2xl mx-auto"
+            >
+              Khám phá và mở tài liệu từ các học phần một cách dễ dàng
+            </motion.p>
+
+            {/* Search Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="relative max-w-xl mx-auto mt-5"
+            >
+              <div className="relative group">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 dark:text-emerald-400 h-4 w-4 transition-colors group-focus-within:text-yellow-300" />
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm tài liệu, thư mục..."
+                  className="w-full pl-11 pr-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-emerald-300/50 focus:bg-white/15 transition-all text-sm"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+
+                {/* Shortcut hint */}
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-1">
+                  <kbd className="px-1.5 py-0.5 text-[10px] font-semibold text-white/60 bg-white/10 rounded-md">⌘</kbd>
+                  <kbd className="px-1.5 py-0.5 text-[10px] font-semibold text-white/60 bg-white/10 rounded-md">K</kbd>
+                </div>
+              </div>
+
+              {/* Quick filters */}
+              <div className="flex flex-wrap justify-center gap-2 mt-3">
+                <span className="text-[10px] text-white/50">Nhanh:</span>
+                {["Bài giảng", "Đề thi", "Tài liệu", "Slide"].map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setSearchQuery(tag)}
+                    className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white/70 hover:bg-white/20 transition-colors"
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom Wave */}
+        <div className="absolute bottom-0 left-0 right-0 opacity-15">
+          <svg className="w-full h-8" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0V27.35A600.21 600.21 0 00321.39 56.44z" fill="currentColor" />
+          </svg>
         </div>
       </section>
 
@@ -243,8 +309,8 @@ export default function ExplorePage() {
               <button
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded-md transition-colors ${viewMode === 'grid'
-                    ? 'bg-white dark:bg-slate-600 shadow-sm'
-                    : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
+                  ? 'bg-white dark:bg-slate-600 shadow-sm'
+                  : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
                   }`}
               >
                 <Grid className={`h-4 w-4 ${viewMode === 'grid' ? 'text-emerald-600' : 'text-slate-500'}`} />
@@ -252,8 +318,8 @@ export default function ExplorePage() {
               <button
                 onClick={() => setViewMode('list')}
                 className={`p-2 rounded-md transition-colors ${viewMode === 'list'
-                    ? 'bg-white dark:bg-slate-600 shadow-sm'
-                    : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
+                  ? 'bg-white dark:bg-slate-600 shadow-sm'
+                  : 'hover:bg-white/50 dark:hover:bg-slate-600/50'
                   }`}
               >
                 <List className={`h-4 w-4 ${viewMode === 'list' ? 'text-emerald-600' : 'text-slate-500'}`} />
@@ -267,8 +333,8 @@ export default function ExplorePage() {
                 <button
                   onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
                   className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
-                      ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
                     }`}
                 >
                   {sortOption === 'name-asc' ? <SortAsc className="h-3 w-3" /> : <SortDesc className="h-3 w-3" />}
@@ -277,8 +343,8 @@ export default function ExplorePage() {
                 <button
                   onClick={() => setSortOption('type')}
                   className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'type'
-                      ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
                     }`}
                 >
                   Loại
@@ -286,8 +352,8 @@ export default function ExplorePage() {
                 <button
                   onClick={() => setSortOption('date')}
                   className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'date'
-                      ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
                     }`}
                 >
                   <Calendar className="h-3 w-3" />
@@ -323,8 +389,8 @@ export default function ExplorePage() {
                   <button
                     onClick={() => navigateToPath(item.path)}
                     className={`text-sm truncate max-w-[150px] sm:max-w-[200px] shrink-0 ${index === getBreadcrumbItems().length - 1
-                        ? "font-semibold text-emerald-700 dark:text-emerald-300"
-                        : "text-slate-600 dark:text-slate-400 hover:text-emerald-600"
+                      ? "font-semibold text-emerald-700 dark:text-emerald-300"
+                      : "text-slate-600 dark:text-slate-400 hover:text-emerald-600"
                       }`}
                     title={item.name}
                   >
@@ -464,8 +530,8 @@ function ItemCard({
         whileHover={{ y: -4, transition: { duration: 0.2 } }}
         onClick={onClick}
         className={`group cursor-pointer rounded-xl p-4 transition-all duration-300 ${isFolder
-            ? "bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-emerald-900/10 border border-emerald-200 dark:border-emerald-800 hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-lg"
-            : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-md"
+          ? "bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-emerald-900/10 border border-emerald-200 dark:border-emerald-800 hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-lg"
+          : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-md"
           }`}
       >
         <div className="flex items-start gap-3">
@@ -478,8 +544,8 @@ function ItemCard({
             </h3>
             <div className="flex items-center gap-2 mt-1">
               <span className={`text-xs px-2 py-0.5 rounded-full ${isFolder
-                  ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-                  : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400"
+                ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
+                : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400"
                 }`}>
                 {isFolder ? "Thư mục" : item.type.toUpperCase()}
               </span>
@@ -509,8 +575,8 @@ function ItemCard({
       whileHover={{ x: 4, transition: { duration: 0.2 } }}
       onClick={onClick}
       className={`group cursor-pointer rounded-lg p-4 transition-all duration-300 ${isFolder
-          ? "bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/10 dark:to-emerald-900/5 border border-emerald-100 dark:border-emerald-800/50 hover:border-emerald-300 dark:hover:border-emerald-700"
-          : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700"
+        ? "bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/10 dark:to-emerald-900/5 border border-emerald-100 dark:border-emerald-800/50 hover:border-emerald-300 dark:hover:border-emerald-700"
+        : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700"
         }`}
     >
       <div className="flex items-center gap-4">
@@ -526,8 +592,8 @@ function ItemCard({
               </h3>
               <div className="flex items-center gap-3 mt-1">
                 <span className={`text-xs px-2 py-0.5 rounded-full ${isFolder
-                    ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-                    : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400"
+                  ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400"
                   }`}>
                   {isFolder ? "Thư mục" : item.type.toUpperCase()}
                 </span>

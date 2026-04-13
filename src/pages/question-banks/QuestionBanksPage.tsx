@@ -7,7 +7,9 @@ import {
   ChevronLeft, ChevronRight, FilePlus2, Grid, List, SortAsc,
   SortDesc, Calendar, Download, Eye, EyeOff, MoreVertical,
   ChevronDown, Star, Users, Lock, Globe,
-  ChevronUp
+  ChevronUp,
+  Sparkles,
+  Library
 } from "lucide-react";
 import { Heart, HeartOff } from "lucide-react";
 import { AlertTriangle, RefreshCcw } from "lucide-react";
@@ -23,6 +25,7 @@ import type { QuestionBank } from "@/shared/types/questionBank";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { favoriteService } from "@/shared/api/favoriteApi";
 import { FavoriteQuestionBank } from "@/shared/types/favorite";
+import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
 
 // Map màu theo độ khó
 const DIFFICULTY_MAP: Record<Difficulty, { text: string; bg: string; ring: string }> = {
@@ -281,72 +284,177 @@ export default function QuestionBanksPage() {
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-slate-900">
       <section className="relative overflow-hidden">
-        {/* Gradient nền */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-400
-                      dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-
-        {/* Tile mờ */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 w-[120%] md:w-full opacity-10 dark:opacity-[0.15]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml;utf8,${tileUrl}")`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "160px 160px",
-            maskImage: "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
-            WebkitMaskImage: "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
-          }}
-        />
-
-        {/* Blur blobs */}
-        <div className="pointer-events-none absolute z-0 -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-2xl dark:bg-emerald-400/20" />
-        <div className="pointer-events-none absolute z-0 -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/20" />
+        
+        <AnimatedGradientBackgroundProps/>
 
         {/* Hero section */}
-        <motion.div className="relative z-10 text-center mx-auto max-w-6xl px-6 py-12">
-          <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center ">
-            <div className="w-full lg:w-auto">
-              <h1 className="text-3xl font-black leading-tight text-white text-center lg:text-left">
-                Ngân hàng câu hỏi
-              </h1>
-              <p className="mt-1 text-white/90 dark:text-gray-300 text-center lg:text-left">
-                Tìm kiếm, lọc theo môn/chương/độ khó/loại. Tạo đề từ nhiều nguồn.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3 justify-center w-full lg:w-auto">
-              <Link
-                to="/question-bank/create"
-                className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
-              >
-                <PlusCircle className="h-4 w-4" /> Thêm bộ câu hỏi mới
-              </Link>
-
-              <Link
-                to="/subjects"
-                className="inline-flex items-center gap-2 rounded-full bg-red-400 px-5 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
-              >
-                <BookOpen className="h-4 w-4" /> Hiển thị tất cả các môn học
-              </Link>
-              
-
-
-            </div>
+        <motion.div 
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-12"
+    >
+      <div className="flex flex-col lg:flex-row  justify-between content-center gap-6">
+        {/* Left Section - Title & Description */}
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
+          className="w-full lg:w-auto"
+        >
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
+            <Library className="w-3.5 h-3.5 text-yellow-300" />
+            <span className="text-xs font-medium text-white/90">Ngân hàng câu hỏi</span>
           </div>
 
-          {/* Floating decor */}
-          <Floating distance={12} duration={7} className="pointer-events-none absolute top-16 left-8">
-            <div className="rounded-xl bg-gradient-to-br from-amber-300 to-rose-300 px-3 py-1 shadow-lg -rotate-6">
-              <span className="text-xs font-black text-rose-700">QUESTIONS</span>
-            </div>
-          </Floating>
+          {/* Title with gradient */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+            <span className="bg-gradient-to-r from-white via-yellow-100 to-amber-200 bg-clip-text text-transparent">
+              Ngân hàng câu hỏi
+            </span>
+          </h1>
 
-          <Floating distance={10} duration={6} className="pointer-events-none absolute top-16 right-10">
-            <div className="rounded-full bg-gradient-to-br from-purple-400 to-indigo-400 p-3 shadow-xl rotate-12">
-              <BookOpen className="h-4 w-4 text-white" />
+          {/* Decorative underline */}
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "80px" }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="h-1 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full mt-3 mb-4"
+          />
+
+          {/* Description */}
+          <p className="text-white/80 dark:text-gray-200 text-base md:text-lg max-w-xl leading-relaxed">
+            Tìm kiếm, lọc theo môn/chương/độ khó/loại. Tạo đề từ nhiều nguồn.
+          </p>
+
+          {/* Quick stats */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="flex gap-4 mt-4"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+              <span className="text-xs text-white/70">Hơn 10.000 câu hỏi</span>
             </div>
-          </Floating>
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
+              <span className="text-xs text-white/70">50+ môn học</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+              <span className="text-xs text-white/70">Cập nhật liên tục</span>
+            </div>
+          </motion.div>
         </motion.div>
+
+        {/* Right Section - Action Buttons */}
+        <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto"
+        >
+          {/* Primary Button - Create Question Bank */}
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Link
+              to="/question-bank/create"
+              className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold shadow-lg transition-all duration-300 bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 text-emerald-950 hover:shadow-xl"
+            >
+              {/* Shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              
+              <PlusCircle className="h-4 w-4 group-hover:rotate-90 transition-transform duration-300" />
+              <span className="relative z-10">Thêm bộ câu hỏi mới</span>
+              <ChevronRight className="h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </motion.div>
+
+          {/* Secondary Button - View All Subjects */}
+          <motion.div
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Link
+              to="/subjects"
+              className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-lg transition-all duration-300 bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20"
+            >
+              <BookOpen className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
+              <span>Hiển thị tất cả môn học</span>
+            </Link>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Floating Decorations */}
+      {/* Decoration 1 - Question Badge */}
+      <Floating distance={15} duration={7} className="pointer-events-none absolute top-20 left-5 z-0 hidden lg:block">
+        <motion.div 
+          animate={{ rotate: [-6, 0, -6] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 px-4 py-2 shadow-xl"
+        >
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-3 w-3 text-white" />
+            <span className="text-xs font-black text-white tracking-wider">QUESTIONS</span>
+            <Sparkles className="h-3 w-3 text-white" />
+          </div>
+        </motion.div>
+      </Floating>
+
+      {/* Decoration 2 - Book Icon */}
+      <Floating distance={12} duration={6} className="pointer-events-none absolute top-24 right-8 z-0 hidden lg:block">
+        <motion.div 
+          animate={{ rotate: [12, 0, 12] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 p-3 shadow-xl"
+        >
+          <BookOpen className="h-5 w-5 text-white" />
+        </motion.div>
+      </Floating>
+
+      {/* Decoration 3 - Plus Icon */}
+      <Floating distance={10} duration={8} className="pointer-events-none absolute bottom-0 right-1/4 z-0 hidden lg:block">
+        <motion.div 
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 p-2 shadow-lg"
+        >
+          <PlusCircle className="h-4 w-4 text-white" />
+        </motion.div>
+      </Floating>
+
+      {/* Decoration 4 - Small dots */}
+      <div className="pointer-events-none absolute top-1/2 left-10 -z-0 hidden xl:block">
+        <div className="flex gap-1">
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3, delay: i * 0.5, repeat: Infinity }}
+              className="w-1 h-1 rounded-full bg-white/40"
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-10 right-20 -z-0 hidden xl:block">
+        <div className="flex gap-1">
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 4, delay: i * 0.3, repeat: Infinity }}
+              className="w-1 h-1 rounded-full bg-white/30"
+            />
+          ))}
+        </div>
+      </div>
+    </motion.div>
       </section>
 
       {/* ===== CONTROL BAR ===== */}

@@ -25,6 +25,8 @@ import { useState, useEffect } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { vi } from "date-fns/locale";
 
+import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
+
 interface ForumCategory {
     id: number;
     name: string;
@@ -254,81 +256,115 @@ export default function ForumPage() {
         <div className="forum-page bg-slate-50 dark:bg-slate-800 min-h-screen">
             {/* ====== HERO HEADER ====== */}
             <section className="relative overflow-hidden bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-                {/* Blur blobs */}
-                <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-white/10 blur-2xl dark:bg-emerald-400/10" />
-                <div className="pointer-events-none absolute -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/10" />
+ 
+  <AnimatedGradientBackground/>
 
-                <div className="relative z-10 mx-auto max-w-7xl px-6 py-16">
-                    <div className="text-center text-white">
-                        <motion.div
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ type: "spring", stiffness: 160, damping: 18 }}
-                            className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur dark:bg-white/5 dark:ring-white/10"
-                        >
-                            <Sparkles className="h-4 w-4 text-white dark:text-emerald-300" />
-                            <span className="text-white dark:text-gray-200">Diễn đàn QuizUniverse • Nơi kết nối cộng đồng</span>
-                        </motion.div>
+  <div className="relative z-10 mx-auto max-w-7xl px-6 py-10 md:py-12">
+    <div className="text-center text-white">
+      {/* Badge - nhỏ gọn hơn */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 160, damping: 18 }}
+        className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur dark:bg-white/5 dark:ring-white/10"
+      >
+        <Sparkles className="h-3 w-3 text-yellow-300 dark:text-emerald-300" />
+        <span className="text-white/90 dark:text-gray-200 text-[11px]">Diễn đàn QuizUniverse • Kết nối cộng đồng</span>
+      </motion.div>
 
-                        <motion.h1
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.05 }}
-                            className="text-4xl md:text-5xl font-black leading-tight text-white dark:text-gray-100"
-                        >
-                            Diễn đàn{" "}
-                            <GradientText className="mx-auto text-4xl md:text-5xl font-[Poppins]">
-                                QuizUniverse
-                            </GradientText>
-                        </motion.h1>
+      {/* Title - font nhỏ hơn một chút */}
+      <motion.h1
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.05 }}
+        className="text-3xl md:text-4xl font-black leading-tight text-white dark:text-gray-100"
+      >
+        Diễn đàn{" "}
+      </motion.h1>
 
-                        <motion.p
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="mt-4 mx-auto max-w-2xl text-white/90 dark:text-gray-300"
-                        >
-                            Nơi trao đổi, chia sẻ kiến thức và kinh nghiệm học tập.
-                            Thảo luận về các môn học, phương pháp ôn tập và nhận hỗ trợ từ cộng đồng.
-                        </motion.p>
+      {/* Decorative line - thêm đường kẻ trang trí */}
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: "60px" }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="h-0.5 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full mx-auto mt-2"
+      />
 
-                        {/* Search Bar */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.15 }}
-                            className="mt-8 mx-auto max-w-2xl"
-                        >
-                            <div className="relative">
-                                <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 dark:text-gray-300" />
-                                <input
-                                    type="text"
-                                    placeholder="Tìm kiếm chủ đề, thẻ tag hoặc nội dung..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full rounded-full bg-white/10 dark:bg-white/5 pl-12 pr-4 py-3 text-white dark:text-gray-100 placeholder-gray-300 dark:placeholder-gray-400 ring-1 ring-white/30 dark:ring-white/20 backdrop-blur transition-all focus:bg-white/15 dark:focus:bg-white/10 focus:ring-2 focus:ring-white/50 dark:focus:ring-white/40 focus:outline-none"
-                                />
-                                <button className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-emerald-500 dark:bg-emerald-600 p-2 hover:bg-emerald-400 dark:hover:bg-emerald-500 transition-colors">
-                                    <Search className="h-4 w-4 text-white" />
-                                </button>
-                            </div>
-                        </motion.div>
+      {/* Description - ngắn gọn hơn */}
+      <motion.p
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="mt-3 mx-auto max-w-2xl text-white/85 dark:text-gray-300 text-sm md:text-base"
+      >
+        Nơi trao đổi kiến thức, chia sẻ kinh nghiệm học tập và nhận hỗ trợ từ cộng đồng.
+      </motion.p>
 
-                        {/* Floating elements */}
-                        <Floating distance={12} duration={7} className="pointer-events-none absolute top-6 left-8">
-                            <div className="rounded-xl bg-gradient-to-br from-amber-300 to-rose-300 dark:from-amber-400 dark:to-rose-400 p-2 shadow-lg -rotate-6">
-                                <span className="text-xs font-black text-rose-700 dark:text-rose-800">NEW!</span>
-                            </div>
-                        </Floating>
+      {/* Search Bar - compact hơn */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15 }}
+        className="mt-5 mx-auto max-w-xl"
+      >
+        <div className="relative group">
+          <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-300 dark:text-gray-400 transition-colors group-focus-within:text-emerald-300" />
+          <input
+            type="text"
+            placeholder="Tìm kiếm chủ đề, thẻ tag hoặc nội dung..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full rounded-full bg-white/10 dark:bg-white/5 pl-11 pr-20 py-2.5 text-sm text-white dark:text-gray-100 placeholder-gray-300 dark:placeholder-gray-400 ring-1 ring-white/30 dark:ring-white/20 backdrop-blur transition-all focus:bg-white/15 dark:focus:bg-white/10 focus:ring-2 focus:ring-white/50 dark:focus:ring-white/40 focus:outline-none"
+          />
+          <button className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-3 py-1.5 text-xs font-medium text-white shadow-md hover:shadow-lg transition-all hover:scale-105">
+            Tìm
+          </button>
+        </div>
 
-                        <Floating distance={10} duration={6} className="pointer-events-none absolute top-12 right-8">
-                            <div className="rounded-full bg-gradient-to-br from-purple-400 to-indigo-400 dark:from-purple-500 dark:to-indigo-500 p-3 shadow-xl rotate-12">
-                                <MessageSquare className="h-4 w-4 text-white" />
-                            </div>
-                        </Floating>
-                    </div>
-                </div>
-            </section>
+        {/* Popular tags - thêm tags gợi ý */}
+        <div className="flex flex-wrap justify-center gap-2 mt-3">
+          <span className="text-[10px] text-white/50">Gợi ý:</span>
+          {["Toán", "Lập trình", "Tiếng Anh", "Ôn thi"].map((tag) => (
+            <button
+              key={tag}
+              className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white/70 hover:bg-white/20 transition-colors"
+            >
+              #{tag}
+            </button>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Floating elements - nhỏ gọn hơn */}
+      <Floating distance={10} duration={7} className="pointer-events-none absolute top-5 left-6 hidden lg:block">
+        <motion.div
+          animate={{ rotate: [-6, 0, -6] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 px-2 py-1 shadow-lg"
+        >
+          <span className="text-[10px] font-black text-white">HOT!</span>
+        </motion.div>
+      </Floating>
+
+      <Floating distance={8} duration={6} className="pointer-events-none absolute top-8 right-8 hidden lg:block">
+        <motion.div
+          animate={{ rotate: [12, 0, 12] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 p-2 shadow-lg"
+        >
+          <MessageSquare className="h-3.5 w-3.5 text-white" />
+        </motion.div>
+      </Floating>
+    </div>
+  </div>
+
+  {/* Bottom Wave - thêm sóng ở đáy cho đẹp */}
+  <div className="absolute bottom-0 left-0 right-0 opacity-20">
+    <svg className="w-full h-8" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+      <path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0V27.35A600.21 600.21 0 00321.39 56.44z" fill="currentColor" />
+    </svg>
+  </div>
+</section>
 
             {/* ====== MAIN CONTENT ====== */}
             <div className="mx-auto max-w-7xl px-6 py-8">

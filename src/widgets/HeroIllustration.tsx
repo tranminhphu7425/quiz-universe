@@ -1,37 +1,16 @@
 
 // 2) Thêm component này (cùng file hoặc import riêng)
 import { motion } from "framer-motion";
-import { Database, FileText, Shuffle, BookOpen, Upload, CheckCircle2 } from "lucide-react";
+import { Database, FileText, Shuffle, BookOpen, Upload, CheckCircle2, Sparkles } from "lucide-react";
 import { Printer } from 'lucide-react'; // or from your chosen icon library
 import { Users } from 'lucide-react';
-import { fetchTotalQuestionCount } from "@/shared/api/questionsApi";
+import { fetchAllSubjects } from "@/shared/api/subjectApi";
+import { QuestionBankApi } from "@/shared/api/questionBanksApi";
 import { useEffect, useState } from "react";
 import React from "react";
 
 
-const coderData = {
-  name: "Zane Whitaker",
-  role: "Frontend Developer",
-  seniority: "Mid-Level",
-  location: "Bangladesh",
-  skills: [
-    "React",
-    "Next.js",
-    "JavaScript",
-    "TypeScript",
-    "TailwindCSS",
-    "CSS",
-    "Figma",
-    "GitHub",
-    "HTML",
-    "Astro",
-    "Node.js",
-    "Express",
-    "MongoDB",
-    "Firebase",
-    "Git",
-  ],
-};
+
 
 function Card({
   title,
@@ -53,31 +32,54 @@ function Card({
       transition={{ delay, type: "spring", stiffness: 130, damping: 16 }}
       whileHover={{ y: -2 }}
       className="rounded-xl border border-white/25 bg-white/10 p-4 text-gray-800 dark:text-gray-200 shadow-lg backdrop-blur-md
-             dark:border-gray-700 dark:bg-gray-800/60"
+             dark:border-gray-700 dark:bg-gray-800/60 h-full flex flex-col content-between"
     >
-      <div className="mb-2 flex items-center gap-2">
+      <div className="mb-auto flex items-center gap-2">
         <span className="rounded-md bg-white/15 p-2 dark:bg-gray-700/50">
           {icon}
         </span>
         <div className="font-semibold text-gray-900 dark:text-gray-100">{title}</div>
       </div>
-      <div className="text-sm text-gray-700 dark:text-gray-300">{subtitle}</div>
+      <div className = "flex flex-col mt-2">
+      <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line flex-1">{subtitle.trim()}</div>
       {footer && (
-        <div className="mt-3 text-xs text-gray-600 dark:text-gray-400">{footer}</div>
+        <div className="mt-auto pt-3 text-xs text-gray-600 dark:text-gray-400">{footer}</div>
       )}
+      </div>
     </motion.div>
 
   );
 }
 
 export function HeroIllustration() {
-  const [count, setCount] = useState<number | null>(null);
+  const [stats, setStats] = useState<{
+    totalBanks: number;
+    totalQuestions: number;
+    totalSubjects: number;
+  } | null>(null);
+
   useEffect(() => {
-    fetchTotalQuestionCount().then(setCount).catch(console.error);
+    async function loadStats() {
+      try {
+        const [statData, subjects] = await Promise.all([
+          QuestionBankApi.statistics(),
+          fetchAllSubjects()
+        ]);
+        setStats({
+          totalBanks: statData.totalBanks,
+          totalQuestions: statData.totalQuestions,
+          totalSubjects: subjects.length
+        });
+      } catch (err) {
+        console.error("Failed to fetch stats for Hero:", err);
+      }
+    }
+    loadStats();
   }, []);
+
   return (
     <div className="relative select-none">
-    
+
       {/* Glowing border top */}
       <div className="flex flex-row absolute -top-px left-0 right-0">
         <div className="h-[2px] w-1/2 bg-gradient-to-r 
@@ -104,28 +106,28 @@ export function HeroIllustration() {
                       dark:border-blue-900/50 dark:from-gray-900/80 dark:to-blue-900/20 dark:text-white">
 
         {/* Three-step pipeline */}
-        <div className="grid gap-6 lg:grid-cols-3 ">
+        <div className="grid gap-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
           {/* 1. Question Bank */}
-          <div className="content-between grid grid-cols-1">
+          <div className="flex flex-col h-full">
             <Card
               delay={0.02}
-              title="Kho câu hỏi đa môn"
-              subtitle="Phân loại theo môn học • Chương/bài • Đa dạng mẫu câu hỏi"
-              icon={<Database className="h-5 w-5 text-blue-600 dark:text-blue-400" />}
+              title="Ngân hàng Câu hỏi"
+              subtitle={`• Tổ chức theo thư mục
+• Phân loại độ khó
+• Gắn thẻ nhãn`}
+              icon={<Database className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />}
               footer={
                 <div className="flex items-center justify-between">
-                  <span>Lịch sử Đảng • 2,450 câu</span>
                   <span
-                    className="inline-flex items-center gap-1 rounded-md  bg-emerald-400
-             dark:bg-emerald-400/20  px-2 py-0.5 
-             text-gray-100 dark:text-emerald-100"
+                    className="inline-flex items-center gap-1 rounded-md  bg-emerald-500
+             dark:bg-emerald-500/20  px-2 py-0.5 
+             text-white dark:text-emerald-100"
                   >
-                    <CheckCircle2 className="h-3.5 w-3.5" /> Đã kiểm duyệt
+                    <CheckCircle2 className="h-3.5 w-3.5" /> Đã xác thực
                   </span>
 
                 </div>
               }
-
             />
             <div>
               <div className="my-4 hidden h-0.5 w-full rounded bg-green-400 dark:bg-blue-900/50 sm:block" />
@@ -142,23 +144,22 @@ export function HeroIllustration() {
           </div>
 
           {/* 2. Exam Creation */}
-          <div className="content-between grid grid-cols-1">
+          <div className="flex flex-col h-full">
             <Card
               delay={0.06}
-              title="Tạo đề thi linh hoạt"
-              subtitle="Kết hợp từ nhiều kho • Tự động cân đối độ khó • Tạo nhiều mã đề"
-              icon={<Shuffle className="h-5 w-5 text-blue-600 dark:text-blue-400" />}
+              title="Tạo đề thi thông minh"
+              subtitle={`• Trộn mã đề tự động
+• Cân đối kiến thức
+• Tùy chỉnh thang điểm`}
+              icon={<Shuffle className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />}
               footer={
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-800 dark:text-gray-200">
-                    Giữa kỳ Toán • 40 câu
-                  </span>
                   <span
                     className="inline-flex items-center gap-1 rounded-md px-2 py-0.5
-               bg-blue-100 text-blue-800
-               dark:bg-blue-400/20 dark:text-blue-100"
+               bg-emerald-50 text-emerald-700
+               dark:bg-emerald-400/20 dark:text-emerald-100"
                   >
-                    <FileText className="h-3.5 w-3.5" /> 5 mã đề
+                    <FileText className="h-3.5 w-3.5" /> Hỗ trợ nhiều mã đề
                   </span>
                 </div>
 
@@ -178,13 +179,25 @@ export function HeroIllustration() {
           </div>
 
           {/* 3. Document Conversion */}
-          <div className="content-between grid grid-cols-1">
+          <div className="flex flex-col h-full">
             <Card
               delay={0.1}
-              title="Chuyển tài liệu thành câu hỏi"
-              subtitle="Tự động sinh câu hỏi từ tài liệu • Hỗ trợ nhiều định dạng"
-              icon={<BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />}
-              footer={<span>Giáo trình Vật lý 12 • 28 câu nháp</span>}
+              title="Công cụ AI Quiz"
+              subtitle={`• Sinh câu hỏi từ PDF/Docx
+• Lấy nội dung từ giáo trình
+• Gợi ý đáp án thông minh`}
+              icon={<BookOpen className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />}
+              footer={
+                <div className="flex items-center justify-between">
+                  <span
+                    className="inline-flex items-center gap-1 rounded-md px-2 py-0.5
+               bg-emerald-50 text-emerald-700
+               dark:bg-emerald-400/20 dark:text-emerald-100"
+                  >
+                    <Sparkles className="h-3.5 w-3.5" /> AI xử lý tự động
+                  </span>
+                </div>
+              }
             />
             <div>
               <div className="my-4 hidden h-0.5 w-full rounded bg-green-400 dark:bg-blue-900/50 sm:block" />
@@ -209,16 +222,18 @@ export function HeroIllustration() {
           className="mt-6 space-y-2 text-sm"
         >
           <li className="flex items-center justify-between">
-            <span className="text-gray-600 dark:text-blue-200">Tổng số môn học</span>
-            <span className="font-medium">12 môn</span>
+            <span className="text-gray-600 dark:text-emerald-200">Học phần khả dụng</span>
+            <span className="font-medium">{stats?.totalSubjects ?? "2"} học phần</span>
           </li>
           <li className="flex items-center justify-between">
-            <span className="text-gray-600 dark:text-blue-200">Tổng số câu hỏi</span>
-            <span className="font-medium">{count} câu</span>
+            <span className="text-gray-600 dark:text-emerald-200">Tổng số câu hỏi</span>
+            <span className="font-medium">{stats?.totalQuestions ?? "600+"} câu</span>
           </li>
           <li className="flex items-center justify-between">
-            <span className="text-gray-600 dark:text-blue-200">Đề thi đã tạo</span>
-            <span className="rounded-md bg-blue-100 px-2 py-0.5 font-medium text-blue-800 dark:bg-blue-900/50 dark:text-blue-200">127 đề</span>
+            <span className="text-gray-600 dark:text-emerald-200">Bộ đề thi hiện có</span>
+            <span className="rounded-md bg-emerald-100 px-2 py-0.5 font-medium text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-200">
+              {stats?.totalBanks ?? "6"} bộ đề
+            </span>
           </li>
         </motion.ul>
       </div>

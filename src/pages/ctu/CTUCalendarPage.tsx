@@ -441,7 +441,7 @@ const CTUCalendarPage: React.FC = () => {
           </div>
 
           {/* Phần Thời khóa biểu bổ sung */}
-          <div className="flex-1 mt-8 rounded-lg border bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+          <div className="flex-1 rounded-lg border bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
             <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <h2 className="text-xl font-bold">2. Thời khóa biểu học phần</h2>
             </div>

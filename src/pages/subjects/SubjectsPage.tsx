@@ -316,7 +316,7 @@ export default function SubjectsPage() {
 
             <div className="flex items-center gap-3 justify-center w-full lg:w-auto">
               <Link
-                to="subject/create"
+                to="create"
                 className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
               >
                 <PlusCircle className="h-4 w-4" /> Thêm môn mới

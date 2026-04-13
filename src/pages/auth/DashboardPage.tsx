@@ -45,6 +45,7 @@ import { favoriteService } from "@/shared/api/favoriteApi";
 import TypewriterText from "@/shared/ui/TypewriterText";
 // import OrbitingSkills from "@/shared/ui/OrbitingSkills";
 import { FavoriteQuestionBank, FavoriteSubject } from "@/shared/types/favorite";
+import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
 
 // =============================
 // Types & interfaces
@@ -177,7 +178,7 @@ export default function DashboardPage() {
 
     { icon: <Brain />, label: 'Ôn tập', to: '/review', color: 'bg-red-400' },
 
-    { icon: <Brain />, label: 'Các công cụ cho sinh viên CTU', to: '/ctu', color: 'bg-blue-400', className: 'col-span-2' },
+    { icon: <Brain />, label: 'Các công cụ cho sinh viên CTU', to: '/ctu', color: 'bg-blue-400', className: 'flex col-span-2 justify-center' },
 
     // { icon: <FolderPlus />, label: 'Tải lên tài liệu', to: '/files/upload', color: 'bg-blue-400' },
 
@@ -192,21 +193,14 @@ export default function DashboardPage() {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/50 to-slate-50 dark:from-slate-900 dark:via-gray-900/50 dark:to-slate-900">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(16,185,129,0.05)_25%,rgba(16,185,129,0.05)_50%,transparent_50%,transparent_75%,rgba(16,185,129,0.05)_75%)] bg-[length:20px_20px]" />
+   
+
+      
 
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-
-        {/* Animated background elements */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-24 -top-24 h-96 w-96 animate-pulse rounded-full bg-white/10 blur-3xl dark:bg-emerald-400/10" />
-          <div className="absolute -right-16 top-10 h-80 w-80 animate-pulse rounded-full bg-white/10 blur-3xl dark:bg-purple-400/10" />
-          <div className="absolute bottom-10 left-1/3 h-64 w-64 animate-pulse rounded-full bg-white/5 blur-3xl dark:bg-blue-400/10" />
-        </div>
-
-        {/* <OrbitingSkills /> */}
+        <AnimatedGradientBackgroundProps/>
+        
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-16">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">

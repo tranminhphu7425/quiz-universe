@@ -92,8 +92,8 @@ export default function HeaderCTU({
   links =  [
     // { label: "Câu hỏi", href: "/question-banks" },
     // { label: "Đề thi", href: "/exams/create" },
-    { label: "Sắp xếp lịch", href: "/calendar" },
-    { label: "Tính điểm trung bình", href: "/calculator" }
+    { label: "Sắp xếp lịch", href: "/ctu/calendar" },
+    { label: "Tính điểm trung bình", href: "/ctu/calulator" }
 
   ] ;
   const location = useLocation();

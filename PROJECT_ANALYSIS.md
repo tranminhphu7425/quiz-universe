@@ -358,7 +358,7 @@ quiz-universe/
 │   ├── 📂 tenant-assets/           # Multi-tenant assets
 │   ├── files.json                   # Google Drive file tree (11MB!)
 │   ├── favicon.svg                  # Favicon
-│   └── vite.svg                     # Vite logo
+│  
 │
 ├── 📂 docs/                          # Built production (GitHub Pages)
 │   ├── index.html                   # Deployed entry
