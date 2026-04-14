@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Folder,
   FileText,
@@ -19,6 +19,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
+import { normalizeText } from "@/shared/utils/textUtils";
 
 type FileItem = {
   name: string;
@@ -48,6 +49,33 @@ export default function ExplorePage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortOption, setSortOption] = useState<SortOption>('name-asc');
   const [currentDriveId, setCurrentDriveId] = useState<string | null>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Thêm state để kiểm soát hiệu năng
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
+  const [displayLimit, setDisplayLimit] = useState(40);
+
+  // Debounce search query
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery);
+      setDisplayLimit(40); // Reset limit khi search mới
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  // Shortcut Ctrl + K to focus search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Root folder ID từ Google Drive URL trong generate-tree.cjs
   const ROOT_DRIVE_ID = "1NqnO17ZVH91Np0aCKXvBwIMOowt5bh6c";
@@ -78,6 +106,7 @@ export default function ExplorePage() {
 
   const navigateToPath = (path: string) => {
     setCurrentPath(path);
+    setDisplayLimit(40); // Reset limit khi đổi thư mục
 
     const pathIndex = pathHistory.indexOf(path);
     if (pathIndex === -1) {
@@ -155,11 +184,30 @@ export default function ExplorePage() {
     return sorted;
   };
 
-  const filteredItems = getSortedItems(
-    currentItems.filter(item =>
-      item.name.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  );
+  const searchAllItems = (items: any[], query: string): any[] => {
+    let results: any[] = [];
+    const normalizedQuery = normalizeText(query);
+
+    for (const item of items) {
+      if (normalizeText(item.name).includes(normalizedQuery)) {
+        results.push(item);
+      }
+      if (item.children) {
+        results = [...results, ...searchAllItems(item.children, query)];
+      }
+    }
+    return results;
+  };
+
+  const filteredItems = React.useMemo(() => {
+    return getSortedItems(
+      debouncedSearchQuery
+        ? searchAllItems(folders, debouncedSearchQuery)
+        : currentItems
+    );
+  }, [debouncedSearchQuery, currentItems, folders, sortOption]);
+
+  const displayedItems = filteredItems.slice(0, displayLimit);
 
   const getBreadcrumbItems = () => {
     if (!currentPath) return [];
@@ -261,6 +309,7 @@ export default function ExplorePage() {
               <div className="relative group">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 dark:text-emerald-400 h-4 w-4 transition-colors group-focus-within:text-yellow-300" />
                 <input
+                  ref={searchInputRef}
                   type="text"
                   placeholder="Tìm kiếm tài liệu, thư mục..."
                   className="w-full pl-11 pr-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-emerald-300/50 focus:bg-white/15 transition-all text-sm"
@@ -270,7 +319,7 @@ export default function ExplorePage() {
 
                 {/* Shortcut hint */}
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-1">
-                  <kbd className="px-1.5 py-0.5 text-[10px] font-semibold text-white/60 bg-white/10 rounded-md">⌘</kbd>
+                  <kbd className="px-1.5 py-0.5 text-[10px] font-semibold text-white/60 bg-white/10 rounded-md">Ctrl</kbd>
                   <kbd className="px-1.5 py-0.5 text-[10px] font-semibold text-white/60 bg-white/10 rounded-md">K</kbd>
                 </div>
               </div>
@@ -444,7 +493,7 @@ export default function ExplorePage() {
             >
               {viewMode === 'grid' ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                  {filteredItems.map((item, i) => (
+                  {displayedItems.map((item, i) => (
                     <ItemCard
                       key={i}
                       item={item}
@@ -463,7 +512,7 @@ export default function ExplorePage() {
                 </div>
               ) : (
                 <div className="space-y-2">
-                  {filteredItems.map((item, i) => (
+                  {displayedItems.map((item, i) => (
                     <ItemCard
                       key={i}
                       item={item}
@@ -478,6 +527,18 @@ export default function ExplorePage() {
                       }}
                     />
                   ))}
+                </div>
+              )}
+
+              {/* Nút Xem thêm */}
+              {displayLimit < filteredItems.length && (
+                <div className="mt-10 flex justify-center">
+                  <button
+                    onClick={() => setDisplayLimit(prev => prev + 40)}
+                    className="flex items-center gap-2 px-8 py-3 rounded-full bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 font-semibold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all shadow-sm"
+                  >
+                    🚀 Xem thêm ({filteredItems.length - displayLimit} mục còn lại)
+                  </button>
                 </div>
               )}
             </motion.div>

@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Mail, Lock, Sparkles, ArrowRight, Heart, EyeOff, Eye } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
-import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
@@ -16,7 +15,7 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [remember, setRemember] = useState(true);
+  const [remember] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -25,7 +24,7 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     try {
-      const res = await login(email, password, { remember });
+      await login(email, password, { remember });
       // Thành công, chuyển hướng handled bởi AuthProvider
       navigate("/dashboard");
     } catch (e: any) {

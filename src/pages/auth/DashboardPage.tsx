@@ -1,32 +1,19 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
-  ListChecks,
-  FolderPlus,
   FilePlus2,
   BookOpen,
   ArrowRight,
   Trash2,
-  ExternalLink,
-  Star,
-  Clock,
-  Tag,
   BarChart3,
-  TrendingUp,
-  Eye,
   CheckCircle,
-  Download,
-  Share2,
-  Users,
   Calendar,
   Target,
   BookMarked,
   FileQuestion,
   Sparkles,
-  Bell,
-  Settings,
   Trophy,
   Brain,
   History,
@@ -35,11 +22,8 @@ import {
   BarChart,
   PieChart,
   BookCheck,
-  GraduationCap
 } from "lucide-react";
 
-import LoadingState from "@/widgets/LoadingState";
-import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { favoriteService } from "@/shared/api/favoriteApi";
 import TypewriterText from "@/shared/ui/TypewriterText";
@@ -89,11 +73,10 @@ type RecentActivity = {
 // =============================
 export default function DashboardPage() {
   const user = useAuth();
-  const [loading, setLoading] = useState(false);
   const [questionBankFavorites, setQuestionBankFavorites] = useState<FavoriteQuestionBank[]>([]);
   const [subjectFavorites, setSubjectFavorites] = useState<FavoriteSubject[]>([]);
   const [activeTab, setActiveTab] = useState<'overview' | 'stats' | 'recent'>('overview');
-  const [userStats, setUserStats] = useState<UserStats>({
+  const [userStats] = useState<UserStats>({
     totalQuestions: 0,
     completedSets: 0,
     totalStudyTime: 0,
@@ -155,7 +138,7 @@ export default function DashboardPage() {
     };
 
     loadFavorite();
-  }, []);
+  }, [User]);
 
   async function removeFavorite(s: FavoriteQuestionBank | FavoriteSubject) {
     try {

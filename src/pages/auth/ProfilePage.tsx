@@ -1,21 +1,19 @@
 // src/pages/profile/ProfilePage.tsx
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   User,
   Mail,
   Building2,
   Shield,
   Edit,
-  Calendar,
   BookOpen,
   Award,
   History,
   Star,
   ChevronRight,
   UserCircle,
-  Briefcase,
   GraduationCap,
   Clock,
   FileText,
@@ -26,7 +24,7 @@ import GradientText from "@/shared/ui/GradientText";
 
 export default function ProfilePage() {
   const { user } = useAuth();
-  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
 
   // Mô phỏng thời gian loading
@@ -75,16 +73,7 @@ export default function ProfilePage() {
     }
   };
 
-  // Format ngày tham gia
-  const formatJoinDate = (dateString?: string) => {
-    if (!dateString) return "Chưa có thông tin";
-    const date = new Date(dateString);
-    return date.toLocaleDateString("vi-VN", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });
-  };
+
 
   // Mock stats (trong thực tế sẽ lấy từ API)
   const userStats = {

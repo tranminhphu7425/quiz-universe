@@ -1,0 +1,1952 @@
+[
+  {
+    "id": 777,
+    "stem": "Nơi tổng hợp protein ở tế bào chân hạch:",
+    "explanation": "Ribosome là bào quan tổng hợp protein ở tế bào nhân thực (chân hạch)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3021,
+        "label": "A",
+        "content": "Mesosomes",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3022,
+        "label": "B",
+        "content": "Ribosomes",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3023,
+        "label": "C",
+        "content": "Vùng nhân",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3024,
+        "label": "D",
+        "content": "Tế bào chất tại Ribosomes",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 778,
+    "stem": "Các ribo thể có tính chuyên biệt rất cao, chỉ tổng hợp một loại protein cho mỗi ribo thể:",
+    "explanation": "Ribosome có thể tổng hợp nhiều loại protein khác nhau, không chỉ một loại",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3025,
+        "label": "A",
+        "content": "Đúng với tất cả các vi sinh vật",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3026,
+        "label": "B",
+        "content": "Sai với tất cả vi sinh vật",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3027,
+        "label": "C",
+        "content": "Đúng tùy loại vi sinh vật",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3028,
+        "label": "D",
+        "content": "Sai tùy loại vi sinh vật",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 779,
+    "stem": "Số lượng tế bào vi khuẩn được sinh ra từ 1 tế bào ban đầu sau 5 chu kì phân cắt là:",
+    "explanation": "Sau n chu kì: 2^n = 2^5 = 32 tế bào",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3029,
+        "label": "A",
+        "content": "20",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3030,
+        "label": "B",
+        "content": "16",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3031,
+        "label": "C",
+        "content": "32",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3032,
+        "label": "D",
+        "content": "64",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 780,
+    "stem": "Khả năng chống lại sự khô hạn của vi khuẩn:",
+    "explanation": "Vi khuẩn hình cầu có khả năng chịu khô hạn tốt nhất do diện tích bề mặt tiếp xúc nhỏ nhất",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3033,
+        "label": "A",
+        "content": "Hình cầu tốt hơn hình que và hình xoắn",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3034,
+        "label": "B",
+        "content": "Hình que tốt hơn hình cầu và hình xoắn",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3035,
+        "label": "C",
+        "content": "Hình xoắn tốt hơn hình cầu và hình que",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3036,
+        "label": "D",
+        "content": "Hình que, hình cầu, hình xoắn là như nhau",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 781,
+    "stem": "Khả năng hấp thu chất dinh dưỡng nhờ diện tích tiếp xúc của vi khuẩn:",
+    "explanation": "Vi khuẩn hình que và hình xoắn có diện tích bề mặt tiếp xúc lớn hơn nên hấp thu tốt hơn",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3037,
+        "label": "A",
+        "content": "Hình que và hình xoắn tốt hơn hình cầu",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3038,
+        "label": "B",
+        "content": "Hình que và hình cầu tốt hơn hình xoắn",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3039,
+        "label": "C",
+        "content": "Hình xoắn và hình cầu tốt hơn hình que",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3040,
+        "label": "D",
+        "content": "Hình que, hình cầu, hình xoắn là như nhau",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 782,
+    "stem": "Trong các chất sau, thành phần chiếm tỉ lệ nhiều nhất trong tế bào vi khuẩn:",
+    "explanation": "Nước chiếm khoảng 70-85% khối lượng tế bào vi khuẩn",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3041,
+        "label": "A",
+        "content": "Nước",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3042,
+        "label": "B",
+        "content": "Protein",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3043,
+        "label": "C",
+        "content": "Lipid",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3044,
+        "label": "D",
+        "content": "Cacbohydrate",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 783,
+    "stem": "Trong các chất sau, thành phần chiếm tỉ lệ nhiều nhất trong tế bào vi khuẩn:",
+    "explanation": "Protein chiếm khoảng 50-55% chất khô của tế bào vi khuẩn",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3045,
+        "label": "A",
+        "content": "Khoáng",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3046,
+        "label": "B",
+        "content": "Protein",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3047,
+        "label": "C",
+        "content": "Lipid",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3048,
+        "label": "D",
+        "content": "Cacbohydrate",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 784,
+    "stem": "Trong các chất sau, thành phần chiếm tỉ lệ nhiều nhất trong tế bào vi khuẩn:",
+    "explanation": "Carbon chiếm khoảng 50% chất khô của tế bào vi sinh vật",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3049,
+        "label": "A",
+        "content": "Carbon",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3050,
+        "label": "B",
+        "content": "Oxy",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3051,
+        "label": "C",
+        "content": "Hydro",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3052,
+        "label": "D",
+        "content": "Nito",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 785,
+    "stem": "Thanh tảo (cyanophyta) thuộc nhóm vi sinh vật:",
+    "explanation": "Tảo lam (Cyanophyta) là vi sinh vật nhân sơ (Prokaryote)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3053,
+        "label": "A",
+        "content": "Sơ hạch",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3054,
+        "label": "B",
+        "content": "Prokaryote",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3055,
+        "label": "C",
+        "content": "Eukaryote",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3056,
+        "label": "D",
+        "content": "Sơ hạch và Prokaryote",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 786,
+    "stem": "Đặc điểm của vi sinh vật:",
+    "explanation": "VSV kích thước nhỏ, hấp thu nhiều, chuyển hóa chất nhanh do tỷ lệ S/V lớn",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3057,
+        "label": "A",
+        "content": "Kích thước nhỏ, hấp thu ít, ít tốn năng lượng",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3058,
+        "label": "B",
+        "content": "Kích thước nhỏ, hấp thu nhiều, ít tốn năng lượng",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3059,
+        "label": "C",
+        "content": "Kích thước nhỏ, hấp thu nhiều, chuyển hóa các chất nhanh",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3060,
+        "label": "D",
+        "content": "Kích thước nhỏ, hấp thu ít, chuyển hóa các chất nhanh",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 787,
+    "stem": "Áp suất của hơi nước bão hòa ở 121°C trong quá trình khử trùng nhiệt ướt:",
+    "explanation": "Ở 121°C, áp suất hơi nước bão hòa là 1,0 kg/cm² (khoảng 15 psi)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3061,
+        "label": "A",
+        "content": "0,7 kg/cm2",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3062,
+        "label": "B",
+        "content": "1,0 kg/cm2",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3063,
+        "label": "C",
+        "content": "1,2 kg/cm2",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3064,
+        "label": "D",
+        "content": "1,5 kg/cm2",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 788,
+    "stem": "Nấm mốc thuộc nhóm vi sinh vật:",
+    "explanation": "Nấm mốc là vi sinh vật nhân thực (Eukaryote) và thuộc nhóm chân hạch",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3065,
+        "label": "A",
+        "content": "Chân hạch",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3066,
+        "label": "B",
+        "content": "Prokaryote",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3067,
+        "label": "C",
+        "content": "Eukaryote",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3068,
+        "label": "D",
+        "content": "Chân hạch & Eukaryote",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 789,
+    "stem": "Hãy chọn câu trả lời đúng cho VSV sơ hạch:",
+    "explanation": "Vi sinh vật sơ hạch (Prokaryote) gồm vi khuẩn, xạ khuẩn, mycoplasma",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3069,
+        "label": "A",
+        "content": "Vi khuẩn, xạ khuẩn, nấm men",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3070,
+        "label": "B",
+        "content": "Vi khuẩn, xạ khuẩn, mycoplasma",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3071,
+        "label": "C",
+        "content": "Vi khuẩn, mycoplasma, nấm mốc",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3072,
+        "label": "D",
+        "content": "Nấm men, nấm móc, xạ khuẩn",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 790,
+    "stem": "Nấm mốc thuộc nhóm vi sinh vật nào?",
+    "explanation": "Nấm mốc là vi sinh vật hiếu khí bắt buộc",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3073,
+        "label": "A",
+        "content": "Hiếu khí",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3074,
+        "label": "B",
+        "content": "Kỵ khí",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3075,
+        "label": "C",
+        "content": "Hiếu khí tùy nghi",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3076,
+        "label": "D",
+        "content": "Kỵ khí tùy nghi",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 791,
+    "stem": "Mục đích chính của việc hình thành bào tử ở nấm mốc là gì?",
+    "explanation": "Bào tử nấm mốc chủ yếu để sinh sản",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3077,
+        "label": "A",
+        "content": "Sinh sản",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3078,
+        "label": "B",
+        "content": "Bảo vệ tế bào",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3079,
+        "label": "C",
+        "content": "Trao đổi chất",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3080,
+        "label": "D",
+        "content": "Hấp thu dinh dưỡng",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 792,
+    "stem": "Độ chiết xuất của dầu cèdre dùng trong khi xem mẫu ở vật kính X100 của kính hiển vi:",
+    "explanation": "Dầu cèdre (cedar oil) có chiết suất n=1,515, thường lấy xấp xỉ 1,50",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3081,
+        "label": "A",
+        "content": "n=1,15",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3082,
+        "label": "B",
+        "content": "n=1,25",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3083,
+        "label": "C",
+        "content": "n=1,50",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3084,
+        "label": "D",
+        "content": "n=1,45",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 793,
+    "stem": "Thành phần % cao nhất của màng tế bào chất của tế bào vi khuẩn:",
+    "explanation": "Protein chiếm tỷ lệ cao nhất trong màng tế bào chất (khoảng 50-70%)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3085,
+        "label": "A",
+        "content": "Protein",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3086,
+        "label": "B",
+        "content": "Carbohydrat",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3087,
+        "label": "C",
+        "content": "Lipid",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3088,
+        "label": "D",
+        "content": "Polysaccharide",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 794,
+    "stem": "Bộ phận vi sinh vật dùng để di chuyển:",
+    "explanation": "Chiên mao (flagella) là cơ quan di chuyển của vi khuẩn",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3089,
+        "label": "A",
+        "content": "Tiêm mao",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3090,
+        "label": "B",
+        "content": "Khuẩn mao",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3091,
+        "label": "C",
+        "content": "Chiên mao",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3092,
+        "label": "D",
+        "content": "Nhung mao",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 795,
+    "stem": "Vi khuẩn thuộc nhóm vi sinh vật:",
+    "explanation": "Vi khuẩn là vi sinh vật sơ hạch (Prokaryote)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3093,
+        "label": "A",
+        "content": "Sơ hạch",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3094,
+        "label": "B",
+        "content": "Prokaryote",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3095,
+        "label": "C",
+        "content": "Eukaryote",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3096,
+        "label": "D",
+        "content": "Sơ hạch & Prokaryote",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 796,
+    "stem": "Cấu tạo của nội bào tử vi khuẩn theo thứ tự từ ngoài vào trong bao gồm các lớp:",
+    "explanation": "Thứ tự đúng: exsporium → áo (spore coat) → cortex → vỏ (core wall) → màng tế bào chất",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3097,
+        "label": "A",
+        "content": "Áo (spore coat), lớp exsporium, cortex, vỏ (core wall) và màng tế bào chất.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3098,
+        "label": "B",
+        "content": "Lớp exsporium, áo (spore coat), cortex, vỏ (core wall) và màng tế bào chất.",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3099,
+        "label": "C",
+        "content": "Áo (spore coat), exsporium, vỏ (core wall), cortex và màng tế bào chất.",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3100,
+        "label": "D",
+        "content": "Lớp exsporium, áo (spore coat), vỏ (core wall), cortex và màng tế bào chất.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 797,
+    "stem": "Thành phần cấu tạo hóa học chính của vỏ tế bào vi khuẩn:",
+    "explanation": "Vỏ tế bào vi khuẩn gồm protein, lipid và polysaccharide",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3101,
+        "label": "A",
+        "content": "Protein, lipid và glucosamine",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3102,
+        "label": "B",
+        "content": "Lipid, polysaccharide và glucosamine",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3103,
+        "label": "C",
+        "content": "Protein, polysaccharide và glucosamine",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3104,
+        "label": "D",
+        "content": "Protein, lipid và polysaccharide",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 798,
+    "stem": "Đơn vị cấu tạo chính của vỏ tế bào vi khuẩn Gram dương:",
+    "explanation": "Peptidoglycan là thành phần chính của thành tế bào vi khuẩn Gram dương",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3105,
+        "label": "A",
+        "content": "Polysaccharide",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3106,
+        "label": "B",
+        "content": "Peptodoglycan",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3107,
+        "label": "C",
+        "content": "Glucosamine",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3108,
+        "label": "D",
+        "content": "Diaminopimelic",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 799,
+    "stem": "Thứ tự các đơn vị trong hệ thống phân loại của vi khuẩn:",
+    "explanation": "Phân loại: Giới → Ngành → Lớp → Bộ → Họ → Giống → Loài",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3109,
+        "label": "A",
+        "content": "Giới, lớp, ngành, bộ, họ, giống, loài.",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3110,
+        "label": "B",
+        "content": "Giới, lớp, ngành, họ, bộ, giống, loài.",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3111,
+        "label": "C",
+        "content": "Giới, ngành, lớp, bộ, họ, giống, loài.",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3112,
+        "label": "D",
+        "content": "Giới, ngành, lớp, họ, bộ, giống, loài.",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 800,
+    "stem": "Ở vi khuẩn, việc tạo nha bào có vai trò gì?",
+    "explanation": "Nha bào giúp vi khuẩn tồn tại trong điều kiện môi trường bất lợi",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3113,
+        "label": "A",
+        "content": "Hình thức sinh sản ngẫu nhiên",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3114,
+        "label": "B",
+        "content": "Giúp tế bào phát triển nhanh hơn",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3115,
+        "label": "C",
+        "content": "Không có vai trò gì",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3116,
+        "label": "D",
+        "content": "Giúp tế bào tồn tại với điều kiện khắc nghiệt",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 801,
+    "stem": "Vi khuẩn tạo bào tử khi nào?",
+    "explanation": "Vi khuẩn tạo bào tử khi môi trường sống bất lợi hoặc dinh dưỡng cạn kiệt",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3117,
+        "label": "A",
+        "content": "Khi môi trường dinh dưỡng dồi dào",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3118,
+        "label": "B",
+        "content": "Khi môi trường bất lợi",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3119,
+        "label": "C",
+        "content": "Khi môi trường dinh dưỡng cạn kiệt",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3120,
+        "label": "D",
+        "content": "Khi môi trường sống bất lợi & Khi môi trường dinh dưỡng cạn kiệt",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 802,
+    "stem": "Màng của các bào quan trong tế bào sinh vật chân hạch có cấu tạo màng đôi lipid, ngoại trừ:",
+    "explanation": "Nhân con (nucleolus) không có màng bao bọc",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3121,
+        "label": "A",
+        "content": "Nhân con",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3122,
+        "label": "B",
+        "content": "Nhân",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3123,
+        "label": "C",
+        "content": "Lục lạp",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3124,
+        "label": "D",
+        "content": "Ty thể",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 803,
+    "stem": "Bộ xương tế bào hay còn gọi là cytoskeleton có chức năng:",
+    "explanation": "Bộ xương tế bào chống đỡ và giữ cho tế bào có hình dạng nhất định",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3125,
+        "label": "A",
+        "content": "Chống đỡ và giữ cho tế bào có hình dạng và kích thước nhất định",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3126,
+        "label": "B",
+        "content": "Chống đỡ và giữ cho tế bào có hình dạng và khối lượng nhất định",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3127,
+        "label": "C",
+        "content": "Chống đỡ và giữ cho tế bào có hình dạng nhất định",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3128,
+        "label": "D",
+        "content": "Chống đỡ và giữ cho tế bào có khối lượng nhất định",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 804,
+    "stem": "Trong cấu trúc bộ xương tế bào chân hạch, sợi có vai trò cung cấp sức mạnh cơ học và bền nhất là:",
+    "explanation": "Sợi trung gian (intermediate filaments) có độ bền cơ học cao nhất",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3129,
+        "label": "A",
+        "content": "Vi sợi (microfilaments)",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3130,
+        "label": "B",
+        "content": "Vi ống (microtubeles)",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3131,
+        "label": "C",
+        "content": "Các thoi vô sắc",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3132,
+        "label": "D",
+        "content": "Sợi trung gian (intermediate filaments)",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 805,
+    "stem": "Ribosome của vi sinh vật chân hạch là ……… gồm 2 tiểu phần ………..",
+    "explanation": "Ribosome 80S gồm tiểu phần 60S và 40S ở tế bào nhân thực",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3133,
+        "label": "A",
+        "content": "80S/ 50S và 30S",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3134,
+        "label": "B",
+        "content": "80S/ 60S và 40S",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3135,
+        "label": "C",
+        "content": "70S/ 50S và 30S",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3136,
+        "label": "D",
+        "content": "70S/ 60S và 40S",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 806,
+    "stem": "Lyso thể sơ cấp được hình thành từ:",
+    "explanation": "Lyso thể sơ cấp được hình thành từ bộ Golgi (Golgi apparatus)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3137,
+        "label": "A",
+        "content": "Lyso thể thứ cấp",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3138,
+        "label": "B",
+        "content": "Ribosome",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3139,
+        "label": "C",
+        "content": "Bộ Golgi",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3140,
+        "label": "D",
+        "content": "Sự kết hợp của lyso thể thứ cấp và thức ăn",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 807,
+    "stem": "Một trong những chức năng của ty thể:",
+    "explanation": "Ty thể tham gia tổng hợp ATP (hô hấp tế bào)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3141,
+        "label": "A",
+        "content": "Thực hiện quá trình phân giải protein",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3142,
+        "label": "B",
+        "content": "Thực hiện các phản ứng oxi hóa khử",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3143,
+        "label": "C",
+        "content": "Tham gia tổng hợp acid amin",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3144,
+        "label": "D",
+        "content": "Tham gia tổng hợp ATP",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 808,
+    "stem": "Nấm sinh sản theo hình thức nào:",
+    "explanation": "Nấm có cả sinh sản vô tính và hữu tính, tùy loài",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3145,
+        "label": "A",
+        "content": "Vô tính",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3146,
+        "label": "B",
+        "content": "Hữu tính",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3147,
+        "label": "C",
+        "content": "Tùy loại mà hình thức sinh sản khác nhau",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3148,
+        "label": "D",
+        "content": "Cả 3 câu trên đều đúng",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 809,
+    "stem": "Năm 1971, David Baltimore đã đưa ra hệ thống phân loại virus bao gồm:",
+    "explanation": "Hệ thống Baltimore phân loại virus thành 7 lớp dựa trên bộ gen",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3149,
+        "label": "A",
+        "content": "8 lớp",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3150,
+        "label": "B",
+        "content": "7 lớp",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3151,
+        "label": "C",
+        "content": "6 lớp",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3152,
+        "label": "D",
+        "content": "5 lớp",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 810,
+    "stem": "Bộ gen virus nhỏ nhưng mã hóa tất cả các yêu cầu nhờ:",
+    "explanation": "Virus sử dụng protein tế bào chủ, mã hóa hiệu quả và protein đa chức năng",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3153,
+        "label": "A",
+        "content": "Sử dụng protein tế bào chủ",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3154,
+        "label": "B",
+        "content": "Mã hóa rất hiệu quả",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3155,
+        "label": "C",
+        "content": "Protein đa chức năng",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3156,
+        "label": "D",
+        "content": "Bao gồm các yếu tố trên",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 811,
+    "stem": "Kích thước virus rất nhỏ, thông thường trong khoảng:",
+    "explanation": "Virus có kích thước 20-300 nm (nanomet)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3157,
+        "label": "A",
+        "content": "20-300 Angstrom",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3158,
+        "label": "B",
+        "content": "20-300nm",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3159,
+        "label": "C",
+        "content": "20-300µm",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3160,
+        "label": "D",
+        "content": "20-300mm",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 812,
+    "stem": "Protein cấu trúc của virus có các chức năng bên dưới, ngoại trừ:",
+    "explanation": "Protein cấu trúc không có chức năng ngăn cản đáp ứng miễn dịch của tế bào chủ",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3161,
+        "label": "A",
+        "content": "Bảo vệ bộ gen của virus",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3162,
+        "label": "B",
+        "content": "Gắn virion với tế bào chủ",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3163,
+        "label": "C",
+        "content": "Ngăn cản sự đáp ứng miễn dịch của tế bào chủ",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3164,
+        "label": "D",
+        "content": "Hợp nhất màng của virion với màng của tế bào chủ",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 813,
+    "stem": "Quá trình tổng hợp năng lượng ở vi sinh vật kỵ khí thông qua lộ trình đường phân (Glycolysis) hay lộ trình Embden – Meyerhoff và sau đó là quá trình lên men bao gồm các bước chính:",
+    "explanation": "Đường phân: Glucose → Glyceraldehyde 3-phosphate → Pyruvate → Lên men: Pyruvate → Acetyl CoA → Ethanol + CO2",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3165,
+        "label": "A",
+        "content": "Glucose → Acetyl CoA → Glyceraldehyde 3-phosphate → Pyruvate → Ethanol + CO2",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3166,
+        "label": "B",
+        "content": "Glucose → Glyceraldehyde 3-phosphate → Pyruvate → Acetyl CoA → Ethanol + CO2",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3167,
+        "label": "C",
+        "content": "Glucose → Pyruvate → Glyceraldehyde 3-phosphate → Acetyl CoA → Ethanol + CO2",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3168,
+        "label": "D",
+        "content": "Glucose → Glyceraldehyde 3-phosphate → Acetyl CoA → Pyruvate → Ethanol + CO2",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 814,
+    "stem": "Nấm men thuộc nhóm vi sinh vật:",
+    "explanation": "Nấm men là vi sinh vật nhân thực (Eukaryote)",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3169,
+        "label": "A",
+        "content": "Sơ hạch",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3170,
+        "label": "B",
+        "content": "Prokaryote (nhân sơ)",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3171,
+        "label": "C",
+        "content": "Eukaryote (nhân thực)",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3172,
+        "label": "D",
+        "content": "Sơ hạch và Prokaryote",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 815,
+    "stem": "Hình thức sinh sản cơ bản của vi khuẩn, nấm men và nấm mốc tương ứng là:",
+    "explanation": "Vi khuẩn phân đôi, nấm men nảy chồi, nấm mốc sinh bào tử",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3173,
+        "label": "A",
+        "content": "Phân đôi, bào tử và nảy chồi",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3174,
+        "label": "B",
+        "content": "Phân đôi, nảy chồi và bào tử",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3175,
+        "label": "C",
+        "content": "Nảy chồi, bào tử và phân đôi",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3176,
+        "label": "D",
+        "content": "Nảy chồi, phân đôi và bào tử",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 816,
+    "stem": "Một số chức năng chính của capsid:",
+    "explanation": "Capsid bảo vệ bộ gen và nhận biết/gắn vào tế bào chủ",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3177,
+        "label": "A",
+        "content": "Bảo vệ bộ gen",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3178,
+        "label": "B",
+        "content": "Nhận biết và gắn vào tế bào chủ",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3179,
+        "label": "C",
+        "content": "Bảo vệ bộ gen và nhận biết và gắn vào tế bào chủ",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3180,
+        "label": "D",
+        "content": "Cả 3 câu trên đều sai",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 817,
+    "stem": "Đặc điểm sinh sản của virus:",
+    "explanation": "Virus sinh sản theo kiểu tổng hợp các thành phần sau đó lắp ráp lại",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3181,
+        "label": "A",
+        "content": "Sinh sản trực phân",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3182,
+        "label": "B",
+        "content": "Sinh sản phân đoạn",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3183,
+        "label": "C",
+        "content": "Sinh sản theo kiểu tổng hợp các thành phần sau đó lắp ráp lại",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3184,
+        "label": "D",
+        "content": "Sinh sản gián đoạn",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 818,
+    "stem": "Hiện tượng bộ gen của virus gia nhập vào hệ gen của tế bào chủ và được nhân lên cùng với hệ gen của tế bào chủ và không phá hủy tế bào chủ gọi là hiện tượng:",
+    "explanation": "Hiện tượng tiềm tan (lysogeny) - virus ôn hòa",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3185,
+        "label": "A",
+        "content": "Hiện tượng biến nạp",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3186,
+        "label": "B",
+        "content": "Hiện tượng tải nạp",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3187,
+        "label": "C",
+        "content": "Hiện tượng sinh tan",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3188,
+        "label": "D",
+        "content": "Hiện tượng dị nhiễm (tiềm tan)",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 819,
+    "stem": "Virus có hình dạng tinh trùng, đầu là khối 6 cạnh, phần đuôi có dạng hình que là virus:",
+    "explanation": "Thực khuẩn thể (bacteriophage) có hình dạng đặc trưng như tinh trùng",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3189,
+        "label": "A",
+        "content": "Virus dại",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3190,
+        "label": "B",
+        "content": "Virus cúm",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3191,
+        "label": "C",
+        "content": "Virus đốm thuốc lá",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3192,
+        "label": "D",
+        "content": "Thực khuẩn thể",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 820,
+    "stem": "Khi nuôi cấy một loại vi sinh vật trong hệ thống kín thì chúng phát triển qua mấy giai đoạn?",
+    "explanation": "Đường cong sinh trưởng của vi khuẩn trong hệ kín có 4 giai đoạn",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3193,
+        "label": "A",
+        "content": "3 giai đoạn",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3194,
+        "label": "B",
+        "content": "4 giai đoạn",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3195,
+        "label": "C",
+        "content": "2 giai đoạn",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3196,
+        "label": "D",
+        "content": "5 giai đoạn",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 821,
+    "stem": "Đường cong tăng trưởng của vi khuẩn trải qua 4 giai đoạn theo thứ tự:",
+    "explanation": "Thứ tự: lag (chậm) → log (lũy thừa) → quân bình → chết",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3197,
+        "label": "A",
+        "content": "Giai đoạn log, giai đoạn lag, giai đoạn quân bình và giai đoạn chết",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3198,
+        "label": "B",
+        "content": "Giai đoạn chậm, giai đoạn lag, giai đoạn log và giai đoạn chết",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3199,
+        "label": "C",
+        "content": "Giai đoạn chậm, giai đoạn quân bình, giai đoạn log và giai đoạn chết",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3200,
+        "label": "D",
+        "content": "Giai đoạn lag, giai đoạn log, giai đoạn quân bình và giai đoạn chết",
+        "isCorrect": true,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 822,
+    "stem": "Số đơn vị hình thành khuẩn lạc (CFU, colony-forming unit) được xác định bằng phương pháp:",
+    "explanation": "CFU được xác định bằng phương pháp nuôi cấy trên môi trường thạch dinh dưỡng",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3201,
+        "label": "A",
+        "content": "Đếm trực tiếp trên buồng đếm hồng cầu",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3202,
+        "label": "B",
+        "content": "Đếm trên buồng đếm hồng cầu có nhuộm huỳnh quang",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3203,
+        "label": "C",
+        "content": "Nuôi cấy trên môi trường thạch dinh dưỡng",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3204,
+        "label": "D",
+        "content": "Đo mật độ quang hay phương pháp quang học (đo OD hoặc Klett)",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 823,
+    "stem": "Sự truyền vật liệu di truyền ADN từ tế bào vi khuẩn cho sang tế bào vi khuẩn nhận qua trung gian thực khuẩn thể là hiện tượng:",
+    "explanation": "Tải nạp (transduction) là hiện tượng truyền DNA nhờ phage",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3205,
+        "label": "A",
+        "content": "Biến nạp",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3206,
+        "label": "B",
+        "content": "Tải nạp",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3207,
+        "label": "C",
+        "content": "Tiếp hợp",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3208,
+        "label": "D",
+        "content": "Cả 3 câu trên đều đúng",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 824,
+    "stem": "Trong các chu trình Calvin, để tổng hợp 1 phân tử glucose cần………phân tử:",
+    "explanation": "Đề thi có 50 câu hỏi trắc nghiệm",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": "2026-04-14T04:44:53",
+    "options": [
+      {
+        "id": 3209,
+        "label": "A",
+        "content": "7",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3210,
+        "label": "B",
+        "content": "6",
+        "isCorrect": true,
+        "sortOrder": 2
+      },
+      {
+        "id": 3211,
+        "label": "C",
+        "content": "5",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3212,
+        "label": "D",
+        "content": "4",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 825,
+    "stem": "Sự truyền vật liệu di truyền ADN từ tế bào vi khuẩn cho sang tế bào vi khuẩn nhận thông qua sự tiếp xúc của 2 tế bào vi khuẩn khác nhau là hiện tượng:",
+    "explanation": "Tiếp hợp (conjugation) là hiện tượng truyền DNA qua tiếp xúc trực tiếp",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3213,
+        "label": "A",
+        "content": "Tải nạp",
+        "isCorrect": false,
+        "sortOrder": 1
+      },
+      {
+        "id": 3214,
+        "label": "B",
+        "content": "Biến nạp",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3215,
+        "label": "C",
+        "content": "Tiếp hợp",
+        "isCorrect": true,
+        "sortOrder": 3
+      },
+      {
+        "id": 3216,
+        "label": "D",
+        "content": "Cả 3 câu trên đều sai",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  },
+  {
+    "id": 826,
+    "stem": "…………… là quá trình các hợp chất hữu cơ được phân cắt và …………… là quá trình tổng hợp các hợp chất hữu cơ trong tế bào sinh vật:",
+    "explanation": "Thoái dưỡng (dị hóa) là phân cắt, Biến dưỡng (đồng hóa) là tổng hợp",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T04:37:18",
+    "updatedAt": null,
+    "options": [
+      {
+        "id": 3217,
+        "label": "A",
+        "content": "Thoái hóa/ Tiến dưỡng",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "id": 3218,
+        "label": "B",
+        "content": "Biến dưỡng/ Thoái dưỡng",
+        "isCorrect": false,
+        "sortOrder": 2
+      },
+      {
+        "id": 3219,
+        "label": "C",
+        "content": "Thoái dưỡng/ Biến dưỡng",
+        "isCorrect": false,
+        "sortOrder": 3
+      },
+      {
+        "id": 3220,
+        "label": "D",
+        "content": "Tiến dưỡng/ Thoái dưỡng",
+        "isCorrect": false,
+        "sortOrder": 4
+      }
+    ]
+  }
+]

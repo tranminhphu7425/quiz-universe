@@ -1,15 +1,12 @@
 // src/pages/home/HomePage.tsx
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   Sparkles,
   BookOpen,
   ListChecks,
-  ShieldCheck,
   ArrowRight,
-  Clock,
-  Star,
   Rocket,
   Zap,
 } from "lucide-react";
@@ -22,7 +19,6 @@ import { Heart } from "lucide-react";
 import { ClipboardList, Send, CheckCircle2 } from "lucide-react";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import React, { ReactNode } from 'react';
-import { useState, useEffect } from 'react';
 import TypewriterText from "@/shared/ui/TypewriterText";
 import OrbitingSkills from "@/shared/ui/OrbitingSkills";
 import { IoLibrary } from "react-icons/io5";
@@ -41,25 +37,6 @@ import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBac
  * - Final CTA
  */
 
-
-interface GradientTextProps {
-  children: ReactNode;
-  className?: string;
-  colors?: string[];
-  animationSpeed?: number;
-  showBorder?: boolean;
-}
-
-const gradientKeyframes = `
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.animate-gradient {
-  animation: gradient 8s linear infinite;
-}
-`;
 
 
 
@@ -195,25 +172,6 @@ export default function HomePage() {
     []
   );
 
-
-  // SVG tile (data URL) dùng làm họa tiết nền mờ như Home.jsx
-  const tileUrl = encodeURIComponent(`
-    <svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160' fill='none'>
-      <g stroke='#10b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-        <!-- Book -->
-        <path d='M28 36h40a8 8 0 018 8v44H36a8 8 0 01-8-8V36z' opacity='0.7'/>
-        <path d='M28 52h48' opacity='0.6'/>
-        <!-- Checklist -->
-        <rect x='96' y='28' width='36' height='28' rx='4' />
-        <path d='M100 36h18M100 44h18' opacity='0.6'/>
-        <path d='M120 36l6 6M126 36l-6 6' />
-        <!-- Star badge -->
-        <path d='M40 116l8 4l8-4l-2 9l6 6l-9 1l-3 8l-3-8l-9-1l6-6z' />
-        <!-- Shield -->
-        <path d='M112 100c10 0 20-6 20-14v-6c-7 2-13 3-20 3s-13-1-20-3v6c0 8 10 14 20 14z' />
-      </g>
-    </svg>
-  `);
   const steps = [
     {
       step: 1,
@@ -237,13 +195,7 @@ export default function HomePage() {
       accent: "from-indigo-500 to-purple-500",
     },
   ];
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-    }
-  };
+
   const looped = [...testimonials, ...testimonials];
 
 

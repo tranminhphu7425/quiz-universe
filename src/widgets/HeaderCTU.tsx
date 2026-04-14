@@ -12,25 +12,10 @@ import {
   X,
   ChevronDown,
   ChevronRight,
-  Building2,
   BookOpen,
-  Home,
-  Info,
-  Contact,
   User,
   LogIn,
-  UserPlus,
-  Power,
   UserCircle,
-  Heart,
-  History,
-  Star,
-  Wallet,
-  Crown,
-  XCircle,
-  Headset,
-  List,
-  Plus,
   LogOut,
   ShieldCheck,
   Shield
@@ -99,9 +84,6 @@ export default function HeaderCTU({
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [tenantOpen, setTenantOpen] = useState(false);
-  const controls = useAnimation();
-  const [tick, setTick] = useState(0);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [err, setErr] = useState<string | null>(null);
@@ -114,8 +96,8 @@ export default function HeaderCTU({
   });
   const [notificationOpen, setNotificationOpen] = useState(false);
 
-  const [hasNewNotification, setHasNewNotification] = useState(true);
-  const [notificationCount, setNotificationCount] = useState(2);
+  const [hasNewNotification] = useState(true);
+  const [notificationCount] = useState(2);
   const notifications = [
     {
       id: 1,
@@ -161,7 +143,7 @@ export default function HeaderCTU({
     },
   ];
   // const [results, setResults] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [isFocused, setIsFocused] = useState(false);
   type SearchResult =
     | { type: "subject"; data: Subject }
@@ -176,8 +158,6 @@ export default function HeaderCTU({
   };
 
   useEffect(() => {
-    const id = setInterval(() => setTick((t) => (t + 1) % 3), 2400);
-    return () => clearInterval(id);
   }, []);
 
 
@@ -229,7 +209,6 @@ export default function HeaderCTU({
         if (e?.name === "AbortError") return;
 
         // 2) API lỗi -> fallback sang JSON cục bộ (dynamic import)
-        setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
         const local = await fetch("/quiz-universe/assets/data/questionBanks.json");
         setSearchSource({
           subjects: [],
@@ -262,8 +241,6 @@ export default function HeaderCTU({
         <div className="flex justify-between items-center">
           {/* Logo */}
           <motion.div
-            animate={controls}
-
             className="flex items-center gap-2"
           >
             <motion.div

@@ -3,18 +3,17 @@ import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  BookOpen, Search, Filter, CheckCircle2, Clock, Tag, PlusCircle,
-  ChevronLeft, ChevronRight, FilePlus2, Grid, List, SortAsc,
-  SortDesc, Calendar, Download, Eye, EyeOff, MoreVertical,
+  BookOpen, Search, Filter, Clock, PlusCircle,
+  ChevronLeft, ChevronRight, Grid, List, SortAsc,
+  SortDesc, Calendar, Download, Eye, MoreVertical,
   ChevronDown, Star, Users, Lock, Globe,
   ChevronUp,
   Sparkles,
   Library
 } from "lucide-react";
-import { Heart, HeartOff } from "lucide-react";
+import { Heart } from "lucide-react";
 import { AlertTriangle, RefreshCcw } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
-import { set } from "zod";
 
 type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
@@ -27,13 +26,6 @@ import { favoriteService } from "@/shared/api/favoriteApi";
 import { FavoriteQuestionBank } from "@/shared/types/favorite";
 import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
 
-// Map màu theo độ khó
-const DIFFICULTY_MAP: Record<Difficulty, { text: string; bg: string; ring: string }> = {
-  easy: { text: "text-emerald-800 dark:text-emerald-100", bg: "bg-emerald-100 dark:bg-emerald-500/20", ring: "ring-emerald-200/70 dark:ring-emerald-500/30" },
-  medium: { text: "text-amber-800 dark:text-amber-100", bg: "bg-amber-100 dark:bg-amber-500/20", ring: "ring-amber-200/70 dark:ring-amber-500/30" },
-  hard: { text: "text-rose-800 dark:text-rose-100", bg: "bg-rose-100 dark:bg-rose-500/20", ring: "ring-rose-200/70 dark:ring-rose-500/30" },
-};
-
 // Sort options
 type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc' | 'questions-asc' | 'questions-desc' | 'visibility';
 type ViewMode = 'grid' | 'list';
@@ -45,7 +37,7 @@ export default function QuestionBanksPage() {
   const [type, setType] = useState<"all" | QType>("all");
   const [onlyApproved, setOnlyApproved] = useState(false);
   const [visibilityFilter, setVisibilityFilter] = useState<'all' | 'PRIVATE' | 'ORG' | 'PUBLIC'>('all');
-  const [err, setErr] = useState<string | null>(null);
+  const [, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<QuestionBank[]>([]);
 
@@ -56,8 +48,6 @@ export default function QuestionBanksPage() {
   const [showBulkActions, setShowBulkActions] = useState(false);
   // Thêm vào phần state khai báo
   const [showFilters, setShowFilters] = useState<boolean>(false);
-
-  const token = localStorage.getItem("auth_token");
 
   // ======= PAGINATION =======
   const [page, setPage] = useState(1);
@@ -73,7 +63,7 @@ export default function QuestionBanksPage() {
   ];
 
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
 
   const handleSortChange = (value: string) => {
@@ -177,7 +167,7 @@ export default function QuestionBanksPage() {
 
   // ======= FILTERING & SORTING =======
   const filtered = useMemo(() => {
-    let result = data.filter(bank => {
+    const result = data.filter(bank => {
       // Text search
       const kw = normalizeText(q);
       if (kw && !normalizeText(bank.name).includes(kw) &&
@@ -217,9 +207,10 @@ export default function QuestionBanksPage() {
           return (a.questionCount || 0) - (b.questionCount || 0);
         case 'questions-desc':
           return (b.questionCount || 0) - (a.questionCount || 0);
-        case 'visibility':
+        case 'visibility': {
           const order = { 'PUBLIC': 1, 'ORG': 2, 'PRIVATE': 3 };
           return (order[a.visibility] || 4) - (order[b.visibility] || 4);
+        }
         default:
           return 0;
       }
@@ -246,20 +237,7 @@ export default function QuestionBanksPage() {
     setSelectedBanks(new Set()); // Clear selection when filters change
   };
 
-  const tileUrl = useMemo(
-    () =>
-      encodeURIComponent(`
-        <svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160' fill='none'>
-          <g stroke='#10b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-            <path d='M28 36h40a8 8 0 018 8v44H36a8 8 0 01-8-8V36z' opacity='0.7'/>
-            <path d='M28 52h48' opacity='0.6'/>
-            <rect x='96' y='28' width='36' height='28' rx='4' />
-            <path d='M100 36h18M100 44h18' opacity='0.6'/>
-          </g>
-        </svg>
-      `),
-    []
-  );
+
 
   // Bulk actions handlers
   const handleBulkFavorite = async () => {
@@ -459,7 +437,7 @@ export default function QuestionBanksPage() {
 
       {/* ===== CONTROL BAR ===== */}
 
-      <div className="sticky mb-5 top-12 z-20 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700">
+      <div className="sticky mb-5 top-16 z-20 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700">
         <div className="mx-auto max-w-7xl px-6 py-3">
           <div className="flex flex-wrap items-center justify-between gap-4">
             {/* Left: View Toggle & Bulk Selection */}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   User,
   Mail,
@@ -29,7 +29,7 @@ import { EducationApi } from "@/shared/api/major-universityApi";
 import { Major } from "@/shared/types/major";
 import { University } from "@/shared/types/university";
 import { Combobox } from "@headlessui/react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserApi } from "@/shared/api/userApi";
 import { toast } from "react-hot-toast";
 
@@ -63,7 +63,7 @@ export default function SettingsPage() {
   const [university, setUniversity] = useState<University | null>(user?.university ?? null);
   const [majors, setMajors] = useState<Major[]>([]);
   const [major, setMajor] = useState<Major | null>(user?.major ?? null);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [majorQuery, setMajorQuery] = useState("");
   const [universityQuery, setUniversityQuery] = useState("");
   const navigate = useNavigate();
@@ -142,9 +142,7 @@ export default function SettingsPage() {
       });
       updateUser(updatedUser);
 
-    }
-
-    catch (err) {
+    } catch {
       toast.error("Không thể lưu thông tin", {
         duration: 4000,
       });
@@ -183,7 +181,7 @@ export default function SettingsPage() {
           </div>
         ),
       });
-    } catch (err) {
+    } catch {
       toast.error("Không thể thay đổi mật khẩu", {
         duration: 4000,
       });

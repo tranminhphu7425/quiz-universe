@@ -1,7 +1,9 @@
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Heart, Users2, BookOpen, ShieldCheck, Rocket, Trophy } from "lucide-react";
+import { Sparkles, Users2, BookOpen, ShieldCheck, Rocket, Trophy, PlusCircle, ChevronRight } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
+import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
 
 const stats = [
   { label: "Ngân hàng câu hỏi", value: "25,000+" },
@@ -35,71 +37,181 @@ const team = [
 ];
 
 export default function AboutPage() {
-  const tileUrl = useMemo(
-    () =>
-      encodeURIComponent(`
-      <svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160' fill='none'>
-        <g stroke='#10b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-          <path d='M28 36h40a8 8 0 018 8v44H36a8 8 0 01-8-8V36z' opacity='0.7'/>
-          <path d='M28 52h48' opacity='0.6'/>
-          <rect x='96' y='28' width='36' height='28' rx='4' />
-          <path d='M100 36h18M100 44h18' opacity='0.6'/>
-        </g>
-      </svg>
-    `),
-    []
-  );
-
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-800">
 
 
       <section className="relative overflow-hidden">
-        {/* Gradient nền — đẩy xuống dưới cùng */}
-        <div className="absolute inset-0  bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-400
-                  dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
+  <AnimatedGradientBackgroundProps />
 
-        {/* Tile mờ — dưới nội dung nhưng trên gradient */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 w-[120%] md:w-full opacity-10 dark:opacity-[0.15]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml;utf8,${tileUrl}")`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "160px 160px",
-            maskImage: "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
-            WebkitMaskImage: "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
-          }}
+  {/* Hero section */}
+  <motion.div
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-12 lg:py-16"
+  >
+    <div className="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-12">
+      {/* Left Section - Title & Description */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
+        className="w-full lg:w-auto lg:flex-1"
+      >
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 md:mb-6">
+          <Users2 className="w-3.5 h-3.5 text-emerald-300" />
+          <span className="text-xs font-medium text-white/90">Về QuizUniverse</span>
+        </div>
+
+        {/* Title with gradient */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight">
+          <span className="bg-gradient-to-r from-white via-emerald-100 to-green-200 bg-clip-text text-transparent">
+            Nền tảng ngân hàng & tạo đề thi hiện đại
+          </span>
+        </h1>
+
+        {/* Decorative underline */}
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: "100px" }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="h-1 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full mt-4 mb-5"
         />
 
-        {/* Blur blobs — nằm giữa (dưới text) */}
-        <div className="pointer-events-none absolute z-0 -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-2xl dark:bg-emerald-400/20" />
-        <div className="pointer-events-none absolute z-0 -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/20" />
+        {/* Description */}
+        <p className="text-white/90 dark:text-gray-200 text-base md:text-lg max-w-2xl leading-relaxed">
+          Giúp giảng viên chuẩn hoá nội dung, sinh viên luyện tập hiệu quả và nhà trường quản trị dễ dàng.
+        </p>
 
-        {/* Hero section — kéo lên trên cùng */}
-        <motion.div className="relative z-10 text-center mx-auto max-w-6xl px-6 py-20">
-          {/* Badge */}
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full
-                    bg-white/60 px-3 py-1 text-xs font-semibold
-                    text-emerald-900 ring-1 ring-emerald-300/50 backdrop-blur
-                    dark:bg-white/5 dark:text-white dark:ring-white/10">
-            <Users2 className="h-4 w-4" />
-            Về QuizUniverse
+        {/* Quick stats */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="flex flex-wrap gap-4 md:gap-6 mt-6"
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+            <span className="text-xs text-white/70">Giảng viên & sinh viên</span>
           </div>
-
-          {/* Tiêu đề */}
-          <h1 className="text-4xl font-black leading-tight text-white">
-            
-              Nền tảng ngân hàng & tạo đề thi hiện đại
-           
-          </h1>
-
-          {/* Mô tả — đổi màu để nổi bật trên nền xanh */}
-          <p className="mt-3 text-white/90 dark:text-gray-300">
-            Giúp giảng viên chuẩn hoá nội dung, sinh viên luyện tập hiệu quả và nhà trường quản trị dễ dàng.
-          </p>
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+            <span className="text-xs text-white/70">Ngân hàng câu hỏi</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 bg-teal-400 rounded-full" />
+            <span className="text-xs text-white/70">Tạo đề thông minh</span>
+          </div>
         </motion.div>
-      </section>
+      </motion.div>
+
+      {/* Right Section - Action Buttons */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+        className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto"
+      >
+        {/* Primary Button - Explore Question Bank */}
+        <motion.div
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Link
+            to="/question-banks"
+            className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold shadow-lg transition-all duration-300 bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 text-white hover:shadow-xl"
+          >
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+
+            <span className="relative z-10">Khám phá ngay</span>
+            <ChevronRight className="h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </motion.div>
+
+        {/* Secondary Button - Learn More */}
+        <motion.div
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Link
+            to="/register"
+            className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-lg transition-all duration-300 bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20"
+          >
+            <BookOpen className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
+            <span>Tìm hiểu thêm</span>
+          </Link>
+        </motion.div>
+      </motion.div>
+    </div>
+
+    {/* Floating Decorations */}
+    {/* Decoration 1 - Quiz Badge */}
+    <Floating distance={15} duration={7} className="pointer-events-none absolute top-20 left-5 z-0 hidden lg:block">
+      <motion.div
+        animate={{ rotate: [-6, 0, -6] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="rounded-xl bg-gradient-to-br from-emerald-400 to-green-500 px-4 py-2 shadow-xl"
+      >
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-3 w-3 text-white" />
+          <span className="text-xs font-black text-white tracking-wider">QUIZ</span>
+          <Sparkles className="h-3 w-3 text-white" />
+        </div>
+      </motion.div>
+    </Floating>
+
+    {/* Decoration 2 - Book Icon */}
+    <Floating distance={12} duration={6} className="pointer-events-none absolute top-24 right-8 z-0 hidden lg:block">
+      <motion.div
+        animate={{ rotate: [12, 0, 12] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 p-3 shadow-xl"
+      >
+        <BookOpen className="h-5 w-5 text-white" />
+      </motion.div>
+    </Floating>
+
+    {/* Decoration 3 - Plus Icon */}
+    <Floating distance={10} duration={8} className="pointer-events-none absolute bottom-0 right-1/4 z-0 hidden lg:block">
+      <motion.div
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 p-2 shadow-lg"
+      >
+        <PlusCircle className="h-4 w-4 text-white" />
+      </motion.div>
+    </Floating>
+
+    {/* Decoration 4 - Small dots */}
+    <div className="pointer-events-none absolute top-1/2 left-10 -z-0 hidden xl:block">
+      <div className="flex gap-1">
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3, delay: i * 0.5, repeat: Infinity }}
+            className="w-1 h-1 rounded-full bg-white/40"
+          />
+        ))}
+      </div>
+    </div>
+
+    <div className="pointer-events-none absolute bottom-10 right-20 -z-0 hidden xl:block">
+      <div className="flex gap-1">
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{ x: [0, 5, 0] }}
+            transition={{ duration: 4, delay: i * 0.3, repeat: Infinity }}
+            className="w-1 h-1 rounded-full bg-white/30"
+          />
+        ))}
+      </div>
+    </div>
+  </motion.div>
+</section>
 
       {/* Nội dung chính */}
       <div className="relative z-0">
@@ -170,7 +282,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {team.map((m, i) => (
+            {team.map((m) => (
               <motion.div
                 key={m.name}
                 className="rounded-2xl border border-white/20 bg-white/10 p-5 shadow-lg backdrop-blur-md

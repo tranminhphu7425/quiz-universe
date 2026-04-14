@@ -48,7 +48,7 @@ export default function AdminDashboardPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 160, damping: 18 }}
           >
-            
+
             <h1 className="text-3xl md:text-4xl font-black leading-tight text-white">
               🛠️ Bảng điều khiển quản trị
             </h1>
