@@ -201,18 +201,20 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     }
     
     private QuestionBankDTO convertToDTO(QuestionBank questionBank) {
+        Long count = countQuestionsInBank(questionBank.getBankId());
+        
         return QuestionBankDTO.builder()
                 .bankId(questionBank.getBankId())
                 .name(questionBank.getName())
-                .subjectId(questionBank.getSubject().getId())
-                .subjectName(questionBank.getSubject().getName())
+                .subjectId(questionBank.getSubject() != null ? questionBank.getSubject().getId() : null)
+                .subjectName(questionBank.getSubject() != null ? questionBank.getSubject().getName() : null)
                 .description(questionBank.getDescription())
                 .visibility(questionBank.getVisibility())
-                .createdBy(UUID.fromString(questionBank.getCreatedBy().getUserId()))
-                .creatorName(questionBank.getCreatedBy().getFullName())
+                .createdBy(questionBank.getCreatedBy() != null ? UUID.fromString(questionBank.getCreatedBy().getUserId()) : null)
+                .creatorName(questionBank.getCreatedBy() != null ? questionBank.getCreatedBy().getFullName() : "System")
                 .createdAt(questionBank.getCreatedAt())
                 .updatedAt(questionBank.getUpdatedAt())
-                .questionCount(countQuestionsInBank(questionBank.getBankId()).intValue())
+                .questionCount(count != null ? count.intValue() : 0)
                 .build();
     }
 

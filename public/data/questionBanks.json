@@ -1,4 +1,5 @@
-[
+{
+  "content": [
     {
       "bankId": 3,
       "name": "NH TTHCM",
@@ -88,6 +89,32 @@
       "creatorName": "Trần Minh Phú",
       "createdAt": "2026-04-14T04:17:15",
       "updatedAt": null,
-      "questionCount": 0
+      "questionCount": 50
     }
-  ]
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 20,
+    "sort": {
+      "empty": false,
+      "sorted": true,
+      "unsorted": false
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalElements": 7,
+  "totalPages": 1,
+  "first": true,
+  "size": 20,
+  "number": 0,
+  "sort": {
+    "empty": false,
+    "sorted": true,
+    "unsorted": false
+  },
+  "numberOfElements": 7,
+  "empty": false
+}

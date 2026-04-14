@@ -146,13 +146,16 @@ export default function QuestionBanksPage() {
 
     (async () => {
       try {
-        const list = await QuestionBankApi.getAll();
-        setData(list.content);
+        const list = await QuestionBankApi.getAll() as any;
+        const content = Array.isArray(list) ? list : (list.content || []);
+        setData(content);
       } catch (e: any) {
         if (e?.name === "AbortError") return;
         setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
         const local = await fetch("/quiz-universe/data/questionBanks.json");
-        setData((await local.json()) as QuestionBank[]);
+        const json = await local.json();
+        const content = Array.isArray(json) ? json : (json.content || []);
+        setData(content);
       } finally {
         setLoading(false);
       }
