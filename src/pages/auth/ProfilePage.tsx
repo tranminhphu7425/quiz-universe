@@ -17,10 +17,19 @@ import {
   GraduationCap,
   Clock,
   FileText,
+  Sparkles,
+  Trophy,
+  Zap,
+  Target,
+  FilePlus2,
+  Brain,
+  ArrowRight,
 } from "lucide-react";
 import { useAuth } from "@/app/providers/AuthProvider";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import GradientText from "@/shared/ui/GradientText";
+import TypewriterText from "@/shared/ui/TypewriterText";
+import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -63,11 +72,11 @@ export default function ProfilePage() {
   const getRoleIcon = (role: string) => {
     switch (role?.toLowerCase()) {
       case "admin":
-        return <Shield className="h-4 w-4" />;
+        return <Shield className="h-4 w-4 text-red-600 dark:text-red-400" />;
       case "teacher":
-        return <GraduationCap className="h-4 w-4" />;
+        return <GraduationCap className="h-4 w-4 text-blue-600 dark:text-blue-400" />;
       case "student":
-        return <UserCircle className="h-4 w-4" />;
+        return <UserCircle className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />;
       default:
         return <User className="h-4 w-4" />;
     }
@@ -93,114 +102,117 @@ export default function ProfilePage() {
     { id: 4, action: "Đạt huy hiệu 'Học tập chăm chỉ'", time: "3 ngày trước", type: "badge" },
   ];
 
-  // Nếu user không tồn tại (chưa đăng nhập)
-  if (!user && !loading) {
-    return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center px-6">
-        <div className="max-w-md w-full text-center">
-          <div className="mb-6">
-            <UserCircle className="h-20 w-20 text-gray-400 dark:text-gray-600 mx-auto" />
-          </div>
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-3">
-            Vui lòng đăng nhập
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Bạn cần đăng nhập để xem thông tin hồ sơ.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              to="/login"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-500 px-5 py-3 font-semibold text-white shadow-lg hover:from-emerald-600 hover:to-green-600 transition-all"
-            >
-              Đăng nhập
-            </Link>
-            <Link
-              to="/"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-200 px-5 py-3 font-medium text-emerald-700 hover:bg-emerald-50 dark:border-slate-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20 transition-all"
-            >
-              Về trang chủ
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const quickActions = [
+    {
+      icon: <FilePlus2 className="h-5 w-5" />,
+      label: 'Tạo bộ câu hỏi mới',
+      to: '/question-bank/create',
+      color: 'from-amber-400 to-orange-500',
+      shadow: 'shadow-orange-500/25',
+      iconBg: 'bg-amber-300/30'
+    },
+    {
+      icon: <Brain className="h-5 w-5" />,
+      label: 'Ôn tập ngay',
+      to: '/review',
+      color: 'from-rose-400 to-pink-500',
+      shadow: 'shadow-rose-500/25',
+      iconBg: 'bg-rose-300/30'
+    },
+    {
+      icon: <Zap className="h-5 w-5" />,
+      label: 'Công cụ cho sinh viên CTU',
+      to: '/ctu',
+      color: 'from-blue-500 to-indigo-600',
+      shadow: 'shadow-indigo-500/25',
+      iconBg: 'bg-blue-300/30',
+      className: 'col-span-2'
+    },
+  ];
+
 
   return (
     <div className="profile-page bg-slate-50 dark:bg-slate-900 min-h-screen">
       {/* ====== HEADER ====== */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        {/* Blur blobs */}
-        <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-white/10 blur-2xl dark:bg-emerald-400/10" />
-        <div className="pointer-events-none absolute -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/10" />
+      <section className="relative overflow-hidden">
+        <AnimatedGradientBackgroundProps />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-12">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="text-white">
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 160, damping: 18 }}
-                className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur dark:bg-white/5 dark:ring-white/10"
-              >
-                <UserCircle className="h-4 w-4 text-white dark:text-emerald-300" />
-                <span className="text-white dark:text-gray-200">Hồ sơ cá nhân • QuizUniverse</span>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 }}
-                className="text-3xl md:text-4xl font-black leading-tight text-white dark:text-gray-100"
-              >
-                Hồ sơ của{" "}
-                <GradientText className="text-3xl md:text-4xl font-black">
-                  {loading ? "..." : user?.name || "Bạn"}
-                </GradientText>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="mt-4 text-white/90 dark:text-gray-300 max-w-2xl"
-              >
-                Xem và quản lý thông tin cá nhân, thành tích học tập và hoạt động gần đây.
-              </motion.p>
-            </div>
-
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-16">
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="hidden lg:block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex-1"
             >
-              <div className="relative">
-                <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-emerald-400/20 to-teal-400/20 blur-xl" />
-                <div className="relative rounded-2xl bg-white/10 dark:bg-white/5 p-8 backdrop-blur-xl border border-white/20">
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="text-center">
-                      <div className="inline-flex p-3 rounded-full bg-emerald-500/20 dark:bg-emerald-400/20">
-                        <Award className="h-8 w-8 text-emerald-300 dark:text-emerald-200" />
-                      </div>
-                      <div className="mt-3 text-2xl font-bold text-white">
-                        {userStats.rank}
-                      </div>
-                      <div className="text-sm text-white/80">Xếp hạng</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="inline-flex p-3 rounded-full bg-blue-500/20 dark:bg-blue-400/20">
-                        <Star className="h-8 w-8 text-blue-300 dark:text-blue-200" />
-                      </div>
-                      <div className="mt-3 text-2xl font-bold text-white">
-                        {userStats.averageScore}%
-                      </div>
-                      <div className="text-sm text-white/80">Điểm trung bình</div>
-                    </div>
-                  </div>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold text-white ring-1 ring-white/30 backdrop-blur-md">
+                <Sparkles className="h-4 w-4" />
+                Chào mừng trở lại!
+              </div>
+
+              <TypewriterText
+                text={`Xin chào, ${user?.name || "Học viên"}! 👋`}
+                className="text-4xl md:text-5xl font-black leading-tight text-white mb-3"
+              />
+
+              <p className="mb-6 max-w-2xl text-lg text-white/90">
+                Xem và quản lý thông tin cá nhân, thành tích học tập và hoạt động gần đây của bạn tại Quiz Universe.
+              </p>
+
+              {/* User Stats Badges */}
+              <div className="flex flex-wrap gap-3">
+                <div className="rounded-full bg-white/20 px-3 py-1.5 text-xs text-white backdrop-blur-md flex items-center gap-1">
+                  <Trophy className="h-3 w-3" />
+                  Hạng {userStats.rank}
+                </div>
+                <div className="rounded-full bg-white/20 px-3 py-1.5 text-xs text-white backdrop-blur-md flex items-center gap-1">
+                  <Zap className="h-3 w-3" />
+                  {userStats.streakDays} ngày liên tiếp
+                </div>
+                <div className="rounded-full bg-white/20 px-3 py-1.5 text-xs text-white backdrop-blur-md flex items-center gap-1">
+                  <Target className="h-3 w-3" />
+                  {userStats.averageScore}% chính xác
                 </div>
               </div>
             </motion.div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {quickActions.map((action, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1 }}
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={action.className}
+                >
+                  <Link
+                    to={action.to}
+                    className={`group relative flex items-center justify-between gap-4 overflow-hidden rounded-2xl bg-gradient-to-br ${action.color} p-4 shadow-lg ${action.shadow} transition-all duration-300`}
+                  >
+                    {/* Background Decorative Element */}
+                    <div className="absolute -right-4 -top-4 h-20 w-20 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-150" />
+                    <div className="absolute -left-4 -bottom-4 h-16 w-16 rounded-full bg-black/5 transition-transform duration-500 group-hover:scale-150" />
+
+                    <div className="flex items-center gap-3 relative z-10">
+                      <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${action.iconBg} border border-white/20 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}>
+                        <div className="text-white">
+                          {action.icon}
+                        </div>
+                      </div>
+                      <div className="font-bold text-white tracking-tight text-sm md:text-base">
+                        {action.label}
+                      </div>
+                    </div>
+
+                    <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1">
+                      <ArrowRight className="h-4 w-4 text-white" />
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

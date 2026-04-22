@@ -54,6 +54,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
                 .description(request.getDescription())
                 .visibility(request.getVisibility())
                 .createdBy(creator)
+                .status(QuestionBank.Status.ACTIVE)
                 .createdAt(LocalDateTime.now())
                 .build();
 
@@ -83,6 +84,9 @@ public class QuestionBankServiceImpl implements QuestionBankService {
         if (request.getVisibility() != null) {
             questionBank.setVisibility(request.getVisibility());
         }
+        
+        // Cập nhật ngầm
+        questionBank.setStatus(QuestionBank.Status.ACTIVE);
 
         questionBank.setUpdatedAt(LocalDateTime.now());
 
@@ -141,8 +145,10 @@ public class QuestionBankServiceImpl implements QuestionBankService {
                 .orElseThrow(
                         () -> new UnauthorizedAccessException("You are not authorized to delete this question bank"));
 
-        questionBankRepository.delete(questionBank);
-        log.info("Question bank deleted: {} by user: {}", questionBank.getName(), userId);
+        questionBank.setStatus(QuestionBank.Status.DELETED);
+        questionBank.setUpdatedAt(LocalDateTime.now());
+        questionBankRepository.save(questionBank);
+        log.info("Question bank soft deleted: {} by user: {}", questionBank.getName(), userId);
     }
 
     @Override
@@ -213,6 +219,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
                 .subjectName(questionBank.getSubject().getName())
                 .description(questionBank.getDescription())
                 .visibility(questionBank.getVisibility())
+                .status(questionBank.getStatus())
                 .createdBy(UUID.fromString(questionBank.getCreatedBy().getUserId()))
                 .creatorName(questionBank.getCreatedBy().getFullName())
                 .createdAt(questionBank.getCreatedAt())

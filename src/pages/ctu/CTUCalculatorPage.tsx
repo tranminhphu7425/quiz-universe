@@ -6,15 +6,13 @@ import {
   Calculator,
   Target,
   Info,
-  Save,
   RotateCcw,
   CheckCircle2,
-  AlertCircle,
-  TrendingUp,
   BookOpen,
   Award,
   Star,
-  ChevronRight
+  AlertCircle,
+  TrendingUp
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
@@ -108,7 +106,6 @@ const CTUCalculatorPage: React.FC = () => {
 
   const results = useMemo(() => {
     let totalCreditsHK = 0;
-    let totalPointsHK = 0;
     let totalCreditsTL = 0;
     let totalPointsTL = 0;
 
@@ -118,7 +115,6 @@ const CTUCalculatorPage: React.FC = () => {
       const { point4 } = getGradeDetails(c.score10);
 
       totalCreditsHK += c.credits;
-      totalPointsHK += point4 * c.credits;
 
       if (point4 >= 1.0) {
         totalCreditsTL += c.credits;
@@ -189,7 +185,7 @@ const CTUCalculatorPage: React.FC = () => {
     }
   };
 
-  const honorStyles : any = {
+  const honorStyles : Record<string, { active: string; hover: string }> = {
   yellow: {
     active: "bg-yellow-500 border-yellow-500 text-white",
     hover: "hover:border-yellow-400",

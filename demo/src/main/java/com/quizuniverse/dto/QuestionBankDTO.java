@@ -21,6 +21,7 @@ public class QuestionBankDTO {
     private String subjectName;
     private String description;
     private Visibility visibility;
+    private com.quizuniverse.entity.QuestionBank.Status status;
     private UUID createdBy;
     private String creatorName;
     private LocalDateTime createdAt;

@@ -18,26 +18,12 @@ import Floating from "@/shared/ui/Floatting";
 import { Heart } from "lucide-react";
 import { ClipboardList, Send, CheckCircle2 } from "lucide-react";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
-import React, { ReactNode } from 'react';
+import React from 'react';
 import TypewriterText from "@/shared/ui/TypewriterText";
 import OrbitingSkills from "@/shared/ui/OrbitingSkills";
 import { IoLibrary } from "react-icons/io5";
 import GradientText from "@/shared/ui/GradientText";
-import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
-
-
-
-/**
- * HomePage (inspired by Home.jsx layout)
- * - Hero gradient + blur blobs
- * - CTA buttons, badges
- * - Feature grid (Question bank / Exam builder / Admin)
- * - How-it-works steps (3 bước)
- * - Testimonials
- * - Final CTA
- */
-
-
+import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
 
 
 
@@ -205,7 +191,7 @@ export default function HomePage() {
 
       <section className="relative overflow-hidden">
 
-        <AnimatedGradientBackgroundProps/> 
+        <AnimatedGradientBackground/> 
 
         <OrbitingSkills />
 

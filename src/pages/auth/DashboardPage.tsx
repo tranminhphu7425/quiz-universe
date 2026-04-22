@@ -131,7 +131,7 @@ export default function DashboardPage() {
         setQuestionBankFavorites(questionBankData);
         setSubjectFavorites(subjectData);
         console.log("Chay subject data", subjectData);
-        
+
       } catch (err) {
         console.error(err);
       }
@@ -157,14 +157,31 @@ export default function DashboardPage() {
   }
 
   const quickActions = [
-    { icon: <FilePlus2 />, label: 'Tạo bộ câu hỏi mới', to: '/question-bank/create', color: 'bg-yellow-500' },
-
-    { icon: <Brain />, label: 'Ôn tập', to: '/review', color: 'bg-red-400' },
-
-    { icon: <Brain />, label: 'Các công cụ cho sinh viên CTU', to: '/ctu', color: 'bg-blue-400', className: 'flex col-span-2 justify-center' },
-
-    // { icon: <FolderPlus />, label: 'Tải lên tài liệu', to: '/files/upload', color: 'bg-blue-400' },
-
+    {
+      icon: <FilePlus2 className="h-5 w-5" />,
+      label: 'Tạo bộ câu hỏi mới',
+      to: '/question-bank/create',
+      color: 'from-amber-400 to-orange-500',
+      shadow: 'shadow-orange-500/25',
+      iconBg: 'bg-amber-300/30'
+    },
+    {
+      icon: <Brain className="h-5 w-5" />,
+      label: 'Ôn tập ngay',
+      to: '/review',
+      color: 'from-rose-400 to-pink-500',
+      shadow: 'shadow-rose-500/25',
+      iconBg: 'bg-rose-300/30'
+    },
+    {
+      icon: <Zap className="h-5 w-5" />,
+      label: 'Công cụ tiện ích cho sinh viên CTU',
+      to: '/ctu',
+      color: 'from-blue-500 to-indigo-600',
+      shadow: 'shadow-indigo-500/25',
+      iconBg: 'bg-blue-300/30',
+      className: 'col-span-2'
+    },
   ];
 
   const upcomingDeadlines = [
@@ -176,17 +193,17 @@ export default function DashboardPage() {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/50 to-slate-50 dark:from-slate-900 dark:via-gray-900/50 dark:to-slate-900">
-   
 
-      
+
+
 
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden">
-        <AnimatedGradientBackgroundProps/>
-        
+        <AnimatedGradientBackgroundProps />
+
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-16">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -224,49 +241,43 @@ export default function DashboardPage() {
               </div>
             </motion.div>
 
-            {/* Quick Actions Grid */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
-              className="grid grid-cols-2 gap-3"
-            >
+            <div className="grid grid-cols-2 gap-4">
               {quickActions.map((action, index) => (
                 <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1 }}
                   whileHover={{ y: -4 }}
                   whileTap={{ scale: 0.98 }}
                   className={action.className}
                 >
                   <Link
                     to={action.to}
-                    className={`flex items-center gap-3 group relative overflow-hidden rounded-xl
-                backdrop-blur-md px-4 py-3
-               transition-all hover:bg-white/15" ${action.color} `}
+                    className={`group relative flex items-center justify-between gap-4 overflow-hidden rounded-2xl bg-gradient-to-br ${action.color} p-4 shadow-lg ${action.shadow} transition-all duration-300`}
                   >
+                    {/* Background Decorative Element */}
+                    <div className="absolute -right-4 -top-4 h-20 w-20 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-150" />
+                    <div className="absolute -left-4 -bottom-4 h-16 w-16 rounded-full bg-black/5 transition-transform duration-500 group-hover:scale-150" />
 
-
-                    {/* Icon */}
-                    <div className="relative z-10 flex-shrink-0">
-                      {action.icon}
+                    <div className="flex items-center gap-3 relative z-10">
+                      <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${action.iconBg} border border-white/20 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}>
+                        <div className="text-white">
+                          {action.icon}
+                        </div>
+                      </div>
+                      <div className="font-bold text-white tracking-tight text-sm md:text-base">
+                        {action.label}
+                      </div>
                     </div>
 
-                    {/* Label */}
-                    <div className="relative z-10 font-medium text-white whitespace-nowrap">
-                      {action.label}
+                    <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1">
+                      <ArrowRight className="h-4 w-4 text-white" />
                     </div>
-
-                    {/* Arrow */}
-                    <ArrowRight
-                      className="relative z-10 h-4 w-4 text-white/60
-                 group-hover:text-white
-                 group-hover:translate-x-1 transition-all"
-                    />
                   </Link>
                 </motion.div>
-
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -339,27 +350,27 @@ export default function DashboardPage() {
                           Bộ câu hỏi yêu thích
                         </h2>
                         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-                          Truy cập nhanh các môn học bạn yêu thích
+                          Truy cập nhanh các bộ câu hỏi bạn yêu thích
                         </p>
                       </div>
                       <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-                        {questionBankFavorites.length} môn
+                        {questionBankFavorites.length} bộ
                       </span>
                     </div>
 
                     {questionBankFavorites.length === 0 ? (
                       <div className="rounded-xl border-2 border-dashed border-slate-300 p-8 text-center dark:border-slate-700">
                         <Heart className="mx-auto h-12 w-12 text-slate-300 dark:text-slate-700" />
-                        <p className="mt-3 font-medium text-slate-700 dark:text-slate-300">Chưa có môn học yêu thích</p>
+                        <p className="mt-3 font-medium text-slate-700 dark:text-slate-300">Chưa có bộ câu hỏi yêu thích</p>
                         <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                          Bấm vào ♥ ở các môn học để thêm vào đây
+                          Bấm vào ♥ ở các bộ câu hỏi để thêm vào đây
                         </p>
                         <Link
                           to="/subjects"
                           className="mt-4 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700"
                         >
                           <BookOpen className="h-4 w-4" />
-                          Khám phá môn học
+                          Khám phá bộ câu hỏi
                         </Link>
                       </div>
                     ) : (
@@ -378,44 +389,49 @@ export default function DashboardPage() {
                               <Trash2 className="h-4 w-4" />
                             </button>
 
-                            <div className="flex items-start gap-3">
-                              <div className="rounded-lg bg-emerald-100 p-2 dark:bg-emerald-900/30">
-                                <BookMarked className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                              </div>
+
+                            <div className="flex h-full gap-3 flex-col justify-between">
+                              <div className="flex items-start gap-3">
+                                <div className="rounded-lg bg-emerald-100 p-2 dark:bg-emerald-900/30">
+                                  <BookMarked className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                                </div>
 
 
 
-                              <div className="flex-1">
-                                <p className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                                  {questionBank.subjectName || 'Không có tên môn'}
-                                </p>
-                                <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
-                                  {questionBank.bankName}
-                                </h3>
+                                <div className="flex-1">
+                                  <p className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                                    {questionBank.subjectName || 'Không có tên môn'}
+                                  </p>
+                                  <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
+                                    {questionBank.bankName}
+                                  </h3>
 
 
 
 
-                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                                  {questionBank.bankDescription || 'Không có mã môn'}
-                                </p>
-                                <div className="mt-3 flex items-center gap-2">
-                                  <Link
-                                    to={`/questions/subject/${questionBank.bankId}`}
-                                    className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white hover:bg-emerald-700"
-                                  >
-                                    Học ngay
-                                    <ArrowRight className="h-3 w-3" />
-                                  </Link>
-                                  <Link
-                                    to={`/files/subject/${questionBank.bankId}`}
-                                    className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300"
-                                  >
-                                    <FileQuestion className="h-3 w-3" />
-                                    Tài liệu
-                                  </Link>
+                                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                    {questionBank.bankDescription || 'Không có mã môn'}
+                                  </p>
+
                                 </div>
                               </div>
+                              <div className="flex items-center gap-2">
+                                <Link
+                                  to={`/questions/subject/${questionBank.bankId}`}
+                                  className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white hover:bg-emerald-700"
+                                >
+                                  Học ngay
+                                  <ArrowRight className="h-3 w-3" />
+                                </Link>
+                                <Link
+                                  to={`/resources?search=${questionBank.subjectName}`}
+                                  className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300"
+                                >
+                                  <FileQuestion className="h-3 w-3" />
+                                  Tài liệu
+                                </Link>
+                              </div>
+
                             </div>
                           </motion.div>
                         ))}
@@ -472,33 +488,36 @@ export default function DashboardPage() {
                               <Trash2 className="h-4 w-4" />
                             </button>
 
-                            <div className="flex items-start gap-3">
-                              <div className="rounded-lg bg-emerald-100 p-2 dark:bg-emerald-900/30">
-                                <BookMarked className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                              </div>
-                              <div className="flex-1">
-                                <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
-                                  {subject.subjectName}
-                                </h3>
-                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                                  {subject.subjectCode || 'Không có mã môn'}
-                                </p>
-                                <div className="mt-3 flex items-center gap-2">
-                                  <Link
-                                    to={`/questions/subject/${subject.subjectId}`}
-                                    className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white hover:bg-emerald-700"
-                                  >
-                                    Thông tin
-                                    <ArrowRight className="h-3 w-3" />
-                                  </Link>
-                                  <Link
-                                    to={`/files/subject/${subject.subjectId}`}
-                                    className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300"
-                                  >
-                                    <FileQuestion className="h-3 w-3" />
-                                    Tài liệu
-                                  </Link>
+                            <div className="flex flex-col items-start gap-3 h-full justify-between">
+                              <div className="flex items-start gap-3">
+                                <div className="rounded-lg bg-emerald-100 p-2 dark:bg-emerald-900/30">
+                                  <BookMarked className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                                 </div>
+                                <div className="flex-1">
+                                  <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
+                                    {subject.subjectName}
+                                  </h3>
+                                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                    {subject.subjectCode || 'Không có mã môn'}
+                                  </p>
+
+                                </div>
+                              </div>
+                              <div className="mt-3 flex items-center gap-2">
+                                <Link
+                                  to={`/questions/subject/${subject.subjectId}`}
+                                  className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white hover:bg-emerald-700"
+                                >
+                                  Thông tin
+                                  <ArrowRight className="h-3 w-3" />
+                                </Link>
+                                <Link
+                                  to={`/resources?search=${subject.subjectName}`}
+                                  className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300"
+                                >
+                                  <FileQuestion className="h-3 w-3" />
+                                  Tài liệu
+                                </Link>
                               </div>
                             </div>
                           </motion.div>

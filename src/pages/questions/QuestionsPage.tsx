@@ -830,7 +830,7 @@ function QuestionCard({
                     <div className="mt-4 space-y-3">
                       {/* Hiển thị đáp án đúng cho từng ô dưới dạng danh sách nhỏ */}
                       <div className="rounded-xl bg-slate-50 p-3 text-sm ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-700">
-                        <div className="mb-1 font-semibold">Đáp án</div>
+                        <div className="mb-1 font-semibold text-slate-800 dark:text-slate-200">Đáp án</div>
                         <ul className="list-disc space-y-0.5 pl-5">
                           {opts.map((opt) => {
                             const user = answers?.[opt.id] ?? "";

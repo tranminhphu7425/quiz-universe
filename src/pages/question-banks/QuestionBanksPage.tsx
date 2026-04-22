@@ -11,6 +11,11 @@ import {
   Sparkles,
   Library
 } from "lucide-react";
+import { 
+  Edit2, 
+  Trash2, 
+  ArrowRight,
+} from "lucide-react";
 import { Heart } from "lucide-react";
 import { AlertTriangle, RefreshCcw } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
@@ -25,6 +30,7 @@ import { useAuth } from "@/app/providers/AuthProvider";
 import { favoriteService } from "@/shared/api/favoriteApi";
 import { FavoriteQuestionBank } from "@/shared/types/favorite";
 import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
+import { normalizeText } from "@/shared/utils/textUtils";
 
 // Sort options
 type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc' | 'questions-asc' | 'questions-desc' | 'visibility';
@@ -48,6 +54,9 @@ export default function QuestionBanksPage() {
   const [showBulkActions, setShowBulkActions] = useState(false);
   // Thêm vào phần state khai báo
   const [showFilters, setShowFilters] = useState<boolean>(false);
+  
+  // State for delete modal
+  const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
 
   // ======= PAGINATION =======
   const [page, setPage] = useState(1);
@@ -67,20 +76,20 @@ export default function QuestionBanksPage() {
 
 
   const handleSortChange = (value: string) => {
-  const validOptions: SortOption[] = [
-    'name-asc', 'name-desc', 
-    'date-asc', 'date-desc',
-    'questions-asc', 'questions-desc',
-    'visibility'
-  ];
-  
-  if (validOptions.includes(value as SortOption)) {
-    setSortOption(value as SortOption);
-  } else {
-    // Fallback nếu giá trị không hợp lệ
-    setSortOption('date-desc');
-  }
-};
+    const validOptions: SortOption[] = [
+      'name-asc', 'name-desc',
+      'date-asc', 'date-desc',
+      'questions-asc', 'questions-desc',
+      'visibility'
+    ];
+
+    if (validOptions.includes(value as SortOption)) {
+      setSortOption(value as SortOption);
+    } else {
+      // Fallback nếu giá trị không hợp lệ
+      setSortOption('date-desc');
+    }
+  };
 
   const toggleFavorite = async (bankId: number) => {
     const isFav = favorites.has(bankId);
@@ -178,6 +187,11 @@ export default function QuestionBanksPage() {
         return false;
       }
 
+      // Ignore soft deleted banks
+      if (bank.status === 'DELETED') {
+        return false;
+      }
+
       // Visibility filter
       if (visibilityFilter !== 'all' && bank.visibility !== visibilityFilter) {
         return false;
@@ -222,13 +236,7 @@ export default function QuestionBanksPage() {
     return result;
   }, [q, data, visibilityFilter, onlyApproved, sortOption]);
 
-  function normalizeText(str: string) {
-    return str
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
-  }
+
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const pageData = filtered.slice((page - 1) * pageSize, page * pageSize);
@@ -245,197 +253,203 @@ export default function QuestionBanksPage() {
   // Bulk actions handlers
   const handleBulkFavorite = async () => {
     for (const bankId of selectedBanks) {
-      await toggleFavorite(bankId);
+      if (!favorites.has(bankId)) {
+        await toggleFavorite(bankId);
+      }
     }
     clearSelection();
   };
 
-  const handleBulkVisibilityChange = async (visibility: 'PRIVATE' | 'ORG' | 'PUBLIC') => {
-    // Implement bulk visibility change
-    console.log(`Change ${selectedBanks.size} banks to ${visibility}`);
-    clearSelection();
+  const handleDeleteBank = (bankId: number) => {
+    setDeleteConfirmId(bankId);
   };
 
-  const handleBulkExport = async () => {
-    // Implement bulk export
-    console.log(`Export ${selectedBanks.size} banks`);
-    clearSelection();
+  const handleConfirmDelete = async () => {
+    if (deleteConfirmId === null) return;
+    try {
+      await QuestionBankApi.delete(deleteConfirmId);
+      setData(prev => prev.filter(b => b.bankId !== deleteConfirmId)); // Optimistically update
+    } catch (e: any) {
+      setErr(e.response?.data?.message || "Lỗi khi xóa bộ câu hỏi");
+    } finally {
+      setDeleteConfirmId(null);
+    }
   };
 
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-slate-900">
       <section className="relative overflow-hidden">
-        
-        <AnimatedGradientBackgroundProps/>
+
+        <AnimatedGradientBackgroundProps />
 
         {/* Hero section */}
-        <motion.div 
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-12"
-    >
-      <div className="flex flex-col lg:flex-row  justify-between content-center gap-6">
-        {/* Left Section - Title & Description */}
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
-          className="w-full lg:w-auto"
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-12"
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
-            <Library className="w-3.5 h-3.5 text-yellow-300" />
-            <span className="text-xs font-medium text-white/90">Ngân hàng câu hỏi</span>
+          <div className="flex flex-col lg:flex-row  justify-between content-center gap-6">
+            {/* Left Section - Title & Description */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
+              className="w-full lg:w-auto"
+            >
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
+                <Library className="w-3.5 h-3.5 text-yellow-300" />
+                <span className="text-xs font-medium text-white/90">Ngân hàng câu hỏi</span>
+              </div>
+
+              {/* Title with gradient */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                <span className="bg-gradient-to-r from-white via-yellow-100 to-amber-200 bg-clip-text text-transparent">
+                  Ngân hàng câu hỏi
+                </span>
+              </h1>
+
+              {/* Decorative underline */}
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: "80px" }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="h-1 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full mt-3 mb-4"
+              />
+
+              {/* Description */}
+              <p className="text-white/80 dark:text-gray-200 text-base md:text-lg max-w-xl leading-relaxed">
+                Tìm kiếm, lọc theo môn/chương/độ khó/loại. Tạo đề từ nhiều nguồn.
+              </p>
+
+              {/* Quick stats */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="flex gap-4 mt-4"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+                  <span className="text-xs text-white/70">Hơn 10.000 câu hỏi</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
+                  <span className="text-xs text-white/70">50+ môn học</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                  <span className="text-xs text-white/70">Cập nhật liên tục</span>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Section - Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+              className="flex flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto"
+            >
+              {/* Primary Button - Create Question Bank */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link
+                  to="/question-bank/create"
+                  className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold shadow-lg transition-all duration-300 bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 text-emerald-950 hover:shadow-xl"
+                >
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+
+                  <PlusCircle className="h-4 w-4 group-hover:rotate-90 transition-transform duration-300" />
+                  <span className="relative z-10">Thêm bộ câu hỏi mới</span>
+                  <ChevronRight className="h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </motion.div>
+
+              {/* Secondary Button - View All Subjects */}
+              <motion.div
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Link
+                  to="/subjects"
+                  className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-lg transition-all duration-300 bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20"
+                >
+                  <BookOpen className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
+                  <span>Hiển thị tất cả môn học</span>
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
 
-          {/* Title with gradient */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-            <span className="bg-gradient-to-r from-white via-yellow-100 to-amber-200 bg-clip-text text-transparent">
-              Ngân hàng câu hỏi
-            </span>
-          </h1>
-
-          {/* Decorative underline */}
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: "80px" }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="h-1 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full mt-3 mb-4"
-          />
-
-          {/* Description */}
-          <p className="text-white/80 dark:text-gray-200 text-base md:text-lg max-w-xl leading-relaxed">
-            Tìm kiếm, lọc theo môn/chương/độ khó/loại. Tạo đề từ nhiều nguồn.
-          </p>
-
-          {/* Quick stats */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="flex gap-4 mt-4"
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-              <span className="text-xs text-white/70">Hơn 10.000 câu hỏi</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
-              <span className="text-xs text-white/70">50+ môn học</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
-              <span className="text-xs text-white/70">Cập nhật liên tục</span>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Right Section - Action Buttons */}
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto"
-        >
-          {/* Primary Button - Create Question Bank */}
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Link
-              to="/question-bank/create"
-              className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold shadow-lg transition-all duration-300 bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 text-emerald-950 hover:shadow-xl"
+          {/* Floating Decorations */}
+          {/* Decoration 1 - Question Badge */}
+          <Floating distance={15} duration={7} className="pointer-events-none absolute top-20 left-5 z-0 hidden lg:block">
+            <motion.div
+              animate={{ rotate: [-6, 0, -6] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 px-4 py-2 shadow-xl"
             >
-              {/* Shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              
-              <PlusCircle className="h-4 w-4 group-hover:rotate-90 transition-transform duration-300" />
-              <span className="relative z-10">Thêm bộ câu hỏi mới</span>
-              <ChevronRight className="h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </motion.div>
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-3 w-3 text-white" />
+                <span className="text-xs font-black text-white tracking-wider">QUESTIONS</span>
+                <Sparkles className="h-3 w-3 text-white" />
+              </div>
+            </motion.div>
+          </Floating>
 
-          {/* Secondary Button - View All Subjects */}
-          <motion.div
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Link
-              to="/subjects"
-              className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-lg transition-all duration-300 bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20"
+          {/* Decoration 2 - Book Icon */}
+          <Floating distance={12} duration={6} className="pointer-events-none absolute top-24 right-8 z-0 hidden lg:block">
+            <motion.div
+              animate={{ rotate: [12, 0, 12] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 p-3 shadow-xl"
             >
-              <BookOpen className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
-              <span>Hiển thị tất cả môn học</span>
-            </Link>
-          </motion.div>
-        </motion.div>
-      </div>
+              <BookOpen className="h-5 w-5 text-white" />
+            </motion.div>
+          </Floating>
 
-      {/* Floating Decorations */}
-      {/* Decoration 1 - Question Badge */}
-      <Floating distance={15} duration={7} className="pointer-events-none absolute top-20 left-5 z-0 hidden lg:block">
-        <motion.div 
-          animate={{ rotate: [-6, 0, -6] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 px-4 py-2 shadow-xl"
-        >
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-3 w-3 text-white" />
-            <span className="text-xs font-black text-white tracking-wider">QUESTIONS</span>
-            <Sparkles className="h-3 w-3 text-white" />
+          {/* Decoration 3 - Plus Icon */}
+          <Floating distance={10} duration={8} className="pointer-events-none absolute bottom-0 right-1/4 z-0 hidden lg:block">
+            <motion.div
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 p-2 shadow-lg"
+            >
+              <PlusCircle className="h-4 w-4 text-white" />
+            </motion.div>
+          </Floating>
+
+          {/* Decoration 4 - Small dots */}
+          <div className="pointer-events-none absolute top-1/2 left-10 -z-0 hidden xl:block">
+            <div className="flex gap-1">
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, delay: i * 0.5, repeat: Infinity }}
+                  className="w-1 h-1 rounded-full bg-white/40"
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="pointer-events-none absolute bottom-10 right-20 -z-0 hidden xl:block">
+            <div className="flex gap-1">
+              {[...Array(4)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 4, delay: i * 0.3, repeat: Infinity }}
+                  className="w-1 h-1 rounded-full bg-white/30"
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
-      </Floating>
-
-      {/* Decoration 2 - Book Icon */}
-      <Floating distance={12} duration={6} className="pointer-events-none absolute top-24 right-8 z-0 hidden lg:block">
-        <motion.div 
-          animate={{ rotate: [12, 0, 12] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 p-3 shadow-xl"
-        >
-          <BookOpen className="h-5 w-5 text-white" />
-        </motion.div>
-      </Floating>
-
-      {/* Decoration 3 - Plus Icon */}
-      <Floating distance={10} duration={8} className="pointer-events-none absolute bottom-0 right-1/4 z-0 hidden lg:block">
-        <motion.div 
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 p-2 shadow-lg"
-        >
-          <PlusCircle className="h-4 w-4 text-white" />
-        </motion.div>
-      </Floating>
-
-      {/* Decoration 4 - Small dots */}
-      <div className="pointer-events-none absolute top-1/2 left-10 -z-0 hidden xl:block">
-        <div className="flex gap-1">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, delay: i * 0.5, repeat: Infinity }}
-              className="w-1 h-1 rounded-full bg-white/40"
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="pointer-events-none absolute bottom-10 right-20 -z-0 hidden xl:block">
-        <div className="flex gap-1">
-          {[...Array(4)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 4, delay: i * 0.3, repeat: Infinity }}
-              className="w-1 h-1 rounded-full bg-white/30"
-            />
-          ))}
-        </div>
-      </div>
-    </motion.div>
       </section>
 
       {/* ===== CONTROL BAR ===== */}
@@ -492,48 +506,10 @@ export default function QuestionBanksPage() {
                       <Star className="h-3 w-3" />
                       Yêu thích
                     </button>
-                    <button
-                      onClick={() => setShowBulkActions(!showBulkActions)}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400"
-                    >
-                      <MoreVertical className="h-3 w-3" />
-                      Thao tác
-                    </button>
-                    {showBulkActions && (
-                      <div className="absolute mt-10 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 p-2 z-30">
-                        <button
-                          onClick={() => handleBulkVisibilityChange('PUBLIC')}
-                          className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
-                        >
-                          <Globe className="h-4 w-4 text-emerald-600" />
-                          Đặt công khai
-                        </button>
-                        <button
-                          onClick={() => handleBulkVisibilityChange('ORG')}
-                          className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
-                        >
-                          <Users className="h-4 w-4 text-blue-600" />
-                          Đặt nội bộ
-                        </button>
-                        <button
-                          onClick={() => handleBulkVisibilityChange('PRIVATE')}
-                          className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
-                        >
-                          <Lock className="h-4 w-4 text-amber-600" />
-                          Đặt riêng tư
-                        </button>
-                        <button
-                          onClick={handleBulkExport}
-                          className="flex items-center gap-2 px-3 py-2 w-full text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded"
-                        >
-                          <Download className="h-4 w-4" />
-                          Xuất
-                        </button>
-                      </div>
-                    )}
+
                     <button
                       onClick={clearSelection}
-                      className="px-3 py-1.5 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400"
+                      className="px-3 py-1.5 text-sm text-slate-600 hover:text-slate-800 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                     >
                       Bỏ chọn
                     </button>
@@ -550,94 +526,94 @@ export default function QuestionBanksPage() {
             {/* Right: Stats */}
             {/* Trong Control Bar, thêm vào phần Right: Stats */}
             <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-  <div className="flex items-center justify-between md:justify-start gap-4">
-    {/* Mobile: Dropdown sắp xếp */}
-    <div className="md:hidden flex-1">
-      <select
-        value={sortOption}
-        onChange={(e) => handleSortChange(e.target.value)}
-        className="w-full px-3 py-1.5 rounded-lg text-sm bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 transition-colors"
-      >
-        <option value="name-asc">Tên (A → Z)</option>
-        <option value="name-desc">Tên (Z → A)</option>
-        <option value="date-desc">Ngày (mới nhất)</option>
-        <option value="date-asc">Ngày (cũ nhất)</option>
-        <option value="questions-desc">Số câu (nhiều nhất)</option>
-        <option value="questions-asc">Số câu (ít nhất)</option>
-        <option value="visibility">Quyền xem</option>
-      </select>
-    </div>
+              <div className="flex items-center justify-between md:justify-start gap-4">
+                {/* Mobile: Dropdown sắp xếp */}
+                <div className="md:hidden flex-1">
+                  <select
+                    value={sortOption}
+                    onChange={(e) => handleSortChange(e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg text-sm bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 transition-colors"
+                  >
+                    <option value="name-asc">Tên (A → Z)</option>
+                    <option value="name-desc">Tên (Z → A)</option>
+                    <option value="date-desc">Ngày (mới nhất)</option>
+                    <option value="date-asc">Ngày (cũ nhất)</option>
+                    <option value="questions-desc">Số câu (nhiều nhất)</option>
+                    <option value="questions-asc">Số câu (ít nhất)</option>
+                    <option value="visibility">Quyền xem</option>
+                  </select>
+                </div>
 
-    {/* Desktop: Vẫn giữ các button như cũ */}
-    <div className="hidden md:flex md:items-center md:gap-6">
-      <span className="text-sm text-slate-600 dark:text-slate-400">Sắp xếp:</span>
-      <div className="flex flex-wrap gap-2">
-        <button
-          onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
-          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
-              ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-            }`}
-        >
-          {sortOption === 'name-asc' ? <SortAsc className="h-3 w-3" /> : <SortDesc className="h-3 w-3" />}
-          Tên
-        </button>
-        <button
-          onClick={() => setSortOption(sortOption === 'date-desc' ? 'date-asc' : 'date-desc')}
-          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('date')
-              ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-            }`}
-        >
-          <Calendar className="h-3 w-3" />
-          Ngày {sortOption === 'date-desc' ? '↓' : '↑'}
-        </button>
-        <button
-          onClick={() => setSortOption(sortOption === 'questions-desc' ? 'questions-asc' : 'questions-desc')}
-          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('questions')
-              ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-            }`}
-        >
-          <BookOpen className="h-3 w-3" />
-          Số câu {sortOption === 'questions-desc' ? '↓' : '↑'}
-        </button>
-        <button
-          onClick={() => setSortOption('visibility')}
-          className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'visibility'
-              ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-            }`}
-        >
-          <Eye className="h-3 w-3" />
-          Quyền xem
-        </button>
-      </div>
-    </div>
+                {/* Desktop: Vẫn giữ các button như cũ */}
+                <div className="hidden md:flex md:items-center md:gap-6">
+                  <span className="text-sm text-slate-600 dark:text-slate-400">Sắp xếp:</span>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
+                        ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                        }`}
+                    >
+                      {sortOption === 'name-asc' ? <SortAsc className="h-3 w-3" /> : <SortDesc className="h-3 w-3" />}
+                      Tên
+                    </button>
+                    <button
+                      onClick={() => setSortOption(sortOption === 'date-desc' ? 'date-asc' : 'date-desc')}
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('date')
+                        ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                        }`}
+                    >
+                      <Calendar className="h-3 w-3" />
+                      Ngày {sortOption === 'date-desc' ? '↓' : '↑'}
+                    </button>
+                    <button
+                      onClick={() => setSortOption(sortOption === 'questions-desc' ? 'questions-asc' : 'questions-desc')}
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('questions')
+                        ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                        }`}
+                    >
+                      <BookOpen className="h-3 w-3" />
+                      Số câu {sortOption === 'questions-desc' ? '↓' : '↑'}
+                    </button>
+                    <button
+                      onClick={() => setSortOption('visibility')}
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'visibility'
+                        ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                        }`}
+                    >
+                      <Eye className="h-3 w-3" />
+                      Quyền xem
+                    </button>
+                  </div>
+                </div>
 
-    {/* Nút toggle filters (luôn hiển thị) */}
-    <button
-      onClick={() => setShowFilters(!showFilters)}
-      className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${showFilters
-          ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
-          : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
-        }`}
-    >
-      <Filter className="h-4 w-4" />
-      <span className="hidden sm:inline">Bộ lọc</span>
-      {showFilters ? (
-        <ChevronUp className="h-3 w-3" />
-      ) : (
-        <ChevronDown className="h-3 w-3" />
-      )}
-    </button>
-  </div>
+                {/* Nút toggle filters (luôn hiển thị) */}
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${showFilters
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                    }`}
+                >
+                  <Filter className="h-4 w-4" />
+                  <span className="hidden sm:inline">Bộ lọc</span>
+                  {showFilters ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3" />
+                  )}
+                </button>
+              </div>
 
-  {/* Hiển thị số lượng mục */}
-  {/* <div className="text-sm text-slate-600 dark:text-slate-400">
+              {/* Hiển thị số lượng mục */}
+              {/* <div className="text-sm text-slate-600 dark:text-slate-400">
     {filtered.length} mục
   </div> */}
-</div>
+            </div>
           </div>
         </div>
       </div>
@@ -782,7 +758,7 @@ export default function QuestionBanksPage() {
         ) : (
           <>
             <div className={viewMode === 'grid'
-              ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              ? "grid gap-4 md:grid-cols-2 xl:grid-cols-3"
               : "space-y-4"
             }>
               {pageData.map((bank) => (
@@ -795,6 +771,8 @@ export default function QuestionBanksPage() {
                     onToggleFavorite={() => toggleFavorite(bank.bankId)}
                     onToggleSelect={() => toggleSelectBank(bank.bankId)}
                     userRole={user?.role}
+                    userId={user?.id}
+                    onDelete={() => handleDeleteBank(bank.bankId)}
                   />
                 ) : (
                   <SubjectCardList
@@ -805,6 +783,8 @@ export default function QuestionBanksPage() {
                     onToggleFavorite={() => toggleFavorite(bank.bankId)}
                     onToggleSelect={() => toggleSelectBank(bank.bankId)}
                     userRole={user?.role}
+                    userId={user?.id}
+                    onDelete={() => handleDeleteBank(bank.bankId)}
                   />
                 )
               ))}
@@ -833,6 +813,44 @@ export default function QuestionBanksPage() {
           </>
         )}
       </div>
+
+      {/* DELETE CONFIRMATION MODAL */}
+      {deleteConfirmId !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-sm w-full shadow-2xl border border-slate-200 dark:border-slate-700"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-full text-red-600 dark:text-red-400">
+                <AlertTriangle className="h-6 w-6" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Xóa bộ câu hỏi</h3>
+            </div>
+            
+            <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+              Bạn có chắc chắn muốn xóa bộ câu hỏi này không? Bộ câu hỏi sẽ được đưa vào thùng rác (xóa mềm).
+            </p>
+            
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setDeleteConfirmId(null)}
+                className="px-4 py-2 text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 dark:text-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 rounded-lg transition-colors"
+              >
+                Hủy bỏ
+              </button>
+              <button
+                onClick={handleConfirmDelete}
+                className="px-4 py-2 text-sm font-semibold text-white bg-red-500 hover:bg-red-600 shadow-sm shadow-red-500/20 rounded-lg transition-all active:scale-95"
+              >
+                Đồng ý xóa
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
@@ -845,9 +863,11 @@ type SubjectCardGridProps = {
   onToggleFavorite: () => void;
   onToggleSelect: () => void;
   userRole?: string;
+  userId?: string;
+  onDelete?: (id: number) => void;
 };
 
-function SubjectCardGrid({ bank, isFavorite, isSelected, onToggleFavorite, onToggleSelect, userRole }: SubjectCardGridProps) {
+function SubjectCardGrid({ bank, isFavorite, isSelected, onToggleFavorite, onToggleSelect, userRole, userId, onDelete }: SubjectCardGridProps) {
   const visibilityIcon = {
     'PUBLIC': { icon: Globe, color: 'text-emerald-600', bg: 'bg-emerald-100' },
     'ORG': { icon: Users, color: 'text-blue-600', bg: 'bg-blue-100' },
@@ -856,119 +876,266 @@ function SubjectCardGrid({ bank, isFavorite, isSelected, onToggleFavorite, onTog
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ type: "spring", stiffness: 160, damping: 16 }}
-      
-      className={`flex flex-col justify-between relative rounded-xl border ${isSelected
-        ? 'border-emerald-400 dark:border-emerald-500 ring-2 ring-emerald-200 dark:ring-emerald-500/30'
-        : 'border-emerald-100/60 dark:border-slate-800'
-        } bg-white p-4 shadow-lg transition dark:bg-slate-900`}
-    >
-      <div className="grow flex flex-col">
+  initial={{ opacity: 0, y: 18 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ type: "spring", stiffness: 160, damping: 16 }}
+  whileHover={{ y: -8, scale: 1.01 }}
+  className={`group relative flex flex-col justify-between rounded-xl border transition-all duration-300 ${
+    isSelected
+      ? 'border-emerald-400 dark:border-emerald-500 ring-2 ring-emerald-200 dark:ring-emerald-500/30 shadow-lg shadow-emerald-100 dark:shadow-emerald-950/30'
+      : 'border-emerald-100/60 dark:border-slate-800 hover:border-emerald-200 dark:hover:border-slate-700'
+  } bg-white p-5 shadow-lg hover:shadow-2xl dark:bg-slate-900`}
+>
+  {/* Gradient border effect on hover */}
+  <div
+    className={`absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+      isSelected ? 'opacity-100' : ''
+    }`}
+    style={{ padding: '2px', mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor' }}
+  />
+  
+ 
+  {/* Corner decorations */}
+  <div className="pointer-events-none absolute top-0 right-0 w-20 h-20 overflow-hidden">
+    <div className={`absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-bl-3xl transition-all duration-300 group-hover:scale-150 ${
+      isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+    }`} />
+  </div>
+  <div className="pointer-events-none absolute bottom-0 left-0 w-20 h-20 overflow-hidden">
+    <div className={`absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-emerald-500/10 to-teal-500/10 rounded-tr-3xl transition-all duration-300 group-hover:scale-150 ${
+      isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+    }`} />
+  </div>
 
-        <div>
-          {/* Selection checkbox */}
-          <div className="absolute top-3 right-3">
-            <input
-              type="checkbox"
-              checked={isSelected}
-              onChange={onToggleSelect}
-              className="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+  <div className="grow flex flex-col relative z-10">
+    <div>
+      {/* Selection checkbox - cải thiện */}
+      <div className="absolute top-3 right-3">
+        <motion.label
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative flex items-center justify-center"
+        >
+          <input
+            type="checkbox"
+            checked={isSelected}
+            onChange={onToggleSelect}
+            className="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer transition-all duration-200"
+          />
+          {isSelected && (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="absolute inset-0 rounded-full bg-emerald-400/20"
             />
-          </div>
-
-          <div className="mb-2 flex flex-col items-start justify-between gap-3">
-            <div className="min-w-0 flex-1">
-              {/* Visibility badge */}
-              <div className="mb-1 flex items-center gap-2">
-                <span className={`inline-flex items-center gap-1 rounded-md ${visibilityIcon.bg} px-2 py-0.5 text-xs font-semibold ${visibilityIcon.color}`}>
-                  <visibilityIcon.icon className="h-3 w-3" />
-                  {bank.visibility === 'PUBLIC' ? 'Công khai' : bank.visibility === 'ORG' ? 'Nội bộ' : 'Riêng tư'}
-                </span>
-                {bank.questionCount > 0 && (
-                  <span className="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-300">
-                    <BookOpen className="h-3 w-3" />
-                    {bank.questionCount} câu
-                  </span>
-                )}
-              </div>
-
-              <h3 className="mt-1 text-base font-bold text-emerald-900 dark:text-emerald-200">
-                {bank.name}
-              </h3>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col grow justify-between">
-
-          {bank.description ? (
-            <p className="line-clamp-3 text-sm text-gray-700 dark:text-gray-300 mb-3">{bank.description}</p>
-          ) : (
-            <p className="text-sm italic text-gray-500 dark:text-gray-400 mb-3">Chưa có mô tả</p>
           )}
-
-          {/* Subject info */}
-          <div className="mb-3">
-            <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
-              <span className="font-medium">Môn:</span>
-              <span className="truncate">{bank.subjectName}</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
-              <span className="font-medium">Người tạo:</span>
-              <span className="truncate">{bank.creatorName}</span>
-            </div>
-          </div>
-
-        </div>
-
+        </motion.label>
       </div>
-      <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-3">
-        <div className="flex items-center gap-2 text-xs text-emerald-900/70 dark:text-slate-300/70">
-          <Clock className="h-3.5 w-3.5" />
-          <span>{new Date(bank.createdAt).toLocaleDateString('vi-VN')}</span>
-        </div>
 
-        <div className="flex items-center gap-2">
-          {/* Nút yêu thích */}
-          <button
-            onClick={onToggleFavorite}
-            className="transition hover:scale-105 active:scale-95"
-            aria-label={isFavorite ? "Bỏ yêu thích" : "Thêm vào yêu thích"}
-          >
-            {isFavorite ? (
-              <Heart className="w-5 h-5 text-red-500 fill-red-500" />
-            ) : (
-              <Heart className="w-5 h-5 text-red-500" />
-            )}
-          </button>
-
-          {/* Action buttons */}
-          <div className="flex items-center gap-1">
-            {(userRole === "admin" || userRole === "editor") && (
-              <Link
-                to={`/questions/question-bank/${bank.bankId}/edit`}
-                className="inline-flex items-center gap-1 rounded-lg bg-red-400 px-2 py-1 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
-              >
-                Sửa
-              </Link>
-            )}
-            <Link
-              to={`/questions/question-bank/${bank.bankId}`}
-              className="inline-flex items-center gap-1 rounded-lg bg-yellow-400 px-2 py-1 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
+      <div className="mb-3 flex flex-col items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          {/* Visibility badge - cải thiện */}
+          <div className="mb-2 flex items-center gap-2 flex-wrap">
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              className={`inline-flex items-center gap-1.5 rounded-full ${visibilityIcon.bg} px-2.5 py-1 text-xs font-semibold ${visibilityIcon.color} shadow-sm`}
             >
-              Xem
-            </Link>
+              <visibilityIcon.icon className="h-3 w-3" />
+              {bank.visibility === 'PUBLIC' ? 'Công khai' : bank.visibility === 'ORG' ? 'Nội bộ' : 'Riêng tư'}
+            </motion.span>
+            
+            {bank.questionCount > 0 && (
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300 shadow-sm"
+              >
+                <BookOpen className="h-3 w-3" />
+                {bank.questionCount.toLocaleString()} câu hỏi
+              </motion.span>
+            )}
+
+            {/* New badge if recently created */}
+            {new Date(bank.createdAt).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000 && (
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 px-2 py-0.5 text-[10px] font-bold text-white shadow-sm"
+              >
+                <Sparkles className="h-2.5 w-2.5" />
+                Mới
+              </motion.span>
+            )}
           </div>
+
+          {/* Title với hiệu ứng */}
+          <motion.h3
+            whileHover={{ x: 4 }}
+            className="mt-1 text-lg font-bold bg-gradient-to-r from-emerald-900 to-emerald-700 dark:from-emerald-200 dark:to-emerald-400 bg-clip-text text-transparent"
+          >
+            {bank.name}
+          </motion.h3>
         </div>
       </div>
+    </div>
+
+    <div className="flex flex-col grow justify-between">
+      {/* Description với line clamp và hover effect */}
+      {bank.description ? (
+        <motion.p
+          whileHover={{ opacity: 0.9 }}
+          className="line-clamp-3 text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed"
+        >
+          {bank.description}
+        </motion.p>
+      ) : (
+        <p className="text-sm italic text-gray-400 dark:text-gray-500 mb-4 flex items-center gap-2">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400" />
+          Chưa có mô tả
+        </p>
+      )}
+
+      {/* Subject info - cải thiện */}
+      <div className="mb-4 space-y-1.5">
+        <motion.div
+          whileHover={{ x: 4 }}
+          className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"
+        >
+          <div className="w-1 h-1 rounded-full bg-emerald-500" />
+          <span className="font-medium min-w-[70px]">Môn học:</span>
+          <span className="truncate font-medium text-emerald-700 dark:text-emerald-400">
+            {bank.subjectName}
+          </span>
+        </motion.div>
+        
+        <motion.div
+          whileHover={{ x: 4 }}
+          className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"
+        >
+          <div className="w-1 h-1 rounded-full bg-blue-500" />
+          <span className="font-medium min-w-[70px]">Người tạo:</span>
+          <span className="truncate">{bank.creatorName}</span>
+        </motion.div>
+
+        {/* Thêm thông tin lượt xem nếu có */}
+        {bank.viewCount !== undefined && (
+          <motion.div
+            whileHover={{ x: 4 }}
+            className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"
+          >
+            <div className="w-1 h-1 rounded-full bg-purple-500" />
+            <span className="font-medium min-w-[70px]">Lượt xem:</span>
+            <span>{bank.viewCount?.toLocaleString()}</span>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  {/* Footer actions */}
+  <div className="relative z-10 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4 mt-2">
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="flex items-center gap-2 text-xs text-emerald-900/70 dark:text-slate-300/70"
+    >
+      <Clock className="h-3.5 w-3.5" />
+      <span>{new Date(bank.createdAt).toLocaleDateString('vi-VN')}</span>
     </motion.div>
+
+    <div className="flex items-center gap-2">
+      {/* Nút yêu thích - cải thiện */}
+      <motion.button
+        onClick={onToggleFavorite}
+        whileHover={{ scale: 1.15, rotate: isFavorite ? -10 : 10 }}
+        whileTap={{ scale: 0.9 }}
+        className="relative transition-all duration-200 p-1 rounded-full hover:bg-red-50 dark:hover:bg-red-950/30"
+        aria-label={isFavorite ? "Bỏ yêu thích" : "Thêm vào yêu thích"}
+      >
+        {isFavorite ? (
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Heart className="w-5 h-5 text-red-500 fill-red-500 drop-shadow-md" />
+          </motion.div>
+        ) : (
+          <Heart className="w-5 h-5 text-red-500 transition-all duration-200 group-hover:scale-110" />
+        )}
+        
+        {/* Ripple effect on favorite */}
+        {isFavorite && (
+          <motion.div
+            className="absolute inset-0 rounded-full bg-red-400/30"
+            initial={{ scale: 1, opacity: 1 }}
+            animate={{ scale: 2, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          />
+        )}
+      </motion.button>
+
+      {/* Action buttons - cải thiện */}
+      <div className="flex items-center gap-1.5">
+        {(userRole === "admin" || userRole === "editor" || String(bank.createdBy) === String(userId)) && (
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to={`/questions/question-bank/${bank.bankId}/edit`}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              <Edit2 className="h-3 w-3" />
+              Sửa
+            </Link>
+          </motion.div>
+        )}
+
+        {(userRole === "admin" || String(bank.createdBy) === String(userId)) && onDelete && (
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <button
+              onClick={() => onDelete(bank.bankId)}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-rose-500 to-pink-500 px-3 py-1.5 text-xs font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              <Trash2 className="h-3 w-3" />
+              Xóa
+            </button>
+          </motion.div>
+        )}
+
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Link
+            to={`/questions/question-bank/${bank.bankId}`}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-yellow-400 to-amber-500 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow-md hover:shadow-lg transition-all duration-300 group/link"
+          >
+            <Eye className="h-3 w-3" />
+            Xem
+            <ArrowRight className="h-3 w-3 group-hover/link:translate-x-0.5 transition-transform duration-300" />
+          </Link>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+
+  {/* Progress bar at bottom on hover */}
+  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-100 via-emerald-200 to-teal-100 dark:from-emerald-900 dark:via-emerald-800 dark:to-teal-900 rounded-full overflow-hidden">
+    <motion.div
+      className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 dark:from-emerald-400 dark:to-teal-400"
+      initial={{ width: "0%" }}
+      whileHover={{ width: "100%" }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    />
+  </div>
+
+  <style>{`
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) skewX(-12deg); }
+      100% { transform: translateX(200%) skewX(-12deg); }
+    }
+  `}</style>
+</motion.div>
   );
 }
 
 // List View Card
-function SubjectCardList({ bank, isFavorite, isSelected, onToggleFavorite, onToggleSelect, userRole }: SubjectCardGridProps) {
+function SubjectCardList({ bank, isFavorite, isSelected, onToggleFavorite, onToggleSelect, userRole, userId, onDelete }: SubjectCardGridProps) {
   const visibilityIcon = {
     'PUBLIC': { icon: Globe, color: 'text-emerald-600', bg: 'bg-emerald-100' },
     'ORG': { icon: Users, color: 'text-blue-600', bg: 'bg-blue-100' },
@@ -1044,13 +1211,22 @@ function SubjectCardList({ bank, isFavorite, isSelected, onToggleFavorite, onTog
                 >
                   Xem
                 </Link>
-                {(userRole === "admin" || userRole === "editor") && (
+                {(userRole === "admin" || userRole === "editor" || String(bank.createdBy) === String(userId)) && (
                   <Link
                     to={`/questions/question-bank/${bank.bankId}/edit`}
-                    className="inline-flex items-center gap-1 rounded-lg bg-red-400 px-3 py-1.5 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
+                    className="inline-flex items-center gap-1 rounded-lg bg-emerald-400 px-3 py-1.5 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
                   >
                     Sửa
                   </Link>
+                )}
+
+                {(userRole === "admin" || String(bank.createdBy) === String(userId)) && onDelete && (
+                  <button
+                    onClick={() => onDelete(bank.bankId)}
+                    className="inline-flex items-center gap-1 rounded-lg bg-rose-500 px-3 py-1.5 text-sm font-semibold text-white shadow hover:bg-rose-600"
+                  >
+                    Xóa
+                  </button>
                 )}
               </div>
             </div>

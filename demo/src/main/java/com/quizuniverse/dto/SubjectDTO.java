@@ -7,6 +7,7 @@ public class SubjectDTO {
     private String code;
     private String name;
     private String description;
+    private Long credit;
     private LocalDateTime createdAt;
     
     // Setter methods
@@ -24,6 +25,10 @@ public class SubjectDTO {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setCredit(Long credit) {
+        this.credit = credit;
     }
     
     public void setCreatedAt(LocalDateTime createdAt) {
@@ -45,6 +50,10 @@ public class SubjectDTO {
     
     public String getDescription() {
         return description;
+    }
+
+    public Long getCredit() {
+        return credit;
     }
     
     public LocalDateTime getCreatedAt() {

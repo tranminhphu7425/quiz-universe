@@ -1,10 +1,11 @@
 // Auto-generated
-import { useMemo, useState } from "react";
+import {  useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Lock, User2, Sparkles, ArrowRight, Heart, ShieldCheck, EyeOff, Eye } from "lucide-react";
 import Floating from "@/shared/ui/Floatting"; // giữ nguyên import nếu bạn đã dùng tên này
 import { useAuth } from "@/app/providers/AuthProvider";
+import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -19,23 +20,6 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const tileUrl = useMemo(
-    () =>
-      encodeURIComponent(`
-      <svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160' fill='none'>
-        <g stroke='#10b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-          <path d='M28 36h40a8 8 0 018 8v44H36a8 8 0 01-8-8V36z' opacity='0.7'/>
-          <path d='M28 52h48' opacity='0.6'/>
-          <rect x='96' y='28' width='36' height='28' rx='4' />
-          <path d='M100 36h18M100 44h18' opacity='0.6'/>
-          <path d='M120 36l6 6M126 36l-6 6' />
-          <path d='M40 116l8 4l8-4l-2 9l6 6l-9 1l-3 8l-3-8l-9-1l6-6z' />
-          <path d='M112 100c10 0 20-6 20-14v-6c-7 2-13 3-20 3s-13-1-20-3v6c0 8 10 14 20 14z' />
-        </g>
-      </svg>
-    `),
-    []
-  );
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,34 +34,14 @@ export default function RegisterPage() {
       await signup?.({ name: fullName, email, password: pwd });
       
       navigate("/setup", { state: { fromRegister: true } }); // hoặc chuyển đến /login nếu bạn muốn
-    } catch (err: any) {
-      setError(err?.message ?? "Đăng ký thất bại. Vui lòng thử lại.");
+    } catch (err: unknown) {
+      setError((err as { message?: string })?.message ?? "Đăng ký thất bại. Vui lòng thử lại.");
     }
   };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
-      {/* Gradient nền */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-
-      {/* Tile pattern mờ (trái) */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 w-[120%] md:w-full opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml;utf8,${tileUrl}")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "160px 160px",
-          maskImage:
-            "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
-        }}
-      />
-
-      {/* Blur blobs */}
-      <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-2xl dark:bg-emerald-400/10" />
-      <div className="pointer-events-none absolute -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/10" />
+      <AnimatedGradientBackground/> 
 
       {/* Floating decor */}
       <Floating distance={12} duration={7} className="pointer-events-none absolute top-16 left-8">

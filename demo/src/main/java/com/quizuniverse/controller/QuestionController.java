@@ -70,11 +70,20 @@ public class QuestionController {
     }
 
     @PostMapping("/subject/{subjectId}")
-    public ResponseEntity<Question> createQuestion(
+    public ResponseEntity<QuestionDTO> createQuestion(
             @PathVariable Long subjectId,
             @RequestBody QuestionDTO dto
     ) {
-        Question question = questionService.createQuestion(subjectId, dto);
+        QuestionDTO question = questionService.createQuestion(subjectId, dto);
+        return ResponseEntity.ok(question);
+    }
+
+    @PostMapping("/question-bank/{bankId}")
+    public ResponseEntity<QuestionDTO> createQuestionInBank(
+            @PathVariable Long bankId,
+            @RequestBody QuestionDTO dto
+    ) {
+        QuestionDTO question = questionService.createQuestionInBank(bankId, dto);
         return ResponseEntity.ok(question);
     }
 

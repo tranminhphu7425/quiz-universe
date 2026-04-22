@@ -28,6 +28,9 @@ public class Subject {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @Column(name = "credit", columnDefinition = "INT")
+    private Long credit;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 }

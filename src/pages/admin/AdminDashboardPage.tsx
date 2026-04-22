@@ -27,10 +27,13 @@ export default function AdminDashboardPage() {
     setLoading(true);
     setErr(null);
     getAdminStats()
-      .then(setStats)
+      .then((data) => {
+        // Merge fetched data with sample stats for properties not yet implemented in backend
+        setStats({ ...sampleStats, ...data });
+      })
       .catch((e) => {
         console.warn("⚠️ Lỗi API, dùng sampleStats:", e);
-        setErr("Hiện đang dùng dữ liệu mẫu");
+        setErr("Không thể lấy dữ liệu thực tế, hiện đang dùng dữ liệu mẫu");
         setStats(sampleStats);
       })
       .finally(() => setLoading(false));

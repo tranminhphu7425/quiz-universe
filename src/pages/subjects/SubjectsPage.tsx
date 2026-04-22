@@ -825,14 +825,14 @@ function SubjectCardGrid({ subject, isFavorite, isSelected, onToggleFavorite, on
           <div className="flex items-center gap-2">
             {(userRole === "admin" || userRole === "editor") && (
               <Link
-                to={`/subject/${subject.id}/edit`}
+                to={`/subjects/${subject.id}/edit`}
                 className="inline-flex items-center gap-1 rounded-lg bg-red-400 px-2 py-1 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
               >
                 Sửa
               </Link>
             )}
             <Link
-              to={`/subject/${subject.id}`}
+              to={`/subjects/${subject.id}`}
               className="inline-flex items-center gap-1 rounded-lg bg-yellow-400 px-2 py-1 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
             >
               Xem
@@ -916,14 +916,14 @@ function SubjectCardList({ subject, isFavorite, isSelected, onToggleFavorite, on
 
               <div className="flex items-center gap-4">
                 <Link
-                  to={`/subject/${subject.id}`}
+                  to={`/subjects/${subject.id}`}
                   className="inline-flex items-center gap-1 rounded-lg bg-yellow-400 px-3 py-1.5 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
                 >
                   Xem
                 </Link>
                 {(userRole === "admin" || userRole === "editor") && (
                   <Link
-                    to={`/subject/${subject.id}/edit`}
+                    to={`/subjects/${subject.id}/edit`}
                     className="inline-flex items-center gap-1 rounded-lg bg-red-400 px-3 py-1.5 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
                   >
                     Sửa
@@ -1002,7 +1002,7 @@ function EmptyState() {
         </p>
         <div className="mt-4 flex justify-center gap-2">
           <Link
-            to="/subject/create"
+            to="/subjects/create"
             className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
           >
             <PlusCircle className="h-4 w-4" /> Thêm môn học mới

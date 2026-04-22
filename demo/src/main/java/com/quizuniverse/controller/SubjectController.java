@@ -30,6 +30,24 @@ public class SubjectController {
         String name = subjectService.getSubjectNameById(id);
         return ResponseEntity.ok(Map.of("id", id, "name", name));
     }
+    
+    @PostMapping("/create")
+    public ResponseEntity<SubjectDTO> createSubject(@RequestBody SubjectDTO subjectDTO) {
+        SubjectDTO created = subjectService.createSubject(subjectDTO);
+        return ResponseEntity.ok(created);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<SubjectDTO> updateSubject(@PathVariable Long id, @RequestBody SubjectDTO subjectDTO) {
+        SubjectDTO updated = subjectService.updateSubject(id, subjectDTO);
+        return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, String>> deleteSubject(@PathVariable Long id) {
+        subjectService.deleteSubject(id);
+        return ResponseEntity.ok(Map.of("message", "Đã xóa môn học thành công"));
+    }
      // Handler 404
      @ExceptionHandler(SubjectNotFoundException.class)
      public ResponseEntity<Map<String, String>> handleNotFound(SubjectNotFoundException ex) {

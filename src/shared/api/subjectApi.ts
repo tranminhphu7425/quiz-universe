@@ -27,3 +27,45 @@ export function fetchAllSubjects(
     { signal }
   );
 }
+
+/**
+ * Tạo môn học mới
+ */
+export function createSubject(
+  data: Partial<Subject>,
+  signal?: AbortSignal
+): Promise<Subject> {
+  return apiService.post<Subject>(
+    `/subjects/create`,
+    data,
+    { signal }
+  );
+}
+
+/**
+ * Cập nhật môn học
+ */
+export function updateSubject(
+  id: number,
+  data: Partial<Subject>,
+  signal?: AbortSignal
+): Promise<Subject> {
+  return apiService.put<Subject>(
+    `/subjects/${id}`,
+    data,
+    { signal }
+  );
+}
+
+/**
+ * Xóa môn học
+ */
+export function deleteSubject(
+  id: number,
+  signal?: AbortSignal
+): Promise<void> {
+  return apiService.delete<void>(
+    `/subjects/${id}`,
+    { signal }
+  );
+}

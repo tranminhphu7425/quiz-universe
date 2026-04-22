@@ -70,6 +70,7 @@ const ReviewExamPage = React.lazy(() => import("@pages/exams/ReviewExamPage"));
 // ============================================================================
 const AdminDashboardPage = React.lazy(() => import("@pages/admin/AdminDashboardPage"));
 const AdminUsersPage = React.lazy(() => import("@pages/admin/AdminUsersPage"));
+const AdminSubjectsPage = React.lazy(() => import("@pages/admin/AdminSubjectsPage"));
 
 // ============================================================================
 // LAZY LOADING - CTU PAGES
@@ -77,11 +78,11 @@ const AdminUsersPage = React.lazy(() => import("@pages/admin/AdminUsersPage"));
 const CTUHomePage = React.lazy(() => import("@pages/ctu/CTUHomePage"));
 const CTUCalendarPage = React.lazy(() => import("@pages/ctu/CTUCalendarPage"));
 const CTUCalculatorPage = React.lazy(() => import("@pages/ctu/CTUCalculatorPage"));
-
+const CTURoadmapPlannerPage = React.lazy(() => import("@pages/ctu/CTURoadmapPlannerPage"));
 // ============================================================================
 // SUSPENSE WRAPPER
 // ============================================================================
-const LoadingFallback = () => (
+export const LoadingFallback = () => (
   <div className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-4">
     <motion.div
       animate={{ rotate: 360 }}
@@ -147,8 +148,8 @@ export const router = createHashRouter([
 
       // Subjects Routes
       { path: "subjects", ...withErrorBoundary(<SubjectsPage />) },
-      { path: "subject/:subjectId", ...withErrorBoundary(<SubjectDetailPage />) },
-      { path: "subject/create", ...withErrorBoundary(<CreateSubjectPage />) },
+      { path: "subjects/:subjectId", ...withErrorBoundary(<SubjectDetailPage />) },
+      { path: "subjects/create", ...withErrorBoundary(<CreateSubjectPage />) },
       { path: "questions/subject/:subjectId", ...withErrorBoundary(<QuestionsPage />) },
       { path: "questions/subject/:subjectId/edit", ...withErrorBoundary(<EditQuestionPage />) },
 
@@ -194,6 +195,7 @@ export const router = createHashRouter([
     children: [
       { index: true, ...withErrorBoundary(<AdminDashboardPage />) },
       { path: "users", ...withErrorBoundary(<AdminUsersPage />) },
+      { path: "subjects", ...withErrorBoundary(<AdminSubjectsPage />) },
       { path: "settings", ...withErrorBoundary(<AdminDashboardPage />) },
     ],
   },
@@ -208,6 +210,7 @@ export const router = createHashRouter([
       { path: "ctu", ...withErrorBoundary(<CTUHomePage />) },
       { path: "ctu/calendar", ...withErrorBoundary(<CTUCalendarPage />) },
       { path: "ctu/calculator", ...withErrorBoundary(<CTUCalculatorPage />) }, // Fixed typo
+      { path: "ctu/roadmap-planner", ...withErrorBoundary(<CTURoadmapPlannerPage />) },
     ],
   },
 ]);

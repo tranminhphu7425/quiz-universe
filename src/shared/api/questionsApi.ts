@@ -44,6 +44,16 @@ export function createQuestionApi(
   );
 }
 
+export function createQuestionInBankApi(
+  bankId: number,
+  payload: UpdateQuestionPayload
+): Promise<Question> {
+  return apiService.post<Question>(
+    `/questions/question-bank/${bankId}`,
+    payload
+  );
+}
+
 export function updateQuestionApi(
   qId: number,
   payload: UpdateQuestionPayload

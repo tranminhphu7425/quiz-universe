@@ -243,31 +243,134 @@ export default function Header({
     <header className="w-full bg-gradient-to-r from-green-600 to-emerald-600 dark:from-slate-900 dark:to-slate-800 shadow-lg sticky top-0 z-50">
       <div className="lg:container mx-auto px-2 lg:px-4 py-2">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - Phiên bản Dynamic Typing */}
+<motion.div
+  whileHover={{ scale: 1.02 }}
+  className="flex items-center group"
+>
+  <Link to={user ? "/dashboard" : "/"} className="relative">
+    <div className="flex items-center gap-3">
+      {/* 3D Logo Container */}
+      <motion.div
+        className="relative perspective-500"
+        whileHover={{ rotateX: 10, rotateY: 10 }}
+        transition={{ type: "spring", stiffness: 200 }}
+      >
+        <div className="relative">
+          {/* Multiple glow layers */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center"
-          >
-            <Link to={user ? "/dashboard" : "/"}>
-              <div className="flex space-x-2 items-center">
-                <motion.img
-                  src={Logo}
-                  alt="Logo"
-                  className="h-12 w-12"
-                  transition={bounceTransition}
-                />
-                <motion.span
-                  className="text-white dark:text-slate-100 font-bold text-3xl font-mono hidden xl:block"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  QuizUniverse
-                </motion.span>
-              </div>
-            </Link>
+            className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 blur-xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+            }}
+          />
+          
+          {/* Logo với hiệu ứng glass morphism */}
+          <div className="relative rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-2 ring-1 ring-white/20">
+            <motion.img
+              src={Logo}
+              alt="QuizUniverse"
+              className="h-11 w-11"
+              whileHover={{
+                scale: 1.1,
+                rotate: [0, -10, 10, -10, 0],
+              }}
+              transition={{ duration: 0.5 }}
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Text với hiệu ứng typing */}
+      <div className="hidden xl:block">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative"
+        >
+          {/* Main brand name */}
+          <div className="flex items-baseline gap-1">
+            <motion.span
+              className="text-3xl font-black text-white"
+              animate={{
+                textShadow: [
+                  "0 0 0px rgba(255,255,255,0)",
+                  "0 0 10px rgba(255,255,255,0.5)",
+                  "0 0 0px rgba(255,255,255,0)",
+                ],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: 1,
+              }}
+            >
+              Quiz
+            </motion.span>
+            
+            <motion.span
+              className="text-3xl font-black bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
+              animate={{
+                scale: [1, 1.05, 1],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+            >
+              Universe
+            </motion.span>
+
+            {/* Animated cursor */}
+            <motion.span
+              className="w-0.5 h-7 bg-gradient-to-t from-yellow-400 to-orange-500 ml-1"
+              animate={{
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+              }}
+            />
+          </div>
+
+          {/* Dynamic tagline */}
+          <motion.div className="flex items-center gap-2 mt-0.5">
+            <div className="h-px w-4 bg-gradient-to-r from-yellow-400/0 via-yellow-400 to-yellow-400/0" />
+            <motion.p
+              className="text-[10px] font-medium text-white/70 tracking-wider"
+              animate={{
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+              }}
+            >
+              {["Learn", "Create", "Succeed"][Math.floor(Date.now() / 2000) % 3]}
+            </motion.p>
+            <div className="h-px w-4 bg-gradient-to-r from-yellow-400/0 via-yellow-400 to-yellow-400/0" />
           </motion.div>
+        </motion.div>
+      </div>
+    </div>
+
+    {/* Hover indicator */}
+    <motion.div
+      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"
+      initial={{ scaleX: 0 }}
+      whileHover={{ scaleX: 1 }}
+      transition={{ duration: 0.3 }}
+      style={{ originX: 0 }}
+    />
+  </Link>
+</motion.div>
 
           {/* Search Box (Desktop) */}
           <div className="hidden lg:flex flex-1 justify-center mx-8 w-full xl:w-70 2xl:w-[400px]">
@@ -297,7 +400,7 @@ export default function Header({
                           return (
                             <li key={`subject-${item.data.id}`}>
                               <Link
-                                to={`/subject/${item.data.id}`}
+                                to={`/subjects/${item.data.id}`}
                                 className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
                                 onClick={() => setSearch("")}
                               >
@@ -820,7 +923,7 @@ export default function Header({
                           return (
                             <li key={`subject-${item.data.id}`} className="w-full">
                               <Link
-                                to={`/subject/${item.data.id}`}
+                                to={`/subjects/${item.data.id}`}
                                 className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
                                 onClick={() => setSearch("")}
                               >

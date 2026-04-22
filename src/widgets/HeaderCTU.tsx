@@ -78,7 +78,7 @@ export default function HeaderCTU({
     // { label: "Câu hỏi", href: "/question-banks" },
     // { label: "Đề thi", href: "/exams/create" },
     { label: "Sắp xếp lịch", href: "/ctu/calendar" },
-    { label: "Tính điểm trung bình", href: "/ctu/calulator" }
+    { label: "Tính điểm trung bình", href: "/ctu/calculator" }
 
   ] ;
   const location = useLocation();
@@ -323,7 +323,7 @@ export default function HeaderCTU({
                           return (
                             <li key={`subject-${item.data.id}`}>
                               <Link
-                                to={`/subject/${item.data.id}`}
+                                to={`/subjects/${item.data.id}`}
                                 className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
                                 onClick={() => setSearch("")}
                               >
@@ -846,7 +846,7 @@ export default function HeaderCTU({
                           return (
                             <li key={`subject-${item.data.id}`} className="w-full">
                               <Link
-                                to={`/subject/${item.data.id}`}
+                                to={`/subjects/${item.data.id}`}
                                 className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
                                 onClick={() => setSearch("")}
                               >

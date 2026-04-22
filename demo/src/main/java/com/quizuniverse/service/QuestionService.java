@@ -20,17 +20,25 @@ import com.quizuniverse.repository.SubjectRepository;
 
 import jakarta.transaction.Transactional;
 
+import com.quizuniverse.entity.QuestionBank;
+import com.quizuniverse.repository.QuestionBankRepository;
+
 @Service
 public class QuestionService {
 
     private final QuestionRepository questionRepository;
     private final QuestionOptionRepository optionRepository;
     private final SubjectRepository subjectRepository;
+    private final QuestionBankRepository questionBankRepository;
 
-    public QuestionService(QuestionRepository questionRepository, QuestionOptionRepository optionRepository, SubjectRepository subjectRepository) {
+    public QuestionService(QuestionRepository questionRepository, 
+                           QuestionOptionRepository optionRepository, 
+                           SubjectRepository subjectRepository,
+                           QuestionBankRepository questionBankRepository) {
         this.questionRepository = questionRepository;
         this.optionRepository = optionRepository;
         this.subjectRepository = subjectRepository;
+        this.questionBankRepository = questionBankRepository;
     }
 
     public List<QuestionDTO> getQuestionsBySubjectId(Long subjectId) {
@@ -120,7 +128,7 @@ public class QuestionService {
     }
 
     @Transactional
-    public Question createQuestion(Long subjectId, QuestionDTO dto) {
+    public QuestionDTO createQuestion(Long subjectId, QuestionDTO dto) {
 
         // 1. Lấy subject
         Subject subject = subjectRepository.findById(subjectId)
@@ -156,7 +164,54 @@ public class QuestionService {
             savedQuestion.setOptions(options);
         }
 
-        return savedQuestion;
+        return convertToDTO(savedQuestion);
+    }
+
+    @Transactional
+    public QuestionDTO createQuestionInBank(Long bankId, QuestionDTO dto) {
+
+        // 1. Lấy bank
+        QuestionBank bank = questionBankRepository.findById(bankId)
+                .orElseThrow(() -> new RuntimeException("QuestionBank not found: " + bankId));
+
+        // Lấy subject từ bank
+        Subject subject = bank.getSubject();
+        if (subject == null) {
+            throw new RuntimeException("Bank does not have an associated subject");
+        }
+
+        // 2. Tạo question
+        Question question = new Question();
+        question.setBank(bank);
+        question.setSubject(subject);
+        question.setStem(dto.getStem());
+        question.setExplanation(dto.getExplanation());
+        question.setQuestionType(Question.QuestionType.valueOf(dto.getQuestionType()));
+        question.setStatus(Question.QuestionStatus.approved);
+        question.setCreatedAt(LocalDateTime.now());
+        question.setUpdatedAt(LocalDateTime.now());
+
+        Question savedQuestion = questionRepository.save(question);
+
+        // 3. Tạo options (nếu có)
+        if (dto.getOptions() != null && !dto.getOptions().isEmpty()) {
+            List<QuestionOption> options = dto.getOptions().stream()
+                    .map(optDto -> {
+                        QuestionOption opt = new QuestionOption();
+                        opt.setQuestion(savedQuestion);
+                        opt.setLabel(optDto.getLabel());
+                        opt.setContent(optDto.getContent());
+                        opt.setIsCorrect(Boolean.TRUE.equals(optDto.getIsCorrect()));
+                        opt.setSortOrder(optDto.getSortOrder());
+                        return opt;
+                    })
+                    .toList();
+
+            optionRepository.saveAll(options);
+            savedQuestion.setOptions(options);
+        }
+
+        return convertToDTO(savedQuestion);
     }
 
     @Transactional

@@ -140,4 +140,32 @@ public class UserController {
         return ResponseEntity.ok(Map.of("message", "User deleted successfully"));
     }
 
+    /**
+     * [ADMIN] Lấy thống kê
+     */
+    @GetMapping("/admin/stats")
+    public ResponseEntity<Map<String, Object>> getAdminStats(
+            @org.springframework.beans.factory.annotation.Autowired com.quizuniverse.repository.UserRepository userRepository,
+            @org.springframework.beans.factory.annotation.Autowired com.quizuniverse.repository.SubjectRepository subjectRepository,
+            @org.springframework.beans.factory.annotation.Autowired com.quizuniverse.repository.QuestionBankRepository questionBankRepository,
+            @org.springframework.beans.factory.annotation.Autowired com.quizuniverse.repository.QuestionRepository questionRepository
+    ) {
+        long totalUsers = userRepository.count();
+        long totalSubjects = subjectRepository.count();
+        long totalBanks = questionBankRepository.count();
+        long totalQuestions = questionRepository.count();
+
+        return ResponseEntity.ok(Map.of(
+                "users", totalUsers,
+                "subjects", totalSubjects,
+                "banks", totalBanks,
+                "questions", totalQuestions,
+                "approved", totalQuestions, // Assume all approved for now based on query
+                "pending", 0, // Not tracked separately right now
+                "exams", 0,
+                "tags", 0,
+                "topics", 0,
+                "imports", 0
+        ));
+    }
 }

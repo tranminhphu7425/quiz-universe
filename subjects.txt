@@ -1,0 +1,4553 @@
+Mã học phần 	Tên học phần	Tín chỉ
+HG151	Phương pháp nghiên cứu khoa học - KDNN	3
+AQ103	Quản lý trại giống cá	2
+AQ107	Thực tập thực tế - NTTS	6
+AQ203	Tiếng Anh Nuôi trồng thủy sản 1	3
+AQ204	Tiếng Anh Nuôi trồng thủy sản 2	3
+AQ205C	Vi sinh	3
+AQ206T	Nhập môn Khoa học nghề cá	3
+AQ207	Khoa học môi trường nước	3
+AQ208	Phân loại học đại cương	3
+AQ209	Ao hồ học	3
+AQ210	Sinh thái học đại cương	2
+AQ211	Sinh lý động vật thủy sản	3
+AQ212	Dinh dưỡng động vật thủy sản	3
+AQ214	Thống kê và phép thí nghiệm	3
+AQ216	Phương pháp nghiên cứu khoa học	2
+AQ218	Kỹ thuật phân tích chất lượng nước	3
+AQ219	Thực tập giáo trình cơ sở	5
+AQ220	Sinh học cá	2
+AQ221	Kỹ thuật nuôi thủy sản	3
+AQ223	Quản lý trại giống giáp xác và nhuyễn thể	3
+AQ224T	Thiết bị và công trình thủy sản	2
+AQ227ET	Vệ sinh an toàn thực phẩm thủy sản	2
+AQ228	Công nghệ sinh học trong nuôi trồng thủy sản	2
+AQ228T	Công nghệ sinh học trong nuôi trồng thủy sản	2
+AQ229T	Quan trắc sinh học môi trường nước	2
+AQ230	Đa dạng sinh học và quản lý nguồn lợi thủy sản	2
+AQ231	Thực tập giáo trình chuyên môn nước ngọt	6
+AQ232	Thực tập giáo trình chuyên môn hải sản	6
+AQ233	Chuyên đề ngoại khóa - TSTT	1
+AQ303	Kỹ thuật nuôi giáp xác và nhuyễn thể	3
+AQ305	Đại cương về bệnh thủy sản và phương pháp chẩn đoán	3
+AQ306C	Bệnh Thủy sản	3
+AQ307	Cải tiến di truyền và quản lý nguồn lợi	3
+AQ310T	Sản xuất thức ăn tươi sống	2
+AQ311ET	Quy hoạch phát triển thủy sản	2
+AQ312	Kinh tế thủy sản	2
+AQ315	Thuyết trình	1
+AQ503	Luận văn tốt nghiệp - NTTS	15
+BC461C	Sinh hóa 1	3
+BC462C	Sinh hóa 2	3
+BS110C	Sinh học đại cương 1	3
+BS111C	Sinh học đại cương 2	3
+BS210C	Thực hành sinh học đại cương 1	1
+BS211C	Thực hành sinh học đại cương 2	1
+BT117	Thống kê sinh học và Phương pháp thí nghiệm	3
+BT118	Kỹ năng viết trong khoa học và kỹ thuật	3
+BT147	Đạo đức và Phương pháp nghiên cứu khoa học	2
+BT148	Công nghệ AI và máy học trong công nghệ sinh học	2
+BT149	Công nghệ sinh học nano	2
+BT150	Miễn dịch học và công nghệ sản xuất vaccine	2
+BT200	Toán cao cấp	3
+BT200C	Thực tập nhận thức	1
+BT202	Di truyền học cơ bản	3
+BT203	Thực tập Di truyền học cơ bản	1
+BT214	Vật lý	3
+BT215	Thực hành Vật lý	1
+BT216	Công nghệ sinh học căn bản	3
+BT217	TT. Công nghệ di truyền	1
+BT218	Công nghệ sinh học trong y dược	2
+BT219	Công nghệ sinh học trong môi trường	2
+BT220	Công nghệ sinh học thực phẩm	2
+BT221	Công nghệ sinh học vi sinh vật	2
+BT223	Công nghệ di truyền	2
+BT224	Thực hành hóa học đại cương	1
+BT225E	Chuyên đề công nghệ sinh học 1	2
+BT226E	Chuyên đề công nghệ sinh học 2	2
+BT227	Hóa học đại cương	3
+BT228	Hóa học hữu cơ	2
+BT229	Thực hành Hóa học hữu cơ	1
+BT230	Thực hành sinh hóa 1	1
+BT231	Thực hành sinh hóa 2	1
+BT297	Virus học	2
+BT298	Thực tập Virus học	1
+BT299E	An toàn sinh học và hệ thống quản lý	2
+BT300E	Sinh lý người và động vật	3
+BT302	Sinh học phân tử	3
+BT303	Thực tập Sinh học phân tử	1
+BT303CE	Tin sinh học	3
+BT304C	Công nghệ lên men thực phẩm	2
+BT305C	Nuôi cấy mô tế bào thực vật	2
+BT306C	Protein học	3
+BT307CE	Khía cạnh kinh tế xã hội của công nghệ sinh học	2
+BT313	Đa dạng sinh học	2
+BT404C	TT. Công nghệ lên men thực phẩm	1
+BT405C	TT. Nuôi cấy mô tế bào thực vật	1
+BT406C	TT. Protein học	1
+BT480C	Thực tập cơ sở sản xuất	3
+BT499C	Luận văn tốt nghiệp	10
+CN004	Khí tượng thủy văn	2
+CN008E	Kỹ thuật cơ khí đại cương	2
+CN038	Động lực học và điều khiển robot	3
+CN038T	Động lực học và điều khiển robot	3
+CN039T	Vật liệu xây dựng tiến tiến	2
+CN040HT	Vi điều khiển và hệ thống nhúng	3
+CN040T	Vi điều khiển và hệ thống nhúng	3
+CN041	TT. Kỹ thuật điều khiển	2
+CN042	Tin học ứng dụng - kỹ thuật điện	3
+CN042H	Tin học ứng dụng - kỹ thuật điện	3
+CN043	Thực tập Gia công CNC	3
+CN044	TT. Mạng công nghiệp và truyền thông	1
+CN046	Tin học ứng dụng - Kỹ thuật 3	2
+CN046H	Tin học ứng dụng - Kỹ thuật 3	2
+CN047	Thực tập trắc địa đại cương	1
+CN048	Thực tập vật liệu xây dựng cơ bản	1
+CN049	Thực tập Nguội, hàn, rèn, đúc	2
+CN050	Thực tập Gia công cắt gọt	2
+CN051	Thực tập cơ học đất - XD	1
+CN052	Thực hành Điện tử công suất	2
+CN052H	Thực hành Điện tử công suất	2
+CN053H	Thống kê ứng dụng kỹ thuật	2
+CN054	Seminar 1 - Logistics	2
+CN055	Seminar 1 - Quản lý công nghiệp	2
+CN056	TT. Mạch điện tử và xung số	2
+CN056H	TT. Mạch điện tử và xung số	2
+CN057	Tham quan định hướng ngành nghề - KTĐ	2
+CN058	TT. Địa chất công trình - CTGT	1
+CN059T	Phương pháp phần tử hữu hạn	2
+CN060T	Phương pháp nghiên cứu khoa học - công nghệ	2
+CN061	Đồ án thiết kế chế tạo khuôn mẫu	2
+CN063E	Anh văn chuyên ngành kỹ thuật y sinh	2
+CN064	Kỹ thuật thiết bị y học	3
+CN065	Giải phẫu người	3
+CN066E	Nhập môn kỹ thuật y sinh (y đức)	2
+CN067	Kỹ thuật vật liệu y sinh	2
+CN068E	An toàn trong Kỹ thuật y sinh	2
+CN069	Trí tuệ nhân tạo - Y sinh	3
+CN070	Quang y sinh	3
+CN071	Thống kê trong kỹ thuật y sinh	2
+CN072E	Mô hình hóa và mô phỏng y sinh	3
+CN073E	Cảm biến y sinh	3
+CN074	Kỹ thuật chẩn đoán hình ảnh	3
+CN075	Thực tập thiết bị chẩn đoán	2
+CN076	Kỹ thuật xét nghiệm	2
+CN077	Kỹ thuật điện tim	2
+CN078	Kỹ thuật điện não	2
+CN079	Kỹ thuật siêu âm	2
+CN080	Thực tập thiết bị điều trị	2
+CN081	Xử lý tín hiệu y sinh	3
+CN082E	Tổng quan về hệ thống dẫn truyền thuốc	2
+CN083	Đồ án chuyên ngành KTYS	2
+CN084	Thực tập thực tế chuyên ngành y sinh	2
+CN086	Chuyên đề kỹ thuật y sinh	2
+CN087	Linh kiện điện tử - bán dẫn	3
+CN088	Vật lý bán dẫn	3
+CN089E	Giải tích mạch	3
+CN090	Mạch điện tử	3
+CN090H	Mạch điện tử	3
+CN091	TT. Mạch điện tử	1
+CN092E	Kỹ thuật số	3
+CN093	TT. Kỹ thuật số	1
+CN094	Vi xử lý	3
+CN095	TT. Vi xử lý	1
+CN096	Hóa vật liệu điện tử	3
+CN097	Cơ khí nông nghiệp đại cương	2
+CN100	Nhập môn kỹ thuật	2
+CN101E	Cơ lý thuyết	2
+CN102	Địa chất công trình	2
+CN104	Vật liệu xây dựng	2
+CN105	TT. Vật liệu xây dựng	1
+CN106	Sức bền vật liệu - XD	3
+CN108E	Cơ học lưu chất	2
+CN109	TT. Cơ học lưu chất	1
+CN110	Trắc địa	2
+CN111	TT. Trắc địa	1
+CN117E	Phương pháp tính - Kỹ thuật	2
+CN119	Nguyên lý quy hoạch	2
+CN122	Bản đồ học và GIS	2
+CN123	Kết cấu bê-tông cơ sở	2
+CN124	Thủy lực công trình	2
+CN126E	Anh văn chuyên môn xây dựng	2
+CN128	Kỹ thuật điện	2
+CN131	Hình họa và vẽ kỹ thuật - XD	3
+CN132	Hình họa và vẽ kỹ thuật - CK	3
+CN132E	Hình họa và vẽ kỹ thuật - CK	2
+CN136	Cơ lý thuyết - CK	3
+CN137	Sức bền vật liệu - CK	3
+CN138	Dung sai và kỹ thuật đo	2
+CN139	Nhiệt động lực học và truyền nhiệt	3
+CN142	Cơ học máy	3
+CN145	Cơ sở thiết kế máy	2
+CN147E	Vật liệu cơ khí và nhiệt luyện	2
+CN149	Truyền động thủy lực và khí nén	2
+CN151	Kỹ thuật số	2
+CN152	Phương pháp thí nghiệm và xử lý số liệu	2
+CN154	Cơ học kết cấu	3
+CN155E	Khoa học về an toàn và bảo hộ lao động	2
+CN156	Anh văn chuyên môn cơ khí	2
+CN157	Anh văn chuyên môn quản lý công nghiệp	2
+CN158E	Anh văn chuyên môn - Kỹ thuật điện	2
+CN159E	Anh văn chuyên môn - Cơ điện tử	2
+CN166	Anh văn chuyên môn công nghệ hóa học	2
+CN177	An toàn điện	2
+CN185T	Quy hoạch hệ thống điện	2
+CN189	Cơ học lưu chất - CK	2
+CN194	Đồ án kiến trúc	2
+CN195	Đồ án Cơ sở thiết kế máy	2
+CN197	Đồ án thiết kế và chế tạo sản phẩm - CNHH	2
+CN198T	Điều khiển quá trình - CNHH	2
+CN199	Hóa học và hóa lý polymer	3
+CN201	Quản lý dự án công nghiệp	2
+CN206	Thiết kế vị trí và mặt bằng HTCN	2
+CN208	Vận trù học 1 - QLCN	3
+CN209	Vận trù học 2 - QLCN	2
+CN210	Kiểm soát chất lượng	2
+CN212	Kỹ thuật hệ thống	2
+CN218	Mô hình hóa và mô phỏng HTCN	2
+CN220	Thực tập ngành nghề - QLCN	2
+CN229	Cơ sở thiết kế nhà máy hóa chất	2
+CN230	Kỹ thuật môi trường	2
+CN231	Kỹ thuật phản ứng	3
+CN232	Thiết bị cơ lưu chất và cơ vật liệu rời	3
+CN233	TT. Quá trình và Thiết bị - CNHH	2
+CN239	Công nghệ các chất hoạt động bề mặt	2
+CN240	Thực tập ngành nghề - CNHH	2
+CN247	Hóa học chất kích thích và bảo vệ thực vật	2
+CN255	Dụng cụ đo	2
+CN275E	Nhà máy điện	2
+CN277E	Vận hành và điều khiển hệ thống điện	2
+CN279E	Thiết kế hệ thống điện	2
+CN284T	Đánh giá độ tin cậy của hệ thống điện	2
+CN298ET	Mạng công nghiệp và truyền thông	2
+CN298HT	Mạng công nghiệp và truyền thông	2
+CN301	Thủy văn công trình	2
+CN305	Kết cấu thép	2
+CN306	Máy bơm và Trạm bơm	2
+CN307E	Cấp thoát nước	2
+CN309	Bê tông chuyên ngành - TC	2
+CN311	Máy xây dựng và kỹ thuật thi công	3
+CN315	Thủy công	3
+CN320	Thực tập ngành nghề - TC	2
+CN325	Công trình ven biển	2
+CN326	Quy hoạch thủy lợi	2
+CN328	Kết cấu thép nhà công nghiệp	2
+CN331E	Tin học ứng dụng - Kỹ thuật 1	2
+CN332E	Tin học ứng dụng - Kỹ thuật 2	2
+CN333H	Hóa học chất rắn	3
+CN335	Quy hoạch đô thị	2
+CN337E	Luật xây dựng	2
+CN340E	Quản lý sản xuất công nghiệp	3
+CN340ET	Quản lý sản xuất công nghiệp	3
+CN351E	Tổ chức thi công	2
+CN366	Thi công cầu	2
+CN371	Thí nghiệm đường ô tô	1
+CN373	Đường hầm	2
+CN374	Quy hoạch giao thông	2
+CN390	Công nghệ và thiết bị tạo phôi	2
+CN391	Công nghệ chế tạo khuôn mẫu	2
+CN392	CAD, CAM, CNC	3
+CN393E	Các phương pháp gia công đặc biệt	2
+CN394E	Tự động hóa sản xuất công nghiệp	2
+CN398	Thực tập ngành nghề cơ khí chế tạo máy	2
+CN399E	Trang bị điện trong máy công nghiệp	2
+CN403	Quá trình và thiết bị công nghiệp	2
+CN408	Quản lý sản xuất công nghiệp	2
+CN408T	Quản lý sản xuất công nghiệp	2
+CN413E	Tạo mẫu nhanh	2
+CN414	Quản lý kỹ thuật bảo trì công nghiệp	2
+CN416E	Thiết kế hệ thống cơ điện tử	2
+CN419	Công nghệ sản xuất sạch	2
+CN439	Kỹ thuật điều hòa nhiệt độ và thông gió	2
+CN442	Điện công nghiệp	2
+CN445	Kỹ thuật lò hơi	2
+CN463	Khảo nghiệm và kiểm định ô tô	2
+CN473	Kỹ thuật nâng chuyển	2
+CN482	Máy công cụ	2
+CN484E	Thiết kế trang bị công nghệ	2
+CN488E	Tin học ứng dụng - CNHH	2
+CN490	Đồ án chuyên ngành - CNHH	2
+CN491	Đồ án Quá trình và Thiết bị - CNHH	2
+CN500	Cơ học ứng dụng	3
+CN508	Đồ án kết cấu bê-tông - TC	2
+CN509	Đồ án thủy lực công trình	2
+CN510	Đồ án nền móng công trình	2
+CN511	Đồ án Thi công công trình thủy lợi	2
+CN512	Đồ án thủy công	2
+CN513	Đồ án máy bơm và trạm bơm	2
+CN514	Quản lý dự án xây dựng	3
+CN514T	Quản lý dự án xây dựng	3
+CN515	Đồ án Cấp thoát nước	2
+CN516	Đồ án thiết kế hệ thống cơ điện tử	2
+CN518E	Đồ án hệ thống điện	2
+CN520E	Báo cáo chuyên đề kỹ thuật điện	2
+CN521	Đồ án kết cấu bê-tông	2
+CN522	Đồ án kết cấu thép	2
+CN523	Đồ án thi công	2
+CN524	Thực tập ngành nghề - XDDD	2
+CN525	Đồ án quản lý dự án công nghiệp	2
+CN526	Đồ án thiết kế vị trí và mặt bằng	2
+CN527	Đồ án quản lý kỹ thuật bảo trì công nghiệp	2
+CN528	Đồ án mô hình hóa và mô phỏng các hệ thống công nghiệp	2
+CN529	Đồ án Công nghệ chế tạo máy	2
+CN532	Thi công đường	2
+CN537	Đồ án Thi công cầu	2
+CN538	Đồ án Thi công đường	2
+CN541	Đồ án ô tô	2
+CN542	Kinh tế kỹ thuật	3
+CN542T	Kinh tế kỹ thuật	3
+CN543	Quản trị nguồn nhân lực	3
+CN548	Đo lường và thiết kế công việc	3
+CN549	Quản lý vật tư - tồn kho	3
+CN550E	Quản lý chuỗi cung ứng và hậu cần	3
+CN551	Kỹ thuật điều độ trong sản xuất và dịch vụ	3
+CN552ET	Phương pháp nghiên cứu và viết báo cáo khoa học	2
+CN556	Kỹ thuật sấy và bảo quản nông sản thực phẩm	3
+CN561	Truyền khối - CNHH	3
+CN563E	Thiết kế và phân tích thí nghiệm	3
+CN564	Các phương pháp phân tích hiện đại - CNHH	3
+CN565	Thực hành Các phương pháp phân tích hiện đại - CNHH	1
+CN566E	Lý thuyết ô tô	3
+CN568	Lý thuyết tính toán và thiết kế động cơ đốt trong	3
+CN571	Thiết kế ô tô	3
+CN574	Thực tập sửa chữa ô tô	3
+CN579	Điều khiển logic có thể lập trình (PLC)	3
+CN579H	Điều khiển logic có thể lập trình (PLC)	3
+CN582E	Cơ cấu chấp hành cơ điện tử	3
+CN584	Kỹ thuật điện lạnh	3
+CN584H	Kỹ thuật điện lạnh	3
+CN585	Kỹ thuật điện cao áp	3
+CN585H	Kỹ thuật điện cao áp	3
+CN586	Thực hành Kỹ thuật điện cao áp	2
+CN586H	Thực hành Kỹ thuật điện cao áp	2
+CN587	Thực tập doanh nghiệp - CTT	5
+CN588HT	Quản lý dự án	2
+CN588T	Quản lý dự án	2
+CN589	Tổ chức thi công - CTGT	2
+CN590	Trí tuệ nhân tạo và ứng dụng	2
+CN591T	Nông nghiệp chính xác	2
+CN592	Ô tô điện và ô tô tự lái	3
+CN593	Kinh thầu thiết bị y tế	2
+CN594HT	Kỹ thuật vật liệu năng lượng	3
+CN594T	Kỹ thuật vật liệu năng lượng	3
+CN595HT	Kỹ thuật vi cấu trúc và vi chế tạo	3
+CN595T	Kỹ thuật vi cấu trúc và vi chế tạo	3
+CN596T	Điều khiển thông minh	3
+CN597T	Ứng dụng mô hình tích hợp trong địa cơ học	3
+CN598HT	Ứng dụng mô hình tích hợp trong địa kỹ thuật	3
+CN609	Động lực học và điều khiển robot	3
+CN615	SCADA: Phân tích và thiết kế	3
+CS102	Sinh học phân tử	3
+CS103	Thực hành Sinh học phân tử	1
+CS104E	Vi sinh học công nghiệp	2
+CS105	Thực hành Vi sinh học công nghiệp	1
+CS106	Vi sinh học môi trường	2
+CS107	Thực hành Vi sinh học môi trường	1
+CS108	Virus học đại cương	2
+CS110	Anh văn chuyên ngành - CNSH	2
+CS111	Vi sinh học đại cương B	2
+CS112	Vi sinh học đại cương	3
+CS113	Thực hành Vi sinh học đại cương	1
+CS114	Sinh hóa	3
+CS115	Thực hành Sinh hóa	1
+CS116	TT. Virus học đại cương	1
+CS117	Thống kê sinh học và phương pháp thí nghiệm	3
+CS118	Phương pháp phân tích vi sinh vật	2
+CS119	TT. Phương pháp phân tích vi sinh vật	1
+CS124	Cơ sở di truyền học	2
+CS125	TT. Cơ sở di truyền học	1
+CS126	Kỹ thuật phân tích và thiết bị	2
+CS127	TT. Kỹ thuật phân tích và thiết bị	1
+CS128	Hóa sinh công nghiệp	2
+CS129	TT. Hóa sinh công nghiệp	1
+CS130	Thiết kế nhà máy thực phẩm	2
+CS130E	Thiết kế nhà máy thực phẩm	2
+CS131	Kinh doanh và marketing thực phẩm	2
+CS132E	Anh văn chuyên ngành - CNSTH	2
+CS133	Ứng dụng IoT trong hoạt động sau thu hoạch	2
+CS134	Logistic và quản lý chuỗi cung ứng thực phẩm	2
+CS134E	Logistic và quản lý chuỗi cung ứng thực phẩm	2
+CS135	Kiểm soát bệnh và côn trùng nông sản thực phẩm sau thu hoạch	2
+CS136	Các quá trình hóa lý trong công nghệ thực phẩm	2
+CS137	TT. Các quá trình hóa lý trong công nghệ thực phẩm	1
+CS138	Sản xuất sạch hơn	2
+CS139T	Các quá trình nhiệt độ cao trong chế biến thực phẩm	2
+CS140T	Các quá trình nhiệt độ thấp trong chế biến thực phẩm	2
+CS141	Chuyên đề Công nghệ chế biến thịt và gia cầm	2
+CS142	Chuyên đề Công nghệ chế biến thủy và hải sản	2
+CS143	Chuyên đề Công nghệ chế biến sữa và sản phẩm sữa	2
+CS144	Chuyên đề Công nghệ sản xuất rượu bia và nước giải khát	2
+CS145	Chuyên đề Công nghệ chế biến đường - Bánh kẹo	2
+CS146	Chuyên đề Công nghệ chế biến chè, cà phê, ca cao	2
+CS146E	Chuyên đề Công nghệ chế biến chè, cà phê, ca cao	2
+CS147	Đạo đức và Phương pháp nghiên cứu khoa học	2
+CS148	Ứng dụng AI trong công nghệ sinh học	2
+CS149	Công nghệ sinh học nano	2
+CS153	Thực hành nông nghiệp tốt (GAP và BAP)	2
+CS201E	Vi khuẩn học	3
+CS209E	Chẩn đoán phân tử	2
+CS211	Thực hành Công nghệ di truyền	1
+CS212	Công nghệ sinh học trong môi trường	2
+CS213E	Vi sinh học y dược	2
+CS214	Vi sinh học thực phẩm	2
+CS215	TT. Vi sinh học thực phẩm	1
+CS216HE	Công nghệ chế biến thực phẩm 1	3
+CS217HE	Công nghệ chế biến thực phẩm 2	3
+CS218HE	Kỹ thuật các quá trình chế biến thực phẩm hiện đại	3
+CS299E	An toàn sinh học và hệ thống quản lý	2
+CS300E	Khía cạnh kinh tế xã hội của công nghệ sinh học	2
+CS302E	Nhập môn công nghệ sinh học	2
+CS303	An toàn trong thực phẩm và môi trường	2
+CS304	Thực tế cơ sở - CNSH	1
+CS311E	Protein và Enzim học	2
+CS312	TT. Protein và Enzim học	1
+CS313E	Tin sinh học	2
+CS316	Nấm học	2
+CS317	TT. Nấm học	1
+CS318	Lên men thực phẩm	2
+CS319	TT. Lên men thực phẩm	1
+CS320	Công nghệ di truyền	2
+CS320E	Công nghệ di truyền	2
+CS322	Tiểu luận tốt nghiệp - CNSH	4
+CS323	Luận văn tốt nghiệp - CNSH	10
+CS326E	Báo cáo chuyên đề công nghệ sinh học	2
+CS327	Nuôi cấy mô tế bào thực vật và động vật	3
+CS328	TT. Nuôi cấy mô tế bào thực vật và động vật	1
+CS329	Công nghệ sinh học thực phẩm	2
+CS337	Công nghệ sản xuất phân sinh học và phân hữu cơ	2
+CS338E	Vaccin học	2
+CS343E	Chất điều hòa sinh trưởng thực vật	2
+CS344	Công nghệ sinh học trong y dược	2
+CS345	Vi sinh vật nông nghiệp	2
+CS347	Sinh thái vi sinh vật	2
+CS349	Nấm thực phẩm và dược liệu	2
+CS441C	Công nghệ sinh học và chọn giống thực vật	2
+CS442C	TT. Công nghệ sinh học và chọn giống thực vật	1
+CS443C	Công nghệ sinh học và chọn giống thủy sản	2
+CS444C	TT. Công nghệ sinh học và chọn giống thủy sản	1
+CS465C	Sinh lý thực vật	2
+CS466C	TT. Sinh lý thực vật	1
+CT003	Năng lực số ứng dụng (*)	1
+CT003H	Năng lực số ứng dụng (*)	1
+CT004	Thực hành Năng lực số ứng dụng (*)	2
+CT004H	Thực hành Năng lực số ứng dụng (*)	2
+CT005	Nền tảng công nghệ số	4
+CT005H	Nền tảng công nghệ số	4
+CT043	Nghệ thuật học đại cương	2
+CT044	Nguyên lý thiết kế đồ họa	2
+CT045	Biên tập truyền thông	2
+CT046	Kỹ thuật nhiếp ảnh	2
+CT047	Kỹ thuật quay phim	2
+CT048	Digital Marketing căn bản	3
+CT049	Cơ sở dữ liệu trong Truyền thông đa phương tiện	3
+CT051H	Vi - Tích phân	4
+CT052H	Đại số tuyến tính và hình học	3
+CT053H	Xác suất thống kê	3
+CT054H	Lập trình căn bản A	4
+CT055H	Kỹ năng giao tiếp	1
+CT055HE	Kỹ năng giao tiếp	1
+CT056H	Kỹ năng thuyết trình	1
+CT056HE	Kỹ năng thuyết trình	1
+CT057H	Kỹ năng làm việc nhóm	1
+CT057HE	Kỹ năng làm việc nhóm	1
+CT058H	Kỹ năng giải quyết vấn đề	1
+CT058HE	Kỹ năng giải quyết vấn đề	1
+CT059H	Kỹ năng tư duy phản biện	1
+CT059HE	Kỹ năng tư duy phản biện	1
+CT060HE	Kỹ năng viết báo cáo khoa học	1
+CT061	Nền tảng Kỹ xảo điện ảnh	3
+CT062	Nhập môn Lập trình đa phương tiện	2
+CT063	Tiền kỳ trong điện ảnh	3
+CT064	Bảo mật, an toàn hệ thống thông tin trong thương mại điện tử	3
+CT065	Nền tảng công nghệ thông tin - TMDT	3
+CT066	Cơ sở dữ liệu - TMDT	3
+CT067	Mạng máy tính - TMDT	3
+CT068	Hệ thống thông tin quản lý - TMDT	3
+CT069	Nghiệp vụ thông minh - TMDT	3
+CT070	Phân tích và thiết kế hệ thống thương mại điện tử	3
+CT071	Phát triển ứng dụng di động - TMDT	3
+CT072	Triển khai hệ thống thương mại điện tử	3
+CT073	Chính phủ điện tử - TMDT	3
+CT074	Hệ thống gợi ý sản phẩm - TMDT	3
+CT075HT	Kho dữ liệu và khai phá dữ liệu	3
+CT075T	Kho dữ liệu và Khai phá dữ liệu	3
+CT076HT	Phân tích dữ liệu	3
+CT076T	Phân tích dữ liệu	3
+CT078HT	Hệ thống thông tin di động	3
+CT080ET	Hệ thống thông tin địa lý	3
+CT080HET	Hệ thống thông tin địa lý	3
+CT081HE	Hệ thống thông tin quản lý	3
+CT083	Ngôn ngữ truyền thông	2
+CT084	Cơ sở kỹ thuật đồ họa	2
+CT085	Nhập môn Truyền thông đa phương tiện	3
+CT086	Nhập môn Web Đa phương tiện	3
+CT093	Kỹ xảo điện ảnh	3
+CT094	Quy trình sáng tạo sản phẩm đa phương tiện	3
+CT095	Dự án phim hoạt hình 3D	3
+CT096	Tiếp thị nội dung	3
+CT097H	Phát triển ứng dụng Web nâng cao	3
+CT098	Phát triển ứng dụng IoT	3
+CT099	Blockchain và ứng dụng	3
+CT100	Kỹ năng học đại học	2
+CT100H	Kỹ năng học đại học	2
+CT101	Lập trình căn bản A	4
+CT101H	Toán cho khoa học máy tính	4
+CT102H	Cấu trúc dữ liệu	4
+CT104H	Nguyên lý hệ điều hành	3
+CT105E	Kiến trúc máy tính - Điện tử	2
+CT105H	Quản trị hệ thống	3
+CT106H	Mạng máy tính	3
+CT107H	Nhập môn công nghệ phần mềm	3
+CT108H	Lập trình hướng đối tượng	3
+CT109	Phân tích và thiết kế hệ thống thông tin	3
+CT109H	Phân tích và thiết kế thuật toán	3
+CT110H	Cơ sở dữ liệu	3
+CT112	Mạng máy tính	3
+CT112H	Phân tích và thiết kế hệ thống	3
+CT113	Nhập môn công nghệ phần mềm	2
+CT113H	Cơ sở dữ liệu NoSQL	3
+CT114H	Nhập môn công nghệ phần mềm	2
+CT115H	Quản trị hệ thống máy tính	3
+CT116H	Nền tảng kiến trúc máy tính	3
+CT117H	Lập trình Web cơ bản	3
+CT121	Tin học lý thuyết	3
+CT126	Lý thuyết xếp hàng	2
+CT127	Lý thuyết thông tin	2
+CT131E	Lập trình căn bản - Điện tử	3
+CT132	Linh kiện điện tử	2
+CT134	Mạch tương tự	3
+CT135	TT. Mạch tương tự	1
+CT136E	Mạch số	3
+CT138	Toán kỹ thuật	2
+CT140E	Lý thuyết tín hiệu và hệ thống	2
+CT141	Kỹ thuật vi xử lý	3
+CT144E	Xử lý tín hiệu số	3
+CT145	TT. Xử lý tín hiệu số	1
+CT146	Truyền dữ liệu	2
+CT147	TT. Truyền dữ liệu	1
+CT148E	Lý thuyết mạch	3
+CT164	TT. Kỹ thuật vi xử lý	1
+CT166H	Tường lửa	3
+CT168	TT. Mạch số	1
+CT172	Toán rời rạc	4
+CT172E	Toán rời rạc	4
+CT173	Kiến trúc máy tính	3
+CT173H	Kiến trúc máy tính	3
+CT174	Phân tích và thiết kế thuật toán	3
+CT175	Lý thuyết đồ thị	3
+CT175H	Lý thuyết đồ thị	3
+CT176	Lập trình hướng đối tượng	3
+CT177	Cấu trúc dữ liệu	3
+CT177H	Cấu trúc dữ liệu	3
+CT178	Nguyên lý hệ điều hành	3
+CT179	Quản trị hệ thống	3
+CT180	Cơ sở dữ liệu	3
+CT182	Ngôn ngữ mô hình hóa	3
+CT182H	Ngôn ngữ mô hình hóa	3
+CT188	Nhập môn lập trình web	3
+CT189E	Nhập môn mô phỏng	3
+CT190	Nhập môn trí tuệ nhân tạo	2
+CT190E	Nhập môn trí tuệ nhân tạo	2
+CT191	Luật công nghệ thông tin và đạo đức nghề nghiệp	1
+CT194	Biên tập Audio và Video	2
+CT195	Thiết kế ấn phẩm báo chí	2
+CT196	Dựng hình 2D, 3D	3
+CT197	Cơ sở lý thuyết mật mã	3
+CT199	Quy hoạch tuyến tính	3
+CT201E	Niên luận cơ sở ngành Khoa học máy tính	3
+CT201H	An ninh máy tính	3
+CT202	Nguyên lý máy học	3
+CT202H	Tương tác người máy	3
+CT203E	Đồ họa máy tính	3
+CT203H	Quản lý dự án phần mềm	3
+CT204E	An toàn và bảo mật thông tin	3
+CT204H	Điện toán đám mây	3
+CT205	Quản trị cơ sở dữ liệu	3
+CT205H	Nguyên lý máy học	3
+CT206	Phát triển ứng dụng trên Linux	3
+CT206H	Nguyên lý hệ quản trị cơ sở dữ liệu	3
+CT207	Phát triển phần mềm mã nguồn mở	3
+CT207E	Phát triển phần mềm mã nguồn mở	3
+CT207H	Hệ quản trị cơ sở dữ liệu SQL Server	3
+CT208E	Niên luận ngành Khoa học máy tính	3
+CT208H	Hệ quản trị cơ sở dữ liệu Oracle	3
+CT209	Đồ họa nâng cao	3
+CT209H	Quản trị mạng trên MS Windows	3
+CT210	Thị giác máy tính	3
+CT210H	Quản trị mạng Linux	3
+CT211	An ninh mạng	3
+CT211H	Phát triển ứng dụng trên Linux	3
+CT212	Quản trị mạng	3
+CT212H	Phát triển ứng dụng trên Windows	3
+CT213H	Phát triển phần mềm mã nguồn mở	3
+CT214H	Lập trình Web	3
+CT215	Hệ thống gợi ý	3
+CT216H	Niên luận cơ sở	3
+CT217	Phân tích dữ liệu trực quan	3
+CT218H	Lập trình ứng dụng với Java	3
+CT219	Xử lý ngôn ngữ tự nhiên	3
+CT219H	Lập trình ứng dụng với .NET	3
+CT220	Hoạt hình trên máy tính	3
+CT220HE	Lập trình di động đa nền tảng	3
+CT221	Lập trình mạng	3
+CT221H	Nguyên lý hệ quản trị cơ sở dữ liệu	3
+CT222	An toàn hệ thống	3
+CT222HE	Nền tảng phát triển ứng dụng	3
+CT223	Quản lý dự án phần mềm	3
+CT223H	Nền tảng Trí tuệ nhân tạo	3
+CT223HE	Nền tảng trí tuệ nhân tạo	3
+CT224E	Công nghệ J2EE	2
+CT224H	Phân tích dữ liệu lớn	3
+CT225	Lập trình Python	2
+CT225H	Lập trình song song với CUDA	3
+CT226E	Niên luận cơ sở mạng máy tính và truyền thông	3
+CT226H	Lập trình trí tuệ nhân tạo với Python	3
+CT227	Kỹ thuật phát hiện tấn công mạng	3
+CT227H	Máy học và ứng dụng	3
+CT228	Tường lửa	3
+CT228H	Nền tảng An ninh mạng	3
+CT230	Phát triển ứng dụng hướng dịch vụ	3
+CT230H	Phát triển ứng dụng hướng dịch vụ	3
+CT231	Lập trình song song	3
+CT232E	Đánh giá hiệu năng mạng	3
+CT232H	Đánh giá hiệu năng mạng	3
+CT233	Điện toán đám mây	3
+CT234	Phát triển phần mềm nhúng	3
+CT235	Quản trị mạng trên MS Windows	3
+CT238E	Phân lớp dữ liệu lớn	3
+CT239E	Niên luận cơ sở ngành KTPM	3
+CT239HE	Niên luận cơ sở ngành	3
+CT240E	Nguyên lý xây dựng phần mềm	3
+CT241	Phân tích yêu cầu phần mềm	3
+CT242	Kiến trúc và Thiết kế phần mềm	3
+CT243	Đảm bảo chất lượng và Kiểm thử phần mềm	4
+CT244	Bảo trì phần mềm	3
+CT244H	Bảo trì phần mềm	2
+CT246	Lập trình .NET	3
+CT250E	Niên luận ngành Kỹ thuật phần mềm	3
+CT250HE	Niên luận chuyên ngành	3
+CT251	Phát triển ứng dụng trên Windows	3
+CT252E	Niên luận cơ sở ngành hệ thống thông tin	3
+CT252HE	Niên luận cơ sở ngành HTTT-CLC	3
+CT254	Bảo mật, an toàn hệ thống thông tin	3
+CT254E	Bảo mật, an toàn hệ thống thông tin	3
+CT254HE	Bảo mật, an toàn hệ thống thông tin	3
+CT255	Nghiệp vụ thông minh	3
+CT255E	Nghiệp vụ thông minh	3
+CT255H	Nghiệp vụ thông minh	3
+CT258	Phát triển hệ thống thương mại điện tử	3
+CT258E	Phát triển hệ thống thương mại điện tử	3
+CT259	Tổng quan về hệ thống e-Learning	3
+CT259E	Tổng quan về hệ thống e-learning	3
+CT263E	Niên luận ngành hệ thống thông tin	3
+CT263HE	Niên luận chuyên ngành HTTT-CLC	3
+CT265	Hệ cơ sở dữ liệu đa phương tiện	3
+CT266	Lập trình game	3
+CT271E	Niên luận cơ sở - CNTT	3
+CT272	Thương mại điện tử - CNTT	3
+CT273	Giao diện người - máy	3
+CT273E	Giao diện người - máy	3
+CT274	Lập trình cho thiết bị di động	3
+CT275	Công nghệ web	3
+CT276	Lập trình Java	3
+CT279	Blockchain	3
+CT280	Cơ sở dữ liệu NoSQL	3
+CT282E	Học sâu (Deep Learning)	3
+CT283	Hệ thống chịu lỗi	3
+CT284E	Hệ thống hỏi đáp	3
+CT287	Kiểm chứng mô hình	3
+CT287H	Kiểm chứng mô hình	3
+CT288	Kiến trúc phần mềm theo mô hình Client-Server	3
+CT290E	Lập trình trò chơi	3
+CT291	Lập trình ứng dụng	3
+CT291H	Lập trình ứng dụng	3
+CT292	Lý thuyết thông tin	3
+CT293	Mạng và truyền thông dữ liệu	3
+CT294	Máy học ứng dụng	3
+CT294H	Máy học ứng dụng	3
+CT295	Nền tảng phần mềm nhúng và IoT	3
+CT295E	Nền tảng phần mềm nhúng và IoT	3
+CT295H	Nền tảng phần mềm nhúng và IoT	3
+CT296	Phân tích và thiết kế hệ thống thông tin	3
+CT297	Pháp y máy tính	3
+CT299	Phát triển hệ thống web	3
+CT300	Phát triển phần mềm	3
+CT301H	An ninh mạng	3
+CT302H	Thiết kế và cài đặt mạng	3
+CT303H	Quản trị mạng Windows nâng cao	3
+CT304H	Quản trị mạng Linux nâng cao	3
+CT305H	Lập trình mạng	3
+CT306H	Lập trình song song	3
+CT307H	Mạng không dây và mạng di động	3
+CT308H	Thương mại điện tử	3
+CT309H	Hệ thống hoạch định nguồn lực doanh nghiệp	3
+CT310H	Phát triển ứng dụng chuyên nghiệp với .NET	3
+CT311H	Phát triển ứng dụng Java	3
+CT312	Khai khoáng dữ liệu	3
+CT312E	Khai khoáng dữ liệu	3
+CT312H	Lập trình cho các thiết bị di động	3
+CT313H	Công nghệ và dịch vụ Web	3
+CT314H	Quy trình và công cụ phát triển phần mềm	3
+CT316E	Xử lý ảnh	3
+CT332	Trí tuệ nhân tạo	3
+CT333H	Quản trị mạng	3
+CT335	Thiết kế và cài đặt mạng	3
+CT335H	Thiết kế và triển khai hệ thống mạng	3
+CT338	Mạng không dây và di động	2
+CT344	Giải quyết sự cố mạng	2
+CT344H	Giải quyết sự cố mạng	3
+CT353H	Hệ quản trị cơ sở dữ liệu	3
+CT361	Trường điện từ	2
+CT363	Kỹ thuật Anten và truyền sóng	3
+CT371E	Mạng thông tin di động	3
+CT372	Mạng viễn thông	3
+CT376E	Điện tử công nghiệp	3
+CT377	Lý thuyết điều khiển tự động	3
+CT377H	Lý thuyết điều khiển tự động	3
+CT378	Cảm biến và chuyển năng	2
+CT386	Thông tin số	3
+CT391	Cơ sở viễn thông	3
+CT394E	Chuyên đề Viễn thông	2
+CT398	Điều khiển mờ	2
+CT398H	Điều khiển mờ	2
+CT400	Chuyên đề kỹ thuật điều khiển	2
+CT400H	Chuyên đề kỹ thuật điều khiển	2
+CT409E	Lập trình nhúng	3
+CT415	Thực tập thực tế	2
+CT419	Thông tin sợi quang	3
+CT423	Kỹ thuật truyền số liệu	2
+CT428	Lập trình Web	3
+CT435H	Kỹ thuật phát hiện tấn công mạng	3
+CT436HE	Niên luận cơ sở mạng máy tính và truyền thông	3
+CT439E	Niên luận mạng máy tính và truyền thông	3
+CT439HE	Niên luận chuyên ngành mạng máy tính và truyền thông	3
+CT441	Đồ án Kỹ thuật điện tử	2
+CT446	Ngôn ngữ lập trình mô phỏng	3
+CT449	Phát triển ứng dụng Web	3
+CT453	Mỹ thuật web	2
+CT457	Phát triển phần mềm nhúng và IoT	3
+CT458E	Thực tập doanh nghiệp - KTPM	5
+CT460E	Quản lý quy trình nghiệp vụ	3
+CT466E	Niên luận - CNTT	3
+CT467	Quản trị dữ liệu	3
+CT478	Trung tâm dữ liệu	3
+CT479	Phương pháp tính	3
+CT482	Xử lý dữ liệu lớn	3
+CT482H	Xử lý dữ liệu lớn	3
+CT483	Chuyên đề lập trình trên di động	3
+CT484	Phát triển ứng dụng di động	3
+CT485	Các kỹ thuật tấn công mạng	3
+CT486	Phát hiện và phân tích mã độc	3
+CT487	Học sâu cho công nghệ phần mềm	3
+CT488	Bảo mật hệ thống IoT	2
+CT489E	Luật an ninh mạng và đạo đức trong lĩnh vực CNTT	2
+CT490	An ninh Web	3
+CT490H	An ninh Web	3
+CT491E	Niên luận cơ sở an toàn thông tin	3
+CT492E	Niên luận an toàn thông tin	3
+CT493E	Thực tập doanh nghiệp - An toàn thông tin	5
+CT495	Dựng phim hoạt hình	3
+CT496	Kịch bản truyền hình	3
+CT497	Thiết kế quảng cáo truyền hình	3
+CT499	Thiết kế UI,UX	3
+CT500E	Niên luận cơ sở - TTDPT	3
+CT501E	Tiểu luận tốt nghiệp - CNTT	6
+CT501H	Niên luận chuyên ngành	3
+CT502E	Niên luận - TTDPT	3
+CT503E	Tiểu luận tốt nghiệp - HTTT	6
+CT504E	Tiểu luận tốt nghiệp - KHMT	6
+CT505E	Tiểu luận tốt nghiệp - KTPM	6
+CT507E	Tiểu luận tốt nghiệp - TT&MMT	6
+CT508E	Thực tập doanh nghiệp - TTDPT	5
+CT509	Truyền thông trên Internet	3
+CT511E	Thực tập doanh nghiệp - HTTT	5
+CT511HE	Thực tập doanh nghiệp HTTT-CLC	5
+CT512	Điện toán đám mây và IoT	3
+CT512H	Điện toán đám mây và IoT	3
+CT516E	Thực tập doanh nghiệp - KHMT	5
+CT517E	Thực tập doanh nghiệp - MMT&TTDL	5
+CT517HE	Thực tập doanh nghiệp - MMT&TTDL	5
+CT518E	Thực tập doanh nghiệp - CNTT	5
+CT518H	Thực tập doanh nghiệp	5
+CT520E	Tiểu luận tốt nghiệp - ATTT	6
+CT521E	Tiểu luận tốt nghiệp - TTDPT	6
+CT522	Nền tảng về internet vạn vật	3
+CT523	Phát triển ứng dụng Web đa phương tiện	3
+CT524	Hệ thống quản trị nội dung	3
+CT525	Thực tế tăng cường	3
+CT526	Triển khai ứng dụng Thương mại điện tử	3
+CT527	Thiết kế đồ họa ứng dụng quảng cáo thương hiệu	3
+CT528	Phát triển trò chơi đa phương tiện	3
+CT529	Quản trị dự án Truyền thông đa phương tiện	3
+CT530	Chuyên đề báo chí Văn hóa	2
+CT531	Chuyên đề báo chí Sự kiện	2
+CT532	Chuyên đề báo chí Du lịch	2
+CT533	Kỹ năng biên tập	3
+CT534	Thiết kế nhãn hiệu	2
+CT535	Tiếp thị trên mạng xã hội	3
+CT536	Kịch bản truyền thông	3
+CT537	Thực tế báo chí	2
+CT538	Kỹ năng truyền thông giao tiếp	3
+CT540	Trí tuệ nhân tạo cho STEM và IoT	3
+CT541	Trí tuệ nhân tạo cho Xử lý ngôn ngữ tự nhiên	3
+CT542	Xử lý ảnh và thị giác máy tính	3
+CT543	Trí tuệ nhân tạo trong y học	3
+CT544	Trí tuệ nhân tạo trong nông nghiệp	3
+CT545	Xử lý âm thanh và tiếng nói	3
+CT546	Trí tuệ nhân tạo trong môi trường	3
+CT547	Trí tuệ nhân tạo trong Robotics	3
+CT548	Trí tuệ nhân tạo trong giáo dục	3
+CT548HE	Thực tập doanh nghiệp - KTPM	5
+CT549	Phát triển ứng dụng Trí tuệ nhân tạo	3
+CT550E	Luận văn tốt nghiệp - CNTT	15
+CT550H	Luận văn tốt nghiệp - CNTTCLC	15
+CT551E	Luận văn tốt nghiệp - HTTT	15
+CT551HE	Luận văn tốt nghiệp HTTT-CLC	15
+CT552E	Luận văn tốt nghiệp - KHMT	15
+CT553E	Luận văn tốt nghiệp - KTPM	15
+CT555E	Luận văn tốt nghiệp - TT&MMT	15
+CT555HE	Luận văn tốt nghiệp - MMT&TTDL	15
+CT556E	Luận văn tốt nghiệp - ATTT	15
+CT557E	Luận văn tốt nghiệp - TTDPT	15
+CT558E	Thực tập doanh nghiệp - Trí tuệ nhân tạo	5
+CT559E	Niên luận cơ sở ngành Trí tuệ nhân tạo	3
+CT560E	Niên luận ngành Trí tuệ nhân tạo	3
+CT561E	Tiểu luận tốt nghiệp - Trí tuệ nhân tạo	6
+CT561HT	Ứng dụng thị giác máy tính trong hệ thống thông tin	3
+CT561T	Ứng dụng thị giác máy tính trong hệ thống thông tin	3
+CT562HT	Phân tích và thiết kế giải thuật nâng cao	3
+CT562T	Phân tích và thiết kế giải thuật nâng cao	3
+CT563HT	Máy học nâng cao	3
+CT563T	Máy học nâng cao	3
+CT564HT	Thị giác máy tính nâng cao	3
+CT564T	Thị giác máy tính nâng cao	3
+CT565HT	Xử lý ngôn ngữ tự nhiên nâng cao	3
+CT565T	Xử lý ngôn ngữ tự nhiên nâng cao	3
+CT566HT	Phần mềm tự do mã nguồn mở	3
+CT566T	Phần mềm tự do mã nguồn mở	3
+CT567HT	Xử lý ngôn ngữ tự nhiên	3
+CT567T	Xử lý ngôn ngữ tự nhiên	3
+CT568HT	Chuyên đề phát triển các hệ thống thông tin thông minh	3
+CT568T	Chuyên đề phát triển các hệ thống thông tin thông minh	3
+CT569HT	Công nghệ blockchain	3
+CT569T	Công nghệ Blockchain	3
+CT570HT	Web ngữ nghĩa	3
+CT570T	Web ngữ nghĩa	3
+CT571HT	Dữ liệu lớn	3
+CT571T	Dữ liệu lớn	3
+CT572HT	Hệ thống quản trị tri thức	3
+CT572T	Hệ thống quản trị tri thức	3
+CT573HT	Tiếp thị và kinh doanh kỹ thuật số	3
+CT574HT	Cơ sở dữ liệu nâng cao	3
+CT574T	Cơ sở dữ liệu nâng cao	3
+CT575T	Tìm kiếm thông tin	3
+CT576T	Phân tích và thiết kế hệ thống nâng cao	3
+CT577T	Cơ sở toán cho tin học	3
+CT578T	Chuyên đề thị giác máy tính và xử lý ảnh	3
+CT579ET	Hệ cơ sở tri thức	3
+CT580T	Khám phá tri thức và khai thác dữ liệu	3
+CT581	Thực hành sản xuất chương trình	2
+CT582H	Phân tích và Thiết kế phần mềm	3
+CT583H	Đảm bảo chất lượng và Kiểm thử phần mềm	3
+CT584T	Chuyên đề xử lý ngôn ngữ tự nhiên	3
+CT585T	Chuyên đề khai thác trực quan dữ liệu	3
+CT586T	Trí tuệ nhân tạo nâng cao	3
+CT590E	Luận văn tốt nghiệp - Trí tuệ nhân tạo	15
+CT594HE	Luận văn tốt nghiệp - KTPMCLC	15
+FL001	Pháp văn căn bản 1 (*)	4
+FL002	Pháp văn căn bản 2 (*)	3
+FL003	Pháp văn căn bản 3 (*)	3
+FL007	Pháp văn tăng cường 1 (*)	4
+FL008	Pháp văn tăng cường 2 (*)	3
+FL009	Pháp văn tăng cường 3 (*)	3
+FL010H	Nghe nói và ngữ âm thực hành (*)	4
+FL011H	Đọc hiểu (*)	3
+FL012H	Viết (*)	3
+FL013H	Ngữ pháp ứng dụng (*)	2
+FL014H	Kỹ năng thuyết trình (*)	3
+FL100H	Thi đánh giá năng lực tiếng Anh (*)	2
+FL101H	Ngữ pháp trung cấp	2
+FL102H	Ngữ pháp nâng cao	2
+FL103H	Ngữ âm thực hành 1	2
+FL104H	Ngữ âm thực hành 2	2
+FL105H	Nghe Nói 1 - Kỹ năng giao tiếp căn bản	3
+FL106H	Nghe Nói 2 - Kỹ năng giao tiếp trung cấp 1	3
+FL107H	Nghe Nói 3 - Kỹ năng giao tiếp trung cấp 2	2
+FL108H	Nghe Nói 4 - Kỹ năng giao tiếp nâng cao	2
+FL109H	Nghe Nói 5 - Kỹ năng nói trước công chúng	2
+FL110H	Đọc 1 - Kỹ năng đọc hiểu căn bản	2
+FL111H	Đọc 2 - Kỹ năng đọc hiểu trung cấp 1	2
+FL112H	Đọc 3 - Kỹ năng đọc hiểu trung cấp 2	2
+FL113H	Đọc 4 - Kỹ năng đọc hiểu nâng cao	2
+FL114H	Đọc 5 - Đọc mở rộng	2
+FL115H	Viết 1 - Viết đoạn	2
+FL116H	Viết 2 - Các thể loại luận 1	2
+FL117H	Viết 3 - Các thể loại luận 2	2
+FL118H	Viết 4 - Văn bản xã hội	2
+FL119H	Viết 5- Văn bản khoa học	2
+FL200H	Thi đánh giá năng lực tiếng Anh - NNA (*)	2
+FL201HE	Dẫn luận ngôn ngữ	2
+FL202H	Ngữ âm và âm vị học tiếng Anh	2
+FL203E	Dạy học các môn khoa học bằng Tiếng Anh	2
+FL203H	Từ pháp học và cú pháp học tiếng Anh	3
+FL204	Dạy học Tiếng Anh qua nhiệm vụ và dự án	3
+FL204HE	Ngữ nghĩa học và ngữ dụng học tiếng Anh	3
+FL205	Đọc - Viết B1	3
+FL205H	Dẫn luận văn chương	3
+FL206	Đọc - Viết B2.1	3
+FL207	Đọc - Viết B2.2	3
+FL207H	Văn hóa các nước nói tiếng Anh	3
+FL208	Đọc - Viết C1.1	3
+FL208H	Dịch thuật đại cương	2
+FL209H	Biên dịch căn bản	2
+FL210H	Phiên dịch đuổi căn bản	2
+FL211E	Đọc phát triển kỹ năng phản biện	2
+FL211H	Phương pháp nghiên cứu khoa học trong lĩnh vực Ngôn ngữ và Văn hóa	2
+FL212	Giao tiếp liên văn hóa	3
+FL212H	Thực tế ngoài trường	2
+FL213E	Giao tiếp qua phương tiện công nghệ thông tin	2
+FL215	Kỹ năng thuyết trình	2
+FL215H	Kỹ năng hợp tác và giải quyết vấn đề	2
+FL216	Kỹ thuật phiên dịch tiếng Pháp	2
+FL216H	Kỹ năng nghề nghiệp	2
+FL217HE	Khoa học lãnh đạo	2
+FL219	Nghe - Nói B1	3
+FL220	Nghe - Nói B2.1	3
+FL221	Nghe - Nói B2.2	3
+FL222	Nghe - Nói C1.1	3
+FL223	Nghe - Nói C1.2	2
+FL225	Nghe - Nói C1.3	2
+FL226	Giao thoa văn hóa Tiếng Pháp	3
+FL227	Giảng dạy các yếu tố ngôn ngữ	3
+FL228	Lý luận dạy học tiếng Pháp	2
+FL229	Lý luận dạy học tiếng Anh	2
+FL230	Đánh giá chất lượng bản dịch	2
+FL231	Phiên dịch nối tiếp căn bản	3
+FL232	Phiên dịch nối tiếp trung cấp	3
+FL233	Phiên dịch nối tiếp nâng cao	3
+FL235	Phiên dịch song song căn bản	3
+FL236E	Ngữ pháp văn bản tiếng Pháp	2
+FL239	Phiên dịch song song nâng cao	3
+FL240	Phát triển năng lực tự học Tiếng Anh	2
+FL244E	Biên dịch văn học điện ảnh	3
+FL245	Quá trình tiếp thu ngôn ngữ thứ hai - Anh văn	3
+FL246E	Quản lý hoạt động dạy học Tiếng Anh	2
+FL247E	Tiếng Anh định hướng nghề nghiệp	3
+FL248	Tiếng Anh du lịch	3
+FL249	Tiếng Anh kinh doanh	3
+FL250	Tiếng Anh marketing	3
+FL251	Tiếng Anh nhà hàng khách sạn	3
+FL252E	Tiếng Anh thư tín thương mại và văn phòng	3
+FL253	Tiếng Pháp du lịch	3
+FL254E	Tiếng Pháp lĩnh vực nhà hàng	2
+FL255	Tiếng Pháp nhà hàng và khách sạn	3
+FL256E	Tiếp cận các bài thi Tiếng Anh quốc tế	2
+FL257	Tình huống phát ngôn tiếng Pháp	2
+FL259	Tổng quan về giảng dạy tiếng Anh	3
+FL261	Viết 4 - PV	2
+FL263	Viết nâng cao - PV	3
+FL264	Phân tích diễn ngôn	3
+FL265	Văn hóa các nước nói tiếng Anh	3
+FL266	Phiên dịch du lịch	3
+FL267E	Biên dịch thư tín thương mại	3
+FL268	Phân tích tác nghiệp - PV	2
+FL269	Sử dụng tài liệu thực trong giảng dạy - PV	2
+FL270	Ngữ âm thực hành nâng cao - PV	2
+FL271	Phát triển chương trình giảng dạy tiếng Pháp	2
+FL272	Đánh giá kết quả học tập Tiếng Pháp	3
+FL273E	Khai thác học liệu trực tuyến tiếng Pháp	2
+FL274E	Khai thác các phần mềm dạy học tiếng Pháp	2
+FL275E	Giảng dạy từ vựng - PV	2
+FL276	Giảng dạy từ vựng nâng cao - PV	2
+FL277	Phương pháp nghiên cứu khoa học Tiếng Pháp	2
+FL278	Phát triển chương trình giáo dục môn tiếng Anh	2
+FL279	Biên dịch căn bản	3
+FL280	Biên dịch trung cấp	3
+FL281	Thực tập ngoài trường - Anh văn	4
+FL281H	Thực tập ngoài trường	4
+FL282	Phân tích dữ liệu nghiên cứu	3
+FL282H	Phân tích dữ liệu nghiên cứu	2
+FL284H	Phê bình văn học	2
+FL285	Thực tập ngoài trường - PV	3
+FL286	Đọc - Viết C1.2	3
+FL287	Kỹ năng giao tiếp trong giảng dạy tiếng Anh	2
+FL288E	Viết học thuật	2
+FL289	Phương pháp nghiên cứu khoa học trong giảng dạy tiếng Anh	2
+FL290	Dịch thuật trong giảng dạy tiếng Anh	2
+FL291	Văn chương trong giảng dạy tiếng Anh	2
+FL292	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học tiếng Pháp	2
+FL293	Xây dựng kế hoạch bài dạy Tiếng Pháp	2
+FL294	Tổ chức hoạt động trải nghiệm trong giảng dạy Tiếng Anh	2
+FL301H	Tiếng Anh văn phòng	2
+FL302H	Tiếng Anh kinh doanh	2
+FL303H	Tiếng Anh du lịch	2
+FL304H	Tiếng Anh nhà hàng-khách sạn	2
+FL305H	Quản trị kinh doanh nhà hàng	2
+FL306H	Quản trị du lịch và dịch vụ	2
+FL307H	Marketing căn bản	2
+FL308H	Khởi nghiệp	2
+FL309H	Nghi thức ngoại giao	2
+FL402H	Tiểu luận tốt nghiệp	4
+FL403H	Văn học Anh - Mỹ	2
+FL404H	Phân tích diễn ngôn tiếng Anh	2
+FL405HE	Giao tiếp liên văn hóa	2
+FL406H	Biên dịch nâng cao	2
+FL407H	Phiên dịch đuổi nâng cao	2
+FL408H	Ngôn ngữ học đối chiếu	2
+FL501H	Luận văn tốt nghiệp Ngôn ngữ Anh	10
+FS440C	Vi sinh thực phẩm	2
+FS441C	TT. Vi sinh thực phẩm	1
+HG105	Sản xuất và kinh doanh trong trồng trọt	2
+HG106	Sản xuất và kinh doanh trong chăn nuôi	2
+HG107	Sản xuất và kinh doanh trong thủy sản	2
+HG108	Tiêu chuẩn thị trường nông sản	3
+HG109	Nghiệp vụ xuất nhập khẩu nông sản	3
+HG152	Thực tập cơ sở ngành Kinh doanh nông nghiệp	2
+HG153	Thực tập tốt nghiệp	3
+HG201E	Khởi sự doanh nghiệp nông nghiệp	2
+HG251	Tổ chức sản xuất và kinh doanh nông nghiệp	3
+HG252	Thương mại nông nghiệp	3
+HG253E	Anh văn chuyên ngành Kinh doanh nông nghiệp	2
+HG254	Xây dựng và quản lý dự án kinh doanh	2
+HG255	Công nghệ bảo quản và chế biến nông-lâm-thủy sản	3
+HG256E	Quản trị và điều hành các tổ chức kinh tế hợp tác	2
+HG257	Thực tập chuyên ngành - KDNN	2
+HG351	Luận văn tốt nghiệp - KDNN	10
+HG352	Tiểu luận tốt nghiệp - KDNN	4
+HG354E	Chuyên đề tổng hợp Kinh doanh nông nghiệp	2
+HR486C	Công nghệ sinh học trong nông nghiệp	3
+KC039	Thực tập ngành nghề - CTGT	5
+KC040T	Chuyên đề mô hình hóa và nhận dạng hệ thống	3
+KC041E	Phương pháp nghiên cứu trong xây dựng - kiến trúc	2
+KC042E	Nguyên lý thiết kế nội - ngoại thất	2
+KC043	Không gian khán phòng, khán đài	2
+KC044	Đo lường điện	2
+KC044H	Đo lường điện	2
+KC045	Thực hành Đo lường điện	2
+KC045H	Thực hành Đo lường điện	2
+KC046	Vật liệu xây dựng - CTGT	2
+KC047	Hình họa và vẽ kỹ thuật - CTGT	2
+KC048	Kỹ thuật thiết kế mạch in	2
+KC048H	Kỹ thuật thiết kế mạch in	2
+KC049	Lập trình kỹ thuật cơ bản	3
+KC049E	Lập trình kỹ thuật cơ bản	3
+KC049H	Lập trình kỹ thuật cơ bản	3
+KC050	Mạch xung số	2
+KC050H	Mạch xung số	2
+KC051	Lý thuyết Điều khiển	3
+KC051H	Lý thuyết Điều khiển	3
+KC052	Phương pháp nghiên cứu khoa học trong xây dựng	2
+KC053	Phương pháp nghiên cứu khoa học trong xây dựng - kiến trúc	2
+KC053H	Phương pháp nghiên cứu khoa học trong xây dựng - kiến trúc	2
+KC054	Điều khiển hệ thống khí nén	2
+KC055	Nhập môn ngành xây dựng	2
+KC056	Anh văn chuyên môn - CTGT	2
+KC057	Cơ sở hóa học vô cơ	3
+KC058	TT. Cơ sở hóa học vô cơ	2
+KC059	Cơ sở Hóa học phân tích	2
+KC060	TT. Cơ sở Hóa học phân tích	2
+KC061	Thực tập doanh nghiệp - CK	2
+KC062E	Quản lý tổng hợp tài nguyên nước	2
+KC063E	Phát triển thủy lợi bền vững	2
+KC064	An toàn phòng thí nghiệm hóa học	2
+KC064H	An toàn phòng thí nghiệm hóa học	2
+KC067HT	SCADA trong Kỹ thuật điện	3
+KC067T	SCADA trong Kỹ thuật điện	3
+KC068	Nhập môn kỹ thuật điện	2
+KC068H	Nhập môn kỹ thuật điện	2
+KC069	Thực hành vẽ kỹ thuật - CTGT	2
+KC070	Điều tra khảo sát công trình giao thông	2
+KC071E	Nhập môn kỹ thuật ô tô	2
+KC072	An toàn giao thông	3
+KC073T	Mô hình và phân tích giao thông (CIM)	2
+KC074	Hội họa: Tĩnh vật và trang trí	2
+KC075	Ký họa kiến trúc	2
+KC076	Hình học họa hình	3
+KC077E	Anh văn chuyên ngành kiến trúc	2
+KC078	Kiến trúc nhập môn	2
+KC079	Cấu tạo kiến trúc cơ sở	3
+KC080	Cấu tạo nhà nhịp lớn	2
+KC081	Đồ án diễn họa kiến trúc	2
+KC082	Đồ án vẽ ghi	2
+KC083	Đồ án sáng tác nhỏ	2
+KC084	Đồ án thiết kế nhanh cơ sở	2
+KC085E	Tin học chuyên ngành kiến trúc cơ bản	2
+KC086E	Tin học chuyên ngành kiến trúc nâng cao	3
+KC087	Nguyên lý thiết kế công trình nhà ở	2
+KC088	Nguyên lý thiết kế công trình công cộng	3
+KC089	Nguyên lý thiết kế kiến trúc công trình công nghiệp	2
+KC090E	Lý thuyết quy hoạch đô thị	2
+KC091	Lịch sử kiến trúc phương Tây và đương đại nước ngoài	3
+KC092	Lịch sử kiến trúc phương Đông và Việt Nam	2
+KC093	Bố cục tạo hình	2
+KC094	Cơ học công trình	2
+KC095	Kết cấu công trình kiến trúc	2
+KC096	Trắc địa bản đồ	2
+KC097E	Mỹ học đại cương	2
+KC098E	Bảo tồn và trùng tu di sản kiến trúc	2
+KC098H	TT. Hóa lý	2
+KC099E	Lịch sử đô thị	2
+KC100	Nhiệt và khí hậu kiến trúc	3
+KC100H	Toán kỹ thuật	2
+KC102E	Thiết kế hệ thống số	2
+KC102H	Hóa học vô cơ	3
+KC103H	TT. Hóa vô cơ	2
+KC104H	Hóa hữu cơ	3
+KC105H	TT. Hóa hữu cơ	2
+KC106	Cơ học đất	3
+KC108H	Hóa học đại cương	3
+KC109H	TT. Hóa học đại cương	1
+KC110E	Tin học ứng dụng đường	2
+KC110H	TT. Hóa phân tích	2
+KC111E	Tin học ứng dụng cầu	2
+KC113H	Thiết kế và phân tích thí nghiệm	3
+KC114	Đồ họa kỹ thuật trên máy tính	2
+KC114H	Tham quan định hướng ngành nghề	2
+KC115H	Thiết bị cơ lưu chất và vật liệu rời	3
+KC116	Vật liệu điện	3
+KC116H	Nhiệt động lực học và truyền nhiệt	3
+KC118H	TT. Quá trình và thiết bị	2
+KC119E	Mạch xung	3
+KC119H	Đồ án Quá trình và thiết bị	2
+KC120	Khoa học và kỹ thuật vật liệu đại cương	3
+KC121	TT. Khoa học và kỹ thuật vật liệu đại cương	1
+KC122	Phương pháp lựa chọn và sử dụng vật liệu	3
+KC122H	Kỹ thuật phản ứng	3
+KC123E	Vật lý chất rắn	2
+KC123H	Các phương pháp phân tích hiện đại	3
+KC124	Quá trình và thiết bị trong công nghệ vật liệu	3
+KC125H	Seminar chuyên ngành	2
+KC126H	Đồ án thiết kế và chế tạo sản phẩm	2
+KC127E	Tin học trong kỹ thuật vật liệu	2
+KC127H	Cơ sở thiết kế nhà máy hóa chất	2
+KC128H	Dụng cụ đo	2
+KC129	Anh văn chuyên môn - KTVL	2
+KC129HE	Tin học trong công nghệ hóa học	2
+KC130	Bê tông dự ứng lực	2
+KC131	Toán ứng dụng - QLCN	3
+KC131HET	Điều khiển quá trình	2
+KC132E	Quản lý chuỗi cung ứng	3
+KC132H	Hóa học và Hóa lý polymer	3
+KC133E	Cấu trúc máy tính	3
+KC134E	Quản lý Logistics	3
+KC135E	Kỹ thuật dự báo trong công nghiệp	3
+KC136T	Kiểm soát và quản lý chất lượng	3
+KC137	Quản lý dự án công nghiệp	3
+KC138	Tin học ứng dụng-Logistics	3
+KC139	Anh văn chuyên môn-Logistics	3
+KC140	Nhiệt động hóa học	3
+KC141	Động học và điện hóa học	3
+KC142	TT. Hóa lý kỹ thuật	2
+KC143	Truyền vận	3
+KC144	Kỹ thuật xúc tác	3
+KC145	Tin học ứng dụng - QLCN	3
+KC147	Vật liệu kim loại	3
+KC147HE	Kỹ thuật sản xuất thủy tinh	3
+KC148	Vật liệu composite - CNHH	3
+KC149	Kỹ thuật sản xuất chất dẻo	3
+KC150	Kỹ thuật chế biến cao su	3
+KC151	Kỹ thuật gia công polymer	3
+KC152	Công nghệ hóa hương liệu	3
+KC153	Công nghệ hóa mỹ phẩm	3
+KC154	Công nghệ các chất hoạt động bề mặt	3
+KC155	Tổng hợp hữu cơ hóa dầu	3
+KC155H	Kỹ thuật số	2
+KC156E	Kỹ thuật sản xuất dược chất	3
+KC156H	Toán kỹ thuật	2
+KC157E	Kỹ thuật sản xuất bột cellulose và giấy	3
+KC158E	Nhiên liệu sinh học	3
+KC159	Hóa học chất rắn	3
+KC160E	Công nghệ sản xuất các hợp chất vô cơ	3
+KC161E	Kỹ thuật sản xuất vật liệu silicat	3
+KC161H	Trường điện từ	2
+KC162	Kỹ thuật sản xuất chất kết dính	3
+KC162H	Vẽ kỹ thuật - kỹ thuật điện	3
+KC163	Kỹ thuật sản xuất thủy tinh	3
+KC164	Công nghệ điện hóa	3
+KC165	Ăn mòn kim loại	3
+KC165H	An toàn điện	2
+KC166	Tính chất cơ của vật liệu	3
+KC166H	Tham quan định hướng ngành nghề - KTĐ	2
+KC167	Giản đồ pha	3
+KC168H	Cơ lý thuyết - XD	3
+KC169	TT. Vật liệu xây dựng - CTGT	2
+KC169H	Sức bền vật liệu - XD	4
+KC170	Kết cấu bê tông cốt thép - Phần cấu kiện cơ bản	2
+KC170H	Hình họa và Vẽ kỹ thuật - XD	3
+KC171H	Cơ học kết cấu	4
+KC172	Kết cấu bê tông cốt thép - Phần cấu kiện đặc biệt	2
+KC172H	Địa chất công trình	3
+KC173	Vật liệu y sinh	3
+KC173H	Trắc địa	3
+KC174	Công nghệ vật liệu hữu cơ-kim loại	3
+KC174H	Vật liệu xây dựng	3
+KC175	Polymer sinh học và phân hủy sinh học	3
+KC176	Kỹ thuật chân không và màng mỏng	3
+KC176H	Cơ học lưu chất	2
+KC177	Vật liệu huỳnh quang	3
+KC178E	Vật liệu chịu lửa	3
+KC179	Thí nghiệm công trình	2
+KC179H	Phương pháp tính - Kỹ thuật	2
+KC180	TT. Cơ học đất	2
+KC180H	Kinh tế xây dựng	2
+KC181T	Động lực học nâng cao	3
+KC183ET	Mô hình hóa và mô phỏng hệ thống	3
+KC184ET	Công nghệ vật liệu mới	3
+KC184H	Kết cấu thép	2
+KC185	Xây dựng dự án kỹ thuật phục vụ cộng đồng (EPICS)	3
+KC185H	Đồ án kết cấu thép	2
+KC186H	Máy xây dựng và Kỹ thuật thi công	3
+KC187	Thực tập cấu tạo ô tô	2
+KC187H	Tổ chức thi công và An toàn lao động	3
+KC188H	Đồ án thi công	2
+KC189	Vật liệu ceramic kỹ thuật	3
+KC189H	Hóa phân tích	3
+KC190E	Nhiên liệu sinh khối và vật liệu sinh khối	3
+KC190H	Hóa lý: Nhiệt động hóa học	3
+KC192	Tin học ứng dụng nâng cao - QLCN	3
+KC192H	Kỹ thuật xúc tác	3
+KC193H	Vật liệu composite - CNHH	3
+KC194H	Kỹ thuật sản xuất chất dẻo	3
+KC195H	Công nghệ hóa hương liệu	3
+KC196	Thí nghiệm kết cấu công trình	1
+KC196H	Công nghệ hóa mỹ phẩm	3
+KC197	Thực tập ngành nghề	2
+KC197HE	Công nghệ các chất hoạt động bề mặt	3
+KC198	Thống kê ứng dụng	2
+KC198E	Thống kê ứng dụng	2
+KC198H	Tổng hợp hữu cơ hóa dầu	3
+KC199	Hóa vô cơ và hữu cơ đại cương	3
+KC199H	Nguyên lý quy hoạch	2
+KC200H	Hóa lý: Động học và điện hóa học	3
+KC201	Thực hành Hệ thống điện	2
+KC204	Ngắn mạch và ổn định hệ thống điện	3
+KC205	Truyền động điện	3
+KC205H	Thực hành Hệ thống điện	2
+KC206	Bảo vệ rơle và tự động hóa	2
+KC206HE	Đồ án hệ thống điện	2
+KC208E	Đồ án điện công nghiệp	2
+KC209	Điện tử công suất	3
+KC209H	Ngắn mạch và ổn định hệ thống điện	3
+KC210H	Truyền động điện	3
+KC211H	Bảo vệ rơle và tự động hóa	2
+KC212H	PLC - Kỹ thuật điện	3
+KC215HE	Đồ án điện công nghiệp	2
+KC219HE	Báo cáo chuyên đề kỹ thuật điện	2
+KC221	Kỹ thuật siêu cao tần	3
+KC221HE	Thiết kế hệ thống điện	2
+KC222	Truyền thông không dây	3
+KC222HE	Nhà máy điện	2
+KC223HE	Vận hành và điều khiển hệ thống điện	2
+KC224H	Nguồn năng lượng tái tạo và quản lý	2
+KC225E	Lập trình điều khiển trên thiết bị di động	2
+KC226	Phân tích và thiết kế thuật toán	3
+KC228	Vẽ kỹ thuật - kỹ thuật điện	3
+KC231HT	Quy hoạch hệ thống điện	2
+KC232	Kỹ thuật xử lý ảnh	3
+KC232HT	Đánh giá độ tin cậy của hệ thống điện	2
+KC233	Công nghệ chế tạo và sản xuất bán dẫn	3
+KC234	Đường đô thị	3
+KC238HE	Khoa học và kỹ thuật vật liệu đại cương	2
+KC239H	Quá trình và thiết bị truyền khối - KTHH	3
+KC240	Nền móng công trình	3
+KC240HE	Kỹ thuật sản xuất bột cellulose - giấy	3
+KC243	Tổ chức thi công và an toàn lao động	3
+KC243E	Tổ chức thi công và an toàn lao động	3
+KC244	Mố trụ cầu	2
+KC244H	TT. Các phương pháp phân tích hiện đại	1
+KC245H	Nền móng công trình	3
+KC246	Công trình trên đất yếu	3
+KC246H	Đồ án nền móng công trình	2
+KC247	Kỹ thuật thi công công trình đặc biệt	2
+KC247HT	Quản lý dự án xây dựng	3
+KC248	Công trình xanh	2
+KC248E	Công trình xanh	2
+KC249	Công trình bảo vệ bờ	2
+KC249HT	Công trình trên đất yếu	3
+KC250E	Đánh giá tác động môi trường - XD	2
+KC250H	Ứng dụng vật liệu địa kỹ thuật	3
+KC251	Thi công công trình thủy lợi	3
+KC252H	Quy hoạch đô thị	2
+KC253H	Đánh giá tác động môi trường - XD	2
+KC254H	Seminar/Internship	2
+KC255H	Cấp thoát nước	2
+KC256H	Thủy lực và Thủy văn	2
+KC257H	Quy hoạch giao thông	2
+KC259	Chuyên đề XD3 - Kết cấu thép	2
+KC260	Chuyên đề XD4 - Thi công	2
+KC260H	Kết cấu thép nhà công nghiệp	3
+KC261	Chuyên đề XD5 - Quy hoạch, kiến trúc	2
+KC262	Kỹ thuật bảo trì công nghiệp	2
+KC263E	Lập trình hướng đối tượng	3
+KC263H	Luật xây dựng	2
+KC264H	Công trình giao thông	3
+KC265H	Kỹ thuật sản xuất vật liệu silicate	3
+KC266H	Công trình thủy	3
+KC268	Đồ án Thiết kế cầu bê tông	2
+KC268HE	Vật liệu gốm sứ kỹ thuật	3
+KC269	Kinh tế xây dựng	2
+KC270H	Kỹ thuật sản xuất chất kết dính	3
+KC271	Đồ án Thiết kế cầu thép	2
+KC271HE	Công nghệ điện hóa	3
+KC272HE	Ăn mòn kim loại	3
+KC273	Đồ án Mố trụ cầu	2
+KC273H	Kỹ thuật xử lý nước thải	3
+KC274	Đồ án Thiết kế đường ô tô	2
+KC274HE	Nhiên liệu sinh học	3
+KC275E	Chuyên đề nâng cao: Thiết kế đường ô tô	2
+KC277E	Khai thác và kiểm định công trình cầu	2
+KC278E	Khai thác và kiểm định công trình đường	2
+KC286	Thiết kế đường ô tô	2
+KC287	Thiết kế cầu thép	2
+KC288	Thiết kế cầu bê tông	2
+KC289	Khoa học và công nghệ vật liệu nano	3
+KC289H	Khoa học và công nghệ vật liệu nano	3
+KC290	Đồ án chuyên ngành - KTVL	2
+KC291	Đồ án thiết kế - KTVL	2
+KC292	Đồ án gia công - KTVL	2
+KC295	Thực tập ngành nghề - KTVL	2
+KC296	Các phương pháp phân tích vật liệu	3
+KC297	TT. Các phương pháp phân tích vật liệu	2
+KC309H	Điện tử công suất	3
+KC312E	Chuyên đề Cầu giao thông	2
+KC314E	Chuyên đề Giao thông thông minh	2
+KC316E	Chuyên đề Kỹ thuật gia cố nền đường	2
+KC317ET	Hệ thống thông tin quản lý - QLCN	3
+KC320	Chuyên đề Quản lý dự án	2
+KC321E	Chuyên đề quy hoạch giao thông	2
+KC322E	Chuyên đề Vật liệu đường	2
+KC324	Chuyên đề vật liệu xây dựng	2
+KC325	Cơ sở thiết kế máy và thiết bị hóa chất	2
+KC325H	Cơ sở thiết kế máy và thiết bị hóa chất	3
+KC326E	Công nghệ IoT và ứng dụng	3
+KC327	Đồ án nền móng công trình thủy	2
+KC329	Xây dựng dự án kỹ thuật phục vụ cộng đồng (EPICS)	2
+KC329E	Xây dựng dự án kỹ thuật phục vụ cộng đồng (EPICS)	2
+KC329H	Điều khiển hệ thống khí nén	2
+KC330	Giải tích hệ thống điện	3
+KC330H	Giải tích hệ thống điện	3
+KC331	Đồ án điện tử căn bản	2
+KC331H	Đồ án điện tử căn bản	2
+KC334	Kiểm toán và tiết kiệm năng lượng	2
+KC334H	Kiểm toán và tiết kiệm năng lượng	2
+KC336	Kỹ thuật điện công nghiệp	3
+KC336H	Kỹ thuật điện công nghiệp	3
+KC337T	Kỹ thuật điều khiển tự động	3
+KC338E	Vận tải hàng hóa	3
+KC341	Lập trình Matlab	2
+KC341H	Lập trình Matlab	2
+KC342	Lập trình PLC	3
+KC343	Lập trình ứng dụng - CK	2
+KC345E	Lý thuyết điều khiển hiện đại	2
+KC345H	Lý thuyết điều khiển hiện đại	2
+KC346	Mạch điện	4
+KC346H	Mạch điện	4
+KC351	Máy điện	4
+KC351H	Máy điện	4
+KC354E	Mô hình thông tin Xây dựng (BIM)	2
+KC356	Nhiệt động lực học kỹ thuật	2
+KC356H	Nhiệt động lực học kỹ thuật	2
+KC359	Phát triển ứng dụng trên thiết bị di động	2
+KC361	Quá trình và Thiết bị Truyền Nhiệt	3
+KC362	Quản lý giao thông	2
+KC363	Năng lượng tái tạo và quản lý	2
+KC364T	Robot công nghiệp	3
+KC366	Thiết kế nền đường	2
+KC367	Thiết kế nhà máy điện và trạm biến áp	3
+KC367H	Thiết kế nhà máy điện và trạm biến áp	3
+KC368ET	Tích hợp năng lượng tái tạo vào lưới điện	3
+KC369	Tổng luận công trình giao thông	2
+KC370H	Truyền vận	3
+KC372	TT. Linh kiện điện tử	1
+KC373	Thực hành Máy điện	2
+KC373H	Thực hành Máy điện	2
+KC375	TT. Viễn thông 1	1
+KC376	TT. Viễn thông 2	1
+KC378E	Ứng dụng năng lượng gió và mặt trời	3
+KC379E	Vẽ kỹ thuật	2
+KC380	Ứng dụng vật liệu địa kỹ thuật	3
+KC381	Vi điều khiển ứng dụng	2
+KC383	Đồ án Điều khiển tự động	2
+KC384	Thực hành Kỹ năng nghề điện	3
+KC384H	Thực hành Kỹ năng nghề điện	3
+KC385	Kết cấu bê tông cốt thép	2
+KC387	Thực tập thực tế - KTCĐT	2
+KC388	TT. Hóa vô cơ và hữu cơ đại cương	2
+KC390	Kết cấu thép cầu	2
+KC391E	Cấu tạo ô tô	3
+KC392	Sản xuất tinh gọn	3
+KC393	Nghiên cứu và phát triển sản phẩm	3
+KC393T	Nghiên cứu và phát triển sản phẩm	3
+KC394ET	Kỹ thuật ra quyết định	3
+KC395	Tiểu luận tốt nghiệp - CKCTM	6
+KC398	Tiểu luận tốt nghiệp - CNHH	6
+KC398H	Tiểu luận tốt nghiệp - CNHH	6
+KC399	Tiểu luận tốt nghiệp - CDT	6
+KC400	Tiểu luận tốt nghiệp - KTXD	6
+KC400H	Tiểu luận tốt nghiệp - KTXD	6
+KC401E	Tiểu luận tốt nghiệp - KTD	6
+KC401HE	Tiểu luận tốt nghiệp - KTD	6
+KC402	Tiểu luận tốt nghiệp - CTGT	6
+KC403	Tiểu luận tốt nghiệp - XDCTT	6
+KC404	Tiểu luận tốt nghiệp - DTVT	6
+KC405	Tiểu luận tốt nghiệp - KTDK	6
+KC405H	Tiểu luận tốt nghiệp - KTDK	6
+KC406	Tiểu luận tốt nghiệp - KTMT	6
+KC407	Tiểu luận tốt nghiệp - QLCN	6
+KC408	Tiểu luận tốt nghiệp - KTVL	6
+KC410	Thực tập Hệ thống điện, điện tử và điều khiển tự động trên ô tô	2
+KC413	Thiết kế và vận hành nhà kho	3
+KC414E	Quản lý thu mua	3
+KC415	Quản lý hệ thống phân phối	3
+KC416	Marketing Logistics	3
+KC417	Hệ thống thông tin Logistics	3
+KC418E	Mô hình ra quyết định trong chuỗi cung ứng	3
+KC419	Mô hình hóa và mô phỏng - Logistics	3
+KC420	Đồ án Logistics 1 (Thiết kế hệ thống Logistics)	2
+KC421	Đồ án Logistics 2 (Phân tích tính khả thi hệ thống Logistics)	2
+KC422	Đồ án mô hình hóa và mô phỏng - Logistics	2
+KC423	Thực tập ngành nghề- Logistics	2
+KC424	Khai thác dữ liệu trong chuỗi cung ứng	3
+KC425	Thiết kế vị trí và mặt bằng hệ thống công nghiệp	3
+KC426	Quản lý kỹ thuật và công nghệ	3
+KC427	Lập kế hoạch và Vận hành cảng	3
+KC428	Quy hoạch công nghiệp	3
+KC429E	Logistics quốc tế	3
+KC430E	Quản lý logistics ngược và tính bền vững	3
+KC431	Luận văn tốt nghiệp- Logistics	10
+KC432	Tiểu luận tốt nghiệp- Logistics	4
+KC433	Chuyên đề XD1 - Nền móng	3
+KC434	Chuyên đề XD2 - Kết cấu bê tông cốt thép	3
+KC435ET	Mô hình nước ngầm	3
+KC436T	Kỹ thuật thi công công trình thủy nâng cao	3
+KC437	Quang học và âm học kiến trúc	3
+KC438	Đồ án nhà ở riêng lẻ	2
+KC439	Đồ án công trình hành chính	2
+KC440	Đồ án công trình giáo dục	2
+KC441	Đồ án công trình văn hóa	2
+KC442	Đồ án công trình thương mại	2
+KC443	Đồ án chung cư	2
+KC444	Đồ án công trình y tế	2
+KC445	Đồ án công trình công nghiệp	2
+KC447	Đồ án quy hoạch đơn vị ở	2
+KC451	Đồ án thiết kế nhanh nâng cao	2
+KC453	Chuyên đề công trình y tế - nghỉ dưỡng	2
+KC454	Chuyên đề công trình văn hóa - giáo dục	2
+KC455	Chuyên đề công trình thương mại - dịch vụ	2
+KC456	Kiến trúc, môi trường và con người	2
+KC457	Kiến trúc cảnh quan	2
+KC458	Hạ tầng kỹ thuật đô thị	2
+KC459E	Nhà cao tầng	2
+KC460E	Tư vấn đầu tư xây dựng	2
+KC461	Cơ học đất và nền móng	2
+KC462	Thực tập ngành nghề Kiến trúc	2
+KC463E	Kỹ thuật hệ thống viễn thông	3
+KC464E	Thiết kế vi mạch số	3
+KC465	Thiết kế vi mạch tương tự	3
+KC466	Thiết kế hệ thống trên SoC	2
+KC467	Thiết kế hệ thống nhúng trên FPGA	3
+KC468	Máy học và ứng dụng	3
+KC469	Kiểm tra thiết kế số	2
+KC470	Đồ án kỹ thuật vi mạch	2
+KC471E	Chuyên đề vi mạch bán dẫn	2
+KC472	Thực tập ngành nghề	2
+KC473	Thiết kế và phát triển ứng dụng IoT	3
+KC474	Tham quan thực tế	1
+KC474H	Kết cấu bê tông cốt thép - Phần cấu kiện cơ bản	3
+KC475	Kỹ thuật điện - điện tử	2
+KC476	Cảm biến và thiết bị đo ô tô	2
+KC477	Anh văn chuyên ngành kỹ thuật ô tô	2
+KC478E	Động cơ đốt trong	2
+KC479	Thực tập động cơ đốt trong	2
+KC480E	Kỹ thuật sửa chữa động cơ	2
+KC481	Hệ thống điện và điện tử ô tô	3
+KC482	Điều khiển tự động trên ô tô	2
+KC484	Quản lý dịch vụ ô tô	2
+KC485	Máy điện và truyền động điện ô tô	2
+KC486	Thực tập ngành nghề - ô tô	2
+KC487	Thực tập doanh nghiệp - ô tô	2
+KC488E	Công nghệ pin và chuyển đổi năng lượng	2
+KC490	Tiểu luận tốt nghiệp - ô tô	6
+KC491	Toán cơ sở cho hệ thống điều khiển	2
+KC492	Lý thuyết tín hiệu	3
+KC493	Kỹ thuật khai thác và bảo dưỡng ô tô	2
+KC494	Công nghệ sản xuất và lắp ráp ô tô	2
+KC495	Động lực học ô tô	3
+KC496E	Quản trị thiết bị y tế	2
+KC497	Hệ thống thông tin y tế	2
+KC498E	Tin sinh học và quản lý dữ liệu	2
+KC499E	Robot trong y học	3
+KC500	Tiểu luận tốt nghiệp - KTYS	6
+KC501	Luận văn tốt nghiệp - KTD	15
+KC501H	Luận văn tốt nghiệp - KTD	15
+KC515	Luận văn tốt nghiệp - CKCTM	15
+KC516	Luận văn tốt nghiệp - CKOT	15
+KC518	Luận văn tốt nghiệp - CNHH	15
+KC518H	Luận văn tốt nghiệp - CNHH	15
+KC519	Luận văn tốt nghiệp - CDT	15
+KC520	Luận văn tốt nghiệp - KTXD	15
+KC520H	Luận văn tốt nghiệp - KTXD	15
+KC521	Luận văn tốt nghiệp - CTGT	15
+KC522	Luận văn tốt nghiệp - XDCTT	15
+KC523	Luận văn tốt nghiệp - DTVT	15
+KC524	Luận văn tốt nghiệp - KTDK	15
+KC524H	Luận văn tốt nghiệp - KTDK	15
+KC525	Luận văn tốt nghiệp - KTMT	15
+KC526	Luận văn tốt nghiệp - QLCN	15
+KC527	Luận văn tốt nghiệp - KTVL	15
+KC528	Luận văn tốt nghiệp Kiến trúc	15
+KC529E	Đồ án Điện tử công suất	2
+KC529HE	Đồ án Điện tử công suất	2
+KC530	Luận văn tốt nghiệp - KTYS	15
+KC531T	Ăn mòn và chống ăn mòn BTCT	3
+KC532	Báo cáo chuyên đề	3
+KC533	Báo cáo chuyên đề công trình giao thông	2
+KC534HT	Bảo vệ rơle nâng cao	3
+KC534T	Bảo vệ rơle nâng cao	3
+KC535	Cấu trúc dữ liệu - Điện tử	3
+KC537	Chuyên đề 1 - Thủy lực	3
+KC538	Chuyên đề 2 - Nền móng	3
+KC539	Chuyên đề 3 - Bê tông	3
+KC540	Chuyên đề 4 - Thi công	3
+KC541	Chuyên đề 5 - Quản lý	3
+KC542	Chuyên đề công trình cao tầng	2
+KC543	Chuyên đề kết cấu bê tông cốt thép	2
+KC544T	Chuyên đề khảo sát thủy lực, thủy văn	2
+KC545T	Chuyên đề mô hình toán thủy lực	2
+KC546	Chuyên đề nền móng	2
+KC547	Chuyên đề quản lý dự án công trình giao thông	2
+KC548	Chuyên đề quy hoạch, kiến trúc	2
+KC549	Chuyên đề Thi công - CTGT	2
+KC550T	Cơ học biến dạng	3
+KC551	Cơ học đất	3
+KC552	Công nghệ 4.0	3
+KC552T	Công nghệ 4.0	3
+KC553T	Công nghệ bê tông đặc biệt	3
+KC554	Công nghệ chế tạo máy	3
+KC555HT	Công nghệ chế tạo vi mạch	3
+KC555T	Công nghệ chế tạo vi mạch	3
+KC556	Công nghệ sản xuất vật liệu bán dẫn	3
+KC556HT	Công nghệ sản xuất vật liệu bán dẫn	3
+KC556T	Công nghệ sản xuất vật liệu bán dẫn	3
+KC557HT	Công nghệ sản xuất vật liệu nano trong thiết bị điện tử	3
+KC557T	Công nghệ sản xuất vật liệu nano trong thiết bị điện tử	3
+KC558	Công nghệ sau thu hoạch	3
+KC559	Công nghệ thị giác máy và ứng dụng	2
+KC560HT	Công nghệ vật liệu quang điện tử và bán dẫn	3
+KC560T	Công nghệ vật liệu quang điện tử và bán dẫn	3
+KC561	Cung cấp điện	3
+KC561H	Cung cấp điện	3
+KC562	Điện tử công suất cơ bản	3
+KC563HT	Điện tử công suất nâng cao	3
+KC563T	Điện tử công suất nâng cao	3
+KC564	Điện tử công suất ứng dụng cho năng lượng tái tạo	2
+KC564T	Điện tử công suất ứng dụng cho năng lượng tái tạo	2
+KC565	Đồ án công trình khán phòng	2
+KC566	Đồ án công trình thể thao	2
+KC567	Đồ án tổng hợp	2
+KC568	Đồ án kết cấu bê tông cốt thép	2
+KC569E	Đồ án kiến trúc nội - ngoại thất	2
+KC570	Đồ án nền móng công trình - CTGT	2
+KC571E	Đồ án thiết kế máy điện	2
+KC571HE	Đồ án thiết kế máy điện	2
+KC572	Đồ án kỹ thuật viễn thông	2
+KC573	Đo lường và Điều khiển bằng máy tính	2
+KC574	TT. Đo lường và Điều khiển bằng máy tính	1
+KC575	Dự toán xây dựng	2
+KC575H	Dự toán xây dựng	2
+KC576	Dự toán xây dựng công trình	2
+KC577T	Giải pháp ổn định nền đất yếu	3
+KC578HT	Giải tích hệ thống điện nâng cao	3
+KC578T	Giải tích hệ thống điện nâng cao	3
+KC579HT	Giải tích máy điện nâng cao	3
+KC579T	Giải tích máy điện nâng cao	3
+KC580	Hệ thống quản lý tòa nhà (BMS)	3
+KC580H	Hệ thống quản lý tòa nhà (BMS)	3
+KC581	Hệ thống kỹ thuật và trang thiết bị công trình	2
+KC582	Hệ thống điện và điện tử trên ô tô	2
+KC583	Học sâu và ứng dụng	3
+KC584	Kết cấu bê tông cốt thép - Phần công trình dân dụng	3
+KC584H	Kết cấu bê tông cốt thép - Phần công trình dân dụng	3
+KC585	Mô hình thông tin xây dựng (BIM)	3
+KC585HT	Mô hình thông tin xây dựng (BIM)	3
+KC585T	Mô hình thông tin xây dựng (BIM)	3
+KC586	Mạng nơ-ron và học sâu	3
+KC587	TT. Ngành nghề kỹ thuật điện	5
+KC587H	Thực tập Ngành nghề kỹ thuật điện	5
+KC588	Kết cấu bê tông cốt thép nâng cao	3
+KC589HT	Kiểm định chất lượng công trình xây dựng	3
+KC589T	Kiểm định chất lượng công trình xây dựng	3
+KC590HT	Kỹ thuật cao áp nâng cao	3
+KC590T	Kỹ thuật cao áp nâng cao	3
+KC591	Nguyên lý và cấu tạo kiến trúc	3
+KC591H	Nguyên lý và Cấu tạo kiến trúc	3
+KC592	Nền móng công trình - CTGT	2
+KC593	Quản lý dự án xây dựng - CTGT	3
+KC594T	Phương pháp số trong kỹ thuật	3
+KC595	Seminar 2 - Logistics	2
+KC596	Seminar 2 - Quản lý công nghiệp	2
+KC597	Thực tập sửa chữa động cơ 1	3
+KC598	Thực tập sửa chữa động cơ 2	2
+KC599T	Kỹ thuật định vị toàn cầu	2
+KL001E	Pháp luật đại cương	2
+KL051	Quyền con người	2
+KL100	Pháp luật và đạo đức báo chí truyền thông	2
+KL101	Lý luận nhà nước và pháp luật 1	2
+KL102	Lý luận nhà nước và pháp luật 2	2
+KL105	Luật so sánh	2
+KL108E	Luật dân sự La Mã	2
+KL113E	Lịch sử nhà nước và pháp luật	2
+KL114	Soạn thảo văn bản pháp luật	2
+KL115	Phương pháp nghiên cứu khoa học - Luật	2
+KL116	Thuật ngữ pháp lý - Tiếng Anh	2
+KL117	Thuật ngữ pháp lý - Tiếng Pháp	2
+KL118	Luật hình sự phần chung	2
+KL119	Luật hình sự phần riêng	2
+KL122	Luật hôn nhân và gia đình	2
+KL123	Luật lao động	3
+KL124	Luật tài chính nhà nước	3
+KL126	Luật Hiến pháp	3
+KL127	Luật hành chính	3
+KL127E	Luật hành chính	3
+KL130	Luật dân sự: lý luận chung về luật dân sự	2
+KL131	Pháp luật thương mại 1	2
+KL132	Pháp luật thương mại 2	2
+KL133	Luật dân sự: Nghĩa vụ dân sự	2
+KL134	Luật dân sự	2
+KL135	Luật hình sự	2
+KL136	Luật bảo vệ chăm sóc, giáo dục trẻ em	2
+KL137	Pháp luật về hợp đồng thông dụng	2
+KL138E	Pháp luật về trách nhiệm dân sự	2
+KL139E	Pháp luật về bất động sản	2
+KL140E	Pháp luật về bảo đảm thực hiện nghĩa vụ	2
+KL141	Pháp luật về thi hành án dân sự	2
+KL142	Kỹ năng giải quyết vụ việc dân sự	2
+KL143	Luật Dân sự các nước	2
+KL198	Đạo đức nghề luật	2
+KL199	Kỹ thuật soạn thảo văn bản	2
+KL203	Luật hình sự: Định tội và định khung hình phạt	3
+KL204	Luật dân sự: Nghĩa vụ dân sự và hợp đồng dân sự	3
+KL206	Trình tự, thủ tục giải quyết vụ việc dân sự	3
+KL207	Pháp luật về quan hệ hôn nhân và quan hệ gia đình	3
+KL210	Pháp luật về quy hoạch và giải phóng mặt bằng	2
+KL211E	Luật hiến pháp nước ngoài	2
+KL212E	Luật hành chính các nước	2
+KL213	Luật môi trường	3
+KL214	Pháp luật về thương nhân	3
+KL215	Luật thương mại	3
+KL217E	Luật thương mại quốc tế công	2
+KL218	Luật lao động 2	2
+KL219	Luật thuế	3
+KL221	Kỹ thuật soạn thảo hợp đồng thương mại	2
+KL222	Luật hình sự: Những vấn đề lý luận về tội phạm	2
+KL223	Luật hình sự: Những vấn đề lý luận về hình phạt	2
+KL224	Luật dân sự: Tài sản, quyền sở hữu và quyền thừa kế	3
+KL226	Những vấn đề lý luận chung về luật tố tụng dân sự	2
+KL227	Pháp luật tố tụng dân sự	3
+KL228E	Luật ngân sách nhà nước	2
+KL229E	Luật hiến pháp chuyên sâu	2
+KL230	Luật tố tụng thương mại và phá sản	3
+KL231	Luật dân sự: Chủ thể, tài sản, quyền sở hữu và quyền thừa kế	2
+KL232	Luật thương mại quốc tế tư	3
+KL233E	Học thuyết pháp lý	2
+KL234E	Pháp luật về kinh doanh dịch vụ Logistics	2
+KL235	Pháp luật về cạnh tranh và bảo vệ quyền lợi người tiêu dùng	3
+KL236E	Pháp luật về khiếu nại và khiếu kiện	2
+KL237	Luật Tố tụng hình sự	3
+KL238	Thực hành Luật Tố tụng hình sự	2
+KL301	Luật hiến pháp 1	2
+KL302	Luật hiến pháp 2	2
+KL303	Luật hành chính 1	2
+KL304	Luật hành chính 2	2
+KL322	Luật lao động 1	2
+KL327	Luật đất đai	3
+KL328	Luật môi trường	2
+KL331	Tư pháp quốc tế 1	2
+KL332	Tư pháp quốc tế 2	2
+KL333	Luật thương mại quốc tế	2
+KL335	Pháp luật về sở hữu trí tuệ	2
+KL344	Bảo đảm nghĩa vụ	2
+KL344E	Bảo đảm nghĩa vụ	2
+KL353	Pháp luật về khiếu nại và khiếu kiện hành chính	2
+KL365	Pháp luật về thanh tra	2
+KL369	Luật kinh tế	2
+KL370	Luận văn tốt nghiệp - Luật	10
+KL371	Luật tố tụng hình sự	2
+KL374	Luật tố tụng dân sự	2
+KL375	Công pháp quốc tế	3
+KL376	Tư pháp quốc tế	3
+KL377	Pháp luật về xây dựng	2
+KL378	Luật hành chính 3	2
+KL380E	Luật an sinh xã hội	2
+KL382E	Tổ chức công sở và nhân sự hành chính	2
+KL383	Quản lý nhà nước về hộ tịch	2
+KL384	Luật về kinh doanh bất động sản	2
+KL385	Thủ tục hành chính về nhà đất	2
+KL386	Pháp luật về nhà ở	2
+KL388E	Luật ngân hàng	2
+KL391E	Pháp luật về chứng khoán và thị trường chứng khoán	2
+KL392E	Pháp luật về hoạt động xuất nhập khẩu	2
+KL393	Pháp luật về đầu tư	2
+KL395E	Luật thuế quốc tế	2
+KL396	Pháp luật về thương mại điện tử	2
+KL397	Nghiệp vụ tòa án	2
+KL401	Tội phạm học	2
+KL404	Luật hợp đồng thông dụng	2
+KL406	Thực hành nghề Luật	2
+KL411	Tiểu luận tốt nghiệp - Luật	4
+KL412	Chuyên đề luật hình sự và tố tụng hình sự	2
+KL413E	Chuyên đề luật dân sự và tố tụng dân sự	2
+KL414E	Chuyên đề luật thương mại và tố tụng thương mại	2
+KL415E	Chuyên đề luật hành chính và tố tụng hành chính	2
+KL416E	Chuyên đề luật sở hữu trí tuệ và chuyển giao công nghệ	2
+KL417E	Pháp luật về bảo vệ quyền lợi người tiêu dùng	2
+KL418E	Quản lý nhà nước về đô thị và nông thôn	2
+KL419	Kỹ thuật soạn thảo văn bản hành chính	2
+KL420E	Pháp luật về giá đất	2
+KL421E	Các hoạt động hành chính tư pháp	2
+KL422E	Xử phạt vi phạm hành chính trong một số lĩnh vực	2
+KL423E	Pháp luật về thanh tra đất đai	2
+KL424E	Luật thương mại chuyên sâu	4
+KL425E	Pháp luật về các hiệp định thương mại	2
+KL427	Pháp luật về hợp đồng trong thương mại	2
+KL428E	Pháp luật về kinh doanh bảo hiểm	2
+KL431	Thực tập tốt nghiệp	2
+KT002T	Kinh tế tài nguyên môi trường	2
+KT005E	Quản trị doanh nghiệp đại cương	2
+KT007E	Kinh tế nông nghiệp và phát triển nông thôn	2
+KT022	Kỹ năng giao tiếp	2
+KT052H	Xác suất thống kê	2
+KT101	Kinh tế vi mô 1	3
+KT101H	Toán kinh tế	3
+KT102	Kinh tế vĩ mô 1	3
+KT102H	Anh văn chuyên ngành kinh doanh quốc tế	3
+KT103	Quản trị học	3
+KT103H	Kinh tế vi mô	3
+KT104	Marketing căn bản	3
+KT104H	Kinh tế vĩ mô	3
+KT105	Toán kinh tế 1	3
+KT106	Nguyên lý kế toán	3
+KT106H	Quản trị học	3
+KT107	Toán kinh tế 2	2
+KT107H	Marketing căn bản	3
+KT108	Nguyên lý thống kê kinh tế	3
+KT108H	Nguyên lý kế toán	3
+KT109	Phương pháp nghiên cứu kinh tế	2
+KT109H	Đạo đức trong kinh doanh	3
+KT110H	Thống kê trong kinh doanh	3
+KT111	Tài chính - Tiền tệ	3
+KT111H	Kinh tế quốc tế	3
+KT111HE	Kinh tế quốc tế	3
+KT113	Kinh tế lượng	3
+KT114	Kinh tế công cộng	3
+KT115	Kinh tế phát triển	3
+KT115H	Quản trị nguồn nhân lực	3
+KT116H	Quản trị tài chính 1	3
+KT117H	Kinh tế học Ngân hàng	3
+KT118	Kinh tế học hành vi	3
+KT118E	Kinh tế học hành vi	3
+KT119	Phương pháp tư duy và kỹ năng giải quyết vấn đề	2
+KT119HE	Tài chính cá nhân	3
+KT120H	Kỹ năng làm việc nhóm và giải quyết vấn đề	2
+KT121H	Kỹ năng đàm phán và ứng tuyển	2
+KT122	Kiến tập ngành Quản trị kinh doanh	2
+KT122H	Kỹ năng lãnh đạo	2
+KT123E	Quản trị sự thay đổi	2
+KT124	Thực hành xây dựng nhóm	2
+KT126	Phương pháp nghiên cứu trong Kế toán - Kiểm toán	2
+KT127HE	Nguyên lý tiền tệ và Hệ thống tài chính	3
+KT128	Kế toán tài chính 3	3
+KT128H	Kinh tế lượng	3
+KT129H	Phương pháp nghiên cứu trong TC-NH	2
+KT133	Kiến tập ngành Kinh tế tài nguyên môi trường	2
+KT134	Kiến tập ngành Kinh tế	2
+KT135	Thương mại điện tử	3
+KT136	Quản trị Marketing	2
+KT137	Anh Văn chuyên ngành du lịch	3
+KT138	Anh văn thương mại	3
+KT139	Thống kê du lịch	2
+KT140	Nghiệp vụ bảo hiểm	3
+KT141E	Pháp luật ngân hàng thương mại	3
+KT142	Luật thương mại	3
+KT142E	Luật Thương mại	3
+KT143	Luật cạnh tranh	2
+KT144	Phương pháp nghiên cứu và viết báo cáo khoa học	3
+KT145	Kiến tập tài chính	1
+KT146	Kiến tập ngân hàng	1
+KT147	Thực tập hướng dẫn du lịch	2
+KT147H	Kinh tế lượng	2
+KT148	Đàm phán trong kinh doanh	3
+KT149	Phân tích dữ liệu trong kinh tế và kinh doanh	3
+KT149H	Phân tích dữ liệu trong kinh tế và kinh doanh	3
+KT150	Chuyển đổi số trong kinh tế và kinh doanh	3
+KT150H	Chuyển đổi số trong kinh tế và kinh doanh	3
+KT151	Ứng dụng AI và IoT trong kinh tế và kinh doanh	3
+KT151H	Ứng dụng AI và IoT trong kinh tế và kinh doanh	3
+KT155	Hành vi người tiêu dùng trực tuyến	2
+KT156	Phân tích dữ liệu	3
+KT157	Hệ thống thanh toán điện tử	2
+KT158	Kiến tập Thương mại điện tử	2
+KT159	Quản trị quan hệ khách hàng điện tử	2
+KT160	Kinh doanh trực tuyến	2
+KT161	Anh văn chuyên ngành thương mại điện tử	3
+KT162	Trò chơi hóa trong marketing	3
+KT163	Phát triến sản phẩm mới	3
+KT164	Marketing nội dung	2
+KT165	Marketing dịch vụ	3
+KT166	Marketing mạng xã hội	2
+KT167	Phân tích dữ liệu marketing điện tử	3
+KT168E	Thực hành Kinh tế nông nghiệp ứng dụng	2
+KT169	Chuẩn mực kế toán Việt Nam	3
+KT170	Kiến tập ngành Kế toán 1	2
+KT171	Kiến tập ngành Kế toán 2	2
+KT172E	Đạo đức nghề nghiệp Kế toán - Kiểm toán	2
+KT173	Kế toán điều tra và kiểm tra gian lận	3
+KT174	Trí tuệ nhân tạo và dữ liệu lớn trong Kế toán -Kiểm toán	3
+KT175E	Thống kê doanh nghiệp	2
+KT176E	Chuẩn mực kế toán công	3
+KT177	Kiến tập ngành Kiểm toán 1	2
+KT178	Kiến tập ngành Kiểm toán 2	2
+KT187E	Nguyên lý bảo hiểm	2
+KT188	Kiến tập bảo hiểm	1
+KT189	Kinh tế tuần hoàn	2
+KT190	Anh văn chuyên ngành Tài chính - Ngân hàng	3
+KT191	Logistics và quản lý chuỗi cung ứng	3
+KT191H	Logistics và quản lý chuỗi cung ứng	3
+KT192	Chuyên đề Kinh doanh quốc tế	1
+KT193	Seminar Kinh doanh quốc tế	1
+KT193H	Seminar Kinh doanh quốc tế	1
+KT194	Nông nghiệp kỹ thuật số	3
+KT194H	Kinh doanh và chuỗi giá trị toàn cầu	3
+KT195	Pháp văn chuyên môn kinh tế	3
+KT195H	Thực tập nghiệp vụ thanh toán quốc tế	1
+KT196	Seminar kinh tế nông nghiệp	2
+KT196H	Thực tập nghiệp vụ ngoại thương	1
+KT197	Ứng dụng toán trong kinh doanh	2
+KT197H	Thực tập logistics	2
+KT198E	Chuẩn mực kế toán quốc tế	3
+KT198H	Thực tập chiến lược kinh doanh quốc tế	2
+KT199E	Chuẩn mực kiểm toán	2
+KT200	Digital Marketing	2
+KT200E	Digital Marketing	2
+KT200H	Quản trị ngân hàng thương mại	3
+KT201	Quản trị dự án	2
+KT201H	Chứng khoán phái sinh	3
+KT202H	Quản trị tài chính 2	3
+KT203	Ứng dụng toán trong kinh doanh	3
+KT203HE	Marketing ngân hàng	3
+KT204	Quản trị nguồn nhân lực	3
+KT204HE	Thị trường chứng khoán	3
+KT205	Quy hoạch tuyến tính	3
+KT205HE	Tài chính quốc tế	3
+KT206	Đạo đức trong kinh doanh và văn hóa doanh nghiệp	2
+KT206E	Đạo đức trong kinh doanh và văn hóa doanh nghiệp	2
+KT206H	Tài chính công	3
+KT207	Mô phỏng tình huống trong kinh doanh	3
+KT207H	Đầu tư tài chính	3
+KT208	Quản trị hệ thống thông tin doanh nghiệp	2
+KT208E	Quản trị hệ thống thông tin doanh nghiệp	2
+KT209	Anh văn chuyên môn kinh tế	3
+KT209H	Quản trị ngân hàng điện tử	3
+KT210	Tâm lý quản lý	2
+KT210E	Tâm lý quản lý	2
+KT211	Quản trị kinh doanh lữ hành	3
+KT212	Quản trị kinh doanh lưu trú	3
+KT212H	Quản trị thương hiệu	3
+KT213	Quản trị kinh doanh nhà hàng	3
+KT213H	Quản trị sản xuất và tác nghiệp	3
+KT214	Tổ chức sự kiện	2
+KT215	Marketing địa phương	2
+KT217	Marketing thương mại	3
+KT218	Chiêu thị và truyền thông marketing	2
+KT220	Quan hệ công chúng	2
+KT222	Phân tích báo cáo tài chính	2
+KT224E	Vận tải và bảo hiểm ngoại thương	3
+KT226	Quản trị tài chính các công ty đa quốc gia	3
+KT229	Kiến tập ngành Kinh doanh thương mại	2
+KT230	Quản trị chuỗi cung ứng	2
+KT238E	Pháp luật kiểm toán	2
+KT240	Marketing nông nghiệp	3
+KT242	Kế toán môi trường	2
+KT242E	Kế toán môi trường	2
+KT243	Quản trị rủi ro trong thị trường nông sản	2
+KT244	Phân tích chuỗi cung ứng hàng nông sản	2
+KT245E	Kinh tế biến đổi khí hậu	3
+KT246	Định giá tài nguyên môi trường	3
+KT247	Kinh tế năng lượng tái tạo	2
+KT249	Kinh tế học ngân hàng	3
+KT250	Kiểm toán hoạt động	3
+KT251	Kiểm toán Nhà nước	3
+KT253	Kinh doanh nông nghiệp	3
+KT254	Khởi sự doanh nghiệp	3
+KT257	Phương pháp nghiên cứu trong tài chính	2
+KT258	Kiến tập ngành Kinh tế nông nghiệp	2
+KT258H	Quản trị đổi mới, cải tiến các công ty đa quốc gia	3
+KT259	Kiến tập marketing	2
+KT260	Ứng dụng phần mềm trong kế toán	3
+KT266E	Sáp nhập và mua lại doanh nghiệp	2
+KT268E	Kinh tế nông hộ	3
+KT269	Định giá tài sản	3
+KT270E	Lịch sử các học thuyết kinh tế	2
+KT273	Kinh tế sinh thái và phát triển bền vững	2
+KT274	Chính sách quản lý tài nguyên môi trường	2
+KT275	Anh văn chuyên ngành Tài chính - Kế toán	3
+KT278	Quảng cáo chuyên nghiệp	2
+KT279	Marketing trực tiếp	2
+KT280	Kinh doanh quốc tế 2	3
+KT284E	Kinh tế học quản lý	2
+KT285	Seminar Kinh doanh thương mại	2
+KT286	Quản trị rủi ro trong kinh doanh	3
+KT286E	Quản trị rủi ro trong kinh doanh	3
+KT287E	Quản trị liên văn hóa	2
+KT288	Seminar Quản trị kinh doanh	2
+KT289E	Tiểu luận tốt nghiệp - KTTN và MT	4
+KT290	Tiểu luận tốt nghiệp - Kinh tế	4
+KT291	Tiểu luận tốt nghiệp - QTKD	4
+KT291E	Tiểu luận tốt nghiệp - QTKD	4
+KT292E	Tiểu luận tốt nghiệp - QTDVDLLH	4
+KT292H	Tiểu luận tốt nghiệp - QTDVDLLH	4
+KT293	Tiểu luận tốt nghiệp - Marketing	4
+KT294E	Tiểu luận tốt nghiệp - Kinh doanh quốc tế	4
+KT295E	Tiểu luận tốt nghiệp - KDTM	4
+KT296E	Tiểu luận tốt nghiệp - TCNH	4
+KT298E	Tiểu luận tốt nghiệp kế toán	4
+KT299E	Tiểu luận tốt nghiệp - Kiểm toán	4
+KT300E	Tiểu luận tốt nghiệp - KTNN	4
+KT300HE	Kinh tế đối ngoại	2
+KT301	Kinh tế vi mô 2	3
+KT301H	Đầu tư trực tiếp nước ngoài, thương mại và địa lý	3
+KT302	Kinh tế vĩ mô 2	3
+KT303	Kinh tế quốc tế	3
+KT304	Kinh tế sản xuất	3
+KT304H	Hệ thống thông tin kinh tế toàn cầu	2
+KT305	Kinh tế môi trường	3
+KT306E	Kinh tế lao động	3
+KT306H	Pháp luật về hợp đồng thương mại quốc tế	2
+KT307E	Kinh tế đối ngoại	3
+KT308	Quản trị tài chính	3
+KT309E	Tài chính quốc tế	3
+KT309H	Chiến lược kinh doanh quốc tế	3
+KT310E	Phân tích chính sách kinh tế	3
+KT313H	Pháp luật về các hiệp định thương mại	2
+KT314E	Hệ thống thông tin kinh tế	2
+KT314H	Thanh toán quốc tế	3
+KT315	Kế toán ngân sách	3
+KT316	Kinh doanh quốc tế	3
+KT316H	Quản trị đa văn hóa	3
+KT318	Kinh tế nông nghiệp	3
+KT318H	Quản trị tài chính trong công ty đa quốc gia	3
+KT319	Kinh tế tài nguyên	3
+KT321	Nghiên cứu marketing	3
+KT322H	Thẩm định dự án	2
+KT323H	Kế toán quản trị	3
+KT324	Quản trị marketing	3
+KT325H	Nghiên cứu Marketing	3
+KT328	Thanh toán quốc tế	3
+KT329E	Thị trường chứng khoán	3
+KT329H	Marketing quốc tế	3
+KT330	Thuế	3
+KT330H	Khởi sự doanh nghiệp	3
+KT331	Luận văn tốt nghiệp - Kinh tế	10
+KT331H	Phân tích hoạt động kinh doanh	3
+KT332H	Hành vi tổ chức	3
+KT335	Marketing quốc tế	3
+KT336	Nghiệp vụ ngoại thương	3
+KT336H	Nghiệp vụ ngoại thương	3
+KT337	Thương mại điện tử	2
+KT338	Đầu tư quốc tế	3
+KT339	Kế toán quản trị 1	3
+KT340E	Kế toán quản trị 2	2
+KT341	Kế toán tài chính 1	3
+KT342	Kế toán tài chính 2	3
+KT343	Kế toán quốc tế	3
+KT345	Quản trị chất lượng sản phẩm	2
+KT346	Quản trị chiến lược	3
+KT347	Quản trị doanh nghiệp	3
+KT349	Quản trị bán hàng	2
+KT352	Quản trị du lịch và dịch vụ	3
+KT354	Quản trị ngân hàng	3
+KT358	Quản trị quan hệ khách hàng	2
+KT358E	Quản trị quan hệ khách hàng	2
+KT359	Quản trị rủi ro tài chính	3
+KT360	Quản trị sản xuất	3
+KT360E	Quản trị sản xuất	3
+KT361	Quản trị thương hiệu	3
+KT362	Quản trị thương mại	3
+KT365	Phân tích và đánh giá tác động môi trường	2
+KT367	Luận văn tốt nghiệp - KDQT	10
+KT370	Hệ thống thông tin kế toán 1	3
+KT371E	Hệ thống thông tin kế toán 2	2
+KT372E	Kế toán chi phí	2
+KT373	Kế toán hành chính sự nghiệp	3
+KT374	Kế toán ngân hàng	3
+KT375E	Kế toán và khai báo thuế	2
+KT376	Kiểm toán 1	3
+KT377	Kiểm toán 2	3
+KT380E	Kinh tế du lịch và môi trường	2
+KT381	Kinh tế du lịch	3
+KT384	Tổ chức thực hiện công tác kiểm toán	3
+KT393	Phân tích hoạt động kinh doanh	3
+KT396	Marketing nông nghiệp	2
+KT397	Marketing Du lịch	3
+KT399	Luận văn tốt nghiệp - QTKD	10
+KT400	Luận văn tốt nghiệp - KDTM	10
+KT401	Luận văn tốt nghiệp - Marketing	10
+KT401H	Luận văn tốt nghiệp - QTKD	10
+KT402	Luận văn tốt nghiệp - QTDVDLLH	10
+KT402H	Luận văn tốt nghiệp - QTDVDLLH	10
+KT403	Kinh tế ô nhiễm và sức khỏe	2
+KT404	Hệ thống kiểm soát nội bộ	2
+KT409	Luận văn tốt nghiệp - TCNH	10
+KT410HE	Tiểu luận tốt nghiệp	4
+KT411	Phân tích chính sách nông nghiệp	3
+KT411HE	Quản trị dòng vốn ngắn hạn	2
+KT412HE	Sáp nhập và mua lại doanh nghiệp	2
+KT413E	Kinh tế vùng	3
+KT415	Luận văn tốt nghiệp - KTNN	10
+KT418	Phân tích lợi ích chi phí	2
+KT419E	Thương mại và môi trường	2
+KT420E	Dự báo kinh tế	3
+KT421	Luận văn tốt nghiệp - KTTNMT	10
+KT425	Anh văn thương mại 1	3
+KT428	Kỹ thuật đàm phán	2
+KT429E	Hành vi khách hàng	2
+KT431E	Hành vi tổ chức	2
+KT438	Chuyên đề kinh tế học	2
+KT440E	Chuyên đề kinh tế tài nguyên môi trường	2
+KT441E	Chuyên đề Marketing	2
+KT443	Chuyên đề Quản trị kinh doanh	2
+KT451	Luận văn tốt nghiệp kế toán	10
+KT452	Luận văn tốt nghiệp - Kiểm toán	10
+KT454	Kế toán hợp nhất kinh doanh	2
+KT455E	Kinh tế lương thực	2
+KT456	Kinh tế sử dụng đất	2
+KT457	Kinh tế tài nguyên nước và chính sách	2
+KT458E	Marketing ngân hàng	3
+KT459	Nghiệp vụ ngân hàng cá nhân	3
+KT460	Nghiệp vụ ngân hàng doanh nghiệp	3
+KT461	Nghiệp vụ thanh toán	3
+KT463	Những vấn đề kinh tế nông nghiệp hiện hành	2
+KT464E	Phân tích báo cáo tài chính khu vực công	2
+KT465	Phân tích giá trong nông nghiệp	2
+KT467	Quản lý nông trại	2
+KT469	Seminar Quản trị dịch vụ du lịch và lữ hành	2
+KT470	Tài chính công	3
+KT471	Thống kê trong kinh tế và kinh doanh	3
+KT472	Thực tập kinh doanh xuất nhập khẩu	2
+KT473	Thực tập lĩnh vực khách sạn và nhà hàng	2
+KT474	Thực tập lĩnh vực lữ hành	2
+KT475	Thương mại nông nghiệp quốc tế	3
+KT476E	Toán tài chính	2
+KT477	Tổ chức thực hiện công tác kế toán	3
+KT478E	Quản trị tài chính trong doanh nghiệp nông nghiệp	2
+KT479	Phương pháp nghiên cứu trong kinh doanh	3
+KT479H	Phương pháp nghiên cứu trong kinh doanh	3
+KT480	Phân tích định tính trong kinh doanh	2
+KT480E	Phân tích định tính trong kinh doanh	2
+KT481	Phương pháp phân tích trong nghiên cứu du lịch	3
+KT482	Quản trị mua hàng và lưu kho	2
+KT483	Tổ chức sự kiện và lễ hội	3
+KT484	Thực tập Nghiệp vụ ngoại thương và Logistics	2
+KT485	Đầu tư tài chính	3
+KT486	Lập kế hoạch kinh doanh	2
+KT487	Kiến tập ngành Quản trị kinh doanh 2	2
+KT490	Kỹ năng lập kế hoạch	2
+KT491	Dự báo trong kinh doanh	3
+KT492	Giao tiếp trong kinh doanh	2
+KT493	Nghệ thuật lãnh đạo	2
+KT494	Kiến tập ngành Quản trị kinh doanh 1	2
+KT495	Hành vi khách du lịch	3
+KT497	Quản lý điểm đến du lịch	3
+KT498	Luận văn tốt nghiệp - TMDT	10
+KT499	Tiểu luận tốt nghiệp - TMDT	4
+KT501H	Luận văn tốt nghiệp kinh doanh quốc tế	10
+KT502H	Luận văn tốt nghiệp	10
+MI301C	Vi sinh đại cương	3
+MI302C	Thực hành vi sinh đại cương	1
+ML007	Logic học đại cương	2
+ML014	Triết học Mác - Lênin	3
+ML015	Triết học Mác - Lênin	4
+ML016	Kinh tế chính trị Mác - Lênin	2
+ML017	Kinh tế chính trị Mác - Lênin	3
+ML018	Chủ nghĩa xã hội khoa học	2
+ML019	Lịch sử Đảng Cộng sản Việt Nam	2
+ML020	Lịch sử Đảng Cộng sản Việt Nam	3
+ML021	Tư tưởng Hồ Chí Minh	2
+ML022	Chủ nghĩa xã hội khoa học	2
+ML023	Tư tưởng Hồ Chí Minh	2
+ML102E	Lý luận dạy học - GDCD	2
+ML104E	Lịch sử các học thuyết kinh tế	2
+ML112E	Lịch sử phong trào cộng sản và công nhân quốc tế	2
+ML121	Khoa học lãnh đạo	3
+ML122	Phương pháp nghiên cứu khoa học - Triết học	2
+ML123E	Triết học trong khoa học tự nhiên	2
+ML126	Thực tế ngoài trường - Triết học	2
+ML128	Thiết kế chương trình Giáo dục công dân	2
+ML129	Đánh giá kết quả học tập Giáo dục công dân	2
+ML131E	Ứng dụng công nghệ thông tin trong dạy học giáo dục công dân	2
+ML139	Lịch sử tư tưởng chính trị	3
+ML140	Quan hệ chính trị quốc tế	3
+ML141	Hệ thống chính trị Việt Nam	2
+ML142E	Vấn đề tôn giáo và chính sách tôn giáo	2
+ML192E	Đạo đức học	2
+ML193	Kinh tế học	3
+ML194	Anh văn chuyên môn - Triết học	2
+ML195	Pháp văn chuyên môn - Triết học	2
+ML202E	Chính sách dân tộc của Đảng và Nhà nước Việt Nam	2
+ML203E	Chính sách đối ngoại của Đảng và Nhà nước Việt Nam	2
+ML204E	Chính trị học so sánh	3
+ML206	Địa chính trị	2
+ML208	Học thuyết chính trị Mác-Lênin	2
+ML209E	Học thuyết về nhà nước và Nhà nước pháp quyền của chủ nghĩa Mác-Lênin	2
+ML210	Lịch sử triết học Ấn Độ - cổ trung đại	3
+ML211	Lịch sử triết học cổ điển Đức	3
+ML212	Lịch sử triết học Hy Lạp - La Mã cổ đại	3
+ML213	Lịch sử triết học Tây Âu thời kỳ phục hưng và cận đại	3
+ML214	Lịch sử triết học Tây Âu thời trung cổ	2
+ML215	Lịch sử triết học Trung Hoa - cổ trung đại	4
+ML218	Những vấn đề kinh tế - chính trị đương đại	2
+ML222	Phương pháp giảng dạy khoa học lý luận chính trị	2
+ML223	Phương pháp nghiên cứu khoa học lý luận chính trị	2
+ML224E	Phương pháp viết bài luận và thuyết trình chính trị	2
+ML225E	Phương thức sản xuất châu Á	2
+ML226	Thống kê cho khoa học xã hội	2
+ML227	Thực tế ngoài trường khoa học chính trị	2
+ML228	Chuyên đề Lịch sử Đảng Cộng sản Việt Nam	2
+ML230	Triết học phương Tây hiện đại	3
+ML231E	Triết học văn hóa	2
+ML232E	Triết học xã hội	2
+ML233	Tư tưởng chính trị Hồ Chí Minh	2
+ML234E	Tư tưởng triết học trong kinh doanh	2
+ML235	Chính trị Việt Nam trong thời kỳ quá độ lên Chủ nghĩa xã hội	3
+ML236	Chuyên đề Triết học về con người	3
+ML237	Tác phẩm kinh điển triết học	3
+ML238	Quyền lực chính trị	3
+ML239	Niên luận Lịch sử Triết học	2
+ML240	Niên luận Triết học duy vật biện chứng	2
+ML241	Niên luận Triết học duy vật lịch sử	2
+ML242	Lịch sử tư tưởng triết học Việt Nam	3
+ML245E	Tác phẩm Kinh điển chủ nghĩa Mác-Lênin	2
+ML247	Chuyên đề Lý luận nhận thức	2
+ML250	Niên luận - GDCD	2
+ML251	Quản lý Nhà nước về kinh tế	2
+ML301	Công dân và pháp luật	2
+ML312E	Đạo đức học	3
+ML313	Phương pháp giảng dạy - GDCD	2
+ML319	Xây dựng Đảng	2
+ML320	Công tác Đảng và Đoàn thể trong trường học	2
+ML326	Tiểu luận tốt nghiệp - GDCD	4
+ML327	Luận văn tốt nghiệp - GDCD	10
+ML330	Chuyên đề Tư tưởng Hồ Chí Minh	2
+ML335E	Kinh điển Tư tưởng Hồ Chí Minh	2
+ML344E	Lịch sử triết học Mác - Lênin	2
+ML346E	Logic biện chứng	2
+ML348	Phương pháp giảng dạy Triết học	2
+ML349	Chuyên đề Chủ nghĩa duy vật biện chứng	2
+ML350	Chuyên đề Phép biện chứng duy vật	3
+ML351	Chuyên đề Lý luận hình thái kinh tế - xã hội	3
+ML352E	Tư tưởng triết học Hồ Chí Minh	2
+ML358	Chính trị học	3
+ML359	Thể chế chính trị thế giới đương đại	3
+ML360	Khoa học quản lý	3
+ML361	Phương pháp tiếp cận và xử lý tình huống chính trị	2
+ML364	Chính trị học phát triển	3
+ML366	Chính sách công	2
+ML367	Đảng Chính trị	2
+ML368	Quyết sách chính trị	2
+ML370E	Kinh điển chính trị học	2
+ML371	Niên luận Chính trị học	2
+ML373	Các xu hướng chính trị đương đại	2
+ML374	Luận văn tốt nghiệp - Chính trị học	10
+ML375	Tiểu luận tốt nghiệp - Chính trị học	4
+ML401	Luận văn tốt nghiệp - Triết học	10
+ML402	Tiểu luận tốt nghiệp - Triết học	4
+MM433C	Bộ gen vi sinh vật	2
+MT069	Kỹ thuật quan trắc và khai thác nguồn nước	2
+MT070	Thực tập Kỹ thuật quan trắc và khai thác nguồn nước	2
+MT071	Cơ học đất nền móng	2
+MT072	TT. Cơ học đất nền móng	1
+MT073	Thủy khí động lực học	2
+MT074	TT. Thủy khí động lực học	1
+MT075	TT. Đo đạc khí nhà kính	2
+MT076	Nhập môn cấp thoát nước	2
+MT077	Kiểm kê phát thải khí nhà kính	2
+MT078	Ứng dụng tự động hóa trong đo đạc môi trường	2
+MT079	Địa chất và địa mạo	2
+MT080E	Khoa học trái đất đại cương	2
+MT081	Nhập môn Quản lý đất đai	1
+MT082	Tài nguyên đất đại cương	3
+MT083	Kỹ thuật bản đồ	3
+MT084	Hệ thống thông tin địa lý	3
+MT085	Hệ thống thông tin đất đai	3
+MT086E	Kinh tế tài nguyên đất đai và bất động sản	2
+MT087	Đăng ký đất đai	2
+MT088	Quy hoạch tổng thể kinh tế - xã hội	2
+MT089	Khai thác và phát triển quỹ đất	2
+MT089T	Khai thác và phát triển quỹ đất	2
+MT090	Thiết kế cảnh quan đô thị	2
+MT091	Phân tích dữ liệu không gian	2
+MT091T	Phân tích dữ liệu không gian	2
+MT092	Vật lý đô thị	2
+MT093	Trắc địa - bản đồ	3
+MT094	Kiến trúc đại cương	2
+MT095	Đánh giá đất đai	2
+MT096E	Xã hội học đô thị	2
+MT097E	Kinh tế học đô thị	2
+MT098	Đồ họa kiến trúc đại cương	2
+MT099	Mô hình hóa trong quản lý đất đai	3
+MT100	Nhập môn quy hoạch vùng và đô thị	2
+MT101E	Sinh thái học cơ bản	2
+MT103E	Luật và chính sách môi trường	2
+MT105	Địa chất môi trường	2
+MT107	Cơ sở khoa học môi trường	2
+MT110E	Hệ sinh thái nông nghiệp	2
+MT112E	Hệ sinh thái thủy vực	2
+MT113	TT. Hệ sinh thái thủy vực	1
+MT114	Hệ sinh thái rừng	2
+MT116	Thống kê phép thí nghiệm - MT	2
+MT116T	Thống kê phép thí nghiệm - MT	2
+MT117	Môi trường và quản lý tài nguyên thiên nhiên	2
+MT118E	Kỹ thuật truyền thông môi trường	2
+MT119ET	Quan trắc môi trường	2
+MT122	Thủy văn môi trường	2
+MT123E	Năng lượng và môi trường	2
+MT123ET	Năng lượng và môi trường	2
+MT125E	Dân số, sức khỏe và môi trường	2
+MT137	Sinh hóa - KTMT	2
+MT145	Quản lý tài nguyên đất đai	2
+MT146	Quản lý tài nguyên rừng	2
+MT150E	Hóa môi trường ứng dụng	2
+MT155	Trắc địa đại cương	3
+MT157E	Nông nghiệp đô thị	2
+MT158	Quản lý đô thị	2
+MT161	Công nghệ môi trường đại cương	2
+MT162T	Quá trình và thiết bị trong kỹ thuật môi trường	2
+MT165E	Quản lý và sử dụng tiết kiệm năng lượng	2
+MT179	Phương pháp phân tích cơ sở dữ liệu	2
+MT181	Phương pháp tư duy hệ thống trong quản lý TNN	2
+MT182T	Mô hình hóa môi trường	2
+MT183	Phương pháp trình bày và viết báo cáo kỹ thuật cơ bản	2
+MT184	Thủy văn và địa chất thủy văn	3
+MT185	Thực tập Thủy lực và thủy văn	1
+MT186E	Anh văn chuyên ngành cấp thoát nước	2
+MT187	Nền móng công trình cấp thoát nước	2
+MT188	Hóa nước vi sinh	2
+MT189	Mạng lưới cấp nước đô thị và nông thôn	2
+MT190	Đồ án mạng lưới cấp nước đô thị và nông thôn	2
+MT192	Thực tập hóa nước vi sinh	1
+MT193	Kinh tế ngành Cấp thoát nước	2
+MT194	Mạng lưới thoát nước đô thị và nông thôn	2
+MT195	Đồ án mạng lưới thoát nước đô thị và nông thôn	2
+MT196	Giải pháp phi công trình cho cấp thoát nước bền vững	2
+MT197	Đo đạc địa chính	3
+MT198	Tin học trong kỹ thuật môi trường	3
+MT199E	Anh văn chuyên ngành tài nguyên và môi trường	2
+MT200	Kỹ thuật xử lý nước cấp	3
+MT201	Đánh giá rủi ro môi trường	2
+MT202	TT. Đánh giá rủi ro môi trường	1
+MT208	Biogas và bảo vệ môi trường	2
+MT209	Biến đổi khí hậu và ứng phó	2
+MT210	Phục hồi sinh thái	2
+MT217	Định giá giá trị dịch vụ hệ sinh thái rừng	2
+MT220	Quản lý nhà nước về đất đai	2
+MT221	Quy hoạch phát triển vùng và đô thị	2
+MT222ET	Phát triển bền vững tài nguyên đất đai	2
+MT225	Kỹ năng chuyên ngành	2
+MT228	Quản lý và giảm nhẹ thiên tai	2
+MT231	Phân tích sinh kế trong thay đổi sử dụng đất	2
+MT231E	Phân tích sinh kế trong thay đổi sử dụng đất	2
+MT232	Kỹ thuật xử lý ô nhiễm không khí và tiếng ồn	3
+MT233	Quản lý và xử lý chất thải rắn	3
+MT238E	Thiết kế bền vững	2
+MT239	Chuyển hóa và lan truyền ô nhiễm	2
+MT240	Phương pháp điều tra thông tin tài nguyên đất đai	2
+MT244	TT. Xử lý nước cấp và nước thải	2
+MT245T	An toàn, sức khỏe và môi trường	2
+MT246	Cơ sở biến đổi khí hậu	2
+MT246T	Cơ sở Biến đổi khí hậu	2
+MT247	Cơ sở môi trường đất	2
+MT248	Công nghệ sinh học trong môi trường	2
+MT251	Công nghệ sinh thái	2
+MT252	Sinh thái đô thị	2
+MT254	Vệ sinh môi trường	2
+MT255	Cơ chế phát triển sạch	2
+MT261E	Chiến lược phát triển tài nguyên đất đai	2
+MT262E	Quản lý tổng hợp tài nguyên đất đai	2
+MT263	Xử lý số liệu đo đạc	2
+MT264	Quản lý công trình xây dựng đô thị	2
+MT265E	Phân tích và Thiết kế HTTT địa chính	2
+MT276E	Luật Tài nguyên nước	2
+MT286E	Kiểm soát ô nhiễm nguồn nước	2
+MT294E	Quản lý tổng hợp nguồn nước	2
+MT300	Hóa học môi trường không khí	2
+MT301	Sinh thái môi trường ứng dụng	2
+MT303E	Sinh vật chỉ thị môi trường	2
+MT308E	Quản lý và đánh giá tác động môi trường	2
+MT309E	Quản lý chất lượng môi trường	2
+MT311	Quản lý môi trường	2
+MT312	Bảo tồn đa dạng sinh học	2
+MT312E	Bảo tồn đa dạng sinh học	2
+MT316	Quản lý môi trường và tài nguyên biển	2
+MT317	Quản lý hệ thống thủy lợi và môi trường	2
+MT319E	Phát triển bền vững	2
+MT319ET	Phát triển bền vững	2
+MT323E	Quản lý môi trường đô thị và khu công nghiệp	2
+MT324	Quản lý đất ngập nước	2
+MT328	Đánh giá chất lượng đất, nước, không khí	2
+MT330	Ô nhiễm đất và kỹ thuật phục hồi	2
+MT330T	Ô nhiễm đất và kỹ thuật phục hồi	2
+MT332T	Xã hội và môi trường	2
+MT334	Quản lý tài nguyên trên cơ sở phát triển cộng đồng	2
+MT340E	Quản lý tài nguyên nước	2
+MT342	Đánh giá tác động môi trường	2
+MT342E	Đánh giá tác động môi trường	2
+MT346	Quản lý và xử lý chất thải độc hại	2
+MT346T	Quản lý và xử lý chất thải độc hại	2
+MT347	Kỹ thuật xử lý nước thải	3
+MT350	Quản lý và xử lý chất thải rắn	2
+MT353	Công trình xử lý môi trường	2
+MT357	Công nghệ sạch	2
+MT357T	Công nghệ sạch	2
+MT358	Quy hoạch môi trường	2
+MT360E	Quản lý kỹ thuật	2
+MT361	Quản lý và tái sử dụng chất thải hữu cơ	2
+MT361E	Quản lý và tái sử dụng chất thải hữu cơ	2
+MT362	Ứng dụng GIS trong quản lý môi trường	2
+MT365	Quản lý và vận hành công trình xử lý môi trường	2
+MT366E	Quản lý môi trường nông nghiệp	2
+MT367	Phương pháp xử lý nước thải	3
+MT372	Tài nguyên và môi trường lưu vực sông Mekong	2
+MT373	Kiểm soát ô nhiễm không khí và tiếng ồn	2
+MT374	Kiểm toán môi trường	2
+MT374E	Kiểm toán môi trường	2
+MT384E	Kinh tế chất thải	2
+MT384ET	Kinh tế chất thải	2
+MT390	Đồ án xử lý ô nhiễm không khí	2
+MT391	Đồ án xử lý nước cấp và nước thải	2
+MT392	Đồ án quản lý và xử lý chất thải rắn	2
+MT393	Đồ án công trình xử lý môi trường	2
+MT401	Báo cáo chuyên đề - KHMT	2
+MT404E	Báo cáo chuyên đề - QLĐĐ	2
+MT405	Báo cáo chuyên đề - QLMT	2
+MT406	Kỹ thuật và ứng dụng UAV	2
+MT408	Niên luận Tài nguyên và Môi trường	2
+MT409E	Ô nhiễm và kiểm soát ô nhiễm	2
+MT411E	Quản lý và kiểm soát chất lượng nước	2
+MT412E	Công trình trên hệ thống thủy lợi	2
+MT415E	Cải tạo hệ thống sông	2
+MT418	Phương pháp nghiên cứu khoa học tài nguyên và môi trường	2
+MT418E	Phương pháp nghiên cứu khoa học tài nguyên và môi trường	2
+MT418T	Phương pháp nghiên cứu khoa học tài nguyên và môi trường	2
+MT419	Quy hoạch sử dụng đất	3
+MT420	Vật liệu môi trường	2
+MT421	Vi sinh môi trường	2
+MT422	TT. Vi sinh học Môi trường	2
+MT423T	Thủy khí động lực học	2
+MT424	Thực tập giáo trình - KTMT	3
+MT425	Thực tập ngành nghề - KHMT	2
+MT426	Thực tập phân tích và đánh giá chất lượng môi trường đất	2
+MT427	Thực tập phân tích và đánh giá chất lượng môi trường nước	2
+MT431	TT. Hóa môi trường ứng dụng	2
+MT435	TT. Quản lý chất lượng môi trường	2
+MT436	TT. Quản lý và xử lý chất thải	2
+MT437	TT. Sinh thái học cơ bản	2
+MT438	TT. Ứng dụng GIS trong quản lý tài nguyên và môi trường	2
+MT439	TT. Giáo trình - KHMT	3
+MT441	TT. Giáo trình quản lý tài nguyên và môi trường	3
+MT442	Đồ họa chuyên ngành - KTMT	3
+MT443	Đồ họa chuyên ngành - KTTNN	3
+MT444	Đồ họa chuyên ngành - QLMT	3
+MT445	TT. Xử lý chất thải rắn và khí thải	2
+MT446	TT. Quan trắc môi trường	2
+MT447	TT. Đánh giá tác động môi trường	2
+MT448	TT. Công trình xử lý môi trường	2
+MT449	TT. Bảo tồn đa dạng sinh học	2
+MT451	Tiểu luận tốt nghiệp - KHMT	6
+MT452	Tiểu luận tốt nghiệp - KTMT	6
+MT453	Tiểu luận tốt nghiệp - QLDD	6
+MT454	Tiểu luận tốt nghiệp - QLMT	6
+MT457	Thực tập ngành nghề - QLMT	3
+MT459	Chuyên đề kỹ thuật tái chế chất thải	3
+MT460	Chuyên đề kỹ thuật chế tạo và ứng dụng vật liệu môi trường	3
+MT461	Chuyên đề công nghệ sinh học môi trường	3
+MT462	Hạ tầng xanh	2
+MT463	Xử lý nước cấp	2
+MT464	Đồ án xử lý nước cấp	2
+MT465	Xử lý nước thải đô thị, công nghiệp, và nông thôn	2
+MT466	Đồ án xử lý nước thải đô thị, công nghiệp, và nông thôn	2
+MT467	Thi công hệ thống cấp thoát nước	2
+MT468	Đồ án thi công hệ thống cấp thoát nước	2
+MT469	Vận hành và bảo trì hệ thống cấp thoát nước	2
+MT470	Thực tập vận hành và bảo trì hệ thống cấp thoát nước	2
+MT471	Quy hoạch và quản lý mạng lưới cấp nước	2
+MT472	Đồ án Quy hoạch và quản lý mạng lưới cấp nước	2
+MT473	Chuyên đề 1 - Kỹ thuật công nghệ trong QLĐĐ	2
+MT474	Công nghệ thông tin trong quản lý hệ thống cấp thoát nước	2
+MT475	Công trình thu và trạm bơm	2
+MT476	Đồ án công trình thu và trạm bơm	2
+MT477	Thực tập ngành nghề cấp thoát nước	2
+MT478	Máy thi công	2
+MT479	Tự động hóa trong cấp thoát nước	2
+MT480	Ứng dụng viễn thám trong quy hoạch quản lý cấp thoát nước	2
+MT481	TT. Ứng dụng viễn thám trong quy hoạch quản lý cấp thoát nước	2
+MT482	Chuyên đề 2 - Quản lý nhà nước về đất đai	2
+MT483	Chuyên đề 3 - Quy hoạch và phát triển bền vững	2
+MT484E	Báo cáo chuyên đề - CTN	2
+MT485	Phân tích số liệu tài nguyên đất	2
+MT486	Tiểu luận tốt nghiệp - CTN	6
+MT487	Cấp thoát nước công trình dân dụng và công nghiệp	2
+MT488	Đồ án cấp thoát nước công trình dân dụng và công nghiệp	2
+MT489E	Dự toán công trình cấp thoát nước	2
+MT490	Luận văn tốt nghiệp - CTN	15
+MT491	Trắc địa ảnh số	2
+MT492	Môi giới bất động sản	2
+MT493	Chiến lược đầu tư và quản lý bất động sản	2
+MT494E	Công nghệ số trong quản lý đất đai	2
+MT495	Hệ thống thông tin bất động sản	3
+MT496	Hình họa vẽ kỹ thuật	3
+MT497	Bố cục không gian	2
+MT498	Kỹ thuật địa tin học	2
+MT499	Nguyên lý thiết kế công trình công cộng	2
+MT500E	Pháp luật trong quản lý vùng và đô thị	3
+MT507	Luận văn tốt nghiệp - KTMT	15
+MT508	Luận văn tốt nghiệp - QLDD	15
+MT509	Luận văn tốt nghiệp - QLMT	15
+MT510	Luận văn tốt nghiệp - KHMT	15
+MT511	Luận văn tốt nghiệp - QHV&ĐT	15
+MT512E	Môi trường và phát triển bền vững	2
+MT513E	Anh văn chuyên ngành quy hoạch	2
+MT514	Quy hoạch đô thị	2
+MT515	Quy hoạch vùng và điểm dân cư	3
+MT516	Quản lý và khai thác phát triển không gian đô thị	2
+MT517	Quản lý cơ sở hạ tầng đô thị	2
+MT518	Quản lý môi trường đô thị	2
+MT519	Kiến trúc cảnh quan	2
+MT520	Thiết kế đô thị	3
+MT521E	Hệ thống công trình công cộng phục vụ đô thị	2
+MT522	Kinh tế vùng và đô thị	2
+MT523	Công nghệ không gian	2
+MT524	Mô hình hóa trong quy hoạch vùng và đô thị	2
+MT525	Đồ án 1: quy hoạch khu chức năng đô thị	2
+MT526	Đồ án 2: quy hoạch hạ tầng đô thị	2
+MT527	Đồ án 3: quy hoạch tổng hợp	2
+MT528	Thực tập rèn nghề - Quy hoạch vùng và đô thị	2
+MT529	Thực tập chuyên ngành - Quy hoạch vùng và đô thị	2
+MT530	Tin học ứng dụng Quy hoạch vùng và đô thị	2
+MT531E	Bảo tồn di sản	2
+MT532E	Quy hoạch thích ứng biến đổi khí hậu	2
+MT533E	Báo cáo chuyên đề - Quy hoạch vùng và đô thị	2
+MT534	Chuyên đề 1: Đô thị thông minh	2
+MT535	Chuyên đề 2: Phát triển đô thị bền vững	2
+MT536	Chuyên đề 3: Quản lý dự án	2
+MT537	Chuyên đề 4. Công trình xanh đô thị	2
+MT538	Chuyên đề 5. Quy hoạch tổng thể vùng và đô thị	3
+MT539E	Quản lý rủi ro trong quy hoạch và phát triển đô thị	2
+MT540E	Quản lý và phát triển có sự tham gia của cộng đồng	2
+MT541	Tiểu luận tốt nghiệp - QHV&ĐT	6
+MT542	Thực tập ngành nghề - KTMT	3
+MT543T	Kỹ thuật sinh thái	2
+MT544	Nền móng công trình xử lý môi trường	2
+MT545	Quy hoạch tích hợp	2
+MT546	Tư vấn đầu tư dự án	3
+MT547E	Kỹ năng chuyên ngành quy hoạch vùng và đô thị	2
+MT548E	Chính sách và quản lý nhà ở	2
+MT549E	Đô thị hóa và phát triển	2
+MT550T	Chu trình thủy văn và mô hình ứng dụng	2
+MT551	Thủy văn đô thị	2
+NN096	Nguồn gốc, phân loại và bản đồ đất	3
+NN097	TT. Nguồn gốc, phân loại và bản đồ đất	1
+NN098	TT. Hóa lý và phì nhiêu đất	2
+NN099T	Thống kê và phương pháp thí nghiệm - NNCNC	2
+NN100	Kỹ năng mềm	2
+NN101	Chọn giống gia súc	2
+NN102	Cơ thể học gia súc	2
+NN103E	Di truyền học động vật	2
+NN103H	Di truyền và Chọn giống động vật	2
+NN104	Dinh dưỡng gia súc	2
+NN105	Sinh lý gia súc	3
+NN107	Thức ăn gia súc	2
+NN109	Vi sinh đại cương - CNTY	2
+NN109H	Vi sinh đại cương - CNTY	2
+NN110	Dược lý thú y	2
+NN111E	Phương pháp nghiên cứu khoa học - Nông nghiệp	2
+NN111ET	Phương pháp nghiên cứu khoa học - Nông nghiệp	2
+NN112E	Miễn dịch học	2
+NN114H	Tin học ứng dụng trong Thú y	2
+NN120E	Anh văn chuyên môn - Thú y	2
+NN121H	Nhiệt kỹ thuật	2
+NN122	Sinh hóa A	3
+NN123	Sinh hóa B	2
+NN124	TT. Sinh hóa	1
+NN125	Nhiệt kỹ thuật	2
+NN126E	Di truyền học đại cương	2
+NN127	TT. Di truyền học đại cương	1
+NN128T	Sinh lý thực vật A	3
+NN129	Sinh lý thực vật B	2
+NN129T	Sinh lý thực vật B	2
+NN130	TT. Sinh lý thực vật	1
+NN131	Thổ nhưỡng B	2
+NN134E	Anh văn chuyên môn - KHCT	2
+NN136	Sinh lý và cơ thể gia súc	2
+NN138	Hóa bảo vệ thực vật A	3
+NN140	Trồng trọt đại cương	2
+NN141H	Giải phẫu bệnh lý	2
+NN142	Anh văn chuyên môn hoa viên và cây cảnh	2
+NN143	Hóa bảo vệ thực vật B	2
+NN144	Hóa học thực phẩm	2
+NN145	Thực tập hóa học thực phẩm	1
+NN151	Phụ gia trong chế biến thực phẩm	2
+NN152	Vật lý học thực phẩm	2
+NN152T	Vật lý học thực phẩm	2
+NN153	Thống kê phép thí nghiệm - CNTP	2
+NN155	Hình họa và vẽ kỹ thuật	2
+NN155E	Hình họa và Vẽ kỹ thuật	2
+NN157E	Tin học ứng dụng - CNTP	2
+NN158E	Anh văn chuyên ngành - CNTP	2
+NN164	Đồ án Kỹ thuật thực phẩm	2
+NN165ET	Phương pháp nghiên cứu khoa học - CNTP	2
+NN166	An toàn và ô nhiễm trong sản xuất thực phẩm	2
+NN167	Nước cấp, nước thải kỹ nghệ	2
+NN169T	Xác suất thống kê và phép thí nghiệm - TT&NH	3
+NN172H	Xác suất thống kê và Phép thí nghiệm - CNTY	2
+NN173	Dược lý thú y	3
+NN173H	Dược lý thú y	3
+NN174	Sinh lý bệnh Thú y	2
+NN174H	Sinh lý bệnh Thú y	2
+NN175	Trắc địa đại cương	2
+NN176	Quản lý và khai thác tài nguyên đất đai	2
+NN180	Nguyên lý bảo quản và chế biến thực phẩm	2
+NN184	Xác suất thống kê và phép thí nghiệm - KHCT	3
+NN184T	Xác suất thống kê và phép thí nghiệm - KHCT	3
+NN185	Dinh dưỡng cây trồng	3
+NN186	Cây lúa	3
+NN193	Kỹ thuật Bonsai	2
+NN195	Thực tập giáo trình - KHCT	2
+NN200	Sinh thái đất	2
+NN206	TT. Kỹ thuật thực phẩm (nhà máy)	2
+NN207	Dinh dưỡng người	2
+NN208E	Máy chế biến thực phẩm	2
+NN213	TT. Công nghệ thực phẩm (nhà máy)	3
+NN214	TT. Công nghệ thực phẩm (PTN)	3
+NN225E	Công nghệ thực phẩm truyền thống	2
+NN226T	Bao bì thực phẩm	2
+NN230	Thổ nhưỡng A	3
+NN232	Phì nhiêu đất	2
+NN245	Hệ thống thông tin địa lý - GIS	2
+NN255	Quy hoạch và phát triển nông thôn	2
+NN257E	Lưu trữ và quản lý hồ sơ địa chính	2
+NN259	Phân hạng và định giá đất	2
+NN261	TT. Chuyên ngành - QLĐĐ	2
+NN262	Kiểm kê và chỉnh lý biến động đất đai	2
+NN278	Hoá lý đất	2
+NN286E	Nông nghiệp sạch và bền vững	2
+NN288	Viễn thám đại cương	2
+NN297	Hệ quản trị cơ sở dữ liệu địa chính	2
+NN298	Viễn thám ứng dụng	2
+NN299	Quản lý và phân tích thị trường bất động sản	3
+NN301E	Sản khoa và gieo tinh nhân tạo	2
+NN303	Dịch tễ học thú y	2
+NN303E	Dịch tễ học	2
+NN304E	Bệnh dinh dưỡng	2
+NN304HT	Bệnh dinh dưỡng động vật	2
+NN305	Chăn nuôi gia cầm A	3
+NN306	Chăn nuôi gia súc nhai lại A	3
+NN307	Chăn nuôi heo A	3
+NN308	Chăn nuôi ong	2
+NN309E	Quản lý sản xuất chăn nuôi	2
+NN310	Chăn nuôi chó, mèo	2
+NN311	Bệnh ký sinh gia súc	2
+NN312E	Bệnh truyền nhiễm	2
+NN315	Di truyền quần thể - số lượng	2
+NN316	Chăn nuôi động vật hoang dã	2
+NN317	Nuôi động vật thí nghiệm	2
+NN317H	Nuôi động vật thí nghiệm	2
+NN318E	Vệ sinh môi trường chăn nuôi	2
+NN319	Chăn nuôi thỏ	2
+NN320E	Xây dựng chuồng trại	2
+NN321	Bệnh chó, mèo	2
+NN322E	Kiểm nghiệm sản phẩm động vật	2
+NN323	Luật Thú y	2
+NN324	Vệ sinh thú y	2
+NN324H	Vệ sinh Thú y	2
+NN325	Hệ thống chăn nuôi	2
+NN326E	Khuyến nông	2
+NN336	Chăn nuôi dê	2
+NN337	Chăn nuôi gia cầm B	2
+NN337H	Chăn nuôi gia cầm	2
+NN338	Chăn nuôi gia súc nhai lại B	2
+NN338H	Chăn nuôi gia súc nhai lại	2
+NN339	Chăn nuôi heo B	2
+NN339H	Chăn nuôi heo	2
+NN341HT	Độc chất học Thú y	2
+NN341T	Độc chất học thú y	2
+NN346	Thụ tinh nhân tạo	2
+NN353	Dinh dưỡng và thức ăn gia súc	2
+NN358ET	Bảo quản sau thu hoạch	2
+NN359	Bệnh cây trồng	2
+NN361	Cây ăn trái	2
+NN362	Cây công nghiệp dài ngày	2
+NN363E	Cây công nghiệp ngắn ngày	2
+NN368E	Kiểm định hạt giống	2
+NN369	Cây lúa	2
+NN370	Cây màu	2
+NN371	Cây rau	2
+NN372	Cây thức ăn gia súc	2
+NN373E	Chọn giống cây trồng	2
+NN373ET	Chọn giống cây trồng	2
+NN374	Côn trùng nông nghiệp	2
+NN375	Công nghệ sinh học trong nông nghiệp	2
+NN375E	Công nghệ sinh học trong nông nghiệp	2
+NN376	Dinh dưỡng cây trồng	2
+NN376T	Dinh dưỡng cây trồng	2
+NN377E	Hệ thống canh tác	2
+NN378	IPM trong bảo vệ thực vật	2
+NN380E	Kỹ thuật sản xuất rau sạch	2
+NN382	Nhân giống vô tính	2
+NN384	Ô nhiễm đất đai	2
+NN388	Sinh l‎ý Stress thực vật	2
+NN389E	Sản xuất cây trồng quy mô trang trại	2
+NN390E	Thực hành nông nghiệp tốt (GAP)	2
+NN401	Xử lý ra hoa	2
+NN409	Bệnh cây đại cương	2
+NN414	Cỏ dại	2
+NN416	Động vật hại trong nông nghiệp	2
+NN420	Thực tập giáo trình - BVTV	2
+NN425	Ứng dụng GIS và Viễn thám trong BVTV	2
+NN427	Phòng trừ sinh học côn trùng	2
+NN428E	Vi sinh vật và chuyển hóa vật chất trong đất	2
+NN429	Phòng trừ sinh học bệnh cây trồng	2
+NN432	Chọn giống cây trồng trong bảo vệ thực vật	2
+NN434	Bệnh sau thu hoạch	2
+NN438	Côn trùng - HV và CC	2
+NN439	Bệnh cây - HV và CC	2
+NN442	Sinh học phân tử cây trồng	2
+NN444	Cỏ dại và cách phòng trừ	2
+NN446	Kiến trúc phong cảnh	2
+NN447	Thiết bị và công cụ làm vườn	2
+NN448	Quy hoạch, thiết kế và bảo dưỡng cảnh quan	2
+NN450	Hệ thống tưới tiêu	2
+NN452	Cỏ và cây cảnh đô thị	2
+NN453	Nghệ thuật hoa viên	2
+NN460	Kỹ thuật trang trí nội thất	2
+NN464	Kỹ thuật nhân giống rau hoa quả và quản lý vườn ươm	2
+NN473	Quản lý dịch hại rau hoa quả	2
+NN477	Cây dược liệu	2
+NN483E	Bệnh và côn trùng hại cây rừng	2
+NN486	Hệ sinh thái đất ngập nước	2
+NN491	Quan hệ đất - nước - cây trồng	2
+NN492	Thực hành chăn nuôi tốt (GAHP)	2
+NN495E	Công nghệ sinh học vật nuôi	2
+NN496E	Quản lý giống vật nuôi	2
+NN497	Công nghệ giống vật nuôi	2
+NN498E	Công nghệ sinh sản vật nuôi	2
+NN499E	Quyền lợi và tập tính học động vật	2
+NN507	Đánh giá và phân tích số liệu đất, phân và cây	2
+NN508	Đánh giá đất	2
+NN513	Công nghệ sinh học trong Bảo vệ thực vật	2
+NN514	Sản xuất cây trồng sạch	2
+NN515E	Mỹ học ứng dụng	2
+NN518	Kỹ thuật trồng hoa và cây cảnh	3
+NN521	Phong thủy	2
+NN522	Dinh dưỡng hoa và cây cảnh	2
+NN529	Phì nhiêu đất B	2
+NN529T	Phì nhiêu đất B	2
+NN531	Phân hữu cơ vi sinh	2
+NN532	Kiểm nghiệm dược thú y	2
+NN532H	Kiểm nghiệm dược Thú y	2
+NN533E	Dược liệu	2
+NN533H	Dược liệu	2
+NN536	Công nghệ sinh học thú y	2
+NN539	Biến đổi khí hậu và sử dụng đất	2
+NN542	Phì nhiêu đất	3
+NN546E	Đất Việt Nam và đất thế giới	2
+NN547	Dinh dưỡng gia súc	3
+NN548	Thực tập giáo trình Nông học	2
+NN549E	Phương pháp nghiên cứu khoa học nông nghiệp - CNTY	2
+NN565T	Thực tập cơ sở - RHQ&CQ	2
+NN566T	Thực tập giáo trình - RHQ&CQ	2
+NN567	Kỹ thuật cắm hoa và trình bày mâm trái cây	2
+NN570E	Tiểu luận tốt nghiệp - Thú y	6
+NN570H	Tiểu luận tốt nghiệp - Thú y	6
+NN572	Luận văn tốt nghiệp - Thú y	15
+NN572H	Luận văn tốt nghiệp - Thú y	15
+NS096	Chọn giống động vật	2
+NS097	Cơ thể học động vật	2
+NS098	Côn trùng đại cương	2
+NS099	TT. Côn trùng và bệnh cây đại cương	2
+NS100	Thực tập nhận thức ngành nghề (ngoài trường)	1
+NS102	Cây hoa kiểng	2
+NS109	Cơ học lưu chất và vật liệu rời	2
+NS112	Tổng kê vật chất và năng lượng	2
+NS113	Thực tập kỹ thuật thực phẩm (PTN)	2
+NS114	Kỹ thuật các quá trình sinh học trong chế biến thực phẩm	2
+NS117	Chẩn đoán lâm sàng	2
+NS117H	Chẩn đoán lâm sàng	2
+NS119	Miễn dịch học	3
+NS120	Kiểm nghiệm sản phẩm động vật	3
+NS120H	Kiểm nghiệm sản phẩm động vật	2
+NS121	Hoá sinh động vật	3
+NS121H	Hóa sinh động vật	3
+NS122	Sinh lý cây trồng trong điều kiện bất lợi	2
+NS122T	Sinh lý cây trồng trong điều kiện bất lợi	2
+NS123H	Tổng kê vật chất và năng lượng	2
+NS124H	Hóa học thực phẩm	3
+NS125H	Vi sinh thực phẩm	3
+NS126HE	Sinh hoạt học thuật 1	1
+NS127H	Thiết kế thí nghiệm	2
+NS128H	An toàn và ô nhiễm trong sản xuất thực phẩm	2
+NS129H	Các quá trình truyền khối	2
+NS130H	Kỹ thuật các quá trình sinh học trong chế biến thực phẩm	2
+NS132	Kỹ thuật lò hơi	2
+NS133	Cơ học lưu chất và vật liệu rời	2
+NS134	Lý thuyết điều khiển tự động trong CNTP	3
+NS135T	Mô hình hóa và mô phỏng trong CNTP	2
+NS136	Máy và thiết bị chế biến thực phẩm	2
+NS137	Đồ án quá trình và thiết bị CNTP	2
+NS138	Thực tập thiết bị chế biến thực phẩm (nhà máy)	3
+NS140	Kỹ thuật phân tích hiện đại trong CNTP	2
+NS141	Nhập môn Ngành Thú y	2
+NS141E	Nhập môn ngành Thú y	2
+NS142	Truyền nhiệt trong chế biến thực phẩm	2
+NS143E	Hình họa và vẽ kỹ thuật - CNTP	3
+NS144	Kỹ thuật canh tác cây trồng giảm phát thải	2
+NS145E	Chất điều hòa sinh trưởng thực vật ứng dụng trong nông nghiệp	2
+NS146	Chăn nuôi Yến	2
+NS147	Nhập môn ngành Khoa học cây trồng	2
+NS148	Thực tập cơ sở: Quản lý và sản xuất cây trồng	2
+NS149	Thực tập cơ sở: Ứng dụng công nghệ cao trong Nông nghiệp	3
+NS150T	Nông nghiệp đô thị	2
+NS151	Vi sinh vật liên kết thực vật	2
+NS152	Kỹ thuật canh tác cây trồng trong nông nghiệp hữu cơ	2
+NS153	Ứng dụng công nghệ thông tin và truyền thông trong quản lý và sản xuất nông nghiệp	2
+NS154	Canh tác cây thủy sinh	2
+NS156	Nhập môn Bảo vệ thực vật	2
+NS157E	Sinh thái học trong Bảo vệ thực vật	2
+NS158	IPM và IPHM trong bảo vệ thực vật 1	2
+NS159	Thực tập cơ sở - BVTV 1	2
+NS161E	Kiểm dịch thực vật	2
+NS162E	Bệnh hại cây trồng có nguồn gốc từ đất	2
+NS163	IPM và IPHM trong bảo vệ thực vật 2	3
+NS164E	Nhập môn Công nghệ rau hoa quả và cảnh quan	2
+NS165	Hình họa và Vẽ kỹ thuật - CQ	2
+NS166	Đồ họa ứng dụng trong thiết kế cảnh quan 1	2
+NS167	Đồ họa ứng dụng trong thiết kế cảnh quan 2	2
+NS168	Đồ án thiết kế cảnh quan 1	2
+NS169	Đồ án thiết kế cảnh quan 2	2
+NS170T	Thiết kế và thống kê thí nghiệm - KHĐ	3
+NS171	Kiểm nghiệm hàng hóa và nông sản	2
+NS172	Sản xuất cây lúa	3
+NS173	Hóa sinh ứng dụng trong chăn nuôi	2
+NS173H	Cơ thể học động vật	3
+NS174	TT. Hóa sinh ứng dụng trong chăn nuôi	1
+NS174H	Dinh dưỡng và Thức ăn vật nuôi	3
+NS175	Công nghệ thức ăn vật nuôi	3
+NS175H	Sinh lý động vật	3
+NS176	Miễn dịch và Công nghệ vaccine	3
+NS177	TT. Công nghệ thức ăn vật nuôi	1
+NS177H	Bệnh học phân tử	2
+NS178E	Vi sinh vật ứng dụng trong chăn nuôi	2
+NS178H	Nội khoa động vật	3
+NS179	Thống kê và xử lý số liệu	3
+NS179H	Sản khoa động vật	3
+NS180	Ngoại khoa động vật	3
+NS181	Thực tập thực tế 1	4
+NS182	Thực tập thực tế 2	5
+NS183	Thực tập thực tế 3	6
+NS184	TT. Thống kê và xử lý số liệu	2
+NS184H	Thực hành Thú y 1	3
+NS185E	Chuồng trại và thiết bị chăn nuôi	3
+NS185H	Thực hành Thú y 2	5
+NS186	Thực hành Thú y 3	5
+NS187	TT. Chuồng trại và thiết bị chăn nuôi	1
+NS187H	Bệnh ký sinh động vật	3
+NS188E	Anh văn chuyên ngành Nông nghiệp công nghệ cao	3
+NS189	Thực tập cơ sở - NNCNC	5
+NS193	Kỹ thuật sấy và bảo quản nông sản thực phẩm	2
+NS195	Thực hành nghề nghiệp	4
+NS196	Niên luận - CNTY	2
+NS197E	Phương pháp nghiên cứu khoa học nông nghiệp - TY	2
+NS197H	Phương pháp Nghiên cứu Khoa học - TY	2
+NS199	Khía cạnh xã hội của công nghệ sinh học trong nông nghiệp	2
+NS200	Kỹ thuật IoTs và ứng dụng	2
+NS202HET	Phương pháp nghiên cứu khoa học - CNTP	2
+NS205	Sinh học ứng dụng đại cương	2
+NS206	Sinh hóa học ứng dụng	2
+NS207	TT. Sinh hóa học ứng dụng	1
+NS208	Sinh lý học thực vật ứng dụng	2
+NS210	Anh văn chuyên môn-SHƯD	2
+NS211	Phân bón và khuyến cáo bón phân	2
+NS213	Thiết bị thu hoạch và bảo quản nông sản	2
+NS215	Dụng cụ và thiết bị đo - CNSTH	2
+NS220	Thực tập hoạt động sau thu hoạch (Ngoài trường)	2
+NS221	Xử lý và tồn trữ lạnh nông sản	2
+NS222	Sinh lý nông sản sau thu hoạch	2
+NS223	Công nghệ sau thu hoạch ngũ cốc	2
+NS223E	Công nghệ sau thu hoạch nông sản	2
+NS224	Công nghệ sau thu hoạch rau quả	2
+NS225E	Anh văn chuyên ngành Nông học	2
+NS227E	Bảo vệ thực vật trong canh tác hữu cơ	2
+NS228E	Bảo vệ thực vật trong nông nghiệp công nghệ cao	2
+NS230HT	Bệnh truyền lây giữa động vật và người	2
+NS230T	Bệnh truyền lây giữa động vật và người	2
+NS238	Côn trùng gây hại sau thu hoạch	2
+NS239T	Chuyên đề Công nghệ chế biến và bảo quản rau củ quả	2
+NS240E	Công nghệ chế biến thực phẩm đóng hộp	2
+NS241	Công nghệ hạt giống	2
+NS242	Công nghệ sản xuất phân bón cơ bản	2
+NS245E	Công nghệ sinh sản động vật	2
+NS245H	Công nghệ sinh sản động vật	2
+NS246	Công nghệ sinh thái trong bảo vệ thực vật	2
+NS247E	Công tác kỹ sư công nghệ thực phẩm	2
+NS248	Đánh giá cảm quan và thị hiếu người tiêu dùng	2
+NS249	Đánh giá chất lượng đất	2
+NS250	Điện kỹ thuật	2
+NS251	Độc chất học thực phẩm	2
+NS251E	Độc chất học thực phẩm	2
+NS256E	Hóa dược Thú y	2
+NS257	Khảo nghiệm và kiểm định phân bón	2
+NS258	Kỹ thuật sản xuất cây ăn trái và rau sạch	3
+NS259	Kỹ thuật thông gió kho bảo quản	2
+NS260E	Luật chăn nuôi - thú y	2
+NS262	Mô hình hóa trong sử dụng đất và phân bón	2
+NS263E	Mô học động vật	2
+NS264E	Nông nghiệp công nghệ cao	2
+NS265	Phương pháp chuyển giao công nghệ trong nông nghiệp	2
+NS266	Phương pháp đánh giá tác động môi trường trong canh tác cây trồng	2
+NS267	Phương pháp thủy canh	2
+NS268	Quản lý cây trồng tổng hợp (ICM)	2
+NS268E	Quản lý Cây trồng tổng hợp (ICM)	2
+NS269	Quản lý chuỗi sản xuất thực phẩm	2
+NS270E	Quản lý dịch bệnh trên động vật và Một sức khỏe	2
+NS271	Quản lý dịch bệnh trên đàn gia súc và Một sức khỏe	2
+NS272E	Quy định trong sản xuất và kinh doanh phân bón	2
+NS274	Seminar chuyên ngành	2
+NS275E	Sinh hoạt học thuật ngành nghề	2
+NS276	Sinh học động vật	2
+NS276H	Sinh học động vật	2
+NS277E	Sinh học phân tử	2
+NS278	TT. Sinh học phân tử đại cương	1
+NS279E	Thiết bị và dụng cụ Thú y	2
+NS279H	Thiết bị và Dụng cụ Thú y	2
+NS280E	Thú y chuyên ngành 1	4
+NS280H	Thú y Chuyên ngành 1	4
+NS281E	Thú y chuyên ngành 2	5
+NS281H	Thú y Chuyên ngành 2	5
+NS283	Thực tập giáo trình - chăn nuôi	2
+NS284H	Thực tập ngoài trường 1	3
+NS285E	Thực tập ngoài trường 2	5
+NS285H	Thực tập ngoài trường 2	5
+NS286E	Thực tập ngoài trường 3	5
+NS286H	Thực tập ngoài trường 3	5
+NS287	Thực tập nhận thức ngành nghề - ngoài trường	2
+NS291	Truyền khối	2
+NS292	Truyền nhiệt	2
+NS293	Bệnh hại cây trồng 1	3
+NS295	Vi sinh thú y	3
+NS295H	Vi sinh Thú y	3
+NS296E	Vi sinh trong Chăn nuôi - Thú y	2
+NS297E	Xây dựng và đánh giá dự án nông nghiệp	2
+NS298	Xử lý ra hoa cây cảnh	2
+NS299	Suy thoái đất và biện pháp cải thiện	3
+NS299T	Suy thoái đất và biện pháp cải thiện	3
+NS300	Sinh học phân tử đại cương	2
+NS300H	Phụ gia trong chế biến thực phẩm	2
+NS301	Côn trùng hại cây trồng 1	3
+NS301HT	Bao bì thực phẩm	2
+NS302H	Phân tích cảm quan và thị hiếu người tiêu dùng	2
+NS303H	Nguyên lý bảo quản và chế biến thực phẩm	2
+NS304HT	Các quá trình nhiệt độ cao trong chế biến thực phẩm	2
+NS305HT	Các quá trình nhiệt độ thấp trong chế biến thực phẩm	2
+NS306H	Kỹ thuật lên men thực phẩm	2
+NS307	Tuyến trùng nông nghiệp	2
+NS307H	Dinh dưỡng người	2
+NS308	Phương pháp giám định côn trùng hại cây trồng	2
+NS308HE	Sinh hoạt học thuật 2	1
+NS309	Phương pháp giám định bệnh hại cây trồng	2
+NS309H	Công nghệ chế biến thịt và thủy sản	3
+NS310	Virút hại thực vật	2
+NS310H	Công nghệ chế biến các sản phẩm từ sữa và thức uống	3
+NS311E	Anh văn chuyên môn - BVTV	2
+NS311H	Công nghệ chế biến và bảo quản ngũ cốc	3
+NS312H	Công nghệ chế biến và bảo quản rau quả	3
+NS313E	Kỹ năng giao tiếp trong nông nghiệp	2
+NS313HET	Thực phẩm chức năng	2
+NS314	Côn trùng hại cây trồng 2	3
+NS314HT	Phát triển sản phẩm mới	2
+NS315	Bệnh hại cây trồng 2	4
+NS315H	Quản trị chuỗi chất lượng cung ứng thực phẩm	2
+NS316	Cỏ dại 2	3
+NS316HET	Sản xuất sạch hơn	2
+NS317H	Thực tập công nghệ chế biến thực phẩm (nhà máy)	3
+NS318	Hóa học thực phẩm	3
+NS318H	Quản lý chất lượng và Luật thực phẩm	2
+NS319	Vi sinh thực phẩm	2
+NS320	Mô học động vật	3
+NS320H	Mô học động vật	3
+NS326	Kỹ thuật lên men thực phẩm	2
+NS326T	Kỹ thuật lên men thực phẩm	2
+NS328	Quản lý chất lượng và luật thực phẩm	2
+NS329	Ngoại khoa gia súc	3
+NS333E	Công nghệ chế biến dầu - mỡ thực phẩm	2
+NS335E	Thực phẩm chức năng	2
+NS335ET	Thực phẩm chức năng	2
+NS336T	Phát triển sản phẩm mới	2
+NS339	Quản lý và tận dụng phụ phẩm trong sản xuất thực phẩm	2
+NS339E	Quản lý và tận dụng phụ phẩm trong sản xuất thực phẩm	2
+NS340E	Môi trường - An ninh lương thực và an toàn thực phẩm	2
+NS341E	Truy xuất nguồn gốc	2
+NS343	Anh văn chuyên môn - CNTY	2
+NS346E	Kỹ thuật chăn nuôi	4
+NS347E	Công nghệ sinh học CNTY	3
+NS348E	Bệnh vật nuôi nhiệt đới	3
+NS349	Nội khoa gia súc	3
+NS350	Thực hành trang trại	5
+NS351	Thực hành Bệnh xá	5
+NS353	Chẩn đoán cận lâm sàng	2
+NS353E	Chẩn đoán cận lâm sàng	2
+NS353H	Chẩn đoán cận lâm sàng	2
+NS361	Bệnh truyền nhiễm	3
+NS362	Bệnh ký sinh gia súc	3
+NS369	Kỹ thuật trồng hoa lan	2
+NS374E	Ứng dụng các hoạt chất thiên nhiên	2
+NS375	TT. Ứng dụng các hoạt chất thiên nhiên	1
+NS376T	Kỹ thuật sinh học	2
+NS379	Thực tập giáo trình SHƯD	2
+NS380	Phân tích sinh hóa hiện đại	2
+NS381	Vi sinh vật trong nông nghiệp	2
+NS382	Tế bào học ứng dụng	2
+NS383	Công nghệ sinh học thực vật	2
+NS384	Công nghệ sau thu hoạch rau hoa quả	2
+NS387	Công nghệ sau thu hoạch thủy hải sản	2
+NS388	Công nghệ sau thu hoạch súc sản	2
+NS389	Quản lý sản xuất trong công nghiệp thực phẩm	2
+NS389E	Quản lý sản xuất trong công nghiệp thực phẩm	2
+NS390	Thực tập kỹ thuật sau thu hoạch (Nhà máy)	3
+NS391	Thực tập kỹ thuật sau thu hoạch (PTN)	3
+NS392E	Kỹ thuật chế biến món ăn	2
+NS393T	Chuyên đề Công nghệ chế biến và bảo quản ngũ cốc	2
+NS399	Ứng dụng vi sinh trong xử lý ô nhiễm hữu cơ	2
+NS400	Thực tập cơ sở - SHƯD	3
+NS401	Hệ thống canh tác nông nghiệp hiện đại	2
+NS402	Ứng dụng cơ giới hóa trong nông nghiệp	2
+NS403	Ứng dụng công nghệ cao trong quản lý đất và bón phân	2
+NS404	Cảm biến và điều khiển ứng dụng trong nông nghiệp	2
+NS405E	Ứng dụng công nghệ cao trong quản lý nước cho cây trồng	2
+NS406	Thu thập, điều khiển giám sát và ứng dụng dữ liệu lớn trong nông nghiệp	2
+NS407ET	Ánh sáng nhân tạo ứng dụng trong nông nghiệp	2
+NS408	Ứng dụng công nghệ blockchain trong truy xuất nguồn gốc sản phẩm	2
+NS409	Quản lý và kiểm soát chất lượng sản phẩm	2
+NS410	Chọn tạo giống cây trồng bằng kỹ thuật sinh học phân tử	2
+NS411	Ứng dụng công nghệ sinh học trong nông nghiệp	2
+NS412	Quản trị sản xuất nông nghiệp	2
+NS416	Trồng cây không sử dụng đất	2
+NS417E	Quản lý dịch hại	3
+NS418E	Xây dựng và đánh giá dự án nông nghiệp	2
+NS419	Thực hành cơ sở	3
+NS422	Quản lý sản xuất nông nghiệp	3
+NS423E	Công nghệ thông tin trong nông nghiệp	2
+NS425	Tiểu luận tốt nghiệp - BVTV	6
+NS426	Tiểu luận tốt nghiêp - CN	6
+NS427	Tiểu luận tốt nghiệp - CNTP	6
+NS427H	Tiểu luận tốt nghiệp - CNTP	6
+NS428	Tiểu luận tốt nghiệp - CNSTH	6
+NS429	Tiểu luận tốt nghiệp - KHCT	6
+NS430E	Tiểu luận tốt nghiệp - NNCNC	6
+NS431E	Tiểu luận tốt nghiệp - SHUD	6
+NS432	Tiểu luận tốt nghiệp - KHD	6
+NS433E	Tiểu luận tốt nghiệp - RHQ	6
+NS434	Tiểu luận tốt nghiệp - NH	6
+NS439	Thực tập cơ sở - GCT	3
+NS440	Thực tập kỹ thuật cơ sở công nghệ thực phẩm	3
+NS441	Thực tập cơ sở CNSTH (nhà máy)	3
+NS448	Thực tập thực tế - KHD	3
+NS449E	Anh văn chuyên ngành khoa học đất	3
+NS450	Thực tập rèn nghề - KHD	4
+NS452	Bệnh truyền nhiễm gia súc	2
+NS452H	Bệnh truyền nhiễm gia súc	2
+NS453	Bệnh truyền nhiễm gia cầm	2
+NS453H	Bệnh truyền nhiễm gia cầm	2
+NS454E	Hệ thống chăn nuôi và sinh thái vật nuôi	2
+NS454H	Bệnh thú cưng	3
+NS455	TT. Hệ thống chăn nuôi và sinh thái vật nuôi	1
+NS455H	Dược lâm sàng	2
+NS456	Sinh thái học cây trồng	2
+NS456H	Một sức khỏe	2
+NS457	Sản xuất và quản lý cây rau	3
+NS457H	Chăn nuôi thú cưng	2
+NS458	Thực hành Sản xuất và quản lý cây rau	2
+NS458H	Quản trị Nghề Thú y	2
+NS459	Sản xuất và quản lý cây ăn trái	3
+NS459H	Phúc lợi và Tập tính học động vật	2
+NS460	Thực hành Sản xuất và quản lý cây ăn trái	2
+NS460H	Bệnh học Thủy sản	2
+NS461	Nấm ăn và nấm dược liệu	2
+NS462	Thực tập thực tế - NNCNC	3
+NS463	Cỏ dại	3
+NS464	Thực tập cơ sở - BVTV 2	2
+NS465	Công nghệ sản xuất phân bón vô cơ - lý thuyết	3
+NS466	Đồ án Công nghệ sản xuất phân bón vô cơ	2
+NS467	Đánh giá thích nghi đất cho cây trồng	2
+NS468	Chăn nuôi gia súc	3
+NS469	TT. Chăn nuôi gia súc	1
+NS470	Sinh lý động vật	3
+NS471	Giải phẩu bệnh lý	2
+NS472	Nội khoa động vật	3
+NS473	Sản khoa động vật	3
+NS474	Ngoại khoa động vật	3
+NS476	Bệnh ký sinh động vật	3
+NS477	Bệnh thú cưng	3
+NS478T	Bệnh dinh dưỡng động vật	2
+NS479	Thực hành Thú y cơ sở	3
+NS480E	Thực tập ngoài trường 1	3
+NS506HE	Quản lý và tận dụng phụ phẩm trong sản xuất thực phẩm	2
+NS512	Luận văn tốt nghiệp - BVTV	15
+NS513	Luận văn tốt nghiệp - CN	15
+NS514	Luận văn tốt nghiệp - CNTP	15
+NS514H	Luận văn tốt nghiệp - CNTP	15
+NS515	Luận văn tốt nghiệp - CNSTH	15
+NS516	Luận văn tốt nghiệp - KHCT	15
+NS517	Luận văn tốt nghiệp - NNCNC	15
+NS518	Luận văn tốt nghiệp - SHUD	15
+NS519	Luận văn tốt nghiệp - KHD	15
+NS520	Luận văn tốt nghiệp - RHQ	15
+NS521	Luận văn tốt nghiệp - NH	15
+SE101	Kỹ năng giao tiếp và ứng xử sư phạm của giáo viên mầm non	2
+SE102	Thực tế ngoài trường giáo dục mầm non	2
+SE103	Phương pháp đọc kể diễn cảm	2
+SE104E	Công nghệ giáo dục	2
+SE105	Phương pháp nghiên cứu khoa học giáo dục tiểu học	2
+SE106	Cơ sở khoa học tự nhiên	2
+SE107E	Cơ sở khoa học xã hội	2
+SE108	Toán sơ cấp ở tiểu học	2
+SE109	Ngữ pháp và phong cách tiếng Việt	3
+SE110	Thực tế ngoài trường giáo dục tiểu học	2
+SE111	Tập giảng Tiếng Việt	2
+SE112	Lý luận dạy học Tiếng Việt tiểu học	2
+SE113	Phương pháp dạy học Tiếng Việt tiểu học	3
+SE114	Lí luận và phương pháp dạy học công nghệ ở tiểu học	2
+SE115	Lý luận dạy học toán tiểu học	2
+SE116	Phương pháp dạy học toán tiểu học	3
+SE117	Âm nhạc và phương pháp dạy học âm nhạc giáo dục tiểu học	2
+SE118	Tổ chức hoạt động Giáo dục STEM/STEAM trong trường tiểu học	2
+SE119	Trí tuệ nhân tạo trong giáo dục Toán học	2
+SE120	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học Toán	2
+SE121	Giáo dục STEM	2
+SE122	Các chủ đề dạy học Đại số và Giải tích	3
+SE123	Các chủ đề dạy học Hình học và đo lường	3
+SE124	Các chủ đề dạy học Thống kê và Xác suất	3
+SE125	Lập trình trong Toán học	3
+SE126	Toán rời rạc trong dạy học Tin học	4
+SE127E	Đạo đức, pháp luật, văn hóa trong môi trường số	2
+SE128	Phân tích và thiết kế thuật toán trong dạy học Tin học	3
+SE129E	Lập trình trực quan	2
+SE130	Lập trình Python trong giáo dục phổ thông	3
+SE131E	AI và Công nghệ đa phương tiện trong giáo dục	2
+SE132	STEM Robotics trong trường phổ thông	3
+SE133	Công nghệ Web và Ứng dụng	3
+SE134	Nghệ thuật số và Thiết kế web	3
+SE135	Dạy học chuyên đề theo định hướng Khoa học máy tính	3
+SE136	Dạy học chuyên đề theo định hướng Tin học ứng dụng	3
+SE137E	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học Tin học	2
+SE138	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học Vật lý	2
+SE139	Toán cơ sở cho Vật lý	3
+SE140	Toán nâng cao cho Vật lý	2
+SE141	Cơ học đại cương	4
+SE142	Điện từ học: Lý thuyết và ứng dụng	4
+SE143	Quang học đại cương	2
+SE144	Thực tập Điện - Quang	2
+SE145	Vật lý nguyên tử và hạt nhân đại cương	3
+SE146	Lý luận dạy học Vật lý	2
+SE147	Kỹ thuật điện Vật lý	2
+SE148	Thực tập Kỹ thuật điện Vật lý	1
+SE149	Kỹ thuật điện tử cơ bản	3
+SE150	Thực tập kỹ thuật điện tử cơ bản	2
+SE151	Cơ học lượng tử	4
+SE152	Giáo dục STEM trong dạy học Vật lý	2
+SE153	Vật lý y sinh	2
+SE154	Khoa học vật liệu	2
+SE155	Phương pháp nghiên cứu khoa học trong hóa học	2
+SE156	Vật lý cho Hóa học	2
+SE157	Cơ sở nhiệt động hóa học - Hóa keo	3
+SE158	Hóa học vô cơ 1	3
+SE159	Hóa học hữu cơ 1	3
+SE160E	Lý luận dạy học Hóa học	2
+SE161	Động học phản ứng và Điện hóa học	3
+SE162	Hóa học vô cơ 2	3
+SE163	Hóa học phân tích 1	3
+SE164	Hóa học phân tích 2	3
+SE165	Hóa học hữu cơ 2	3
+SE166	Phổ nghiệm hữu cơ cơ bản	2
+SE167	Tham quan thực tế Hóa học	1
+SE168	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học Hóa học	2
+SE169	Phát triển chương trình giáo dục Sinh học	2
+SE170	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học Sinh học	2
+SE171	Giáo dục STEM trong dạy học Sinh học	2
+SE172	Phương pháp nghiên cứu khoa học xã hội	2
+SE173	Địa lý đại cương	2
+SE174	Hán Nôm cơ sở	2
+SE175	Lịch sử Thế giới cổ trung đại	3
+SE176	Lịch sử Thế giới cận đại	4
+SE177	Lịch sử Thế giới hiện đại	4
+SE178	Lịch sử Việt Nam cổ trung đại	4
+SE179	Lịch sử Việt Nam cận đại	4
+SE180	Lịch sử Việt Nam hiện đại	3
+SE181	Nghiên cứu và giảng dạy lịch sử địa phương	2
+SE182	Lý luận dạy học Lịch sử	2
+SE183	Phát triển chương trình môn Lịch sử	2
+SE184	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học lịch sử	2
+SE185	Cải cách và đổi mới ở châu Á từ thế kỉ XIX đến XX	2
+SE186	Lịch sử tư tưởng Việt Nam và thế giới	2
+SE187	Nghệ thuật quân sự trong lịch sử Việt Nam	2
+SE188	Giáo dục Địa lý theo định hướng phát triển bền vững	2
+SE189	Thực hành kỹ năng giáo dục	2
+SE190	Khí quyển và Thủy quyển	4
+SE191	Thổ nhưỡng quyển và Sinh quyển	4
+SE192	Phát triển chương trình Địa lý	2
+SE193	Địa lý kinh tế - xã hội thế giới	3
+SE194	Địa lý khu vực và quốc gia	3
+SE195	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học Địa lý	2
+SE196	Lịch sử đại cương	2
+SE197	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học Khoa học tự nhiên	2
+SE198	Lịch sử Thế giới	4
+SE199	Lịch sử Thế giới trong chương trình THCS	2
+SE200	Lịch sử Việt Nam	4
+SE201	Lịch sử Việt Nam trong chương trình THCS	2
+SE202	Phương pháp nghiên cứu khoa học Ngữ văn	2
+SE203	Tổ chức hoạt động trải nghiệm và hướng nghiệp trong dạy học Ngữ văn	2
+SE204	Ngữ pháp tiếng Việt	3
+SE205	Văn bản và Ngữ pháp văn bản tiếng Việt	2
+SE206	Ngữ nghĩa học tiếng Việt	2
+SE207	Toán cơ bản	2
+SE208	Tiếng Việt cơ bản	2
+SE209	Phát triển chương trình Ngữ văn	2
+SG001	Nhập môn Tâm lý học	3
+SG002	Phương pháp học tập ở bậc đại học	2
+SG003	Tổ chức hoạt động học tập	2
+SG004	Tâm lý học giao tiếp	3
+SG005	Sinh lý học thần kinh cấp cao	4
+SG006	Tư vấn tâm lý học đường	2
+SG007	Cơ - Nhiệt	4
+SG008	Điện - Từ	3
+SG009	Quang học - Sư phạm Khoa học tự nhiên	3
+SG010	Hóa học cơ sở	3
+SG011E	Quản lý hành chính Nhà nước và quản lý ngành GD&ĐT	2
+SG012	Hóa vô cơ	3
+SG013	Hóa hữu cơ	3
+SG014	Hóa sinh	2
+SG015	Sinh học tế bào	3
+SG016	Sinh học cơ thể động vật	4
+SG017	Sinh học cơ thể thực vật	4
+SG018	Con người và sức khỏe	2
+SG019	Toán cho Khoa học tự nhiên	2
+SG020	Nhập môn lịch sử - địa lý	2
+SG021	Cơ sở địa lý tự nhiên	3
+SG022	Cơ sở địa lý kinh tế xã hội	3
+SG029	Địa lý và lịch sử Đông Nam Á	2
+SG030	Phương pháp dạy học Lịch sử - Địa lý	2
+SG031	Đánh giá kết quả học tập Lịch sử - Địa lý	2
+SG032	Thiết kế chương trình Lịch sử - Địa lý	2
+SG033	Nguyên lý dạy học Lịch sử - Địa lý	2
+SG034E	Ứng dụng công nghệ thông tin trong dạy học Lịch sử - Địa lý	2
+SG035	Kỹ thuật dạy học Lịch sử - Địa lý	2
+SG036	Tập giảng Lịch sử - Địa lý	2
+SG037	Địa lý Việt Nam	3
+SG038	Địa lý Thế giới	3
+SG039	Thực tế ngoài trường Lịch sử - Địa lý	3
+SG040E	Lịch sử và địa lý địa phương	2
+SG041	Anh văn chuyên môn Lịch sử - Địa lý	2
+SG042E	Chủ đề tích hợp Lịch sử - Địa lý ở trường THCS	2
+SG043	Tổ chức hoạt động trải nghiệm Lịch sử - Địa lý	2
+SG044	Ứng dụng GIS trong dạy học lịch sử - địa lý	2
+SG045	Lịch sử văn minh	2
+SG046	Biển đảo Việt Nam	2
+SG047	Vật lý mô phỏng	2
+SG048	Nhập môn công nghệ sinh học	2
+SG049	Vi sinh học	2
+SG050	Anh văn chuyên môn - Sư phạm Khoa học tự nhiên	2
+SG051E	Trò chơi hình thành biểu tượng toán cho trẻ mầm non	2
+SG052E	Tiếng Anh dành cho trẻ em mẫu giáo	2
+SG053	Dàn dựng ca múa nhạc ở trường mầm non	2
+SG054	Mỹ thuật ứng dụng ở trường mầm non	2
+SG055E	Xây dựng môi trường tâm lý xã hội ở trường mầm non	2
+SG056	Tổ chức hoạt động trải nghiệm ở trường mầm non	2
+SG058	Tâm lý học trẻ em lứa tuổi mầm non	3
+SG059	Giáo dục học mầm non	3
+SG060	Giáo dục hòa nhập trong trường mầm non	2
+SG061	Giáo dục sớm trong bối cảnh giáo dục mầm non	2
+SG063	Phương pháp nghiên cứu khoa học giáo dục mầm non	2
+SG064	Lý luận dạy học mầm non	2
+SG065E	Vệ sinh và phòng bệnh trẻ em	2
+SG066E	Dinh dưỡng trẻ em	2
+SG067E	Sinh lý học trẻ em	2
+SG068	Âm nhạc cơ bản	2
+SG069	Nhạc cụ	2
+SG070	Nghệ thuật múa cơ bản	2
+SG071	Nghệ thuật tạo hình cơ bản	3
+SG072	Văn học trẻ em	2
+SG076	Phát triển chương trình giáo dục mầm non	2
+SG077E	Giáo dục kỹ năng sống cho trẻ mầm non	2
+SG078	Giáo dục cảm xúc xã hội cho trẻ mầm non	2
+SG079	Sơ cứu và phòng chống tai nạn thương tích cho trẻ mầm non	2
+SG080	Phương pháp nghiên cứu khoa học Tự nhiên	2
+SG081E	Nguyên lý dạy học Tin học	2
+SG083	Thiết kế chương trình Tin học	2
+SG085	Đánh giá kết quả học tập Tin học	2
+SG086	Tập giảng Tin học	2
+SG089E	Ứng dụng công nghệ thông tin trong dạy học tin học	2
+SG090E	Niên luận	2
+SG093	Phương pháp dạy học Tin học	3
+SG094	Lý thuyết số	2
+SG095	Lý luận dạy học Khoa học tự nhiên	2
+SG096	Phương pháp dạy học Khoa học tự nhiên	2
+SG097	Phát triển chương trình giáo dục Khoa học tự nhiên	2
+SG098	Dạy học các chủ đề Khoa học tự nhiên theo định hướng STEM	2
+SG099	Phương pháp thiết kế câu hỏi và bài tập khoa học tự nhiên	2
+SG102	Ngôn ngữ học đại cương	2
+SG103	Toán cho Hóa học	2
+SG105	Phương pháp dạy học Lịch sử	2
+SG108	Đánh giá kết quả học tập Lịch sử	2
+SG109	Phương pháp luận sử học	2
+SG111	Phương pháp dạy học Địa lý	2
+SG112	Nguyên lý dạy học Ngữ văn	2
+SG113	Tâm lý học sư phạm giáo dục tiểu học	2
+SG114	Giáo dục so sánh và giáo dục bền vững	2
+SG114E	Giáo dục so sánh và giáo dục bền vững	2
+SG115	Hoạt động giáo dục trong nhà trường tiểu học	2
+SG116	Đánh giá kết quả học tập giáo dục tiểu học	2
+SG120	Ứng dụng công nghệ thông tin trong dạy học GDTH	2
+SG122	Rèn luyện nghiệp vụ sư phạm giáo dục tiểu học	2
+SG124	Tập giảng Toán giáo dục tiểu học	2
+SG128	Môi trường và giáo dục môi trường ở tiểu học	2
+SG129E	Sinh lý và bệnh lý trẻ em giáo dục tiểu học	2
+SG130	Bản đồ học	3
+SG131	Hoạt động giáo dục trong nhà trường phổ thông	2
+SG132	Phương pháp giảng dạy thí nghiệm Vật lý phổ thông	2
+SG139	Phương pháp dạy học Ngữ văn	2
+SG140	Nhập môn khoa học Lịch sử	2
+SG151E	Nguyên lý dạy học Toán	2
+SG152	Phương pháp dạy học Toán	2
+SG153E	Thiết kế chương trình Toán	2
+SG155	Đánh giá kết quả học tập Toán	2
+SG156	Ứng dụng công nghệ thông tin trong dạy học Toán	2
+SG157	Niên luận - Toán học	2
+SG158	Tập giảng Toán	2
+SG162	Phương pháp dạy học Vật lý	2
+SG163	Thiết kế chương trình Vật lý	2
+SG165	Đánh giá kết quả học tập Vật lý	2
+SG166E	Giáo dục môi trường trong dạy học Vật lý	2
+SG167	Tập giảng Vật lý	2
+SG171	Phương pháp dạy học Hóa học	2
+SG174	Đánh giá kết quả học tập Hóa học	2
+SG175	Ứng dụng công nghệ thông tin trong dạy học Hóa học	2
+SG176	Tập giảng Hóa học	2
+SG183	Đánh giá kết quả học tập Sinh học	2
+SG184E	Ứng dụng công nghệ thông tin trong dạy học Sinh học	2
+SG188	Tập giảng Sinh học	2
+SG189	Vật lý cho Sinh học	2
+SG191	Niên luận Sinh học	2
+SG193	Phương pháp dạy học Sinh học	2
+SG196	Phương pháp dạy học Tiếng Anh	2
+SG199E	Đánh giá kết quả học tập tiếng Anh	2
+SG200E	Ứng dụng công nghệ thông tin trong dạy học Tiếng Anh	2
+SG201	Văn hóa các nước nói Tiếng Anh	2
+SG203	Giảng dạy các kỹ năng ngôn ngữ	3
+SG207	Đánh giá kết quả học tập Ngữ văn	2
+SG208	Ứng dụng công nghệ thông tin trong dạy học Ngữ văn	2
+SG209	Tập giảng Ngữ văn	2
+SG212	Văn học Việt Nam trung đại 2 (nửa cuối thế kỷ XVIII - nửa đầu XIX)	3
+SG213	Văn học Việt Nam trung đại 3 (nửa cuối thế kỷ XIX)	2
+SG214	Văn học Việt Nam hiện đại 1 (1900 - 1930)	2
+SG215	Văn học Việt Nam hiện đại 2 (1930 - 1945)	2
+SG216	Văn học Việt Nam hiện đại 3 (1945 - 1975)	2
+SG218	Văn học Châu Á	3
+SG219	Văn bản Hán văn Việt Nam	2
+SG220	Văn bản chữ Nôm	2
+SG233	Trò chơi sư phạm trong dạy học toán tiểu học	2
+SG234	Dạy học giải toán có lời văn ở tiểu học	2
+SG235	Dạy học chính tả ở tiểu học theo đặc điểm phương ngữ	2
+SG244E	Các xu hướng dạy học toán	2
+SG245	Giải tích lồi	2
+SG249	Vật lý thống kê	2
+SG252E	Vật lý plasma và ứng dụng	2
+SG255E	Lịch sử Vật lý	2
+SG257E	Vật lý laser	2
+SG258	Hóa cơ sở 2	3
+SG259	Thực tập hóa cơ sở	2
+SG262	Kỹ thuật vẽ trong Sinh học	2
+SG263E	Kỹ thuật phòng thí nghiệm - Sinh học	2
+SG265	Giáo dục môi trường	2
+SG277E	Viết báo cáo khoa học	2
+SG279	Ngữ pháp cơ bản	2
+SG280	Ngữ pháp trung cấp	2
+SG281E	Ngữ pháp nâng cao	2
+SG282	Ngữ âm thực hành cơ bản	2
+SG283	Ngữ âm thực hành nâng cao	2
+SG284	Âm vị học Tiếng Anh	2
+SG285	Quá trình tiếp thu ngôn ngữ thứ hai	2
+SG286	Ngôn ngữ học dẫn luận	3
+SG287	Phân tích diễn ngôn trong giảng dạy ngôn ngữ	2
+SG288	Cú pháp học	2
+SG291	Phương pháp dạy Tiếng Anh cho trẻ em	3
+SG298	Ngữ dụng học tiếng Việt	2
+SG299E	Từ Hán Việt với việc giảng dạy Ngữ văn ở trường THPT	2
+SG304E	Phong tục tập quán các dân tộc Việt Nam	2
+SG307	Đánh giá kết quả học tập Địa lý	2
+SG308	Ứng dụng công nghệ thông tin trong dạy học Địa lý	2
+SG309	Tập giảng Địa lý	2
+SG312	Kỹ thuật dạy học Địa lý	3
+SG314E	Dân số và phát triển	2
+SG315E	Di cư an toàn	2
+SG316	Trắc địa cơ bản	2
+SG317	Khoa học Trái Đất	2
+SG317E	Khoa học trái đất	2
+SG318	Thạch quyển	2
+SG325	Địa lý kinh tế - xã hội đại cương	4
+SG326	Thực tế ngoài trường địa lý	3
+SG327	Hệ thông tin địa lý - GIS	3
+SG329E	Dân cư và môi trường Đồng bằng sông Cửu Long	2
+SG332E	Địa lý Đông Nam Á	2
+SG333	Địa lý đô thị	2
+SG336	Phương pháp dạy học Tiếng Pháp	2
+SG341	Tập giảng Tiếng Pháp	2
+SG347	Trò chơi trong dạy học tiếng Pháp	2
+SG348	Dạy tiếng Pháp cho trẻ em	2
+SG350	Thực tế ngoài trường Ngữ văn	2
+SG351E	Tiểu luận tốt nghiệp giáo dục tiểu học	4
+SG354E	Phương ngữ học	2
+SG355E	Tiểu luận tốt nghiệp - SP. Sinh học	4
+SG356E	Sử dụng số liệu thống kê trong dạy học địa lý	2
+SG357	Ứng dụng công nghệ thông tin trong dạy học Vật lý	2
+SG367	Ngôn ngữ học đối chiếu - PV	2
+SG370	Kỹ thuật biên dịch tư liệu - PV	2
+SG372	Văn bản báo chí - PV	2
+SG373	Kỹ năng tìm việc - PV	2
+SG374	Tác phẩm văn học và thể loại văn học	2
+SG375	Phương pháp công tác đội giáo dục tiểu học	2
+SG376	Anh văn chuyên ngành sư phạm Toán	2
+SG377	Văn bản Hán văn Trung Quốc	2
+SG378	Tập giảng môn lịch sử	2
+SG385E	Anh văn chuyên ngành Tin học	2
+SG391E	Xử lý số liệu thống kê	3
+SG392E	Luận văn tốt nghiệp	10
+SG393E	Tiểu luận tốt nghiệp - SP Tin học	4
+SG394E	Giáo dục hòa nhập	2
+SG396	Cách mạng tư sản và sự phát triển của chủ nghĩa tư bản	2
+SG397E	Chiến tranh và cách mạng trong lịch sử Việt Nam	2
+SG398E	Chiến tranh và hoà bình trong thế kỉ XX	2
+SG399	Dạy học tác phẩm văn học theo thể loại - Tiểu học	2
+SG400E	Dạy học tiếng Việt cho học sinh dân tộc thiểu số	2
+SG401E	Luận văn tốt nghiệp giáo dục tiểu học	10
+SG405E	Luận văn tốt nghiệp - SP. Sinh học	10
+SG406	Dạy học trải nghiệm - Tiểu học	2
+SG408	Lịch sử chủ quyền Việt Nam ở biển Đông	2
+SG409	Lịch sử Nhật Bản từ năm 1868 đến nay	2
+SG419	Lý luận dạy học Toán và Khoa học tự nhiên	2
+SG421	Kỹ năng xử lý tình huống sư phạm	2
+SG421E	Kỹ năng xử lý tình huống Sư phạm	2
+SG424	Phát triển chương trình giáo dục Hóa học	2
+SG425	Văn học thiếu nhi	3
+SG426E	Lý thuyết đồ thị và tổ hợp	3
+SG427	Một số cuộc cải cách trong lịch sử Việt Nam	2
+SG428	Pháp văn chuyên ngành Sư phạm Sinh học	2
+SG430	Phát triển chương trình giáo dục tiểu học	2
+SG432	Lịch sử giáo dục Việt Nam	2
+SG432E	Lịch sử giáo dục Việt Nam	2
+SG433	Toán ứng dụng cho Địa lý	3
+SG434	TT. Sinh học phân tử và tế bào	1
+SG435	Hình học vi phân	2
+SG436	Văn học Việt Nam hiện đại 4 (1975 - đầu thế kỉ XXI)	2
+SG437E	Tổ chức dạy học chuyên đề Ngữ văn	2
+SG438	Phương pháp dạy học khoa học tự nhiên và xã hội	3
+SG439	Phương pháp nghiên cứu khoa học Giáo dục	2
+SG440E	Danh pháp Hóa học	2
+SG441	Cơ chế phản ứng hữu cơ cơ bản	2
+SG442E	Hóa học tinh thể	2
+SG444	Các phương pháp vật lý ứng dụng trong Hóa học	2
+SG445E	Tổ chức dạy học chủ đề STEM trong môn Hóa học ở trường THPT	2
+SG446E	Văn học nước ngoài trong nhà trường phổ thông	2
+SG447E	Thiết kế thí nghiệm và xử lý số liệu trong Sinh học	2
+SG448	Sinh học cơ thể	2
+SG449	Sinh học phân tử và tế bào	2
+SG450E	Sinh học và phát triển bền vững	2
+SG451	Đánh giá sự phát triển của trẻ mầm non	2
+SG452	Thực tế ngoài trường - Sư phạm Lịch sử	2
+SG453	Ứng dụng công nghệ thông tin trong dạy học ở trường mầm non	2
+SG454	Văn bản nghị luận và phương pháp dạy văn bản nghị luận	2
+SG455	Văn bản thông tin và phương pháp dạy văn bản thông tin	2
+SG458	Mỹ thuật và phương pháp dạy học Mỹ thuật	2
+SG459	Nhập môn toán tài chính	2
+SG460	Thực tập giáo trình Sinh học	2
+SG461	Vi sinh vật và Ứng dụng	3
+SG462	TT. Vi sinh vật và ứng dụng	1
+SG465	Phương pháp giảng dạy thí nghiệm Sinh học phổ thông	1
+SG466	Phương pháp thiết kế câu hỏi và bài tập Sinh học phổ thông	2
+SG467E	Ứng dụng Sinh học trong sản xuất nông nghiệp	2
+SG468E	Dạy học Sinh học theo hướng phân hóa và tích hợp	2
+SG469	Thiết kế đồ dùng, đồ chơi cho trẻ	2
+SG471	Kiến tập Sư phạm giáo dục mầm non	2
+SG472	Thực tập Sư phạm giáo dục mầm non	3
+SG473	Phương pháp tổ chức cho trẻ khám phá môi trường xung quanh	3
+SG474	Phương pháp tổ chức hoạt động giáo dục thể chất cho trẻ mầm non	3
+SG475	Phương pháp dạy múa cho trẻ mầm non	3
+SG476	Phương pháp phát triển ngôn ngữ cho trẻ mầm non	3
+SG477	Phương pháp cho trẻ làm quen tác phẩm văn học	3
+SG478	Phương pháp tổ chức hoạt động tạo hình cho trẻ mầm non	3
+SG479	Phương pháp hình thành biểu tượng toán cho trẻ mầm non	3
+SG480	Phương pháp dạy học âm nhạc cho trẻ mầm non	3
+SG481	Tổ chức hoạt động Giáo dục STEM/STEAM trong trường mầm non	2
+SG482	Rèn luyện nghiệp vụ sư phạm giáo dục mầm non	2
+SG483	Tổ chức hoạt động vui chơi cho trẻ mầm non	2
+SG484	Giáo dục đặc biệt và can thiệp sớm	2
+SG485E	Tham vấn trong giáo dục mầm non	2
+SG486E	Quản lý nhóm, lớp ở trường mầm non	2
+SG487E	Giáo dục tích hợp trong giáo dục mầm non	2
+SG488E	Các mô hình giáo dục mầm non	2
+SG489	Chuẩn bị cho trẻ vào lớp 1	2
+SG490E	Tiểu luận tốt nghiệp giáo dục mầm non	4
+SG491E	Luận văn tốt nghiệp giáo dục mầm non	10
+SG492E	Tiểu luận tốt nghiệp Lịch sử - Địa lý	4
+SG493E	Luận văn tốt nghiệp Lịch sử - Địa lý	10
+SG494	Ứng dụng công nghệ thông tin trong dạy học Khoa học tự nhiên	2
+SG495	Tập giảng - Sư phạm Khoa học tự nhiên	2
+SG496E	Trái đất và bầu trời	2
+SG497	Hóa học và đời sống	2
+SG498	Di truyền học - Sư phạm Khoa học tự nhiên	3
+SG499	Phương pháp giảng dạy thí nghiệm Khoa học tự nhiên	2
+SG500	Đánh giá kết quả học tập Khoa học tự nhiên	2
+SG501E	Sinh thái học và bảo vệ môi trường	2
+SG502	Thực tập giáo trình Khoa học tự nhiên	2
+SG503	Niên luận - Sư phạm Khoa học tự nhiên	2
+SG504	Tiểu luận tốt nghiệp - Sư phạm Khoa học tự nhiên	4
+SG505	Luận văn tốt nghiệp - Sư phạm Khoa học tự nhiên	10
+SG506	Hóa học hợp chất thiên nhiên	2
+SG507	Sinh thái nhân văn	2
+SG508	Tài nguyên thiên nhiên	2
+SG509	Kỹ thuật an toàn và quản lý phòng thí nghiệm	1
+SG510	Lý luận dạy học Sinh học	2
+SG513E	Tâm lý học xã hội	3
+SG514	Tâm lý học phát triển	3
+SG515	Quản lý hành vi học sinh	3
+SG516E	Ứng dụng công nghệ thông tin trong tư vấn học đường	3
+SG517E	Tiếng Anh chuyên ngành Tâm lý học giáo dục	2
+SG518E	Tiếng Pháp chuyên ngành Tâm lý học giáo dục	2
+SG519	Các lý thuyết dạy học	3
+SG520	Lý thuyết tâm lý học	3
+SG521E	Tâm lý học trí tuệ	3
+SG522E	Tâm lý học khác biệt	2
+SG523E	Tâm lý học sức khỏe	2
+SG524E	Tâm lý học nhân cách	2
+SG525E	Tâm lý học tích cực	2
+SG526E	Tâm lý học quản lý	2
+SG527	Phương pháp nghiên cứu tâm lý học giáo dục	3
+SG528	Thống kê trong nghiên cứu Tâm lý học giáo dục	2
+SG529	Đo lường trong giáo dục	2
+SG530	Nghiên cứu trường hợp trong Tâm lý học	2
+SG531	Giáo dục cảm xúc xã hội	3
+SG532	Giáo dục kỹ năng sống và giá trị sống	3
+SG533	Giáo dục giới tính	3
+SG534E	Phối hợp các lực lượng trong giáo dục	2
+SG535	Tham vấn học đường	3
+SG536	Kỹ năng thích ứng với sự thay đổi	3
+SG537	Kỹ năng điều chỉnh cảm xúc	2
+SG538E	Khó khăn trong học tập của học sinh	2
+SG539	Dịch vụ tham vấn học đường	3
+SG540	Tâm lý học hướng nghiệp	2
+SG541	Thực tế	3
+SG542	Thực tập nghiên cứu	4
+SG543	Thực tập giảng dạy Hoạt động trải nghiệm, hướng nghiệp	4
+SG544	Thực tập tư vấn học đường	4
+SG545	Kỹ năng tham vấn nhóm	3
+SG546	Kỹ năng tham vấn cá nhân	3
+SG547	Chẩn đoán tâm lý	3
+SG548	Tham vấn phòng ngừa trong trường học	3
+SG549	Tiểu luận tốt nghiệp Tâm lý học giáo dục	4
+SG550	Phương pháp giảng dạy hoạt động trải nghiệm, hướng nghiệp	3
+SG551	Phong cách dạy học	3
+SG552	Kỷ luật tích cực	3
+SG553	Giáo dục đặc biệt	3
+SG554	Luận văn tốt nghiệp	10
+SP009	Tâm lý học đại cương	2
+SP010	Tâm lý học sư phạm	2
+SP015	Địa chất đại cương	2
+SP016	Địa danh Việt Nam	2
+SP019	Danh nhân đất Việt	2
+SP023	Lịch sử Việt Nam đại cương	3
+SP025	Lịch sử khẩn hoang Nam Bộ	2
+SP045	Lý luận dạy học tiểu học	2
+SP049	Giáo dục học - GDTH	3
+SP061	Lý thuyết tập hợp và logic toán	2
+SP062	Đạo đức và phương pháp dạy học đạo đức	2
+SP067E	Bồi dưỡng năng lực cảm thụ văn học	2
+SP069E	Phát triển tư duy qua dạy toán	2
+SP071	Rèn kỹ năng thực hành Tiếng Việt	2
+SP072	Phân tích tác phẩm văn học dân gian trong nhà trường	2
+SP076	Rèn luyện chữ viết - GDTH	2
+SP079	Giáo dục học	3
+SP082	Giải tích số	2
+SP084	Hình học Aphin và Euclide	3
+SP085	Lý thuyết vành và trường	3
+SP101	Cơ sở logic và lý thuyết tập hợp	2
+SP102	Đại số tuyến tính	3
+SP103E	Số học	2
+SP111	Giải tích hàm một biến	3
+SP112	Giải tích hàm nhiều biến	3
+SP113E	Hình học giải tích	2
+SP115	Hàm phức	2
+SP116	Hình học sơ cấp	3
+SP117	Đại số sơ cấp	3
+SP118E	Anh văn chuyên ngành - GDTH	2
+SP130E	Lịch sử Toán	2
+SP132	Xác suất thống kê - GDTH	2
+SP135	Nhiệt học và nhiệt động lực học	2
+SP136	Thực tập cơ nhiệt	2
+SP141	Vật lý nguyên tử và hạt nhân	2
+SP146	Thực tế ngoài trường - Vật lý	1
+SP150	Anh văn chuyên môn Vật lý	2
+SP158	TT. Hóa lý	2
+SP167	Sinh thái học	2
+SP168	Phân loại thực vật A	2
+SP169	Phân loại thực vật B	2
+SP176	Động vật không xương sống	2
+SP177	TT. động vật không xương sống	1
+SP178	Hình thái giải phẫu thực vật	2
+SP179	TT. Hình thái giải phẫu thực vật	1
+SP180	Động vật có xương sống	2
+SP181	TT. Động vật có xương sống	1
+SP184	Anh văn chuyên ngành Sinh học	2
+SP190	TT. Phân loại thực vật A	1
+SP191	Anh Văn chuyên ngành Sư phạm Hóa	2
+SP196E	Anh văn chuyên môn Lịch sử	2
+SP200	Lịch sử văn minh Việt Nam	2
+SP220	Anh văn chuyên môn Địa lý	2
+SP231	Khảo cổ học	2
+SP232E	Dân tộc học đại cương	2
+SP233	Lịch sử Đông Nam Á	2
+SP234	Lý luận và lịch sử tôn giáo	2
+SP235	Lịch sử văn minh thế giới	2
+SP236	Lịch sử quan hệ quốc tế	2
+SP240	Rèn luyện nghiệp vụ Sư phạm Lịch sử	2
+SP241E	Ứng dụng công nghệ thông tin trong dạy học lịch sử ở Trường phổ thông	2
+SP266	Văn bản văn học	2
+SP267	Văn bản khoa học	2
+SP269	Kỹ thuật báo cáo chuyên đề	2
+SP292	Hóa cơ sở 1	2
+SP300	Tiếng Pháp thương mại	2
+SP302	Tôpô đại cương	2
+SP303	Lý thuyết nhóm	2
+SP304E	Quy hoạch tuyến tính	2
+SP312	Hoạt động dạy và học môn Toán	2
+SP314	Hình học xạ ảnh	2
+SP317	Phương trình đạo hàm riêng	2
+SP318	Độ đo và tích phân LơBe	2
+SP319	Giải tích hàm	3
+SP321	Môđun trên vành giao hoán	2
+SP329	Hình học họa hình	2
+SP333E	Tiểu luận tốt nghiệp - Toán học	4
+SP346E	Luận văn tốt nghiệp - SPTH	10
+SP357	Vật lý chất rắn	2
+SP360	Quang phổ	2
+SP361	Phương pháp giảng dạy bài tập Vật lý phổ thông	2
+SP366E	Vật lý nano và ứng dụng	2
+SP368E	Vật lý hạt cơ bản	2
+SP369	Cảm biến trong đo lường	2
+SP372E	Vật lý môi trường	2
+SP375E	Tiểu luận tốt nghiệp - Vật lý	4
+SP376E	Luận văn tốt nghiệp - Vật lý	10
+SP378	Sinh hóa - SP.Hóa	2
+SP384	TT. Hóa vô cơ	2
+SP385	Hóa công nghệ và Hóa nông nghiệp	2
+SP386	TT. Phương pháp giảng dạy hóa học	2
+SP388	TT. Hóa hữu cơ	2
+SP390	TT. Hóa phân tích - SP.Hóa	2
+SP392	Phương pháp phân tích công cụ	2
+SP393	TT. Phương pháp phân tích công cụ	1
+SP395E	Giáo dục môi trường qua giảng dạy Hóa học	2
+SP405E	Hóa học phức chất	2
+SP406	TT. Sinh hóa	1
+SP407E	Tiểu luận tốt nghiệp - Hóa học	4
+SP408E	Luận văn tốt nghiệp - Hóa học	10
+SP410E	Lịch sử Hóa học	2
+SP411E	Kỹ thuật phòng thí nghiệm Hóa học	2
+SP415	Giải phẫu người và động vật	2
+SP416	TT. Giải phẫu người và động vật	1
+SP417	Sinh lý người và động vật	3
+SP418	TT. Sinh lý người và động vật	1
+SP419	Di truyền và chọn giống	3
+SP420	TT. Di truyền và chọn giống	1
+SP428E	Đấu tranh sinh học và ứng dụng	2
+SP431E	Tập tính động vật	2
+SP437	Cơ lý thuyết - Vật lý	2
+SP438E	Thiên văn học	2
+SP466	Nói trước công chúng	2
+SP471	Tiểu luận tốt nghiệp - SPTA	4
+SP472	Luận văn tốt nghiệp - SPTA	10
+SP473	Địa lý du lịch	2
+SP477	Địa lý tự nhiên Việt Nam	3
+SP478	Địa lý tự nhiên các châu	4
+SP480	Địa lý kinh tế - xã hội Việt Nam	4
+SP492E	Tiểu luận tốt nghiệp - Địa lý	4
+SP493E	Luận văn tốt nghiệp - Địa lý	10
+SP506	Lịch sử ngoại giao Việt Nam	2
+SP510E	Tiểu luận tốt nghiệp - Lịch sử	4
+SP511E	Luận văn tốt nghiệp - Lịch sử	10
+SP512	Văn học dân gian Việt Nam	3
+SP513	Nguyên lý lý luận văn học	2
+SP515	Văn học Việt Nam trung đại 1 (thế kỷ X - nửa đầu XVIII)	2
+SP517	Hóa lượng tử	2
+SP519	Thiết kế bài tập Hóa học	2
+SP524	Ngữ âm và từ vựng tiếng Việt	3
+SP527	Văn học Châu Âu	3
+SP528E	Tiến hóa	2
+SP529	Văn học Nga	2
+SP531	Tiến trình văn học	2
+SP533	Phong cách học tiếng Việt	2
+SP534	Văn học Châu Mỹ	2
+SP535E	Vấn đề đổi mới trong văn học Việt Nam nửa cuối thế kỷ XIX	2
+SP536	Thơ Đường trong nhà trường phổ thông	2
+SP537E	Văn xuôi quốc ngữ Nam bộ cuối thế kỷ XIX đầu thế kỷ XX	2
+SP538E	Ý thức cá nhân trong Thơ Mới	2
+SP539E	Tiểu luận tốt nghiệp - SP. Ngữ văn	4
+SP540E	Luận văn tốt nghiệp - SP. Ngữ văn	10
+SP545E	Sinh học phát triển động vật và thực vật	2
+SP550	Công nghệ gen và tế bào	2
+SP566	Lịch sử phê bình văn học Việt Nam	2
+SP572	Tiểu luận tốt nghiệp - SP. Tiếng Pháp	4
+SP573	Luận văn tốt nghiệp - SP. Tiếng Pháp	10
+SP574	Sinh hóa - SP. Sinh học	2
+SP575	TT. Sinh hóa - SP. Sinh học	1
+SP576	Sinh lý thực vật - SP. Sinh học	2
+SP577	TT. Sinh lý thực vật - SP. Sinh học	1
+SP585	Xác suất thống kê - toán	3
+SP589	Các phương pháp Toán Lý	3
+SP596E	Văn học Đồng bằng sông Cửu Long sau 1975	2
+SP597	Kiến tập Sư phạm	2
+SP598	Thực tập Sư phạm	3
+TC001	Điền kinh 1 (*)	1
+TC002	Điền kinh 2 (*)	1
+TC003	Taekwondo 1 (*)	1
+TC004	Taekwondo 2 (*)	1
+TC005	Bóng chuyền 1 (*)	1
+TC006	Bóng chuyền 2 (*)	1
+TC007	Bóng đá 1 (*)	1
+TC008	Bóng đá 2 (*)	1
+TC009	Bóng bàn 1 (*)	1
+TC010	Bóng bàn 2 (*)	1
+TC011	Cầu lông 1 (*)	1
+TC012	Cầu lông 2 (*)	1
+TC013	Bơi lội (*)	1
+TC016	Thể dục nhịp điệu 1 (*)	1
+TC017	Thể dục nhịp điệu 2 (*)	1
+TC018	Thể dục nhịp điệu 3 (*)	1
+TC019	Taekwondo 3 (*)	1
+TC020	Bóng chuyền 3 (*)	1
+TC021	Bóng đá 3 (*)	1
+TC022	Bóng bàn 3 (*)	1
+TC023	Cầu lông 3 (*)	1
+TC024	Điền kinh 3 (*)	1
+TC025	Cờ vua 1 (*)	1
+TC026	Cờ vua 2 (*)	1
+TC027	Cờ vua 3 (*)	1
+TC028	Bóng rổ 1 (*)	1
+TC029	Bóng rổ 2 (*)	1
+TC030	Bóng rổ 3 (*)	1
+TC031	Tennis 1 (*)	1
+TC032	Tennis 2 (*)	1
+TC033	Tennis 3 (*)	1
+TC101E	Tâm lý học Thể dục thể thao	2
+TC107	Giải phẩu người	3
+TC110E	Toán thống kê Thể dục thể thao	2
+TC111	Đo lường Thể dục thể thao	2
+TC114	Anh văn chuyên môn Thể dục thể thao	2
+TC122	Phương pháp nghiên cứu khoa học Thể dục thể thao	2
+TC123	Sinh cơ học Thể dục thể thao	2
+TC124	Y học Thể dục thể thao	2
+TC125E	Lịch sử Thể dục thể thao	2
+TC126	Sinh lý học Thể dục thể thao	3
+TC128	Đánh giá môn học Giáo dục thể chất	2
+TC129E	Thiết kế chương trình môn học Giáo dục thể chất	2
+TC218	Khiêu vũ Thể thao	2
+TC219	Taekwondo	2
+TC220E	Quản lý học Thể dục thể thao và Olympic	2
+TC221	Thể thao giải trí và phương pháp tổ chức	2
+TC223E	Văn hóa học Thể dục thể thao	2
+TC314	Trò chơi vận động	2
+TC317	Quần vợt	3
+TC321	Karatedo	3
+TC394	Cờ vua	2
+TC395	Bơi lội	2
+TC396	Bóng ném	2
+TC399	Tiểu luận tốt nghiệp - TDTT	4
+TC400	Luận văn tốt nghiệp - TDTT	10
+TN001	Vi - Tích phân A1	3
+TN002	Vi - Tích phân A2	4
+TN006	Toán cao cấp A	4
+TN009E	Toán cao cấp C	2
+TN010	Xác suất thống kê	3
+TN012	Đại số tuyến tính và hình học	4
+TN013	Đại số tuyến tính	2
+TN014	Cơ và nhiệt đại cương	2
+TN015	TT. Cơ nhiệt đại cương	1
+TN016	Điện và quang đại cương	2
+TN017	TT. Điện và quang đại cương	1
+TN019	Hóa học đại cương	3
+TN020	TT. Hóa học đại cương	1
+TN021	Hóa vô cơ và hữu cơ đại cương	2
+TN021H	Hóa hữu cơ	2
+TN022	TT. Hóa vô cơ và hữu cơ đại cương	1
+TN023	Hóa phân tích đại cương	2
+TN024	TT. Hóa phân tích đại cương	1
+TN025	Sinh học đại cương A1	2
+TN027	TT. Sinh học đại cương A1	1
+TN028E	Sinh học đại cương A2	2
+TN030	TT. Sinh học đại cương A2	1
+TN032E	Con người và môi trường	2
+TN039	Hóa học đại cương	2
+TN042	Sinh học đại cương	2
+TN043	TT. Sinh học đại cương	1
+TN044	Xác suất thống kê B	2
+TN048	Vật lý đại cương	3
+TN049	TT. Vật lý đại cương	1
+TN050	Phương trình vi phân - TUD	2
+TN057	Sinh học đại cương	2
+TN058	TT. Sinh học đại cương	1
+TN059	Toán cao cấp B	3
+TN062	Hóa học đại cương - Hóa dược	3
+TN063	TT. Hóa học đại cương - Hóa dược	1
+TN064	Hóa vô cơ - Hóa dược	3
+TN065	TT. Hóa vô cơ - Hóa dược	2
+TN066E	Logic toán học	2
+TN075E	Anh văn chuyên môn Toán ứng dụng	2
+TN076	Tài nguyên sinh học	2
+TN077	Thực tập tài nguyên sinh học	1
+TN078	Sinh học cơ thể người và sinh lý người	3
+TN079	Lập trình Python căn bản	3
+TN080	Toán tài chính	3
+TN081	Phép tính vi tích phân hàm một biến	4
+TN082	Phép tính vi tích phân hàm nhiều biến	3
+TN083	An toàn sinh học	2
+TN084	Mô hình thử nghiệm trong nghiên cứu y sinh	2
+TN085	Xét nghiệm cơ bản	2
+TN087	Sinh học cơ thể người	2
+TN088E	Cơ học lượng tử ứng dụng	3
+TN089E	Sinh học tế bào và phân tử	3
+TN090	TT. Sinh học tế bào và phân tử	1
+TN091	Nhập môn xác suất	3
+TN092E	Nhập môn thống kê	3
+TN093	Đại số tuyến tính - TK	3
+TN095	Thực vật học	3
+TN096	TT. Thực vật học	1
+TN097	Động vật học	3
+TN098	TT. Động vật học	1
+TN099	Vi - Tích phân	4
+TN100	Phương pháp nghiên cứu khoa học - TTK	2
+TN101	Hóa học đại cương 1	2
+TN102	Hóa học đại cương 2	3
+TN103	TT. Hóa học đại cương 2	1
+TN107	TT. Hóa vô cơ 2	1
+TN108	Hóa lý 1	3
+TN109	Hóa lý 2	3
+TN110	TT. Hóa lý	2
+TN111	Hóa hữu cơ 1	3
+TN112	TT. Hóa hữu cơ 1	1
+TN115	Hóa phân tích 1	3
+TN117	Hóa phân tích 2	3
+TN121	Hóa học hữu cơ - CNHH	3
+TN122	TT. Hóa học hữu cơ - CNHH	2
+TN128	Thống kê sinh học	2
+TN129	TT. Thống kê sinh học	1
+TN130	Sinh học rong	2
+TN131	TT. Sinh học rong	1
+TN144E	Vi sinh vật học	3
+TN145	TT. Vi sinh vật học	1
+TN147	Phương pháp nghiên cứu khoa học - SH	2
+TN148	TT. Đa dạng sinh học	2
+TN149	Mô động vật	2
+TN150	TT. Mô động vật	1
+TN151	Sinh học phát triển	2
+TN160	Đại số đại cương	3
+TN163	Anh văn chuyên môn - Hóa học	2
+TN164	Lý thuyết độ đo và tích phân	3
+TN169E	Anh văn chuyên môn - TTK	2
+TN170	Thực tập và thực tế - TTK	1
+TN172	TT. Di truyền học	1
+TN173	TT. Hóa vô cơ 1	1
+TN178	TT. Hóa hữu cơ 2	1
+TN180	TT. Hóa phân tích 1	1
+TN182	TT. Hóa phân tích 2	1
+TN184	Di truyền học	3
+TN185	Cấu trúc dữ liệu - TTK	3
+TN189	Giải tích phức	3
+TN191	Giải tích hàm	3
+TN211	Nhập môn hệ thống thông tin địa lý	2
+TN232H	Lập trình Python	3
+TN235	Hóa sinh học	3
+TN236	Hóa vô cơ 1	3
+TN237E	Anh văn chuyên môn - Sinh học	2
+TN238	Tiểu luận tốt nghiệp - Sinh học	4
+TN239	Tiểu luận tốt nghiệp - Hóa dược	4
+TN240	Quan hệ cấu trúc và hoạt tính sinh học	2
+TN242E	Pháp chế dược	2
+TN243E	Hóa học dược liệu	2
+TN245E	Phương pháp phân tích độc chất và kháng sinh trong động thực vật	2
+TN246	Tiểu luận tốt nghiệp - Hóa học	4
+TN247	Hóa vô cơ 2	3
+TN249E	Hóa hữu cơ 2	3
+TN251	Các định lý giới hạn	3
+TN253	Tiểu luận tốt nghiệp - TTK	4
+TN258	TT. Cơ học	1
+TN259	Nhiệt học	2
+TN260	TT. Nhiệt học	1
+TN261	Điện từ học	3
+TN262	TT. Điện từ học	1
+TN263	Quang học	3
+TN264	TT. Quang học	1
+TN265	Kỹ thuật điện	2
+TN266	TT. Kỹ thuật điện	1
+TN267	Toán cho vật lý	3
+TN270	Vật lý hạt nhân và nguyên tử	2
+TN271	Điện động lực học	2
+TN272	Vật lý chất rắn	3
+TN273E	Vật lý thống kê	3
+TN274	Anh văn chuyên môn - VLKT	2
+TN275	Vật lý tính toán	3
+TN276	TT. Vật lý tính toán	1
+TN278E	Hệ động lực	3
+TN279E	Xử lý tín hiệu	2
+TN280	Nhập môn khoa học vật liệu	3
+TN281	TT. Công nghệ chế tạo vật liệu	1
+TN282E	Quang học ứng dụng	2
+TN283	TT. Quang ứng dụng	1
+TN284E	Quang phổ học và ứng dụng	2
+TN285	TT. Quang phổ học	1
+TN286	Cảm biến và ứng dụng	3
+TN287	TT. Cảm biến	1
+TN288E	Phương pháp nghiên cứu khoa học	1
+TN289	Vật lý tinh thể	3
+TN290E	Lý sinh học	2
+TN291	TT. Lý sinh học	1
+TN292	Các phương pháp phân tích không hủy mẫu	2
+TN293	Thực tập thực tế - VLKT	2
+TN294	Kỹ thuật laser	3
+TN295	Quang điện tử	3
+TN296	Mô phỏng quang học	3
+TN297	Quang phổ Raman	2
+TN298	Vật lý plasma và ứng dụng	3
+TN300	Hóa học ứng dụng	2
+TN300E	Hóa học ứng dụng	2
+TN301	Hóa lượng tử đại cương	2
+TN308	Các phương pháp phân tích hiện đại	3
+TN309	TT. Các phương pháp phân tích hiện đại	1
+TN310	Các phương pháp phổ nghiệm hữu cơ	3
+TN312	TT. Hóa môi trường	1
+TN313E	Tin học ứng dụng trong hóa học	2
+TN319	Tham quan thực tế	1
+TN322	TT. Phân tích kỹ thuật	1
+TN323	Các phương pháp thống kê hóa học	2
+TN327E	Tổng hợp hữu cơ	2
+TN328	Kiểm nghiệm dược và thực phẩm	2
+TN338	Luận văn tốt nghiệp - Hóa học	10
+TN339	Độc chất học môi trường	2
+TN339E	Độc chất học môi trường	2
+TN340	Nuôi cấy mô Thực vật	2
+TN340E	Nuôi cấy mô thực vật	2
+TN343	Luận văn tốt nghiệp - Sinh học	10
+TN344	Phương pháp tính - TTK	3
+TN346E	Xử lý số liệu thống kê	3
+TN352	Lý thuyết quy hoạch phi tuyến	2
+TN354E	Thuật toán tối ưu	2
+TN355	Thống kê Bayes	3
+TN360	Luận văn tốt nghiệp - TTK	10
+TN363	Hóa sinh học	2
+TN364	TT. Hóa sinh học	1
+TN367E	Hóa dược	3
+TN368E	Thống kê nâng cao	3
+TN370	Xác suất nâng cao	3
+TN372	Mô hình toán học	3
+TN379	TT. Hóa học hợp chất thiên nhiên	1
+TN381	TT. Tổng hợp Hóa dược	1
+TN384E	Thử nghiệm sinh học	2
+TN385	Thực tập và thực tế - Hóa dược	1
+TN387E	Tổng hợp bất đối xứng	2
+TN388	Xúc tác sinh học	2
+TN390E	Phản ứng độc hại của thuốc	2
+TN391E	Tương đương sinh học	2
+TN393	Luận văn tốt nghiệp - Hóa dược	10
+TN395E	Kỹ thuật tách chiết hợp chất thiên nhiên	2
+TN397	Sinh học miễn dịch	2
+TN398	Vật lý bán dẫn	3
+TN399	Vật lý màng mỏng	3
+TN400	Kỹ thuật tạo màng mỏng	2
+TN419	Vật liệu cấu trúc nano	3
+TN420	Vật liệu composit và polyme	2
+TN421E	Vật liệu từ	2
+TN423	Luận văn tốt nghiệp - VLKT	10
+TN424	Tiểu luận tốt nghiệp - VLKT	4
+TN425E	Quang học phi tuyến	3
+TN426	Ứng dụng tin học cho toán	3
+TN427E	An toàn và quản lý phòng thí nghiệm	2
+TN428	Kỹ thuật phân tích huỳnh quang	3
+TN429	Nhiệt động học và sự chuyển pha	2
+TN430	Vật liệu huỳnh quang	2
+TN431E	Vật lý địa cầu	2
+TN434E	Vật lý môi trường	3
+TN435	TT. Thử nghiệm sinh học	1
+TN437	Hóa môi trường	3
+TN438	Phân tích kỹ thuật	3
+TN439	Kiểm nghiệm dược phẩm và thực phẩm	3
+TN440E	Xác suất và thống kê - TTK	4
+TN441	Thống kê nhiều chiều	3
+TN442	Quá trình ngẫu nhiên	3
+TN443	Thống kê kinh tế - xã hội	3
+TN448E	Hóa trị liệu	2
+TN449E	Công nghiệp dược phẩm	2
+TN451	Thực vật dược	2
+TN452	Hóa học hợp chất thiên nhiên	3
+TN455	Tổng hợp Hóa dược	3
+TN456	Dược lý học	3
+TN460	Hóa học các chất đại phân tử	2
+TN461E	Vật liệu y sinh	2
+TN462E	Chuyên đề Toán ứng dụng	2
+TN463E	Cơ học	3
+TN464	Giải tích thực	3
+TN465E	Hóa vô cơ sinh hóa	2
+TN466	Niên luận - VLKT	2
+TN467E	Phân loại và phân tích chùm	3
+TN469E	Phương pháp số hiện đại	3
+TN471	Thiết kế, khám phá và tổng hợp thuốc hợp lý	2
+TN473	TT. Tổng hợp vật liệu nano	1
+TN475	Luận văn tốt nghiệp - TK	10
+TN476	Tiểu luận tốt nghiệp - TK	4
+TN478	Mô hình và phương pháp thống kê kinh doanh	3
+TN482	Chuyên đề thống kê kinh tế	2
+TN485E	Nhận dạng thống kê và ứng dụng	3
+TN486	Thống kê phi tham số	3
+TN487E	Chuyên đề thống kê ứng dụng	2
+TN491E	Đề tài phân tích số liệu	3
+TN492	Thống kê doanh nghiệp	3
+TN493	Phương pháp điều tra và chọn mẫu	3
+TN494	Mô hình tối ưu hóa trong kinh tế	3
+TN495	Khai thác dữ liệu	3
+TN496E	Phương pháp nghiên cứu khoa học - Hóa học	2
+TN498	Kỹ thuật vật liệu nano	3
+TN500	TT. Vật liệu y sinh	1
+TN501	Hóa hữu cơ 1 - Hóa dược	3
+TN502	TT. Hóa hữu cơ 1 - Hóa dược	1
+TN503E	Hóa hữu cơ 2 - Hóa dược	3
+TN504	TT. Hóa hữu cơ 2 - Hóa dược	1
+TN505	Hóa lý dược	3
+TN506	TT. Hóa lý dược	2
+TN507	Hóa phân tích 1 - Hóa dược	3
+TN508	TT. Hóa phân tích 1 - Hóa dược	1
+TN509	Hóa phân tích 2 - Hóa dược	3
+TN510	TT. Hóa phân tích 2 - Hóa dược	1
+TN511	Hóa sinh học - Hóa dược	3
+TN512	TT. Hóa sinh học - Hóa dược	1
+TN513E	Phổ cộng hưởng từ hạt nhân và Khối phổ	2
+TN514	Các phương pháp thống kê trong khoa học sức khỏe	2
+TN515	Anh văn chuyên môn - Hóa Dược	2
+TN516	Hợp chất tự nhiên 1	3
+TN517E	Hợp chất tự nhiên 2	2
+TN518	TT. Hợp chất tự nhiên	1
+TN519	Hóa dược 1	2
+TN520	Hóa dược 2	2
+TN521	TT. Hóa dược	1
+TN522	Bào chế và sinh dược học	3
+TN523	TT. Bào chế và sinh dược học	1
+TN524	Kỹ thuật kiểm nghiệm	3
+TN525	TT. Kỹ thuật kiểm nghiệm	1
+TN526	Thử nghiệm sinh học - Hóa dược	2
+TN527	TT. Thử nghiệm sinh học - Hóa dược	1
+TN529	Thực phẩm hỗ trợ sức khỏe	2
+TN531	Hóa mỹ phẩm	2
+TN532	Các phương pháp phân tích hóa lý	2
+TN533	TT. Pháp chế dược	1
+TN534E	Các tiêu chuẩn thực hành tốt trong sản xuất và phân phối dược phẩm	2
+TN536	Virus học ứng dụng	2
+TN537	Thực tập thực nghiệm sinh học ngoài trường	6
+TN538	Thực tế cơ sở - Sinh học	2
+TN539	Phương trình đạo hàm riêng - TUD	3
+TN540E	Lý thuyết mật mã	3
+TN542	Vật liệu tích trữ và biến đổi năng lượng	2
+TN544	Lý thuyết đồ thị và ứng dụng	3
+TN545	Giải tích tensor và ứng dụng	3
+TN546	Mô phỏng	3
+TN547	Ứng dụng toán cho học máy	3
+TN548	Chuỗi thời gian	3
+TN549	Phương pháp số cho đại số tuyến tính	2
+TN551	Công nghệ giải trình tự gene	2
+TN552	Ứng dụng sinh học trong phát triển bền vững	2
+TN553	Công nghệ sản xuất phân tử sinh học và vaccine	2
+TN554	Công nghệ tế bào và mô thực vật	2
+TN555	TT. Công nghệ tế bào và mô thực vật	1
+TN556	Ứng dụng Matlab trong tính toán số và dữ liệu	3
+TN557	Thực tập và thực tế - TUD	1
+TN558	Lý thuyết trò chơi ngẫu nhiên	3
+TN559	Tính toán ngẫu nhiên	2
+TN560	Mô hình tuyến tính	3
+TN561	Học sâu	2
+TN562	Đại số tuyến tính ứng dụng	3
+TN563	Lý thuyết hàm đa trị	3
+TN564	Giải tích hàm khoảng	3
+TN565	Chuyên đề Toán ứng dụng phổ thông	3
+TN566	Thực tập cơ sở Toán ứng dụng	6
+TN567	Thiết kế thí nghiệm	3
+TN568	Học máy thống kê	3
+TN569	Thực tập cơ sở Thống kê	6
+TN570	TT. Hóa mỹ phẩm	1
+TN571	Kiểm nghiệm dược phẩm, mỹ phẩm và thực phẩm chức năng	2
+TN572	TT. Kiểm nghiệm dược phẩm, mỹ phẩm và thực phẩm chức năng	1
+TN573	Thực tập cơ sở - Hóa dược	6
+TN574	Công nghệ vi sinh trong sản xuất Dược phẩm	2
+TN575	Thực tập cơ sở - Hóa học	6
+TN576	Vật lý điện tử	2
+TN577	Thực tập Vật lý điện tử	1
+TN578	Thực tập cơ sở - VLKT	6
+TS082	Hóa phân tích ứng dụng - chất lượng thực phẩm	3
+TS083	Sinh hóa đại cương	3
+TS084	Vi sinh trong an toàn thực phẩm	3
+TS085	Quản lý nhà nước về an toàn thực phẩm	2
+TS086	Các quá trình và thiết bị cơ bản trong bảo quản và chế biến thực phẩm	3
+TS089	Công nghệ chế biến sản phẩm nông nghiệp	3
+TS090	Công nghệ chế biến sản phẩm thủy sản	3
+TS091	Nguyên lý bảo quản sản phẩm nông nghiệp và thủy sản	2
+TS092	Công nghệ sau thu hoạch sản phẩm nông nghiệp và thủy sản	2
+TS093	Thực tập nhận thức ngành nghề Đảm bảo chất lượng - An toàn thực phẩm - ngoài trường	4
+TS094	Nước cấp, nước thải trong chế biến thực phẩm	2
+TS095	Thiết bị chế biến sản phẩm nông nghiệp và thủy sản	2
+TS096	Công nghệ thông tin trong nông nghiệp và thủy sản	2
+TS097	Phân tích vi sinh thực phẩm	3
+TS098	Phân tích hóa học thực phẩm	3
+TS099	Đánh giá cảm quan thực phẩm	2
+TS100	Sinh hóa - TS	3
+TS103E	Ngư nghiệp đại cương	2
+TS103ET	Ngư nghiệp đại cương	2
+TS104	Sinh thái thủy sinh vật	2
+TS106	Sinh lý động vật thủy sản A	3
+TS107	Dinh dưỡng và thức ăn thủy sản A	3
+TS108	Di truyền và chọn giống thủy sản	2
+TS111	Phương pháp nghiên cứu sinh học cá	2
+TS114	Động vật không xương sống biển	2
+TS115	Động vật có xương sống biển	2
+TS117	Sinh lý động vật thủy sản B	2
+TS118	Dinh dưỡng và thức ăn thủy sản B	2
+TS119	Sinh học phân tử đại cương	3
+TS121	Phương pháp nghiên cứu kinh tế - Xã hội nghề cá	2
+TS126	Anh văn chuyên ngành - BHTS	2
+TS132	Anh văn chuyên môn - CBTS	2
+TS145	Vi sinh thủy sản đại cương A	3
+TS147	Phương pháp nghiên cứu khoa học - Thủy sản	2
+TS149	Công nghệ sinh học trong chế biến thủy sản	2
+TS153	Hình thái và phân loại tôm, cá	3
+TS156	Thực tập giáo trình cơ sở nuôi trồng thủy sản	5
+TS157	Anh văn chuyên môn thủy sản	2
+TS157T	Anh văn chuyên môn thủy sản	2
+TS159	Hóa phân tích ứng dụng - CBTS	3
+TS164	Đánh giá cảm quan sản phẩm thủy sản	2
+TS166E	Nuôi trồng thủy sản	2
+TS175	Đánh giá tác động môi trường thủy sản	2
+TS183	Luật và các điều ước quốc tế về biển	2
+TS184T	GIS và viễn thám trong nghề cá	2
+TS192E	Tập tính động vật thủy sản	2
+TS196	Thực vật thủy sinh	2
+TS197	Động vật thủy sinh	2
+TS198	Miễn dịch học thủy sản đại cương	2
+TS199	Mô - Phôi động vật thủy sản	2
+TS204E	Phân tích hoạt động kinh doanh	2
+TS206T	Xây dựng và thẩm định dự án đầu tư	2
+TS209	Vi sinh thực phẩm thủy sản 1	2
+TS210	Vi sinh thực phẩm thủy sản 2	3
+TS214	Công nghệ sau thu hoạch thủy sản	3
+TS215	Phương pháp thí nghiệm chế biến thủy sản	2
+TS216	Thực tập giáo trình cơ sở chế biến thủy sản	6
+TS218	Nước cấp, nước thải trong chế biến thủy sản	2
+TS220	Thực tập giáo trình công nghệ chế biến thủy sản 2	6
+TS221	Bao bì thực phẩm thủy sản	2
+TS223	Công nghệ enzyme và protein	2
+TS224	Phát triển sản phẩm thủy sản mới	2
+TS225E	Marketing thực phẩm thủy sản	2
+TS226	Công nghệ chế biến thực phẩm chức năng	2
+TS228E	Vi sinh trong chế biến và bảo quản thực phẩm	2
+TS231	Kỹ thuật khai thác thủy sản	3
+TS233	Bệnh học thủy sản	2
+TS235E	Chuyên đề chẩn đoán bệnh trên cá	2
+TS236E	Chuyên đề chẩn đoán bệnh trên tôm	2
+TS237	Chuyên đề phát triển kinh tế thủy sản	2
+TS238E	Chuyên đề các mô hình quản lý thủy sản	2
+TS240	Kỹ thuật phân tích chất lượng nước	3
+TS241	Kỹ thuật sản xuất giống và nuôi cá nước ngọt	2
+TS242E	Logistics trong thủy sản	2
+TS245E	Quản trị chuỗi cung ứng và chuỗi giá trị thủy sản	2
+TS246E	Sinh hoạt học thuật chế biến thủy sản	2
+TS247ET	Sinh học nghề cá	2
+TS250E	Chuyên đề xây dựng và quản lý dự án thủy sản	2
+TS252	Thủy sản đại cương	2
+TS252H	Thủy sản đại cương	2
+TS253E	Truy xuất nguồn gốc sản phẩm thủy sản	2
+TS255	Ứng dụng công nghệ sinh học trong thủy sản	2
+TS256E	Tổng hợp kiến thức kỹ thuật - QLTS	3
+TS257E	Tổng hợp kiến thức quản lý - QLTS	3
+TS258	Quản lý và tận dụng phụ phẩm trong chế biến thủy sản	2
+TS259	Giá trị dinh dưỡng sản phẩm thủy sản	2
+TS260	Phương pháp nghiên cứu khoa học truyền thông	2
+TS261	Kỹ thuật lên men thực phẩm thủy sản	2
+TS262E	Phân tích mối nguy và điểm kiểm soát tới hạn - HACCP	2
+TS263	Dược liệu thủy sản	2
+TS264	Công nghệ chế biến dầu, bột cá	2
+TS266	Thực tập giáo trình - QLNLTS	6
+TS267	Thực tập giáo trình bệnh học 1	5
+TS268	Thực tập giáo trình bệnh học 2	6
+TS269	Thực tập giáo trình nuôi thủy sản nước ngọt	6
+TS270	Thực tập giáo trình kỹ thuật nuôi hải sản	6
+TS271	Thực tập thực tế - TS	6
+TS272E	Phát triển kinh tế biển	2
+TS281	Bệnh nấm và ký sinh trùng ở động vật thủy sản	2
+TS282	Bệnh vi khuẩn và virus ở động vật thủy sản	3
+TS283	Mô bệnh học động vật thủy sản	2
+TS285	Chuyên đề xét nghiệm giống thủy sản	2
+TS286E	Chuyên đề quản lý dịch bệnh thủy sản	2
+TS287	Quản lý tài nguyên thủy sinh vật	2
+TS291	Chuyên đề chẩn đoán bệnh động vật thủy sản	2
+TS292E	Chuyên đề kỹ thuật nuôi thủy sản	2
+TS293E	Chuyên đề kỹ thuật sản xuất giống thủy sản	2
+TS295E	Chuyên đề quản lý Nguồn lợi thủy sản	2
+TS297	Thực tập giáo trình công nghệ chế biến thủy sản 1	6
+TS301	Kỹ thuật nuôi cá nước ngọt	2
+TS302	Kỹ thuật sản xuất giống và nuôi giáp xác	3
+TS303	Kỹ thuật sản xuất giống cá nước ngọt	2
+TS305	Quản lý dịch bệnh thủy sản	3
+TS308	Kinh tế thủy sản	2
+TS308T	Kinh tế thủy sản	2
+TS309	Kỹ thuật nuôi thức ăn tự nhiên	2
+TS309T	Kỹ thuật nuôi thức ăn tự nhiên	2
+TS310	Kỹ thuật nuôi cá cảnh và thủy đặc sản	2
+TS312	Kỹ thuật khai thác thủy sản B	2
+TS312E	Kỹ thuật khai thác thủy sản B	2
+TS313	Kỹ thuật nuôi động vật thân mềm	2
+TS314T	Dịch tễ học và quản lý dịch bệnh tổng hợp	2
+TS315	Thuốc và hóa chất trong thủy sản	2
+TS320	Công trình và thiết bị thủy sản	2
+TS323E	Tổng hợp kiến thức cơ sở - NTTS	3
+TS324E	Tổng hợp kiến thức kỹ thuật - NTTS	3
+TS326	Nguyên lý và kỹ thuật chẩn đoán bệnh thủy sản	3
+TS327E	Bệnh truyền nhiễm 1	2
+TS329	Bệnh không truyền nhiễm ở động vật thủy sản	2
+TS330	Thực tập giáo trình kỹ thuật thủy sản	4
+TS333T	Độc chất học thủy vực	2
+TS335	Kỹ thuật sản xuất giống và nuôi cá biển	2
+TS337	Dịch bệnh thủy sản	2
+TS341E	Tổng hợp kiến thức bệnh - BHTS	3
+TS349	Kinh tế tài nguyên thủy sản	2
+TS351	Quản lý tổng hợp vùng ven biển	2
+TS356	Kinh tế sản xuất thủy sản	3
+TS361	Nguyên lý bảo quản và chế biến thủy sản	2
+TS362	Công nghệ chế biến đồ hộp thủy sản	2
+TS364	Công nghệ chế biến sản phẩm thủy sản truyền thống	2
+TS365	Phụ gia chế biến thủy sản	2
+TS367	Công nghệ chế biến rong biển	2
+TS369	Chế biến sản phẩm thủy sản giá trị gia tăng	2
+TS370E	Máy và thiết bị lạnh	2
+TS371	Thiết bị chế biến thủy sản	2
+TS373E	Tổng hợp kiến thức cơ sở - CBTS	3
+TS374E	Tổng hợp kiến thức chuyên môn - CBTS	3
+TS380	Quản trị doanh nghiệp thủy sản	2
+TS409	Kỹ thuật sản xuất giống và nuôi giáp xác	2
+TS410	Quản lý chất lượng môi trường ao nuôi thủy sản	2
+TS411E	Quy hoạch phát triển thủy sản	2
+TS411ET	Quy hoạch phát triển thủy sản	2
+TS412E	Vi sinh vật hữu ích	2
+TS413	Vệ sinh an toàn thực phẩm thủy sản	2
+TS413T	Vệ sinh an toàn thực phẩm thủy sản	2
+TS416	Công nghệ chế biến thủy sản lạnh đông	3
+TS418	Công nghệ chế biến dầu, bột cá và dược liệu	2
+TS426	Chế biến thủy sản	2
+TS432E	Marketing thủy sản	2
+TS436	Tiểu luận tốt nghiệp - CBTS	6
+TS437	Tiểu luận tốt nghiệp - NTTS	6
+TS438	Tiểu luận tốt nghiệp - BHTS	6
+TS439	Tiểu luận tốt nghiệp - QLTS	6
+TS440E	Các tiêu chuẩn chất lượng trong nhà máy chế biến	2
+TS441	Ứng dụng công nghệ số trong thủy sản	2
+TS443	Các quá trình và thiết bị chế biến thủy sản 1	2
+TS444	Các quá trình và thiết bị chế biến thủy sản 2	2
+TS445	Phụ gia thực phẩm	2
+TS446	An toàn thực phẩm trong chăn nuôi	2
+TS447	An toàn thực phẩm trong bảo vệ thực vật	2
+TS448	An toàn thực phẩm trong thủy sản	2
+TS449	Các tiêu chuẩn chất lượng trong sản xuất nông nghiệp và thủy sản	2
+TS450	Quản trị chuỗi cung ứng và truy xuất nguồn gốc sản phẩm nông nghiệp và thủy sản	2
+TS451	Thực tập giáo trình công nghệ chế biến thực phẩm và thủy sản	4
+TS452	Thực tập giáo trình Đảm bảo chất lượng - An toàn thực phẩm	5
+TS453	Phương pháp thí nghiệm Đảm bảo chất lượng - An toàn thực phẩm	2
+TS454E	Sinh hoạt học thuật Đảm bảo chất lượng - An toàn thực phẩm	2
+TS455	Bao bì trong an toàn thực phẩm	2
+TS456	Đánh giá rủi ro an toàn thực phẩm	2
+TS457	Anh văn chuyên môn - Đảm bảo chất lượng - An toàn thực phẩm	2
+TS458	Nghiên cứu phát triển sản phẩm mới	2
+TS459	Chuyên đề ISO 17025 - Quản lý và vận hành phòng thí nghiệm	2
+TS460E	Marketing thực phẩm	2
+TS461	Pháp luật an toàn thực phẩm	2
+TS462	An toàn lao động trong sản xuất thực phẩm	2
+TS463E	Tổng hợp kiến thức cơ sở - Đảm bảo chất lượng - An toàn thực phẩm	3
+TS464E	Tổng hợp kiến thức chuyên môn - Đảm bảo chất lượng - An toàn thực phẩm	3
+TS465E	An toàn thực phẩm trong sản xuất thực phẩm truyền thống và giá trị gia tăng	2
+TS466E	Quản lý và sử dụng năng lượng hiệu quả	2
+TS467	Kinh tế tuần hoàn	2
+TS468E	Ứng dụng công nghệ cao trong chế biến thực phẩm	2
+TS469	Tiểu luận tốt nghiệp - Đảm bảo chất lượng - An toàn thực phẩm	6
+TS470	Hình thái giải phẫu và phân loại cá tôm	2
+TS471	Chuyên đề ngoại khóa	1
+TS472	Dược liệu trong quản lý bệnh thủy sản	2
+TS473T	Đánh giá và quản lý nguồn lợi thủy sản	3
+TS474	Kỹ thuật hóa học thực phẩm thủy sản	2
+TS475	Nguyên lý phân tích thực phẩm thủy sản	2
+TS476	Thực hành phân tích hóa học thực phẩm thủy sản	2
+TS477T	Đa dạng và bảo tồn thủy sinh vật	2
+TS478	Kỹ thuật nuôi cá cảnh	2
+TS479	Kỹ thuật nuôi thủy đặc sản	2
+TS480T	Kỹ thuật trồng và sử dụng rong biển	2
+TS481	Quản lý và phát triển nguồn lợi thủy sản	2
+TS482	Kiểm ngư và quản lý tàu cá	3
+TS483E	Ứng dụng AI trong marketing	2
+TS484	Các mô hình quản lý thủy sản	3
+TS485	Thực tập quản lý kinh tế thủy sản	5
+TS505	Luận văn tốt nghiệp - CBTS	15
+TS506	Luận văn tốt nghiệp - NTTS	15
+TS507	Luận văn tốt nghiệp - BHTS	15
+TS508	Luận văn tốt nghiệp - QLTS	15
+TS509	Luận văn tốt nghiệp - Đảm bảo chất lượng - An toàn thực phẩm	15
+TSQ613	Quản lý chất lượng trong chuỗi sản xuất thủy sản	2
+TV101	Xã hội thông tin	3
+TV104E	Công nghệ và các hệ thống thông tin	3
+TV111	Anh văn chuyên ngành Thông tin - Thư viện 1	3
+TV112	Anh văn chuyên ngành Thông tin - Thư viện 2	3
+TV114	Xác định và đánh giá nguồn tài nguyên thông tin	2
+TV115	Cấu trúc và tổ chức thông tin	3
+TV117	Quản lý nguồn tài nguyên thông tin	2
+TV122	Phương pháp nghiên cứu khoa học Thông tin - Thư viện	3
+TV123	Giao tiếp trong công sở	3
+TV124	Định chủ đề	2
+TV125	Phân loại tài liệu	2
+TV126	Marketing trong thư viện và cơ quan thông tin	3
+TV128	Nguồn thông tin kinh tế	2
+TV129	Nguồn thông tin y tế	2
+TV130	Nguồn thông tin khoa học công nghệ	2
+TV131	Tạo lập cơ sở dữ liệu TT - TV	3
+TV132	Kỹ năng thông tin căn bản	2
+TV133	Chuyên đề Thông tin - Thư viện	2
+TV135	Quản lý dự án thư viện và các cơ quan thông tin	2
+TV136	Dịch vụ thư viện dành cho trẻ em	2
+TV137	Nhập môn công tác quản lý trong các cơ quan thông tin	3
+TV138	Từ vựng 1-PV	2
+TV139E	Từ vựng 2-PV	2
+TV140	Nhập môn E-learning	3
+TV201	Nghe nói 1 - PV	3
+TV202	Nghe nói 2 - PV	3
+TV203	Nghe nói 3 - PV	3
+TV204	Nghe nói 4 - PV	3
+TV205E	Đọc hiểu 1 - PV	2
+TV206E	Đọc hiểu 2 - PV	2
+TV207	Đọc hiểu 3 - PV	2
+TV208E	Đọc hiểu 4 - PV	2
+TV209	Viết 1 - PV	2
+TV210	Viết 2 - PV	2
+TV211	Viết 3 - PV	2
+TV213	Ngữ pháp 1 - PV	2
+TV214E	Ngữ pháp 2 - PV	2
+TV215	Ngữ pháp 3 - PV	2
+TV216E	Ngữ pháp 4 - PV	2
+TV217	Ngữ âm thực hành - PV	2
+TV218	Văn hóa Pháp 1 - PV	2
+TV219E	Văn hóa Pháp 2 - PV	2
+TV220	Phương pháp nghiên cứu khoa học - PV	2
+TV222	Biên dịch 1 - PV	2
+TV223	Biên dịch 2 - PV	2
+TV224	Phiên dịch 1 - PV	2
+TV225	Phiên dịch 2 - PV	2
+TV227	Diễn đạt trước công chúng - PV	2
+TV228	Nghiên cứu từ vựng	2
+TV230	Giao tiếp đa văn hóa - PV	2
+TV231	Các loại hình văn bản	2
+TV233	Tiểu luận tốt nghiệp - PV	4
+TV234	Luận văn tốt nghiệp - PV	10
+TV236	Thực tập thông tin thư viện	2
+TV237E	Sử dụng phương tiện truyền thông-PV	2
+TV238	Diễn đạt nói theo tình huống	2
+TV240	Hướng nghiệp chuyên môn - PV	2
+TV241	Kỹ năng DELF B2	3
+TV242	Phiên dịch 3 - PV	2
+TV243	Phương pháp giảng dạy 1-PV	2
+TV244	Cơ sở Ngữ dụng và ứng dụng	2
+TV245	Cú pháp học - PV	2
+TV246	Tiếng Pháp Du lịch-khách sạn 1	2
+TV247	Tiếng Pháp thương mại-kinh doanh 1	2
+TV248	Tiếng Pháp hành chánh văn phòng 1	2
+TV249	Tiếng Pháp Du lịch-khách sạn 2	2
+TV250	Tiếng Pháp thương mại-kinh doanh 2	2
+TV251	Tiếng Pháp hành chánh văn phòng 2	2
+TV252	Kỹ năng nghe-nói nâng cao-PV	2
+TV253E	Ngữ pháp nâng cao - PV	2
+TV255	Kỹ thuật trình bày tài liệu khoa học	2
+TV256	Quản lý nội dung Web	2
+TV257	Siêu dữ liệu ứng dụng	2
+TV258	Thực tế ngoài trường - PV	3
+TV259	Kỹ năng DELF B1	3
+TV260	Chuyên đề văn học Pháp	2
+TV261	Quản trị văn phòng trong các cơ quan thông tin	2
+TV262E	Tự động hóa hoạt động thư viện	3
+TV263	Ứng dụng nghiệp vụ chuyên môn	2
+TV264E	Các hệ thống tổ chức và truy cập thông tin	2
+TV265	Phương pháp thống kê trong Thông tin - Thư viện	2
+TV266	AI trong thư viện	2
+TV267	Thực tế Thông tin - Thư viện	2
+TV268	Hệ thống mạng máy tính thư viện	2
+TV269E	Khởi nghiệp với dịch vụ thông tin	2
+TV301	Thiết kế Web	3
+TV302E	Quản lý nguồn tài liệu số	3
+TV310	Hệ thống thông tin thư viện các nước	2
+TV311	Bảo quản tài liệu trong thư viện và cơ quan thông tin	2
+TV314E	Đào tạo kỹ năng thông tin	2
+TV316E	Công tác địa chí	2
+TV319	Kinh doanh xuất bản phẩm	2
+TV319E	Kinh doanh xuất bản phẩm	2
+TV322	Tiểu luận tốt nghiệp - TT&TV	4
+TV323	Luận văn tốt nghiệp - TT&TV	10
+TV326	Quản lý nguồn nhân lực và các tổ chức Thông tin - Thư viện	2
+TV327	Chính sách thông tin	2
+TV329	Mô tả tài liệu	2
+TV331	Công tác phục vụ bạn đọc	2
+TV332E	Các dịch vụ thư viện đặc biệt	2
+TV333E	Xuất bản điện tử	2
+TV334E	Internet và các công nghệ trên Internet	2
+XH007	Tâm lý học đại cương	2
+XH011	Cơ sở văn hóa Việt Nam	2
+XH011E	Cơ sở văn hóa Việt Nam	2
+XH012	Tiếng Việt thực hành	2
+XH014	Văn bản và lưu trữ học đại cương	2
+XH014E	Văn bản và lưu trữ học đại cương	2
+XH016	Mỹ học đại cương	2
+XH018	Pháp văn chuyên môn - KHXH	2
+XH019	Pháp văn chuyên môn - KH&CN	2
+XH023	Anh văn căn bản 1 (*)	4
+XH024	Anh văn căn bản 2 (*)	3
+XH025	Anh văn căn bản 3 (*)	3
+XH028	Xã hội học đại cương	2
+XH031	Anh văn tăng cường 1 (*)	4
+XH032	Anh văn tăng cường 2 (*)	3
+XH033	Anh văn tăng cường 3 (*)	3
+XH076	Tâm lý học xã hội	2
+XH077	Thống kê ứng dụng trong khoa học xã hội	2
+XH078	Nhập môn xã hội học	3
+XH113E	Ngôn ngữ văn chương	2
+XH114E	Các thể thơ Việt Nam	2
+XH116	Phương pháp nghiên cứu văn học	2
+XH117	Ngôn ngữ báo chí	2
+XH137	Dân số và phát triển	2
+XH142	Lý luận dạy học môn Địa lý	2
+XH175	Phương pháp nghiên cứu khoa học - Anh văn	2
+XH190	Y tế du lịch	2
+XH193	Kỹ năng giao tiếp xã hội	2
+XH196	Chữ Nôm	3
+XH218	Thực tế ngoài trường - Văn học	2
+XH287	Ngữ dụng học - Pháp	2
+XH313	Văn học Việt Nam đại cương	2
+XH346	Tiểu luận tốt nghiệp - Văn học	4
+XH347	Luận văn tốt nghiệp - Văn học	10
+XH409	Du lịch văn hóa	2
+XH415	Du lịch sinh thái	2
+XH415E	Du lịch sinh thái	2
+XH426	Phát triển du lịch bền vững	2
+XH439	Tiểu luận tốt nghiệp - Du lịch	4
+XH440	Luận văn tốt nghiệp - Du lịch	10
+XH446	Tổ chức sự kiện	2
+XH447	Quan hệ công chúng	2
+XH455	Âm vị học	2
+XH465E	Lý thuyết dịch	2
+XH478	Dẫn luận văn chương	3
+XH498	Tiểu luận tốt nghiệp - Anh văn	4
+XH499	Luận văn tốt nghiệp - Anh văn	10
+XH534E	Dẫn luận ngôn ngữ - Anh văn	2
+XH535	Từ pháp học và cú pháp học	3
+XH536E	Ngữ nghĩa học và ngữ dụng học	3
+XH537E	Ngôn ngữ học đối chiếu	2
+XH540	Phê bình văn học đại cương	3
+XH551	Dịch thuật đại cương	2
+XH557E	Thị trường du lịch	2
+XH558	Kỹ năng thuyết minh du lịch	2
+XH563	Thực tập nghiệp vụ du lịch	3
+XH564E	Địa lý du lịch Đông Nam Á	2
+XH567	Văn học dân gian đại cương	3
+XH579E	Tiểu thuyết Việt Nam hiện đại	2
+XH580	Từ Hán Việt	2
+XH581E	Tiểu thuyết cổ điển Trung Quốc	2
+XH583E	Tiếp nhận văn học	2
+XH584	Văn hóa, dân cư, môi trường Đồng bằng sông Cửu Long	2
+XN101E	Địa lý tự nhiên Việt Nam - Du lịch	2
+XN103	Địa lý du lịch thế giới	3
+XN105	Pháp văn chuyên ngành - Du lịch 1	4
+XN106	Pháp văn chuyên ngành - Du lịch 2	4
+XN107	Pháp văn chuyên ngành - Du lịch 3	4
+XN110	Kỹ thuật nhiếp ảnh và quay video	2
+XN113	Công tác xã hội	3
+XN114	Anh văn chuyên ngành - XHH	3
+XN115E	Nhân học đại cương	2
+XN118	Các vấn đề xã hội đương đại	3
+XN119	Sinh kế, đánh giá nông thôn có sự tham gia (PRA)	3
+XN120	Kiến trúc và nghệ thuật truyền thống ở Việt Nam	2
+XN121	Phong tục và lễ hội truyền thống của người Việt	3
+XN122	Tổ chức teambuilding và hoạt náo	2
+XN123	Thủ tục hải quan và thanh toán quốc tế	2
+XN124	Ứng dụng công nghệ thông tin và truyền thông trong du lịch	2
+XN126E	Ứng dụng bản đồ trong du lịch	2
+XN127	Nghiệp vụ chào bán tour trong du lịch	2
+XN128	Tâm lý và kỹ năng giao tiếp trong du lịch	2
+XN129	Anh văn Du lịch 1	4
+XN130	Anh văn Du lịch 2	4
+XN131	Anh văn Du lịch 3	4
+XN132	Nhập môn du lịch	2
+XN133	Du lịch cộng đồng và Homestay Việt Nam	2
+XN137	Ứng dụng địa danh học trong du lịch	3
+XN138	Tổ chức lãnh thổ du lịch Việt Nam	2
+XN139	Môi trường và tài nguyên du lịch	2
+XN141	Nghiệp vụ nhà hàng, khách sạn	3
+XN142	Chuyên đề tuyến điểm du lịch Việt Nam	3
+XN143	Quản trị dịch vụ và lữ hành	3
+XN145	Nghiệp vụ hướng dẫn du lịch	3
+XN146	Phương pháp nghiên cứu trong du lịch	2
+XN148E	Pháp luật về du lịch	2
+XN149	Thiết kế và quy hoạch du lịch	2
+XN150	Quản lý điểm đến	2
+XN152E	Nghiệp vụ pha chế và bếp	3
+XN153E	Lịch sử Việt Nam đại cương	2
+XN154E	Du lịch sức khỏe	3
+XN155E	Du lịch di sản	2
+XN156E	Du lịch ẩm thực	2
+XN157E	Quản lý dịch vụ vận chuyển trong du lịch	2
+XN158	Kỹ năng chụp ảnh và quay video du lịch	2
+XN159	Đặc điểm văn hóa Đồng bằng sông Cửu Long	2
+XN187	Tác phẩm và thể loại văn học	3
+XN188	Hán văn	3
+XN189	Văn học châu Âu từ cổ đại đến đương đại	4
+XN190	Niên luận - Văn học	2
+XN191	Văn học và văn hóa đại chúng	2
+XN192	Thực tập văn học	2
+XN193	Thực hành văn học	2
+XN194E	Văn học Đồng bằng sông Cửu Long đương đại	2
+XN195	Thực hành báo chí và truyền thông	2
+XN196	Cơ sở lý luận báo chí và truyền thông	3
+XN197	Lao động nhà báo và hoạt động tòa soạn	3
+XN199	Ngữ pháp học chức năng tiếng Việt	2
+XN200	Thực tế báo chí	2
+XN201E	Báo chí truyền thông đại cương	2
+XN202	Biên tập các loại hình báo chí truyền thông	2
+XN203	Chính sách công	3
+XN204	Đại cương văn hóa Việt Nam	3
+XN205E	Địa lý nhân văn	2
+XN209	Nghệ thuật học	2
+XN210	Nghiên cứu khoa học xã hội ứng dụng	4
+XN213	Nghiệp vụ nhà báo	2
+XN214	Ngữ âm - Từ vựng - Ngữ nghĩa tiếng Việt	3
+XN215	Ngữ pháp học tiếng Việt	3
+XN216	Nguyên lý lý luận văn học	3
+XN217	Phân tích và xử lý số liệu	3
+XN218	Phát triển bền vững	3
+XN219E	Phê bình văn học Việt Nam hiện đại	2
+XN220	Phương pháp nghiên cứu khoa học xã hội	3
+XN222	Sáng tác và biên tập tác phẩm văn chương	2
+XN223	Tạo lập văn bản và giao tiếp hành chính	2
+XN224	Thể loại báo chí	2
+XN225	Thực hành công tác xã hội	3
+XN226E	Truyền thông và tiếp thị số trong du lịch	2
+XN227E	Văn hóa Nam Bộ	2
+XN229E	Văn học dân gian Nam Bộ	2
+XN230E	Văn học Đông Nam Á	2
+XN233	Văn học Nga	4
+XN235	Văn học Trung Quốc	4
+XN236	Văn học Việt Nam 1900-1945	4
+XN237	Văn học Việt Nam 1945-1975	3
+XN238	Văn học Việt Nam từ 1975 đến nay	2
+XN240	Văn học Việt Nam từ thế kỷ X đến giữa thế kỷ XVIII	3
+XN241E	Xây dựng thương hiệu sản phẩm du lịch	2
+XN243	Kịch bản truyền thông	2
+XN244	Lý thuyết xã hội học hiện đại	3
+XN245	Thực tập nghề nghiệp cuối khóa	3
+XN247	Văn học Việt Nam từ giữa thế kỷ XVIII đến hết thế kỷ XIX	3
+XN248	Văn học Ấn Độ và Đông Bắc Á	3
+XN250	Văn học Mỹ và các nước Mỹ Latinh	3
+XN251	Lý luận văn học hiện đại trong nghiên cứu tác phẩm	3
+XN253	Pháp luật và đạo đức báo chí	2
+XN254	Tác phẩm báo chí	3
+XN255	Phương pháp nghiên cứu khoa học - Báo chí	2
+XN256E	Lịch sử báo chí	2
+XN257E	Quan hệ công chúng đại cương	2
+XN258	Lịch sử văn minh Việt Nam và Thế giới	3
+XN259	Ngôn ngữ báo chí, truyền thông	3
+XN260	Thực hành văn bản Tiếng Việt	3
+XN261E	Đại cương văn học	3
+XN262E	Lịch sử và văn hóa vùng đồng bằng sông Cửu Long	2
+XN263E	Xã hội học báo chí	2
+XN264	Truyền thông và toàn cầu hóa	2
+XN265E	Công chúng báo chí, truyền thông	2
+XN266E	Văn hóa doanh nghiệp	2
+XN271	Ảnh báo chí	2
+XN272	Tin và bài phản ánh	3
+XN273	Phóng sự báo chí	3
+XN274	Bình luận báo chí	2
+XN275	Ký sự - Phim tài liệu	3
+XN276	Phỏng vấn báo chí	2
+XN277	Kỹ thuật và công nghệ báo chí, truyền thông	4
+XN278	Thực tập báo chí	3
+XN279	Tiếng Anh chuyên ngành báo chí	3
+XN280	Biên tập báo chí, truyền thông	3
+XN281	Báo chí đa phương tiện	3
+XN282	Kịch bản báo chí, truyền thông	2
+XN283E	Quản trị khủng hoảng truyền thông	2
+XN284	Kỹ năng dẫn chương trình	2
+XN285	Chuyên đề báo chí về Chính trị - Xã hội	2
+XN286	Chuyên đề báo chí về Văn hóa	2
+XN287E	Chuyển đổi số báo chí	2
+XN288	Ứng dụng báo chí trên thiết bị di động	2
+XN289	Thiết kế và đồ họa	2
+XN290	Xu hướng báo chí hiện đại	2
+XN291E	Xây dựng thương hiệu	2
+XN292	Tổ chức sự kiện truyền thông	2
+XN293	Kỹ năng viết cho quan hệ công chúng	2
+XN294	Quảng cáo	2
+XN295E	Định dạng chương trình truyền hình	2
+XN296E	Truyền thông chính sách	2
+XN297E	Kinh tế báo chí	2
+XN298	Chiến lược và kế hoạch truyền thông	2
+XN299	Quản trị dự án truyền thông	2
+XN302	Tổ chức sự kiện và du lịch MICE	2
+XN318	Biên dịch y khoa	3
+XN321E	Biên dịch báo chí	3
+XN325	Phiên dịch môi trường	3
+XN332	Thực tế ngoài trường - Anh văn	2
+XN334E	Văn học Anh-Mỹ	3
+XN341	Thực tế xã hội học	2
+XN343	Lịch sử xã hội học	3
+XN347	Xã hội học nông thôn	3
+XN348E	Xã hội học đô thị	2
+XN349	Xã hội học kinh tế	2
+XN352E	Xã hội học văn hóa	2
+XN353	Xã hội học gia đình	3
+XN354	Xã hội học về giới	3
+XN355	Xã hội học truyền thông đại chúng	3
+XN363	Xã hội học chính trị	2
+XN364	Xã hội học tội phạm	2
+XN365E	Xã hội học tôn giáo	2
+XN366E	Xã hội học y tế	2
+XN367	Xã hội học quản lý	2
+XN369E	Xã hội học môi trường	2
+XN370E	Xã hội học giáo dục	2
+XN371	Xã hội học về dư luận xã hội	2
+XN372E	Xã hội học lối sống	2
+XN373E	Xã hội học du lịch	2
+XN375	Báo in và báo điện tử	3
+XN376	Phát thanh và truyền hình	3
+XN377	Các thể loại báo chí đương đại	4
+XN378	Thực tế Du lịch 1	2
+XN379	Thực tế Du lịch 2	2
+XN381	Luận văn tốt nghiệp	10
+XN382	Tiểu luận tốt nghiệp	4
+XN501	Tiểu luận tốt nghiệp - Báo chí	4
+XN502	Luận văn tốt nghiệp - Báo chí	10

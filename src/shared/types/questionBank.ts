@@ -6,12 +6,14 @@ export enum QuestionBankVisibility {
 }
 
 export interface QuestionBank {
+  viewCount?: number;
   bankId: number;
   name: string;
   subjectId: number;
   subjectName: string;
   description?: string;
   visibility: QuestionBankVisibility;
+  status?: "DRAFT" | "ACTIVE" | "ARCHIVED" | "DELETED";
   createdBy: number;
   creatorName: string;
   createdAt: string;

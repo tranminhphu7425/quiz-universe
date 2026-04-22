@@ -55,9 +55,15 @@ public class QuestionBank {
     @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Question> questions = new HashSet<>();
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", columnDefinition = "ENUM('DRAFT', 'ACTIVE', 'ARCHIVED', 'DELETED')")
+    private Status status;
+
     public enum Visibility {
         PRIVATE, ORG, PUBLIC;
+    }
 
-   
+    public enum Status {
+        DRAFT, ACTIVE, ARCHIVED, DELETED;
     }
 }

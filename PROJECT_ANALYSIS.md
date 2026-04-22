@@ -354,7 +354,7 @@ quiz-universe/
 │   │   ├── questionBank10.json      # ✅ Bank 10 questions (170KB)
 │   │   ├── courses.json             # ✅ Courses data (898KB)
 │   │   ├── ket_qua_dkmh_full.json   # ✅ Registration results (3.1MB)
-│   │   └── ket_qua_dkmh_full1.json  # ✅ Registration results v2 (2.9MB)
+│   │  
 │   ├── 📂 tenant-assets/           # Multi-tenant assets
 │   ├── files.json                   # Google Drive file tree (11MB!)
 │   ├── favicon.svg                  # Favicon

@@ -157,7 +157,7 @@ export default function SubjectDetailPage() {
 
   const handleEdit = () => {
     if (subject) {
-      navigate(`/subject/${subject.id}/edit`);
+      navigate(`/subjects/${subject.id}/edit`);
     }
   };
 

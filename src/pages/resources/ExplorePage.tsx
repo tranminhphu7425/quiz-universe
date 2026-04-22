@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import {
   Folder,
   FileText,
@@ -50,10 +51,21 @@ export default function ExplorePage() {
   const [sortOption, setSortOption] = useState<SortOption>('name-asc');
   const [currentDriveId, setCurrentDriveId] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const location = useLocation();
 
   // Thêm state để kiểm soát hiệu năng
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [displayLimit, setDisplayLimit] = useState(40);
+
+  // Sync searchQuery with URL params
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const q = params.get("search");
+    if (q) {
+      setSearchQuery(q);
+      setDebouncedSearchQuery(q); // Set immediately for better UX when navigating from dashboard
+    }
+  }, [location.search]);
 
   // Debounce search query
   useEffect(() => {

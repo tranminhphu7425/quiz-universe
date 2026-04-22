@@ -1,19 +1,14 @@
-// src/pages/subjects/CreateSubject.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import {
     Upload,
-    FileText,
     PenTool,
     Sparkles,
     Zap,
-    Clock,
     Users,
     ShieldCheck,
-    ArrowRight,
     BookOpen,
-    FileUp,
     Wand2,
     X,
     CheckCircle2,
@@ -22,81 +17,152 @@ import {
     Eye,
     Share2,
     Download,
-    Settings
+    Settings,
+    Search,
+    ChevronDown,
+    FileJson,
+    CheckCircle
 } from "lucide-react";
-
-
 
 import Floating from "@/shared/ui/Floatting";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import { useAuth } from "@/app/providers/AuthProvider";
-import { toast } from "sonner";
+import { toast } from "react-hot-toast";
+import { fetchAllSubjects } from "@/shared/api/subjectApi";
+import { Subject } from "@/shared/types/subject";
+import { QuestionBankApi } from "@/shared/api/questionBanksApi";
+import { QuestionBankVisibility } from "@/shared/types/questionBank";
+import { createQuestionInBankApi } from "@/shared/api/questionsApi";
+import type { UpdateQuestionPayload } from "@/shared/types/question";
 
 export default function CreateQuestionBankPage() {
-    const { user } = useAuth();
+    useAuth();
     const navigate = useNavigate();
 
+    const [subjects, setSubjects] = useState<Subject[]>([]);
+    const [selectedSubjectId, setSelectedSubjectId] = useState<number | "">("");
+    const [isLoadingSubjects, setIsLoadingSubjects] = useState(true);
+    const [searchSubject, setSearchSubject] = useState("");
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const filteredSubjects = subjects.filter(sub =>
+        sub.name.toLowerCase().includes(searchSubject.toLowerCase())
+    );
+
+    const handleSelectSubject = (id: number, name: string) => {
+        setSelectedSubjectId(id);
+        setSearchSubject(name);
+        setIsDropdownOpen(false);
+    };
+
+    useEffect(() => {
+        fetchAllSubjects()
+            .then(data => {
+                setSubjects(data);
+                setIsLoadingSubjects(false);
+            })
+            .catch(err => {
+                console.error("Failed to fetch subjects:", err);
+                setIsLoadingSubjects(false);
+            });
+    }, []);
+
     const [activeTab, setActiveTab] = useState<"ai" | "manual">("manual");
-    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-    const [uploadProgress, setUploadProgress] = useState(0);
-    const [isUploading, setIsUploading] = useState(false);
     const [subjectName, setSubjectName] = useState("");
     const [subjectDescription, setSubjectDescription] = useState("");
-    const [visibility, setVisibility] = useState<"public" | "private">("public");
+    const [visibility, setVisibility] = useState<QuestionBankVisibility>(QuestionBankVisibility.PUBLIC);
     const [tags, setTags] = useState<string[]>([]);
     const [newTag, setNewTag] = useState("");
-    const [aiConfig, setAiConfig] = useState({
-        documentType: "textbook",
-        difficulty: "medium",
-        questionCount: 20,
-        questionTypes: ["multiple-choice", "true-false"],
-        includeAnswers: true
-    });
 
+    // Add these to your component's state
+    const [jsonInput, setJsonInput] = useState("");
+    const [jsonMessage, setJsonMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+    const [importedQuestions, setImportedQuestions] = useState<UpdateQuestionPayload[] | null>(null);
 
-
-
-    // Xử lý upload file
-    const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
+    // Handlers
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
         if (!file) return;
 
-        // Kiểm tra định dạng
-        const allowedTypes = [
-            "application/pdf",
-            "application/msword",
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            "text/plain",
-            "application/vnd.ms-powerpoint",
-            "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-        ];
-
-        if (!allowedTypes.includes(file.type)) {
-            toast.error("Chỉ chấp nhận file PDF, Word, PowerPoint hoặc text");
-            return;
-        }
-
-        // Giới hạn kích thước 50MB
-        if (file.size > 50 * 1024 * 1024) {
-            toast.error("File quá lớn. Kích thước tối đa là 50MB");
-            return;
-        }
-
-        setUploadedFile(file);
-
-        // Mô phỏng upload progress
-        setIsUploading(true);
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += 10;
-            setUploadProgress(progress);
-            if (progress >= 100) {
-                clearInterval(interval);
-                setIsUploading(false);
-                toast.success("Tải lên thành công! Đang phân tích tài liệu...");
-            }
-        }, 100);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const content = e.target?.result as string;
+            setJsonInput(content);
+            setJsonMessage({ type: "success", text: `Đã tải file: ${file.name}` });
+            setTimeout(() => setJsonMessage(null), 3000);
+        };
+        reader.onerror = () => {
+            setJsonMessage({ type: "error", text: "Lỗi khi đọc file. Vui lòng thử lại!" });
+            setTimeout(() => setJsonMessage(null), 3000);
+        };
+        reader.readAsText(file);
     };
+
+    const handleImportJSON = () => {
+        if (!jsonInput.trim()) {
+            setJsonMessage({ type: "error", text: "Vui lòng nhập hoặc tải file JSON!" });
+            setTimeout(() => setJsonMessage(null), 3000);
+            return;
+        }
+
+        try {
+            const parsedData = JSON.parse(jsonInput);
+            if (!Array.isArray(parsedData)) {
+                throw new Error("Dữ liệu JSON phải là một danh sách các câu hỏi (Array)");
+            }
+
+            const normalized: UpdateQuestionPayload[] = parsedData.map((q: unknown, idx: number) => {
+                const obj = (typeof q === "object" && q !== null) ? (q as Record<string, unknown>) : null;
+                const stemRaw = obj?.stem;
+                const stem = typeof stemRaw === "string" ? stemRaw.trim() : "";
+                if (!stem) {
+                    throw new Error(`Câu hỏi #${idx + 1} thiếu "stem"`);
+                }
+
+                const rawOptionsUnknown = obj?.options;
+                const rawOptions = Array.isArray(rawOptionsUnknown) ? rawOptionsUnknown : [];
+                const options = rawOptions
+                    .map((o: unknown) => (typeof o === "object" && o !== null) ? (o as Record<string, unknown>) : null)
+                    .filter((o): o is Record<string, unknown> => Boolean(o))
+                    .filter((o) => typeof o.label === "string" && typeof o.content === "string")
+                    .map((o) => ({
+                        label: (o.label as string).trim(),
+                        content: (o.content as string).trim(),
+                        isCorrect: Boolean(o.isCorrect),
+                    }));
+
+                return {
+                    stem,
+                    questionType: "mcq_single",
+                    options,
+                };
+            });
+
+            if (normalized.length === 0) {
+                throw new Error("JSON không có câu hỏi nào để import");
+            }
+
+            setImportedQuestions(normalized);
+            setJsonMessage({ type: "success", text: `Import JSON thành công! (${normalized.length} câu hỏi)` });
+            setTimeout(() => setJsonMessage(null), 3000);
+
+            // Optional: Clear input after successful import
+            // setJsonInput("");
+        } catch (error: unknown) {
+            setImportedQuestions(null);
+            const message = error instanceof Error ? error.message : "JSON không hợp lệ. Vui lòng kiểm tra lại định dạng!";
+            setJsonMessage({ type: "error", text: message });
+            setTimeout(() => setJsonMessage(null), 3000);
+        }
+    };
+
+    const handleClearJSON = () => {
+        setJsonInput("");
+        setImportedQuestions(null);
+        setJsonMessage({ type: "success", text: "Đã xóa nội dung JSON!" });
+        setTimeout(() => setJsonMessage(null), 3000);
+    };
+
 
     // Xử lý thêm tag
     const handleAddTag = () => {
@@ -112,28 +178,65 @@ export default function CreateQuestionBankPage() {
     };
 
     // Xử lý tạo bộ câu hỏi
-    const handleCreateSubject = async () => {
+    const handleCreateQuestionBank = async () => {
         if (!subjectName.trim()) {
             toast.error("Vui lòng nhập tên bộ câu hỏi");
             return;
         }
 
-        if (activeTab === "ai" && !uploadedFile) {
-            toast.error("Vui lòng tải lên tài liệu để AI phân tích");
+        if (!selectedSubjectId) {
+            toast.error("Vui lòng chọn môn học");
+            return;
+        }
+
+        if (activeTab === "ai" && !jsonInput.trim()) {
+            toast.error("Vui lòng nhập nội dung JSON");
+            return;
+        }
+
+        if (activeTab === "ai" && (!importedQuestions || importedQuestions.length === 0)) {
+            toast.error("Vui lòng bấm Import JSON để kiểm tra dữ liệu trước khi lưu");
             return;
         }
 
         try {
-            // Giả lập tạo bộ câu hỏi
-            toast.loading("Đang tạo bộ câu hỏi...");
+            const toastId = toast.loading(activeTab === "ai" ? "Đang xử lý JSON và tạo bộ câu hỏi..." : "Đang tạo bộ câu hỏi...");
 
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // 1. Tạo bộ câu hỏi trước
+            const response = await QuestionBankApi.create({
+                name: subjectName.trim(),
+                subjectId: selectedSubjectId as number,
+                description: subjectDescription.trim() || undefined,
+                visibility: visibility,
+            });
 
-            toast.success("Tạo bộ câu hỏi thành công!");
-            navigate("/subjects");
-        } catch (error) {
-            toast.error("Đã xảy ra lỗi. Vui lòng thử lại!");
+            if (activeTab === "manual") {
+                toast.success("Tạo bộ câu hỏi thành công!", { id: toastId });
+                navigate(`/questions/question-bank/${response.bankId}/edit`);
+            } else {
+                // 2. Tạo câu hỏi từ JSON đã import
+                try {
+                    const questionsData = importedQuestions ?? [];
+                    toast.loading(`Đang tạo ${questionsData.length} câu hỏi...`, { id: toastId });
+
+                    // Tạo từng câu hỏi một (Vì hiện tại API chưa hỗ trợ bulk insert)
+                    for (const q of questionsData) {
+                        await createQuestionInBankApi(response.bankId, q);
+                    }
+
+                    toast.success(`Tạo thành công bộ câu hỏi với ${questionsData.length} câu hỏi!`, { id: toastId });
+                    navigate(`/questions/question-bank/${response.bankId}/edit`);
+                } catch (parseError: unknown) {
+                    console.error("JSON Parse/Save Error:", parseError);
+                    const msg = parseError instanceof Error ? parseError.message : "Không xác định";
+                    toast.error(`Lỗi xử lý JSON: ${msg}. Bộ câu hỏi đã được tạo nhưng chưa có câu hỏi.`, { id: toastId, duration: 5000 });
+                    navigate(`/questions/question-bank/${response.bankId}/edit`);
+                }
+            }
+        } catch (error: unknown) {
+            const maybeAxiosErr = error as { response?: { data?: { message?: string } } };
+            const message = maybeAxiosErr?.response?.data?.message || (error instanceof Error ? error.message : "Đã xảy ra lỗi. Vui lòng thử lại!");
+            toast.error(message);
         }
     };
 
@@ -261,7 +364,7 @@ export default function CreateQuestionBankPage() {
                                             <Wand2 className="h-5 w-5" />
                                             AI Tự động
                                             <span className="ml-2 rounded-full bg-emerald-100 dark:bg-emerald-900 px-2 py-0.5 text-xs font-medium">
-                                                Nhanh (Sắp ra mắt)
+                                                Nhanh
                                             </span>
                                         </button>
 
@@ -276,6 +379,68 @@ export default function CreateQuestionBankPage() {
                                             Thông tin cơ bản
                                         </h3>
                                         <div className="space-y-4">
+                                            <div>
+                                                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                                    Môn học *
+                                                </label>
+                                                <div className="flex flex-col gap-2 relative z-20">
+                                                    {/* Custom Searchable Dropdown */}
+                                                    <div
+                                                        className={`flex items-center w-full rounded-xl border border-emerald-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-3 focus-within:border-emerald-400 focus-within:ring-2 focus-within:ring-emerald-200 dark:focus-within:ring-emerald-900 ${isLoadingSubjects ? 'opacity-50 pointer-events-none' : ''}`}
+                                                    >
+                                                        <Search className="h-5 w-5 text-gray-400 mr-2" />
+                                                        <input
+                                                            type="text"
+                                                            value={searchSubject}
+                                                            onChange={(e) => {
+                                                                setSearchSubject(e.target.value);
+                                                                setIsDropdownOpen(true);
+                                                                if (selectedSubjectId) setSelectedSubjectId(""); // Reset id if they type new text
+                                                            }}
+                                                            onClick={() => setIsDropdownOpen(true)}
+                                                            onFocus={() => setIsDropdownOpen(true)}
+                                                            placeholder={isLoadingSubjects ? "Đang tải..." : "Tìm hoặc chọn môn học..."}
+                                                            className="flex-1 bg-transparent text-gray-700 dark:text-gray-300 focus:outline-none placeholder-gray-400 dark:placeholder-slate-400"
+                                                        />
+                                                        <ChevronDown className="h-5 w-5 text-gray-400 cursor-pointer" onClick={() => setIsDropdownOpen(!isDropdownOpen)} />
+                                                    </div>
+
+                                                    {/* Dropdown Menu */}
+                                                    {isDropdownOpen && (
+                                                        <>
+                                                            <div className="fixed inset-0 z-30" onClick={() => {
+                                                                setIsDropdownOpen(false);
+                                                                const s = subjects.find(sub => sub.id === selectedSubjectId);
+                                                                if (s) setSearchSubject(s.name);
+                                                                else setSearchSubject("");
+                                                            }} />
+                                                            <div className="absolute z-40 top-[52px] left-0 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-emerald-100 dark:border-slate-700 bg-white dark:bg-slate-800 p-2 shadow-xl">
+                                                                {filteredSubjects.length === 0 ? (
+                                                                    <div className="p-3 text-center text-sm text-gray-500">
+                                                                        Không tìm thấy môn học nào
+                                                                    </div>
+                                                                ) : (
+                                                                    filteredSubjects.map(sub => (
+                                                                        <div
+                                                                            key={sub.id}
+                                                                            onClick={() => handleSelectSubject(sub.id, sub.name)}
+                                                                            className={`cursor-pointer rounded-lg px-4 py-2 transition-colors hover:bg-emerald-50 dark:hover:bg-slate-700 ${selectedSubjectId === sub.id ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
+                                                                        >
+                                                                            {sub.name}
+                                                                        </div>
+                                                                    ))
+                                                                )}
+                                                            </div>
+                                                        </>
+                                                    )}
+
+                                                    <div className="text-right mt-1">
+                                                        <Link to="/subjects/create" className="text-sm font-semibold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300">
+                                                            + Chưa có môn học? Thêm mới
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div>
                                                 <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                                                     Tên bộ câu hỏi *
@@ -310,209 +475,256 @@ export default function CreateQuestionBankPage() {
                                                 initial={{ opacity: 0, height: 0 }}
                                                 animate={{ opacity: 1, height: "auto" }}
                                                 exit={{ opacity: 0, height: 0 }}
-                                                className="mb-8"
+                                                className="mb-8 overflow-hidden"
                                             >
                                                 <h3 className="mb-4 text-lg font-bold text-emerald-900 dark:text-emerald-300">
-                                                    Tải lên tài liệu
+                                                    Nhập vào JSON
                                                 </h3>
 
-                                                {/* Upload Area */}
-                                                <div className={`rounded-2xl border-2 border-dashed ${uploadedFile
-                                                    ? "border-emerald-500 bg-emerald-50/50 dark:bg-emerald-900/20"
-                                                    : "border-emerald-300 dark:border-slate-600 hover:border-emerald-400 dark:hover:border-slate-500"
-                                                    } p-8 text-center transition-all`}>
-                                                    {!uploadedFile ? (
-                                                        <div className="space-y-4">
-                                                            <div className="inline-flex rounded-full bg-emerald-100 dark:bg-emerald-900/40 p-4">
-                                                                <FileUp className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
+                                                {/* JSON Import Area */}
+                                                <div className="space-y-4">
+
+
+
+
+
+
+                                                    {/* Option 2: Textarea for JSON */}
+                                                    <div className="space-y-3">
+                                                        <textarea
+                                                            value={jsonInput}
+                                                            onChange={(e) => setJsonInput(e.target.value)}
+                                                            placeholder='[
+  {
+    "stem": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      { "label": "A", "content": "Hà Nội", "isCorrect": true },
+      { "label": "B", "content": "Hồ Chí Minh", "isCorrect": false },
+      { "label": "C", "content": "Đà Nẵng", "isCorrect": false },
+      { "label": "D", "content": "Cần Thơ", "isCorrect": false }
+    ]
+  },
+  {
+    "stem": "2 + 2 bằng bao nhiêu?",
+    "options": [
+      { "label": "A", "content": "3", "isCorrect": false },
+      { "label": "B", "content": "4", "isCorrect": true },
+      { "label": "C", "content": "5", "isCorrect": false },
+      { "label": "D", "content": "6", "isCorrect": false }
+    ]
+  },
+  ...
+]'
+                                                            className="h-60 w-full rounded-xl border border-emerald-200 bg-white/50 p-4 font-mono text-sm text-emerald-900 placeholder:text-emerald-300 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 dark:border-emerald-800 dark:bg-gray-900/50 dark:text-emerald-100 dark:placeholder:text-emerald-700"
+                                                        />
+
+                                                        {/* Format Example */}
+                                                        <details className="group rounded-xl border border-emerald-200 bg-emerald-50/30 p-4 transition-all duration-300 hover:shadow-md dark:border-emerald-800 dark:bg-emerald-950/20">
+    <summary className="flex cursor-pointer items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
+        <span className="flex items-center gap-2">
+            <span className="text-base">📋</span>
+            Lấy prompt để tạo JSON
+        </span>
+        <svg 
+            className="h-4 w-4 transition-transform duration-300 group-open:rotate-180" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+        >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+    </summary>
+    
+    <div className="mt-4 space-y-3">
+        
+        {/* Copy Button Section */}
+
+        <div className="relative">
+            <button
+                onClick={() => {
+                    const promptText = `Bạn là một hệ thống trích xuất dữ liệu chính xác.
+
+Nhiệm vụ:
+- Đọc file PDF trắc nghiệm được cung cấp
+- Trích xuất toàn bộ câu hỏi và các đáp án
+- Chuyển đổi sang định dạng JSON theo mẫu bên dưới
+
+Yêu cầu bắt buộc:
+1. Giữ nguyên nội dung câu hỏi (stem)
+2. Mỗi câu có danh sách options gồm:
+   - label: "A", "B", "C", "D"
+   - content: nội dung đáp án
+   - isCorrect: true/false (dựa vào đáp án đúng trong tài liệu, những đáp án được highlight hoặc được tô đậm hay text có màu khác so với những đáp án khác là những đáp án đúng)
+3. Không thêm bất kỳ text nào ngoài JSON
+4. Output phải là JSON hợp lệ (valid JSON)
+5. Loại bỏ các ký tự xuống dòng dư thừa, format lại cho gọn
+6. Nếu câu hỏi thiếu đáp án, vẫn giữ lại nhưng chỉ include những đáp án có thể đọc được
+7. Nếu PDF có ký hiệu đáp án đúng (ví dụ: *, ✓, đáp án in đậm...), hãy suy luận để xác định isCorrect
+
+Format JSON mẫu:
+[
+  {
+    "stem": "Câu hỏi...",
+    "options": [
+      { "label": "A", "content": "Đáp án A", "isCorrect": false },
+      { "label": "B", "content": "Đáp án B", "isCorrect": true },
+      { "label": "C", "content": "Đáp án C", "isCorrect": false },
+      { "label": "D", "content": "Đáp án D", "isCorrect": false }
+    ]
+  }
+]
+
+Lưu ý:
+- Không giải thích
+- Không markdown
+- Không thêm \`\`\`json
+- Chỉ trả về JSON thuần`;
+                    
+                    navigator.clipboard.writeText(promptText);
+                    toast.success("Đã sao chép prompt vào clipboard!");
+                }}
+                className="w-full rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:from-emerald-500 hover:to-teal-500 hover:shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2"
+            >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                Sao chép prompt
+            </button>
+        </div>
+
+        {/* Info Box */}
+        <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-4 dark:border-emerald-800 dark:bg-gray-900/50">
+            <div className="flex items-start gap-3">
+                <span className="text-xl">💡</span>
+                <div className="flex-1 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                    <p className="font-bold underline">Hướng dẫn quan trọng:</p>
+                    <p className="text-xs leading-relaxed">
+                        Hãy <strong>tải file PDF hoặc DOCS</strong> có chứa tài liệu trắc nghiệm của bạn lên Gemini và gửi kèm câu lệnh (prompt) bên dưới. 
+                        <span className="block mt-1 text-amber-600 dark:text-amber-400 font-semibold italic">
+                            * Lưu ý: Sử dụng chế độ <span className="underline">GEMINI PRO</span> để cho ra kết quả chính xác nhất!
+                        </span>
+                    </p>
+                    <div className="pt-2 border-t border-emerald-200 dark:border-emerald-800">
+                      <p className="font-medium text-xs mb-2">Prompt này sẽ giúp AI:</p>
+                      <ul className="list-inside list-disc space-y-1 pl-2 text-xs">
+                          <li>Trích xuất đúng 100% câu hỏi và đáp án</li>
+                          <li>Tự động nhận diện đáp án đúng từ định dạng (in đậm, highlight)</li>
+                          <li>Đưa về cấu hình JSON chuẩn để bạn dán vào ô bên trên</li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {/* Gemini Link */}
+        <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-white/50 p-3 dark:border-emerald-800 dark:bg-gray-900/50">
+            <div className="flex items-center gap-2">
+                <span className="text-sm">🚀</span>
+                <span className="text-xs text-gray-700 dark:text-gray-400">
+                    Hoặc truy cập Gem có sẵn để tạo JSON ngay
+                </span>
+            </div>
+            <a 
+                href="https://gemini.google.com/gem/1W3Tw6rnaOIlQTTZ4DH1JANsYW_uvqWDI?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-all duration-200 hover:bg-emerald-200 dark:bg-emerald-900/50 dark:text-gray-300 dark:hover:bg-emerald-900"
+            >
+                <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                Mở Gemini
+               
+            </a>
+        </div>
+    </div>
+</details>
+
+
+                                                        {/* Or divider */}
+                                                        <div className="relative">
+                                                            <div className="absolute inset-0 flex items-center">
+                                                                <div className="w-full border-t border-emerald-200 dark:border-emerald-800"></div>
                                                             </div>
-                                                            <div>
-                                                                <p className="text-lg font-medium text-gray-700 dark:text-gray-300">
-                                                                    Kéo thả file hoặc click để chọn
-                                                                </p>
-                                                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                                                    Hỗ trợ PDF, Word, PowerPoint, Text (tối đa 50MB)
-                                                                </p>
+                                                            <div className="relative flex justify-center text-xs">
+                                                                <span className="bg-white px-2 text-emerald-600 dark:bg-gray-900 dark:text-emerald-400">
+                                                                    hoặc
+                                                                </span>
                                                             </div>
-                                                            <label className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 dark:from-emerald-600 dark:to-green-600 px-6 py-3 font-semibold text-white shadow-lg hover:from-emerald-600 hover:to-green-600 dark:hover:from-emerald-700 dark:hover:to-green-700 transition-all">
-                                                                <Upload className="h-5 w-5" />
-                                                                Chọn tài liệu
-                                                                <input
-                                                                    type="file"
-                                                                    className="hidden"
-                                                                    onChange={handleFileUpload}
-                                                                    accept=".pdf,.doc,.docx,.txt,.ppt,.pptx"
-                                                                />
-                                                            </label>
                                                         </div>
-                                                    ) : (
-                                                        <div className="space-y-4">
-                                                            <div className="flex items-center justify-center gap-3">
-                                                                <div className="rounded-full bg-emerald-100 dark:bg-emerald-900/40 p-3">
-                                                                    <FileText className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
-                                                                </div>
-                                                                <div className="text-left">
-                                                                    <p className="font-medium text-gray-700 dark:text-gray-300">
-                                                                        {uploadedFile.name}
-                                                                    </p>
-                                                                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                                                                        {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB
-                                                                    </p>
-                                                                </div>
-                                                                <button
-                                                                    onClick={() => {
-                                                                        setUploadedFile(null);
-                                                                        setUploadProgress(0);
-                                                                    }}
-                                                                    className="ml-auto rounded-full p-2 text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-700"
-                                                                >
-                                                                    <X className="h-5 w-5" />
-                                                                </button>
-                                                            </div>
 
-                                                            {/* Progress Bar */}
-                                                            {isUploading && (
-                                                                <div className="space-y-2">
-                                                                    <div className="h-2 overflow-hidden rounded-full bg-gray-200 dark:bg-slate-700">
-                                                                        <motion.div
-                                                                            className="h-full bg-gradient-to-r from-emerald-500 to-green-500"
-                                                                            initial={{ width: "0%" }}
-                                                                            animate={{ width: `${uploadProgress}%` }}
-                                                                            transition={{ duration: 0.5 }}
-                                                                        />
-                                                                    </div>
-                                                                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                                                                        Đang tải lên... {uploadProgress}%
-                                                                    </p>
-                                                                </div>
-                                                            )}
-
-                                                            {!isUploading && (
-                                                                <div className="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400">
-                                                                    <CheckCircle2 className="h-5 w-5" />
-                                                                    <span>Tải lên thành công! AI đang phân tích...</span>
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    )}
-                                                </div>
-
-                                                {/* AI Configuration */}
-                                                <div className="mt-6 space-y-4 mb-2">
-                                                    <h4 className="font-medium text-gray-700 dark:text-gray-300"> Cấu hình AI </h4>
-                                                    <label className="mb-2 block text-sm text-gray-600 dark:text-gray-400">
-                                                        Loại tài liệu
-                                                    </label>
-
-                                                    <select
-                                                        value={aiConfig.documentType}
-                                                        onChange={(e) =>
-                                                            setAiConfig({
-                                                                ...aiConfig,
-                                                                documentType: e.target.value,
-                                                            })
-                                                        }
-                                                        className="mb-2 w-full rounded-xl border border-emerald-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2 text-gray-700 dark:text-gray-300 focus:border-emerald-400 focus:outline-none"
-                                                    >
-                                                        <option value="textbook">📘 Tài liệu giáo trình</option>
-                                                        <option value="exam_scan">📝 Scan tài liệu trắc nghiệm</option>
-                                                    </select>
-                                                </div>
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    {/* Độ khó */}
-                                                    <div>
-                                                        <label className="mb-2 block text-sm text-gray-600 dark:text-gray-400">
-                                                            Độ khó
-                                                        </label>
-                                                        <select
-                                                            value={aiConfig.difficulty}
-                                                            onChange={(e) =>
-                                                                setAiConfig({ ...aiConfig, difficulty: e.target.value })
-                                                            }
-                                                            className="w-full rounded-xl border border-emerald-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2 text-gray-700 dark:text-gray-300 focus:border-emerald-400 focus:outline-none"
-                                                        >
-                                                            <option value="easy">Dễ</option>
-                                                            <option value="medium">Trung bình</option>
-                                                            <option value="hard">Khó</option>
-                                                            <option value="mixed">Hỗn hợp</option>
-                                                        </select>
-                                                    </div>
-
-                                                    {/* Số câu hỏi – chỉ hiện nếu là giáo trình */}
-                                                    {aiConfig.documentType === "textbook" && (
-                                                        <div>
-                                                            <label className="mb-2 block text-sm text-gray-600 dark:text-gray-400">
-                                                                Số câu hỏi
-                                                            </label>
+                                                        {/* Option 1: File Upload */}
+                                                        <div className="rounded-2xl border-2 border-dashed border-emerald-200 bg-emerald-50/30 p-6 text-center transition-all duration-300 hover:border-emerald-400 hover:bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/20 dark:hover:border-emerald-600">
                                                             <input
-                                                                type="range"
-                                                                min="5"
-                                                                max="100"
-                                                                value={aiConfig.questionCount}
-                                                                onChange={(e) =>
-                                                                    setAiConfig({
-                                                                        ...aiConfig,
-                                                                        questionCount: parseInt(e.target.value),
-                                                                    })
-                                                                }
-                                                                className="w-full"
+                                                                type="file"
+                                                                accept=".json,application/json"
+                                                                onChange={handleFileUpload}
+                                                                className="hidden"
+                                                                id="json-upload"
                                                             />
-                                                            <div className="text-center text-sm text-gray-600 dark:text-gray-400">
-                                                                {aiConfig.questionCount} câu
-                                                            </div>
+                                                            <label
+                                                                htmlFor="json-upload"
+                                                                className="cursor-pointer"
+                                                            >
+                                                                <div className="mb-3 flex justify-center">
+                                                                    <div className="rounded-full bg-emerald-100 p-3 dark:bg-emerald-900/50">
+                                                                        <Upload className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                                                                    </div>
+                                                                </div>
+                                                                <p className="mb-1 font-medium text-emerald-900 dark:text-emerald-300">
+                                                                    Tải file JSON lên
+                                                                </p>
+                                                                <p className="text-xs text-emerald-600 dark:text-emerald-500">
+                                                                    Kéo & thả hoặc click để chọn file .json
+                                                                </p>
+                                                            </label>
                                                         </div>
-                                                    )}
+
+
+                                                        {/* Action Buttons */}
+                                                        <div className="flex gap-3">
+                                                            <button
+                                                                onClick={handleImportJSON}
+                                                                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:from-emerald-500 hover:to-teal-500 hover:shadow-lg hover:shadow-emerald-500/25"
+                                                            >
+                                                                <FileJson className="h-4 w-4" />
+                                                                Import JSON
+                                                            </button>
+                                                            <button
+                                                                onClick={handleClearJSON}
+                                                                className="flex items-center justify-center gap-2 rounded-xl border border-emerald-300 px-4 py-2.5 text-sm font-medium text-emerald-700 transition-all duration-300 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-300 dark:hover:bg-emerald-950/50"
+                                                            >
+                                                                <X className="h-4 w-4" />
+                                                                Xóa
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
 
-
-                                            </motion.div>
-                                        )}
-
-                                        {/* Manual Creation Section */}
-                                        {activeTab === "manual" && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: "auto" }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                className="mb-8"
-                                            >
-                                                <h3 className="mb-4 text-lg font-bold text-blue-900 dark:text-blue-300">
-                                                    Tạo câu hỏi thủ công
-                                                </h3>
-
-                                                <div className="rounded-2xl bg-blue-50 dark:bg-blue-900/20 p-6 border border-blue-200 dark:border-blue-700/30">
-                                                    <div className="text-center space-y-3">
-                                                        <div className="inline-flex rounded-full bg-blue-100 dark:bg-blue-900/40 p-4">
-                                                            <PenTool className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                                                        </div>
-                                                        <div>
-                                                            <p className="text-lg font-medium text-gray-700 dark:text-gray-300">
-                                                                Bạn sẽ tạo câu hỏi trực tiếp trên giao diện soạn thảo
-                                                            </p>
-                                                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                                                Chúng tôi sẽ cung cấp công cụ soạn thảo chuyên dụng sau khi bạn tạo bộ câu hỏi
-                                                            </p>
-                                                        </div>
-                                                        <Link
-                                                            to="/questions/editor"
-                                                            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 dark:from-blue-600 dark:to-cyan-600 px-6 py-3 font-semibold text-white shadow-lg hover:from-blue-600 hover:to-cyan-600 dark:hover:from-blue-700 dark:hover:to-cyan-700 transition-all"
+                                                {/* Success/Error Message */}
+                                                <AnimatePresence>
+                                                    {jsonMessage && (
+                                                        <motion.div
+                                                            initial={{ opacity: 0, y: -10 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            exit={{ opacity: 0, y: -10 }}
+                                                            className={`mt-4 rounded-xl p-3 text-sm ${jsonMessage.type === "success"
+                                                                ? "border border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300"
+                                                                : "border border-red-200 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-950/50 dark:text-red-300"
+                                                                }`}
                                                         >
-                                                            Mở trình soạn thảo
-                                                            <ArrowRight className="h-5 w-5" />
-                                                        </Link>
-                                                    </div>
-
-                                                    <div className="mt-6 grid grid-cols-2 gap-4">
-                                                        <div className="rounded-lg bg-white dark:bg-slate-800 p-4 text-center">
-                                                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">0</div>
-                                                            <div className="text-sm text-gray-600 dark:text-gray-400">Câu hỏi đã tạo</div>
-                                                        </div>
-                                                        <div className="rounded-lg bg-white dark:bg-slate-800 p-4 text-center">
-                                                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">4</div>
-                                                            <div className="text-sm text-gray-600 dark:text-gray-400">Loại câu hỏi</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                            <div className="flex items-center gap-2">
+                                                                {jsonMessage.type === "success" ? (
+                                                                    <CheckCircle className="h-4 w-4" />
+                                                                ) : (
+                                                                    <AlertCircle className="h-4 w-4" />
+                                                                )}
+                                                                <span>{jsonMessage.text}</span>
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
@@ -570,14 +782,14 @@ export default function CreateQuestionBankPage() {
                                         </h3>
                                         <div className="grid grid-cols-2 gap-4">
                                             <button
-                                                onClick={() => setVisibility("public")}
-                                                className={`rounded-xl border-2 p-4 text-left transition-all ${visibility === "public"
+                                                onClick={() => setVisibility(QuestionBankVisibility.PUBLIC)}
+                                                className={`rounded-xl border-2 p-4 text-left transition-all ${visibility === QuestionBankVisibility.PUBLIC
                                                     ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30"
                                                     : "border-gray-200 dark:border-slate-700 hover:border-emerald-300"
                                                     }`}
                                             >
                                                 <div className="flex items-center gap-3">
-                                                    <div className={`rounded-full p-2 ${visibility === "public"
+                                                    <div className={`rounded-full p-2 ${visibility === QuestionBankVisibility.PUBLIC
                                                         ? "bg-emerald-500 text-white"
                                                         : "bg-gray-100 dark:bg-slate-700 text-gray-500"
                                                         }`}>
@@ -589,20 +801,20 @@ export default function CreateQuestionBankPage() {
                                                             Mọi người đều có thể xem và sử dụng
                                                         </div>
                                                     </div>
-                                                    {visibility === "public" && (
+                                                    {visibility === QuestionBankVisibility.PUBLIC && (
                                                         <CheckCircle2 className="ml-auto h-5 w-5 text-emerald-500" />
                                                     )}
                                                 </div>
                                             </button>
                                             <button
-                                                onClick={() => setVisibility("private")}
-                                                className={`rounded-xl border-2 p-4 text-left transition-all ${visibility === "private"
+                                                onClick={() => setVisibility(QuestionBankVisibility.PRIVATE)}
+                                                className={`rounded-xl border-2 p-4 text-left transition-all ${visibility === QuestionBankVisibility.PRIVATE
                                                     ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
                                                     : "border-gray-200 dark:border-slate-700 hover:border-blue-300"
                                                     }`}
                                             >
                                                 <div className="flex items-center gap-3">
-                                                    <div className={`rounded-full p-2 ${visibility === "private"
+                                                    <div className={`rounded-full p-2 ${visibility === QuestionBankVisibility.PRIVATE
                                                         ? "bg-blue-500 text-white"
                                                         : "bg-gray-100 dark:bg-slate-700 text-gray-500"
                                                         }`}>
@@ -614,7 +826,7 @@ export default function CreateQuestionBankPage() {
                                                             Chỉ bạn và người được chia sẻ có thể xem
                                                         </div>
                                                     </div>
-                                                    {visibility === "private" && (
+                                                    {visibility === QuestionBankVisibility.PRIVATE && (
                                                         <CheckCircle2 className="ml-auto h-5 w-5 text-blue-500" />
                                                     )}
                                                 </div>
@@ -625,13 +837,9 @@ export default function CreateQuestionBankPage() {
                                     {/* Action Buttons */}
                                     <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-emerald-100 dark:border-slate-700">
                                         <button
-                                            onClick={handleCreateSubject}
-                                            disabled={activeTab === "ai"}
-                                            title={
-                                                activeTab === "ai"
-                                                    ? "Tính năng tạo bộ câu hỏi với AI đang được phát triển. Vui lòng sử dụng phương thức tạo thủ công."
-                                                    : undefined
-                                            }
+                                            onClick={handleCreateQuestionBank}
+                                            disabled={activeTab === "ai" ? !importedQuestions?.length : false}
+                                            title={activeTab === "ai" && !importedQuestions?.length ? "Hãy bấm Import JSON trước khi lưu" : undefined}
                                             className="
     flex-1 rounded-xl
     bg-gradient-to-r from-emerald-500 to-green-500

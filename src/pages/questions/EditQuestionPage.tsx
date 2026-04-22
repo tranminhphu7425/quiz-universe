@@ -12,8 +12,7 @@ import {
 } from "lucide-react";
 
 import {
-  
-  fetchQuestionsByBankId, updateQuestionApi, createQuestionApi, deleteQuestionApi
+  fetchQuestionsByBankId, updateQuestionApi, createQuestionApi, deleteQuestionApi, createQuestionInBankApi
 } from "@/shared/api/questionsApi";
 import { QuestionBankApi } from "@/shared/api/questionBanksApi";
 
@@ -256,11 +255,24 @@ export default function EditQuestionsPage() {
 
     // (Tuỳ chọn) Nếu backend có API tạo câu hỏi:
     try {
-      const created = await createQuestionApi(Number(bankId), {
+      const created = await createQuestionInBankApi(Number(bankId), {
         stem: "",
         explanation: "",
         questionType: "mcq_single",
-        options: [],
+        options: [
+          {
+            label: "A",
+            content: "",
+            isCorrect: true,
+            sortOrder: 1,
+          },
+          {
+            label: "B",
+            content: "",
+            isCorrect: false,
+            sortOrder: 2,
+          },
+        ],
       });
       setList((cur) => [...cur, created]);
       setSelectedId(created.id);
@@ -372,7 +384,7 @@ export default function EditQuestionsPage() {
             <div ref={editorTopRef}></div>
           </div>
           <div className="flex items-center gap-3">
-            <Link to={`/questions/subject/${bankId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15">
+            <Link to={`/questions/question-bank/${bankId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15">
               <ArrowLeft className="h-4 w-4" />
               Về trang làm bài
 
@@ -439,8 +451,17 @@ export default function EditQuestionsPage() {
         {/* Left: list */}
         <motion.aside initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ type: "spring", stiffness: 140, damping: 18 }} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">Danh sách câu hỏi</div>
-            <div className="text-xs text-slate-500 dark:text-slate-400">{total} câu</div>
+            <div className="flex flex-col">
+              <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">Danh sách câu hỏi</div>
+              <div className="text-xs text-slate-500 dark:text-slate-400">{total} câu</div>
+            </div>
+            <button
+               onClick={() => newQuestion()}
+               title="Tạo thêm câu hỏi"
+               className="inline-flex items-center justify-center rounded-full bg-emerald-100 p-2 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:hover:bg-emerald-800"
+            >
+               <Plus className="h-4 w-4" />
+            </button>
           </div>
 
           {loading ? (
@@ -498,7 +519,17 @@ export default function EditQuestionsPage() {
 
 
           {!editing ? (
-            <div className="text-slate-600 dark:text-slate-300">Chọn một câu ở danh sách bên trái để chỉnh sửa.</div>
+            <div className="flex flex-col items-center justify-center h-40 space-y-4 rounded-xl border border-dashed border-slate-300 dark:border-slate-700">
+               <div className="text-slate-600 dark:text-slate-300 text-sm">Chưa có câu hỏi nào được chọn hoặc bộ câu hỏi đang trống.</div>
+               <button
+                  type="button"
+                  onClick={() => newQuestion()}
+                  className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 font-medium text-white shadow hover:brightness-110"
+                >
+                  <Plus className="h-4 w-4" />
+                  Tạo câu hỏi mới
+                </button>
+            </div>
           ) : (
 
             <form className="space-y-5" onSubmit={(e) => {

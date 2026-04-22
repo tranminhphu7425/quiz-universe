@@ -1,267 +1,119 @@
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import readline from 'readline';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Cấu hình
+const inputFile = 'subjects.txt';      // File đầu vào
+const outputFile = 'update_subjects.sql'; // File đầu ra
+const tableName = 'subjects';
+const batchSize = 500; // Số lượng bản ghi mỗi lần insert
 
-const structure = {
-  // Root files
-  '.': [
-    '.editorconfig',
-    '.eslintignore',
-    '.eslintrc.cjs',
-    '.prettierrc',
-    '.gitignore',
-    'package.json',
-    'pnpm-lock.yaml',
-    'vite.config.ts',
-    'tsconfig.json',
-    'index.html',
-    '.env.example',
-    'vite-env.d.ts'
-  ],
-  
-  // Public directory
-  'public': [
-    'favicon.svg',
-    'robots.txt',
-    'tenant-assets/.gitkeep'
-  ],
-  
-  // App directory
-  'src/app': [
-    'main.tsx',
-    'router.tsx'
-  ],
-  'src/app/providers': [
-    'QueryProvider.tsx',
-    'AuthProvider.tsx',
-    'ThemeProvider.tsx',
-    'I18nProvider.tsx'
-  ],
-  'src/app/store': [
-    'index.ts'
-  ],
-  'src/app/store/slices': [
-    'auth.slice.ts',
-    'ui.slice.ts'
-  ],
-  
-  // Shared directory
-  'src/shared/api': [
-    'http.ts',
-    'endpoints.ts'
-  ],
-  'src/shared/api/hooks': [
-    'useApi.ts'
-  ],
-  'src/shared/config': [
-    'env.ts',
-    'tenants.ts'
-  ],
-  'src/shared/constants': [
-    'roles.ts',
-    'permissions.ts',
-    'exam.ts'
-  ],
-  'src/shared/lib': [
-    'date.ts',
-    'array.ts',
-    'rand.ts'
-  ],
-  'src/shared/hooks': [
-    'useTenant.ts',
-    'useAuth.ts',
-    'usePagination.ts'
-  ],
-  'src/shared/ui/form': [
-    'Form.tsx',
-    'FormField.tsx'
-  ],
-  'src/shared/ui/table': [
-    'DataTable.tsx',
-    'useDataTable.ts'
-  ],
-  'src/shared/ui/modal': [],
-  'src/shared/ui/tabs': [],
-  'src/shared/ui/badge': [],
-  'src/shared/assets': [],
-  'src/shared/types': [
-    'common.ts',
-    'api.ts'
-  ],
-  
-  // Entities
-  'src/entities/university': [
-    'model.ts',
-    'index.ts'
-  ],
-  'src/entities/subject': [
-    'model.ts',
-    'index.ts'
-  ],
-  'src/entities/question': [
-    'model.ts',
-    'index.ts'
-  ],
-  'src/entities/exam': [
-    'model.ts',
-    'index.ts'
-  ],
-  'src/entities/user': [
-    'model.ts',
-    'index.ts'
-  ],
-  
-  // Features
-  'src/features/auth': [
-    'api.ts',
-    'hooks.ts'
-  ],
-  'src/features/auth/components': [
-    'LoginForm.tsx'
-  ],
-  
-  'src/features/question-bank': [
-    'api.ts',
-    'hooks.ts'
-  ],
-  'src/features/question-bank/components': [
-    'QuestionEditor.tsx',
-    'QuestionPreview.tsx',
-    'QuestionImport.tsx'
-  ],
-  'src/features/question-bank/utils': [
-    'shuffler.ts'
-  ],
-  
-  'src/features/exams': [
-    'api.ts',
-    'hooks.ts'
-  ],
-  'src/features/exams/components': [
-    'ExamBuilder.tsx',
-    'ExamRunner.tsx',
-    'ResultReview.tsx'
-  ],
-  'src/features/exams/utils': [
-    'scoring.ts',
-    'proctoring.ts'
-  ],
-  
-  'src/features/subjects': [
-    'api.ts'
-  ],
-  'src/features/subjects/components': [
-    'SubjectPicker.tsx'
-  ],
-  
-  'src/features/universities': [
-    'api.ts'
-  ],
-  'src/features/universities/components': [
-    'TenantSwitcher.tsx'
-  ],
-  
-  'src/features/admin': [
-    'api.ts'
-  ],
-  'src/features/admin/components': [
-    'UserManager.tsx',
-    'RoleManager.tsx',
-    'AuditLog.tsx'
-  ],
-  
-  // Pages
-  'src/pages/home': [
-    'HomePage.tsx'
-  ],
-  'src/pages/auth': [
-    'LoginPage.tsx',
-    'RegisterPage.tsx'
-  ],
-  'src/pages/dashboard': [
-    'DashboardPage.tsx'
-  ],
-  'src/pages/questions': [
-    'ListQuestionsPage.tsx',
-    'EditQuestionPage.tsx'
-  ],
-  'src/pages/exams': [
-    'CreateExamPage.tsx',
-    'TakeExamPage.tsx',
-    'ReviewExamPage.tsx'
-  ],
-  'src/pages/subjects': [
-    'SubjectsPage.tsx'
-  ],
-  'src/pages/universities': [
-    'TenantsPage.tsx'
-  ],
-  'src/pages/admin': [
-    'AdminPage.tsx'
-  ],
-  
-  // Widgets
-  'src/widgets': [
-    'Header.tsx',
-    'Sidebar.tsx',
-    'Footer.tsx',
-    'Breadcrumbs.tsx'
-  ],
-  
-  // Layouts
-  'src/layouts': [
-    'PublicLayout.tsx',
-    'AuthLayout.tsx',
-    'DashboardLayout.tsx'
-  ],
-  
-  // Styles
-  'src/styles': [
-    'index.css',
-    'theme.css'
-  ],
-  
-  // Tests
-  'src/test': [
-    'setup.ts'
-  ],
-  'src/test/__mocks__': []
-};
-
-function createStructure(basePath, structure) {
-  Object.entries(structure).forEach(([dirPath, files]) => {
-    const fullPath = path.join(basePath, dirPath);
-    
-    // Create directory if it doesn't exist
-    if (!fs.existsSync(fullPath)) {
-      fs.mkdirSync(fullPath, { recursive: true });
-      console.log(`Created directory: ${fullPath}`);
-    }
-    
-    // Create files
-    files.forEach(file => {
-      const filePath = path.join(basePath, dirPath, file);
-      const dirName = path.dirname(filePath);
-      
-      // Create parent directory if needed
-      if (!fs.existsSync(dirName)) {
-        fs.mkdirSync(dirName, { recursive: true });
-      }
-      
-      // Only create file if it doesn't exist
-      if (!fs.existsSync(filePath)) {
-        fs.writeFileSync(filePath, '// Auto-generated\n');
-        console.log(`Created file: ${filePath}`);
-      } else {
-        console.log(`Skipped existing file: ${filePath}`);
-      }
-    });
-  });
+// Hàm escape string cho MySQL
+function escapeString(str) {
+    if (str === null || str === undefined) return 'NULL';
+    return "'" + str.replace(/\\/g, '\\\\')
+                    .replace(/'/g, "\\'")
+                    .replace(/"/g, '\\"')
+                    .replace(/\n/g, '\\n')
+                    .replace(/\r/g, '\\r') + "'";
 }
 
-// Only create files that don't exist
-createStructure(process.cwd(), structure);
-console.log('Project structure setup completed!');
+// Hàm xử lý một dòng dữ liệu
+function parseLine(line) {
+    // Bỏ qua dòng trống
+    if (!line.trim()) return null;
+    
+    // Tách theo tab
+    const parts = line.split('\t');
+    if (parts.length < 3) return null;
+    
+    const code = parts[0]?.trim();
+    const name = parts[1]?.trim();
+    const credit = parseInt(parts[2]?.trim(), 10);
+    
+    if (!code || !name || isNaN(credit)) return null;
+    
+    return { code, name, credit };
+}
+
+// Hàm tạo câu lệnh INSERT ... ON DUPLICATE KEY UPDATE
+function generateInsertStatement(records) {
+    if (records.length === 0) return '';
+    
+    let sql = `INSERT INTO \`${tableName}\` (\`code\`, \`name\`, \`credit\`) VALUES\n`;
+    const values = [];
+    
+    for (const record of records) {
+        values.push(`(${escapeString(record.code)}, ${escapeString(record.name)}, ${record.credit})`);
+    }
+    
+    sql += values.join(',\n');
+    sql += `\nON DUPLICATE KEY UPDATE \`name\` = VALUES(\`name\`), \`credit\` = VALUES(\`credit\`);\n\n`;
+    
+    return sql;
+}
+
+// Hàm đọc và xử lý file
+async function processFile() {
+    console.log(`Đang đọc file: ${inputFile}`);
+    
+    const fileStream = fs.createReadStream(inputFile, { encoding: 'utf8' });
+    const rl = readline.createInterface({
+        input: fileStream,
+        crlfDelay: Infinity
+    });
+    
+    const records = [];
+    let lineNumber = 0;
+    let skippedLines = 0;
+    
+    for await (const line of rl) {
+        lineNumber++;
+        // Bỏ qua dòng header nếu có
+        if (lineNumber === 1 && (line.includes('Mã học phần') || line.includes('Tên học phần'))) {
+            console.log('Đã bỏ qua dòng header');
+            continue;
+        }
+        
+        const record = parseLine(line);
+        if (record) {
+            records.push(record);
+        } else if (line.trim()) {
+            skippedLines++;
+            console.log(`Dòng ${lineNumber} không hợp lệ, đã bỏ qua: ${line.substring(0, 50)}...`);
+        }
+    }
+    
+    console.log(`Đã đọc xong. Tổng số bản ghi hợp lệ: ${records.length}`);
+    if (skippedLines > 0) console.log(`Số dòng bị bỏ qua: ${skippedLines}`);
+    
+    // Ghi ra file SQL theo từng batch
+    const outputStream = fs.createWriteStream(outputFile, { encoding: 'utf8' });
+    
+    // Thêm header cho file SQL
+    outputStream.write(`-- =====================================================\n`);
+    outputStream.write(`-- File: ${outputFile}\n`);
+    outputStream.write(`-- Generated: ${new Date().toLocaleString()}\n`);
+    outputStream.write(`-- Table: ${tableName}\n`);
+    outputStream.write(`-- Total records: ${records.length}\n`);
+    outputStream.write(`-- =====================================================\n\n`);
+    outputStream.write(`SET NAMES utf8mb4;\n`);
+    outputStream.write(`SET FOREIGN_KEY_CHECKS = 0;\n\n`);
+    
+    // Xử lý theo batch
+    for (let i = 0; i < records.length; i += batchSize) {
+        const batch = records.slice(i, i + batchSize);
+        const sql = generateInsertStatement(batch);
+        outputStream.write(sql);
+        console.log(`Đã xử lý batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(records.length / batchSize)}`);
+    }
+    
+    outputStream.write(`SET FOREIGN_KEY_CHECKS = 1;\n`);
+    outputStream.end();
+    
+    console.log(`\n✅ Đã tạo file SQL thành công: ${outputFile}`);
+    console.log(`📊 Tổng số bản ghi: ${records.length}`);
+    console.log(`💡 Câu lệnh sử dụng ON DUPLICATE KEY UPDATE - nếu mã code đã tồn tại, sẽ cập nhật tên và tín chỉ`);
+}
+
+// Chạy chương trình
+processFile().catch(console.error);

@@ -380,7 +380,7 @@ export default function ForumPage() {
                                         className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-500 dark:from-emerald-600 dark:to-green-600 px-4 py-3 font-semibold text-white shadow-lg hover:from-emerald-600 hover:to-green-600 dark:hover:from-emerald-700 dark:hover:to-green-700 transition-all"
                                     >
                                         <Plus className="h-5 w-5" />
-                                        Tạo chủ đề mới
+                                        Tạo bài đăng mới
                                     </Link>
                                 )}
 
@@ -455,25 +455,7 @@ export default function ForumPage() {
 
                     {/* Right content - Threads */}
                     <div className="lg:w-3/4">
-                        {/* Stats */}
-                        <div className="mb-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <div className="rounded-xl bg-gradient-to-br from-emerald-500 to-teal-400 dark:from-emerald-600 dark:to-teal-500 p-6 text-white shadow-lg">
-                                <div className="text-2xl font-bold">{threads.length}</div>
-                                <div className="text-sm opacity-90">Chủ đề đang thảo luận</div>
-                            </div>
-                            <div className="rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 dark:from-blue-600 dark:to-cyan-500 p-6 text-white shadow-lg">
-                                <div className="text-2xl font-bold">{categories.reduce((acc, cat) => acc + cat.postCount, 0)}</div>
-                                <div className="text-sm opacity-90">Bài viết</div>
-                            </div>
-                            <div className="rounded-xl bg-gradient-to-br from-amber-500 to-orange-400 dark:from-amber-600 dark:to-orange-500 p-6 text-white shadow-lg">
-                                <div className="text-2xl font-bold">1,245</div>
-                                <div className="text-sm opacity-90">Thành viên tham gia</div>
-                            </div>
-                            <div className="rounded-xl bg-gradient-to-br from-purple-500 to-pink-400 dark:from-purple-600 dark:to-pink-500 p-6 text-white shadow-lg">
-                                <div className="text-2xl font-bold">42</div>
-                                <div className="text-sm opacity-90">Chủ đề hôm nay</div>
-                            </div>
-                        </div>
+                    
 
                         {/* Threads List */}
                         <FadeInOnView amount={0.1}>
