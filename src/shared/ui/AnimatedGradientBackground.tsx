@@ -1,4 +1,4 @@
-// src/components/ui/AnimatedGradientBackground.tsx
+// src/shared/ui/AnimatedGradientBackground.tsx
 import React from "react";
 import { motion } from "framer-motion";
 

@@ -138,11 +138,6 @@ export interface FooterProps {
   onSubscribe?: (email: string) => Promise<void> | void;
 }
 
-/* -------------------------------- helpers -------------------------------- */
-const cn = (...a: (string | false | undefined)[]) => a.filter(Boolean).join(" ");
-
-
-
 
 
 function Wobble({ children, className }: { children: React.ReactNode; className?: string }) {

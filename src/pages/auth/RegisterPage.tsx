@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Mail, Lock, User2, Sparkles, ArrowRight, Heart, ShieldCheck, EyeOff, Eye } from "lucide-react";
 import Floating from "@/shared/ui/Floatting"; // giữ nguyên import nếu bạn đã dùng tên này
 import { useAuth } from "@/app/providers/AuthProvider";
-import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
+import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 
 export default function RegisterPage() {
   const navigate = useNavigate();

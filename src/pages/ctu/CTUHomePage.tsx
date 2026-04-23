@@ -24,7 +24,7 @@ import Floating from "@/shared/ui/Floatting";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import GradientText from "@/shared/ui/GradientText";
 import TypewriterText from "@/shared/ui/TypewriterText";
-import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
+import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 
 const CTUHomePage: React.FC = () => {
   const features = [

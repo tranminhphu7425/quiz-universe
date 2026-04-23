@@ -29,7 +29,7 @@ import { favoriteService } from "@/shared/api/favoriteApi";
 import TypewriterText from "@/shared/ui/TypewriterText";
 // import OrbitingSkills from "@/shared/ui/OrbitingSkills";
 import { FavoriteQuestionBank, FavoriteSubject } from "@/shared/types/favorite";
-import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
+import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 
 // =============================
 // Types & interfaces
@@ -199,7 +199,7 @@ export default function DashboardPage() {
 
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden">
-        <AnimatedGradientBackgroundProps />
+        <AnimatedGradientBackground />
 
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-16">

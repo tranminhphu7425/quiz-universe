@@ -25,7 +25,7 @@ import { useState, useEffect } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { vi } from "date-fns/locale";
 
-import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
+import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 
 interface ForumCategory {
     id: number;

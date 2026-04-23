@@ -1,5 +1,5 @@
 import { useMemo, useState, useRef, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -13,6 +13,8 @@ import {
   Search,
   Tag,
   TimerReset,
+  ArrowLeft,
+  BookOpen,
 } from "lucide-react";
 import { ArrowRight, LayoutGrid, RefreshCcw, Sparkles, XCircle } from "lucide-react";
 import LoadingState from "@/widgets/LoadingState";
@@ -27,35 +29,12 @@ import { Flag } from "lucide-react";
 
 
 
-const BLANK_RE = /\.{5,}/g; // 6 dấu chấm trở lên
-
-type Segment =
-  | { type: "text"; text: string }
-  | { type: "blank" };
-
-function stemToSegments(stem: string): Segment[] {
-  const segs: Segment[] = [];
-  let lastIdx = 0;
-  let m: RegExpExecArray | null;
-  while ((m = BLANK_RE.exec(stem)) !== null) {
-    const start = m.index;
-    if (start > lastIdx) segs.push({ type: "text", text: stem.slice(lastIdx, start) });
-    segs.push({ type: "blank" });
-    lastIdx = start + m[0].length;
-  }
-  if (lastIdx < stem.length) segs.push({ type: "text", text: stem.slice(lastIdx) });
-  // Nếu không có blank nào, trả về 1 text segment duy nhất
-  return segs.length ? segs : [{ type: "text", text: stem }];
-}
-
-
-function normalize(s: string) {
-  return (s ?? "").trim().replace(/\s+/g, " ").toLowerCase();
-}
+import { stemToSegments, normalize } from "./utils";
 
 
 // ====== Page ======
 export default function QuestionsPage() {
+  const navigate = useNavigate();
   const [picked, setPicked] = useState<Record<number, number | null>>({}); // qId -> optionId
   const [fillAnswers, setFillAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -242,6 +221,78 @@ export default function QuestionsPage() {
     () => Object.values(picked).filter((v) => v !== null && v !== undefined).length,
     [picked]
   );
+
+  if (!questionBankName && !loading) {
+    return (
+      <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-[#030712] selection:bg-rose-500/30 transition-colors duration-500">
+        {/* Background Orbs */}
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-rose-400/30 dark:bg-rose-500/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 dark:opacity-20 animate-blob" />
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-purple-400/30 dark:bg-purple-500/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 dark:opacity-20 animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-orange-400/30 dark:bg-orange-500/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 dark:opacity-20 animate-blob animation-delay-4000" />
+
+        {/* Grid & Noise Overlay */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] dark:opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 bg-grid-slate-200/[0.5] dark:bg-grid-white/[0.02] bg-[bottom_1px_center] pointer-events-none" />
+
+        <div className="relative z-10 max-w-2xl px-6 text-center">
+          {/* Animated Icon Container */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="relative inline-block mb-10"
+          >
+            <div className="absolute inset-0 bg-rose-500 blur-3xl opacity-20 dark:opacity-30 animate-pulse" />
+            <div className="relative bg-white/40 dark:bg-slate-900/50 backdrop-blur-2xl border border-slate-200/50 dark:border-white/10 p-8 rounded-[2.5rem] shadow-2xl dark:shadow-none">
+              <BookOpen className="w-16 h-16 text-rose-600 dark:text-rose-400 animate-bounce" />
+            </div>
+          </motion.div>
+
+          {/* Error Text - Adaptable Gradient */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-[80px] font-black leading-none tracking-tighter sm:text-[120px]"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-b from-slate-900 via-slate-700 to-slate-400/50 dark:from-white dark:via-white dark:to-white/20 select-none">
+              Lỗi
+            </span>
+          </motion.h1>
+
+          {/* Message */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="mt-6"
+          >
+            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl tracking-tight">
+              {err || "Ngân hàng câu hỏi không tồn tại"}
+            </h2>
+            <p className="mt-4 text-slate-600 dark:text-slate-400 text-md max-w-lg mx-auto leading-relaxed font-medium">
+              Không thể tìm thấy thông tin ngân hàng câu hỏi bạn yêu cầu. Vui lòng kiểm tra lại đường dẫn hoặc quay lại trang danh sách.
+            </p>
+          </motion.div>
+
+          {/* Actions */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5"
+          >
+            <button
+              onClick={() => navigate("/question-banks")}
+              className="group flex items-center gap-3 px-7 py-3.5 rounded-2xl bg-slate-200/50 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 border border-slate-300/50 dark:border-white/10 text-slate-700 dark:text-slate-200 transition-all active:scale-95 font-semibold"
+            >
+              <ArrowLeft className="w-5 h-5 text-slate-500 dark:text-slate-400 group-hover:-translate-x-1 transition-transform" />
+              Quay lại danh sách ngân hàng
+            </button>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
 
 
   return (
@@ -623,373 +674,4 @@ export default function QuestionsPage() {
   );
 }
 
-// ====== Components ======
-function QuestionCard({
-  index,
-  q,
-  questionType = "mcq_single",
-  pickedOptionId,
-  onPick,
-  onClear,
-  showResult,
-  answers,                    // { [optionId]: "user text" }
-  onFill,
-  flagged,
-  onToggleFlag,                  // (optionId, value) => void
-}: {
-  index: number;
-  q: Question;
-  questionType: string;
-  pickedOptionId: number | null;
-  onPick: (optionId: number) => void;
-  onClear: () => void;
-  showResult: boolean;
-  answers?: Record<number, string>;
-  onFill?: (optionId: number, value: string) => void;
-  flagged: boolean;
-  onToggleFlag: (optionId: number, value: boolean) => void;
-}) {
-  const correct = q.options.find((o) => o.isCorrect);
-  const isCorrect = showResult && pickedOptionId && correct && pickedOptionId === correct.id;
-  const isWrong = showResult && pickedOptionId && correct && pickedOptionId !== correct.id;
-
-  // === TÍNH ĐÚNG/SAI CHO FILL_IN (tất cả ô đúng mới coi là đúng toàn câu):
-  const allFillCorrect =
-    questionType === "fill_in" &&
-    showResult &&
-    q.options.length > 0 &&
-    q.options.every((opt) => normalize(answers?.[opt.id] ?? "") === normalize(opt.content));
-
-
-
-
-  return (
-
-    <motion.div
-
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ type: "spring", stiffness: 140, damping: 16 }}
-      className="relative rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
-    >
-      <div id={`q-${q.id}`} className="absolute -top-24"></div>
-      {questionType === "mcq_single" ? (
-        <>
-          <div className="mb-3 flex items-start justify-between gap-3">
-            <h3 className="text-base font-semibold text-slate-800 dark:text-slate-200">
-              <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/90 text-xs font-bold text-white">
-                {index}
-              </span>
-              <span className="whitespace-pre-line">{q.stem}</span>
-            </h3>
-
-            {/* Badge kết quả hoặc nút Xóa */}
-            {showResult ? (
-              isCorrect ? (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-emerald-700 ring-1 ring-emerald-300 dark:bg-emerald-900/30 dark:text-emerald-300 dark:ring-emerald-800">
-                  <CheckCircle2 className="h-4 w-4" /> Đúng
-                </span>
-              ) : isWrong ? (
-                <span className="inline-flex items-center gap-1 rounded-full bg-rose-100 px-2 py-1 text-rose-700 ring-1 ring-rose-300 dark:bg-rose-900/30 dark:text-rose-300 dark:ring-rose-800">
-                  <XCircle className="h-4 w-4" /> Sai
-                </span>
-              ) : null
-            ) : (
-              // pickedOptionId !== null && (
-              //   <button
-              //     type="button"
-              //     onClick={onClear}
-              //     className="rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-              //     title="Xóa lựa chọn của câu này"
-              //   >
-              //     Xóa lựa chọn
-              //   </button>
-              // )
-
-              <div className="flex items-center gap-2">
-                {/* Nút Xóa lựa chọn */}
-                {pickedOptionId !== null && (
-                  <button
-                    type="button"
-                    onClick={onClear}
-                    className="rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-                    title="Xóa lựa chọn của câu này"
-                  >
-                    Xóa lựa chọn
-                  </button>
-                )}
-
-                {/* Nút cờ */}
-                {onToggleFlag && (
-                  <button
-                    type="button"
-                    onClick={() => onToggleFlag?.(q.id, !flagged)}
-                    className={`p-1 rounded-full ${flagged ? "bg-amber-400 text-white" : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300"}`}
-                    title={flagged ? "Bỏ cờ" : "Đánh dấu cờ"}
-                  >
-                    <Flag className="h-4 w-4" />
-                  </button>
-                )}
-              </div>
-
-            )}
-          </div>
-
-          <div className="mt-3 grid gap-2">
-            {q.options
-              .slice()
-              .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
-              .map((opt) => (
-                <OptionItem
-                  key={opt.id}
-                  groupName={`q-${q.id}`}   // 👈 đổi từ name → groupName
-                  opt={opt}
-                  checked={pickedOptionId === opt.id}
-                  disabled={showResult}
-                  onChange={() => onPick(opt.id)}
-                  reveal={showResult}
-                  isCorrect={opt.isCorrect}
-                  isPicked={pickedOptionId === opt.id}
-                />
-
-              ))}
-          </div>
-
-          {showResult && q.explanation && (
-            <div className="mt-4 rounded-xl bg-amber-50 p-3 text-amber-900 ring-1 ring-amber-200 dark:bg-amber-900/20 dark:text-amber-200 dark:ring-amber-800">
-              <div className="text-sm font-semibold">Giải thích</div>
-              <p className="mt-1 text-sm leading-relaxed">{q.explanation}</p>
-            </div>
-          )}
-        </>
-      )
-        : questionType === "fill_in" ? (
-          <>
-            {(() => {
-              // sort options theo sortOrder trước
-              const opts = q.options
-                .slice()
-                .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
-
-              const segs = stemToSegments(q.stem);
-              let blankIdx = 0;
-
-              // tính tổng đúng để gắn badge tổng quát (nếu bạn muốn)
-              const allFillCorrect =
-                showResult &&
-                segs.some(s => s.type === "blank") &&
-                opts.length > 0 &&
-                // chỉ tính trên số blank thực có
-                segs.filter(s => s.type === "blank").every((_, i) => {
-                  const opt = opts[i];
-                  const user = answers?.[opt?.id ?? -1] ?? "";
-                  return opt ? normalize(user) === normalize(opt.content) : false;
-                });
-
-              return (
-                <>
-                  {/* Bạn có thể hiển thị badge tổng quát ở header (đã code ở phiên bản trước) */}
-                  <p className="whitespace-pre-wrap leading-relaxed text-slate-800 dark:text-slate-200">
-                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/90 text-xs font-bold text-white">
-                      {index}
-                    </span>
-                    {segs.map((seg, i) => {
-                      if (seg.type === "text") {
-                        return <span key={`t-${i}`}>{seg.text}</span>;
-                      } else {
-                        const opt = opts[blankIdx] ?? null;
-                        const val = opt ? (answers?.[opt.id] ?? "") : (answers?.[-1] ?? "");
-                        const idxNow = blankIdx; // chốt index cho closure
-                        blankIdx++;
-                        return (
-                          <InlineBlank
-                            key={`b-${i}`}
-                            opt={opt}
-                            value={val}
-                            reveal={showResult}
-                            onChange={(v) => {
-                              if (!opt) return; // không có option thì bỏ qua
-                              onFill?.(opt.id, v);
-                            }}
-                          />
-                        );
-                      }
-                    })}
-                  </p>
-
-                  {/* Nếu số blank > số option: cảnh báo nhẹ khi chấm (không bắt buộc) */}
-                  {showResult && segs.filter(s => s.type === "blank").length > opts.length && (
-                    <div className="mt-3 text-xs text-amber-600 dark:text-amber-300">
-                      Lưu ý: Số ô trống trong câu nhiều hơn số đáp án cung cấp.
-                    </div>
-                  )}
-
-                  {/* Gợi ý đáp án & giải thích khi chấm */}
-                  {showResult && (
-                    <div className="mt-4 space-y-3">
-                      {/* Hiển thị đáp án đúng cho từng ô dưới dạng danh sách nhỏ */}
-                      <div className="rounded-xl bg-slate-50 p-3 text-sm ring-1 ring-slate-200 dark:bg-slate-800/40 dark:ring-slate-700">
-                        <div className="mb-1 font-semibold text-slate-800 dark:text-slate-200">Đáp án</div>
-                        <ul className="list-disc space-y-0.5 pl-5">
-                          {opts.map((opt) => {
-                            const user = answers?.[opt.id] ?? "";
-                            const ok = normalize(user) === normalize(opt.content);
-                            return (
-                              <li key={opt.id} className="flex items-baseline gap-2">
-                                <span className="text-slate-500 dark:text-slate-400 w-10 shrink-0">
-                                  Ô {opt.label}:
-                                </span>
-                                <span className={ok ? "text-emerald-700 dark:text-emerald-300" : "text-rose-700 dark:text-rose-300"}>
-                                  {ok ? "Đúng" : "Sai"}
-                                </span>
-                                {!ok && (
-                                  <span className="text-slate-700 dark:text-slate-200">
-                                    &nbsp;→&nbsp;
-                                    <span className="font-medium">{opt.content}</span>
-                                  </span>
-                                )}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-
-                      {q.explanation && (
-                        <div className="rounded-xl bg-amber-50 p-3 text-amber-900 ring-1 ring-amber-200 dark:bg-amber-900/20 dark:text-amber-200 dark:ring-amber-800">
-                          <div className="text-sm font-semibold">Giải thích</div>
-                          <p className="mt-1 text-sm leading-relaxed">{q.explanation}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </>
-              );
-            })()}
-          </>
-        ) : (
-          <></>
-        )
-
-      }
-
-    </motion.div>
-  );
-}
-
-function OptionItem({
-  opt,
-  checked,
-  disabled,
-  onChange,
-  reveal,
-  isCorrect,
-  isPicked,
-  groupName,
-}: {
-  opt: QuestionOption;
-  checked: boolean;
-  disabled: boolean;
-  onChange: () => void;
-  reveal: boolean;
-  isCorrect: boolean;
-  isPicked: boolean;
-  groupName: string;
-}) {
-  const state = reveal
-    ? isCorrect
-      ? "correct"
-      : isPicked
-        ? "wrong"
-        : "neutral"
-    : checked
-      ? "active"
-      : "idle";
-
-  const classByState: Record<string, string> = {
-    idle: "border-slate-200 hover:border-emerald-300 dark:border-slate-700 dark:hover:border-emerald-700",
-    active:
-      "border-emerald-400 bg-emerald-50 ring-1 ring-emerald-300 dark:bg-emerald-900/20 dark:border-emerald-700 dark:ring-emerald-800",
-    correct:
-      "border-emerald-400 bg-emerald-50 ring-1 ring-emerald-300 dark:bg-emerald-900/20 dark:border-emerald-700 dark:ring-emerald-800",
-    wrong:
-      "border-rose-300 bg-rose-50 ring-1 ring-rose-300 dark:bg-rose-900/20 dark:border-rose-700 dark:ring-rose-800",
-    neutral: "border-slate-200 dark:border-slate-700",
-  };
-
-  return (
-    <label
-      className={`group flex cursor-pointer items-start gap-3 rounded-xl border p-3 transition ${classByState[state]}`}
-    >
-      <input
-        type="radio"
-        name={groupName}
-        className="mt-1 h-4 w-4 accent-emerald-800"
-        checked={checked}
-        onChange={onChange}
-        disabled={disabled}
-      />
-      <div className="flex-1">
-        <div className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200">
-          <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100 text-slate-700 group-hover:bg-emerald-100 group-hover:text-emerald-800 dark:bg-slate-800 dark:text-slate-300 dark:group-hover:bg-emerald-900/30 dark:group-hover:text-emerald-300">
-            {opt.label}
-          </span>
-          <span>{opt.content}</span>
-        </div>
-      </div>
-    </label>
-  );
-}
-
-
-
-
-
-// --- input inline cho từng blank ---
-function InlineBlank({
-  opt,
-  value,
-  onChange,
-  reveal,
-}: {
-  opt: QuestionOption | null;              // có thể null nếu thiếu option
-  value: string;
-  onChange?: (v: string) => void;
-  reveal: boolean;
-}) {
-  const isOk = reveal && opt && normalize(value) === normalize(opt.content);
-  const isErr = reveal && opt && !isOk;
-
-  return (
-
-    <span
-      className={[
-        "mx-1 my-1 inline-flex items-center rounded-lg px-2 py-1 align-baseline",
-        "min-w-[8ch] max-w-[50ch]",                 // khung co giãn 8→50ch
-        "border transition",
-        reveal
-          ? isOk
-            ? "border-emerald-300 bg-emerald-50 dark:border-emerald-800/60 dark:bg-emerald-900/10"
-            : "border-rose-300 bg-rose-50 dark:border-rose-800/60 dark:bg-rose-900/10"
-          : "border-slate-300 dark:border-slate-600",
-      ].join(" ")}
-    >
-      <input
-        type="text"
-        aria-label={opt ? `Điền ô ${opt.label}` : "Ô trống"}
-        value={value}
-        onChange={(e) => onChange?.(e.target.value)}
-        disabled={reveal}
-        placeholder={opt ? `Ô ${opt.label}` : "Ô trống"}
-        // 🔑 bỏ w-full để không chiếm hết khung
-        className="bg-transparent outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 font-semibold"
-        // 🔑 auto-giãn theo độ dài hiện tại (8→50 ký tự)
-        style={{
-          width: `${Math.min(50, Math.max(8, (value?.length ?? 0) + 1))}ch`,
-        }}
-      />
-    </span>
-
-
-  );
-}
+import { QuestionCard } from "./ui/QuestionCard";

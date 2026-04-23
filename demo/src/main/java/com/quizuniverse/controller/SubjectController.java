@@ -28,6 +28,14 @@ public class SubjectController {
         return ResponseEntity.ok(subjects);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<SubjectDTO> getSubjectById(@PathVariable long id) {
+        SubjectDTO subject = subjectService.getSubjectById(id);
+        return ResponseEntity.ok(subject);
+    }
+    
+
+
     @GetMapping
     public ResponseEntity<Page<SubjectDTO>> getSubjects(
             @RequestParam(required = false) String keyword,

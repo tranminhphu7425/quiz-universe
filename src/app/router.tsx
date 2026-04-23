@@ -51,6 +51,7 @@ const SettingsPage = React.lazy(() => import("@pages/auth/SettingsPage"));
 const SubjectsPage = React.lazy(() => import("@pages/subjects/SubjectsPage"));
 const SubjectDetailPage = React.lazy(() => import("@pages/subjects/SubjectDetailPage"));
 const CreateSubjectPage = React.lazy(() => import("@pages/subjects/CreateSubjectPage"));
+const EditSubjectPage = React.lazy(() => import("@pages/subjects/EditSubjectPage"));
 
 const QuestionBanksPage = React.lazy(() => import("@pages/question-banks/QuestionBanksPage"));
 const CreateQuestionBankPage = React.lazy(() => import("@pages/question-banks/CreateQuestionBankPage"));
@@ -171,6 +172,7 @@ export const router = createHashRouter([
 
           // Create & Edit Subjects/Questions
           { path: "subjects/create", ...withErrorBoundary(<CreateSubjectPage />) },
+          { path: "subjects/:subjectId/edit", ...withErrorBoundary(<EditSubjectPage />) },
           { path: "questions/subject/:subjectId/edit", ...withErrorBoundary(<EditQuestionPage />) },
           
           // Create & Edit Question Banks

@@ -23,7 +23,7 @@ import TypewriterText from "@/shared/ui/TypewriterText";
 import OrbitingSkills from "@/shared/ui/OrbitingSkills";
 import { IoLibrary } from "react-icons/io5";
 import GradientText from "@/shared/ui/GradientText";
-import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
+import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 
 
 

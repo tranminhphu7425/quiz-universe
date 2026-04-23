@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import Floating from "@/shared/ui/Floatting";
 import { Link } from "react-router-dom";
+import { PolicyItem } from "./ui/PolicyItem";
+import { FaqItem } from "./ui/FaqItem";
 
 /**
  * SecurityPage – Trang Bảo mật & Quyền riêng tư cho QuizUniverse
@@ -309,41 +311,6 @@ export default function SecurityPage() {
           </Link>
         </div>
       </main>
-    </div>
-  );
-}
-
-function PolicyItem({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
-  return (
-    <div className="rounded-xl border border-slate-200 p-3 dark:border-slate-800">
-      <div className="flex items-start gap-3">
-        <div className="grid h-9 w-9 place-items-center rounded-lg bg-emerald-50 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200">
-          {icon}
-        </div>
-        <div className="min-w-0">
-          <div className="font-semibold">{title}</div>
-          <p className="mt-1 text-sm opacity-90">{desc}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="py-3">
-      <button
-        type="button"
-        onClick={() => setOpen(o => !o)}
-        className="flex w-full items-center justify-between text-left"
-      >
-        <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">{q}</span>
-        <span className="ml-4 text-xs text-slate-500 dark:text-slate-400">{open ? "Ẩn" : "Xem"}</span>
-      </button>
-      {open && (
-        <div className="mt-2 text-sm text-slate-700 opacity-90 dark:text-slate-300">{a}</div>
-      )}
     </div>
   );
 }

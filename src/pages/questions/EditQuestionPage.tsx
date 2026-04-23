@@ -21,33 +21,7 @@ import {UpdateQuestionPayload, Question, QuestionOption} from "@/shared/types/qu
 // If you already expose API_BASE from your shared api layer, you can import it.
 // To make this page self-contained, keep a local fallback:
 
-// ===== Helpers reused from QuestionsPage =====
-const BLANK_RE = /\.{5,}/g; // 6 dots or more represent blanks
-
-type Segment = { type: "text"; text: string } | { type: "blank" };
-
-function stemToSegments(stem: string): Segment[] {
-  const segs: Segment[] = [];
-  let lastIdx = 0;
-  let m: RegExpExecArray | null;
-  while ((m = BLANK_RE.exec(stem)) !== null) {
-    const start = m.index;
-    if (start > lastIdx) segs.push({ type: "text", text: stem.slice(lastIdx, start) });
-    segs.push({ type: "blank" });
-    lastIdx = start + m[0].length;
-  }
-  if (lastIdx < stem.length) segs.push({ type: "text", text: stem.slice(lastIdx) });
-  return segs.length ? segs : [{ type: "text", text: stem }];
-}
-
-function deepClone<T>(x: T): T {
-  return structuredClone ? structuredClone(x) : JSON.parse(JSON.stringify(x));
-}
-
-const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-function autoLabel(idx: number) {
-  return LETTERS[idx] || `Opt${idx + 1}`;
-}
+import { stemToSegments, autoLabel, deepClone } from "./utils";
 
 
 

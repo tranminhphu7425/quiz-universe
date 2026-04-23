@@ -150,24 +150,4 @@ export default function AdminDashboardPage() {
   );
 }
 
-function StatCard({ icon, label, value, hint }: { icon: React.ReactNode; label: string; value: number; hint?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ type: "spring", stiffness: 140, damping: 16 }}
-      className="rounded-xl border border-white/40 bg-white/80 p-4 shadow-sm backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/60"
-    >
-      <div className="flex items-center gap-3">
-        <div className="grid h-9 w-9 place-items-center rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200">
-          {icon}
-        </div>
-        <div className="min-w-0">
-          <div className="text-xs text-slate-500 dark:text-slate-400">{label}</div>
-          <div className="text-lg font-bold text-slate-900 dark:text-slate-100">{value}</div>
-          {hint && <div className="text-[11px] text-slate-400 dark:text-slate-500">{hint}</div>}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
+import { StatCard } from "./ui/StatCard";

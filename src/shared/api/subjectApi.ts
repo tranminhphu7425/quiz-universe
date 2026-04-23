@@ -16,6 +16,19 @@ export function fetchSubjectNameById(
   );
 }
 
+/**
+ * Lấy thông tin đầy đủ của một môn học theo ID
+ */
+export function fetchSubjectById(
+  subjectId: number,
+  signal?: AbortSignal
+): Promise<Subject> {
+  return apiService.get<Subject>(
+    `/subjects/${subjectId}`,
+    { signal }
+  );
+}
+
 import { PageParams, PaginatedResponse } from "../types/pagination";
 
 /**

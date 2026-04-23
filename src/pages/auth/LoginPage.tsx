@@ -7,7 +7,7 @@ import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
+import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 
 
 

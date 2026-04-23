@@ -29,7 +29,7 @@ import { useAuth } from "@/app/providers/AuthProvider";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import GradientText from "@/shared/ui/GradientText";
 import TypewriterText from "@/shared/ui/TypewriterText";
-import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
+import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -135,7 +135,7 @@ export default function ProfilePage() {
     <div className="profile-page bg-slate-50 dark:bg-slate-900 min-h-screen">
       {/* ====== HEADER ====== */}
       <section className="relative overflow-hidden">
-        <AnimatedGradientBackgroundProps />
+        <AnimatedGradientBackground />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-16">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">

@@ -31,6 +31,12 @@ public class SubjectService {
                 .collect(Collectors.toList());
     }
 
+    public SubjectDTO getSubjectById(Long id){
+        return subjectRepository.findById(id)
+                .map(this::convertToDTO)
+                .orElseThrow(() -> new SubjectNotFoundException(id));
+    }
+
     @Transactional(readOnly = true)
     public Page<SubjectDTO> getSubjects(String keyword, Pageable pageable) {
         if (keyword != null && !keyword.trim().isEmpty()) {
