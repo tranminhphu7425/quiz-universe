@@ -78,8 +78,8 @@ export default function HeaderCTU({
     // { label: "Câu hỏi", href: "/question-banks" },
     // { label: "Đề thi", href: "/exams/create" },
     { label: "Sắp xếp lịch", href: "/ctu/calendar" },
-    { label: "Tính điểm trung bình", href: "/ctu/calculator" }
-
+    { label: "Tính điểm trung bình", href: "/ctu/calculator" },
+    { label: "Lộ trình học tập", href: "/ctu/roadmap-planner" }
   ] ;
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);

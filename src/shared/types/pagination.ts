@@ -2,6 +2,7 @@ export interface PageParams {
   page?: number;
   size?: number;
   sort?: string;
+  keyword?: string;
 }
 
 export interface PaginatedResponse<T> {

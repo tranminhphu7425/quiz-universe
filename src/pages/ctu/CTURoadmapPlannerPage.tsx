@@ -17,6 +17,9 @@ import {
   Upload,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { fetchSubjects } from '@/shared/api/subjectApi';
+import { Subject } from '@/shared/types/subject';
+import { PaginatedResponse } from '@/shared/types/pagination';
 
 // Định nghĩa kiểu dữ liệu
 interface Course {
@@ -211,9 +214,12 @@ const CTURoadmapPlannerPage: React.FC = () => {
   });
 
   const [courseLibrary, setCourseLibrary] = useState<Course[]>([]);
+  const [isLoadingLibrary, setIsLoadingLibrary] = useState(false);
+  const [page, setPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [showLibrary, setShowLibrary] = useState(false);
-  const [expandedSemesters, setExpandedSemesters] = useState<Set<string>>(new Set());
+  const [draggedOverSemester, setDraggedOverSemester] = useState<string | null>(null);
 
   const getSemesterTotalCredits = (semester: Semester) =>
     semester.courses.reduce((sum, c) => sum + c.credits, 0);
@@ -223,20 +229,61 @@ const CTURoadmapPlannerPage: React.FC = () => {
     localStorage.setItem('ctu_roadmap_years', JSON.stringify(academicYears));
   }, [academicYears]);
 
-  // Tạo thư viện môn học từ dữ liệu hiện có
-  useEffect(() => {
-    const allCourses: Course[] = [];
-    academicYears.forEach(year => {
-      year.semesters.forEach(sem => {
-        sem.courses.forEach(course => {
-          if (!allCourses.some(c => c.code === course.code)) {
-            allCourses.push(course);
-          }
-        });
+  // Load thư viện môn học từ database với phân trang
+  const loadSubjects = async (pageNum: number, isNewSearch = false, keyword = '') => {
+    setIsLoadingLibrary(true);
+    try {
+      const response: PaginatedResponse<Subject> = await fetchSubjects({
+        page: pageNum,
+        size: 10,
+        sort: 'name,asc',
+        keyword: keyword
       });
-    });
-    setCourseLibrary(allCourses);
-  }, [academicYears]);
+      
+      const mappedSubjects: Course[] = response.content.map((s: Subject) => ({
+        id: `db_${s.id}_${s.code}`,
+        code: s.code,
+        name: s.name,
+        credits: 3,
+        prerequisite: '',
+        isRequired: true
+      }));
+
+      if (isNewSearch) {
+        setCourseLibrary(mappedSubjects);
+      } else {
+        setCourseLibrary(prev => {
+          // Tránh trùng lặp
+          const existingCodes = new Set(prev.map(c => c.code));
+          const newOnes = mappedSubjects.filter(c => !existingCodes.has(c.code));
+          return [...prev, ...newOnes];
+        });
+      }
+      
+      setHasMore(!response.last);
+    } catch (error) {
+      console.error('Lỗi khi load môn học:', error);
+      toast.error('Không thể tải danh sách môn học');
+    } finally {
+      setIsLoadingLibrary(false);
+    }
+  };
+
+  // Effect cho debounced search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPage(0);
+      loadSubjects(0, true, searchTerm);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
+  const handleLoadMore = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    loadSubjects(nextPage, false, searchTerm);
+  };
 
   // Thêm năm học mới
   const addAcademicYear = () => {
@@ -287,26 +334,104 @@ const CTURoadmapPlannerPage: React.FC = () => {
     }
   };
 
-  // Thêm môn học vào kỳ
-  const addCourseToSemester = (semesterId: string, course: Course) => {
-    const newCourse = {
-      ...course,
-      id: `${course.code}_${Date.now()}_${Math.random()}`
-    };
+  // Xử lý khi thả môn học vào kỳ học (từ thư viện hoặc từ kỳ khác)
+  const handleDropToSemester = (e: React.DragEvent, targetSemesterId: string) => {
+    e.preventDefault();
+    setDraggedOverSemester(null);
     
+    const courseData = e.dataTransfer.getData('text/plain');
+    const sourceSemesterId = e.dataTransfer.getData('sourceSemesterId');
+    
+    if (!courseData) return;
+
+    try {
+      const course = JSON.parse(courseData) as Course;
+      
+      // Nếu kéo từ kỳ này sang chính nó thì không làm gì (trừ khi sau này muốn reorder bằng drop)
+      if (sourceSemesterId === targetSemesterId) return;
+
+      setAcademicYears(prev => {
+        let newYears = [...prev];
+        
+        // 1. Nếu kéo từ kỳ khác sang, xóa ở kỳ cũ trước
+        if (sourceSemesterId) {
+          newYears = newYears.map(year => ({
+            ...year,
+            semesters: year.semesters.map(sem => 
+              sem.id === sourceSemesterId 
+                ? { ...sem, courses: sem.courses.filter(c => c.id !== course.id) }
+                : sem
+            )
+          }));
+        }
+
+        // 2. Thêm vào kỳ mới (tạo ID mới nếu từ thư viện, giữ ID nếu di chuyển)
+        const newCourse = {
+          ...course,
+          id: sourceSemesterId ? course.id : `${course.code}_${Date.now()}_${Math.random()}`
+        };
+        
+        return newYears.map(year => ({
+          ...year,
+          semesters: year.semesters.map(sem => {
+            if (sem.id === targetSemesterId) {
+              // Kiểm tra xem môn học đã tồn tại trong kỳ này chưa
+              if (sem.courses.some(c => c.code === course.code)) {
+                toast.error('Môn học này đã có trong kỳ này');
+                return sem;
+              }
+              return { ...sem, courses: [...sem.courses, newCourse] };
+            }
+            return sem;
+          })
+        }));
+      });
+
+      if (sourceSemesterId) {
+        toast.success(`Đã chuyển ${course.name}`);
+      } else {
+        toast.success(`Đã thêm ${course.name}`);
+      }
+    } catch (err) {
+      console.error("Lỗi parse dữ liệu kéo thả", err);
+    }
+  };
+
+  const onDragOver = (e: React.DragEvent, semesterId: string) => {
+    e.preventDefault();
+    if (draggedOverSemester !== semesterId) {
+      setDraggedOverSemester(semesterId);
+    }
+  };
+
+  const onDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    // Chúng ta không set null ngay vì có thể đang drag qua các phần tử con
+  };
+
+  // Reorder thủ công (vì không dùng Reorder.Group nữa)
+  const moveCourseUpDown = (semesterId: string, courseId: string, direction: 'up' | 'down') => {
     setAcademicYears(prev => prev.map(year => ({
       ...year,
-      semesters: year.semesters.map(sem => 
-        sem.id === semesterId 
-          ? { ...sem, courses: [...sem.courses, newCourse] }
-          : sem
-      )
+      semesters: year.semesters.map(sem => {
+        if (sem.id !== semesterId) return sem;
+        const index = sem.courses.findIndex(c => c.id === courseId);
+        if (index === -1) return sem;
+        
+        const newCourses = [...sem.courses];
+        const targetIndex = direction === 'up' ? index - 1 : index + 1;
+        
+        if (targetIndex >= 0 && targetIndex < newCourses.length) {
+          [newCourses[index], newCourses[targetIndex]] = [newCourses[targetIndex], newCourses[index]];
+        }
+        
+        return { ...sem, courses: newCourses };
+      })
     })));
-    toast.success(`Đã thêm ${course.name} vào kỳ học`);
   };
 
   // Xóa môn học khỏi kỳ
-  const removeCourseFromSemester = (semesterId: string, courseId: string) => {
+  const removeSubjectFromSemester = (semesterId: string, courseId: string) => {
     setAcademicYears(prev => prev.map(year => ({
       ...year,
       semesters: year.semesters.map(sem => 
@@ -316,17 +441,6 @@ const CTURoadmapPlannerPage: React.FC = () => {
       )
     })));
     toast.success('Đã xóa môn học');
-  };
-
-  const reorderCoursesInSemester = (semesterId: string, nextCourses: Course[]) => {
-    setAcademicYears(prev =>
-      prev.map(year => ({
-        ...year,
-        semesters: year.semesters.map(sem =>
-          sem.id === semesterId ? { ...sem, courses: nextCourses } : sem
-        ),
-      }))
-    );
   };
 
   // Di chuyển môn học sang kỳ khác
@@ -364,25 +478,10 @@ const CTURoadmapPlannerPage: React.FC = () => {
     }
   };
 
-  // Toggle expand semester
-  const toggleSemester = (semesterId: string) => {
-    setExpandedSemesters(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(semesterId)) {
-        newSet.delete(semesterId);
-      } else {
-        newSet.add(semesterId);
-      }
-      return newSet;
-    });
-  };
 
-  // Lọc môn học từ thư viện
-  const filteredCourses = courseLibrary.filter(course => 
-    searchTerm === '' || 
-    course.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    course.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+
+  // Lọc môn học từ thư viện (Đã chuyển sang search từ server)
+  const filteredCourses = courseLibrary;
 
   // Tính tổng tín chỉ toàn khóa
   const totalCredits = useMemo(() => {
@@ -418,28 +517,6 @@ const CTURoadmapPlannerPage: React.FC = () => {
     toast.success('Đã xuất lộ trình học tập');
   };
 
-  // Import dữ liệu từ file JSON
-  const importData = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const data = JSON.parse(e.target?.result as string);
-        if (data && Array.isArray(data)) {
-          setAcademicYears(data);
-          toast.success('Đã nhập lộ trình học tập');
-        } else {
-          toast.error('File không đúng định dạng');
-        }
-      } catch {
-        toast.error('Lỗi đọc file');
-      }
-    };
-    reader.readAsText(file);
-    event.target.value = '';
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300">
@@ -491,11 +568,7 @@ const CTURoadmapPlannerPage: React.FC = () => {
                   Xuất
                 </motion.button>
                 
-                <label className="px-3 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-white text-sm font-medium flex items-center gap-2 hover:bg-white/30 transition-all cursor-pointer">
-                  <Upload className="w-4 h-4" />
-                  Nhập
-                  <input type="file" accept=".json" onChange={importData} className="hidden" />
-                </label>
+                
                 
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -521,50 +594,84 @@ const CTURoadmapPlannerPage: React.FC = () => {
         >
           <button
             onClick={() => setShowLibrary(!showLibrary)}
-            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all"
+            className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800/80 dark:backdrop-blur-md rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md hover:border-purple-300 dark:hover:border-purple-500/50 transition-all group"
           >
-            <BookOpen className="w-5 h-5 text-purple-600" />
-            <span className="font-medium">Thư viện môn học</span>
-            <ChevronDown className={`w-4 h-4 transition-transform ${showLibrary ? 'rotate-180' : ''}`} />
+            <BookOpen className="w-5 h-5 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
+            <span className="font-semibold text-slate-700 dark:text-slate-200">Thư viện môn học</span>
+            <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${showLibrary ? 'rotate-180' : ''}`} />
           </button>
           
           <AnimatePresence>
             {showLibrary && (
               <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="mt-3 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="mt-3 p-5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 z-30 relative"
               >
-                <div className="relative mb-4">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <div className="relative mb-5">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
                   <input
                     type="text"
-                    placeholder="Tìm kiếm môn học theo mã hoặc tên..."
+                    placeholder="Tìm kiếm mã hoặc tên học phần..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-9 pr-4 py-2 border rounded-lg bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700"
+                    className="w-full pl-10 pr-4 py-2.5 border rounded-xl bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
                   />
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-h-64 overflow-y-auto">
-                  {filteredCourses.map(course => (
-                    <motion.div
-                      key={course.id}
-                      whileHover={{ scale: 1.02 }}
-                      className="p-2 rounded-lg bg-gradient-to-r from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 border border-slate-200 dark:border-slate-700 cursor-grab"
-                      draggable
-                      onDragStartCapture={(e: React.DragEvent<HTMLDivElement>) => {
-                        e.dataTransfer.setData('text/plain', JSON.stringify(course));
-                      }}
-                    >
-                      <div className="font-medium text-sm text-gray-800 dark:text-white">{course.code}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400 truncate">{course.name}</div>
-                      <div className="text-xs text-blue-600">{course.credits} TC</div>
-                    </motion.div>
-                  ))}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-h-72 overflow-y-auto pr-2 custom-scrollbar">
+                  {isLoadingLibrary ? (
+                    <div className="col-span-full py-10 flex flex-col items-center justify-center gap-3">
+                      <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+                      <p className="text-sm text-slate-500">Đang tải môn học...</p>
+                    </div>
+                  ) : filteredCourses.length > 0 ? (
+                    filteredCourses.map(course => (
+                      <motion.div
+                        key={course.id}
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="p-3 rounded-xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 hover:border-purple-400 dark:hover:border-purple-500 shadow-sm cursor-grab active:cursor-grabbing group transition-all"
+                        draggable
+                        onDragStartCapture={(e: React.DragEvent<HTMLDivElement>) => {
+                          e.dataTransfer.setData('text/plain', JSON.stringify(course));
+                        }}
+                      >
+                        <div className="flex justify-between items-start mb-1">
+                          <span className="font-bold text-xs px-2 py-0.5 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 rounded-md">
+                            {course.code}
+                          </span>
+                          <div className="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-1.5 py-0.5 rounded">
+                            {course.credits} TC
+                          </div>
+                        </div>
+                        <div className="text-sm font-medium text-slate-700 dark:text-slate-200 line-clamp-2 leading-tight group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                          {course.name}
+                        </div>
+                      </motion.div>
+                    ))
+                  ) : (
+                    <div className="col-span-full py-10 text-center text-slate-400 dark:text-slate-500">
+                      Không tìm thấy môn học nào phù hợp
+                    </div>
+                  )}
                 </div>
-                <p className="text-xs text-slate-500 mt-3 text-center">💡 Kéo thả môn học từ đây vào các kỳ học bên dưới</p>
+
+                {hasMore && !isLoadingLibrary && (
+                  <div className="mt-4 flex justify-center">
+                    <button
+                      onClick={handleLoadMore}
+                      className="text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline"
+                    >
+                      Xem thêm môn học...
+                    </button>
+                  </div>
+                )}
+                <div className="flex items-center justify-center gap-2 mt-4 text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/50 py-2 rounded-lg border border-dashed border-slate-200 dark:border-slate-700">
+                  <span className="animate-bounce">💡</span>
+                  Kéo thả môn học vào các kỳ học bên dưới để lập kế hoạch
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -600,119 +707,118 @@ const CTURoadmapPlannerPage: React.FC = () => {
               
               {/* Semesters Grid */}
               <div className="p-4">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   {year.semesters.map((semester) => (
                     <div
                       key={semester.id}
-                      className="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-slate-50/50 dark:bg-slate-900/30"
-                      onDragOver={(e) => e.preventDefault()}
-                      onDrop={(e) => {
-                        e.preventDefault();
-                        const courseData = e.dataTransfer.getData('text/plain');
-                        if (courseData) {
-                          const course = JSON.parse(courseData);
-                          addCourseToSemester(semester.id, course);
-                        }
-                      }}
+                      className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                        draggedOverSemester === semester.id 
+                          ? 'border-purple-500 bg-purple-50/50 dark:bg-purple-900/20 scale-[1.02] shadow-lg z-10' 
+                          : 'border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/30'
+                      }`}
+                      onDragOver={(e) => onDragOver(e, semester.id)}
+                      onDragLeave={() => setDraggedOverSemester(null)}
+                      onDrop={(e) => handleDropToSemester(e, semester.id)}
                     >
                       {/* Semester Header */}
-                      <div
-                        className="p-3 bg-gradient-to-r from-slate-100 to-white dark:from-slate-800 dark:to-slate-800 cursor-pointer flex justify-between items-center"
-                        onClick={() => toggleSemester(semester.id)}
-                      >
-                        <div>
+                      <div className="p-3 bg-gradient-to-r from-slate-100 to-white dark:from-slate-800 dark:to-slate-800 flex justify-between items-center border-b border-slate-200 dark:border-slate-700">
+                        <div className='flex flex-row gap-3 items-center '>
                           <h3 className="font-semibold text-gray-800 dark:text-white">
                             {semester.name}
                           </h3>
-                          <p className="text-xs text-gray-500">{semester.yearRange}</p>
+                          <p className="text-xs text-gray-500 mt-1">{semester.yearRange}</p>
                         </div>
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400">
                             {getSemesterTotalCredits(semester)} TC
                           </span>
-                          {expandedSemesters.has(semester.id) ? (
-                            <ChevronUp className="w-4 h-4 text-gray-500" />
-                          ) : (
-                            <ChevronDown className="w-4 h-4 text-gray-500" />
-                          )}
                         </div>
                       </div>
                       
                       {/* Semester Content */}
-                      <AnimatePresence>
-                        {expandedSemesters.has(semester.id) && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="p-3"
-                          >
-                            {semester.courses.length === 0 && (
-                              <div className="text-center py-8 text-gray-400 text-sm">
-                                📚 Kéo thả môn học vào đây
-                              </div>
-                            )}
+                      <div className="p-5">
+                        {semester.courses.length === 0 && (
+                          <div className="text-center py-4 text-gray-400 text-sm">
+                            📚 Kéo thả môn học vào đây
+                          </div>
+                        )}
 
-                            <Reorder.Group
-                              axis="y"
-                              values={semester.courses}
-                              onReorder={(next) => reorderCoursesInSemester(semester.id, next)}
-                              className="space-y-2 min-h-[200px]"
-                            >
-                              {semester.courses.map((course) => (
-                                <Reorder.Item
+                            <div className="space-y-2">
+                              {semester.courses.map((course, idx) => (
+                                <motion.div
                                   key={course.id}
-                                  value={course}
-                                  className={`p-3 rounded-xl bg-gradient-to-r ${getCourseColor(course)} text-white shadow-md group relative`}
+                                  layout
+                                  draggable
+                                  onDragStartCapture={(e: React.DragEvent) => {
+                                    e.dataTransfer.setData('text/plain', JSON.stringify(course));
+                                    e.dataTransfer.setData('sourceSemesterId', semester.id);
+                                    const target = e.currentTarget as HTMLElement;
+                                    setTimeout(() => target.style.opacity = '0.4', 0);
+                                  }}
+                                  onDragEndCapture={(e: React.DragEvent) => {
+                                    const target = e.currentTarget as HTMLElement;
+                                    target.style.opacity = '1';
+                                    setDraggedOverSemester(null);
+                                  }}
+                                  className={`p-2 rounded-lg bg-gradient-to-r ${getCourseColor(course)} text-white shadow-sm group relative cursor-grab active:cursor-grabbing transition-all hover:shadow-md hover:scale-[1.01]`}
                                 >
-                                  <div className="flex justify-between items-start">
-                                    <div className="flex-1">
-                                      <div className="flex items-center gap-2">
-                                        <div className="cursor-grab active:cursor-grabbing">
-                                          <GripVertical className="w-4 h-4 opacity-70" />
-                                        </div>
-                                        <div>
-                                          <div className="font-bold text-sm">{course.code}</div>
-                                          <div className="text-xs opacity-90">{course.name}</div>
-                                        </div>
-                                      </div>
-                                      <div className="flex items-center gap-2 mt-1 text-xs opacity-80">
-                                        <span>{course.credits} TC</span>
+                                  <div className="flex items-center gap-3">
+                                    <GripVertical className="w-4 h-4 opacity-40 shrink-0" />
+                                    
+                                    <div className="flex-1 flex items-center gap-4 min-w-0">
+                                      <span className="font-mono font-bold text-xs bg-white/20 px-2 py-0.5 rounded shrink-0">
+                                        {course.code}
+                                      </span>
+                                      
+                                      <span className="text-sm font-medium truncate flex-1">
+                                        {course.name}
+                                      </span>
+                                      
+                                      <div className="flex items-center gap-3 shrink-0">
+                                        <span className="text-[10px] font-bold bg-black/10 px-1.5 py-0.5 rounded-full">
+                                          {course.credits} TC
+                                        </span>
+                                        
                                         {course.prerequisite && (
-                                          <span className="flex items-center gap-1">
-                                            <Info className="w-3 h-3" />
-                                            {course.prerequisite}
-                                          </span>
+                                          <div className="group/info relative">
+                                            <Info className="w-3.5 h-3.5 opacity-70" />
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-800 text-[10px] rounded shadow-xl opacity-0 group-hover/info:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-20">
+                                              Tiên quyết: {course.prerequisite}
+                                            </div>
+                                          </div>
                                         )}
                                       </div>
                                     </div>
 
-                                    <div className="flex items-center gap-1">
+                                    <div className="flex items-center gap-1 shrink-0 ml-2 border-l border-white/20 pl-2">
+                                      <div className="flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button 
+                                          onClick={(e) => { e.stopPropagation(); moveCourseUpDown(semester.id, course.id, 'up'); }}
+                                          className="p-1 hover:bg-white/20 rounded disabled:opacity-30"
+                                          disabled={idx === 0}
+                                        >
+                                          <ChevronUp className="w-3.5 h-3.5" />
+                                        </button>
+                                        <button 
+                                          onClick={(e) => { e.stopPropagation(); moveCourseUpDown(semester.id, course.id, 'down'); }}
+                                          className="p-1 hover:bg-white/20 rounded disabled:opacity-30"
+                                          disabled={idx === semester.courses.length - 1}
+                                        >
+                                          <ChevronDown className="w-3.5 h-3.5" />
+                                        </button>
+                                      </div>
                                       <button
-                                        onClick={() => {
-                                          const targetSemester = prompt('Nhập ID kỳ học đích (ví dụ: y2_fall):');
-                                          if (targetSemester) {
-                                            moveCourseToSemester(semester.id, targetSemester, course.id);
-                                          }
-                                        }}
-                                        className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-white/20 rounded"
+                                        onClick={(e) => { e.stopPropagation(); removeSubjectFromSemester(semester.id, course.id); }}
+                                        className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-red-500/50 rounded"
                                       >
-                                        <Move className="w-3 h-3" />
-                                      </button>
-                                      <button
-                                        onClick={() => removeCourseFromSemester(semester.id, course.id)}
-                                        className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-white/20 rounded"
-                                      >
-                                        <X className="w-3 h-3" />
+                                        <X className="w-3.5 h-3.5" />
                                       </button>
                                     </div>
                                   </div>
-                                </Reorder.Item>
+                                </motion.div>
                               ))}
-                            </Reorder.Group>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                            </div>
+                          </div>
                     </div>
                   ))}
                 </div>
@@ -764,6 +870,25 @@ const CTURoadmapPlannerPage: React.FC = () => {
         }
         .animation-delay-2000 {
           animation-delay: 2s;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #e2e8f0;
+          border-radius: 10px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #334155;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #cbd5e1;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #475569;
         }
       `}</style>
     </div>

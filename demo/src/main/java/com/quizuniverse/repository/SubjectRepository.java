@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 
 import com.quizuniverse.entity.Subject;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @Repository
 public interface SubjectRepository extends JpaRepository<Subject, Long> {
     
@@ -19,5 +22,7 @@ public interface SubjectRepository extends JpaRepository<Subject, Long> {
 
     @Query("select s.name from Subject s where s.id = :id")
     String findNameById(@Param("id") Long id);
+
+    Page<Subject> findByCodeContainingIgnoreCaseOrNameContainingIgnoreCase(String code, String name, Pageable pageable);
 
 }

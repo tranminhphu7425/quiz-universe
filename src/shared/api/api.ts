@@ -21,7 +21,7 @@ class ApiService {
       (config) => {
         const token =
           localStorage.getItem('auth_token') ?? sessionStorage.getItem('auth_token');
-        console.log(token);
+
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
           

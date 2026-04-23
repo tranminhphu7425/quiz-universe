@@ -12,7 +12,7 @@ import { CTULayout } from "@/layouts/CTULayout";
 
 // Components
 import NotFoundPage from "@pages/not-found/NotFoundPage";
-import { RequireAuth } from "@app/providers/RequireAuth";
+import { RequireAuth, RequireAdmin, RequireGuest } from "@app/providers/RequireAuth";
 
 // ============================================================================
 // LAZY LOADING - PUBLIC PAGES
@@ -141,30 +141,40 @@ export const router = createHashRouter([
       { path: "documents", ...withErrorBoundary(<DocumentationPage />) },
       { path: "userguide", ...withErrorBoundary(<UserGuidePage />) },
 
-      // Auth Routes (Public)
-      { path: "login", ...withErrorBoundary(<LoginPage />) },
-      { path: "register", ...withErrorBoundary(<RegisterPage />) },
-      { path: "forgot-password", ...withErrorBoundary(<ForgotPasswordPage />) },
+      // Auth Routes (Guest Only)
+      {
+        element: <RequireGuest />,
+        children: [
+          { path: "login", ...withErrorBoundary(<LoginPage />) },
+          { path: "register", ...withErrorBoundary(<RegisterPage />) },
+          { path: "forgot-password", ...withErrorBoundary(<ForgotPasswordPage />) },
+        ],
+      },
 
-      // Subjects Routes
+      // Subjects Routes (Public View)
       { path: "subjects", ...withErrorBoundary(<SubjectsPage />) },
       { path: "subjects/:subjectId", ...withErrorBoundary(<SubjectDetailPage />) },
-      { path: "subjects/create", ...withErrorBoundary(<CreateSubjectPage />) },
       { path: "questions/subject/:subjectId", ...withErrorBoundary(<QuestionsPage />) },
-      { path: "questions/subject/:subjectId/edit", ...withErrorBoundary(<EditQuestionPage />) },
 
-      // Question Banks Routes
+      // Question Banks Routes (Public View)
       { path: "question-banks", ...withErrorBoundary(<QuestionBanksPage />) },
-      { path: "question-bank/create", ...withErrorBoundary(<CreateQuestionBankPage />) },
 
       // Protected Routes (Require Authentication)
       {
         element: <RequireAuth />,
         children: [
+          // User Dashboard & Profile
           { path: "dashboard", ...withErrorBoundary(<DashboardPage />) },
           { path: "profile", ...withErrorBoundary(<ProfilePage />) },
           { path: "settings", ...withErrorBoundary(<SettingsPage />) },
           { path: "setup", ...withErrorBoundary(<SetupProfilePage />) },
+
+          // Create & Edit Subjects/Questions
+          { path: "subjects/create", ...withErrorBoundary(<CreateSubjectPage />) },
+          { path: "questions/subject/:subjectId/edit", ...withErrorBoundary(<EditQuestionPage />) },
+          
+          // Create & Edit Question Banks
+          { path: "question-bank/create", ...withErrorBoundary(<CreateQuestionBankPage />) },
         ],
       },
 
@@ -181,7 +191,12 @@ export const router = createHashRouter([
     errorElement: <NotFoundPage />,
     children: [
       { path: "questions/question-bank/:bankId", ...withErrorBoundary(<QuestionsPage />) },
-      { path: "questions/question-bank/:bankId/edit", ...withErrorBoundary(<EditQuestionPage />) },
+      {
+        element: <RequireAuth />,
+        children: [
+          { path: "questions/question-bank/:bankId/edit", ...withErrorBoundary(<EditQuestionPage />) },
+        ],
+      },
     ],
   },
 
@@ -190,13 +205,18 @@ export const router = createHashRouter([
   // ==========================================================================
   {
     path: "admin",
-    element: <AdminLayout />,
+    element: <RequireAdmin />,
     errorElement: <NotFoundPage />,
     children: [
-      { index: true, ...withErrorBoundary(<AdminDashboardPage />) },
-      { path: "users", ...withErrorBoundary(<AdminUsersPage />) },
-      { path: "subjects", ...withErrorBoundary(<AdminSubjectsPage />) },
-      { path: "settings", ...withErrorBoundary(<AdminDashboardPage />) },
+      {
+        element: <AdminLayout />,
+        children: [
+          { index: true, ...withErrorBoundary(<AdminDashboardPage />) },
+          { path: "users", ...withErrorBoundary(<AdminUsersPage />) },
+          { path: "subjects", ...withErrorBoundary(<AdminSubjectsPage />) },
+          { path: "settings", ...withErrorBoundary(<AdminDashboardPage />) },
+        ],
+      },
     ],
   },
 

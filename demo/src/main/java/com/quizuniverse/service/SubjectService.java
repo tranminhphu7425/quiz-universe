@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.stereotype.Service;
 import com.quizuniverse.exception.SubjectCodeAlreadyExistsException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +29,16 @@ public class SubjectService {
                 .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public Page<SubjectDTO> getSubjects(String keyword, Pageable pageable) {
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            return subjectRepository.findByCodeContainingIgnoreCaseOrNameContainingIgnoreCase(keyword, keyword, pageable)
+                    .map(this::convertToDTO);
+        }
+        return subjectRepository.findAll(pageable)
+                .map(this::convertToDTO);
     }
     
     private SubjectDTO convertToDTO(Subject subject) {

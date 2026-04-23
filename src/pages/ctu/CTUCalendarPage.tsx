@@ -88,12 +88,12 @@ const CTUCalendarPage: React.FC = () => {
 
   // Auto-save schedule to DB (debounce), after we've hydrated once
   useEffect(() => {
-    if (!user){
-      toast.error("Vui lòng đăng nhập để sử dụng tính năng này");
+    if (!user) {
+      // toast.error("Vui lòng đăng nhập để sử dụng tính năng này");
       return;
-    } 
-    if (!didHydrateFromServerRef.current){
-    
+    }
+    if (!didHydrateFromServerRef.current) {
+
       return;
     }
 

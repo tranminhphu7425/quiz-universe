@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
-import { 
-  Calendar, 
-  Calculator, 
-  TrendingUp, 
-  Clock, 
-  Award, 
+import {
+  Calendar,
+  Calculator,
+  TrendingUp,
+  Clock,
+  Award,
   BookOpen,
   Sparkles,
   ArrowRight,
@@ -59,6 +59,22 @@ const CTUHomePage: React.FC = () => {
       bgGradient: "from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30",
       iconBg: "bg-green-100 dark:bg-green-900",
       buttonBg: "bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800"
+    },
+    {
+      id: 3,
+      title: "Lộ trình học tập 4 năm",
+      description: "Lập kế hoạch lộ trình học tập toàn khóa, quản lý các môn học theo từng học kỳ và theo dõi tổng số tín chỉ tích lũy.",
+      icon: TrendingUp,
+      benefits: [
+        "Thiết lập lộ trình học tập dài hạn",
+        "Quản lý môn học theo từng năm",
+        "Tự động tính tổng tín chỉ toàn khóa"
+      ],
+      link: "/ctu/roadmap-planner",
+      gradient: "from-purple-500 to-indigo-500",
+      bgGradient: "from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/30",
+      iconBg: "bg-purple-100 dark:bg-purple-900",
+      buttonBg: "bg-purple-600 hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-800"
     }
   ];
 
@@ -71,10 +87,10 @@ const CTUHomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 font-K2D transition-colors duration-300">
-      
+
       {/* ====== HERO SECTION ====== */}
       <section className="relative overflow-hidden">
-        <AnimatedGradientBackground/> 
+        <AnimatedGradientBackground />
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 py-16 lg:flex-row lg:items-center">
           <div className="w-full lg:w-[50%] text-center text-white lg:text-left">
@@ -94,8 +110,8 @@ const CTUHomePage: React.FC = () => {
               transition={{ delay: 0.05 }}
               className="text-center lg:text-left text-[2.5rem] md:text-[3rem] font-black leading-tight"
             >
-              <TypewriterText 
-                text="Chào mừng đến với" 
+              <TypewriterText
+                text="Chào mừng đến với"
                 className="text-3xl md:text-4xl font-bold"
               />
               <GradientText className="flex mx-auto lg:mx-0 text-[2.5rem] md:text-[3rem] font-[Poppins]">
@@ -109,7 +125,7 @@ const CTUHomePage: React.FC = () => {
               transition={{ delay: 0.1 }}
               className="mt-4 w-full text-center lg:text-left text-white/90 dark:text-gray-200 text-lg"
             >
-              Ứng dụng quản lý học tập thông minh dành riêng cho sinh viên 
+              Ứng dụng quản lý học tập thông minh dành riêng cho sinh viên
               <span className="font-semibold text-yellow-300"> Đại học Cần Thơ</span>
             </motion.p>
 
@@ -120,14 +136,19 @@ const CTUHomePage: React.FC = () => {
               className="mt-6 flex flex-wrap justify-center gap-4 lg:justify-start"
             >
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <a
-                  href="#tools"
+                <button
+                  onClick={() => {
+                    const toolsSection = document.getElementById('tools');
+                    if (toolsSection) {
+                      toolsSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                   className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-6 py-2.5 font-semibold text-blue-950 shadow-lg hover:shadow-xl hover:brightness-105 transition-all duration-300"
                 >
                   Khám phá công cụ <ArrowRight className="h-4 w-4" />
-                </a>
+                </button>
               </motion.div>
-              
+
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <a
                   href="#about"
@@ -226,7 +247,7 @@ const CTUHomePage: React.FC = () => {
               <Zap className="h-4 w-4 text-blue-600 dark:text-blue-400" />
               <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Công cụ thông minh</span>
             </motion.div>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -243,53 +264,63 @@ const CTUHomePage: React.FC = () => {
               viewport={{ once: true }}
               className="mt-2 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
             >
-              Các công cụ hỗ trợ sinh viên trong việc lập kế hoạch học tập, 
+              Các công cụ hỗ trợ sinh viên trong việc lập kế hoạch học tập,
               theo dõi tiến độ và đạt kết quả tốt nhất
             </motion.p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {features.map((feature, index) => (
-              <FadeInOnView key={feature.id} amount={0.2}>
-                <motion.div
-                  whileHover={{ y: -8 }}
-                  className="group relative bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+            {features.map((feature, index) => {
+              const isFullWidth = index === features.length - 1 && features.length % 2 !== 0;
+              
+              return (
+                <FadeInOnView 
+                  key={feature.id} 
+                  amount={0.2} 
+                  className={isFullWidth ? "md:col-span-2" : ""}
                 >
+                  <motion.div
+                    whileHover={{ y: -8 }}
+                    className="group relative bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 h-full"
+                  >
                   {/* Gradient border effect */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} style={{ padding: '2px', mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor' }} />
-                  
-                  <div className="relative p-8">
-                    {/* Icon */}
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className={`w-16 h-16 ${feature.iconBg} rounded-2xl flex items-center justify-center mb-6`}
-                    >
-                      <feature.icon className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                    </motion.div>
 
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">
-                      {feature.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                      {feature.description}
-                    </p>
+                  <div className="relative p-8 h-full flex flex-col justify-between">
+                    <div>
+                      {/* Icon */}
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className={`w-16 h-16 ${feature.iconBg} rounded-2xl flex items-center justify-center mb-6`}
+                      >
+                        <feature.icon className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                      </motion.div>
 
-                    {/* Benefits list */}
-                    <div className="space-y-3 mb-8">
-                      {feature.benefits.map((benefit, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.1 }}
-                          className="flex items-center gap-3"
-                        >
-                          <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
-                        </motion.div>
-                      ))}
+                      <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">
+                        {feature.title}
+                      </h3>
+
+                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        {feature.description}
+                      </p>
+
+                      {/* Benefits list */}
+                      <div className="space-y-3 mb-8">
+                        {feature.benefits.map((benefit, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            className="flex items-center gap-3"
+                          >
+                            <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
+                            <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
+
 
                     {/* CTA Button */}
                     <motion.div
@@ -307,8 +338,9 @@ const CTUHomePage: React.FC = () => {
                   </div>
                 </motion.div>
               </FadeInOnView>
-            ))}
-          </div>
+            );
+          })}
+        </div>
         </div>
       </section>
 
@@ -330,8 +362,8 @@ const CTUHomePage: React.FC = () => {
                 <span className="text-blue-600 dark:text-blue-400"> học tập hiệu quả</span>
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                Chúng tôi hiểu rằng việc quản lý thời gian và theo dõi kết quả học tập là 
-                những thách thức lớn đối với sinh viên đại học. Vì vậy, chúng tôi đã xây dựng 
+                Chúng tôi hiểu rằng việc quản lý thời gian và theo dõi kết quả học tập là
+                những thách thức lớn đối với sinh viên đại học. Vì vậy, chúng tôi đã xây dựng
                 các công cụ thông minh để giúp sinh viên CTU:
               </p>
               <div className="space-y-3">
@@ -381,7 +413,7 @@ const CTUHomePage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Decorative elements */}
               <Floating distance={10} duration={6} className="absolute -top-4 -right-4 pointer-events-none">
                 <div className="rounded-full bg-yellow-400 p-2 shadow-lg">
@@ -426,7 +458,7 @@ const CTUHomePage: React.FC = () => {
                 Sẵn sàng tối ưu việc học?
               </h2>
               <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                Sử dụng các công cụ thông minh của chúng tôi để quản lý thời gian 
+                Sử dụng các công cụ thông minh của chúng tôi để quản lý thời gian
                 và theo dõi kết quả học tập một cách hiệu quả nhất.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -454,7 +486,7 @@ const CTUHomePage: React.FC = () => {
         </div>
       </section>
 
-     
+
     </div>
   );
 };

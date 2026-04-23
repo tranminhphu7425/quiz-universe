@@ -7,6 +7,7 @@
       "subjectName": "Tư tưởng Hồ Chí Minh",
       "description": "Import tự động từ PDF",
       "visibility": "PUBLIC",
+      "status": "ACTIVE",
       "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
       "creatorName": "Trần Minh Phú",
       "createdAt": "2025-08-19T10:07:54",
@@ -20,6 +21,7 @@
       "subjectName": "Tư tưởng Hồ Chí Minh",
       "description": "Tập câu hỏi trắc nghiệm từ giáo trình đã upload.",
       "visibility": "PUBLIC",
+      "status": "ACTIVE",
       "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
       "creatorName": "Trần Minh Phú",
       "createdAt": "2025-08-26T06:28:29",
@@ -33,6 +35,7 @@
       "subjectName": "Tư tưởng Hồ Chí Minh",
       "description": "Ngân hàng MCQ TTHCM",
       "visibility": "PUBLIC",
+      "status": "ACTIVE",
       "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
       "creatorName": "Trần Minh Phú",
       "createdAt": "2025-09-08T08:49:23",
@@ -46,6 +49,7 @@
       "subjectName": "Tư tưởng Hồ Chí Minh",
       "description": "Tổng hợp câu hỏi trắc nghiệm môn Tư tưởng Hồ Chí Minh",
       "visibility": "PUBLIC",
+      "status": "ACTIVE",
       "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
       "creatorName": "Trần Minh Phú",
       "createdAt": "2025-09-09T04:08:39",
@@ -59,6 +63,7 @@
       "subjectName": "Chủ nghĩa xã hội khoa học",
       "description": "Ngân hàng câu hỏi trắc nghiệm môn Chủ nghĩa xã hội khoa học, tổng hợp từ tài liệu đầy đủ.",
       "visibility": "PUBLIC",
+      "status": "ACTIVE",
       "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
       "creatorName": "Trần Minh Phú",
       "createdAt": "2025-09-10T10:52:42",
@@ -72,11 +77,12 @@
       "subjectName": "Tư tưởng Hồ Chí Minh",
       "description": "Tổng hợp các câu hỏi trắc nghiệm môn Tư Tưởng Hồ Chí Minh",
       "visibility": "PUBLIC",
+      "status": "ACTIVE",
       "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
       "creatorName": "Trần Minh Phú",
       "createdAt": "2025-12-01T04:53:08",
       "updatedAt": null,
-      "questionCount": 149
+      "questionCount": 151
     },
     {
       "bankId": 11,
@@ -85,11 +91,68 @@
       "subjectName": "Giáo dục quốc phòng và An ninh 4 (*)",
       "description": "Ngân hàng câu hỏi từ đề thi cuối kỳ môn Vi sinh học đại cương năm 2021, bao gồm 50 câu hỏi trắc nghiệm",
       "visibility": "PUBLIC",
+      "status": "ACTIVE",
       "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
       "creatorName": "Trần Minh Phú",
       "createdAt": "2026-04-14T04:17:15",
       "updatedAt": null,
       "questionCount": 50
+    },
+    {
+      "bankId": 12,
+      "name": "ÔN tập định kì",
+      "subjectId": 63,
+      "subjectName": "Xử lý ngôn ngữ tự nhiên",
+      "description": "123213",
+      "visibility": "PUBLIC",
+      "status": "DELETED",
+      "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2026-04-14T20:30:48",
+      "updatedAt": "2026-04-14T21:38:20.682153",
+      "questionCount": 7
+    },
+    {
+      "bankId": 13,
+      "name": "qư",
+      "subjectId": 55,
+      "subjectName": "An toàn hệ thống",
+      "description": "qewqeqwe",
+      "visibility": "PRIVATE",
+      "status": "DELETED",
+      "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2026-04-14T21:46:37",
+      "updatedAt": "2026-04-17T15:29:19.837923",
+      "questionCount": 3
+    },
+    {
+      "bankId": 14,
+      "name": "Kiến thức cơ bản",
+      "subjectId": 560,
+      "subjectName": "AI trong thư viện",
+      "description": "Chơi",
+      "visibility": "PUBLIC",
+      "status": "DELETED",
+      "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2026-04-17T16:11:50",
+      "updatedAt": "2026-04-17T16:14:28.16912",
+      "questionCount": 2
+    },
+    {
+      "bankId": 15,
+      "name": "Đang được phát triển",
+      "subjectId": 5958,
+      "subjectName": "Âm nhạc cơ bản",
+      "description": "handleImportJSON",
+      "visibility": "PUBLIC",
+      "status": "DELETED",
+      "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2026-04-17T16:13:05",
+      "updatedAt": "2026-04-17T16:14:24.77675",
+      "questionCount": 2
     }
   ],
   "pageable": {
@@ -97,24 +160,24 @@
     "pageSize": 20,
     "sort": {
       "empty": false,
-      "sorted": true,
-      "unsorted": false
+      "unsorted": false,
+      "sorted": true
     },
     "offset": 0,
-    "paged": true,
-    "unpaged": false
+    "unpaged": false,
+    "paged": true
   },
-  "last": true,
-  "totalElements": 7,
   "totalPages": 1,
-  "first": true,
+  "totalElements": 11,
+  "last": true,
   "size": 20,
   "number": 0,
   "sort": {
     "empty": false,
-    "sorted": true,
-    "unsorted": false
+    "unsorted": false,
+    "sorted": true
   },
-  "numberOfElements": 7,
+  "numberOfElements": 11,
+  "first": true,
   "empty": false
 }

@@ -7,7 +7,7 @@ import {
   ChevronLeft, ChevronRight, Grid, List, SortAsc,
   SortDesc, Calendar, Download, MoreVertical,
   ChevronDown, Star, Users, Lock, Globe,
-  ChevronUp
+  ChevronUp, Library, Sparkles
 } from "lucide-react";
 import { Heart } from "lucide-react";
 import { AlertTriangle, RefreshCcw } from "lucide-react";
@@ -17,11 +17,14 @@ type Difficulty = "easy" | "medium" | "hard";
 type QType = "MCQ" | "TRUE_FALSE" | "FILL_BLANK";
 
 
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchAllSubjects } from "@/shared/api/subjectApi";
 import type { Subject } from "@/shared/types/subject";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { favoriteService } from "@/shared/api/favoriteApi";
 import { FavoriteSubject } from "@/shared/types/favorite";
+import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
+import { toast } from "react-hot-toast";
 
 // Sort options
 type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc' | 'questions-asc' | 'questions-desc' | 'visibility';
@@ -33,10 +36,6 @@ export default function SubjectsPage() {
   const [diff, setDiff] = useState<"all" | Difficulty>("all");
   const [type, setType] = useState<"all" | QType>("all");
   const [onlyApproved, setOnlyApproved] = useState(false);
-  // const [visibilityFilter, setVisibilityFilter] = useState<'all' | 'PRIVATE' | 'ORG' | 'PUBLIC'>('all');
-  const [, setErr] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<Subject[]>([]);
 
   // ======= VIEW & SORT STATE =======
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
@@ -52,15 +51,52 @@ export default function SubjectsPage() {
 
   const types = ["all", "MCQ", "TRUE_FALSE", "FILL_BLANK"] as const;
   const diffs = ["all", "easy", "medium", "hard"] as const;
-  // const visibilityOptions = [
-  //   { value: 'all', label: 'Tất cả', icon: Eye },
-  //   { value: 'PUBLIC', label: 'Công khai', icon: Globe, color: 'text-emerald-600' },
-  //   { value: 'ORG', label: 'Nội bộ', icon: Users, color: 'text-blue-600' },
-  //   { value: 'PRIVATE', label: 'Riêng tư', icon: Lock, color: 'text-amber-600' }
-  // ];
 
-  const [favorites, setFavorites] = useState<Set<number>>(new Set());
   const { user } = useAuth();
+  const queryClient = useQueryClient();
+
+  // ======= FETCH DATA WITH REACT QUERY =======
+  const { data: subjects = [], isLoading: isLoadingSubjects } = useQuery({
+    queryKey: ["subjects"],
+    queryFn: async () => {
+      try {
+        return await fetchAllSubjects();
+      } catch (e) {
+        // Fallback local data if API fails
+        const local = await fetch("/quiz-universe/data/subjects.json");
+        toast.error("Kết nối đến API thất bại, đang sử dụng dữ liệu nội bộ");
+        return (await local.json()) as Subject[];
+      }
+    },
+  });
+
+  const { data: favoriteIds = new Set<number>() } = useQuery({
+    queryKey: ["favorites", user?.id],
+    queryFn: async () => {
+      if (!user) return new Set<number>();
+      const favs = await favoriteService.getFavoriteSubjects();
+      return new Set(favs.map((s: FavoriteSubject) => s.subjectId));
+    },
+    enabled: !!user,
+    meta: { disableGlobalToast: true }
+  });
+
+  // ======= MUTATIONS =======
+  const toggleFavoriteMutation = useMutation({
+    mutationFn: async (id: number) => {
+      const isFav = favoriteIds.has(id);
+      if (isFav) {
+        await favoriteService.removeFavoriteSubject(id);
+      } else {
+        await favoriteService.addFavoriteSubject(id);
+      }
+      return { id, isFav };
+    },
+    onSuccess: () => {
+      // Tự động làm mới danh sách yêu thích sau khi thay đổi
+      queryClient.invalidateQueries({ queryKey: ["favorites", user?.id] });
+    },
+  });
 
 
   const handleSortChange = (value: string) => {
@@ -74,29 +110,13 @@ export default function SubjectsPage() {
     if (validOptions.includes(value as SortOption)) {
       setSortOption(value as SortOption);
     } else {
-      // Fallback nếu giá trị không hợp lệ
       setSortOption('date-desc');
     }
   };
 
-  const toggleFavorite = async (id: number) => {
-    const isFav = favorites.has(id);
+  const toggleFavorite = (id: number) => {
     if (!user) return;
-    try {
-      if (isFav) {
-        await favoriteService.removeFavoriteSubject(id);
-        setFavorites(prev => {
-          const next = new Set(prev);
-          next.delete(id);
-          return next;
-        });
-      } else {
-        await favoriteService.addFavoriteSubject(id);
-        setFavorites(prev => new Set(prev).add(id));
-      }
-    } catch (err) {
-      console.error("Lỗi khi cập nhật yêu thích", err);
-    }
+    toggleFavoriteMutation.mutate(id);
   };
 
   const toggleSelectSubject = (id: number) => {
@@ -123,69 +143,15 @@ export default function SubjectsPage() {
     setSelectedSubjects(new Set());
   };
 
-  useEffect(() => {
-    const loadFavorite = async () => {
-      try {
-        if (!user) return;
-        const data = await favoriteService.getFavoriteSubjects();
-        setFavorites(new Set(data.map((s: FavoriteSubject) => s.subjectId)));
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    loadFavorite();
-  }, []);
-
-  async function fetchData() {
-    setLoading(true);
-    setErr(null);
-
-    (async () => {
-      try {
-        const list = await fetchAllSubjects();
-        setData(list);
-      } catch (e: any) {
-        if (e?.name === "AbortError") return;
-        setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
-        const local = await fetch("/quiz-universe/data/Subjects.json");
-        setData((await local.json()) as Subject[]);
-      } finally {
-        setLoading(false);
-      }
-    })();
-
-    return;
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   // ======= FILTERING & SORTING =======
   const filtered = useMemo(() => {
-    const result = data.filter(subject => {
+    const result = subjects.filter(subject => {
       // Text search
       const kw = normalizeText(q);
       if (kw && !normalizeText(subject.name).includes(kw) &&
         !normalizeText(subject.description || "").includes(kw)) {
         return false;
       }
-
-      // // Visibility filter
-      // if (visibilityFilter !== 'all' && subject.visibility !== visibilityFilter) {
-      //   return false;
-      // }
-
-      // // Only show approved (if applicable)
-      // if (onlyApproved) {
-      //   // You might need to add an 'approved' field to Subject type
-      //   // For now, we'll filter by visibility PUBLIC as "approved"
-      //   if (subject.visibility !== 'PUBLIC') {
-      //     return false;
-      //   }
-      // }
-
       return true;
     });
 
@@ -200,20 +166,13 @@ export default function SubjectsPage() {
           return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
         case 'date-desc':
           return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-        // case 'questions-asc':
-        //   return (a.questionCount || 0) - (b.questionCount || 0);
-        // case 'questions-desc':
-        //   return (b.questionCount || 0) - (a.questionCount || 0);
-        // case 'visibility':
-        //   const order = { 'PUBLIC': 1, 'ORG': 2, 'PRIVATE': 3 };
-        //   return (order[a.visibility] || 4) - (order[b.visibility] || 4);
         default:
           return 0;
       }
     });
 
     return result;
-  }, [q, data, onlyApproved, sortOption]);
+  }, [q, subjects, onlyApproved, sortOption]);
 
   function normalizeText(str: string) {
     return str
@@ -257,60 +216,124 @@ export default function SubjectsPage() {
 
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-slate-900">
-      <section className="relative overflow-hidden">
-        {/* Gradient nền */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-400
-                      dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-
-        {/* Tile mờ */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 w-[120%] md:w-full opacity-10 dark:opacity-[0.15]"
-          style={{
-            backgroundRepeat: "repeat",
-            backgroundSize: "160px 160px",
-            maskImage: "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
-            WebkitMaskImage: "radial-gradient(1200px 400px at left center, #000 70%, transparent 100%)",
-          }}
-        />
-
-        {/* Blur blobs */}
-        <div className="pointer-events-none absolute z-0 -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-2xl dark:bg-emerald-400/20" />
-        <div className="pointer-events-none absolute z-0 -right-16 top-10 h-64 w-64 rounded-full bg-white/10 blur-2xl dark:bg-purple-400/20" />
-
+      <section className="relative overflow-hidden bg-emerald-600 dark:bg-slate-950">
+        <AnimatedGradientBackground />
+        
         {/* Hero section */}
-        <motion.div className="relative z-10 text-center mx-auto max-w-6xl px-6 py-12">
-          <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center ">
-            <div className="w-full lg:w-auto">
-              <h1 className="text-3xl font-black leading-tight text-white text-center lg:text-left">
-                Tất cả các môn
-              </h1>
-              <p className="mt-1 text-white/90 dark:text-gray-300 text-center lg:text-left">
-                Tìm kiếm, lọc theo trường/ bộ môn.
-              </p>
-            </div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-12"
+        >
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+            {/* Left Section - Title & Description */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
+              className="w-full lg:w-auto text-center lg:text-left"
+            >
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
+                <Library className="w-3.5 h-3.5 text-yellow-300" />
+                <span className="text-xs font-medium text-white/90">Quản lý học thuật</span>
+              </div>
 
-            <div className="flex items-center gap-3 justify-center w-full lg:w-auto">
-              <Link
-                to="create"
-                className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-2 text-sm font-semibold text-emerald-950 shadow hover:brightness-105"
+              {/* Title with gradient */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                <span className="bg-gradient-to-r from-white via-yellow-100 to-amber-200 bg-clip-text text-transparent">
+                  Danh mục môn học
+                </span>
+              </h1>
+
+              {/* Decorative underline */}
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: "80px" }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="h-1 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full mt-3 mb-4 mx-auto lg:mx-0"
+              />
+
+              {/* Description */}
+              <p className="text-white/80 dark:text-gray-200 text-base md:text-lg max-w-xl leading-relaxed mx-auto lg:mx-0">
+                Khám phá kho tàng môn học, bộ đề thi và tài liệu ôn tập được phân loại khoa học.
+              </p>
+
+              {/* Quick stats */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="flex flex-wrap justify-center lg:justify-start gap-4 mt-6"
               >
-                <PlusCircle className="h-4 w-4" /> Thêm môn mới
-              </Link>
-            </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+                  <span className="text-xs text-white/70">Cấu trúc FSD chuẩn</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
+                  <span className="text-xs text-white/70">500+ Học phần</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                  <span className="text-xs text-white/70">Tự động hóa AI</span>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Section - Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto"
+            >
+              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  to="create"
+                  className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold shadow-lg transition-all duration-300 bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 text-emerald-950 hover:shadow-xl w-full sm:w-auto"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <PlusCircle className="h-4 w-4 group-hover:rotate-90 transition-transform duration-300" />
+                  <span className="relative z-10">Thêm môn học mới</span>
+                  <ChevronRight className="h-4 w-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </motion.div>
+
+              <motion.div whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  to="/question-banks"
+                  className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold shadow-lg transition-all duration-300 bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20 w-full sm:w-auto"
+                >
+                  <BookOpen className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
+                  <span>Kho ngân hàng câu hỏi</span>
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
 
-          {/* Floating decor */}
-          <Floating distance={12} duration={7} className="pointer-events-none absolute top-16 left-8">
-            <div className="rounded-xl bg-gradient-to-br from-amber-300 to-rose-300 px-3 py-1 shadow-lg -rotate-6">
-              <span className="text-xs font-black text-rose-700">SUBJECT</span>
-            </div>
+          {/* Floating Decorations */}
+          <Floating distance={15} duration={7} className="pointer-events-none absolute top-10 left-10 z-0 hidden lg:block">
+            <motion.div
+              animate={{ rotate: [-6, 0, -6] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 px-4 py-2 shadow-xl opacity-20"
+            >
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-3 w-3 text-white" />
+                <span className="text-xs font-black text-white tracking-wider uppercase">Subjects</span>
+              </div>
+            </motion.div>
           </Floating>
 
-          <Floating distance={10} duration={6} className="pointer-events-none absolute top-16 right-10">
-            <div className="rounded-full bg-gradient-to-br from-purple-400 to-indigo-400 p-3 shadow-xl rotate-12">
-              <BookOpen className="h-4 w-4 text-white" />
-            </div>
+          <Floating distance={12} duration={6} className="pointer-events-none absolute top-20 right-20 z-0 hidden lg:block">
+            <motion.div
+              animate={{ rotate: [12, 0, 12] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 p-4 shadow-xl opacity-20"
+            >
+              <BookOpen className="h-6 w-6 text-white" />
+            </motion.div>
           </Floating>
         </motion.div>
       </section>
@@ -652,7 +675,7 @@ export default function SubjectsPage() {
 
 
         {/* List */}
-        {loading ? (
+        {isLoadingSubjects ? (
           <LoadingState />
         ) : filtered.length === 0 ? (
           <EmptyState />
@@ -667,7 +690,7 @@ export default function SubjectsPage() {
                   <SubjectCardGrid
                     key={subject.id}
                     subject={subject}
-                    isFavorite={favorites.has(subject.id)}
+                    isFavorite={favoriteIds.has(subject.id)}
                     isSelected={selectedSubjects.has(subject.id)}
                     onToggleFavorite={() => toggleFavorite(subject.id)}
                     onToggleSelect={() => toggleSelectSubject(subject.id)}
@@ -677,7 +700,7 @@ export default function SubjectsPage() {
                   <SubjectCardList
                     key={subject.id}
                     subject={subject}
-                    isFavorite={favorites.has(subject.id)}
+                    isFavorite={favoriteIds.has(subject.id)}
                     isSelected={selectedSubjects.has(subject.id)}
                     onToggleFavorite={() => toggleFavorite(subject.id)}
                     onToggleSelect={() => toggleSelectSubject(subject.id)}

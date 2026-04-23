@@ -1,227 +1,164 @@
 // src/app/providers/AuthProvider.tsx
-
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-
-
-import { apiService, publicApiService } from "@/shared/api/api"; // Thay đổi import
-
-import { Major } from "@/shared/types/major";
-import { University } from "@/shared/types/university";
-
+import { apiService, publicApiService } from "@/shared/api/api";
 import { User } from "@/shared/types/user";
 import { ChangePasswordRequest } from "@/shared/types/authUser";
 
+/** Keys for persistence in storage */
+const STORAGE_KEYS = {
+  TOKEN: "auth_token",
+  USER: "auth_user",
+};
 
-
-// Hàm helper để thiết lập token cho axios instance
-function setAuthToken(token: string | null) {
-  if (token) {
-    // Token sẽ được tự động thêm vào header qua interceptor
-    localStorage.setItem("auth_token", token);
-  } else {
-    localStorage.removeItem("auth_token");
-  }
-}
-
-
-
-
-/** Kiểu context mà các page sẽ dùng */
 export interface AuthContextType {
   user: User | null;
   loading: boolean;
-
-  login: (
-    email: string,
-    password: string,
-    opts?: { remember?: boolean }
-  ) => Promise<void>;
-
+  login: (email: string, password: string, opts?: { remember?: boolean }) => Promise<void>;
   logout: () => Promise<void>;
-
   register: (input: { name: string; email: string; password: string }) => Promise<void>;
-
   requestPasswordReset: (email: string) => Promise<void>;
   resetPassword: (token: string, newPassword: string) => Promise<void>;
   updateUser: (user: User) => void;
-
-
-  changePassword: ({ currentPassword, newPassword } : ChangePasswordRequest) => Promise<void>;
-
+  changePassword: (request: ChangePasswordRequest) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-/** Kiểu response backend kỳ vọng */
+/** API response types */
 type LoginResponse = { token: string; user: User };
 type RegisterResponse = { token: string; id: string; name: string; email: string };
-type VoidResponse = { success: true } | undefined;
-
-function pickStorage(remember?: boolean) {
-  return remember ? localStorage : sessionStorage;
-}
-
-function readFromStorage() {
-  const token = localStorage.getItem("auth_token") ?? sessionStorage.getItem("auth_token");
-  const cachedUser =
-    localStorage.getItem("auth_user") ?? sessionStorage.getItem("auth_user");
-  return { token, cachedUser };
-}
 
 export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [initialized, setInitialized] = useState(false);
 
-  // Khôi phục phiên từ storage khi load lần đầu
+  /** Helper to get current active storage based on where the token is stored */
+  const getActiveStorage = () => {
+    return localStorage.getItem(STORAGE_KEYS.TOKEN) ? localStorage : sessionStorage;
+  };
+
+  /** Initialization: Check storage for existing session */
   useEffect(() => {
-    setLoading(true);
-    const { token, cachedUser } = readFromStorage();
-    if (token) setAuthToken(token);
-    if (cachedUser) {
+    const initAuth = () => {
       try {
-        setUser(JSON.parse(cachedUser));
-      } catch {
-        // nếu parse lỗi thì clear
-        localStorage.removeItem("auth_user");
-        sessionStorage.removeItem("auth_user");
+        const token = localStorage.getItem(STORAGE_KEYS.TOKEN) || sessionStorage.getItem(STORAGE_KEYS.TOKEN);
+        const cachedUser = localStorage.getItem(STORAGE_KEYS.USER) || sessionStorage.getItem(STORAGE_KEYS.USER);
+
+        if (token && cachedUser) {
+          setUser(JSON.parse(cachedUser));
+        }
+      } catch (error) {
+        console.error("Auth initialization failed:", error);
+        clearAuthData();
+      } finally {
+        setLoading(false);
+        setInitialized(true);
       }
-    }
-    setLoading(false);
-    setInitialized(true);
+    };
+
+    initAuth();
   }, []);
+
+  /** Clear all auth data from storage and state */
+  const clearAuthData = () => {
+    localStorage.removeItem(STORAGE_KEYS.TOKEN);
+    localStorage.removeItem(STORAGE_KEYS.USER);
+    sessionStorage.removeItem(STORAGE_KEYS.TOKEN);
+    sessionStorage.removeItem(STORAGE_KEYS.USER);
+    setUser(null);
+  };
 
   const login: AuthContextType["login"] = async (email, password, opts) => {
     setLoading(true);
     try {
-      // Mặc định API_BASE lấy từ VITE_API_URL, endpoint Spring Boot:
-      // POST /api/auth/login -> { token, user }
-      const data = await publicApiService.post<LoginResponse>("/auth/login", {
-        email,
-        password,
-      });
+      const data = await publicApiService.post<LoginResponse>("/auth/login", { email, password });
+      const storage = opts?.remember ? localStorage : sessionStorage;
 
-      const storage = pickStorage(opts?.remember);
-      if (data.token) {
-        storage.setItem("auth_token", data.token);
-        console.log("data.token", data.token);
-        setAuthToken(data.token);
+      if (data.token && data.user) {
+        storage.setItem(STORAGE_KEYS.TOKEN, data.token);
+        storage.setItem(STORAGE_KEYS.USER, JSON.stringify(data.user));
+        setUser(data.user);
       }
-      if (data.user) storage.setItem("auth_user", JSON.stringify(data.user));
-      console.log("Cap nhat tu back: ", data.user);
-
-      setUser(data.user ?? null);
     } finally {
       setLoading(false);
     }
   };
 
   const logout: AuthContextType["logout"] = async () => {
-    // Optional: gọi /api/auth/logout nếu backend có
     try {
-      await apiService.post<VoidResponse>("/auth/logout").catch(() => { });
-    } catch { }
-    // Xoá storage cả 2 nơi để chắc chắn
-    localStorage.removeItem("auth_token");
-    localStorage.removeItem("auth_user");
-    sessionStorage.removeItem("auth_token");
-    sessionStorage.removeItem("auth_user");
-    setAuthToken(null);
-    setUser(null);
+      // Optional: notify backend about logout
+      await apiService.post("/auth/logout").catch(() => {});
+    } finally {
+      clearAuthData();
+    }
   };
 
   const register: AuthContextType["register"] = async ({ name, email, password }) => {
     setLoading(true);
     try {
-      // POST /api/auth/register
-
-      const data = await publicApiService.post<RegisterResponse>("/auth/register", {
-        name,
-        email,
-        password,
-      });
-      // Tuỳ ý: không auto-login để phù hợp nhiều flow (email verify, v.v.)
+      const data = await publicApiService.post<RegisterResponse>("/auth/register", { name, email, password });
 
       if (data.token) {
-        localStorage.setItem("auth_token", data.token);
-        console.log("data.token", data.token);
-        setAuthToken(data.token);
-        setUser({
+        const newUser: User = {
           id: data.id,
           name: data.name,
           username: "",
-          role: "user",   // mặc định user
+          role: "user",
           phone: "",
           email: data.email,
           university: null,
           major: null,
-        });
-
+        };
+        // Default persistence for new registration
+        localStorage.setItem(STORAGE_KEYS.TOKEN, data.token);
+        localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(newUser));
+        setUser(newUser);
       }
-
     } finally {
       setLoading(false);
     }
   };
 
-
-  const changePassword: AuthContextType["changePassword"] = async ({ currentPassword, newPassword } : ChangePasswordRequest) => {
-    if (!user) {
-      throw new Error("User not authenticated");
-    }
-
-    try {
-      await apiService.post<void>("/auth/change-password", { currentPassword, newPassword });
-      // Có thể thêm thông báo thành công ở đây
-    } catch (error) {
-      console.error("Change password failed:", error);
-      throw error;
-    }
+  const changePassword: AuthContextType["changePassword"] = async (request) => {
+    if (!user) throw new Error("Authentication required");
+    await apiService.post("/auth/change-password", request);
   };
 
-
   const requestPasswordReset: AuthContextType["requestPasswordReset"] = async (email) => {
-    // POST /api/auth/password/request-reset
-    await publicApiService.post<VoidResponse>("/auth/password/request-reset", {
-      email,
-    });
+    await publicApiService.post("/auth/password/request-reset", { email });
   };
 
   const resetPassword: AuthContextType["resetPassword"] = async (token, newPassword) => {
-    // POST /api/auth/password/reset
-    await publicApiService.post<VoidResponse>("/auth/password/reset", {
-      token,
-      newPassword,
-    });
+    await publicApiService.post("/auth/password/reset", { token, newPassword });
   };
 
-
-
-
-  const updateUser = (user: User) => {
-    setUser(user);
-    localStorage.setItem("auth_user", JSON.stringify(user));
+  const updateUser = (updatedUser: User) => {
+    setUser(updatedUser);
+    getActiveStorage().setItem(STORAGE_KEYS.USER, JSON.stringify(updatedUser));
   };
 
-  
+  const contextValue = useMemo(() => ({
+    user,
+    loading,
+    login,
+    logout,
+    register,
+    requestPasswordReset,
+    resetPassword,
+    updateUser,
+    changePassword,
+  }), [user, loading]);
 
+  // Show nothing while initializing session
+  if (!initialized) return null;
 
-  const value = useMemo<AuthContextType>(
-    () => ({ user, loading, login, logout, register, requestPasswordReset, resetPassword, updateUser, changePassword }),
-    [user, loading]
-  );
-  if (!initialized) {
-    return <div></div>;
-  }
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };
 
-/** Hook dùng trong các page */
+/** Hook to access auth context */
 export function useAuth(): AuthContextType {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be used within <AuthProvider>");
-  return ctx;
+  const context = useContext(AuthContext);
+  if (!context) throw new Error("useAuth must be used within an AuthProvider");
+  return context;
 }
-
-

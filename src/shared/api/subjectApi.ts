@@ -16,6 +16,8 @@ export function fetchSubjectNameById(
   );
 }
 
+import { PageParams, PaginatedResponse } from "../types/pagination";
+
 /**
  * Lấy toàn bộ danh sách môn học
  */
@@ -23,8 +25,21 @@ export function fetchAllSubjects(
   signal?: AbortSignal
 ): Promise<Subject[]> {
   return apiService.get<Subject[]>(
-    `/subjects`,
+    `/subjects/all`,
     { signal }
+  );
+}
+
+/**
+ * Lấy danh sách môn học có phân trang
+ */
+export function fetchSubjects(
+  params?: PageParams,
+  signal?: AbortSignal
+): Promise<PaginatedResponse<Subject>> {
+  return apiService.get<PaginatedResponse<Subject>>(
+    `/subjects`,
+    { params, signal }
   );
 }
 

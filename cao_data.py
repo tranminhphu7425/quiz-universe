@@ -66,8 +66,8 @@ for subject in subjects:
                 print(f"[OK] {code}")
 
                 all_data.append({
-                    "subject": code,
-                    "ctu_data": data
+                    "ma_request": code,
+                    "data": data
                 })
             else:
                 print(f"[Trống] {code}")

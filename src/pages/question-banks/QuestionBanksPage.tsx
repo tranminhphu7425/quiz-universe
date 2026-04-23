@@ -29,16 +29,34 @@ import type { QuestionBank } from "@/shared/types/questionBank";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { favoriteService } from "@/shared/api/favoriteApi";
 import { FavoriteQuestionBank } from "@/shared/types/favorite";
-import AnimatedGradientBackgroundProps from "@/components/ui/AnimatedGradientBackground";
+import AnimatedGradientBackground from "@/components/ui/AnimatedGradientBackground";
 import { normalizeText } from "@/shared/utils/textUtils";
 
 // Sort options
 type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc' | 'questions-asc' | 'questions-desc' | 'visibility';
 type ViewMode = 'grid' | 'list';
 
+import { usePagination } from '@/shared/hooks/usePagination';
+
 export default function QuestionBanksPage() {
+  // ======= PAGINATION & SEARCH HOOK =======
+  const {
+    page,
+    size: pageSize,
+    keyword: q,
+    sort,
+    setPage,
+    handleSearch,
+    changeSort,
+  } = usePagination({
+    initialPage: 0,
+    initialSize: 6,
+    initialSort: 'date-desc'
+  });
+  const sortOption = sort as SortOption;
+  const setSortOption = changeSort;
+
   // ======= FILTER QuestionBanks
-  const [q, setQ] = useState("");
   const [diff, setDiff] = useState<"all" | Difficulty>("all");
   const [type, setType] = useState<"all" | QType>("all");
   const [onlyApproved, setOnlyApproved] = useState(false);
@@ -49,7 +67,6 @@ export default function QuestionBanksPage() {
 
   // ======= VIEW & SORT STATE =======
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
-  const [sortOption, setSortOption] = useState<SortOption>('date-desc');
   const [selectedBanks, setSelectedBanks] = useState<Set<number>>(new Set());
   const [showBulkActions, setShowBulkActions] = useState(false);
   // Thêm vào phần state khai báo
@@ -57,11 +74,6 @@ export default function QuestionBanksPage() {
   
   // State for delete modal
   const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
-
-  // ======= PAGINATION =======
-  const [page, setPage] = useState(1);
-  const pageSize = 6;
-
   const types = ["all", "MCQ", "TRUE_FALSE", "FILL_BLANK"] as const;
   const diffs = ["all", "easy", "medium", "hard"] as const;
   const visibilityOptions = [
@@ -84,10 +96,10 @@ export default function QuestionBanksPage() {
     ];
 
     if (validOptions.includes(value as SortOption)) {
-      setSortOption(value as SortOption);
+      changeSort(value);
     } else {
       // Fallback nếu giá trị không hợp lệ
-      setSortOption('date-desc');
+      changeSort('date-desc');
     }
   };
 
@@ -239,12 +251,12 @@ export default function QuestionBanksPage() {
 
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
-  const pageData = filtered.slice((page - 1) * pageSize, page * pageSize);
+  const pageData = filtered.slice(page * pageSize, (page + 1) * pageSize);
 
   // Reset page khi filter đổi
   const handleFilterChange = <T,>(setter: (v: T) => void) => (v: T) => {
     setter(v);
-    setPage(1);
+    setPage(0);
     setSelectedBanks(new Set()); // Clear selection when filters change
   };
 
@@ -280,7 +292,7 @@ export default function QuestionBanksPage() {
     <div className="relative min-h-screen bg-slate-50 dark:bg-slate-900">
       <section className="relative overflow-hidden">
 
-        <AnimatedGradientBackgroundProps />
+        <AnimatedGradientBackground />
 
         {/* Hero section */}
         <motion.div
@@ -647,7 +659,7 @@ export default function QuestionBanksPage() {
                     <Search className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
                     <input
                       value={q}
-                      onChange={(e) => handleFilterChange(setQ)(e.target.value)}
+                      onChange={(e) => handleSearch(e.target.value)}
                       placeholder="Từ khóa: tên, mô tả, môn học…"
                       className="w-full bg-transparent p-1 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
                     />
@@ -793,18 +805,18 @@ export default function QuestionBanksPage() {
             {/* Pagination */}
             <div className="mt-6 flex items-center justify-center gap-2">
               <button
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                disabled={page === 1}
+                onClick={() => setPage(Math.max(0, page - 1))}
+                disabled={page === 0}
                 className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-slate-200 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700"
               >
                 <ChevronLeft className="h-4 w-4" /> Trước
               </button>
               <span className="text-sm text-slate-600 dark:text-slate-300">
-                Trang {page}/{totalPages}
+                Trang {page + 1}/{totalPages}
               </span>
               <button
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                disabled={page === totalPages}
+                onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
+                disabled={page >= totalPages - 1}
                 className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-slate-200 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700"
               >
                 Sau <ChevronRight className="h-4 w-4" />

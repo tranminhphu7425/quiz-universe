@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import com.quizuniverse.service.SubjectNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 
 @RestController
 @RequestMapping("/api/subjects")
@@ -19,9 +22,17 @@ public class SubjectController {
         this.subjectService = subjectService;
     }
     
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<SubjectDTO>> getAllSubjects() {
         List<SubjectDTO> subjects = subjectService.getAllSubjects();
+        return ResponseEntity.ok(subjects);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<SubjectDTO>> getSubjects(
+            @RequestParam(required = false) String keyword,
+            @PageableDefault(size = 10, sort = "name") Pageable pageable) {
+        Page<SubjectDTO> subjects = subjectService.getSubjects(keyword, pageable);
         return ResponseEntity.ok(subjects);
     }
 
