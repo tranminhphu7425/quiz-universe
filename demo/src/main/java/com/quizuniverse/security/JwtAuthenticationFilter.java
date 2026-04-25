@@ -37,26 +37,37 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.substring(7);
 
-            if (jwtUtil.validateToken(token)) {
-                UUID userId = UUID.fromString(jwtUtil.extractUserId(token));
-                User user = userRepository.findByUserId(userId.toString()).orElse(null);
+            try {
+                if (jwtUtil.validateToken(token)) {
+                    UUID userId = UUID.fromString(jwtUtil.extractUserId(token));
+                    User user = userRepository.findByUserId(userId.toString()).orElse(null);
 
-                if (user != null) {
-                    UsernamePasswordAuthenticationToken auth =
-                            new UsernamePasswordAuthenticationToken(
-                                    userId, null, Collections.emptyList()
-                            );
-                    auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    if (user != null) {
+                        UsernamePasswordAuthenticationToken auth =
+                                new UsernamePasswordAuthenticationToken(
+                                        userId.toString(), null, Collections.emptyList()
+                                );
+                        auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                    SecurityContextHolder.getContext().setAuthentication(auth);
+                        SecurityContextHolder.getContext().setAuthentication(auth);
+                    }
+                } else {
+                    sendErrorResponse(response, "Invalid token");
+                    return;
                 }
+            } catch (Exception e) {
+                sendErrorResponse(response, "Token expired or invalid");
+                return;
             }
         }
 
         filterChain.doFilter(request, response);
     }
 
-
-
-    
+    private void sendErrorResponse(HttpServletResponse response, String message) throws IOException {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write("{\"status\": 401, \"message\": \"" + message + "\"}");
+    }
 }
+

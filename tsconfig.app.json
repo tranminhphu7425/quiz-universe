@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "composite": true,                 // <<< bắt buộc để dùng project references
+    // "noUnusedLocals": true,      // Báo lỗi nếu biến local không được dùng
+    // "noUnusedParameters": true,  // Báo lỗi nếu tham số hàm không được dùng
+    // "composite": true,                 // <<< bắt buộc để dùng project references
     "target": "ES2020",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",

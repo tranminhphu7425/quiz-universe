@@ -112,13 +112,13 @@ export default function AdminSubjectsPage() {
 
     try {
       if (editingSubject) {
-        const updated = await updateSubject(editingSubject.id, {
+        const updated = await updateSubject(editingSubject.subjectId, {
           code: formCode.trim(),
           name: formName.trim(),
           description: formDescription.trim(),
         });
         setSubjects((prev) =>
-          prev.map((s) => (s.id === editingSubject.id ? updated : s))
+          prev.map((s) => (s.subjectId === editingSubject.subjectId ? updated : s))
         );
         toast.success("Cập nhật môn học thành công!", { id: toastId });
       } else {
@@ -146,7 +146,7 @@ export default function AdminSubjectsPage() {
     const toastId = toast.loading("Đang xóa môn học...");
     try {
       await deleteSubject(id);
-      setSubjects((prev) => prev.filter((s) => s.id !== id));
+      setSubjects((prev) => prev.filter((s) => s.subjectId !== id));
       toast.success("Đã xóa môn học thành công!", { id: toastId });
       setConfirmDelete(null);
     } catch (error: any) {
@@ -342,7 +342,7 @@ export default function AdminSubjectsPage() {
                   <AnimatePresence>
                     {filteredSubjects.map((s, i) => (
                       <motion.tr
-                        key={s.id}
+                        key={s.subjectId}
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, x: -20 }}
@@ -554,7 +554,7 @@ export default function AdminSubjectsPage() {
                   Hủy
                 </button>
                 <button
-                  onClick={() => handleDelete(confirmDelete.id)}
+                  onClick={() => handleDelete(confirmDelete.subjectId)}
                   disabled={actionLoading}
                   className="flex-1 px-4 py-2 rounded-xl bg-red-500 text-white text-sm font-medium hover:bg-red-600 transition-colors flex items-center justify-center gap-1.5"
                 >

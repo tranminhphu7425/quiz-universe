@@ -1,4 +1,3 @@
-// src/api/types/questionBank.ts
 export enum QuestionBankVisibility {
   PRIVATE = 'PRIVATE',
   ORG = 'ORG',
@@ -6,19 +5,21 @@ export enum QuestionBankVisibility {
 }
 
 export interface QuestionBank {
-  viewCount?: number;
   bankId: number;
   name: string;
   subjectId: number;
-  subjectName: string;
   description?: string;
   visibility: QuestionBankVisibility;
-  status?: "DRAFT" | "ACTIVE" | "ARCHIVED" | "DELETED";
-  createdBy: number;
-  creatorName: string;
+  status: "ACTIVE" | "DELETED";
+  createdBy: string; // UUID string
   createdAt: string;
   updatedAt?: string;
-  questionCount: number;
+  
+  // UI/Extra fields usually provided by backend JOINs
+  subjectName?: string;
+  creatorName?: string;
+  questionCount?: number;
+  viewCount?: number;
 }
 
 export interface CreateQuestionBankRequest {
@@ -29,9 +30,10 @@ export interface CreateQuestionBankRequest {
 }
 
 export interface UpdateQuestionBankRequest {
-  name: string;
+  name?: string;
   description?: string;
   visibility?: QuestionBankVisibility;
+  status?: "ACTIVE" | "DELETED";
 }
 
 export interface QuestionBankStats {

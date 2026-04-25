@@ -92,13 +92,13 @@ export function SubjectCardGrid({ bank, isFavorite, isSelected, onToggleFavorite
               {bank.visibility === 'PUBLIC' ? 'Công khai' : bank.visibility === 'ORG' ? 'Nội bộ' : 'Riêng tư'}
             </motion.span>
             
-            {bank.questionCount > 0 && (
+            {bank.questionCount != null && bank.questionCount > 0 && (
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300 shadow-sm"
               >
                 <BookOpen className="h-3 w-3" />
-                {bank.questionCount.toLocaleString()} câu hỏi
+                {bank.questionCount?.toLocaleString()} câu hỏi
               </motion.span>
             )}
 

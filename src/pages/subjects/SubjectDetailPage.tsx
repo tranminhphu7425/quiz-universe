@@ -71,10 +71,10 @@ export default function SubjectDetailPage() {
 
     try {
       if (isFavorite) {
-        await favoriteService.removeFavoriteSubject(subject.id);
+        await favoriteService.removeFavoriteSubject(subject.subjectId);
         setIsFavorite(false);
       } else {
-        await favoriteService.addFavoriteSubject(subject.id);
+        await favoriteService.addFavoriteSubject(subject.subjectId);
         setIsFavorite(true);
       }
     } catch (err) {
@@ -91,19 +91,19 @@ export default function SubjectDetailPage() {
 
   const handleEdit = () => {
     if (subject) {
-      navigate(`/subjects/${subject.id}/edit`);
+      navigate(`/subjects/${subject.subjectId}/edit`);
     }
   };
 
   const handleCreateQuiz = () => {
     if (subject) {
-      navigate(`/quiz/create?subjectId=${subject.id}`);
+      navigate(`/exams/create?subjectId=${subject.subjectId}`);
     }
   };
 
   const handleAddQuestion = () => {
     if (subject) {
-      navigate(`/questions/create?subjectId=${subject.id}`);
+      navigate(`/questions/create?subjectId=${subject.subjectId}`);
     }
   };
 
@@ -359,7 +359,7 @@ export default function SubjectDetailPage() {
                 className="group cursor-pointer"
               >
                 <Link
-                  to={`/questions?subjectId=${subject.id}`}
+                  to={`/questions?subjectId=${subject.subjectId}`}
                   className="block rounded-xl bg-white dark:bg-slate-800 p-6 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-500 transition-colors"
                 >
                   <div className="flex items-start justify-between mb-4">
@@ -383,7 +383,7 @@ export default function SubjectDetailPage() {
                 className="group cursor-pointer"
               >
                 <Link
-                  to={`/quizzes?subjectId=${subject.id}`}
+                  to={`/quizzes?subjectId=${subject.subjectId}`}
                   className="block rounded-xl bg-white dark:bg-slate-800 p-6 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-500 transition-colors"
                 >
                   <div className="flex items-start justify-between mb-4">
@@ -407,7 +407,7 @@ export default function SubjectDetailPage() {
                 className="group cursor-pointer"
               >
                 <Link
-                  to={`/documents?subjectId=${subject.id}`}
+                  to={`/documents?subjectId=${subject.subjectId}`}
                   className="block rounded-xl bg-white dark:bg-slate-800 p-6 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-500 transition-colors"
                 >
                   <div className="flex items-start justify-between mb-4">

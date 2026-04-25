@@ -235,7 +235,7 @@ const CTUHomePage: React.FC = () => {
       </section>
 
       {/* ====== TOOLS SECTION ====== */}
-      <section id="tools" className="py-20">
+      <section id="tools" className="py-20 scroll-mt-16">
         <div className="container mx-auto max-w-6xl px-6">
           <div className="text-center mb-12">
             <motion.div
@@ -345,7 +345,7 @@ const CTUHomePage: React.FC = () => {
       </section>
 
       {/* ====== ABOUT SECTION ====== */}
-      <section id="about" className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-slate-800 dark:to-slate-900">
+      <section id="about" className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-slate-800 dark:to-slate-900 scroll-mt-16">
         <div className="container mx-auto max-w-6xl px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div

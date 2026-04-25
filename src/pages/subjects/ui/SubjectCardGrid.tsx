@@ -76,14 +76,14 @@ export function SubjectCardGrid({ subject, isFavorite, isSelected, onToggleFavor
           <div className="flex items-center gap-2">
             {(userRole === "admin" || userRole === "editor") && (
               <Link
-                to={`/subjects/${subject.id}/edit`}
+                to={`/subjects/${subject.subjectId}/edit`}
                 className="inline-flex items-center gap-1 rounded-lg bg-red-400 px-2 py-1 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
               >
                 Sửa
               </Link>
             )}
             <Link
-              to={`/subjects/${subject.id}`}
+              to={`/subjects/${subject.subjectId}`}
               className="inline-flex items-center gap-1 rounded-lg bg-yellow-400 px-2 py-1 text-xs font-semibold text-emerald-950 shadow hover:brightness-105"
             >
               Xem

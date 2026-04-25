@@ -1,23 +1,49 @@
-export type QuestionOption = {
-  id: number;
+export type QuestionType = 'mcq_single' | 'mcq_multi' | 'true_false' | 'fill_in';
+export type QuestionStatus = 'draft' | 'review' | 'approved' | 'retired';
+
+export interface QuestionOption {
+  optionId: number;
+  questionId: number;
   label: string;
   content: string;
   isCorrect: boolean;
-  sortOrder?: number;
-};
+  feedback?: string;
+  sortOrder: number;
+}
 
-export type Question = {
-  id: number;
+export interface Question {
+  questionId: number;
+  bankId?: number;
+  subjectId: number;
   stem: string;
-  explanation?: string | null;
-  questionType: 'mcq_single' | 'mcq_multiple' | 'fill_in' | string;
-  status: "approved" | "draft" | "rejected" | string;
+  explanation?: string;
+  difficultyId?: number;
+  bloomId?: number;
+  questionType: QuestionType;
+  status: QuestionStatus;
+  sourceId?: number;
+  sectionId?: number;
+  createdBy?: string;
+  updatedBy?: string;
   createdAt: string;
   updatedAt?: string;
-  options: QuestionOption[];
-};
+  versionNo: number;
 
-export type UpdateQuestionPayload =
-  Omit<Partial<Question>, 'options'> & {
-    options?: Array<Partial<QuestionOption>>;
-  };
+  // Relations
+  options?: QuestionOption[];
+}
+
+export interface QuestionVersion {
+  qvId: number;
+  questionId: number;
+  versionNo: number;
+  stem?: string;
+  explanation?: string;
+  updatedBy?: string;
+  updatedAt: string;
+  changeNote?: string;
+}
+
+export type UpdateQuestionPayload = Omit<Partial<Question>, 'options'> & {
+  options?: Array<Partial<QuestionOption>>;
+};

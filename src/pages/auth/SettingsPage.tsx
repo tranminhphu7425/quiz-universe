@@ -1173,11 +1173,12 @@ function Section({
   return (
     <motion.div
       key={id}
+      id={id}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20, scale: 0.9 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 scroll-mt-16"
     >
       <h2 className="mb-4 flex items-center gap-2 text-base font-bold text-emerald-700 dark:text-emerald-300">
         {icon} {title}
@@ -1236,8 +1237,9 @@ function Item({
 
   return (
     <div
+      id={id}
       onClick={handleClick}
-      className={`cursor-pointer flex items-start gap-3 rounded-lg border p-3 transition
+      className={`cursor-pointer flex items-start gap-3 rounded-lg border p-3 transition scroll-mt-16
         ${isActive ? "border-emerald-500 bg-emerald-50 dark:bg-slate-800" : "border-slate-200 dark:border-slate-800"}`}
     >
       <div className="mt-1 text-emerald-600 dark:text-emerald-300">{icon}</div>

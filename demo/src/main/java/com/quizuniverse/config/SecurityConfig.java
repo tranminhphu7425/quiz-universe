@@ -38,7 +38,7 @@ public class SecurityConfig {
                         .permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/questions/**").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/questions/**").permitAll()
-                        .requestMatchers("/api/favorites/**").permitAll()
+                        .requestMatchers("/api/favorites/**").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/question-banks", "/api/question-banks/subject/**", "/api/question-banks/search", "/api/question-banks/name/**").permitAll()
                         .requestMatchers("/api/ctu-schedule/**").authenticated()
                         .requestMatchers("/api/question-banks/**").authenticated()

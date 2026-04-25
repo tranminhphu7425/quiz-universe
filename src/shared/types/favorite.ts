@@ -1,37 +1,39 @@
-// src/services/favorites/types.ts
-
 export interface FavoriteQuestionBank {
-  userId: number;
+  userId: string;
   bankId: number;
-  subjectName: string;
-  bankName: string;
-  bankDescription: string;
   createdAt: string;
+  subjectName?: string;
+  
+  // UI fields often joined
+  bankName?: string;
+  bankDescription?: string;
 }
 
 export interface FavoriteSubject {
-  userId: number;
+  userId: string;
   subjectId: number;
-  subjectName: string;
-  subjectCode: string;
   createdAt: string;
+  
+  // UI fields often joined
+  subjectName?: string;
+  subjectCode?: string;
 }
 
 export interface UserFavoriteResponse {
-  userId: number;
-  userName: string;
+  userId: string;
+  userName?: string;
   favoriteQuestionBanks: FavoriteQuestionBank[];
   favoriteSubjects: FavoriteSubject[];
 }
 
 export interface ToggleFavoriteRequest {
-  userId: number;
+  userId?: string;
   targetId: number;
   type: FavoriteType;
 }
 
 export interface ToggleFavoriteResponse {
-  userId: number;
+  userId: string;
   targetId: number;
   type: FavoriteType;
   added: boolean;
@@ -44,7 +46,7 @@ export interface FavoritesStatusRequest {
 }
 
 export interface FavoritesStatusResponse {
-  userId: number;
+  userId: string;
   questionBankStatus: Record<number, boolean>;
   subjectStatus: Record<number, boolean>;
 }

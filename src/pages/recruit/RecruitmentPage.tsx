@@ -218,7 +218,7 @@ export default function RecruitmentPage() {
       </section>
 
       {/* ====== POSITIONS SECTION ====== */}
-      <section id="positions" className="py-16 bg-emerald-50/50 dark:bg-slate-800/30">
+      <section id="positions" className="py-16 bg-emerald-50/50 dark:bg-slate-800/30 scroll-mt-16">
         <div className="mx-auto max-w-7xl px-6">
           <FadeInOnView amount={0.2}>
             <div className="text-center mb-12">
@@ -260,7 +260,7 @@ export default function RecruitmentPage() {
       </section>
 
       {/* ====== APPLICATION FORM SECTION ====== */}
-      <section id="application" className="py-16">
+      <section id="application" className="py-16 scroll-mt-16">
         <div className="mx-auto max-w-3xl px-6">
           <FadeInOnView amount={0.2}>
             <div className="text-center mb-12">

@@ -26,7 +26,6 @@ public class FavoriteController {
             Authentication authentication
     ) {
         UUID userId = UUID.fromString(authentication.getName());
-        System.out.println("userId in FavoriteController: " + userId);
         FavoriteQuestionBankDTO result =
                 favoriteService.addFavoriteQuestionBank(userId, bankId);
         return ResponseEntity.ok(result);

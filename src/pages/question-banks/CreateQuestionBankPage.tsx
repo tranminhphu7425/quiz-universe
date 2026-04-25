@@ -410,7 +410,7 @@ export default function CreateQuestionBankPage() {
                                                         <>
                                                             <div className="fixed inset-0 z-30" onClick={() => {
                                                                 setIsDropdownOpen(false);
-                                                                const s = subjects.find(sub => sub.id === selectedSubjectId);
+                                                                const s = subjects.find(sub => sub.subjectId === selectedSubjectId);
                                                                 if (s) setSearchSubject(s.name);
                                                                 else setSearchSubject("");
                                                             }} />
@@ -422,9 +422,9 @@ export default function CreateQuestionBankPage() {
                                                                 ) : (
                                                                     filteredSubjects.map(sub => (
                                                                         <div
-                                                                            key={sub.id}
-                                                                            onClick={() => handleSelectSubject(sub.id, sub.name)}
-                                                                            className={`cursor-pointer rounded-lg px-4 py-2 transition-colors hover:bg-emerald-50 dark:hover:bg-slate-700 ${selectedSubjectId === sub.id ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
+                                                                            key={sub.subjectId}
+                                                                            onClick={() => handleSelectSubject(sub.subjectId, sub.name)}
+                                                                            className={`cursor-pointer rounded-lg px-4 py-2 transition-colors hover:bg-emerald-50 dark:hover:bg-slate-700 ${selectedSubjectId === sub.subjectId ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
                                                                         >
                                                                             {sub.name}
                                                                         </div>

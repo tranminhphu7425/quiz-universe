@@ -241,7 +241,7 @@ const CTURoadmapPlannerPage: React.FC = () => {
       });
       
       const mappedSubjects: Course[] = response.content.map((s: Subject) => ({
-        id: `db_${s.id}_${s.code}`,
+        id: `db_${s.subjectId}_${s.code}`,
         code: s.code,
         name: s.name,
         credits: 3,

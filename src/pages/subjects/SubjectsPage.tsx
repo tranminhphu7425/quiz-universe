@@ -206,7 +206,7 @@ export default function SubjectsPage() {
     if (selectedSubjects.size === subjects.length) {
       setSelectedSubjects(new Set());
     } else {
-      setSelectedSubjects(new Set(subjects.map(s => s.id)));
+      setSelectedSubjects(new Set(subjects.map(s => s.subjectId)));
     }
   };
 
@@ -540,22 +540,22 @@ export default function SubjectsPage() {
               {subjects.map((subject) => (
                 viewMode === 'grid' ? (
                   <SubjectCardGrid
-                    key={subject.id}
+                    key={subject.subjectId}
                     subject={subject}
-                    isFavorite={favoriteIds.has(subject.id)}
-                    isSelected={selectedSubjects.has(subject.id)}
-                    onToggleFavorite={() => toggleFavorite(subject.id)}
-                    onToggleSelect={() => toggleSelectSubject(subject.id)}
+                    isFavorite={favoriteIds.has(subject.subjectId)}
+                    isSelected={selectedSubjects.has(subject.subjectId)}
+                    onToggleFavorite={() => toggleFavorite(subject.subjectId)}
+                    onToggleSelect={() => toggleSelectSubject(subject.subjectId)}
                     userRole={user?.role}
                   />
                 ) : (
                   <SubjectCardList
-                    key={subject.id}
+                    key={subject.subjectId}
                     subject={subject}
-                    isFavorite={favoriteIds.has(subject.id)}
-                    isSelected={selectedSubjects.has(subject.id)}
-                    onToggleFavorite={() => toggleFavorite(subject.id)}
-                    onToggleSelect={() => toggleSelectSubject(subject.id)}
+                    isFavorite={favoriteIds.has(subject.subjectId)}
+                    isSelected={selectedSubjects.has(subject.subjectId)}
+                    onToggleFavorite={() => toggleFavorite(subject.subjectId)}
+                    onToggleSelect={() => toggleSelectSubject(subject.subjectId)}
                     userRole={user?.role}
                   />
                 )

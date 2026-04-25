@@ -101,14 +101,23 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
 
       if (data.token) {
         const newUser: User = {
+          userId: data.id,
           id: data.id,
+          fullName: data.name,
           name: data.name,
           username: "",
           role: "user",
           phone: "",
           email: data.email,
+          isActive: true,
+          lastLogin: new Date().toISOString(),
           university: null,
           major: null,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          universityCode: null,
+          majorId: null,
+          intakeYear: null,
         };
         // Default persistence for new registration
         localStorage.setItem(STORAGE_KEYS.TOKEN, data.token);

@@ -190,18 +190,18 @@ export default function QuestionsPage() {
       if (q.questionType === "fill_in") {
         // Đúng khi TẤT CẢ ô (options) đều khớp nội dung
         const allCorrect =
-          q.options.length > 0 &&
-          q.options.every(opt => {
-            const user = fillAnswers?.[opt.id] ?? "";        // <-- state nhập liệu: { optionId: text }
-            return matchAnswer(user, opt.content);           // hoặc: normalize(user) === normalize(opt.content)
+          (q.options ?? []).length > 0 &&
+          (q.options ?? []).every(opt => {
+            const user = fillAnswers?.[opt.optionId] ?? "";        // <-- state nhập liệu: { optionId: text }
+            return matchAnswer(user, opt.content ?? "");           // hoặc: normalize(user) === normalize(opt.content)
           });
 
         if (allCorrect) s += 1;
       } else {
         // mcq_single (giữ nguyên)
-        const pickedOptionId = picked[q.id];
-        const correct = q.options.find(o => o.isCorrect);
-        if (pickedOptionId && correct && pickedOptionId === correct.id) s += 1;
+        const pickedOptionId = picked[q.questionId];
+        const correct = q.options?.find(o => o.isCorrect);
+        if (pickedOptionId && correct && pickedOptionId === correct.optionId) s += 1;
       }
     }
     return s;
@@ -384,24 +384,24 @@ export default function QuestionsPage() {
                   {pageQuestions.map((q, idx) => (
                     <QuestionCard
 
-                      key={q.id}
+                      key={q.questionId}
                       index={start + idx + 1}
                       q={q}
                       questionType={q.questionType}
-                      pickedOptionId={picked[q.id] ?? null}
+                      pickedOptionId={picked[q.questionId] ?? null}
                       onPick={(optionId) => {
-                        setPicked((m) => ({ ...m, [q.id]: optionId }));
+                        setPicked((m) => ({ ...m, [q.questionId]: optionId }));
 
                       }}
                       onClear={() => {
-                        setPicked((m) => ({ ...m, [q.id]: null }));
+                        setPicked((m) => ({ ...m, [q.questionId]: null }));
 
                       }}
                       showResult={submitted}
                       answers={fillAnswers}
                       onFill={(optionId, value) => { setFillAnswers((m) => ({ ...m, [optionId]: value })); }}
-                      flagged={flaggedQuestions[q.id]}
-                      onToggleFlag={() => toggleFlag(q.id)}
+                      flagged={flaggedQuestions[q.questionId]}
+                      onToggleFlag={() => toggleFlag(q.questionId)}
                     />
                   ))}
                 </div>
@@ -548,12 +548,12 @@ export default function QuestionsPage() {
                     {currentQuestions.map((q, idx) => {
                       const globalIndex = startIndexFAB + idx;   // tính index toàn cục
                       const qNumber = globalIndex + 1;        // số thứ tự câu
-                      const pickedId = picked[q.id];
+                      const pickedId = picked[q.questionId];
                       const hasPicked = pickedId != null;
-                      const flagged = flaggedQuestions[q.id];
+                      const flagged = flaggedQuestions[q.questionId];
                       let color = "";
                       if (submitted && hasPicked) {
-                        const isCorrect = q.options.find(o => o.isCorrect)?.id === pickedId;
+                        const isCorrect = (q.options ?? []).find(o => o.isCorrect)?.optionId === pickedId;
                         color = isCorrect ? "bg-emerald-500 text-white" : "bg-rose-500 text-white";
                       } else if (hasPicked) {
                         color = "bg-emerald-700 text-white ";
@@ -571,8 +571,8 @@ export default function QuestionsPage() {
 
                       return (
                         <button
-                          key={q.id}
-                          onClick={() => goToQuestion(globalIndex, q.id)}
+                          key={q.questionId}
+                          onClick={() => goToQuestion(globalIndex, q.questionId)}
                           className={`relative h-8 rounded-md text-sm font-semibold ${finalColor}`}
                           title={`Tới câu ${qNumber}`}
                         >

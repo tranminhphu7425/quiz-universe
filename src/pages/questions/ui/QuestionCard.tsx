@@ -28,9 +28,9 @@ export function QuestionCard({
   flagged: boolean;
   onToggleFlag: (optionId: number, value: boolean) => void;
 }) {
-  const correct = q.options.find((o) => o.isCorrect);
-  const isCorrect = showResult && pickedOptionId && correct && pickedOptionId === correct.id;
-  const isWrong = showResult && pickedOptionId && correct && pickedOptionId !== correct.id;
+  const correct = q.options?.find((o) => o.isCorrect);
+  const isCorrect = showResult && pickedOptionId && correct && pickedOptionId === correct.optionId;
+  const isWrong = showResult && pickedOptionId && correct && pickedOptionId !== correct.optionId;
 
   return (
     <motion.div
@@ -40,7 +40,7 @@ export function QuestionCard({
       transition={{ type: "spring", stiffness: 140, damping: 16 }}
       className="relative rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
-      <div id={`q-${q.id}`} className="absolute -top-24"></div>
+      <div id={`q-${q.questionId}`} className="absolute -top-24"></div>
       {questionType === "mcq_single" ? (
         <>
           <div className="mb-3 flex items-start justify-between gap-3">
@@ -77,7 +77,7 @@ export function QuestionCard({
                 {onToggleFlag && (
                   <button
                     type="button"
-                    onClick={() => onToggleFlag?.(q.id, !flagged)}
+                    onClick={() => onToggleFlag?.(q.questionId, !flagged)}
                     className={`p-1 rounded-full ${flagged ? "bg-amber-400 text-white" : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300"}`}
                     title={flagged ? "Bỏ cờ" : "Đánh dấu cờ"}
                   >
@@ -89,22 +89,26 @@ export function QuestionCard({
           </div>
 
           <div className="mt-3 grid gap-2">
-            {q.options
-              .slice()
-              .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
-              .map((opt) => (
-                <OptionItem
-                  key={opt.id}
-                  groupName={`q-${q.id}`}
+            {q.options ? (
+              q.options
+                .slice()
+                .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+                .map((opt) => (
+                  <OptionItem
+                    key={opt.optionId}
+                  groupName={`q-${q.questionId}`}
                   opt={opt}
-                  checked={pickedOptionId === opt.id}
+                  checked={pickedOptionId === opt.optionId}
                   disabled={showResult}
-                  onChange={() => onPick(opt.id)}
+                  onChange={() => onPick(opt.optionId)}
                   reveal={showResult}
                   isCorrect={opt.isCorrect}
-                  isPicked={pickedOptionId === opt.id}
+                  isPicked={pickedOptionId === opt.optionId}
                 />
-              ))}
+                ))
+            ) : (
+              <div className="text-red-500 dark:text-red-400">Không có đáp án</div>
+            )}
           </div>
 
           {showResult && q.explanation && (
@@ -117,7 +121,7 @@ export function QuestionCard({
       ) : questionType === "fill_in" ? (
         <>
           {(() => {
-            const opts = q.options
+            const opts = (q.options ?? [])
               .slice()
               .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
 
@@ -135,7 +139,7 @@ export function QuestionCard({
                       return <span key={`t-${i}`}>{seg.text}</span>;
                     } else {
                       const opt = opts[blankIdx] ?? null;
-                      const val = opt ? (answers?.[opt.id] ?? "") : (answers?.[-1] ?? "");
+                      const val = opt ? (answers?.[opt.optionId] ?? "") : (answers?.[-1] ?? "");
                       blankIdx++;
                       return (
                         <InlineBlank
@@ -145,7 +149,7 @@ export function QuestionCard({
                           reveal={showResult}
                           onChange={(v) => {
                             if (!opt) return;
-                            onFill?.(opt.id, v);
+                            onFill?.(opt.optionId, v);
                           }}
                         />
                       );
@@ -165,10 +169,10 @@ export function QuestionCard({
                       <div className="mb-1 font-semibold text-slate-800 dark:text-slate-200">Đáp án</div>
                       <ul className="list-disc space-y-0.5 pl-5">
                         {opts.map((opt) => {
-                          const user = answers?.[opt.id] ?? "";
+                          const user = answers?.[opt.optionId] ?? "";
                           const ok = normalize(user) === normalize(opt.content);
                           return (
-                            <li key={opt.id} className="flex items-baseline gap-2">
+                            <li key={opt.optionId} className="flex items-baseline gap-2">
                               <span className="text-slate-500 dark:text-slate-400 w-10 shrink-0">
                                 Ô {opt.label}:
                               </span>

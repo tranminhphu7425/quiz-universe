@@ -182,7 +182,7 @@ export default function Header({
     const questionBanks = searchSource.questionBanks
       .filter((q) =>
         [q.subjectName, q.name, q.description ?? ""].some((x) =>
-          normalizeText(x).includes(kw)
+          normalizeText(x! ?? "").includes(kw)
         )
       )
       .map((q) => ({ type: "question-bank", data: q } as const));
@@ -398,9 +398,9 @@ export default function Header({
                       {results.map((item) => {
                         if (item.type === "subject") {
                           return (
-                            <li key={`subject-${item.data.id}`}>
+                            <li key={`subject-${item.data.subjectId}`}>
                               <Link
-                                to={`/subjects/${item.data.id}`}
+                                to={`/subjects/${item.data.subjectId}`}
                                 className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
                                 onClick={() => setSearch("")}
                               >
@@ -921,9 +921,9 @@ export default function Header({
                       {results.map((item) => {
                         if (item.type === "subject") {
                           return (
-                            <li key={`subject-${item.data.id}`} className="w-full">
+                            <li key={`subject-${item.data.subjectId}`} className="w-full">
                               <Link
-                                to={`/subjects/${item.data.id}`}
+                                to={`/subjects/${item.data.subjectId}`}
                                 className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
                                 onClick={() => setSearch("")}
                               >

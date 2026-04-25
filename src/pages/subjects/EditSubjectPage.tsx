@@ -58,7 +58,7 @@ export default function EditSubjectPage() {
 
     fetchAllSubjects()
       .then((all) => {
-        const found = all.find((s) => s.id === id);
+        const found = all.find((s) => s.subjectId === id);
         if (!found) throw new Error("Môn học không tồn tại");
         setSubject(found);
         setSubjectCode(found.code);
@@ -91,7 +91,7 @@ export default function EditSubjectPage() {
         description: subjectDescription.trim(),
       });
       toast.success("Cập nhật môn học thành công!", { id: toastId });
-      navigate(`/subjects/${updated.id}`);
+      navigate(`/subjects/${updated.subjectId}`);
     } catch (error: any) {
       const msg =
         error?.response?.data?.message ||
@@ -237,7 +237,7 @@ export default function EditSubjectPage() {
               >
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-medium ring-1 ring-white/20">
                   <Hash className="h-3.5 w-3.5" />
-                  ID: {subject.id}
+                  ID: {subject.subjectId}
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-medium ring-1 ring-white/20">
                   <Calendar className="h-3.5 w-3.5" />
@@ -386,7 +386,7 @@ export default function EditSubjectPage() {
                     </button>
 
                     <Link
-                      to={`/subjects/${subject.id}`}
+                      to={`/subjects/${subject.subjectId}`}
                       className="rounded-xl border-2 border-indigo-200 dark:border-slate-600 px-6 py-4 font-medium text-indigo-700 dark:text-indigo-300 text-center hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all"
                     >
                       Hủy bỏ

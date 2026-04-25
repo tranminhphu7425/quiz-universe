@@ -66,7 +66,7 @@ export default function EditQuestionsPage() {
           setList(qs);
           setSubjectName(sj?.name || `Môn #${idNum}`);
           if (qs.length) {
-            setSelectedId(qs[0].id);
+            setSelectedId(qs[0].questionId);
             setEditing(deepClone(qs[0]));
           }
         }
@@ -97,8 +97,8 @@ export default function EditQuestionsPage() {
 
   // switch question
   function pickQuestion(q: Question) {
-    // console.log("pick", q.id);
-    setSelectedId(q.id);
+    // console.log("pick", q.questionId);
+    setSelectedId(q.questionId);
     setEditing(deepClone(q));
     setSaveOk(null);
     setTimeout(() => editorTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
@@ -126,8 +126,8 @@ export default function EditQuestionsPage() {
     const opts = (editing.options || []).slice().sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
     const nextIdx = opts.length;
     const newOpt: QuestionOption = {
-      id: Math.floor(Math.random() * 1e9) * -1, // temp negative id for UI
-      questionId: editing.id,
+      optionId: Math.floor(Math.random() * 1e9) * -1, // temp negative id for UI
+      questionId: editing.questionId,
       label: autoLabel(nextIdx),
       content: "",
       isCorrect: editing.questionType === "mcq_single" ? nextIdx === 0 : false,
@@ -140,7 +140,7 @@ export default function EditQuestionsPage() {
   // Thêm hàm này sau các helper functions
   function getQuestionIndex(questionId: number | null, list: Question[]): number | null {
     if (!questionId) return null;
-    const index = list.findIndex(q => q.id === questionId);
+    const index = list.findIndex(q => q.questionId === questionId);
     return index >= 0 ? index + 1 : null; // +1 để bắt đầu từ 1 thay vì 0
   }
 
@@ -152,7 +152,7 @@ export default function EditQuestionsPage() {
 
   function removeOption(optId: number) {
     if (!editing) return;
-    const rest = (editing.options || []).filter((o) => o.id !== optId);
+    const rest = (editing.options || []).filter((o) => o.optionId !== optId);
     // re-label & re-order
     const fixed = rest
       .slice()
@@ -163,14 +163,14 @@ export default function EditQuestionsPage() {
 
   function patchOption(optId: number, patch: Partial<QuestionOption>) {
     if (!editing) return;
-    const next = (editing.options || []).map((o) => (o.id === optId ? { ...o, ...patch } : o));
+    const next = (editing.options || []).map((o) => (o.optionId === optId ? { ...o, ...patch } : o));
     setEditing({ ...editing, options: next });
   }
 
   function setCorrect(optId: number) {
     if (!editing) return;
     if (editing.questionType !== "mcq_single") return;
-    const next = (editing.options || []).map((o) => ({ ...o, isCorrect: o.id === optId }));
+    const next = (editing.options || []).map((o) => ({ ...o, isCorrect: o.optionId === optId }));
     setEditing({ ...editing, options: next });
   }
 
@@ -186,8 +186,8 @@ export default function EditQuestionsPage() {
     while (opts.length < blanks) {
       const idx = opts.length;
       opts.push({
-        id: Math.floor(Math.random() * 1e9) * -1,
-        questionId: editing.id,
+        optionId: Math.floor(Math.random() * 1e9) * -1,
+        questionId: editing.questionId,
         label: autoLabel(idx),
         content: "", // correct text for this blank (pipe `|` to allow multiple answers)
         isCorrect: false, // not used in fill_in; correctness = text match
@@ -249,7 +249,7 @@ export default function EditQuestionsPage() {
         ],
       });
       setList((cur) => [...cur, created]);
-      setSelectedId(created.id);
+      setSelectedId(created.questionId);
       setEditing(deepClone(created));
     } catch (e: any) {
       setErr(e?.message || "Không tạo được câu hỏi mới.");
@@ -277,18 +277,17 @@ export default function EditQuestionsPage() {
     try {
       const payload: UpdateQuestionPayload = {
         stem: editing.stem,
-        explanation: editing.explanation ?? null,
+        explanation: editing.explanation ?? undefined,
         questionType: editing.questionType,
-        // keep only serializable fields for options
         options: (editing.options || [])
           .slice()
           .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
-          .map((o) => ({ id: o.id > 0 ? o.id : undefined, label: o.label, content: o.content, isCorrect: !!o.isCorrect, sortOrder: o.sortOrder })),
+          .map((o) => ({ optionId: o.optionId > 0 ? o.optionId : undefined, label: o.label, content: o.content, isCorrect: !!o.isCorrect, sortOrder: o.sortOrder })),
       };
-      const saved = await updateQuestionApi(editing.id, payload);
+      const saved = await updateQuestionApi(editing.questionId, payload);
 
       // reflect to list
-      setList((cur) => cur.map((q) => (q.id === saved.id ? saved : q)));
+      setList((cur) => cur.map((q) => (q.questionId === saved.questionId ? saved : q)));
       setEditing(deepClone(saved));
       setSaveOk("Đã lưu thay đổi.");
     } catch (e: any) {
@@ -312,13 +311,13 @@ export default function EditQuestionsPage() {
       await deleteQuestionApi(selectedId);
 
       // Cập nhật danh sách
-      const newList = list.filter(q => q.id !== selectedId);
+      const newList = list.filter(q => q.questionId !== selectedId);
       setList(newList);
 
       // Chọn câu hỏi khác (nếu có)
       if (newList.length > 0) {
         const nextQuestion = newList[0];
-        setSelectedId(nextQuestion.id);
+        setSelectedId(nextQuestion.questionId);
         setEditing(deepClone(nextQuestion));
       } else {
         // Không còn câu hỏi nào
@@ -450,9 +449,9 @@ export default function EditQuestionsPage() {
                 <ol className="space-y-2">
                   {pageItems.map((q, i) => {
                     const n = start + i + 1;
-                    const active = q.id === selectedId;
+                    const active = q.questionId === selectedId;
                     return (
-                      <li key={q.id}>
+                      <li key={q.questionId}>
                         <button type="button" onClick={() => pickQuestion(q)} className={`w-full rounded-xl border px-3 py-2 text-left text-sm transition ${active
                           ? "border-emerald-400 bg-emerald-50 ring-1 ring-emerald-300 dark:border-emerald-700 dark:bg-emerald-900/20 dark:ring-emerald-800"
                           : "border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
@@ -580,23 +579,23 @@ export default function EditQuestionsPage() {
                     .slice()
                     .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
                     .map((opt, idx) => (
-                      <div key={opt.id} className="flex items-start gap-2 rounded-xl border border-slate-200 p-3 dark:border-slate-800">
+                      <div key={opt.optionId} className="flex items-start gap-2 rounded-xl border border-slate-200 p-3 dark:border-slate-800">
                         <div className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">
                           {opt.label || autoLabel(idx)}
                         </div>
                         <div className="grid flex-1 gap-2 md:grid-cols-[1fr_auto]">
-                          <input type="text" value={opt.content || ""} onChange={(e) => patchOption(opt.id, { content: e.target.value })} placeholder={editing.questionType === "fill_in" ? "Đáp án đúng cho ô này (có thể \"a|b|c\")" : "Nội dung phương án"} className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-emerald-300 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" />
+                          <input type="text" value={opt.content || ""} onChange={(e) => patchOption(opt.optionId, { content: e.target.value })} placeholder={editing.questionType === "fill_in" ? "Đáp án đúng cho ô này (có thể \"a|b|c\")" : "Nội dung phương án"} className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-emerald-300 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" />
 
                           {editing.questionType === "mcq_single" ? (
                             <label className="inline-flex items-center justify-end gap-2 text-sm text-slate-700 dark:text-slate-200">
-                              <input type="radio" name="correct" checked={!!opt.isCorrect} onChange={() => setCorrect(opt.id)} className="h-4 w-4 accent-emerald-700" />
+                              <input type="radio" name="correct" checked={!!opt.isCorrect} onChange={() => setCorrect(opt.optionId)} className="h-4 w-4 accent-emerald-700" />
                               Đúng
                             </label>
                           ) : (
                             <div className="text-right text-[12px] text-slate-500 dark:text-slate-400 self-center">(Tự động chấm theo văn bản)</div>
                           )}
                         </div>
-                        <button type="button" onClick={() => removeOption(opt.id)} className="rounded-md p-2 text-slate-500 hover:bg-slate-100 hover:text-rose-600 dark:hover:bg-slate-800" title="Xoá">
+                        <button type="button" onClick={() => removeOption(opt.optionId)} className="rounded-md p-2 text-slate-500 hover:bg-slate-100 hover:text-rose-600 dark:hover:bg-slate-800" title="Xoá">
                           <Trash2 className="h-4 w-4" />
                         </button>
                       </div>
@@ -634,7 +633,7 @@ export default function EditQuestionsPage() {
                     type="button"
                     onClick={() =>
                       editing
-                        ? setEditing(deepClone(list.find((q) => q.id === editing.id)!))
+                        ? setEditing(deepClone(list.find((q) => q.questionId === editing.questionId)!))
                         : null
                     }
                     className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-slate-700"
