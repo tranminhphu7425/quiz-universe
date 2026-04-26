@@ -19,7 +19,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "question_id")
-    private Long id;
+    private Long questionId;
 
     // Mỗi question thuộc về 1 question bank
     @ManyToOne(fetch = FetchType.LAZY)

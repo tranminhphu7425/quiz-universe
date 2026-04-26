@@ -12,13 +12,13 @@ import com.quizuniverse.entity.Question;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-    @Query("SELECT q FROM Question q WHERE q.subject.id = :subjectId AND q.status = 'APPROVED' ORDER BY q.createdAt DESC")
+    @Query("SELECT q FROM Question q WHERE q.subject.subjectId = :subjectId AND q.status = 'approved' ORDER BY q.createdAt DESC")
     List<Question> findBySubjectId(@Param("subjectId") Long subjectId);
 
-    @Query("SELECT q FROM Question q JOIN FETCH q.options WHERE q.subject.id = :subjectId AND q.status = 'APPROVED'")
+    @Query("SELECT q FROM Question q JOIN FETCH q.options WHERE q.subject.subjectId = :subjectId AND q.status = 'approved'")
     List<Question> findBySubjectIdWithOptions(@Param("subjectId") Long subjectId);
 
-    @Query("SELECT q FROM Question q JOIN FETCH q.options WHERE q.bank.bankId = :bankId AND q.status = 'APPROVED'")
+    @Query("SELECT q FROM Question q JOIN FETCH q.options WHERE q.bank.bankId = :bankId AND q.status = 'approved'")
     List<Question> findByBankIdWithOptions(@Param("bankId") Long bankId);
 
 

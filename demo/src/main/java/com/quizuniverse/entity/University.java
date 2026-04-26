@@ -9,7 +9,9 @@ import jakarta.persistence.Table;
 
 public class University {
     @Id
+    @jakarta.persistence.Column(name = "university_code", length = 20)
     private String universityCode;
+    @jakarta.persistence.Column(name = "university_name")
     private String universityName;
     public String getUniversityCode() {
         return universityCode;

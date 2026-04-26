@@ -47,7 +47,7 @@ public class SubjectController {
     @GetMapping("/{id}/name")
     public ResponseEntity<Map<String, Object>> getSubjectName(@PathVariable long id){
         String name = subjectService.getSubjectNameById(id);
-        return ResponseEntity.ok(Map.of("id", id, "name", name));
+        return ResponseEntity.ok(Map.of("subjectId", id, "name", name));
     }
     
     @PostMapping("/create")

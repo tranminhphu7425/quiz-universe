@@ -95,6 +95,7 @@ export default function QuestionsPage() {
           const local = await fetch("/quiz-universe/data/questionBanks.json");
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
           const json: Question[] = await res.json();
+          console.log(json);
           setData(json);
           localSubjects = await local.json();
         } catch (err) {
@@ -353,7 +354,7 @@ export default function QuestionsPage() {
           <div ref={pageTopRef} />
 
           <div className="mb-6 flex flex-wrap items-center gap-3">
-             {!submitted ? (
+            {!submitted ? (
               <button
                 onClick={() => setShowConfirmModal(true)}
                 className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110"
@@ -463,7 +464,7 @@ export default function QuestionsPage() {
                       Trang <b>{page}</b>/<b>{pageCount}</b> • Câu <b>{start + 1}</b>–<b>{Math.min(end, total)}</b> / {total}
                     </div>
                     <div className="flex flex-wrap items-center gap-3">
-                       {!submitted ? (
+                      {!submitted ? (
                         <button
                           onClick={() => setShowConfirmModal(true)}
                           className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110"

@@ -20,7 +20,7 @@ public interface SubjectRepository extends JpaRepository<Subject, Long> {
     
     Subject findByCode(String code);
 
-    @Query("select s.name from Subject s where s.id = :id")
+    @Query("select s.name from Subject s where s.subjectId = :id")
     String findNameById(@Param("id") Long id);
 
     Page<Subject> findByCodeContainingIgnoreCaseOrNameContainingIgnoreCase(String code, String name, Pageable pageable);

@@ -38,7 +38,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     @Transactional
     public QuestionBankDTO createQuestionBank(CreateQuestionBankRequest request, UUID userId) {
         // Check if bank name already exists for this subject
-        if (questionBankRepository.existsByNameAndSubject_Id(request.getName(), request.getSubjectId())) {
+        if (questionBankRepository.existsByNameAndSubject_SubjectId(request.getName(), request.getSubjectId())) {
             throw new IllegalArgumentException("Question bank with this name already exists for the subject");
         }
 
@@ -73,8 +73,8 @@ public class QuestionBankServiceImpl implements QuestionBankService {
 
         // Check name uniqueness (excluding current bank)
         if (!questionBank.getName().equals(request.getName()) &&
-                questionBankRepository.existsByNameAndSubject_Id(request.getName(),
-                        questionBank.getSubject().getId())) {
+                questionBankRepository.existsByNameAndSubject_SubjectId(request.getName(),
+                        questionBank.getSubject().getSubjectId())) {
             throw new IllegalArgumentException("Question bank with this name already exists for the subject");
         }
 
@@ -120,7 +120,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     @Override
     @Transactional(readOnly = true)
     public Page<QuestionBankDTO> getQuestionBanksBySubject(Long subjectId, Pageable pageable) {
-        return questionBankRepository.findBySubject_Id(subjectId, pageable)
+        return questionBankRepository.findBySubject_SubjectId(subjectId, pageable)
                 .map(this::convertToDTO);
     }
 
@@ -215,7 +215,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
         return QuestionBankDTO.builder()
                 .bankId(questionBank.getBankId())
                 .name(questionBank.getName())
-                .subjectId(questionBank.getSubject().getId())
+                .subjectId(questionBank.getSubject().getSubjectId())
                 .subjectName(questionBank.getSubject().getName())
                 .description(questionBank.getDescription())
                 .visibility(questionBank.getVisibility())

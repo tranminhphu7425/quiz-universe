@@ -49,9 +49,9 @@ public class SubjectService {
     
     private SubjectDTO convertToDTO(Subject subject) {
         SubjectDTO dto = new SubjectDTO();
-        dto.setId(subject.getId());
+        dto.setSubjectId(subject.getSubjectId());
         dto.setCode(subject.getCode());
-        dto.setName(subject.getName()); // Đảm bảo Subject entity có getName()
+        dto.setName(subject.getName()); 
         dto.setDescription(subject.getDescription());
         dto.setCredit(subject.getCredit());
         dto.setCreatedAt(subject.getCreatedAt());

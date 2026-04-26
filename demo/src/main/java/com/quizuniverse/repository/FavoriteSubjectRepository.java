@@ -13,14 +13,19 @@ import java.util.Optional;
 @Repository
 public interface FavoriteSubjectRepository extends JpaRepository<FavoriteSubject, FavoriteSubjectId> {
     
-    Optional<FavoriteSubject> findByUserUserIdAndSubjectId(String userId, Long subjectId);
+    @Query("SELECT f FROM FavoriteSubject f WHERE f.user.userId = :userId AND f.subject.subjectId = :subjectId")
+    Optional<FavoriteSubject> findByUserUserIdAndSubjectId(@Param("userId") String userId, @Param("subjectId") Long subjectId);
     
-    boolean existsByUserUserIdAndSubjectId(String userId, Long subjectId);
+    @Query("SELECT (COUNT(f) > 0) FROM FavoriteSubject f WHERE f.user.userId = :userId AND f.subject.subjectId = :subjectId")
+    boolean existsByUserUserIdAndSubjectId(@Param("userId") String userId, @Param("subjectId") Long subjectId);
     
     @Query("SELECT f FROM FavoriteSubject f JOIN FETCH f.subject WHERE f.user.userId = :userId")
     List<FavoriteSubject> findByUserIdWithSubject(@Param("userId") String userId);
     
-    void deleteByUserUserIdAndSubjectId(String userId, Long subjectId);
+    @org.springframework.data.jpa.repository.Modifying
+    @Query("DELETE FROM FavoriteSubject f WHERE f.user.userId = :userId AND f.subject.subjectId = :subjectId")
+    void deleteByUserUserIdAndSubjectId(@Param("userId") String userId, @Param("subjectId") Long subjectId);
     
-    int countBySubjectId(Long subjectId);
+    @Query("SELECT COUNT(f) FROM FavoriteSubject f WHERE f.subject.subjectId = :subjectId")
+    int countBySubjectId(@Param("subjectId") Long subjectId);
 }

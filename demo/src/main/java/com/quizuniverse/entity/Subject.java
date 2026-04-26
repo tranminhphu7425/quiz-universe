@@ -17,7 +17,7 @@ public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subject_id")
-    private Long id;
+    private Long subjectId;
 
     @Column(name = "code", unique = true, nullable = false, length = 32)
     private String code;
@@ -28,8 +28,8 @@ public class Subject {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "credit", columnDefinition = "INT")
-    private Long credit;
+    @Column(name = "credit")
+    private Integer credit;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

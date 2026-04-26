@@ -17,11 +17,11 @@ import java.util.Optional;
 @Repository
 public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long> {
     
-    Page<QuestionBank> findBySubject_Id(Long subjectId, Pageable pageable);
+    Page<QuestionBank> findBySubject_SubjectId(Long subjectId, Pageable pageable);
     
     Page<QuestionBank> findByCreatedBy_UserId(String userId, Pageable pageable);
     
-    Page<QuestionBank> findBySubject_IdAndCreatedBy_UserId(Long subjectId, String userId, Pageable pageable);
+    Page<QuestionBank> findBySubject_SubjectIdAndCreatedBy_UserId(Long subjectId, String userId, Pageable pageable);
     
     Page<QuestionBank> findByVisibility(Visibility visibility, Pageable pageable);
 
@@ -32,7 +32,7 @@ public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long
            "(qb.visibility = 'PUBLIC' OR " +
            "(qb.visibility = 'ORG') OR " +
            "qb.createdBy.userId = :userId) " +
-           "AND qb.subject.id = :id")
+           "AND qb.subject.subjectId = :id")
     Page<QuestionBank> findAccessibleBanks(@Param("id") Long subjectId,
                                           @Param("userId") String userId,
                                           
@@ -46,7 +46,7 @@ public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long
            "LOWER(qb.description) LIKE LOWER(CONCAT('%', :search, '%'))")
     Page<QuestionBank> searchBanks(@Param("search") String search, Pageable pageable);
     
-    boolean existsByNameAndSubject_Id(String name, Long subjectId);
+    boolean existsByNameAndSubject_SubjectId(String name, Long subjectId);
     
     Optional<QuestionBank> findByBankIdAndCreatedBy_UserId(Long bankId, String userId);
 }

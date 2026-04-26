@@ -15,7 +15,7 @@ public class QuestionOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "option_id")
-    private Long id;
+    private Long optionId;
 
     // Nhiều option thuộc về 1 question
     @ManyToOne(fetch = FetchType.LAZY)

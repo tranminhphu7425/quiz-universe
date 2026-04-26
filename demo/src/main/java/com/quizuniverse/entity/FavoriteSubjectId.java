@@ -13,6 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FavoriteSubjectId implements Serializable {
+    @jakarta.persistence.Column(length = 36)
     private String userId;
     private Long subjectId;
 }

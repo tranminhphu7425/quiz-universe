@@ -57,7 +57,7 @@ public class QuestionService {
 
     private QuestionDTO convertToDTO(Question question) {
         QuestionDTO dto = new QuestionDTO();
-        dto.setId(question.getId());
+        dto.setQuestionId(question.getQuestionId());
         dto.setStem(question.getStem());
         dto.setExplanation(question.getExplanation());
         dto.setQuestionType(question.getQuestionType().name());
@@ -68,7 +68,7 @@ public class QuestionService {
         dto.setOptions(question.getOptions().stream()
                 .map(option -> {
                     QuestionOptionDTO optionDTO = new QuestionOptionDTO();
-                    optionDTO.setId(option.getId());
+                    optionDTO.setOptionId(option.getOptionId());
                     optionDTO.setLabel(option.getLabel());
                     optionDTO.setContent(option.getContent());
                     optionDTO.setIsCorrect(option.getIsCorrect());
@@ -99,15 +99,15 @@ public class QuestionService {
 
         // đồng bộ options
         Map<Long, QuestionOption> current = q.getOptions().stream()
-                .collect(Collectors.toMap(QuestionOption::getId, o -> o));
+                .collect(Collectors.toMap(QuestionOption::getOptionId, o -> o));
 
         List<QuestionOption> newList = new ArrayList<>();
 
         for (QuestionOptionDTO dto : payload.getOptions()) {
             QuestionOption opt;
-            if (dto.getId() != null && current.containsKey(dto.getId())) {
+            if (dto.getOptionId() != null && current.containsKey(dto.getOptionId())) {
                 // update option cũ
-                opt = current.get(dto.getId());
+                opt = current.get(dto.getOptionId());
             } else {
                 // thêm option mới
                 opt = new QuestionOption();
