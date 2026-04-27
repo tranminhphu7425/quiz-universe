@@ -1,0 +1,860 @@
+[
+  {
+    "questionId": 1175,
+    "stem": "Triết học xuất hiện như thế nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:09",
+    "updatedAt": "2026-04-27T22:46:09",
+    "options": [
+      {
+        "optionId": 4447,
+        "label": "A",
+        "content": "Do nhu cầu của đời sống xã hội",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4448,
+        "label": "B",
+        "content": "Khi con người có khả năng khái quát",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4449,
+        "label": "C",
+        "content": "Khi xã hội có sự phân chia lao động trí óc và lao động chân tay và có sự phân chia thành giai cấp",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4450,
+        "label": "D",
+        "content": "Các phương án trên đều đúng",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1176,
+    "stem": "Quan điểm \"Duy vật\" cho rằng:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:09",
+    "updatedAt": "2026-04-27T22:46:09",
+    "options": [
+      {
+        "optionId": 4451,
+        "label": "A",
+        "content": "Ý thức có trước và quyết định vật chất",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4452,
+        "label": "B",
+        "content": "Vật chất có trước và quyết định ý thức",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4453,
+        "label": "C",
+        "content": "Con người có khả năng nhận thức thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4454,
+        "label": "D",
+        "content": "Con người không có khả năng nhận thức thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1177,
+    "stem": "Phát minh khoa học nào sau đây là căn cứ chứng minh cho sự chuyển hóa các hình thức vận động, tính vô cùng,vô tận của thế giới?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:09",
+    "updatedAt": "2026-04-27T22:46:09",
+    "options": [
+      {
+        "optionId": 4455,
+        "label": "A",
+        "content": "Thuyết tế bào",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4456,
+        "label": "B",
+        "content": "Định luật bảo toàn và chuyển hóa năng lượng",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4457,
+        "label": "C",
+        "content": "Thuyết Tiến hóa của Darwin",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4458,
+        "label": "D",
+        "content": "Thuyết nguyên tử của Democrit",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1178,
+    "stem": "Quá trình Mác Ăng-ghen hình thành và phát triển học thuyết Mác Lênin gồm mấy giai đoạn?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:09",
+    "updatedAt": "2026-04-27T22:46:10",
+    "options": [
+      {
+        "optionId": 4459,
+        "label": "A",
+        "content": "Năm",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4460,
+        "label": "B",
+        "content": "Ba",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4461,
+        "label": "C",
+        "content": "Bón",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4462,
+        "label": "D",
+        "content": "Hai",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1179,
+    "stem": "Chủ nghĩa Mác ra đời là tất yếu hợp quy luật vì:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:10",
+    "updatedAt": "2026-04-27T22:46:10",
+    "options": [
+      {
+        "optionId": 4463,
+        "label": "A",
+        "content": "Đòi hỏi của thực tiễn xã hội và của phong trào công nhân là phải có lí luận soi đường",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4464,
+        "label": "B",
+        "content": "Dựa trên những thành tựu của khoa học tự nhiên thế kỉ 19",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4465,
+        "label": "C",
+        "content": "Dựa trên những giá trị của triết học cổ điển Đức, KTCT học cổ điển Anh và CNXH không tưởng phê phán Pháp",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4466,
+        "label": "D",
+        "content": "Cả 3 phương án trên",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1180,
+    "stem": "Thực tiễn xã hội châu Âu thế kỉ 19 là tiền đề kinh tế - xã hội cho học thuyết Mác ra đời có những đặc điểm nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:10",
+    "updatedAt": "2026-04-27T22:46:10",
+    "options": [
+      {
+        "optionId": 4467,
+        "label": "A",
+        "content": "Phương thức sản xuất TBCN đã hình thành đầy đủ",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4468,
+        "label": "B",
+        "content": "Quan hệ sản xuất TBCN bộc lộ rõ bản chất là quan hệ bóc lột lao động làm thuê",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4469,
+        "label": "C",
+        "content": "Phong trào công nhân phát triển mạnh mẽ ở châu Âu",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4470,
+        "label": "D",
+        "content": "Tất cả các phương án trên",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1181,
+    "stem": "Chọn câu trả lời đúng nhất về \"Thế giới quan\"?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:10",
+    "updatedAt": "2026-04-27T22:46:10",
+    "options": [
+      {
+        "optionId": 4471,
+        "label": "A",
+        "content": "Là quan niệm của con người về thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4472,
+        "label": "B",
+        "content": "Có hạt nhân là triết học",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4473,
+        "label": "C",
+        "content": "Là sự hoà nhập giữa tri thức và niềm tin",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4474,
+        "label": "D",
+        "content": "Các phương án trên đều đúng",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1182,
+    "stem": "Trước năm 1844 là thời kì Mác và Ăng-ghen:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:10",
+    "updatedAt": "2026-04-27T22:46:10",
+    "options": [
+      {
+        "optionId": 4475,
+        "label": "A",
+        "content": "Đề xuất những nguyên lí cơ bản của Học thuyết Mác",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4476,
+        "label": "B",
+        "content": "Chuyển biến lập trường từ duy tâm sang duy vật, từ dân chủ tư sản sang lập trường CSCN",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4477,
+        "label": "C",
+        "content": "Bổ sung và phát triển Lí luận",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4478,
+        "label": "D",
+        "content": "Các phương án trên đều đúng",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1183,
+    "stem": "Các nhà \"Khả tri\" cho rằng:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:10",
+    "updatedAt": "2026-04-27T22:46:10",
+    "options": [
+      {
+        "optionId": 4479,
+        "label": "A",
+        "content": "Vật chất có trước và quyết định ý thức",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4480,
+        "label": "B",
+        "content": "Ý thức có trước và quyết định vật chất",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4481,
+        "label": "C",
+        "content": "Con người không có khả năng nhận thức thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4482,
+        "label": "D",
+        "content": "Con người có khả năng nhận thức thế giới",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1184,
+    "stem": "Triết học là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:10",
+    "updatedAt": "2026-04-27T22:46:10",
+    "options": [
+      {
+        "optionId": 4483,
+        "label": "A",
+        "content": "Khoa học của các khoa học",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4484,
+        "label": "B",
+        "content": "Quan điểm chung về thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4485,
+        "label": "C",
+        "content": "Là thế giới quan Hệ thống quan điểm chung nhất về thế giới; về vị trí, vai trò của con người trong thế giới",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4486,
+        "label": "D",
+        "content": "",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1185,
+    "stem": "Lãnh đạo cuộc cách mạng tháng 10 Nga năm 1917 là ai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:10",
+    "updatedAt": "2026-04-27T22:46:11",
+    "options": [
+      {
+        "optionId": 4487,
+        "label": "A",
+        "content": "Karl Marx",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4488,
+        "label": "B",
+        "content": "Hồ Chí Minh",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4489,
+        "label": "C",
+        "content": "Engels",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4490,
+        "label": "D",
+        "content": "V.I. Lenin",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1186,
+    "stem": "Vấn đề cơ bản của triết học là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:11",
+    "updatedAt": "2026-04-27T22:46:11",
+    "options": [
+      {
+        "optionId": 4491,
+        "label": "A",
+        "content": "Câu hỏi con người có khả năng nhận thức thế giới hay không",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4492,
+        "label": "B",
+        "content": "Mối quan hệ giữa tư duy và tồn tại",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4493,
+        "label": "C",
+        "content": "Câu hỏi giữa vật chất và ý thức cái nào có trước, cái nào quyết định cái nào",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4494,
+        "label": "D",
+        "content": "Sự khẳng định vật chất có trước và quyết định ý thức",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1187,
+    "stem": "Đối tượng của triết học Mác Lênin là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:11",
+    "updatedAt": "2026-04-27T22:46:11",
+    "options": [
+      {
+        "optionId": 4495,
+        "label": "A",
+        "content": "Tất cả các lĩnh vực",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4496,
+        "label": "B",
+        "content": "Mối quan hệ giữa tư duy và tồn tại",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4497,
+        "label": "C",
+        "content": "Không có đối tượng riêng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4498,
+        "label": "D",
+        "content": "Là khoa học của mọi khoa học",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1188,
+    "stem": "Các nhà \"Bất Khả tri\" cho rằng:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:11",
+    "updatedAt": "2026-04-27T22:46:11",
+    "options": [
+      {
+        "optionId": 4499,
+        "label": "A",
+        "content": "Vật chất có trước và quyết định ý thức",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4500,
+        "label": "B",
+        "content": "Con người không có khả năng nhận thức thế giới",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4501,
+        "label": "C",
+        "content": "Con người có khả năng nhận thức thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4502,
+        "label": "D",
+        "content": "Ý thức có trước và quyết định vật chất",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1189,
+    "stem": "Chủ nghĩa xã hội không tưởng có hạn chế là:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:11",
+    "updatedAt": "2026-04-27T22:46:11",
+    "options": [
+      {
+        "optionId": 4503,
+        "label": "A",
+        "content": "Tìm ra sứ mệnh lịch sử của giai cấp công nhân",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4504,
+        "label": "B",
+        "content": "Chỉ có trong thần thoại, cổ tích",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4505,
+        "label": "C",
+        "content": "Chỉ ra được con đường giải phóng xã hội là đi lên chủ nghĩa cộng sản",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4506,
+        "label": "D",
+        "content": "Không chỉ ra được con đường và lực lượng xã hội có thể giải phóng loài người khỏi áp bức bóc lột",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1190,
+    "stem": "Phát minh khoa học nào sau đây chứng minh cho quan điểm DVBC về nguồn gốc tự nhiên của loài người?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:11",
+    "updatedAt": "2026-04-27T22:46:11",
+    "options": [
+      {
+        "optionId": 4507,
+        "label": "A",
+        "content": "Định luật bảo toàn và chuyển hóa năng lượng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4508,
+        "label": "B",
+        "content": "Thuyết tế bào và Thuyết Tiến hóa của Darwin",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4509,
+        "label": "C",
+        "content": "Thuyết Tiến hóa của Darwin",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4510,
+        "label": "D",
+        "content": "Thuyết nguyên tử của Democrat",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1191,
+    "stem": "Thế kỉ 19 ở châu Âu, phương thức sản xuất tư bản chủ nghĩa:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:11",
+    "updatedAt": "2026-04-27T22:46:11",
+    "options": [
+      {
+        "optionId": 4511,
+        "label": "A",
+        "content": "Là PTSX lạc hậu",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4512,
+        "label": "B",
+        "content": "Là PTSX mới ra đời",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4513,
+        "label": "C",
+        "content": "Là PTSX tiên tiến của thời đại đó",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4514,
+        "label": "D",
+        "content": "Là PTSX của xã hội tương lai",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1192,
+    "stem": "Triết học Marx trực tiếp kế thừa:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:12",
+    "updatedAt": "2026-04-27T22:46:12",
+    "options": [
+      {
+        "optionId": 4515,
+        "label": "A",
+        "content": "CNXH không tưởng phê phán Pháp thế kỉ 19",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4516,
+        "label": "B",
+        "content": "Triết học thời cổ đại",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4517,
+        "label": "C",
+        "content": "Triết học cổ điển Đức",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4518,
+        "label": "D",
+        "content": "Kinh tế chính trị học cổ điển Anh",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1193,
+    "stem": "Quan điểm \"Duy tâm\" cho rằng:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:12",
+    "updatedAt": "2026-04-27T22:46:12",
+    "options": [
+      {
+        "optionId": 4519,
+        "label": "A",
+        "content": "Con người không có khả năng nhận thức thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4520,
+        "label": "B",
+        "content": "Con người có khả năng nhận thức thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4521,
+        "label": "C",
+        "content": "Vật chất có trước và quyết định ý thức",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4522,
+        "label": "D",
+        "content": "Ý thức có trước và quyết định vật chất",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1194,
+    "stem": "Triết học là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:12",
+    "updatedAt": "2026-04-27T22:46:12",
+    "options": [
+      {
+        "optionId": 4523,
+        "label": "A",
+        "content": "Một hình thái ý thức xã hội, phản ánh tồn tại xã hội",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4524,
+        "label": "B",
+        "content": "Là hạt nhân của thế giới quan",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4525,
+        "label": "C",
+        "content": "Là hệ thống quan điểm chung nhất về thế giới; về vị trí, vai trò của con người trong thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4526,
+        "label": "D",
+        "content": "Tất cả các quan điểm trên",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1195,
+    "stem": "Chủ nghĩa Mác – Lê nin là hệ thống quan điểm và học thuyết khoa học gồm:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:12",
+    "updatedAt": "2026-04-27T22:46:12",
+    "options": [
+      {
+        "optionId": 4527,
+        "label": "A",
+        "content": "Ba bộ phận hợp thành là triết học cổ điển Đức, KTCT cổ điển Anh và CNXH không tưởng phê phán",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4528,
+        "label": "B",
+        "content": "Ba bộ phận hợp thành là triết học, KTCT và CNXH không tưởng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4529,
+        "label": "C",
+        "content": "Ba bộ phận hợp thành là triết học Heghen, Triết học của Phoi-ơ-Bắc và KTCT của Adam Smith",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4530,
+        "label": "D",
+        "content": "Ba bộ phận hợp thành là Triết học, KTCT và CNXHKH",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1196,
+    "stem": "Phương pháp siêu hình là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-27T22:46:12",
+    "updatedAt": "2026-04-27T22:46:12",
+    "options": [
+      {
+        "optionId": 4531,
+        "label": "A",
+        "content": "Cách thức người ta sử dụng để đạt mục đích",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4532,
+        "label": "B",
+        "content": "Cách nghiên cứu thế giới trong liên hệ vận động phát triển",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4533,
+        "label": "C",
+        "content": "Cách nghiên cứu thế giới trong sự cô lập tĩnh tại",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 4534,
+        "label": "D",
+        "content": "Các phương án trên đều đúng",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  }
+]

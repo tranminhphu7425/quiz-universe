@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -8,7 +8,8 @@ import {
   Plus,
   RefreshCcw,
   Save,
-  Trash2, AlertTriangle
+  Trash2, AlertTriangle,
+  Settings, X, Users, ShieldCheck, Globe
 } from "lucide-react";
 
 import {
@@ -22,6 +23,7 @@ import {UpdateQuestionPayload, Question, QuestionOption} from "@/shared/types/qu
 // To make this page self-contained, keep a local fallback:
 
 import { stemToSegments, autoLabel, deepClone } from "./utils";
+import GradientText from "@/shared/ui/GradientText";
 
 
 
@@ -42,6 +44,16 @@ export default function EditQuestionsPage() {
   const [editing, setEditing] = useState<Question | null>(null); // currently editing question
   const [saving, setSaving] = useState(false);
   const [saveOk, setSaveOk] = useState<string | null>(null);
+
+  // --- QuestionBank Edit State ---
+  const [questionBank, setQuestionBank] = useState<any | null>(null);
+  const [isEditingBank, setIsEditingBank] = useState(false);
+  const [bankEditingFields, setBankEditingFields] = useState({
+    name: "",
+    description: "",
+    visibility: "PUBLIC" as any
+  });
+  const [savingBank, setSavingBank] = useState(false);
 
   const editorTopRef = useRef<HTMLDivElement | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -64,7 +76,13 @@ export default function EditQuestionsPage() {
         ]);
         if (!cancelled) {
           setList(qs);
+          setQuestionBank(sj);
           setSubjectName(sj?.name || `Môn #${idNum}`);
+          setBankEditingFields({
+            name: sj?.name || "",
+            description: sj?.description || "",
+            visibility: sj?.visibility || "PUBLIC"
+          });
           if (qs.length) {
             setSelectedId(qs[0].questionId);
             setEditing(deepClone(qs[0]));
@@ -339,6 +357,31 @@ export default function EditQuestionsPage() {
     }
   }
 
+  async function handleUpdateBank() {
+    if (!bankId || !bankEditingFields.name.trim()) return;
+
+    setSavingBank(true);
+    setErr(null);
+
+    try {
+      const updated = await QuestionBankApi.update(Number(bankId), {
+        name: bankEditingFields.name.trim(),
+        description: bankEditingFields.description.trim(),
+        visibility: bankEditingFields.visibility
+      });
+
+      setQuestionBank(updated);
+      setSubjectName(updated.name);
+      setIsEditingBank(false);
+      setSaveOk("Đã cập nhật thông tin bộ câu hỏi.");
+      setTimeout(() => setSaveOk(null), 2500);
+    } catch (e: any) {
+      setErr(e?.message || "Cập nhật thất bại.");
+    } finally {
+      setSavingBank(false);
+    }
+  }
+
 
 
   return (
@@ -347,20 +390,27 @@ export default function EditQuestionsPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-4 px-6 py-10 text-white md:flex-row md:items-center md:justify-between">
-          <div>
+          <div className="">
             <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur">
               Trình chỉnh sửa câu hỏi
             </div>
             <h1 className="text-[1.9rem] md:text-[2.4rem] font-black leading-tight">
-              Sửa câu hỏi môn <span className="bg-gradient-to-r from-purple-300 to-amber-200 bg-clip-text text-transparent">{subjectName}</span>
+              Sửa câu hỏi môn <GradientText>{subjectName}</GradientText>
             </h1>
             <div ref={editorTopRef}></div>
           </div>
           <div className="flex items-center gap-3">
-            <Link to={`/questions/question-bank/${bankId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15">
+            <button
+                onClick={() => setIsEditingBank(true)}
+                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15 transition-all whitespace-nowrap"
+            >
+              <Settings className="h-4 w-4" />
+              Thiết lập bộ câu hỏi
+            </button>
+
+            <Link to={`/questions/question-bank/${bankId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15 whitespace-nowrap">
               <ArrowLeft className="h-4 w-4" />
               Về trang làm bài
-
             </Link>
           </div>
 
@@ -672,6 +722,126 @@ export default function EditQuestionsPage() {
           )}
         </motion.section>
       </main>
+
+      {/* Edit Question Bank Modal */}
+      <AnimatePresence>
+        {isEditingBank && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="w-full max-w-lg rounded-2xl bg-white shadow-2xl dark:bg-slate-900 border border-emerald-100 dark:border-slate-800"
+            >
+              <div className="flex items-center justify-between border-b border-slate-100 p-6 dark:border-slate-800">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  Thiết lập bộ câu hỏi
+                </h3>
+                <button
+                  onClick={() => setIsEditingBank(false)}
+                  className="rounded-full p-2 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <div className="p-6 space-y-5">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                    Tên bộ câu hỏi
+                  </label>
+                  <input
+                    type="text"
+                    value={bankEditingFields.name}
+                    onChange={(e) => setBankEditingFields({ ...bankEditingFields, name: e.target.value })}
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    placeholder="Nhập tên bộ câu hỏi..."
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                    Mô tả
+                  </label>
+                  <textarea
+                    value={bankEditingFields.description}
+                    onChange={(e) => setBankEditingFields({ ...bankEditingFields, description: e.target.value })}
+                    rows={3}
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    placeholder="Nhập mô tả bộ câu hỏi..."
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-3 block text-sm font-semibold text-slate-700 dark:text-slate-300">
+                    Chế độ hiển thị
+                  </label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setBankEditingFields({ ...bankEditingFields, visibility: "PUBLIC" })}
+                      className={`flex items-center gap-3 rounded-xl border-2 p-3 text-left transition-all ${
+                        bankEditingFields.visibility === "PUBLIC"
+                          ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30"
+                          : "border-slate-100 bg-slate-50 hover:border-emerald-200 dark:border-slate-800 dark:bg-slate-800/50"
+                      }`}
+                    >
+                      <div className={`rounded-full p-2 ${
+                        bankEditingFields.visibility === "PUBLIC" ? "bg-emerald-500 text-white" : "bg-slate-200 dark:bg-slate-700 text-slate-500"
+                      }`}>
+                        <Globe className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold dark:text-white">Công khai</div>
+                        <div className="text-[10px] text-slate-500">Mọi người đều xem được</div>
+                      </div>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setBankEditingFields({ ...bankEditingFields, visibility: "PRIVATE" })}
+                      className={`flex items-center gap-3 rounded-xl border-2 p-3 text-left transition-all ${
+                        bankEditingFields.visibility === "PRIVATE"
+                          ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
+                          : "border-slate-100 bg-slate-50 hover:border-blue-200 dark:border-slate-800 dark:bg-slate-800/50"
+                      }`}
+                    >
+                      <div className={`rounded-full p-2 ${
+                        bankEditingFields.visibility === "PRIVATE" ? "bg-blue-500 text-white" : "bg-slate-200 dark:bg-slate-700 text-slate-500"
+                      }`}>
+                        <ShieldCheck className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold dark:text-white">Riêng tư</div>
+                        <div className="text-[10px] text-slate-500">Chỉ mình bạn xem được</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-3 border-t border-slate-100 p-6 dark:border-slate-800">
+                <button
+                  type="button"
+                  onClick={() => setIsEditingBank(false)}
+                  className="rounded-xl px-6 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="button"
+                  onClick={handleUpdateBank}
+                  disabled={savingBank || !bankEditingFields.name.trim()}
+                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-8 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-600/20 hover:brightness-110 disabled:opacity-70"
+                >
+                  {savingBank && <Loader2 className="h-4 w-4 animate-spin" />}
+                  Lưu thay đổi
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

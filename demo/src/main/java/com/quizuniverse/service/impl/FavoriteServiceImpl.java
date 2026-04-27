@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.quizuniverse.exception.ResourceNotFoundException;
+import com.quizuniverse.exception.DuplicateResourceException;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -33,14 +35,14 @@ public class FavoriteServiceImpl implements FavoriteService {
     public FavoriteQuestionBankDTO addFavoriteQuestionBank(UUID userId, Long bankId) {
         // Validate user and question bank exist
         User user = userRepository.findByUserId(userId.toString())
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
         
         QuestionBank questionBank = questionBankRepository.findById(bankId)
-                .orElseThrow(() -> new RuntimeException("Question bank not found with id: " + bankId));
+                .orElseThrow(() -> new ResourceNotFoundException("Question bank not found with id: " + bankId));
         
         // Check if already favorite
         if (favoriteQuestionBankRepository.existsByUserUserIdAndQuestionBankBankId(userId.toString(), bankId)) {
-            throw new RuntimeException("Question bank already in favorites");
+            throw new DuplicateResourceException("Question bank already in favorites");
         }
         
         // Create and save favorite
@@ -60,7 +62,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Transactional
     public void removeFavoriteQuestionBank(UUID userId, Long bankId) {
         if (!favoriteQuestionBankRepository.existsByUserUserIdAndQuestionBankBankId(userId.toString(), bankId)) {
-            throw new RuntimeException("Question bank not found in favorites");
+            throw new ResourceNotFoundException("Question bank not found in favorites");
         }
         favoriteQuestionBankRepository.deleteByUserUserIdAndQuestionBankBankId(userId.toString(), bankId);
     }
@@ -100,13 +102,13 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Transactional
     public FavoriteSubjectDTO addFavoriteSubject(UUID userId, Long subjectId) {
         User user = userRepository.findByUserId(userId.toString())
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
         
         Subject subject = subjectRepository.findById(subjectId)
-                .orElseThrow(() -> new RuntimeException("Subject not found with id: " + subjectId));
+                .orElseThrow(() -> new ResourceNotFoundException("Subject not found with id: " + subjectId));
         
         if (favoriteSubjectRepository.existsByUserUserIdAndSubjectId(userId.toString(), subjectId)) {
-            throw new RuntimeException("Subject already in favorites");
+            throw new DuplicateResourceException("Subject already in favorites");
         }
         
         FavoriteSubject favorite = FavoriteSubject.builder()
@@ -125,7 +127,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Transactional
     public void removeFavoriteSubject(UUID userId, Long subjectId) {
         if (!favoriteSubjectRepository.existsByUserUserIdAndSubjectId(userId.toString(), subjectId)) {
-            throw new RuntimeException("Subject not found in favorites");
+            throw new ResourceNotFoundException("Subject not found in favorites");
         }
         favoriteSubjectRepository.deleteByUserUserIdAndSubjectId(userId.toString(), subjectId);
     }
@@ -165,7 +167,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Transactional(readOnly = true)
     public UserFavoriteResponse getUserFavorites(UUID userId) {
         User user = userRepository.findByUserId(userId.toString())
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
         
         List<FavoriteQuestionBankDTO> questionBankFavorites = getUserFavoriteQuestionBanks(userId);
         List<FavoriteSubjectDTO> subjectFavorites = getUserFavoriteSubjects(userId);
@@ -203,7 +205,7 @@ public class FavoriteServiceImpl implements FavoriteService {
                 break;
                 
             default:
-                throw new RuntimeException("Invalid favorite type: " + request.getType());
+                throw new IllegalArgumentException("Invalid favorite type: " + request.getType());
         }
         
         return response;

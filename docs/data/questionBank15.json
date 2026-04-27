@@ -1,0 +1,80 @@
+[
+  {
+    "questionId": 844,
+    "stem": "Thủ đô của Việt Nam là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-17T16:13:05",
+    "updatedAt": "2026-04-17T16:13:05",
+    "options": [
+      {
+        "optionId": 3239,
+        "label": "A",
+        "content": "Hà Nội",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 3240,
+        "label": "B",
+        "content": "Hồ Chí Minh",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 3241,
+        "label": "C",
+        "content": "Đà Nẵng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 3242,
+        "label": "D",
+        "content": "Cần Thơ",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 845,
+    "stem": "2 + 2 bằng bao nhiêu?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-17T16:13:05",
+    "updatedAt": "2026-04-17T16:13:05",
+    "options": [
+      {
+        "optionId": 3243,
+        "label": "A",
+        "content": "3",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 3244,
+        "label": "B",
+        "content": "4",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 3245,
+        "label": "C",
+        "content": "5",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 3246,
+        "label": "D",
+        "content": "6",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  }
+]

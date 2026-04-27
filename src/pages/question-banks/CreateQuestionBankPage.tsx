@@ -217,14 +217,29 @@ export default function CreateQuestionBankPage() {
                 // 2. Tạo câu hỏi từ JSON đã import
                 try {
                     const questionsData = importedQuestions ?? [];
-                    toast.loading(`Đang tạo ${questionsData.length} câu hỏi...`, { id: toastId });
+                    const total = questionsData.length;
+                    let completed = 0;
+                    
+                    toast.loading(`Đang tạo ${total} câu hỏi...`, { id: toastId });
 
-                    // Tạo từng câu hỏi một (Vì hiện tại API chưa hỗ trợ bulk insert)
-                    for (const q of questionsData) {
-                        await createQuestionInBankApi(response.bankId, q);
+                    // Chia nhỏ thành các batch để tránh timeout và quá tải browser/server
+                    const BATCH_SIZE = 5;
+                    for (let i = 0; i < questionsData.length; i += BATCH_SIZE) {
+                        const batch = questionsData.slice(i, i + BATCH_SIZE);
+                        await Promise.all(batch.map(async (q) => {
+                            try {
+                                await createQuestionInBankApi(response.bankId, q);
+                                completed++;
+                                // Cập nhật progress toast mỗi khi hoàn thành 1 câu
+                                toast.loading(`Đang tạo câu hỏi: ${completed}/${total}...`, { id: toastId });
+                            } catch (err) {
+                                console.error("Lỗi tạo câu hỏi:", err);
+                                // Vẫn tiếp tục tạo các câu tiếp theo nếu một câu bị lỗi
+                            }
+                        }));
                     }
 
-                    toast.success(`Tạo thành công bộ câu hỏi với ${questionsData.length} câu hỏi!`, { id: toastId });
+                    toast.success(`Tạo thành công bộ câu hỏi với ${completed}/${total} câu hỏi!`, { id: toastId });
                     navigate(`/questions/question-bank/${response.bankId}/edit`);
                 } catch (parseError: unknown) {
                     console.error("JSON Parse/Save Error:", parseError);
@@ -426,7 +441,7 @@ export default function CreateQuestionBankPage() {
                                                                             onClick={() => handleSelectSubject(sub.subjectId, sub.name)}
                                                                             className={`cursor-pointer rounded-lg px-4 py-2 transition-colors hover:bg-emerald-50 dark:hover:bg-slate-700 ${selectedSubjectId === sub.subjectId ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
                                                                         >
-                                                                            {sub.name}
+                                                                            {sub.code} - {sub.name}
                                                                         </div>
                                                                     ))
                                                                 )}
@@ -564,7 +579,7 @@ Yêu cầu bắt buộc:
 Format JSON mẫu:
 [
   {
-    "stem": "Câu hỏi...",
+    "stem": "Nội dung câu hỏi (Không có ghi ra số câu)",
     "options": [
       { "label": "A", "content": "Đáp án A", "isCorrect": false },
       { "label": "B", "content": "Đáp án B", "isCorrect": true },
@@ -625,7 +640,7 @@ Lưu ý:
                 </span>
             </div>
             <a 
-                href="https://gemini.google.com/gem/1W3Tw6rnaOIlQTTZ4DH1JANsYW_uvqWDI?usp=sharing"
+                href="https://gemini.google.com/gem/1ehk6yCYXTnllw6t7SDg2mwCHzeeEl3P5?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-all duration-200 hover:bg-emerald-200 dark:bg-emerald-900/50 dark:text-gray-300 dark:hover:bg-emerald-900"

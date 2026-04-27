@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,12 +18,6 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/ctu-schedule")
-@CrossOrigin(
-    origins = "http://localhost:5173",
-    allowedHeaders = { "Content-Type", "Authorization" },
-    allowCredentials = "true",
-    maxAge = 3600
-)
 @RequiredArgsConstructor
 public class CtuScheduleController {
 

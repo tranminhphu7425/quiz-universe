@@ -15,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.quizuniverse.dto.ChangePasswordRequest;
+import com.quizuniverse.exception.EmailAlreadyExistsException;
+import com.quizuniverse.exception.InvalidCredentialsException;
+import com.quizuniverse.exception.ResourceNotFoundException;
 
 @Service
 public class AuthService {
@@ -28,10 +31,10 @@ public class AuthService {
 
     public LoginResponse login(LoginRequest req) {
         User user = userRepository.findByEmail(req.getEmail())
-                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+                .orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
         if (!passwordEncoder.matches(req.getPassword(), user.getPasswordHash())) {
-            throw new RuntimeException("Invalid email or password");
+            throw new InvalidCredentialsException("Invalid email or password");
         }
 
         String token = jwtUtil.generateToken(user.getUserId().toString());
@@ -40,7 +43,7 @@ public class AuthService {
 
     public RegisterResponse register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email đã tồn tại");
+            throw new EmailAlreadyExistsException(request.getEmail());
         }
         User user = new User();
         user.setUserId(UUID.randomUUID().toString());
@@ -59,10 +62,10 @@ public class AuthService {
 
     public void changePassword(UUID userId, ChangePasswordRequest payload) {
         User user = userRepository.findById(userId.toString())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         if (!passwordEncoder.matches(payload.getCurrentPassword(), user.getPasswordHash())) {
-            throw new RuntimeException("Old password is incorrect");
+            throw new InvalidCredentialsException("Old password is incorrect");
         }
 
         user.setPasswordHash(passwordEncoder.encode(payload.getNewPassword()));

@@ -1,0 +1,52 @@
+[
+  {
+    "questionId": 834,
+    "stem": "Chuyện gì xảy ra nếu như A và B gặp nhau",
+    "explanation": "",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T20:43:14",
+    "updatedAt": "2026-04-14T20:43:38",
+    "options": [
+      {
+        "optionId": 3221,
+        "label": "A",
+        "content": "á",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "optionId": 3222,
+        "label": "B",
+        "content": "ưe",
+        "isCorrect": false,
+        "sortOrder": 2
+      }
+    ]
+  },
+  {
+    "questionId": 836,
+    "stem": "Con đường xưa em đi",
+    "explanation": "",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-14T20:43:58",
+    "updatedAt": "2026-04-14T20:44:07",
+    "options": [
+      {
+        "optionId": 3223,
+        "label": "A",
+        "content": "qư",
+        "isCorrect": true,
+        "sortOrder": 1
+      },
+      {
+        "optionId": 3224,
+        "label": "B",
+        "content": "qưe",
+        "isCorrect": false,
+        "sortOrder": 2
+      }
+    ]
+  }
+]

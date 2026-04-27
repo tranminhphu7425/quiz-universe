@@ -12,6 +12,7 @@ import com.quizuniverse.entity.User;
 import com.quizuniverse.repository.MajorRepository;
 import com.quizuniverse.repository.UniversityRepository;
 import com.quizuniverse.repository.UserRepository;
+import com.quizuniverse.exception.ResourceNotFoundException;
 
 @Service
 public class ProfileService {
@@ -28,12 +29,12 @@ public class ProfileService {
     @Transactional
     public User updateProfile(UUID userId, ProfileSetupRequest req) {
         User user = userRepo.findByUserId(userId.toString())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         // University
         if (req.getUniversity() != null) {
             University uni = uniRepo.findById(req.getUniversity())
-                    .orElseThrow(() -> new RuntimeException("University not found"));
+                    .orElseThrow(() -> new ResourceNotFoundException("University not found"));
             user.setUniversity(uni);
         }
 
@@ -42,10 +43,10 @@ public class ProfileService {
             try {
                 Long majorId = Long.valueOf(req.getMajor());
                 Major major = majorRepo.findById(majorId)
-                        .orElseThrow(() -> new RuntimeException("Major not found"));
+                        .orElseThrow(() -> new ResourceNotFoundException("Major not found"));
                 user.setMajor(major);
             } catch (NumberFormatException e) {
-                throw new RuntimeException("Invalid major id");
+                throw new IllegalArgumentException("Invalid major id");
             }
         }
 

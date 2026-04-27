@@ -13,7 +13,6 @@ import org.springframework.data.web.PageableDefault;
 
 @RestController
 @RequestMapping("/api/subjects")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class SubjectController {
     
     private final SubjectService subjectService;

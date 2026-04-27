@@ -22,6 +22,7 @@ import jakarta.transaction.Transactional;
 
 import com.quizuniverse.entity.QuestionBank;
 import com.quizuniverse.repository.QuestionBankRepository;
+import com.quizuniverse.exception.ResourceNotFoundException;
 
 @Service
 public class QuestionService {
@@ -88,7 +89,7 @@ public class QuestionService {
     @Transactional
     public QuestionDTO updateQuestion(Long id, UpdateQuestionPayload payload) {
         Question q = questionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Question not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Question not found with id: " + id));
 
         // cập nhật fields chính
         q.setStem(payload.getStem());
@@ -132,7 +133,7 @@ public class QuestionService {
 
         // 1. Lấy subject
         Subject subject = subjectRepository.findById(subjectId)
-                .orElseThrow(() -> new RuntimeException("Subject not found: " + subjectId));
+                .orElseThrow(() -> new ResourceNotFoundException("Subject not found: " + subjectId));
 
         // 2. Tạo question
         Question question = new Question();
@@ -172,12 +173,12 @@ public class QuestionService {
 
         // 1. Lấy bank
         QuestionBank bank = questionBankRepository.findById(bankId)
-                .orElseThrow(() -> new RuntimeException("QuestionBank not found: " + bankId));
+                .orElseThrow(() -> new ResourceNotFoundException("QuestionBank not found: " + bankId));
 
         // Lấy subject từ bank
         Subject subject = bank.getSubject();
         if (subject == null) {
-            throw new RuntimeException("Bank does not have an associated subject");
+            throw new ResourceNotFoundException("Bank does not have an associated subject");
         }
 
         // 2. Tạo question
@@ -217,7 +218,7 @@ public class QuestionService {
     @Transactional
     public void deleteQuestion(Long id) {
         Question question = questionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Question not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Question not found with id: " + id));
 
         // Xóa tất cả options trước (nếu cascade chưa xử lý tự động)
         optionRepository.deleteAll(question.getOptions());

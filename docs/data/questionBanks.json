@@ -153,6 +153,62 @@
       "createdAt": "2026-04-17T16:13:05",
       "updatedAt": "2026-04-17T16:14:24.77675",
       "questionCount": 2
+    },
+    {
+      "bankId": 16,
+      "name": "Bộ 300 câu hỏi triết học Mác lênin",
+      "subjectId": 21,
+      "subjectName": "Triết học Mác - Lênin",
+      "description": "Nguồn sưu tầm",
+      "visibility": "PUBLIC",
+      "status": "ACTIVE",
+      "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2026-04-27T20:37:30",
+      "updatedAt": "2026-04-27T20:37:29.584252",
+      "questionCount": 300
+    },
+    {
+      "bankId": 17,
+      "name": "Bộ câu hỏi trắc nghiệm Triết học(deleted)",
+      "subjectId": 21,
+      "subjectName": "Triết học Mác - Lênin",
+      "description": "Nguồn sưu tầm",
+      "visibility": "PUBLIC",
+      "status": "DELETED",
+      "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2026-04-27T22:24:45",
+      "updatedAt": "2026-04-27T22:51:49.797355",
+      "questionCount": 29
+    },
+    {
+      "bankId": 18,
+      "name": "Bộ câu hỏi trắc nghiệm Triết học 1",
+      "subjectId": 21,
+      "subjectName": "Triết học Mác - Lênin",
+      "description": "Nguồn sưu tầm",
+      "visibility": "PUBLIC",
+      "status": "DELETED",
+      "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2026-04-27T22:46:08",
+      "updatedAt": "2026-04-27T22:51:42.338219",
+      "questionCount": 22
+    },
+    {
+      "bankId": 19,
+      "name": "Bộ câu hỏi trắc nghiệm Triết học",
+      "subjectId": 21,
+      "subjectName": "Triết học Mác - Lênin",
+      "description": "Nguồn sưu tầm nha, các bạn thấy có đáp án nào sai thì yêu cầu mình chỉnh sửa",
+      "visibility": "PUBLIC",
+      "status": "ACTIVE",
+      "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+      "creatorName": "Trần Minh Phú",
+      "createdAt": "2026-04-27T22:50:34",
+      "updatedAt": "2026-04-27T23:00:55.777741",
+      "questionCount": 226
     }
   ],
   "pageable": {
@@ -164,12 +220,12 @@
       "unsorted": false
     },
     "offset": 0,
-    "paged": true,
-    "unpaged": false
+    "unpaged": false,
+    "paged": true
   },
   "last": true,
+  "totalElements": 15,
   "totalPages": 1,
-  "totalElements": 11,
   "size": 20,
   "number": 0,
   "sort": {
@@ -178,6 +234,6 @@
     "unsorted": false
   },
   "first": true,
-  "numberOfElements": 11,
+  "numberOfElements": 15,
   "empty": false
 }

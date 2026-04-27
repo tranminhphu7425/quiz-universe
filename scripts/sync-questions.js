@@ -1,66 +1,65 @@
 import fs from 'fs';
 import path from 'path';
 
-const API_BASE = 'http://localhost:8080/api/questions/question-bank';
+const API_QUESTIONBANKS_URL = 'http://localhost:8080/api/question-banks';
+const API_QUESTIONS_BASE = 'http://localhost:8080/api/questions/question-bank';
 const DATA_DIR = './public/data';
 
-async function syncQuestionBanks() {
+async function syncAllQuestions() {
   try {
-    // Check if data directory exists
+    // 1. Ensure data directory exists
     if (!fs.existsSync(DATA_DIR)) {
-      console.error(`Directory not found: ${DATA_DIR}`);
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+
+    // 2. Fetch all question banks
+    console.log('🔍 Fetching question banks list...');
+    const banksResponse = await fetch(API_QUESTIONBANKS_URL);
+    if (!banksResponse.ok) {
+      throw new Error(`Failed to fetch banks: ${banksResponse.statusText}`);
+    }
+    
+    const banksData = await banksResponse.json();
+    const banks = banksData.content || [];
+
+    if (banks.length === 0) {
+      console.log('⚠️ No question banks found on server.');
       return;
     }
 
-    const files = fs.readdirSync(DATA_DIR);
-    // Filter files that follow the pattern questionBank{id}.json
-    const bankFiles = files.filter(f => {
-      return f.startsWith('questionBank') && 
-             f.endsWith('.json') && 
-             f !== 'questionBanks.json' &&
-             /\d+/.test(f);
-    });
+    console.log(`🚀 Found ${banks.length} question banks. Starting sync...`);
 
-    if (bankFiles.length === 0) {
-      console.log('No matching question bank files found in ' + DATA_DIR);
-      return;
-    }
+    // 3. For each bank, fetch and save its questions
+    for (const bank of banks) {
+      const bankId = bank.bankId;
+      const fileName = `questionBank${bankId}.json`;
+      const filePath = path.join(DATA_DIR, fileName);
+      const url = `${API_QUESTIONS_BASE}/${bankId}`;
 
-    console.log(`🚀 Found ${bankFiles.length} question bank files to sync...`);
-
-    for (const file of bankFiles) {
-      const match = file.match(/(\d+)/);
-      if (!match) continue;
-      
-      const bankId = match[0];
-      const url = `${API_BASE}/${bankId}`;
-      const filePath = path.join(DATA_DIR, file);
-
-      console.log(`⏳ Fetching Bank ID ${bankId} -> ${file}...`);
+      console.log(`⏳ [${bankId}] Syncing questions for: "${bank.name}"...`);
 
       try {
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-          console.error(`❌ Failed to fetch Bank ID ${bankId}: ${response.status} ${response.statusText}`);
+        const qResponse = await fetch(url);
+        if (!qResponse.ok) {
+          console.error(`❌ Failed to fetch questions for Bank ${bankId}: ${qResponse.statusText}`);
           continue;
         }
 
-        const data = await response.json();
+        const questions = await qResponse.json();
         
-        // Write the data to the file with 2-space indentation
-        fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
-        console.log(`✅ Updated ${file} successfully.`);
+        // Write data
+        fs.writeFileSync(filePath, JSON.stringify(questions, null, 2), 'utf8');
+        console.log(`✅ [${bankId}] Saved to ${fileName} (${questions.length} questions).`);
       } catch (err) {
-        console.error(`❌ Error updating ${file}:`, err.message);
+        console.error(`❌ Error syncing Bank ${bankId}:`, err.message);
       }
     }
-    
-    console.log('\n✨ All banks synced successfully!');
+
+    console.log('\n✨ All questions synced successfully!');
   } catch (err) {
-    console.error('💥 Critical error:', err.message);
+    console.error('💥 Critical error during sync:', err.message);
   }
 }
 
-// Execute the sync
-syncQuestionBanks();
+// Execute
+syncAllQuestions();

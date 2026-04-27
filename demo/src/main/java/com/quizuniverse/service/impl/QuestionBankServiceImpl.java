@@ -198,9 +198,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
 
         // For ORG visibility - check organization membership
         if (questionBank.getVisibility() == QuestionBank.Visibility.ORG) {
-            // Implement organization check logic here
-            // return
-            // user.getOrganization().getId().equals(questionBank.getCreatedBy().getOrganization().getId());
+            throw new UnsupportedOperationException("Organization-level visibility is not yet implemented");
         }
 
         return false;

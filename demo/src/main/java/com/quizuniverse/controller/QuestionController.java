@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,13 +23,7 @@ import com.quizuniverse.service.QuestionService;
 
 @RestController
 @RequestMapping("/api/questions")
-// @CrossOrigin(
-//         origins = "http://localhost:5173",
-//         allowedHeaders = {"Content-Type", "Authorization"},
-//         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS},
-//         allowCredentials = "true", // nếu có gửi cookie/authorization
-//         maxAge = 3600
-// )
+
 public class QuestionController {
 
     private final QuestionService questionService;

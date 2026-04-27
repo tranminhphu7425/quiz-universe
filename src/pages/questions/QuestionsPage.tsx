@@ -25,10 +25,7 @@ import { QuestionBankApi } from "@/shared/api/questionBanksApi";
 import { QuestionBank } from "@/shared/types/questionBank";
 import { Question, QuestionOption } from "@/shared/types/question";
 import { Flag } from "lucide-react";
-
-
-
-
+import GradientText from "@/shared/ui/GradientText";
 import { stemToSegments, normalize } from "./utils";
 
 
@@ -317,7 +314,7 @@ export default function QuestionsPage() {
               <Sparkles className="h-4 w-4" /> QuizUniverse • Làm trắc nghiệm
             </div>
             <h1 className="text-[2rem] md:text-[2.6rem] font-black leading-tight">
-              Bộ câu hỏi ôn tập <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">{questionBankName}</span>
+              Bộ câu hỏi ôn tập <GradientText>{questionBankName}</GradientText>
               {err && ` (Lấy dữ liệu cục bộ)`}
             </h1>
             <p className="mt-2 text-white/90">Chọn đáp án cho từng câu. Nộp bài để xem điểm và lời giải.</p>

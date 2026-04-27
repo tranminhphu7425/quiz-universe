@@ -48,18 +48,4 @@ public class JwtUtil {
         }
     }
 
-    /** Lấy userId từ Authorization header */
-    public static String getUserIdFromHeader(String authHeader) {
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new IllegalArgumentException("Invalid Authorization header");
-        }
-        String token = authHeader.substring(7);
-        return Jwts.parserBuilder()
-                .setSigningKey(SECRET.getBytes()) // dùng SECRET static
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
-    }
-
 }
