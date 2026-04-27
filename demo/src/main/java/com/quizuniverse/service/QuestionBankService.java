@@ -17,7 +17,7 @@ public interface QuestionBankService {
     
     QuestionBankDTO updateQuestionBank(Long bankId, UpdateQuestionBankRequest request, UUID userId);
     
-    QuestionBankDTO getQuestionBankById(Long bankId, UUID userId);
+    QuestionBankDTO getQuestionBankById(Long bankId);
     
     Page<QuestionBankDTO> getAllQuestionBanks(Pageable pageable);
     

@@ -55,12 +55,12 @@ public class QuestionBankController {
 
     @GetMapping("/{bankId}")
     public ResponseEntity<QuestionBankDTO> getQuestionBankById(
-            @PathVariable Long bankId,
-            Authentication authentication
+            @PathVariable Long bankId
+        
     ) {
-        UUID userId = UUID.fromString(authentication.getName());
+        
         return ResponseEntity.ok(
-                questionBankService.getQuestionBankById(bankId, userId)
+                questionBankService.getQuestionBankById(bankId)
         );
     }
 

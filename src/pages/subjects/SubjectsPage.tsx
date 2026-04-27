@@ -74,7 +74,7 @@ export default function SubjectsPage() {
     queryFn: async () => {
       const getLocalData = async () => {
         try {
-          const res = await fetch("/quiz-universe/data/subjects.json");
+          const res = await fetch(`${import.meta.env.BASE_URL}data/subjects.json`);
           const allSubjects: Subject[] = await res.json();
 
           // 1. Client-side filtering

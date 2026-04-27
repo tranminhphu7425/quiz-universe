@@ -209,7 +209,7 @@ export default function HeaderCTU({
         if (e?.name === "AbortError") return;
 
         // 2) API lỗi -> fallback sang JSON cục bộ (dynamic import)
-        const local = await fetch("/quiz-universe/assets/data/questionBanks.json");
+        const local = await fetch(`${import.meta.env.BASE_URL}data/questionBanks.json`);
         setSearchSource({
           subjects: [],
           questionBanks: (await local.json()) as QuestionBank[]

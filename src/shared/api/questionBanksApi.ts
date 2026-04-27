@@ -19,7 +19,7 @@ export const QuestionBankApi = {
   },
 
   getById(bankId: number) {
-    return apiService.get<QuestionBank>(`/question-banks/${bankId}`);
+    return publicApiService.get<QuestionBank>(`/question-banks/${bankId}`);
   },
 
   update(bankId: number, data: UpdateQuestionBankRequest) {

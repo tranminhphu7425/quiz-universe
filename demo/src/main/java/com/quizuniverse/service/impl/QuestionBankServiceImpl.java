@@ -98,14 +98,9 @@ public class QuestionBankServiceImpl implements QuestionBankService {
 
     @Override
     @Transactional(readOnly = true)
-    public QuestionBankDTO getQuestionBankById(Long bankId, UUID userId) {
+    public QuestionBankDTO getQuestionBankById(Long bankId) {
         QuestionBank questionBank = questionBankRepository.findById(bankId)
                 .orElseThrow(() -> new ResourceNotFoundException("Question bank not found"));
-
-        // Check access permissions
-        if (!isBankAccessible(bankId, userId)) {
-            throw new UnauthorizedAccessException("You don't have access to this question bank");
-        }
 
         return convertToDTO(questionBank);
     }

@@ -173,7 +173,7 @@ export default function QuestionBanksPage() {
       } catch (e: any) {
         if (e?.name === "AbortError") return;
         setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
-        const local = await fetch("/quiz-universe/data/questionBanks.json");
+        const local = await fetch(`${import.meta.env.BASE_URL}data/questionBanks.json`);
         const json = await local.json();
         const content = Array.isArray(json) ? json : (json.content || []);
         setData(content);

@@ -41,7 +41,7 @@ const CTUCalendarPage: React.FC = () => {
   useEffect(() => {
 
     const loadData = async () => {
-      const local = await fetch("/quiz-universe/data/ket_qua_dkmh_full.json");
+      const local = await fetch(`${import.meta.env.BASE_URL}data/ket_qua_dkmh_full.json`);
       const data = (await local.json()) as Course[];
       setCourses(data);
     }

@@ -73,46 +73,44 @@ export default function QuestionsPage() {
         // nhớ nhận signal
       ]);
 
-      // Questions
-      if (qRes.status === "fulfilled") {
-        setData(qRes.value);
-      } else if (qRes.reason?.name !== "AbortError") {
-        setErr("Không thể lấy câu hỏi từ API. Đang dùng dữ liệu cục bộ!");
-        console.log("Không thể lấy câu hỏi từ API. Đang dùng dữ liệu cục bộ!");
-        // try {
-        //   const local = await import(`@/assets/data/questionssubject${id}.json`);
-        //   setData((local.default ?? []) as Question[]);
-        // } catch {
-        //   setData([]);
-        // }
-
-
-
-        const url = `/quiz-universe/data/questionBank${id}.json`;
-
-        try {
-          const res = await fetch(url);
-          const local = await fetch("/quiz-universe/data/questionBanks.json");
-          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-          const json: Question[] = await res.json();
-          console.log(json);
-          setData(json);
-          localSubjects = await local.json();
-        } catch (err) {
-          console.error("Failed to load questions:", err);
-          setData([]);
-        }
-      }
-
-      // Subject name
+      // 1. Xử lý fallback cho Question Bank Name (sRes)
       if (sRes.status === "fulfilled") {
         setQuestionBankName(sRes.value.name);
       } else if (sRes.reason?.name !== "AbortError") {
-        const idNum = Number(bankId);
-        const sj = (localSubjects as QuestionBank[]).find(s => s.bankId === idNum);
+        try {
+          // Luôn đảm bảo có dữ liệu local nếu API lỗi
+          const res = await fetch(`${import.meta.env.BASE_URL}data/questionBanks.json`);
+          const json = await res.json();
+          // Trích xuất mảng content từ JSON (vì file có cấu trúc { content: [...] })
+          const subjects = Array.isArray(json) ? json : (json.content || []);
+          
+          const idNum = Number(bankId);
+          const sj = subjects.find((s: any) => s.bankId === idNum);
+          
+          console.log("Tìm thấy môn học local:", sj);
+          setQuestionBankName(sj?.name ?? `[Môn #${idNum}]`);
+          setErr((prev) => prev ?? "Không thể lấy thông tin môn học từ API.");
+        } catch (e) {
+          console.error("Failed to load local subjects:", e);
+          setQuestionBankName(`[Môn #${bankId}]`);
+        }
+      }
 
-        setQuestionBankName(sj?.name ?? `[Môn #${idNum}]`); // placeholder khi API tên môn lỗi
-        setErr((prev) => prev ?? "Một số dữ liệu không tải được từ API.");
+      // 2. Xử lý fallback cho Questions (qRes)
+      if (qRes.status === "fulfilled") {
+        setData(qRes.value);
+      } else if (qRes.reason?.name !== "AbortError") {
+        setErr("Đang dùng dữ liệu câu hỏi cục bộ!");
+        const url = `${import.meta.env.BASE_URL}data/questionBank${id}.json`;
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error("Local file not found");
+          const json = await res.json();
+          setData(Array.isArray(json) ? json : (json.content || []));
+        } catch (e) {
+          console.error("Failed to load local questions:", e);
+          setData([]);
+        }
       }
     })()
       .catch((e) => {
