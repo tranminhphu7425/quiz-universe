@@ -31,6 +31,9 @@ public class Subject {
     @Column(name = "credit")
     private Integer credit;
 
+    @Column(name = "bank_count", nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Integer bankCount;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 }

@@ -20,7 +20,7 @@ import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import { toast } from "react-hot-toast";
 
 // Sort options
-type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc';
+type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc' | 'popularity-desc';
 type ViewMode = 'grid' | 'list';
 
 /** Map UI sort option → Spring sort param (field,direction) */
@@ -30,6 +30,7 @@ function toSortParam(opt: SortOption): string {
     case 'name-desc': return 'name,desc';
     case 'date-asc': return 'createdAt,asc';
     case 'date-desc': return 'createdAt,desc';
+    case 'popularity-desc': return 'bankCount,desc';
     default: return 'createdAt,desc';
   }
 }
@@ -42,7 +43,7 @@ export default function SubjectsPage() {
 
   // ======= VIEW & SORT STATE =======
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
-  const [sortOption, setSortOption] = useState<SortOption>('date-desc');
+  const [sortOption, setSortOption] = useState<SortOption>('popularity-desc');
   const [selectedSubjects, setSelectedSubjects] = useState<Set<number>>(new Set());
   const [showBulkActions, setShowBulkActions] = useState(false);
   const [showFilters, setShowFilters] = useState<boolean>(false);
@@ -91,13 +92,18 @@ export default function SubjectsPage() {
           // 2. Client-side sorting
           const [field, dir] = toSortParam(sortOption).split(',');
           filtered.sort((a, b) => {
-            const valA = a[field as keyof Subject] ?? "";
-            const valB = b[field as keyof Subject] ?? "";
+            const valA = a[field as keyof Subject] ?? (field === 'bankCount' ? 0 : "");
+            const valB = b[field as keyof Subject] ?? (field === 'bankCount' ? 0 : "");
 
             if (typeof valA === 'string' && typeof valB === 'string') {
               const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
               return dir === 'asc' ? cmp : -cmp;
             }
+            
+            if (typeof valA === 'number' && typeof valB === 'number') {
+              return dir === 'asc' ? valA - valB : valB - valA;
+            }
+            
             return 0;
           });
 
@@ -153,6 +159,8 @@ export default function SubjectsPage() {
     placeholderData: (prev) => prev, // keep previous data while loading next page
   });
 
+console.log(pageResult);
+
   const subjects: Subject[] = pageResult?.content ?? [];
   const totalPages = pageResult?.totalPages ?? 1;
   const totalElements = pageResult?.totalElements ?? 0;
@@ -183,7 +191,7 @@ export default function SubjectsPage() {
 
   // ======= HANDLERS =======
   const handleSortChange = (value: string) => {
-    const valid: SortOption[] = ['name-asc', 'name-desc', 'date-asc', 'date-desc'];
+    const valid: SortOption[] = ['name-asc', 'name-desc', 'date-asc', 'date-desc', 'popularity-desc'];
     setSortOption(valid.includes(value as SortOption) ? (value as SortOption) : 'date-desc');
     setPage(1);
     setSelectedSubjects(new Set());
@@ -387,10 +395,12 @@ export default function SubjectsPage() {
                     onChange={(e) => handleSortChange(e.target.value)}
                     className="w-full px-3 py-1.5 rounded-lg text-sm bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 transition-colors"
                   >
+                    <option value="popularity-desc">Phổ biến</option>
                     <option value="name-asc">Tên (A → Z)</option>
                     <option value="name-desc">Tên (Z → A)</option>
                     <option value="date-desc">Ngày (mới nhất)</option>
                     <option value="date-asc">Ngày (cũ nhất)</option>
+                    
                   </select>
                 </div>
 
@@ -398,6 +408,16 @@ export default function SubjectsPage() {
                 <div className="hidden md:flex md:items-center md:gap-6">
                   <span className="text-sm text-slate-600 dark:text-slate-400">Sắp xếp:</span>
                   <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setSortOption('popularity-desc')}
+                      className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption === 'popularity-desc'
+                        ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400'
+                        }`}
+                    >
+                      <Sparkles className="h-3 w-3" />
+                      Phổ biến
+                    </button>
                     <button
                       onClick={() => setSortOption(sortOption === 'name-asc' ? 'name-desc' : 'name-asc')}
                       className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors ${sortOption.startsWith('name')
@@ -418,7 +438,7 @@ export default function SubjectsPage() {
                       <Calendar className="h-3 w-3" />
                       Ngày {sortOption === 'date-desc' ? '↓' : '↑'}
                     </button>
-
+                    
                   </div>
                 </div>
 

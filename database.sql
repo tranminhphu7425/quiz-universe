@@ -358,6 +358,7 @@ CREATE TABLE `subjects` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `credit` int DEFAULT NULL,
   `created_by` text COLLATE utf8mb4_unicode_ci,
+  `bank_count` int DEFAULT 0,
   PRIMARY KEY (`subject_id`),
   UNIQUE KEY `code_UNIQUE` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11157 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -533,5 +534,57 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+--
+-- Triggers for bank_count synchronization
+--
+
+DELIMITER //
+
+CREATE TRIGGER `after_question_bank_insert`
+AFTER INSERT ON `question_banks`
+FOR EACH ROW
+BEGIN
+    IF NEW.visibility = 'PUBLIC' AND NEW.status = 'ACTIVE' THEN
+        UPDATE `subjects` SET `bank_count` = `bank_count` + 1 WHERE `subject_id` = NEW.subject_id;
+    END IF;
+END //
+
+CREATE TRIGGER `after_question_bank_delete`
+AFTER DELETE ON `question_banks`
+FOR EACH ROW
+BEGIN
+    IF OLD.visibility = 'PUBLIC' AND OLD.status = 'ACTIVE' THEN
+        UPDATE `subjects` SET `bank_count` = `bank_count` - 1 WHERE `subject_id` = OLD.subject_id;
+    END IF;
+END //
+
+CREATE TRIGGER `after_question_bank_update`
+AFTER UPDATE ON `question_banks`
+FOR EACH ROW
+BEGIN
+    DECLARE was_counted BOOLEAN;
+    DECLARE is_counted BOOLEAN;
+    
+    SET was_counted = (OLD.visibility = 'PUBLIC' AND OLD.status = 'ACTIVE');
+    SET is_counted = (NEW.visibility = 'PUBLIC' AND NEW.status = 'ACTIVE');
+
+    IF OLD.subject_id <> NEW.subject_id THEN
+        IF was_counted THEN
+            UPDATE `subjects` SET `bank_count` = `bank_count` - 1 WHERE `subject_id` = OLD.subject_id;
+        END IF;
+        IF is_counted THEN
+            UPDATE `subjects` SET `bank_count` = `bank_count` + 1 WHERE `subject_id` = NEW.subject_id;
+        END IF;
+    ELSE
+        IF NOT was_counted AND is_counted THEN
+            UPDATE `subjects` SET `bank_count` = `bank_count` + 1 WHERE `subject_id` = NEW.subject_id;
+        ELSEIF was_counted AND NOT is_counted THEN
+            UPDATE `subjects` SET `bank_count` = `bank_count` - 1 WHERE `subject_id` = NEW.subject_id;
+        END IF;
+    END IF;
+END //
+
+DELIMITER ;
 
 -- Dump completed on 2026-04-24 12:28:13

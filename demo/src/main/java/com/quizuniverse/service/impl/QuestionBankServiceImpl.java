@@ -23,7 +23,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -84,7 +86,7 @@ public class QuestionBankServiceImpl implements QuestionBankService {
         if (request.getVisibility() != null) {
             questionBank.setVisibility(request.getVisibility());
         }
-        
+
         // Cập nhật ngầm
         questionBank.setStatus(QuestionBank.Status.ACTIVE);
 
@@ -102,20 +104,33 @@ public class QuestionBankServiceImpl implements QuestionBankService {
         QuestionBank questionBank = questionBankRepository.findById(bankId)
                 .orElseThrow(() -> new ResourceNotFoundException("Question bank not found"));
 
+        if (questionBank.getStatus() != QuestionBank.Status.ACTIVE) {
+            throw new ResourceNotFoundException("Question bank is no longer active");
+        }
+
         return convertToDTO(questionBank);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<QuestionBankDTO> getAllQuestionBanks(Pageable pageable) {
-        return questionBankRepository.findAll(pageable)
+    public List<QuestionBankDTO> getAllQuestionBanks() {
+        return questionBankRepository.findByStatus(QuestionBank.Status.ACTIVE)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<QuestionBankDTO> getQuestionBanks(Pageable pageable) {
+        return questionBankRepository.findByStatus(QuestionBank.Status.ACTIVE, pageable)
                 .map(this::convertToDTO);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Page<QuestionBankDTO> getQuestionBanksBySubject(Long subjectId, Pageable pageable) {
-        return questionBankRepository.findBySubject_SubjectId(subjectId, pageable)
+        return questionBankRepository.findBySubject_SubjectIdAndStatus(subjectId, QuestionBank.Status.ACTIVE, pageable)
                 .map(this::convertToDTO);
     }
 
@@ -178,6 +193,11 @@ public class QuestionBankServiceImpl implements QuestionBankService {
     public boolean isBankAccessible(Long bankId, UUID userId) {
         QuestionBank questionBank = questionBankRepository.findById(bankId)
                 .orElseThrow(() -> new ResourceNotFoundException("Question bank not found"));
+
+        // Only ACTIVE banks are accessible
+        if (questionBank.getStatus() != QuestionBank.Status.ACTIVE) {
+            return false;
+        }
 
         // PUBLIC banks are accessible to everyone
         if (questionBank.getVisibility() == QuestionBank.Visibility.PUBLIC) {

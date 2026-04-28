@@ -16,119 +16,112 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/question-banks")
 @RequiredArgsConstructor
 
 @Tag(name = "Question Bank Management", description = "APIs for managing question banks")
 public class QuestionBankController {
-    
-    private final QuestionBankService questionBankService;
 
-    @PostMapping
-    @Operation(summary = "Create a new question bank")
-    public ResponseEntity<QuestionBankDTO> createQuestionBank(
-            @Valid @RequestBody CreateQuestionBankRequest request,
-            Authentication authentication
-    ) {
-        UUID userId = UUID.fromString(authentication.getName());
-        QuestionBankDTO createdBank =
-                questionBankService.createQuestionBank(request, userId);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdBank);
-    }
+        private final QuestionBankService questionBankService;
 
-    @PutMapping("/{bankId}")
-    public ResponseEntity<QuestionBankDTO> updateQuestionBank(
-            @PathVariable Long bankId,
-            @Valid @RequestBody UpdateQuestionBankRequest request,
-            Authentication authentication
-    ) {
-        UUID userId = UUID.fromString(authentication.getName());
-        return ResponseEntity.ok(
-                questionBankService.updateQuestionBank(bankId, request, userId)
-        );
-    }
+        @PostMapping
+        @Operation(summary = "Create a new question bank")
+        public ResponseEntity<QuestionBankDTO> createQuestionBank(
+                        @Valid @RequestBody CreateQuestionBankRequest request,
+                        Authentication authentication) {
+                UUID userId = UUID.fromString(authentication.getName());
+                QuestionBankDTO createdBank = questionBankService.createQuestionBank(request, userId);
+                return ResponseEntity.status(HttpStatus.CREATED).body(createdBank);
+        }
 
-    @GetMapping("/{bankId}")
-    public ResponseEntity<QuestionBankDTO> getQuestionBankById(
-            @PathVariable Long bankId
-        
-    ) {
-        
-        return ResponseEntity.ok(
-                questionBankService.getQuestionBankById(bankId)
-        );
-    }
+        @PutMapping("/{bankId}")
+        public ResponseEntity<QuestionBankDTO> updateQuestionBank(
+                        @PathVariable Long bankId,
+                        @Valid @RequestBody UpdateQuestionBankRequest request,
+                        Authentication authentication) {
+                UUID userId = UUID.fromString(authentication.getName());
+                return ResponseEntity.ok(
+                                questionBankService.updateQuestionBank(bankId, request, userId));
+        }
 
-    @DeleteMapping("/{bankId}")
-    public ResponseEntity<Void> deleteQuestionBank(
-            @PathVariable Long bankId,
-            Authentication authentication
-    ) {
-        UUID userId = UUID.fromString(authentication.getName());
-        questionBankService.deleteQuestionBank(bankId, userId);
-        return ResponseEntity.noContent().build();
-    }
+        @GetMapping("/{bankId}")
+        public ResponseEntity<QuestionBankDTO> getQuestionBankById(
+                        @PathVariable Long bankId
 
-    @PatchMapping("/visibility/{bankId}")
-    public ResponseEntity<QuestionBankDTO> changeVisibility(
-            @PathVariable Long bankId,
-            @RequestParam String visibility,
-            Authentication authentication
-    ) {
-        UUID userId = UUID.fromString(authentication.getName());
-        return ResponseEntity.ok(
-                questionBankService.changeVisibility(bankId, visibility, userId)
-        );
-    }
+        ) {
 
-    @GetMapping("/accessible/{bankId}")
-    public ResponseEntity<Boolean> isBankAccessible(
-            @PathVariable Long bankId,
-            Authentication authentication
-    ) {
-        UUID userId = UUID.fromString(authentication.getName());
-        return ResponseEntity.ok(
-                questionBankService.isBankAccessible(bankId, userId)
-        );
-    }
+                return ResponseEntity.ok(
+                                questionBankService.getQuestionBankById(bankId));
+        }
 
-    // ===== PUBLIC APIs (không cần user) =====
+        @DeleteMapping("/{bankId}")
+        public ResponseEntity<Void> deleteQuestionBank(
+                        @PathVariable Long bankId,
+                        Authentication authentication) {
+                UUID userId = UUID.fromString(authentication.getName());
+                questionBankService.deleteQuestionBank(bankId, userId);
+                return ResponseEntity.noContent().build();
+        }
 
-    @GetMapping
-    public ResponseEntity<Page<QuestionBankDTO>> getAllQuestionBanks(
-            @PageableDefault(size = 20, sort = "createdAt") Pageable pageable
-    ) {
-        return ResponseEntity.ok(
-                questionBankService.getAllQuestionBanks(pageable)
-        );
-    }
+        @PatchMapping("/visibility/{bankId}")
+        public ResponseEntity<QuestionBankDTO> changeVisibility(
+                        @PathVariable Long bankId,
+                        @RequestParam String visibility,
+                        Authentication authentication) {
+                UUID userId = UUID.fromString(authentication.getName());
+                return ResponseEntity.ok(
+                                questionBankService.changeVisibility(bankId, visibility, userId));
+        }
 
-    @GetMapping("/subject/{subjectId}")
-    public ResponseEntity<Page<QuestionBankDTO>> getQuestionBanksBySubject(
-            @PathVariable Long subjectId,
-            @PageableDefault(size = 20) Pageable pageable
-    ) {
-        return ResponseEntity.ok(
-                questionBankService.getQuestionBanksBySubject(subjectId, pageable)
-        );
-    }
+        @GetMapping("/accessible/{bankId}")
+        public ResponseEntity<Boolean> isBankAccessible(
+                        @PathVariable Long bankId,
+                        Authentication authentication) {
+                UUID userId = UUID.fromString(authentication.getName());
+                return ResponseEntity.ok(
+                                questionBankService.isBankAccessible(bankId, userId));
+        }
 
-    @GetMapping("/search")
-    public ResponseEntity<Page<QuestionBankDTO>> searchQuestionBanks(
-            @RequestParam String keyword,
-            @PageableDefault(size = 20) Pageable pageable
-    ) {
-        return ResponseEntity.ok(
-                questionBankService.searchQuestionBanks(keyword, pageable)
-        );
-    }
+        // ===== PUBLIC APIs (không cần user) =====
 
-    @GetMapping("/name/{id}")
-    public ResponseEntity<Map<String, Object>> getQuestionBankName(@PathVariable long id) {
-        String name = questionBankService.getQuestionBankNameById(id);
-        return ResponseEntity.ok(Map.of("id", id, "name", name));
-    }
+        @GetMapping("/all")
+        public ResponseEntity<List<QuestionBankDTO>> getAllQuestionBanks() {
+                return ResponseEntity.ok(
+                                questionBankService.getAllQuestionBanks());
+        }
+
+        @GetMapping
+        public ResponseEntity<Page<QuestionBankDTO>> getAllQuestionBanks(
+                        @PageableDefault(size = 20, sort = "createdAt") Pageable pageable) {
+                return ResponseEntity.ok(
+                                questionBankService.getQuestionBanks(pageable));
+        }
+
+        @GetMapping("/subject/{subjectId}")
+        public ResponseEntity<Page<QuestionBankDTO>> getQuestionBanksBySubject(
+                        @PathVariable Long subjectId,
+                        @PageableDefault(size = 20) Pageable pageable) {
+                return ResponseEntity.ok(
+                                questionBankService.getQuestionBanksBySubject(subjectId, pageable));
+        }
+
+        @GetMapping("/search")
+        public ResponseEntity<Page<QuestionBankDTO>> searchQuestionBanks(
+                        @RequestParam String keyword,
+                        @PageableDefault(size = 20) Pageable pageable) {
+                return ResponseEntity.ok(
+                                questionBankService.searchQuestionBanks(keyword, pageable));
+        }
+
+        @GetMapping("/name/{id}")
+        public ResponseEntity<Map<String, Object>> getQuestionBankName(@PathVariable long id) {
+                String name = questionBankService.getQuestionBankNameById(id);
+                return ResponseEntity.ok(Map.of("id", id, "name", name));
+        }
 }

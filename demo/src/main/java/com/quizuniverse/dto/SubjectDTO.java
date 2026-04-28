@@ -17,5 +17,6 @@ public class SubjectDTO {
     private String name;
     private String description;
     private Integer credit;
+    private Integer bankCount;
     private LocalDateTime createdAt;
 }

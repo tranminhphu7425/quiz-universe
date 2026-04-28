@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const API_QUESTIONBANKS_URL = 'http://localhost:8080/api/question-banks';
+const API_QUESTIONBANKS_URL = 'http://localhost:8080/api/question-banks/all';
 const API_SUBJECTS_URL = 'http://localhost:8080/api/subjects/all';
 const DATA_DIR = './public/data';
 const FILE_NAME_QUESTIONBANKS = 'questionBanks.json';

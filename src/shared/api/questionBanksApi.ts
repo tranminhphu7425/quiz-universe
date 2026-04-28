@@ -12,7 +12,7 @@ export const QuestionBankApi = {
   },
 
   getAll(params?: PageParams) {
-    return apiService.get<PaginatedResponse<QuestionBank>>(
+    return publicApiService.get<PaginatedResponse<QuestionBank>>(
       "/question-banks",
       { params }
     );
@@ -42,7 +42,7 @@ export const QuestionBankApi = {
   },
 
   getBySubject(subjectId: number, params?: PageParams) {
-    return apiService.get<PaginatedResponse<QuestionBank>>(
+    return publicApiService.get<PaginatedResponse<QuestionBank>>(
       `/question-banks/subject/${subjectId}`,
       { params }
     );

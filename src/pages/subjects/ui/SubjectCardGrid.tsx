@@ -22,7 +22,7 @@ export function SubjectCardGrid({ subject, isFavorite, isSelected, onToggleFavor
       className={`flex flex-col justify-between relative rounded-xl border ${isSelected
         ? 'border-emerald-400 dark:border-emerald-500 ring-2 ring-emerald-200 dark:ring-emerald-500/30'
         : 'border-emerald-100/60 dark:border-slate-800'
-        } bg-white p-4 shadow-lg transition dark:bg-slate-900 h-max-content`}
+        } bg-white p-4 shadow-lg transition dark:bg-slate-900 h-[180px]`}
     >
       <div className="grow flex flex-col">
         <div>
@@ -38,9 +38,16 @@ export function SubjectCardGrid({ subject, isFavorite, isSelected, onToggleFavor
 
           <div className="mb-2 flex flex-col items-start justify-between gap-3">
             <div className="min-w-0 flex-1">
-              <h3 className="mt-1 text-base font-bold text-emerald-900 dark:text-emerald-200">
-                {subject.code} - {subject.name}
-              </h3>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="mt-1 text-base font-bold text-emerald-900 dark:text-emerald-200">
+                  {subject.code} - {subject.name}
+                </h3>
+                {subject.bankCount !== undefined && subject.bankCount > 0 && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                    {subject.bankCount} ngân hàng
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>

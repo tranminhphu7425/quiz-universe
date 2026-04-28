@@ -6,6 +6,7 @@ export interface Subject {
   credit?: number;
   createdAt: string;
   createdBy?: string;
+  bankCount?: number;
 }
 
 export interface SubjectOption {

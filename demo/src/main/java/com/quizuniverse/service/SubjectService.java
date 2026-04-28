@@ -54,6 +54,7 @@ public class SubjectService {
         dto.setName(subject.getName()); 
         dto.setDescription(subject.getDescription());
         dto.setCredit(subject.getCredit());
+        dto.setBankCount(subject.getBankCount());
         dto.setCreatedAt(subject.getCreatedAt());
         return dto;
     }

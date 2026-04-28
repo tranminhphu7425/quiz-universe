@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.quizuniverse.exception.ResourceNotFoundException;
 import com.quizuniverse.exception.DuplicateResourceException;
+import com.quizuniverse.exception.UnauthorizedAccessException;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -40,6 +41,32 @@ public class FavoriteServiceImpl implements FavoriteService {
         QuestionBank questionBank = questionBankRepository.findById(bankId)
                 .orElseThrow(() -> new ResourceNotFoundException("Question bank not found with id: " + bankId));
         
+        // --- Access Control Check ---
+        QuestionBank.Visibility visibility = questionBank.getVisibility();
+        String creatorId = questionBank.getCreatedBy() != null ? questionBank.getCreatedBy().getUserId() : null;
+        
+        if (visibility == QuestionBank.Visibility.PRIVATE) {
+            // Only creator can see/favorite private banks
+            if (creatorId == null || !creatorId.equals(userId.toString())) {
+                throw new UnauthorizedAccessException("Bạn không có quyền yêu thích bộ câu hỏi riêng tư này.");
+            }
+        } else if (visibility == QuestionBank.Visibility.ORG) {
+            // Must be in same organization (university) or be the creator
+            boolean isCreator = creatorId != null && creatorId.equals(userId.toString());
+            boolean sameUniversity = false;
+            
+            if (user.getUniversity() != null && questionBank.getCreatedBy() != null && 
+                questionBank.getCreatedBy().getUniversity() != null) {
+                sameUniversity = user.getUniversity().getUniversityCode()
+                        .equals(questionBank.getCreatedBy().getUniversity().getUniversityCode());
+            }
+            
+            if (!isCreator && !sameUniversity) {
+                throw new UnauthorizedAccessException("Bộ câu hỏi này chỉ dành cho thành viên cùng tổ chức.");
+            }
+        }
+        // --- End Access Control Check ---
+
         // Check if already favorite
         if (favoriteQuestionBankRepository.existsByUserUserIdAndQuestionBankBankId(userId.toString(), bankId)) {
             throw new DuplicateResourceException("Question bank already in favorites");

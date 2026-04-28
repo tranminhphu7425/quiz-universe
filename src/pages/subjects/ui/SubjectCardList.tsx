@@ -30,9 +30,16 @@ export function SubjectCardList({ subject, isFavorite, isSelected, onToggleFavor
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between">
             <div className="min-w-0">
-              <h3 className="text-base font-bold text-emerald-900 dark:text-emerald-200 truncate">
-               {subject.code} - {subject.name}
-              </h3>
+              <div className="flex items-center gap-2">
+                <h3 className="text-base font-bold text-emerald-900 dark:text-emerald-200 truncate">
+                 {subject.code} - {subject.name}
+                </h3>
+                {subject.bankCount !== undefined && subject.bankCount > 0 && (
+                  <span className="flex-shrink-0 inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                    {subject.bankCount} ngân hàng
+                  </span>
+                )}
+              </div>
 
               {subject.description && (
                 <p className="mt-1 text-sm text-gray-700 dark:text-gray-300 line-clamp-2">

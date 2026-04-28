@@ -5,6 +5,7 @@ import com.quizuniverse.dto.CreateQuestionBankRequest;
 import com.quizuniverse.dto.QuestionBankDTO;
 import com.quizuniverse.dto.UpdateQuestionBankRequest;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.domain.Page;
@@ -19,7 +20,9 @@ public interface QuestionBankService {
     
     QuestionBankDTO getQuestionBankById(Long bankId);
     
-    Page<QuestionBankDTO> getAllQuestionBanks(Pageable pageable);
+    List<QuestionBankDTO> getAllQuestionBanks();
+
+    Page<QuestionBankDTO> getQuestionBanks(Pageable pageable);
     
     Page<QuestionBankDTO> getQuestionBanksBySubject(Long subjectId, Pageable pageable);
     

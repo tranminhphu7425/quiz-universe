@@ -1,5 +1,7 @@
 // Auto-generated
 import { useMemo, useState, useEffect } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -36,6 +38,20 @@ import { normalizeText } from "@/shared/utils/textUtils";
 type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc' | 'questions-asc' | 'questions-desc' | 'visibility';
 type ViewMode = 'grid' | 'list';
 
+/** Map UI sort option → Spring sort param (field,direction) */
+function toSortParam(opt: SortOption): string {
+  switch (opt) {
+    case 'name-asc': return 'name,asc';
+    case 'name-desc': return 'name,desc';
+    case 'date-asc': return 'createdAt,asc';
+    case 'date-desc': return 'createdAt,desc';
+    case 'questions-asc': return 'questionCount,asc';
+    case 'questions-desc': return 'questionCount,desc';
+    case 'visibility': return 'visibility,asc';
+    default: return 'createdAt,desc';
+  }
+}
+
 import { usePagination } from '@/shared/hooks/usePagination';
 
 export default function QuestionBanksPage() {
@@ -49,8 +65,8 @@ export default function QuestionBanksPage() {
     handleSearch,
     changeSort,
   } = usePagination({
-    initialPage: 0,
-    initialSize: 6,
+    initialPage: 1,
+    initialSize: 12,
     initialSort: 'date-desc'
   });
   const sortOption = sort as SortOption;
@@ -61,9 +77,72 @@ export default function QuestionBanksPage() {
   const [type, setType] = useState<"all" | QType>("all");
   const [onlyApproved, setOnlyApproved] = useState(false);
   const [visibilityFilter, setVisibilityFilter] = useState<'all' | 'PRIVATE' | 'ORG' | 'PUBLIC'>('all');
-  const [, setErr] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<QuestionBank[]>([]);
+  const [checkOnline, setCheckOnline] = useState(true);
+
+  // ======= DATA FETCHING (React Query) =======
+  const { data: pageResult, isLoading, error: queryError } = useQuery({
+    queryKey: ['question-banks', page, pageSize, q, sortOption, checkOnline],
+    queryFn: async () => {
+      const getLocalData = async () => {
+        const res = await fetch(`${import.meta.env.BASE_URL}data/questionBanks.json`);
+        const json = await res.json();
+        // Client-side filtering for local data
+        let filtered = Array.isArray(json) ? json : (json.content || []);
+        
+        if (q) {
+          const lowerQ = normalizeText(q.toLowerCase());
+          filtered = filtered.filter((b: any) => 
+            normalizeText(b.name.toLowerCase()).includes(lowerQ) || 
+            (b.description && normalizeText(b.description.toLowerCase()).includes(lowerQ))
+          );
+        }
+        
+        // Client-side sorting for local data
+        const [field, dir] = toSortParam(sortOption).split(',');
+        filtered.sort((a: any, b: any) => {
+          const valA = a[field] ?? "";
+          const valB = b[field] ?? "";
+          if (typeof valA === 'string') {
+            const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
+            return dir === 'asc' ? cmp : -cmp;
+          }
+          return dir === 'asc' ? (valA as number) - (valB as number) : (valB as number) - (valA as number);
+        });
+
+        // Client-side pagination
+        const start = (page - 1) * pageSize;
+        return {
+          content: filtered.slice(start, start + pageSize),
+          totalPages: Math.ceil(filtered.length / pageSize),
+          totalElements: filtered.length
+        };
+      };
+
+      if (!checkOnline) return getLocalData();
+
+      try {
+        const params = {
+          page: page - 1,
+          size: pageSize,
+          sort: toSortParam(sortOption)
+        };
+        
+        if (q) {
+          return await QuestionBankApi.search(q, params);
+        }
+        return await QuestionBankApi.getAll(params);
+      } catch (err) {
+        setCheckOnline(false);
+        toast.error("Kết nối đến API thất bại, đang sử dụng dữ liệu nội bộ");
+        return getLocalData();
+      }
+    },
+    placeholderData: (prev) => prev,
+  });
+
+  const questionBanks: QuestionBank[] = pageResult?.content ?? [];
+  const totalPages = pageResult?.totalPages ?? 1;
+  const totalElements = pageResult?.totalElements ?? 0;
 
   // ======= VIEW & SORT STATE =======
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
@@ -136,10 +215,10 @@ export default function QuestionBanksPage() {
   };
 
   const selectAllBanks = () => {
-    if (selectedBanks.size === filtered.length) {
+    if (selectedBanks.size === questionBanks.length) {
       setSelectedBanks(new Set());
     } else {
-      setSelectedBanks(new Set(filtered.map(bank => bank.bankId)));
+      setSelectedBanks(new Set(questionBanks.map(bank => bank.bankId)));
     }
   };
 
@@ -147,6 +226,7 @@ export default function QuestionBanksPage() {
     setSelectedBanks(new Set());
   };
 
+  // Removed manual fetchData in favor of useQuery
   useEffect(() => {
     const loadFavorite = async () => {
       try {
@@ -157,106 +237,13 @@ export default function QuestionBanksPage() {
         console.error(err);
       }
     };
-
     loadFavorite();
-  }, []);
-
-  async function fetchData() {
-    setLoading(true);
-    setErr(null);
-
-    (async () => {
-      try {
-        const list = await QuestionBankApi.getAll() as any;
-        const content = Array.isArray(list) ? list : (list.content || []);
-        setData(content);
-      } catch (e: any) {
-        if (e?.name === "AbortError") return;
-        setErr("Không thể lấy dữ liệu từ API. Đang dùng dữ liệu cục bộ!");
-        const local = await fetch(`${import.meta.env.BASE_URL}data/questionBanks.json`);
-        const json = await local.json();
-        const content = Array.isArray(json) ? json : (json.content || []);
-        setData(content);
-      } finally {
-        setLoading(false);
-      }
-    })();
-
-    return;
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  // ======= FILTERING & SORTING =======
-  const filtered = useMemo(() => {
-    const result = data.filter(bank => {
-      // Text search
-      const kw = normalizeText(q);
-      if (kw && !normalizeText(bank.name).includes(kw) &&
-        !normalizeText(bank.description || "").includes(kw)) {
-        return false;
-      }
-
-      // Ignore soft deleted banks
-      if (bank.status === 'DELETED') {
-        return false;
-      }
-
-      // Visibility filter
-      if (visibilityFilter !== 'all' && bank.visibility !== visibilityFilter) {
-        return false;
-      }
-
-      // Only show approved (if applicable)
-      if (onlyApproved) {
-        // You might need to add an 'approved' field to QuestionBank type
-        // For now, we'll filter by visibility PUBLIC as "approved"
-        if (bank.visibility !== 'PUBLIC') {
-          return false;
-        }
-      }
-
-      return true;
-    });
-
-    // Sorting
-    result.sort((a, b) => {
-      switch (sortOption) {
-        case 'name-asc':
-          return a.name.localeCompare(b.name);
-        case 'name-desc':
-          return b.name.localeCompare(a.name);
-        case 'date-asc':
-          return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
-        case 'date-desc':
-          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-        case 'questions-asc':
-          return (a.questionCount || 0) - (b.questionCount || 0);
-        case 'questions-desc':
-          return (b.questionCount || 0) - (a.questionCount || 0);
-        case 'visibility': {
-          const order = { 'PUBLIC': 1, 'ORG': 2, 'PRIVATE': 3 };
-          return (order[a.visibility] || 4) - (order[b.visibility] || 4);
-        }
-        default:
-          return 0;
-      }
-    });
-
-    return result;
-  }, [q, data, visibilityFilter, onlyApproved, sortOption]);
-
-
-
-  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
-  const pageData = filtered.slice(page * pageSize, (page + 1) * pageSize);
+  }, [user]);
 
   // Reset page khi filter đổi
   const handleFilterChange = <T,>(setter: (v: T) => void) => (v: T) => {
     setter(v);
-    setPage(0);
+    setPage(1);
     setSelectedBanks(new Set()); // Clear selection when filters change
   };
 
@@ -276,13 +263,16 @@ export default function QuestionBanksPage() {
     setDeleteConfirmId(bankId);
   };
 
+  const queryClient = useQueryClient();
+
   const handleConfirmDelete = async () => {
     if (deleteConfirmId === null) return;
     try {
       await QuestionBankApi.delete(deleteConfirmId);
-      setData(prev => prev.filter(b => b.bankId !== deleteConfirmId)); // Optimistically update
+      toast.success("Đã xóa bộ câu hỏi thành công");
+      queryClient.invalidateQueries({ queryKey: ['question-banks'] });
     } catch (e: any) {
-      setErr(e.response?.data?.message || "Lỗi khi xóa bộ câu hỏi");
+      toast.error(e.response?.data?.message || "Lỗi khi xóa bộ câu hỏi");
     } finally {
       setDeleteConfirmId(null);
     }
@@ -501,7 +491,7 @@ export default function QuestionBanksPage() {
                   <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
-                      checked={selectedBanks.size === filtered.length}
+                      checked={selectedBanks.size === questionBanks.length && questionBanks.length > 0}
                       onChange={selectAllBanks}
                       className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                     />
@@ -735,11 +725,11 @@ export default function QuestionBanksPage() {
                   </label>
 
                   {/* Select all checkbox for mobile */}
-                  {filtered.length > 0 && (
+                  {questionBanks.length > 0 && (
                     <label className="inline-flex cursor-pointer items-center gap-2 text-xs text-gray-700 dark:text-gray-300">
                       <input
                         type="checkbox"
-                        checked={selectedBanks.size === filtered.length}
+                        checked={selectedBanks.size === questionBanks.length}
                         onChange={selectAllBanks}
                         className="h-4 w-4 rounded border-white/20 bg-white/20 text-emerald-500 focus:ring-emerald-400 dark:border-gray-600"
                       />
@@ -749,7 +739,7 @@ export default function QuestionBanksPage() {
                 </div>
 
                 <div className="hidden items-center gap-2 text-xs text-white/90 dark:text-gray-300 md:flex">
-                  <Filter className="h-4 w-4" /> {filtered.length} kết quả
+                  <Filter className="h-4 w-4" /> {totalElements} kết quả
                   {selectedBanks.size > 0 && (
                     <span className="ml-2 px-2 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium">
                       {selectedBanks.size} đã chọn
@@ -763,9 +753,9 @@ export default function QuestionBanksPage() {
 
 
         {/* List */}
-        {loading ? (
+        {isLoading ? (
           <LoadingState />
-        ) : filtered.length === 0 ? (
+        ) : questionBanks.length === 0 ? (
           <EmptyState />
         ) : (
           <>
@@ -773,7 +763,7 @@ export default function QuestionBanksPage() {
               ? "grid gap-4 md:grid-cols-2 xl:grid-cols-3"
               : "space-y-4"
             }>
-              {pageData.map((bank) => (
+              {questionBanks.map((bank) => (
                 viewMode === 'grid' ? (
                   <SubjectCardGrid
                     key={bank.bankId}
@@ -805,18 +795,18 @@ export default function QuestionBanksPage() {
             {/* Pagination */}
             <div className="mt-6 flex items-center justify-center gap-2">
               <button
-                onClick={() => setPage(Math.max(0, page - 1))}
-                disabled={page === 0}
+                onClick={() => setPage(Math.max(1, page - 1))}
+                disabled={page === 1}
                 className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-slate-200 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700"
               >
                 <ChevronLeft className="h-4 w-4" /> Trước
               </button>
               <span className="text-sm text-slate-600 dark:text-slate-300">
-                Trang {page + 1}/{totalPages}
+                Trang {page}/{totalPages}
               </span>
               <button
-                onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
-                disabled={page >= totalPages - 1}
+                onClick={() => setPage(Math.min(totalPages, page + 1))}
+                disabled={page >= totalPages}
                 className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-slate-200 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700"
               >
                 Sau <ChevronRight className="h-4 w-4" />
