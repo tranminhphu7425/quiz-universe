@@ -1,0 +1,5221 @@
+[
+  {
+    "questionId": 1578,
+    "stem": "Đồng nhất vật chất nói chung với một vật thể hữu hình cảm tính đang tồn tại trong thế giới bên ngoài là quan điểm của trường phái triết học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:14",
+    "updatedAt": "2026-04-29T20:51:14",
+    "options": [
+      {
+        "optionId": 5942,
+        "label": "A",
+        "content": "Chủ nghĩa duy tâm.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5946,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật thời cổ đại.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5950,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật siêu hình thế kỷ XVII - XVIII.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5954,
+        "label": "D",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1579,
+    "stem": "Nhà triết học nào cho nước là thực thể đầu tiên của thế giới và quan điểm đó thuộc lập trường triết học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:14",
+    "updatedAt": "2026-04-29T20:51:15",
+    "options": [
+      {
+        "optionId": 5945,
+        "label": "A",
+        "content": "Thales - chủ nghĩa duy vật thời cổ đại.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5952,
+        "label": "B",
+        "content": "Điđrô - Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5956,
+        "label": "C",
+        "content": "Béccoli, - chủ nghĩa duy tâm chủ quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5959,
+        "label": "D",
+        "content": "Platôn, - chủ nghĩa duy tâm khách quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1580,
+    "stem": "Đồng nhất vật chất nói chung với nguyên tử - một phần tử vật chất nhỏ nhất, đó là quan điểm của trường phái triết học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:14",
+    "updatedAt": "2026-04-29T20:51:14",
+    "options": [
+      {
+        "optionId": 5941,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật siêu hình thế kỷ XVII - XVIII.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5944,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật chất phát thời cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5948,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1581,
+    "stem": "Nhà triết học nào coi lửa là thực thể đầu tiên của thế giới và đó là lập trường triết học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:14",
+    "updatedAt": "2026-04-29T20:51:15",
+    "options": [
+      {
+        "optionId": 5943,
+        "label": "A",
+        "content": "Đêmôcrít, - chủ nghĩa duy vật thời cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5949,
+        "label": "B",
+        "content": "Hêraclít, - chủ nghĩa duy vật thời cổ đại.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5953,
+        "label": "C",
+        "content": "Hêraclít, - chủ nghĩa duy tâm khách quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5958,
+        "label": "D",
+        "content": "Anaximen, - chủ nghĩa duy vật tự phát.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1582,
+    "stem": "Nhà triết học nào cho nguyên tử và khoảng không là thực thể đầu tiên của thế giới và đó là lập trường triết học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:14",
+    "updatedAt": "2026-04-29T20:51:15",
+    "options": [
+      {
+        "optionId": 5947,
+        "label": "A",
+        "content": "Đêmôrít, chủ nghĩa duy vật thời cổ đại.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5951,
+        "label": "B",
+        "content": "Hêraclít, chủ nghĩa duy vật thời cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5955,
+        "label": "C",
+        "content": "Đêmôcrít, chủ nghĩa duy tâm khách quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5957,
+        "label": "D",
+        "content": "Arixtốt, - chủ nghĩa duy vật thời cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1583,
+    "stem": "Đâu là mặt tích cực trong quan niệm duy vật về vật chất ở thời kỳ cổ đại?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:15",
+    "updatedAt": "2026-04-29T20:51:15",
+    "options": [
+      {
+        "optionId": 5960,
+        "label": "A",
+        "content": "Chống quan niệm máy móc siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5965,
+        "label": "B",
+        "content": "Chống quan niệm duy tâm tôn giáo.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5968,
+        "label": "C",
+        "content": "Thúc đẩy sự phát triển tư tưởng khoa học về thế giới.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5974,
+        "label": "D",
+        "content": "Gồm b và c.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5977,
+        "label": "E",
+        "content": "Gồm cả a, b và c",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1584,
+    "stem": "Đặc điểm chung của quan niệm duy vật về vật chất ở thời kỳ cổ đại là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:15",
+    "updatedAt": "2026-04-29T20:51:15",
+    "options": [
+      {
+        "optionId": 5961,
+        "label": "A",
+        "content": "Đồng nhất vật chất nói chung với nguyên tử.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5967,
+        "label": "B",
+        "content": "Đồng nhất vật chất nói chung với một dạng cụ thể hữu hình, cảm tính của vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5971,
+        "label": "C",
+        "content": "Đồng nhất vật chất với khối lượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5975,
+        "label": "D",
+        "content": "Đồng nhất vật chất với ý thức.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1585,
+    "stem": "Quan niệm duy vật về vật chất ở thế kỷ XVII - XVIII có tiến bộ hơn so với thời kỳ cổ đại không? nếu có thì tiến bộ ở chỗ nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:15",
+    "updatedAt": "2026-04-29T20:51:15",
+    "options": [
+      {
+        "optionId": 5962,
+        "label": "A",
+        "content": "Không tiến bộ hơn.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5966,
+        "label": "B",
+        "content": "Có tiến bộ hơn ở chỗ không đồng nhất vật chất với dạng cụ thể của vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5969,
+        "label": "C",
+        "content": "Có tiến bộ ở chỗ coi vật chất và vận động không tách rời nhau, vật chất và vận động có nguyên nhân tự thân.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1586,
+    "stem": "Hạn chế chung của quan niệm duy vật về vật chất ở thời kỳ cổ đại.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:15",
+    "updatedAt": "2026-04-29T20:51:15",
+    "options": [
+      {
+        "optionId": 5964,
+        "label": "A",
+        "content": "Có tính chất duy tâm chủ quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5972,
+        "label": "B",
+        "content": "Có tính chất duy vật tự phát, là những phỏng đoán dựa trên những tài liệu cảm tính là chủ yếu, chưa có cơ sở khoa học.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5976,
+        "label": "C",
+        "content": "Có tính chất duy vật máy móc siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1587,
+    "stem": "Đỉnh cao nhất của tư tưởng duy vật cổ đại về vật chất là ở chỗ nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:15",
+    "updatedAt": "2026-04-29T20:51:15",
+    "options": [
+      {
+        "optionId": 5963,
+        "label": "A",
+        "content": "Ở quan niệm về lửa là bản nguyên của thế giới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5970,
+        "label": "B",
+        "content": "Ở thuyết nguyên tử của Lơxíp và Đêmôcrít.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5973,
+        "label": "C",
+        "content": "Ở quan niệm về con số là bản nguyên của thế giới.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1588,
+    "stem": "Đâu là quan niệm về vật chất của chủ nghĩa duy vật thế kỷ XVII - XVIII.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:16",
+    "options": [
+      {
+        "optionId": 5978,
+        "label": "A",
+        "content": "Đồng nhất vật chất nói chung với một dạng cụ thể hữu hình có tính chất cảm tính của vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5983,
+        "label": "B",
+        "content": "Đồng nhất vật chất nói chung với một dạng cụ thể, đồng thời trong quan niệm về vật chất có nhiều yếu tố biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5988,
+        "label": "C",
+        "content": "Không đồng nhất vật chất nói chung với một dạng cụ thể của vật chất",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1589,
+    "stem": "Phương pháp tư duy nào chi phối những hiểu biết triết học duy vật về vật chất ở thế kỷ XVII - XVIII?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:16",
+    "options": [
+      {
+        "optionId": 5979,
+        "label": "A",
+        "content": "Phương pháp biện chứng duy tâm",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5985,
+        "label": "B",
+        "content": "Phương pháp biện chứng duy vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5989,
+        "label": "C",
+        "content": "Phương pháp siêu hình máy móc.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1590,
+    "stem": "Đồng nhất vật chất với khối lượng đó là quan niệm về vật chất của ai và ở thời kỳ nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:16",
+    "options": [
+      {
+        "optionId": 5980,
+        "label": "A",
+        "content": "Các nhà triết học duy vật thời kỳ cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5986,
+        "label": "B",
+        "content": "Các nhà triết học thời kỳ Phục Hưng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5990,
+        "label": "C",
+        "content": "Các nhà khoa học tự nhiên thế kỷ XVII - XVIII.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5993,
+        "label": "D",
+        "content": "Các nhà triết học duy vật biện chứng thời kỳ cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1591,
+    "stem": "Coi vận động của vật chất chỉ là biểu hiện của vận động cơ học, đó là quan điểm về vận động và vật chất của ai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:16",
+    "options": [
+      {
+        "optionId": 5981,
+        "label": "A",
+        "content": "Các nhà triết học duy vật thời kỳ cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5984,
+        "label": "B",
+        "content": "Các nhà khoa học tự nhiên và triết học thế kỷ XVII - XVIII.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5991,
+        "label": "C",
+        "content": "Các nhà triết học duy vật biện chứng hiện đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5994,
+        "label": "D",
+        "content": "Các nhà triết học duy tâm thế kỷ XVII - XVIII.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1592,
+    "stem": "Điều nào sau đây đã ảnh hưởng trực tiếp đến quan niệm triết học về vật chất ở thế kỷ XVII - XVIII?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:16",
+    "options": [
+      {
+        "optionId": 5982,
+        "label": "A",
+        "content": "Quan sát trực tiếp",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5987,
+        "label": "B",
+        "content": "Khoa học tự nhiên ở trình độ lý luận.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5992,
+        "label": "C",
+        "content": "Khoa học tự nhiên thực nghiệm nhất là cơ học.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5995,
+        "label": "D",
+        "content": "Khoa học xã hội.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1593,
+    "stem": "Quan điểm của trường phái triết học nào coi khối lượng chỉ là thuộc tính của vật chất, gắn liền với vật chất?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:16",
+    "options": [
+      {
+        "optionId": 5996,
+        "label": "A",
+        "content": "Chủ nghĩa duy tâm.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 5998,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6002,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1594,
+    "stem": "Khẳng định nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:16",
+    "options": [
+      {
+        "optionId": 5997,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật tự phát cổ đại đồng nhất vật chất nói chung với khối lượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6003,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật nói chung đồng nhất vật chất với khối lượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6007,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật siêu hình thế kỷ XVII - XVIII đồng nhất vật chất nói chung với khối lượng.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1595,
+    "stem": "Phát minh ra hiện tượng phóng xạ và điện tử bác bỏ quan niệm triết học nào về vật chất?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:16",
+    "options": [
+      {
+        "optionId": 5999,
+        "label": "A",
+        "content": "Quan niệm duy vật siêu hình về vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6001,
+        "label": "B",
+        "content": "Quan niệm duy tâm về vật chất cho nguyên tử không tồn tại.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6006,
+        "label": "C",
+        "content": "Quan niệm duy vật biện chứng về vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1596,
+    "stem": "Đồng nhất vật chất nói chung với một dạng cụ thể hoặc một thuộc tính cụ thể của vật chất, coi vật chất có giới hạn tột cùng, đó là đặc điểm chung của hệ thống triết học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:17",
+    "options": [
+      {
+        "optionId": 6000,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6004,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật siêu hình thế kỷ XVII - XVIII.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6009,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật trước Mác.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6010,
+        "label": "D",
+        "content": "Chủ nghĩa duy vật tự phát thời kỳ cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1597,
+    "stem": "Hiện tượng phóng xạ mà khoa học tự nhiên phát hiện ra chứng minh điều gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:16",
+    "updatedAt": "2026-04-29T20:51:17",
+    "options": [
+      {
+        "optionId": 6005,
+        "label": "A",
+        "content": "Vật chất nói chung là bất biến.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6008,
+        "label": "B",
+        "content": "Nguyên tử là bất biến.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6011,
+        "label": "C",
+        "content": "Nguyên tử là không bất biến.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1598,
+    "stem": "Thêm cụm từ thích hợp vào câu sau để được định nghĩa về vật chất của Lênin: Vật chất là ......(1) dùng để chỉ .......(2)... được đem lại cho con người trong cảm giác, được cảm giác của chúng ta chép lại, chụp lại, phản ảnh và tồn tại không lệ thuộc vào cảm giác.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:17",
+    "options": [
+      {
+        "optionId": 6012,
+        "label": "A",
+        "content": "1- Vật thể, 2- hoạt động",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6016,
+        "label": "B",
+        "content": "1- Phạm trù triết học, 2- Thực tại khách quan.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6019,
+        "label": "C",
+        "content": "1- Phạm trù triết học, 2- Một vật thể",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1599,
+    "stem": "Đâu là quan niệm về vật chất của triết học Mác - Lênin?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:17",
+    "options": [
+      {
+        "optionId": 6017,
+        "label": "A",
+        "content": "Đồng nhất vật chất nói chung với một dạng cụ thể của vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6022,
+        "label": "B",
+        "content": "Không đồng nhất vật chất nói chung với dạng cụ thể của vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6025,
+        "label": "C",
+        "content": "Coi có vật chất chung tồn tại tách rời các dạng cụ thể của vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1600,
+    "stem": "Đồng nhất sự biến đổi của nguyên tử và khối lượng với sự biến mất của vật chất sẽ rơi vào quan điểm triết học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:17",
+    "options": [
+      {
+        "optionId": 6015,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6020,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6024,
+        "label": "C",
+        "content": "Chủ nghĩa duy tâm.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1601,
+    "stem": "Định nghĩa về vật chất của Lênin bao quát đặc tính quan trọng nhất của mọi dạng vật chất để phân biệt với ý thức, đó là đặc tính gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:17",
+    "options": [
+      {
+        "optionId": 6014,
+        "label": "A",
+        "content": "Thực tại khách quan độc lập với ý thức của con người.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6021,
+        "label": "B",
+        "content": "Vận động và biến đổi.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6026,
+        "label": "C",
+        "content": "Có khối lượng và quảng tính.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1602,
+    "stem": "Chủ nghĩa duy tâm đã lợi dụng những phát minh của khoa học tự nhiên về hiện tượng phóng xạ và điện tử để chứng minh cái gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:17",
+    "options": [
+      {
+        "optionId": 6013,
+        "label": "A",
+        "content": "Chứng minh nguyên tử không phải là bất biến.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6018,
+        "label": "B",
+        "content": "Chứng minh nguyên tử biến đổi đồng nhất với vật chất mất đi.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6023,
+        "label": "C",
+        "content": "Chứng minh nguyên tử biến đổi nhưng vật chất nói chung không mất đi.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1603,
+    "stem": "Đâu là quan niệm về vật chất của chủ nghĩa duy vật biện chứng",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6027,
+        "label": "A",
+        "content": "Vật chất là cái gây nên cảm giác cho chúng ta.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6032,
+        "label": "B",
+        "content": "Cái gì không gây nên cảm giác ở chúng ta thì không phải là vật chất",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6037,
+        "label": "C",
+        "content": "Cái không cảm giác được thì không phải là vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1604,
+    "stem": "Trường phái triết học nào cho không thể có vật chất không vận động và không thể có vận động ngoài vật chất.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6028,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật tự phát thời kỳ cổ đại.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6033,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật siêu hình",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6038,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1605,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, vật chất với tư cách là phạm trù triết học có đặc tính gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6031,
+        "label": "A",
+        "content": "Vô hạn, vô tận, vĩnh viễn tồn tại, độc lập với ý thức.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6034,
+        "label": "B",
+        "content": "Có giới hạn, có sinh ra và có mất đi.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6039,
+        "label": "C",
+        "content": "Vô hạn, vô tận, vĩnh viễn tồn tại.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1606,
+    "stem": "Khẳng định nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6030,
+        "label": "A",
+        "content": "Định nghĩa về vật chất của V.I. Lênin thừa nhận vật chất tồn tại khách quan ngoài thức con người, thông qua các dạng cụ thể.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6035,
+        "label": "B",
+        "content": "Định nghĩa về vật chất của V.I. Lênin thừa nhận vật chất nói chung tồn tại vĩnh viễn, tách rời các dạng cụ thể của vật chất",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6041,
+        "label": "C",
+        "content": "Định nghĩa về vật chất của V.I. Lênin đồng nhất vật chất nói chung với một dạng cụ thể của vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6042,
+        "label": "D",
+        "content": "Cả a, b, và c",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1607,
+    "stem": "Khi nói vật chất là cái được cảm giác của chúng ta chép lại, phản ánh lại, về mặt nhận thức luận V.I. Lênin muốn khẳng định điều gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:17",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6029,
+        "label": "A",
+        "content": "Cảm giác, ý thức của chúng ta có khả năng phản ánh đúng thế giới khách quan.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6036,
+        "label": "B",
+        "content": "Cám giác ý thức của chúng ta không thể phản ánh đúng thế giới vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6040,
+        "label": "C",
+        "content": "Cảm giác, ý thức phụ thuộc thụ động vào thế giới vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1608,
+    "stem": "Đâu là quan niệm của chủ nghĩa duy vật biện chứng về vận động.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:18",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6043,
+        "label": "A",
+        "content": "Có vật chất không vận động.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6047,
+        "label": "B",
+        "content": "Có vận động thuần tuý ngoài vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6053,
+        "label": "C",
+        "content": "Không có vận động thuần tuý ngoài vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1609,
+    "stem": "Trường phái triết học nào cho vận động và đứng im không tách rời nhau?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:18",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6044,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật tự phát.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6048,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6052,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật siêu hình thế kỷ XVII - XVIII.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1610,
+    "stem": "Trường phái triết học nào cho vận động là tuyệt đối, đứng im là tương đối?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:18",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6045,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật tự phát.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6050,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6056,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật siêu hình thế kỷ XVII - XVIII.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1611,
+    "stem": "Đâu là quan điểm của chủ nghĩa duy vật biện chứng về vận động?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:18",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6046,
+        "label": "A",
+        "content": "Vận động là sự tự thân vận động của vật chất, không được sáng tạo ra và không mất đi.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6051,
+        "label": "B",
+        "content": "Vận động là sự đẩy và hút của vật thể.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6055,
+        "label": "C",
+        "content": "Vận động được sáng tạo ra và có thể mất đi.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1612,
+    "stem": "Đâu là quan điểm của chủ nghĩa duy vật biện chứng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:18",
+    "updatedAt": "2026-04-29T20:51:18",
+    "options": [
+      {
+        "optionId": 6049,
+        "label": "A",
+        "content": "Không gian và thời gian là hình thức tồn tại của vật chất, không tách rời vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6054,
+        "label": "B",
+        "content": "Không gian và thời gian phụ thuộc vào cảm giác của con người",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6057,
+        "label": "C",
+        "content": "Tồn tại không gian và thời gian thuần tuý ngoài vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1613,
+    "stem": "Đâu là quan điểm của chủ nghĩa duy vật biện chứng về nguồn gốc của ý thức?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:19",
+    "updatedAt": "2026-04-29T20:51:20",
+    "options": [
+      {
+        "optionId": 6060,
+        "label": "A",
+        "content": "Ý thức ra đời là kết quả quá trình phát triển lâu dài thuộc tính phản ánh của thế giới vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6067,
+        "label": "B",
+        "content": "Ý thức ra đời là kết quả sự tác động lẫn nhau giữa các sự vật vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6072,
+        "label": "C",
+        "content": "Ý thức ra đời là kết quả quá trình tiến hoá của hệ thần kinh.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1614,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng điều kiện cần và đủ cho sự ra đời và phát triển ý thức là những điều kiện nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:19",
+    "updatedAt": "2026-04-29T20:51:20",
+    "options": [
+      {
+        "optionId": 6058,
+        "label": "A",
+        "content": "Bộ óc con người và thế giới bên ngoài tác động vào bộ óc người",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6061,
+        "label": "B",
+        "content": "Lao động của con người và ngôn ngữ.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6066,
+        "label": "C",
+        "content": "Gồm cả a, và b.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1615,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng nguồn gốc tự nhiên của ý thức gồm những yếu tố nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:19",
+    "updatedAt": "2026-04-29T20:51:20",
+    "options": [
+      {
+        "optionId": 6062,
+        "label": "A",
+        "content": "Bộ óc con người.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6069,
+        "label": "B",
+        "content": "Thế giới bên ngoài tác động vào bộ óc.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6073,
+        "label": "C",
+        "content": "Lao động của con người",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6074,
+        "label": "D",
+        "content": "Gồm a và b.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1616,
+    "stem": "Điều khẳng định nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:19",
+    "updatedAt": "2026-04-29T20:51:20",
+    "options": [
+      {
+        "optionId": 6059,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật biện chứng cho rằng động vật bậc cao chưa có ý thức.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6064,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật biện chứng cho rằng động vật bậc cao cũng có ý thức.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6065,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng cho rằng chỉ có con người mới có ý thức",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6070,
+        "label": "D",
+        "content": "Chủ nghĩa duy vật đều cho ý thức là sự phản ánh hiện thực khách quan vào óc con người.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1617,
+    "stem": "Luận điểm nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:19",
+    "updatedAt": "2026-04-29T20:51:20",
+    "options": [
+      {
+        "optionId": 6063,
+        "label": "A",
+        "content": "Chủ nghĩa duy tâm thừa nhận tính khách quan, vô tận và vĩnh cửu của không gian và thời gian",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6068,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật siêu hình thừa nhận tính khách quan, vô tận, gắn liền với vật chất của không gian và thời gian.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6071,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng thừa nhận không gian, thời gian là hình thức tồn tại của vật chất, có tính khách quan, vô tận và vĩnh cửu.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1618,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, nguồn gốc trực tiếp và quan trọng nhất quyết định sự ra đời và phát triển của ý thức là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:20",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6076,
+        "label": "A",
+        "content": "Sự tác động của tự nhiên vào bộ óc con người.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6080,
+        "label": "B",
+        "content": "Lao động, thực tiễn xã hội.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6085,
+        "label": "C",
+        "content": "Bộ não người và hoạt động của nó.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1619,
+    "stem": "Đâu là quan điểm của chủ nghĩa duy vật biện chứng về bản chất của ý thức?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:20",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6077,
+        "label": "A",
+        "content": "thức là hình ảnh chủ quan của thế giới khách quan.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6082,
+        "label": "B",
+        "content": "Ý thức là hình ảnh phản chiếu về thế giới khách quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6086,
+        "label": "C",
+        "content": "Ý thức là tượng trưng của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1620,
+    "stem": "Nguồn gốc xã hội của ý thức là yếu tố nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:20",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6075,
+        "label": "A",
+        "content": "Bộ óc con người.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6079,
+        "label": "B",
+        "content": "Sự tác động của thế giới bên ngoài vào bộ óc con người.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6083,
+        "label": "C",
+        "content": "Lao động và ngôn ngữ.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1621,
+    "stem": "Nhân tố nào làm con người tách khỏi thế giới động vật?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:20",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6078,
+        "label": "A",
+        "content": "Hoạt động sinh sản duy trì nòi giống.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6084,
+        "label": "B",
+        "content": "Lao động.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6089,
+        "label": "C",
+        "content": "Hoạt động tư duy phê phán.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1622,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, quá trình hình thành ý thức là quá trình nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:20",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6081,
+        "label": "A",
+        "content": "Tiếp thu sự tác động của thế giới bên ngoài.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6087,
+        "label": "B",
+        "content": "Sáng tạo thuần tuý trong tư duy con người.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6088,
+        "label": "C",
+        "content": "Hoạt động chủ động cải tạo thế giới và phản ánh sáng tạo thế giới.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1623,
+    "stem": "Kết cấu theo các cấp độ của ý thức gồm những yếu tố nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:21",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6090,
+        "label": "A",
+        "content": "Tự ý thức; tiềm thức; vô thức.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6091,
+        "label": "B",
+        "content": "Tri thức; niềm tin; ý chí.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6095,
+        "label": "C",
+        "content": "Cảm giác, khái niệm; phán đoán.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1624,
+    "stem": "Phép biện chứng duy vật có mấy nguyên lý cơ bản?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:21",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6094,
+        "label": "A",
+        "content": "Một nguyên lý cơ bản",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6096,
+        "label": "B",
+        "content": "Hai nguyên lý cơ bản.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6098,
+        "label": "C",
+        "content": "Ba nguyên lý cơ bản.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1625,
+    "stem": "Đâu là quan điểm của chủ nghĩa duy vật biện chứng về mối quan hệ giữa vật chất và ý thức?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:21",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6093,
+        "label": "A",
+        "content": "Ý thức do vật chất quyết định.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6100,
+        "label": "B",
+        "content": "Ý thức tác động đến vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6103,
+        "label": "C",
+        "content": "Ý thức do vật chất quyết định, nhưng có tính độc lập tương đối và tác động đến vật chất thông qua hoạt động thực tiễn.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1626,
+    "stem": "Quan niệm của chủ nghĩa duy vật biện chứng về tính sáng tạo của ý thức là thế nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:21",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6092,
+        "label": "A",
+        "content": "Ý thức tạo ra vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6097,
+        "label": "B",
+        "content": "Ý thức tạo ra sự vật trong hiện thực.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6101,
+        "label": "C",
+        "content": "Ý thức tạo ra hình ảnh mới về sự vật trong tư duy.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1627,
+    "stem": "Theo quan niệm của chủ nghĩa duy vật biện chứng, trong kết cấu thep các lớp cầu trúc của ý thức yếu tố nào là cơ bản và cốt lõi nhất?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:21",
+    "updatedAt": "2026-04-29T20:51:21",
+    "options": [
+      {
+        "optionId": 6099,
+        "label": "A",
+        "content": "Tri thức.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6102,
+        "label": "B",
+        "content": "Tình cảm.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6104,
+        "label": "C",
+        "content": "Niềm tin, ý chí.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1628,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, mối liên hệ giữa các sự vật có tính chất gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:22",
+    "updatedAt": "2026-04-29T20:51:22",
+    "options": [
+      {
+        "optionId": 6105,
+        "label": "A",
+        "content": "Tính ngẫu nhiên, chủ quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6110,
+        "label": "B",
+        "content": "Tính khách quan, tính phổ biến, tính đa dạng.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6116,
+        "label": "C",
+        "content": "Tính khách quan, nhưng không có tính phổ biến và đa dạng.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1629,
+    "stem": "Nguyên lý cơ bản của phép biện chứng duy vật là nguyên lý nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:22",
+    "updatedAt": "2026-04-29T20:51:22",
+    "options": [
+      {
+        "optionId": 6106,
+        "label": "A",
+        "content": "Nguyên lý về sự tồn tại khách quan của vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6108,
+        "label": "B",
+        "content": "Nguyên lý về sự vận động và đứng im của các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6112,
+        "label": "C",
+        "content": "Nguyên lý về mối liên hệ phổ biến và về sự phát triển.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6119,
+        "label": "D",
+        "content": "Nguyên lý về tính liên tục và tính gián đoạn của thế giới vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1630,
+    "stem": "Quan điểm nào cho rằng mối liên hệ giữa các sự vật, hiện tượng trong thế giới là biểu hiện của mối liên hệ giữa các ý niệm?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:22",
+    "updatedAt": "2026-04-29T20:51:22",
+    "options": [
+      {
+        "optionId": 6107,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6113,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6115,
+        "label": "C",
+        "content": "Chủ nghĩa duy tâm khách quan.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6120,
+        "label": "D",
+        "content": "Chủ nghĩa duy tâm chủ quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1631,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, một sự vật trong quá trình tồn tại và phát triển có một hay nhiều mối liên hệ.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:22",
+    "updatedAt": "2026-04-29T20:51:22",
+    "options": [
+      {
+        "optionId": 6111,
+        "label": "A",
+        "content": "Có một mối liên hệ",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6117,
+        "label": "B",
+        "content": "Có một số hữu hạn mối liên hệ",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6121,
+        "label": "C",
+        "content": "Có vô vàn các mối liên hệ.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1632,
+    "stem": "Yêu cầu của quan điểm toàn diện như thế nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:22",
+    "updatedAt": "2026-04-29T20:51:22",
+    "options": [
+      {
+        "optionId": 6109,
+        "label": "A",
+        "content": "Chỉ xem xét một mối liên hệ.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6114,
+        "label": "B",
+        "content": "Phải xem xét tất cả các mối liên hệ của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6118,
+        "label": "C",
+        "content": "Phải xem xét tất cả các mối liên hệ đồng thời phân loại được vị trí, vai trò của các mối liên hê.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1633,
+    "stem": "Cơ sở lý luận của quan điểm toàn diện là nguyên lý nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:23",
+    "updatedAt": "2026-04-29T20:51:23",
+    "options": [
+      {
+        "optionId": 6122,
+        "label": "A",
+        "content": "Nguyên lý về sự phát triển.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6128,
+        "label": "B",
+        "content": "Nguyên lý về mối liên hệ phổ biến.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6130,
+        "label": "C",
+        "content": "Nguyên lý về sự tồn tại khách quan của thế giới vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1634,
+    "stem": "Trong những luận điểm sau đây, đâu là luận điểm của quan điểm siêu hình về sự phát triển?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:23",
+    "updatedAt": "2026-04-29T20:51:23",
+    "options": [
+      {
+        "optionId": 6124,
+        "label": "A",
+        "content": "Xem xét sự phát triển chỉ là sự tăng, hay giảm đơn thuần về lượng..",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6126,
+        "label": "B",
+        "content": "Xem sự phát triển bao hàm cả sự thay đổi dần về lượng và sự nhảy vọt về chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6133,
+        "label": "C",
+        "content": "Xem sự phát triển đi lên bao hàm cả sự thụt lùi tạm thời.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1635,
+    "stem": "Trong các quan điểm sau đây, đâu là quan điểm siêu hình về sự phát triển?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:23",
+    "updatedAt": "2026-04-29T20:51:23",
+    "options": [
+      {
+        "optionId": 6123,
+        "label": "A",
+        "content": "Xem xét sự phát triển như một quá trình tiến lên liên tục, không có bước quanh co, thụt lùi, đứt đoạn.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6127,
+        "label": "B",
+        "content": "Xem xét sự phát triển là một quá trình tiến từ thấp lên cao. từ đơn giản đến phức tạp. bao hàm cả sự tụt lùi, đứt đoạn.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6131,
+        "label": "C",
+        "content": "Xem xét sự phát triển như là quá trình đi lên bao hàm cả sự lặp lại cái cũ trên cơ sở mới.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1636,
+    "stem": "Luận điểm sau đây thuộc lập trường triết học nào: \"Phát triển chỉ là những bước nhảy về chất không có sự thay đổi về lượng\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:23",
+    "updatedAt": "2026-04-29T20:51:23",
+    "options": [
+      {
+        "optionId": 6125,
+        "label": "A",
+        "content": "Triết học duy vật biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6132,
+        "label": "B",
+        "content": "Triết học duy vật siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6135,
+        "label": "C",
+        "content": "Triết học biện chứng duy tâm.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6136,
+        "label": "D",
+        "content": "Triết học siêu lình.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1637,
+    "stem": "Luận điểm sau đây thuộc lập trường triết học nào: \"Phát triển là quá trình chuyển hoá từ những thay đổi về lượng thành sự thay đổi về chất và ngược lai\"",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:23",
+    "updatedAt": "2026-04-29T20:51:23",
+    "options": [
+      {
+        "optionId": 6129,
+        "label": "A",
+        "content": "Quan điểm biện chứng.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6134,
+        "label": "B",
+        "content": "Quan điểm siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6137,
+        "label": "C",
+        "content": "Quan điểm chiết trung và nguỵ biện",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1638,
+    "stem": "Luận điểm sau đây thuộc lập trường triết học nào: “Phát triển là quá trình vận động tiến lên theo con đường xoáy ốc”.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:24",
+    "updatedAt": "2026-04-29T20:51:24",
+    "options": [
+      {
+        "optionId": 6138,
+        "label": "A",
+        "content": "Quan điểm siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6142,
+        "label": "B",
+        "content": "Quan điểm chiết trung và nguỵ biện.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6145,
+        "label": "C",
+        "content": "Quan điểm biện chứng.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1639,
+    "stem": "Trong các luận điểm sau đây, đâu là luận điểm của chủ nghĩa duy vật biện chứng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:24",
+    "updatedAt": "2026-04-29T20:51:24",
+    "options": [
+      {
+        "optionId": 6139,
+        "label": "A",
+        "content": "Phát triển của các sự vật là biểu hiện của sự vận động của ý niệm tuyệt đối.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6146,
+        "label": "B",
+        "content": "Phát triển của các sự vật do cảm giác, ý thức con người quyết định.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6149,
+        "label": "C",
+        "content": "Phát triển của các sự vật do sự tác động lẫn nhau của các mặt đối lập của bản thân sự vật quyết định.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1640,
+    "stem": "Luận điểm sau đây về nguồn gốc sự phát triển thuộc lập trường triết học nào: “Phát triển của các sự vật là do cảm giác, ý thức con người quyết định\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:24",
+    "updatedAt": "2026-04-29T20:51:24",
+    "options": [
+      {
+        "optionId": 6141,
+        "label": "A",
+        "content": "Chủ nghĩa duy tâm chủ quan.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6144,
+        "label": "B",
+        "content": "Chủ nghĩa duy tâm khách quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6150,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6152,
+        "label": "D",
+        "content": "Chủ nghĩa duy vật siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1641,
+    "stem": "Trong những luận điểm sau, đâu là định nghĩa về sự phát triển theo quan điểm của chủ nghĩa duy vật biện chứng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:24",
+    "updatedAt": "2026-04-29T20:51:24",
+    "options": [
+      {
+        "optionId": 6140,
+        "label": "A",
+        "content": "Phát triển là phạm trù chỉ sự vận động của các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6147,
+        "label": "B",
+        "content": "Phát triển là phạm trù chỉ sự liên hệ giữa các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6151,
+        "label": "C",
+        "content": "Phát triển là phạm trù chỉ quá trình vận động tiến lên từ thấp đến cao, từ đơn gian đến phức tạp, từ kém hoàn thiện đến hoàn thiện hơn của các sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1642,
+    "stem": "Luận điểm sau đây về nguồn gốc của sự phát triển thuộc lập trường triết học nào: “Mâu thuẫn tồn tại khách quan trong chính sự vật, quy định sự phát triển của sự vật\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:24",
+    "updatedAt": "2026-04-29T20:51:24",
+    "options": [
+      {
+        "optionId": 6143,
+        "label": "A",
+        "content": "Chủ nghĩa duy tâm chủ quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6148,
+        "label": "B",
+        "content": "Chủ nghĩa duy tâm khách quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6153,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6154,
+        "label": "D",
+        "content": "Chủ nghĩa duy vật siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1643,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:25",
+    "updatedAt": "2026-04-29T20:51:25",
+    "options": [
+      {
+        "optionId": 6155,
+        "label": "A",
+        "content": "Phát triển là xu hướng chung của sự vận động của thế giới vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6159,
+        "label": "B",
+        "content": "Phát triển là xu hướng chung nhưng không bản chất của sự vận động của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6163,
+        "label": "C",
+        "content": "Phát triển là xu hướng cá biệt của sự vận động của các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1644,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:25",
+    "updatedAt": "2026-04-29T20:51:25",
+    "options": [
+      {
+        "optionId": 6156,
+        "label": "A",
+        "content": "Nguyện vọng, ý chí của con người tự nó tác động đến sự phát triển.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6164,
+        "label": "B",
+        "content": "Nguyện vọng, ý chí của con người không có ảnh hưởng gì đến sự phát triển.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6166,
+        "label": "C",
+        "content": "Nguyện vọng, ý chí của con người có ảnh hưởng đến sự phát triển thông qua hoạt động thực tiễn.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1645,
+    "stem": "Trong xã hội sự phát triển biểu hiện ra như thế nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:25",
+    "updatedAt": "2026-04-29T20:51:25",
+    "options": [
+      {
+        "optionId": 6157,
+        "label": "A",
+        "content": "Sự xuất hiện các hợp chất mới.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6161,
+        "label": "B",
+        "content": "Sự xuất hiện các giống loài động vật, thực vật mới thích ứng tốt hơn với môi trường.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6167,
+        "label": "C",
+        "content": "Sự thay thế chế độ xã hội này bằng một chế độ xã hội khác dân chủ, văn minh hơn.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1646,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, điều khẳng định nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:25",
+    "updatedAt": "2026-04-29T20:51:25",
+    "options": [
+      {
+        "optionId": 6158,
+        "label": "A",
+        "content": "Mong muốn của con người quy định sự phát triển?",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6162,
+        "label": "B",
+        "content": "Mong muốn của con người tự nó không có ảnh hưởng đến sự phát triển của các sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6168,
+        "label": "C",
+        "content": "Mong muốn của con người hoàn toàn không có ảnh hưởng gì đến sự phát triển của các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1647,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, những tính chất nào sau đây là tính chất của sự phát triển?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:25",
+    "updatedAt": "2026-04-29T20:51:25",
+    "options": [
+      {
+        "optionId": 6160,
+        "label": "A",
+        "content": "Tính khách quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6165,
+        "label": "B",
+        "content": "Tính phổ biến.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6169,
+        "label": "C",
+        "content": "Tính chất đa dạng, phong phú và kế thừa.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6170,
+        "label": "D",
+        "content": "Cả a, b, và c.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1648,
+    "stem": "Trong nhận thức cần quán triệt quan điểm phát triển. Điều đó dựa trên cơ sở lý luận của nguyên lý nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:26",
+    "updatedAt": "2026-04-29T20:51:26",
+    "options": [
+      {
+        "optionId": 6172,
+        "label": "A",
+        "content": "Nguyên lý về mối liên hệ phổ biến.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6177,
+        "label": "B",
+        "content": "Nguyên lý về sự phát triển.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6181,
+        "label": "C",
+        "content": "Nguyên lý về tính thống nhất vật chất của thế giới.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1649,
+    "stem": "Luận điểm sau đây thuộc quan điểm triết học nào: \"Quá trình phát triển của mỗi sự vật là hoàn toàn khác biệt nhau, không có điểm chung nào\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:26",
+    "updatedAt": "2026-04-29T20:51:26",
+    "options": [
+      {
+        "optionId": 6171,
+        "label": "A",
+        "content": "Quan điểm siêu hình.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6174,
+        "label": "B",
+        "content": "Quan điểm biện chứng duy vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6178,
+        "label": "C",
+        "content": "Quan điểm biện chứng duy tâm.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1650,
+    "stem": "Quan điểm phát triển đòi hỏi phải xem xét sự vật như thế nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:26",
+    "updatedAt": "2026-04-29T20:51:26",
+    "options": [
+      {
+        "optionId": 6173,
+        "label": "A",
+        "content": "Xem xét trong trạng thái đang tồn tại của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6176,
+        "label": "B",
+        "content": "Xem xét sự chuyển hoá từ trạng thái này sang trạng thái kia.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6182,
+        "label": "C",
+        "content": "Xem xét các giai đoạn khác nhau của sự vật,",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6185,
+        "label": "D",
+        "content": "Gồm cả a, b, c.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1651,
+    "stem": "Các phạm trù số, hàm số, điểm, đường, mặt là phạm trù của khoa học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:26",
+    "updatedAt": "2026-04-29T20:51:26",
+    "options": [
+      {
+        "optionId": 6179,
+        "label": "A",
+        "content": "Vật lý",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6184,
+        "label": "B",
+        "content": "Hoá học",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6186,
+        "label": "C",
+        "content": "Toán học.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6187,
+        "label": "D",
+        "content": "Triết học.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1652,
+    "stem": "Luận điểm sau đây thuộc quan điểm triết học nào: Quá trình phát triển của các sự vật vừa khác nhau, vừa có sự thống nhất với nhau.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:26",
+    "updatedAt": "2026-04-29T20:51:26",
+    "options": [
+      {
+        "optionId": 6175,
+        "label": "A",
+        "content": "Quan điểm biện chứng.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6180,
+        "label": "B",
+        "content": "Quan điểm siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6183,
+        "label": "C",
+        "content": "Quan điểm chiết trung và nguỵ biện.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1653,
+    "stem": "Chọn cụm từ thích hợp điền vào chỗ trống của câu sau để có được khái niệm về cái riêng: “cái riêng là phạm trù triết học dùng để chỉ ......\"",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:27",
+    "options": [
+      {
+        "optionId": 6189,
+        "label": "A",
+        "content": "Một sự vật, một hiện tượng nhất định.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6195,
+        "label": "B",
+        "content": "Một đặc điểm chung của các sự vật",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6200,
+        "label": "C",
+        "content": "Nét đặc thù của một số các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1654,
+    "stem": "Các phạm trù: vật chất, ý thức, vận động, mâu thuẫn, bản chất, hiện tượng là những phạm trù của khoa học nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:27",
+    "options": [
+      {
+        "optionId": 6188,
+        "label": "A",
+        "content": "Kinh tế chính trị học",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6196,
+        "label": "B",
+        "content": "Luật học.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6201,
+        "label": "C",
+        "content": "Hoá học.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6204,
+        "label": "D",
+        "content": "Triết học.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1655,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, phạm trù có tính chất chủ quan hay khách quan?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:27",
+    "options": [
+      {
+        "optionId": 6190,
+        "label": "A",
+        "content": "Khách quan",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6192,
+        "label": "B",
+        "content": "Chủ quan",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6197,
+        "label": "C",
+        "content": "Vừa khách quan, vừa chủ quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1656,
+    "stem": "Các phạm trù: thực vật, động vật, tế bào, đồng hoá, dị hoá là những phạm trù của khoa học nào",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:27",
+    "options": [
+      {
+        "optionId": 6193,
+        "label": "A",
+        "content": "Toán học",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6198,
+        "label": "B",
+        "content": "Vật lý học",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6202,
+        "label": "C",
+        "content": "Sinh vật học.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6203,
+        "label": "D",
+        "content": "Triết học.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1657,
+    "stem": "Chọn cụm từ thích hợp điền vào chỗ trống của câu sau để có được khái niệm về cái chung: “cái chung là phạm trù triết học dùng để chỉ không những có ở một sự vật, hiện tượng nào đó, mà còn lặp lại trong nhiều sự vật, hiện tượng (nhiều cái riêng) khác\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:27",
+    "options": [
+      {
+        "optionId": 6191,
+        "label": "A",
+        "content": "Một sự vật, một quá trình.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6194,
+        "label": "B",
+        "content": "Những mặt, những thuộc tính.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6199,
+        "label": "C",
+        "content": "Những mặt, những thuộc tính không",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1658,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, phái duy Thực hay phái Duy Danh giải quyết đúng mối quan hệ giữa cái riêng và cái chung?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:27",
+    "options": [
+      {
+        "optionId": 6206,
+        "label": "A",
+        "content": "Phái Duy Danh đúng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6209,
+        "label": "B",
+        "content": "Phái Duy Thực đúng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6212,
+        "label": "C",
+        "content": "Cả hai đều đúng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6216,
+        "label": "D",
+        "content": "Cả hai đều sai.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1659,
+    "stem": "Đâu là quan điểm của chủ nghĩa duy vật biện chứng về mối quan hệ giữa cái chung và cái riêng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:28",
+    "options": [
+      {
+        "optionId": 6208,
+        "label": "A",
+        "content": "Cái chung tồn tại khách quan, bên ngoài cái riêng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6215,
+        "label": "B",
+        "content": "Cái riêng tồn tại khách quan không bao chứa cái chung",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6220,
+        "label": "C",
+        "content": "Không có cái chung thuần tuý tồn tại ngoài cái riêng, cái chung tồn tại thông qua cái riêng để biểu hiện sự tồn tại của mình.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1660,
+    "stem": "Trường phái triết học nào thừa nhận chỉ có cái riêng tồn tại thực, cái chung chỉ là tên gọi trống rỗng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:28",
+    "options": [
+      {
+        "optionId": 6210,
+        "label": "A",
+        "content": "Phái Duy Thực",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6214,
+        "label": "B",
+        "content": "Phái Duy Danh",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6219,
+        "label": "C",
+        "content": "Phái Chiết Trung",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6222,
+        "label": "D",
+        "content": "Phái Nguy Biện.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1661,
+    "stem": "Thêm cụm từ vào chỗ trống của câu sau để có được khái niệm cái đơn nhất: “Cái đơn nhất là phạm trù triết học dùng để chỉ.........\"",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:27",
+    "options": [
+      {
+        "optionId": 6205,
+        "label": "A",
+        "content": "Những mặt lặp lại trong nhiều sự vật",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6211,
+        "label": "B",
+        "content": "Một sự vật riêng lẻ.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6217,
+        "label": "C",
+        "content": "Các mặt, các đặc điểm chỉ vốn có ở một sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1662,
+    "stem": "Phái triết học nào cho rằng chỉ có cái chung tồn tại thực, còn cái riêng không tồn tại thực?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:27",
+    "updatedAt": "2026-04-29T20:51:28",
+    "options": [
+      {
+        "optionId": 6207,
+        "label": "A",
+        "content": "Phái Duy Thực.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6213,
+        "label": "B",
+        "content": "Phái Duy Danh",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6218,
+        "label": "C",
+        "content": "Phái Nguy Biện",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6221,
+        "label": "D",
+        "content": "Phái chiết trung",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1663,
+    "stem": "Đâu là quan điểm của chủ nghĩa duy vật biện chứng về mối quan hệ giữa cái chung và cái riêng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:28",
+    "updatedAt": "2026-04-29T20:51:28",
+    "options": [
+      {
+        "optionId": 6223,
+        "label": "A",
+        "content": "Cái riêng chỉ tồn tại trong mối liên hệ đưa đến cái chung.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6228,
+        "label": "B",
+        "content": "Cái riêng không bao chứa cái chung nào.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6231,
+        "label": "C",
+        "content": "Cái riêng và cái chung hoàn toàn tách rời nhau",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1664,
+    "stem": "Thêm cụm từ thích hợp vào chỗ trống của câu sau để được định nghĩa khái niệm nguyên nhân: Nguyên nhân là phạm trù ...(1).... giữa các mặt trong một sự vật, hiện tượng hoặc giữa ...(2)... với nhau gây nên những biến đổi nhất định.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:28",
+    "updatedAt": "2026-04-29T20:51:28",
+    "options": [
+      {
+        "optionId": 6224,
+        "label": "A",
+        "content": "1- sự liên hệ lẫn nhau, 2- một sự vật mới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6227,
+        "label": "B",
+        "content": "1- sự thống nhất, 2- một sự vật mới",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6232,
+        "label": "C",
+        "content": "1 - chỉ sự tương tác lẫn nhau, 2- các sự vật, hiện tượng.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1665,
+    "stem": "Trong những luận điểm sau, đâu là luận điểm của chủ nghĩa duy vật biện chứng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:28",
+    "updatedAt": "2026-04-29T20:51:29",
+    "options": [
+      {
+        "optionId": 6226,
+        "label": "A",
+        "content": "Mỗi con người là một cái riêng, không có gì chung với người khác,",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6233,
+        "label": "B",
+        "content": "Mỗi con người vừa là cái riêng, đồng thời có nhiều cái chung với người khác.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6236,
+        "label": "C",
+        "content": "Mỗi người chỉ là sự thể hiện của cái chung, không có cái đơn nhất của nó.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1666,
+    "stem": "Luận điểm sau đây thuộc lập trường triết học nào: “Cái chung không tồn tại độc lập, mà là một mặt của cái riêng và liên hệ không tách rời với cái đơn nhất, như cái đơn nhất liên hệ chặt chẽ với cái chung\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:28",
+    "updatedAt": "2026-04-29T20:51:29",
+    "options": [
+      {
+        "optionId": 6225,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật siêu hình",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6230,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật biện chứng",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6235,
+        "label": "C",
+        "content": "Chủ nghĩa duy tâm siêu hình.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1667,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng luận điểm sau đây đúng hay sai: “Muốn nhận thức được cái chung phải xuất phát từ cái riêng .",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:28",
+    "updatedAt": "2026-04-29T20:51:29",
+    "options": [
+      {
+        "optionId": 6229,
+        "label": "A",
+        "content": "Đúng",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6234,
+        "label": "B",
+        "content": "Sai",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6237,
+        "label": "C",
+        "content": "Không xác định",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1668,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, nguyên nhân để hạt thóc nẩy mầm là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:29",
+    "updatedAt": "2026-04-29T20:51:29",
+    "options": [
+      {
+        "optionId": 6238,
+        "label": "A",
+        "content": "Độ ẩm của môi trường",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6243,
+        "label": "B",
+        "content": "Nhiệt độ của không khí",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6247,
+        "label": "C",
+        "content": "Sự tác động giữa hạt thóc với nhiệt độ không khí và nước.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1669,
+    "stem": "Xác định nguyên nhân của sự phát sáng của dây tóc bóng đèn.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:29",
+    "updatedAt": "2026-04-29T20:51:29",
+    "options": [
+      {
+        "optionId": 6239,
+        "label": "A",
+        "content": "Nguồn điện",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6244,
+        "label": "B",
+        "content": "Dây tóc bóng đèn",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6249,
+        "label": "C",
+        "content": "Sự tác động giữa dòng điện và dây tóc bóng đèn",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1670,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là đúng.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:29",
+    "updatedAt": "2026-04-29T20:51:30",
+    "options": [
+      {
+        "optionId": 6241,
+        "label": "A",
+        "content": "Có thể coi nguyên nhân và kết quả nằm ở hai sự vật khác nhau.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6248,
+        "label": "B",
+        "content": "Không thể coi nguyên nhân và kết quả nằm ở hai sự vật khác nhau.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6252,
+        "label": "C",
+        "content": "Nguyên nhân và kết quả không cùng một kết cấu vật chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1671,
+    "stem": "Thêm cụm từ thích hợp vào chỗ trống của câu sau để được định nghĩa khái niệm kết quả: “Kết quả là phạm trù ...(1)... do sự tương tác giữa các yếu tố...(2)...\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:29",
+    "updatedAt": "2026-04-29T20:51:30",
+    "options": [
+      {
+        "optionId": 6240,
+        "label": "A",
+        "content": "1- mối liên hệ, 2- kết hợp",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6245,
+        "label": "B",
+        "content": "1- sự tác động, 2- những biến đổi",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6251,
+        "label": "C",
+        "content": "1- chỉ những biến đổi xuất hiện, 2- mang tính nguyên nhân gây nên.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1672,
+    "stem": "Luận điểm sau đây là của trường phái triết học nào: Mối liên hệ nhân quả tồn tại khách quan phổ biến và tất yếu trong thế giới vật chất.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:29",
+    "updatedAt": "2026-04-29T20:51:30",
+    "options": [
+      {
+        "optionId": 6242,
+        "label": "A",
+        "content": "Chủ nghĩa duy tâm chủ quan",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6246,
+        "label": "B",
+        "content": "Chủ nghĩa duy tâm khách quan",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6250,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng .",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1673,
+    "stem": "Luận điểm sau đây là thuộc lập trường triết học nào: Mọi hiện tượng, quá trình đều có nguyên nhân tồn tại khách quan không phụ thuộc vào việc chúng ta có nhận thức được điều đó hay không.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:30",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6254,
+        "label": "A",
+        "content": "Chủ nghĩa duy tâm chủ quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6257,
+        "label": "B",
+        "content": "Chủ nghĩa duy tâm khách quan.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6262,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1674,
+    "stem": "Điền cụm từ thích hợp vào chỗ trống của câu sau để được định nghĩa khái niệm ngẫu nhiên: “Ngẫu nhiên là phạm trù...(1)..., do nguyên nhân, hoàn cảnh bên ngoài quy định nên có thể xuất hiện, có thể không xuất hiện; có thể xuất hiện thế này hoặc ...(2)...\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:30",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6253,
+        "label": "A",
+        "content": "1- nguyên nhân, 2- hoàn cảnh bên ngoài.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6259,
+        "label": "B",
+        "content": "1 - Chỉ mối liên hệ không bản chất, 2- có thể xuất hiện thế khác.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6266,
+        "label": "C",
+        "content": "1- mối liên hệ bên ngoài, 2- mối liên hệ bên trong.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1675,
+    "stem": "Điền cụm từ thích hợp vào chỗ trống của câu sau để được định nghĩa phạm trù tất nhiên: “Tất nhiên là phạm trù chỉ ...(1)..., do nguyên nhân cơ bản bên trong sự vật, hiện tượng quy định và trong điều kiện nhất định ...(2)... chứ không thể khác\"",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:30",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6255,
+        "label": "A",
+        "content": "1- nguyên nhân bên ngoài, 2- xảy ra như thế.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6260,
+        "label": "B",
+        "content": "1- mối liên hệ bản chất, 2- phải xảy ra đúng như thế.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6265,
+        "label": "C",
+        "content": "1- những nguyên nhân bên trong, 2- không xác định được",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1676,
+    "stem": "Nhu cầu ăn, mặc, ở, học tập của con người là cái chung hay là cái tất yếu?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:30",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6256,
+        "label": "A",
+        "content": "Là cái chung",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6261,
+        "label": "B",
+        "content": "Là cái tất yếu",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6264,
+        "label": "C",
+        "content": "Vừa là cái chung vừa là cái tất yếu.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1677,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, nhận định nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:30",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6258,
+        "label": "A",
+        "content": "Nguyên nhân luôn luôn xuất hiện trước kết quả.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6263,
+        "label": "B",
+        "content": "Cái xuất hiện trước đều là nguyên nhân của cái xuất hiện sau.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6267,
+        "label": "C",
+        "content": "Mọi sự kế tiếp nhau về mặt thời gian đều là quan hệ nhân quả.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1678,
+    "stem": "theo quan điểm của chủ nghĩa duy vật biện chứng luận điểm nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:31",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6269,
+        "label": "A",
+        "content": "Ngẫu nhiên và tất nhiên đều tồn tại khác quan.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6272,
+        "label": "B",
+        "content": "Những hiện tượng chưa nhận thức được nguyên nhân là cái ngẫu nhiên.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6276,
+        "label": "C",
+        "content": "Những hiện tượng nhận thức được nguyên nhân đều trở thành cái tất yếu.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1679,
+    "stem": "Điền cụm từ thích hợp vào chỗ trống của câu sau để được định nghĩa phạm trù hình thức: Hình thức là phạm trù ...(1) biểu hiện và phát triển của ...(2)....",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:31",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6268,
+        "label": "A",
+        "content": "1- các mặt các yếu tố, 2- mối liên hệ",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6273,
+        "label": "B",
+        "content": "1- chỉ phương thức tồn tại, 2- sự vật, hiện tượng ấy.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6278,
+        "label": "C",
+        "content": "1- tập hợp tất cả những mặt, 2- mối liên hệ bền vững.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1680,
+    "stem": "Trong hoạt động thực tiễn phải dựa vào cái ngẫu nhiên hay tất nhiên là chính?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:31",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6274,
+        "label": "A",
+        "content": "Dựa vào ngẫu nhiên",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6279,
+        "label": "C",
+        "content": "Dựa vào cả hai",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6281,
+        "label": "D",
+        "content": "Dựa vào tất yếu",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1681,
+    "stem": "Điền tập hợp từ vào chỗ trống của câu sau để được định nghĩa khái niệm nội dung: Nội dung là phạm trù chỉ các mặt, yếu tố tạo nên sự vật, hiện tượng.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:31",
+    "updatedAt": "2026-04-29T20:51:32",
+    "options": [
+      {
+        "optionId": 6270,
+        "label": "A",
+        "content": "Sự tác động",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6277,
+        "label": "B",
+        "content": "Sự kết hợp",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6282,
+        "label": "C",
+        "content": "Tổng hợp tất cả",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1682,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng khẳng định nào sau đây là đúng.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:31",
+    "updatedAt": "2026-04-29T20:51:31",
+    "options": [
+      {
+        "optionId": 6271,
+        "label": "A",
+        "content": "Cái ngẫu nhiên không có nguyên nhân.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6275,
+        "label": "B",
+        "content": "Chỉ có cái tất yếu mới có nguyên nhân.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6280,
+        "label": "C",
+        "content": "Tất nhiên có mối liên hệ với cái chung, nhưng cái chung không phải lúc nào cũng là tất nhiên.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1683,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:32",
+    "updatedAt": "2026-04-29T20:51:32",
+    "options": [
+      {
+        "optionId": 6285,
+        "label": "A",
+        "content": "Không có hình thức tồn tại thuần tuý không chứa đựng nội dung.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6292,
+        "label": "B",
+        "content": "Nội dung nào cũng tồn tại trong một hình thức nhất định.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6295,
+        "label": "C",
+        "content": "Nội dung và hình thức hoàn toàn tách rời nhau.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1684,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:32",
+    "updatedAt": "2026-04-29T20:51:32",
+    "options": [
+      {
+        "optionId": 6283,
+        "label": "A",
+        "content": "Nội dung và hình thức không tách rời nhau.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6291,
+        "label": "B",
+        "content": "Nội dung và hình thức luôn luôn phù hợp với nhau.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6297,
+        "label": "C",
+        "content": "Không phải lúc nào nội dung và hình thức cũng phù hợp với nhau.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1685,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, trong các luận điểm sau, đâu là luận điểm sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:32",
+    "updatedAt": "2026-04-29T20:51:32",
+    "options": [
+      {
+        "optionId": 6286,
+        "label": "A",
+        "content": "Hình thức thúc đẩy nội dung phát triển nếu nó phù hợp với nội dung.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6290,
+        "label": "B",
+        "content": "Hình thức kìm hãm nội dung phát triển nếu nó không phù hợp với nội dung.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6294,
+        "label": "C",
+        "content": "Hình thức hoàn toàn không phụ thuộc vào nội dung",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1686,
+    "stem": "Trong các luận điểm sau, đâu là quan điểm của chủ nghĩa duy vật biện chứng về quan hệ giữa nội dung và hình thức?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:32",
+    "updatedAt": "2026-04-29T20:51:32",
+    "options": [
+      {
+        "optionId": 6284,
+        "label": "A",
+        "content": "Nội dung quyết định hình thức trong sự phát triển của sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6289,
+        "label": "B",
+        "content": "Hình thức quyết định nội dung.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6296,
+        "label": "C",
+        "content": "Tồn tại hình thức thuần tuý không chứa đựng nội dung.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1687,
+    "stem": "Điền tập hợp từ thích hợp vào chỗ trống của câu sau để được định nghĩa khái niệm “chất”: “Chất là khái niệm dùng để chỉ ...(1) ... khách quan...(2)..., hiện tượng .",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:32",
+    "updatedAt": "2026-04-29T20:51:32",
+    "options": [
+      {
+        "optionId": 6287,
+        "label": "A",
+        "content": "1- Tính quy định, 2- Vốn có của sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6288,
+        "label": "B",
+        "content": "1- Mối liên hệ, 2- Của các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6293,
+        "label": "C",
+        "content": "1- Các nguyên nhân, 2- Của các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1688,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6300,
+        "label": "A",
+        "content": "Chất là tính quy định vốn có của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6306,
+        "label": "B",
+        "content": "Chất là tổng hợp hữu cơ các thuộc tính của sự vật nói lên sự vật là cái gì.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6312,
+        "label": "C",
+        "content": "Chất đồng nhất với thuộc tính.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1689,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6298,
+        "label": "A",
+        "content": "Chất tồn tại khách quan bên ngoài sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6302,
+        "label": "B",
+        "content": "Chất tồn tại khách quan gắn liền với sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6308,
+        "label": "C",
+        "content": "Không có chất thuần tuý bên ngoài sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1690,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:32",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6299,
+        "label": "A",
+        "content": "Thuộc tính của sự vật là những đặc tính vốn có của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6304,
+        "label": "B",
+        "content": "Thuộc tính của sự vật bộc lộ thông qua sự tác động giữa các sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6309,
+        "label": "C",
+        "content": "Thuộc tính của sự vật không phải là cái vốn có của sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1691,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6301,
+        "label": "A",
+        "content": "Chất của sự vật được biểu hiện thông qua thuộc tính của sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6307,
+        "label": "B",
+        "content": "Mọi thuộc tính đều biểu hiện chất của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6310,
+        "label": "C",
+        "content": "Thuộc tính thay đổi, luôn làm cho chất của sự vật thay đổi.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1692,
+    "stem": "Điền tập hợp từ thích hợp vào chỗ trống của câu sau để có được khái niệm về “lượng : Lượng là khái niệm dùng để chỉ ...(1)... của sự vật, hiện tượng về mặt quy mô, trình độ phát triển, các yếu tố biểu hiện ở số lượng các thuộc tính, ở tổng số các bộ phận, ...(2)... và nhịp điệu vận động và phát triển của sự vật, hiện tượng.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6303,
+        "label": "A",
+        "content": "1- tính quy định vốn có, 2- ở đại lượng, ở tốc độ",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6305,
+        "label": "B",
+        "content": "1- mối liên hệ và phụ thuộc, 2- bản chất bên trong",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6311,
+        "label": "C",
+        "content": "1- mức độ quy mô, 2- chất lượng, phẩm chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1693,
+    "stem": "Khi nước chuyển từ trạng thái lỏng sang trạng thái khí tại 1000C được gọi là gì trong quy luật lượng - chất?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6315,
+        "label": "A",
+        "content": "Độ",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6320,
+        "label": "B",
+        "content": "Bước nhảy",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6323,
+        "label": "C",
+        "content": "Chuyển hoá",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6329,
+        "label": "D",
+        "content": "Tiệm tiến",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1694,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6313,
+        "label": "A",
+        "content": "Lượng là tính quy định vốn có của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6319,
+        "label": "B",
+        "content": "Lượng nói lên quy mô, trình độ phát triển của sự vật",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6325,
+        "label": "C",
+        "content": "Lượng phụ thuộc vào ý chí của con người.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1695,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6317,
+        "label": "A",
+        "content": "Sự vật nào cũng là sự thống nhất giữa mặt chất và lượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6322,
+        "label": "B",
+        "content": "Tính quy định về chất nào của sự vật cũng có tính quy định về lượng tương ứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6327,
+        "label": "C",
+        "content": "Tính quy định về chất không có tính ổn định.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1696,
+    "stem": "Theo quan điểm của Chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6314,
+        "label": "A",
+        "content": "Độ là phạm trù chỉ sự biến đổi của lượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6318,
+        "label": "B",
+        "content": "Độ là phạm trù chỉ sự biến đổi của chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6326,
+        "label": "C",
+        "content": "Độ là phạm trù triết học chỉ giới hạn biến đổi của lượng, trong đó chưa lắm thay đổi chất của sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1697,
+    "stem": "Giới hạn từ 0oC đến 1000C được gọi là gì trong quy luật lượng - chất?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:33",
+    "updatedAt": "2026-04-29T20:51:33",
+    "options": [
+      {
+        "optionId": 6316,
+        "label": "A",
+        "content": "Độ",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6321,
+        "label": "B",
+        "content": "Chất",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6324,
+        "label": "C",
+        "content": "Lượng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6328,
+        "label": "D",
+        "content": "Bước nhảy",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1698,
+    "stem": "Tính quy định nói lên sự vật trong một mối quan hệ nhất định đó, gọi là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:34",
+    "options": [
+      {
+        "optionId": 6330,
+        "label": "A",
+        "content": "Chất",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6334,
+        "label": "B",
+        "content": "Lượng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6338,
+        "label": "C",
+        "content": "Độ",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6344,
+        "label": "D",
+        "content": "Bước nhảy",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1699,
+    "stem": "Trong một mối quan hệ nhất định, cái gì xác định sự vật?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:34",
+    "options": [
+      {
+        "optionId": 6331,
+        "label": "A",
+        "content": "Tính quy định về lượng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6335,
+        "label": "B",
+        "content": "Tính quy định về chất",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6341,
+        "label": "C",
+        "content": "Thuộc tính của sự vật.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1700,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:34",
+    "options": [
+      {
+        "optionId": 6332,
+        "label": "A",
+        "content": "Trong giới hạn của độ sự thay đổi của lượng chưa làm cho chất của sự vật biến đổi.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6337,
+        "label": "B",
+        "content": "Trong giới hạn của độ sự thay đổi của lượng đều đưa đến sự thay đổi về chất của sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6345,
+        "label": "C",
+        "content": "Chỉ khi lượng đạt đến giới hạn của độ mới làm cho chất của sự vật thay đổi.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1701,
+    "stem": "Tính quy định nói lên quy mô trình độ phát triển của sự vật được gọi là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:34",
+    "options": [
+      {
+        "optionId": 6333,
+        "label": "A",
+        "content": "Chất",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6339,
+        "label": "B",
+        "content": "Lượng",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6342,
+        "label": "C",
+        "content": "Độ",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6346,
+        "label": "D",
+        "content": "Điểm nút",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1702,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai2.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:34",
+    "options": [
+      {
+        "optionId": 6336,
+        "label": "A",
+        "content": "Không phải mọi sự biến đổi của lượng đều đưa đến sự biến đổi của chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6340,
+        "label": "B",
+        "content": "Sự thay đổi của lượng phải đạt đến một giới hạn nhất định mới làm cho chất của sự vật thay đổi.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6343,
+        "label": "C",
+        "content": "Mọi sự thay đổi của lượng đều đưa đến sự thay đổi về chất của sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1703,
+    "stem": "Trong lý luận về mâu thuẫn, người ta gọi quá trình đồng hoá và dị hoá trong cơ thể sống là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:35",
+    "options": [
+      {
+        "optionId": 6347,
+        "label": "A",
+        "content": "Những thuộc tính",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6350,
+        "label": "B",
+        "content": "Những sự vật",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6355,
+        "label": "C",
+        "content": "Hai yếu tố",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6359,
+        "label": "D",
+        "content": "Hai mặt đối lập.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1704,
+    "stem": "Trong lý luận về mâu thuẫn, người ta gọi hai cực dương và âm của thanh nam châm là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:35",
+    "options": [
+      {
+        "optionId": 6349,
+        "label": "A",
+        "content": "Hai mặt",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6354,
+        "label": "B",
+        "content": "Hai thuộc tính",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6360,
+        "label": "C",
+        "content": "Hai mặt đối lập",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6363,
+        "label": "D",
+        "content": "Hai yếu tố.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1705,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:35",
+    "options": [
+      {
+        "optionId": 6348,
+        "label": "A",
+        "content": "Sự biến đổi về chất là kết quả sự biến đổi về lượng của sự vật.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6353,
+        "label": "B",
+        "content": "Không phải sự biến đổi về chất nào cũng là kết quả của sự biến đổi về lượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6358,
+        "label": "C",
+        "content": "Chất không có tác động gì đến sự thay đổi của lượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1706,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là đúng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:35",
+    "options": [
+      {
+        "optionId": 6351,
+        "label": "A",
+        "content": "Phát triển của sự vật chỉ bao hàm sự thay đổi về lượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6357,
+        "label": "B",
+        "content": "Phát triển của sự vật chỉ bao hàm sự thay đổi về chất.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6361,
+        "label": "C",
+        "content": "Quá trình phát triển của sự vật là quá trình chuyển hoá từ sự thay đổi dần dần về lượng sang sự thay đổi về chất và ngược lại.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1707,
+    "stem": "Quy luật mâu thẫn có vị trí như thế nào trong phép biện chứng duy vật?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:34",
+    "updatedAt": "2026-04-29T20:51:35",
+    "options": [
+      {
+        "optionId": 6352,
+        "label": "A",
+        "content": "Là hạt nhân của phép biện chứng duy vật, vạch ra nguồn gốc bên trong của sự vận động và phát triển.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6356,
+        "label": "B",
+        "content": "Vạch ra xu hướng của sự phát triển.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6362,
+        "label": "C",
+        "content": "Vạch ra cách thức của sự phát triển.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1708,
+    "stem": "Quan điểm nào sau đây là của chủ nghĩa duy vật biện chứng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:35",
+    "updatedAt": "2026-04-29T20:51:35",
+    "options": [
+      {
+        "optionId": 6364,
+        "label": "A",
+        "content": "Mâu thuẫn tồn tại khách quan trong mọi sự vật, hiện tượng, quá trình của tự nhiên, xã hội và tư duy.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6365,
+        "label": "B",
+        "content": "Mâu thuẫn chỉ tồn tại trong tư duy.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6368,
+        "label": "C",
+        "content": "Mâu thuẫn chỉ tồn tại trong một số hiện tượng.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1709,
+    "stem": "Trong quy luật mâu thuẫn, tính quy định về chất và tính quy định về lượng được gọi là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:35",
+    "updatedAt": "2026-04-29T20:51:35",
+    "options": [
+      {
+        "optionId": 6366,
+        "label": "A",
+        "content": "Hai sự vật",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6370,
+        "label": "B",
+        "content": "Hai quá trình",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6373,
+        "label": "C",
+        "content": "Hai thuộc tính",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6375,
+        "label": "D",
+        "content": "Hai mặt đối lập",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1710,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng các mặt đối lập do đâu mà có?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:35",
+    "updatedAt": "2026-04-29T20:51:35",
+    "options": [
+      {
+        "optionId": 6367,
+        "label": "A",
+        "content": "Do ý thức cảm giác của con người tạo ra.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6371,
+        "label": "B",
+        "content": "Do ý niệm tuyệt đối sinh ra",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6376,
+        "label": "C",
+        "content": "Vốn có của thế giới vật chất.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1711,
+    "stem": "Trong mâu thuẫn biện chứng, các mặt đối lập quan hệ với nhau như thế nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:35",
+    "updatedAt": "2026-04-29T20:51:36",
+    "options": [
+      {
+        "optionId": 6369,
+        "label": "A",
+        "content": "Chỉ thống nhất với nhau.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6374,
+        "label": "B",
+        "content": "Chỉ có mặt đấu tranh với nhau",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6378,
+        "label": "C",
+        "content": "Vừa thống nhất vừa đấu tranh với nhau.",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1712,
+    "stem": "Hai mặt đối lập ràng buộc nhau, tạo tiền đề tồn tại cho nhau, triết học gọi là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:35",
+    "updatedAt": "2026-04-29T20:51:36",
+    "options": [
+      {
+        "optionId": 6372,
+        "label": "A",
+        "content": "Sự đấu tranh của hai mặt đối lập",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6377,
+        "label": "B",
+        "content": "Sự thống nhất của hai mặt đối lập.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6379,
+        "label": "C",
+        "content": "Sự chuyển hoá của hai mặt đối lập.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1713,
+    "stem": "Mâu thuẫn đối kháng tồn tại ở đâu?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:37",
+    "updatedAt": "2026-04-29T20:51:37",
+    "options": [
+      {
+        "optionId": 6381,
+        "label": "A",
+        "content": "Trong cả tự nhiên, xã, hội và tư duy.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6386,
+        "label": "B",
+        "content": "Trong mọi xã hội.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6389,
+        "label": "C",
+        "content": "Trong xã hội có giai cấp đối kháng",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1714,
+    "stem": "Sự tự thay thế sự vật này bằng sự vật kia không phụ thuộc vào ý thức con người trong phép biện chứng duy vật được gọi là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:37",
+    "updatedAt": "2026-04-29T20:51:37",
+    "options": [
+      {
+        "optionId": 6380,
+        "label": "A",
+        "content": "Vận động",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6385,
+        "label": "B",
+        "content": "Phủ định",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6390,
+        "label": "C",
+        "content": "Phủ định biện chứng",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6394,
+        "label": "D",
+        "content": "Phủ định của phủ định",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1715,
+    "stem": "Trong hai xu hướng tác động của của các mặt đối lập, xu hướng nào quy định sự ổn định tương đối của sự vật?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:37",
+    "updatedAt": "2026-04-29T20:51:37",
+    "options": [
+      {
+        "optionId": 6382,
+        "label": "A",
+        "content": "Thống nhất của các mặt đối lập",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6387,
+        "label": "B",
+        "content": "Đấu tranh của các mặt đối lập",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6393,
+        "label": "C",
+        "content": "Cả a và b.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1716,
+    "stem": "Theo quan điểm của chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:37",
+    "updatedAt": "2026-04-29T20:51:37",
+    "options": [
+      {
+        "optionId": 6383,
+        "label": "A",
+        "content": "Phủ định biện chứng xoá bỏ cái cũ hoàn toàn",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6388,
+        "label": "B",
+        "content": "Phủ định biện chứng không đơn giản là xoá bỏ cái cũ.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6392,
+        "label": "C",
+        "content": "Phủ định biện chứng loại bỏ những yếu tố không thích hợp của cái cũ.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1717,
+    "stem": "Trong quy luật phủ định của phủ định, sự thay thế sự vật này bằng sự vật kia (thí dụ: nụ thành hoa, hoa thành quả v.v.) được gọi là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:37",
+    "updatedAt": "2026-04-29T20:51:37",
+    "options": [
+      {
+        "optionId": 6384,
+        "label": "A",
+        "content": "Mâu thuẫn",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6391,
+        "label": "B",
+        "content": "Phủ định",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6395,
+        "label": "C",
+        "content": "Tồn tại",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6396,
+        "label": "D",
+        "content": "Vận động",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1718,
+    "stem": "Con đường phát triển của sự vật mà quy luật phủ định của phủ định vạch ra là con đường nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:38",
+    "updatedAt": "2026-04-29T20:51:38",
+    "options": [
+      {
+        "optionId": 6398,
+        "label": "A",
+        "content": "Đường thẳng đi lên",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6403,
+        "label": "B",
+        "content": "Đường tròn khép kín",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6407,
+        "label": "C",
+        "content": "Đường xoáy ốc đi lên",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1719,
+    "stem": "Vị trí của quy luật phủ định của phủ định trong phép biện chứng duy vật?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:38",
+    "updatedAt": "2026-04-29T20:51:38",
+    "options": [
+      {
+        "optionId": 6400,
+        "label": "A",
+        "content": "Chỉ ra nguồn gốc của sự phát triển",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6404,
+        "label": "B",
+        "content": "Chỉ ra cách thức của sự phát triển",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6409,
+        "label": "C",
+        "content": "Chỉ ra khuynh hướng của sự phát triển",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1720,
+    "stem": "Trường phái triết học nào cho rằng thực tiễn là cơ sở chủ yếu và trực tiếp nhất của nhận thức?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:38",
+    "updatedAt": "2026-04-29T20:51:38",
+    "options": [
+      {
+        "optionId": 6397,
+        "label": "A",
+        "content": "Chủ nghĩa duy tâm khách quan",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6405,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật siêu hình",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6410,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1721,
+    "stem": "Theo quan điểm của Chủ nghĩa duy vật biện chứng, luận điểm nào sau đây là sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:38",
+    "updatedAt": "2026-04-29T20:51:38",
+    "options": [
+      {
+        "optionId": 6399,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật đều thừa nhận nhận thức là sự phản ánh hiện thực khách quan vào đầu óc con người.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6401,
+        "label": "B",
+        "content": "Chủ nghĩa duy vật, đều thừa nhận nhận thức là sự phản ánh sáng tạo hiện thực khách quan vào trong đầu óc con người dựa trên cơ sở thực tiễn.",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6406,
+        "label": "C",
+        "content": "Chủ nghĩa duy vật biện chứng, thừa nhận nhận thức là quá trình phản ánh sáng tạo hiện thực khách quan vào trong đầu óc con người trên cơ sở thực tiễn.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1722,
+    "stem": "Sự tự phủ định để đưa sự vật dường như quay lại điểm xuất phát ban đầu trong phép biện chứng được gọi là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:38",
+    "updatedAt": "2026-04-29T20:51:38",
+    "options": [
+      {
+        "optionId": 6402,
+        "label": "A",
+        "content": "Phủ định biện chứng.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6408,
+        "label": "B",
+        "content": "Phủ định của phủ định",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6411,
+        "label": "C",
+        "content": "Chuyển hoá",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1723,
+    "stem": "Thêm cụm từ thích hợp vào chỗ trống của câu sau để có được định nghĩa về phạm trù thực tiễn: “Thực tiễn là toàn bộ những ...... của con người nhằm cải tạo tự nhiên và xã hội phục vụ nhân loại tiến bộ”.",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:40",
+    "updatedAt": "2026-04-29T20:51:40",
+    "options": [
+      {
+        "optionId": 6412,
+        "label": "A",
+        "content": "Hoạt động.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6413,
+        "label": "B",
+        "content": "Hoạt động vật chất",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6418,
+        "label": "C",
+        "content": "Hoạt động có mục đích",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6422,
+        "label": "D",
+        "content": "Hoạt động vật chất - cảm tính, có tính lịch sử - xã hội",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1724,
+    "stem": "Nhận thức cảm tính được thực hiện dưới các hình thức nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:40",
+    "updatedAt": "2026-04-29T20:51:41",
+    "options": [
+      {
+        "optionId": 6417,
+        "label": "A",
+        "content": "Khái niệm và phán đoán",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6421,
+        "label": "B",
+        "content": "Cảm giác, tri giác và khái niệm",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6427,
+        "label": "C",
+        "content": "Cảm giác, tri giác và biểu tượng",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1725,
+    "stem": "Giai đoạn nhận thức diễn ra trên cơ sở sự tác động trực tiếp của các sự vật lên các giác quan của con người là giai đoạn nhận thức nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:40",
+    "updatedAt": "2026-04-29T20:51:41",
+    "options": [
+      {
+        "optionId": 6414,
+        "label": "A",
+        "content": "Nhận thức lý tính",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6420,
+        "label": "B",
+        "content": "Nhận thức lý luận",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6426,
+        "label": "C",
+        "content": "Nhận thức cảm tính",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1726,
+    "stem": "Theo quan điểm của Chủ nghĩa duy vật biện chứng, tiêu chuẩn của chân lý là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:40",
+    "updatedAt": "2026-04-29T20:51:41",
+    "options": [
+      {
+        "optionId": 6416,
+        "label": "A",
+        "content": "Được nhiều người thừa nhận.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6423,
+        "label": "B",
+        "content": "Đảm bảo không mâu thuẫn trong suy luận",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6425,
+        "label": "C",
+        "content": "Thực tiễn",
+        "isCorrect": true,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1727,
+    "stem": "Hình thức hoạt động thực tiễn cơ bản nhất quy định các hình thức hoạt động khác là hình thức nào sau đây:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:40",
+    "updatedAt": "2026-04-29T20:51:40",
+    "options": [
+      {
+        "optionId": 6415,
+        "label": "A",
+        "content": "Hoạt động sản xuất vật chất",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6419,
+        "label": "B",
+        "content": "Hoạt động chính trị xã hội.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6424,
+        "label": "C",
+        "content": "Hoạt động quan sát và thực nghiệm khoa học.",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1728,
+    "stem": "Sự phản ánh trừu tượng, khái quát những đặc điểm chung, bản chất của các sự vật được gọi là giai đoạn nhận thức nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:42",
+    "updatedAt": "2026-04-29T20:51:42",
+    "options": [
+      {
+        "optionId": 6428,
+        "label": "A",
+        "content": "Nhận thức cảm tính",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6435,
+        "label": "B",
+        "content": "Nhận thức lý tính",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6442,
+        "label": "C",
+        "content": "Nhận thức kinh nghiệm",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1729,
+    "stem": "Luận điểm sau đây thuộc lập trường triết học nào: \"Cảm giác là hình ảnh chủ quan của thế giới khách quan\".",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:42",
+    "updatedAt": "2026-04-29T20:51:42",
+    "options": [
+      {
+        "optionId": 6429,
+        "label": "A",
+        "content": "Chủ nghĩa duy vật biện chứng",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6433,
+        "label": "B",
+        "content": "Chủ nghĩa duy tâm chủ quan",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6438,
+        "label": "C",
+        "content": "Chủ nghĩa duy tâm khách quan",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1730,
+    "stem": "Giai đoạn nhận thức nào gắn với thực tiễn?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:42",
+    "updatedAt": "2026-04-29T20:51:42",
+    "options": [
+      {
+        "optionId": 6430,
+        "label": "A",
+        "content": "Nhận thức lý luận",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6436,
+        "label": "B",
+        "content": "Nhận thức cảm tính",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6440,
+        "label": "C",
+        "content": "Nhận thức lý tính",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1731,
+    "stem": "Nhận thức lý tính được thực hiện dưới hình thức nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:42",
+    "updatedAt": "2026-04-29T20:51:42",
+    "options": [
+      {
+        "optionId": 6431,
+        "label": "A",
+        "content": "Cảm giác, tri giác và biểu tượng",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6434,
+        "label": "B",
+        "content": "Khái niệm, phán đoán, suy luận",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6439,
+        "label": "C",
+        "content": "Tri giác, biểu tượng, khái niệm",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  },
+  {
+    "questionId": 1732,
+    "stem": "Khái niệm là hình thức nhận thức của giai đoạn nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-29T20:51:42",
+    "updatedAt": "2026-04-29T20:51:42",
+    "options": [
+      {
+        "optionId": 6432,
+        "label": "A",
+        "content": "Nhận thức cảm tính.",
+        "isCorrect": false,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6437,
+        "label": "B",
+        "content": "Nhận thức lý tính",
+        "isCorrect": true,
+        "sortOrder": null
+      },
+      {
+        "optionId": 6441,
+        "label": "C",
+        "content": "Nhận thức kinh nghiệm",
+        "isCorrect": false,
+        "sortOrder": null
+      }
+    ]
+  }
+]

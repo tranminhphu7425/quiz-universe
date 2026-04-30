@@ -55,6 +55,12 @@ public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long
            "AND qb.status = 'ACTIVE'")
     Page<QuestionBank> searchBanks(@Param("search") String search, Pageable pageable);
     
+    long countByCreatedBy_UserId(String userId);
+
+    long countByCreatedBy_UserIdAndStatus(String userId, Status status);
+
+    long countByCreatedBy_UserIdAndStatusNot(String userId, Status status);
+
     boolean existsByNameAndSubject_SubjectId(String name, Long subjectId);
     
     Optional<QuestionBank> findByBankIdAndCreatedBy_UserId(Long bankId, String userId);

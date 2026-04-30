@@ -16,6 +16,8 @@ import com.quizuniverse.entity.User;
 import com.quizuniverse.service.MajorService;
 import com.quizuniverse.service.ProfileService;
 import com.quizuniverse.service.UniversityService;
+import com.quizuniverse.dto.UserStatsDTO;
+import com.quizuniverse.service.UserStatsService;
 import com.quizuniverse.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,6 +31,7 @@ public class UserController {
     private final UniversityService universityService;
     private final MajorService majorService;
     private final ProfileService profileService;
+    private final UserStatsService userStatsService;
 
     /* ================= USER ================= */
 
@@ -40,6 +43,16 @@ public class UserController {
         UUID userId = UUID.fromString(authentication.getName());
         UserDTO dto = userService.getUserById(userId);
         return ResponseEntity.ok(dto);
+    }
+
+    /**
+     * Lấy thống kê của user hiện tại
+     */
+    @GetMapping("/users/stats")
+    public ResponseEntity<UserStatsDTO> getCurrentUserStats(Authentication authentication) {
+        String userId = authentication.getName();
+        UserStatsDTO stats = userStatsService.getUserStats(userId);
+        return ResponseEntity.ok(stats);
     }
 
     /**

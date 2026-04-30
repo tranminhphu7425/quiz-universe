@@ -24,3 +24,10 @@ export interface User {
   university?: University | null;
   major?: Major | null;
 }
+
+export interface UserStats {
+    totalBanks: number;
+    reputation: number;
+    totalLikes: number;
+    approvalRate: number;
+}

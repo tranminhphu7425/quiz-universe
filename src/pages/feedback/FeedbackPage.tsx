@@ -383,7 +383,7 @@ export default function FeedbackPage() {
                     </button>
                     
                     <button
-                      onClick={() => window.location.href = '/'}
+                      onClick={() => window.location.href = import.meta.env.BASE_URL}
                       className="rounded-xl border-2 border-emerald-200 dark:border-slate-600 px-6 py-3 font-medium text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all"
                     >
                       Quay về trang chủ

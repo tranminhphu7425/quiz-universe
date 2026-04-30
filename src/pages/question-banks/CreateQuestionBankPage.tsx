@@ -21,8 +21,14 @@ import {
     Search,
     ChevronDown,
     FileJson,
-    CheckCircle
+    CheckCircle,
+    Calendar,
+    SortAsc,
+    SortDesc,
+    Filter
 } from "lucide-react";
+
+import { useQuery } from "@tanstack/react-query";
 
 import Floating from "@/shared/ui/Floatting";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
@@ -32,40 +38,131 @@ import { fetchAllSubjects } from "@/shared/api/subjectApi";
 import { Subject } from "@/shared/types/subject";
 import { QuestionBankApi } from "@/shared/api/questionBanksApi";
 import { QuestionBankVisibility } from "@/shared/types/questionBank";
-import { createQuestionInBankApi } from "@/shared/api/questionsApi";
+import { fetchSubjects } from "@/shared/api/subjectApi";
 import type { UpdateQuestionPayload } from "@/shared/types/question";
+import { createQuestionInBankApi } from "@/shared/api/questionsApi";
+import { apiService } from "@/shared/api/api";
+import { UserStats } from "@/shared/types/user";
+
+// Sort options for subjects
+type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc' | 'popularity-desc';
+
+/** Map UI sort option → Spring sort param (field,direction) */
+function toSortParam(opt: SortOption): string {
+    switch (opt) {
+        case 'name-asc': return 'name,asc';
+        case 'name-desc': return 'name,desc';
+        case 'date-asc': return 'createdAt,asc';
+        case 'date-desc': return 'createdAt,desc';
+        case 'popularity-desc': return 'bankCount,desc';
+        default: return 'createdAt,desc';
+    }
+}
 
 export default function CreateQuestionBankPage() {
     useAuth();
     const navigate = useNavigate();
 
-    const [subjects, setSubjects] = useState<Subject[]>([]);
     const [selectedSubjectId, setSelectedSubjectId] = useState<number | "">("");
-    const [isLoadingSubjects, setIsLoadingSubjects] = useState(true);
     const [searchSubject, setSearchSubject] = useState("");
+    const [keyword, setKeyword] = useState(""); // Debounced keyword
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [checkOnline, setCheckOnline] = useState(true);
+    const [page] = useState(1);
+    const pageSize = 10;
+    const sortOption: SortOption = 'popularity-desc';
 
-    const filteredSubjects = subjects.filter(sub =>
-        sub.name.toLowerCase().includes(searchSubject.toLowerCase())
-    );
-
-    const handleSelectSubject = (id: number, name: string) => {
+    const handleSelectSubject = (id: number, code: string, name: string) => {
         setSelectedSubjectId(id);
-        setSearchSubject(name);
+        setSearchSubject(code + " - " + name);
         setIsDropdownOpen(false);
     };
 
+    // Debounce search input
     useEffect(() => {
-        fetchAllSubjects()
-            .then(data => {
-                setSubjects(data);
-                setIsLoadingSubjects(false);
-            })
-            .catch(err => {
-                console.error("Failed to fetch subjects:", err);
-                setIsLoadingSubjects(false);
-            });
-    }, []);
+        const timer = setTimeout(() => {
+            setKeyword(searchSubject);
+        }, 400);
+        return () => clearTimeout(timer);
+    }, [searchSubject]);
+
+    // Fetch subjects using React Query with pagination & search
+    const {
+        data: pageResult,
+        isLoading: isLoadingSubjects,
+    } = useQuery({
+        queryKey: ["subjects", { page, pageSize, keyword, sort: sortOption, checkOnline }],
+        queryFn: async () => {
+            const getLocalData = async () => {
+                try {
+                    const res = await fetch(`${import.meta.env.BASE_URL}data/subjects.json`);
+                    const allSubjects: Subject[] = await res.json();
+
+                    // 1. Client-side filtering
+                    let filtered = allSubjects;
+                    if (keyword) {
+                        const lowerKw = keyword.toLowerCase();
+                        filtered = allSubjects.filter(s =>
+                            s.name.toLowerCase().includes(lowerKw) ||
+                            (s.description && s.description.toLowerCase().includes(lowerKw)) ||
+                            (s.code && s.code.toLowerCase().includes(lowerKw))
+                        );
+                    }
+
+                    // 2. Client-side sorting
+                    const [field, dir] = toSortParam(sortOption).split(',');
+                    filtered.sort((a, b) => {
+                        const valA = a[field as keyof Subject] ?? (field === 'bankCount' ? 0 : "");
+                        const valB = b[field as keyof Subject] ?? (field === 'bankCount' ? 0 : "");
+
+                        if (typeof valA === 'string' && typeof valB === 'string') {
+                            const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
+                            return dir === 'asc' ? cmp : -cmp;
+                        }
+
+                        if (typeof valA === 'number' && typeof valB === 'number') {
+                            return dir === 'asc' ? valA - valB : valB - valA;
+                        }
+
+                        return 0;
+                    });
+
+                    // 3. Client-side pagination (chỉ lấy 10 kết quả đầu tiên)
+                    const totalElements = filtered.length;
+                    const totalPages = Math.ceil(totalElements / pageSize);
+                    const start = (page - 1) * pageSize;
+                    const pagedContent = filtered.slice(start, start + pageSize);
+
+                    return {
+                        content: pagedContent,
+                        totalPages,
+                        totalElements,
+                    };
+                } catch (e) {
+                    console.error(e);
+                    return { content: [], totalPages: 1, totalElements: 0 };
+                }
+            };
+
+            if (!checkOnline) return getLocalData();
+
+            try {
+                return await fetchSubjects({
+                    page: page - 1,
+                    size: pageSize,
+                    keyword: keyword || undefined,
+                    sort: toSortParam(sortOption),
+                });
+            } catch (error) {
+                setCheckOnline(false);
+                console.error("Backend fetch failed, falling back to local data:", error);
+                toast.error("Kết nối đến API thất bại, đang sử dụng dữ liệu nội bộ");
+                return getLocalData();
+            }
+        },
+    });
+
+    const subjectsList = pageResult?.content || [];
 
     const [activeTab, setActiveTab] = useState<"ai" | "manual">("manual");
     const [subjectName, setSubjectName] = useState("");
@@ -78,35 +175,18 @@ export default function CreateQuestionBankPage() {
     const [jsonInput, setJsonInput] = useState("");
     const [jsonMessage, setJsonMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
     const [importedQuestions, setImportedQuestions] = useState<UpdateQuestionPayload[] | null>(null);
+    const [importMode, setImportMode] = useState<"manual" | "file">("manual");
 
-    // Handlers
-    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (!file) return;
+    // Fetch thực tế dữ liệu thống kê người dùng từ Backend
+    const { data: userStats } = useQuery({
+        queryKey: ["user-stats"],
+        queryFn: () => apiService.get<UserStats>("/users/stats"),
+    });
 
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const content = e.target?.result as string;
-            setJsonInput(content);
-            setJsonMessage({ type: "success", text: `Đã tải file: ${file.name}` });
-            setTimeout(() => setJsonMessage(null), 3000);
-        };
-        reader.onerror = () => {
-            setJsonMessage({ type: "error", text: "Lỗi khi đọc file. Vui lòng thử lại!" });
-            setTimeout(() => setJsonMessage(null), 3000);
-        };
-        reader.readAsText(file);
-    };
-
-    const handleImportJSON = () => {
-        if (!jsonInput.trim()) {
-            setJsonMessage({ type: "error", text: "Vui lòng nhập hoặc tải file JSON!" });
-            setTimeout(() => setJsonMessage(null), 3000);
-            return;
-        }
-
+    // Helper function to validate and normalize JSON questions
+    const validateJSON = (input: string) => {
         try {
-            const parsedData = JSON.parse(jsonInput);
+            const parsedData = JSON.parse(input);
             if (!Array.isArray(parsedData)) {
                 throw new Error("Dữ liệu JSON phải là một danh sách các câu hỏi (Array)");
             }
@@ -142,12 +222,55 @@ export default function CreateQuestionBankPage() {
                 throw new Error("JSON không có câu hỏi nào để import");
             }
 
+            return normalized;
+        } catch (error) {
+            throw error;
+        }
+    };
+
+    // Handlers
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const content = e.target?.result as string;
+            setJsonInput(content);
+            
+            try {
+                const normalized = validateJSON(content);
+                setImportedQuestions(normalized);
+                setJsonMessage({ 
+                    type: "success", 
+                    text: `Tải file thành công! Đã nhận diện ${normalized.length} câu hỏi.` 
+                });
+            } catch (error: unknown) {
+                setImportedQuestions(null);
+                const message = error instanceof Error ? error.message : "Định dạng file không hợp lệ";
+                setJsonMessage({ type: "error", text: message });
+            }
+            setTimeout(() => setJsonMessage(null), 4000);
+        };
+        reader.onerror = () => {
+            setJsonMessage({ type: "error", text: "Lỗi khi đọc file. Vui lòng thử lại!" });
+            setTimeout(() => setJsonMessage(null), 3000);
+        };
+        reader.readAsText(file);
+    };
+
+    const handleImportJSON = () => {
+        if (!jsonInput.trim()) {
+            setJsonMessage({ type: "error", text: "Vui lòng nhập nội dung JSON!" });
+            setTimeout(() => setJsonMessage(null), 3000);
+            return;
+        }
+
+        try {
+            const normalized = validateJSON(jsonInput);
             setImportedQuestions(normalized);
             setJsonMessage({ type: "success", text: `Import JSON thành công! (${normalized.length} câu hỏi)` });
             setTimeout(() => setJsonMessage(null), 3000);
-
-            // Optional: Clear input after successful import
-            // setJsonInput("");
         } catch (error: unknown) {
             setImportedQuestions(null);
             const message = error instanceof Error ? error.message : "JSON không hợp lệ. Vui lòng kiểm tra lại định dạng!";
@@ -162,6 +285,7 @@ export default function CreateQuestionBankPage() {
         setJsonMessage({ type: "success", text: "Đã xóa nội dung JSON!" });
         setTimeout(() => setJsonMessage(null), 3000);
     };
+
 
 
     // Xử lý thêm tag
@@ -222,21 +346,17 @@ export default function CreateQuestionBankPage() {
                     
                     toast.loading(`Đang tạo ${total} câu hỏi...`, { id: toastId });
 
-                    // Chia nhỏ thành các batch để tránh timeout và quá tải browser/server
-                    const BATCH_SIZE = 5;
-                    for (let i = 0; i < questionsData.length; i += BATCH_SIZE) {
-                        const batch = questionsData.slice(i, i + BATCH_SIZE);
-                        await Promise.all(batch.map(async (q) => {
-                            try {
-                                await createQuestionInBankApi(response.bankId, q);
-                                completed++;
-                                // Cập nhật progress toast mỗi khi hoàn thành 1 câu
-                                toast.loading(`Đang tạo câu hỏi: ${completed}/${total}...`, { id: toastId });
-                            } catch (err) {
-                                console.error("Lỗi tạo câu hỏi:", err);
-                                // Vẫn tiếp tục tạo các câu tiếp theo nếu một câu bị lỗi
-                            }
-                        }));
+                    // Tạo câu hỏi tuần tự để đảm bảo đúng thứ tự như trong JSON
+                    for (const q of questionsData) {
+                        try {
+                            await createQuestionInBankApi(response.bankId, q);
+                            completed++;
+                            // Cập nhật progress toast mỗi khi hoàn thành 1 câu
+                            toast.loading(`Đang tạo câu hỏi: ${completed}/${total}...`, { id: toastId });
+                        } catch (err) {
+                            console.error("Lỗi tạo câu hỏi:", err);
+                            // Vẫn tiếp tục tạo các câu tiếp theo nếu một câu bị lỗi
+                        }
                     }
 
                     toast.success(`Tạo thành công bộ câu hỏi với ${completed}/${total} câu hỏi!`, { id: toastId });
@@ -425,20 +545,20 @@ export default function CreateQuestionBankPage() {
                                                         <>
                                                             <div className="fixed inset-0 z-30" onClick={() => {
                                                                 setIsDropdownOpen(false);
-                                                                const s = subjects.find(sub => sub.subjectId === selectedSubjectId);
-                                                                if (s) setSearchSubject(s.name);
+                                                                const s = subjectsList.find(sub => sub.subjectId === selectedSubjectId);
+                                                                if (s) setSearchSubject(s.code + " - " + s.name);
                                                                 else setSearchSubject("");
                                                             }} />
                                                             <div className="absolute z-40 top-[52px] left-0 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-emerald-100 dark:border-slate-700 bg-white dark:bg-slate-800 p-2 shadow-xl">
-                                                                {filteredSubjects.length === 0 ? (
+                                                                {subjectsList.length === 0 ? (
                                                                     <div className="p-3 text-center text-sm text-gray-500">
                                                                         Không tìm thấy môn học nào
                                                                     </div>
                                                                 ) : (
-                                                                    filteredSubjects.map(sub => (
+                                                                    subjectsList.map(sub => (
                                                                         <div
                                                                             key={sub.subjectId}
-                                                                            onClick={() => handleSelectSubject(sub.subjectId, sub.name)}
+                                                                            onClick={() => handleSelectSubject(sub.subjectId, sub.code, sub.name)}
                                                                             className={`cursor-pointer rounded-lg px-4 py-2 transition-colors hover:bg-emerald-50 dark:hover:bg-slate-700 ${selectedSubjectId === sub.subjectId ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
                                                                         >
                                                                             {sub.code} - {sub.name}
@@ -490,26 +610,51 @@ export default function CreateQuestionBankPage() {
                                                 initial={{ opacity: 0, height: 0 }}
                                                 animate={{ opacity: 1, height: "auto" }}
                                                 exit={{ opacity: 0, height: 0 }}
-                                                className="mb-8 overflow-hidden"
+                                                className="mb-4 overflow-hidden"
                                             >
-                                                <h3 className="mb-4 text-lg font-bold text-emerald-900 dark:text-emerald-300">
-                                                    Nhập vào JSON
-                                                </h3>
+                                                <div className="flex items-center justify-between mb-4">
+                                                    <h3 className="text-lg font-bold text-emerald-900 dark:text-emerald-300">
+                                                        Nhập câu hỏi từ JSON
+                                                    </h3>
 
-                                                {/* JSON Import Area */}
+                                                    {/* Toggle Switch giữa 2 chế độ */}
+                                                    <div className="flex p-1 bg-emerald-100/50 dark:bg-gray-800 rounded-lg">
+                                                        <button
+                                                            onClick={() => setImportMode('manual')}
+                                                            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${importMode === 'manual'
+                                                                    ? 'bg-white dark:bg-emerald-600 text-emerald-700 dark:text-white shadow-sm'
+                                                                    : 'text-emerald-600 dark:text-emerald-400 hover:bg-white/50'
+                                                                }`}
+                                                        >
+                                                            Nhập thủ công
+                                                        </button>
+                                                        <button
+                                                            onClick={() => setImportMode('file')}
+                                                            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${importMode === 'file'
+                                                                    ? 'bg-white dark:bg-emerald-600 text-emerald-700 dark:text-white shadow-sm'
+                                                                    : 'text-emerald-600 dark:text-emerald-400 hover:bg-white/50'
+                                                                }`}
+                                                        >
+                                                            Tải file .json
+                                                        </button>
+                                                    </div>
+                                                </div>
+
                                                 <div className="space-y-4">
-
-
-
-
-
-
-                                                    {/* Option 2: Textarea for JSON */}
-                                                    <div className="space-y-3">
-                                                        <textarea
-                                                            value={jsonInput}
-                                                            onChange={(e) => setJsonInput(e.target.value)}
-                                                            placeholder='[
+                                                    <AnimatePresence mode="wait">
+                                                        {importMode === 'manual' ? (
+                                                            /* --- CHẾ ĐỘ NHẬP THỦ CÔNG --- */
+                                                            <motion.div
+                                                                key="manual"
+                                                                initial={{ opacity: 0, x: -20 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                exit={{ opacity: 0, x: 20 }}
+                                                                className="space-y-3"
+                                                            >
+                                                                <textarea
+                                                                    value={jsonInput}
+                                                                    onChange={(e) => setJsonInput(e.target.value)}
+                                                                    placeholder='[
   {
     "stem": "Thủ đô của Việt Nam là gì?",
     "options": [
@@ -530,34 +675,112 @@ export default function CreateQuestionBankPage() {
   },
   ...
 ]'
-                                                            className="h-60 w-full rounded-xl border border-emerald-200 bg-white/50 p-4 font-mono text-sm text-emerald-900 placeholder:text-emerald-300 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 dark:border-emerald-800 dark:bg-gray-900/50 dark:text-emerald-100 dark:placeholder:text-emerald-700"
-                                                        />
+                                                                    className="h-60 w-full rounded-xl border border-emerald-200 bg-white/50 p-4 font-mono text-sm text-emerald-900 placeholder:text-emerald-300 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 dark:border-emerald-800 dark:bg-gray-900/50 dark:text-emerald-100 dark:placeholder:text-emerald-700"
+                                                                />
 
-                                                        {/* Format Example */}
-                                                        <details className="group rounded-xl border border-emerald-200 bg-emerald-50/30 p-4 transition-all duration-300 hover:shadow-md dark:border-emerald-800 dark:bg-emerald-950/20">
-    <summary className="flex cursor-pointer items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
-        <span className="flex items-center gap-2">
-            <span className="text-base">📋</span>
-            Lấy prompt để tạo JSON
-        </span>
-        <svg 
-            className="h-4 w-4 transition-transform duration-300 group-open:rotate-180" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-        >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-    </summary>
-    
-    <div className="mt-4 space-y-3">
-        
-        {/* Copy Button Section */}
+                                                                
 
-        <div className="relative">
-            <button
-                onClick={() => {
-                    const promptText = `Bạn là một hệ thống trích xuất dữ liệu chính xác.
+                                                                {/* Action Buttons */}
+                                                                <div className="flex gap-3">
+                                                                    <button
+                                                                        onClick={handleImportJSON}
+                                                                        className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:from-emerald-500 hover:to-teal-500 hover:shadow-lg hover:shadow-emerald-500/25"
+                                                                    >
+                                                                        <FileJson className="h-4 w-4" />
+                                                                        Import JSON
+                                                                    </button>
+                                                                    <button
+                                                                        onClick={handleClearJSON}
+                                                                        className="flex items-center justify-center gap-2 rounded-xl border border-emerald-300 px-4 py-2.5 text-sm font-medium text-emerald-700 transition-all duration-300 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-300 dark:hover:bg-emerald-950/50"
+                                                                    >
+                                                                        <X className="h-4 w-4" />
+                                                                        Xóa
+                                                                    </button>
+                                                                </div>
+                                                            </motion.div>
+                                                        ) : (
+                                                            /* --- CHẾ ĐỘ TẢI FILE --- */
+                                                            <motion.div
+                                                                key="file"
+                                                                initial={{ opacity: 0, x: 20 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                exit={{ opacity: 0, x: -20 }}
+                                                                className="rounded-2xl border-2 border-dashed border-emerald-200 bg-emerald-50/30 p-10 text-center transition-all hover:border-emerald-400 hover:bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/20"
+                                                            >
+                                                                <input
+                                                                    type="file"
+                                                                    accept=".json,application/json"
+                                                                    onChange={handleFileUpload}
+                                                                    className="hidden"
+                                                                    id="json-upload"
+                                                                />
+                                                                <label htmlFor="json-upload" className="cursor-pointer block">
+                                                                    <div className="mb-4 flex justify-center">
+                                                                        <div className="rounded-full bg-emerald-100 p-4 dark:bg-emerald-900/50">
+                                                                            <Upload className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <p className="mb-2 text-lg font-medium text-emerald-900 dark:text-emerald-300">
+                                                                        Tải file JSON lên
+                                                                    </p>
+                                                                    <p className="text-sm text-emerald-600 dark:text-emerald-500">
+                                                                        Hệ thống sẽ tự động nhập dữ liệu sau khi bạn chọn file
+                                                                    </p>
+                                                                </label>
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </div>
+
+                                                {/* Success/Error Message */}
+                                                <AnimatePresence>
+                                                    {jsonMessage && (
+                                                        <motion.div
+                                                            initial={{ opacity: 0, y: -10 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            exit={{ opacity: 0, y: -10 }}
+                                                            className={`mt-4 rounded-xl p-3 text-sm ${jsonMessage.type === "success"
+                                                                    ? "border border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300"
+                                                                    : "border border-red-200 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-950/50 dark:text-red-300"
+                                                                }`}
+                                                        >
+                                                            <div className="flex items-center gap-2">
+                                                                {jsonMessage.type === "success" ? (
+                                                                    <CheckCircle className="h-4 w-4" />
+                                                                ) : (
+                                                                    <AlertCircle className="h-4 w-4" />
+                                                                )}
+                                                                <span>{jsonMessage.text}</span>
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
+{/* Format Example */}
+                                                                <details className="mb-8 group rounded-xl border border-emerald-200 bg-emerald-50/30 p-4 transition-all duration-300 hover:shadow-md dark:border-emerald-800 dark:bg-emerald-950/20">
+                                                                    <summary className="flex cursor-pointer items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
+                                                                        <span className="flex items-center gap-2">
+                                                                            <span className="text-base">📋</span>
+                                                                            Lấy prompt để tạo JSON
+                                                                        </span>
+                                                                        <svg
+                                                                            className="h-4 w-4 transition-transform duration-300 group-open:rotate-180"
+                                                                            fill="none"
+                                                                            stroke="currentColor"
+                                                                            viewBox="0 0 24 24"
+                                                                        >
+                                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                                        </svg>
+                                                                    </summary>
+
+                                                                    <div className="mt-4 space-y-3">
+                                                                        <div className="relative">
+                                                                            <button
+                                                                                onClick={() => {
+                                                                                    const promptText = `Bạn là một hệ thống trích xuất dữ liệu chính xác.
 
 Nhiệm vụ:
 - Đọc file PDF trắc nghiệm được cung cấp
@@ -594,156 +817,52 @@ Lưu ý:
 - Không markdown
 - Không thêm \`\`\`json
 - Chỉ trả về JSON thuần`;
-                    
-                    navigator.clipboard.writeText(promptText);
-                    toast.success("Đã sao chép prompt vào clipboard!");
-                }}
-                className="w-full rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:from-emerald-500 hover:to-teal-500 hover:shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2"
-            >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                </svg>
-                Sao chép prompt
-            </button>
-        </div>
 
-        {/* Info Box */}
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-4 dark:border-emerald-800 dark:bg-gray-900/50">
-            <div className="flex items-start gap-3">
-                <span className="text-xl">💡</span>
-                <div className="flex-1 space-y-3 text-sm text-gray-700 dark:text-gray-300">
-                    <p className="font-bold underline">Hướng dẫn quan trọng:</p>
-                    <p className="text-xs leading-relaxed">
-                        Hãy <strong>tải file PDF hoặc DOCS</strong> có chứa tài liệu trắc nghiệm của bạn lên Gemini và gửi kèm câu lệnh (prompt) bên dưới. 
-                        <span className="block mt-1 text-amber-600 dark:text-amber-400 font-semibold italic">
-                            * Lưu ý: Sử dụng chế độ <span className="underline">GEMINI PRO</span> để cho ra kết quả chính xác nhất!
-                        </span>
-                    </p>
-                    <div className="pt-2 border-t border-emerald-200 dark:border-emerald-800">
-                      <p className="font-medium text-xs mb-2">Prompt này sẽ giúp AI:</p>
-                      <ul className="list-inside list-disc space-y-1 pl-2 text-xs">
-                          <li>Trích xuất đúng 100% câu hỏi và đáp án</li>
-                          <li>Tự động nhận diện đáp án đúng từ định dạng (in đậm, highlight)</li>
-                          <li>Đưa về cấu hình JSON chuẩn để bạn dán vào ô bên trên</li>
-                      </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                                                                    navigator.clipboard.writeText(promptText);
+                                                                                    toast.success("Đã sao chép prompt vào clipboard!");
+                                                                                }}
+                                                                                className="w-full rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:from-emerald-500 hover:to-teal-500 hover:shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2"
+                                                                            >
+                                                                                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                                                                </svg>
+                                                                                Sao chép prompt
+                                                                            </button>
+                                                                        </div>
 
-        {/* Gemini Link */}
-        <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-white/50 p-3 dark:border-emerald-800 dark:bg-gray-900/50">
-            <div className="flex items-center gap-2">
-                <span className="text-sm">🚀</span>
-                <span className="text-xs text-gray-700 dark:text-gray-400">
-                    Hoặc truy cập Gem có sẵn để tạo JSON ngay
-                </span>
-            </div>
-            <a 
-                href="https://gemini.google.com/gem/1ehk6yCYXTnllw6t7SDg2mwCHzeeEl3P5?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-all duration-200 hover:bg-emerald-200 dark:bg-emerald-900/50 dark:text-gray-300 dark:hover:bg-emerald-900"
-            >
-                <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                Mở Gemini
-               
-            </a>
-        </div>
-    </div>
-</details>
+                                                                        <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 p-4 dark:border-emerald-800 dark:bg-gray-900/50">
+                                                                            <div className="flex items-start gap-3">
+                                                                                <span className="text-xl">💡</span>
+                                                                                <div className="flex-1 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                                                                                    <p className="font-bold underline">Hướng dẫn quan trọng:</p>
+                                                                                    <p className="text-xs leading-relaxed">
+                                                                                        Hãy <strong>tải file PDF hoặc DOCS</strong> có chứa tài liệu trắc nghiệm của bạn lên Gemini và gửi kèm câu lệnh (prompt) bên dưới.
+                                                                                        <span className="block mt-1 text-amber-600 dark:text-amber-400 font-semibold italic">
+                                                                                            * Lưu ý: Sử dụng chế độ <span className="underline">GEMINI PRO</span> để cho ra kết quả chính xác nhất!
+                                                                                        </span>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
 
-
-                                                        {/* Or divider */}
-                                                        <div className="relative">
-                                                            <div className="absolute inset-0 flex items-center">
-                                                                <div className="w-full border-t border-emerald-200 dark:border-emerald-800"></div>
-                                                            </div>
-                                                            <div className="relative flex justify-center text-xs">
-                                                                <span className="bg-white px-2 text-emerald-600 dark:bg-gray-900 dark:text-emerald-400">
-                                                                    hoặc
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        {/* Option 1: File Upload */}
-                                                        <div className="rounded-2xl border-2 border-dashed border-emerald-200 bg-emerald-50/30 p-6 text-center transition-all duration-300 hover:border-emerald-400 hover:bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/20 dark:hover:border-emerald-600">
-                                                            <input
-                                                                type="file"
-                                                                accept=".json,application/json"
-                                                                onChange={handleFileUpload}
-                                                                className="hidden"
-                                                                id="json-upload"
-                                                            />
-                                                            <label
-                                                                htmlFor="json-upload"
-                                                                className="cursor-pointer"
-                                                            >
-                                                                <div className="mb-3 flex justify-center">
-                                                                    <div className="rounded-full bg-emerald-100 p-3 dark:bg-emerald-900/50">
-                                                                        <Upload className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                                                                        <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-white/50 p-3 dark:border-emerald-800 dark:bg-gray-900/50">
+                                                                            <div className="flex items-center gap-2">
+                                                                                <span className="text-sm">🚀</span>
+                                                                                <span className="text-xs text-gray-700 dark:text-gray-400">
+                                                                                    Hoặc truy cập Gem có sẵn để tạo JSON ngay
+                                                                                </span>
+                                                                            </div>
+                                                                            <a
+                                                                                href="https://gemini.google.com/gem/1ehk6yCYXTnllw6t7SDg2mwCHzeeEl3P5?usp=sharing"
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-100 px-3 py-1.5 text-xs font-medium text-gray-700 transition-all duration-200 hover:bg-emerald-200 dark:bg-emerald-900/50 dark:text-gray-300 dark:hover:bg-emerald-900"
+                                                                            >
+                                                                                Mở Gemini
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <p className="mb-1 font-medium text-emerald-900 dark:text-emerald-300">
-                                                                    Tải file JSON lên
-                                                                </p>
-                                                                <p className="text-xs text-emerald-600 dark:text-emerald-500">
-                                                                    Kéo & thả hoặc click để chọn file .json
-                                                                </p>
-                                                            </label>
-                                                        </div>
-
-
-                                                        {/* Action Buttons */}
-                                                        <div className="flex gap-3">
-                                                            <button
-                                                                onClick={handleImportJSON}
-                                                                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:from-emerald-500 hover:to-teal-500 hover:shadow-lg hover:shadow-emerald-500/25"
-                                                            >
-                                                                <FileJson className="h-4 w-4" />
-                                                                Import JSON
-                                                            </button>
-                                                            <button
-                                                                onClick={handleClearJSON}
-                                                                className="flex items-center justify-center gap-2 rounded-xl border border-emerald-300 px-4 py-2.5 text-sm font-medium text-emerald-700 transition-all duration-300 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-300 dark:hover:bg-emerald-950/50"
-                                                            >
-                                                                <X className="h-4 w-4" />
-                                                                Xóa
-                                                            </button>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                                {/* Success/Error Message */}
-                                                <AnimatePresence>
-                                                    {jsonMessage && (
-                                                        <motion.div
-                                                            initial={{ opacity: 0, y: -10 }}
-                                                            animate={{ opacity: 1, y: 0 }}
-                                                            exit={{ opacity: 0, y: -10 }}
-                                                            className={`mt-4 rounded-xl p-3 text-sm ${jsonMessage.type === "success"
-                                                                ? "border border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300"
-                                                                : "border border-red-200 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-950/50 dark:text-red-300"
-                                                                }`}
-                                                        >
-                                                            <div className="flex items-center gap-2">
-                                                                {jsonMessage.type === "success" ? (
-                                                                    <CheckCircle className="h-4 w-4" />
-                                                                ) : (
-                                                                    <AlertCircle className="h-4 w-4" />
-                                                                )}
-                                                                <span>{jsonMessage.text}</span>
-                                                            </div>
-                                                        </motion.div>
-                                                    )}
-                                                </AnimatePresence>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-
+                                                                </details>
                                     {/* Tags */}
                                     <div className="mb-8">
                                         <h3 className="mb-4 text-lg font-bold text-emerald-900 dark:text-emerald-300">
@@ -907,21 +1026,67 @@ Lưu ý:
                     <div className="lg:col-span-1">
                         <FadeInOnView amount={0.2}>
                             <div className="sticky top-8 space-y-6">
-                                {/* Quick Stats */}
+                                 {/* Hướng 2: Real-time Feedback (Chỉ hiện khi có câu hỏi) */}
+                                {importedQuestions && importedQuestions.length > 0 && (
+                                    <motion.div 
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 shadow-xl text-white border border-emerald-500/30"
+                                    >
+                                        <h3 className="mb-4 text-sm font-bold uppercase tracking-wider opacity-80">
+                                            Bộ câu hỏi đang soạn
+                                        </h3>
+                                        <div className="space-y-4">
+                                            <div className="flex justify-between items-end">
+                                                <div>
+                                                    <div className="text-3xl font-black">{importedQuestions.length}</div>
+                                                    <div className="text-[10px] opacity-70 uppercase">Câu hỏi đã nhận</div>
+                                                </div>
+                                                <div className="text-right">
+                                                    <div className="text-lg font-bold">
+                                                        {importedQuestions.every(q => q.options?.some(o => o.isCorrect)) ? "Sẵn sàng ✅" : "Cần rà soát ⚠️"}
+                                                    </div>
+                                                    <div className="text-[10px] opacity-70 uppercase">Độ hoàn thiện</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="pt-3 border-t border-white/10">
+                                                <div className="flex items-center gap-2 text-xs">
+                                                    <Sparkles className="h-3.5 w-3.5 text-amber-300" />
+                                                    <span>Thời gian học ước tính: <strong>{~((importedQuestions.length * 45) / 60)} phút</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )}
+
+                                {/* Hướng 1: Personal Brand Stats */}
                                 <div className="rounded-2xl bg-white dark:bg-slate-900 p-6 shadow-lg border border-emerald-100 dark:border-slate-700">
-                                    <h3 className="mb-4 text-lg font-bold text-emerald-900 dark:text-emerald-300">
-                                        Thống kê của bạn
-                                    </h3>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div className="rounded-lg bg-emerald-50 dark:bg-emerald-900/20 p-3 text-center">
-                                            <div className="text-xl font-bold text-emerald-700 dark:text-emerald-300">0</div>
-                                            <div className="text-xs text-emerald-600 dark:text-emerald-400">Bộ câu hỏi</div>
-                                        </div>
-                                        <div className="rounded-lg bg-blue-50 dark:bg-blue-900/20 p-3 text-center">
-                                            <div className="text-xl font-bold text-blue-700 dark:text-blue-300">0</div>
-                                            <div className="text-xs text-blue-600 dark:text-blue-400">Lượt tải</div>
-                                        </div>
+                                    <div className="flex items-center justify-between mb-4">
+                                        <h3 className="text-lg font-bold text-emerald-900 dark:text-emerald-300">
+                                            Uy tín cá nhân
+                                        </h3>
+                                        <ShieldCheck className="h-5 w-5 text-emerald-500" />
                                     </div>
+                                    
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <div className="rounded-xl bg-emerald-50 dark:bg-emerald-900/20 p-3">
+                                                <div className="text-xl font-black text-emerald-700 dark:text-emerald-300">{userStats?.totalBanks || 0}</div>
+                                                <div className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-tight">Bộ câu hỏi</div>
+                                            </div>
+                                            <div className="rounded-xl bg-amber-50 dark:bg-amber-900/20 p-3">
+                                                <div className="text-xl font-black text-amber-700 dark:text-amber-300">{userStats?.reputation || 0}</div>
+                                                <div className="text-[10px] font-medium text-amber-600 dark:text-amber-400 uppercase tracking-tight">Điểm uy tín</div>
+                                            </div>
+                                            <div className="rounded-xl bg-blue-50 dark:bg-blue-900/20 p-3">
+                                                <div className="text-xl font-black text-blue-700 dark:text-blue-300">{userStats?.totalLikes || 0}</div>
+                                                <div className="text-[10px] font-medium text-blue-600 dark:text-blue-400 uppercase tracking-tight">Lượt thích</div>
+                                            </div>
+                                            <div className="rounded-xl bg-purple-50 dark:bg-purple-900/20 p-3">
+                                                <div className="text-xl font-black text-purple-700 dark:text-purple-300">{userStats?.approvalRate || 0}%</div>
+                                                <div className="text-[10px] font-medium text-purple-600 dark:text-purple-400 uppercase tracking-tight">Tỉ lệ duyệt</div>
+                                            </div>
+                                        </div>
                                 </div>
                                 {/* Creation Steps */}
                                 <div className="rounded-2xl bg-white dark:bg-slate-900 p-6 shadow-lg border border-emerald-100 dark:border-slate-700">

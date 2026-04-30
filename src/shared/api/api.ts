@@ -42,7 +42,7 @@ class ApiService {
           // Handle unauthorized
           localStorage.removeItem('auth_token');
           sessionStorage.removeItem('auth_token');
-          window.location.href = '/login';
+          window.location.href = `${import.meta.env.BASE_URL}login`;
         }
         return Promise.reject(error);
       }
