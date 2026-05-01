@@ -81,45 +81,9 @@ export default function QuestionBanksPage() {
 
   // ======= DATA FETCHING (React Query) =======
   const { data: pageResult, isLoading, error: queryError } = useQuery({
-    queryKey: ['question-banks', page, pageSize, q, sortOption, checkOnline],
+    queryKey: ['question-banks', page, pageSize, q, sortOption],
     queryFn: async () => {
-      const getLocalData = async () => {
-        const res = await fetch(`${import.meta.env.BASE_URL}data/questionBanks.json`);
-        const json = await res.json();
-        // Client-side filtering for local data
-        let filtered = Array.isArray(json) ? json : (json.content || []);
-        
-        if (q) {
-          const lowerQ = normalizeText(q.toLowerCase());
-          filtered = filtered.filter((b: any) => 
-            normalizeText(b.name.toLowerCase()).includes(lowerQ) || 
-            (b.description && normalizeText(b.description.toLowerCase()).includes(lowerQ))
-          );
-        }
-        
-        // Client-side sorting for local data
-        const [field, dir] = toSortParam(sortOption).split(',');
-        filtered.sort((a: any, b: any) => {
-          const valA = a[field] ?? "";
-          const valB = b[field] ?? "";
-          if (typeof valA === 'string') {
-            const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
-            return dir === 'asc' ? cmp : -cmp;
-          }
-          return dir === 'asc' ? (valA as number) - (valB as number) : (valB as number) - (valA as number);
-        });
-
-        // Client-side pagination
-        const start = (page - 1) * pageSize;
-        return {
-          content: filtered.slice(start, start + pageSize),
-          totalPages: Math.ceil(filtered.length / pageSize),
-          totalElements: filtered.length
-        };
-      };
-
-      if (!checkOnline) return getLocalData();
-
+      
       try {
         const params = {
           page: page - 1,
@@ -133,8 +97,6 @@ export default function QuestionBanksPage() {
         return await QuestionBankApi.getAll(params);
       } catch (err) {
         setCheckOnline(false);
-        toast.error("Kết nối đến API thất bại, đang sử dụng dữ liệu nội bộ");
-        return getLocalData();
       }
     },
     placeholderData: (prev) => prev,

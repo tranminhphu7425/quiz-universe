@@ -1,4 +1,4 @@
-import { apiService } from "@/shared/api/api";
+import { apiService, publicApiService } from "@/shared/api/api";
 import { Subject, SubjectNameResponse } from "../types/subject";
 
 /* ===================== QUERY ===================== */
@@ -50,7 +50,7 @@ export function fetchSubjects(
   params?: PageParams,
   signal?: AbortSignal
 ): Promise<PaginatedResponse<Subject>> {
-  return apiService.get<PaginatedResponse<Subject>>(
+  return publicApiService.get<PaginatedResponse<Subject>>(
     `/subjects`,
     { params, signal }
   );

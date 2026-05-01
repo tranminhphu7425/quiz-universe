@@ -93,59 +93,7 @@ export default function CreateQuestionBankPage() {
     } = useQuery({
         queryKey: ["subjects", { page, pageSize, keyword, sort: sortOption, checkOnline }],
         queryFn: async () => {
-            const getLocalData = async () => {
-                try {
-                    const res = await fetch(`${import.meta.env.BASE_URL}data/subjects.json`);
-                    const allSubjects: Subject[] = await res.json();
-
-                    // 1. Client-side filtering
-                    let filtered = allSubjects;
-                    if (keyword) {
-                        const lowerKw = keyword.toLowerCase();
-                        filtered = allSubjects.filter(s =>
-                            s.name.toLowerCase().includes(lowerKw) ||
-                            (s.description && s.description.toLowerCase().includes(lowerKw)) ||
-                            (s.code && s.code.toLowerCase().includes(lowerKw))
-                        );
-                    }
-
-                    // 2. Client-side sorting
-                    const [field, dir] = toSortParam(sortOption).split(',');
-                    filtered.sort((a, b) => {
-                        const valA = a[field as keyof Subject] ?? (field === 'bankCount' ? 0 : "");
-                        const valB = b[field as keyof Subject] ?? (field === 'bankCount' ? 0 : "");
-
-                        if (typeof valA === 'string' && typeof valB === 'string') {
-                            const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
-                            return dir === 'asc' ? cmp : -cmp;
-                        }
-
-                        if (typeof valA === 'number' && typeof valB === 'number') {
-                            return dir === 'asc' ? valA - valB : valB - valA;
-                        }
-
-                        return 0;
-                    });
-
-                    // 3. Client-side pagination (chỉ lấy 10 kết quả đầu tiên)
-                    const totalElements = filtered.length;
-                    const totalPages = Math.ceil(totalElements / pageSize);
-                    const start = (page - 1) * pageSize;
-                    const pagedContent = filtered.slice(start, start + pageSize);
-
-                    return {
-                        content: pagedContent,
-                        totalPages,
-                        totalElements,
-                    };
-                } catch (e) {
-                    console.error(e);
-                    return { content: [], totalPages: 1, totalElements: 0 };
-                }
-            };
-
-            if (!checkOnline) return getLocalData();
-
+           
             try {
                 return await fetchSubjects({
                     page: page - 1,
@@ -155,9 +103,6 @@ export default function CreateQuestionBankPage() {
                 });
             } catch (error) {
                 setCheckOnline(false);
-                console.error("Backend fetch failed, falling back to local data:", error);
-                toast.error("Kết nối đến API thất bại, đang sử dụng dữ liệu nội bộ");
-                return getLocalData();
             }
         },
     });

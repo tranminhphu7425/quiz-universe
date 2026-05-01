@@ -70,7 +70,53 @@ class ApiService {
           const data = await res.json();
           // If the original request expects a paginated format and the fallback is /all
           if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/subjects')) {
-            return { content: data, totalElements: data.length, totalPages: 1, size: data.length, number: 0 } as any;
+            const params = new URLSearchParams(url.split('?')[1] || '');
+            const page = parseInt(params.get('page') || '0', 10);
+            const size = parseInt(params.get('size') || '10', 10);
+            const keyword = (params.get('keyword') || '').toLowerCase();
+            const sort = params.get('sort') || '';
+
+            let filtered = data;
+            
+            if (keyword) {
+              filtered = data.filter((item: any) => 
+                (item.name && item.name.toLowerCase().includes(keyword)) ||
+                (item.description && item.description.toLowerCase().includes(keyword)) ||
+                (item.code && item.code.toLowerCase().includes(keyword))
+              );
+            }
+
+            if (sort) {
+              const [field, dir] = sort.split(',');
+              filtered.sort((a: any, b: any) => {
+                 const valA = a[field] ?? (field === 'bankCount' ? 0 : "");
+                 const valB = b[field] ?? (field === 'bankCount' ? 0 : "");
+                 if (typeof valA === 'string' && typeof valB === 'string') {
+                   const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
+                   return dir === 'desc' ? -cmp : cmp;
+                 }
+                 if (typeof valA === 'number' && typeof valB === 'number') {
+                   return dir === 'desc' ? valB - valA : valA - valB;
+                 }
+                 return 0;
+              });
+            }
+
+            const totalElements = filtered.length;
+            const totalPages = Math.ceil(totalElements / size);
+            const start = page * size;
+            const pagedContent = filtered.slice(start, start + size);
+
+            return { 
+              content: pagedContent, 
+              totalElements, 
+              totalPages, 
+              size, 
+              number: page,
+              first: page === 0,
+              last: page >= totalPages - 1,
+              empty: totalElements === 0
+            } as any;
           }
           return data;
         }
@@ -135,8 +181,55 @@ class PublicApiService {
         if (res.ok) {
           toast.error("Mất kết nối máy chủ. Đang tải dữ liệu cục bộ...", { id: 'api-fallback', duration: 4000 });
           const data = await res.json();
+          // If the original request expects a paginated format and the fallback is /all
           if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/subjects')) {
-            return { content: data, totalElements: data.length, totalPages: 1, size: data.length, number: 0 } as any;
+            const params = new URLSearchParams(url.split('?')[1] || '');
+            const page = parseInt(params.get('page') || '0', 10);
+            const size = parseInt(params.get('size') || '10', 10);
+            const keyword = (params.get('keyword') || '').toLowerCase();
+            const sort = params.get('sort') || '';
+
+            let filtered = data;
+            
+            if (keyword) {
+              filtered = data.filter((item: any) => 
+                (item.name && item.name.toLowerCase().includes(keyword)) ||
+                (item.description && item.description.toLowerCase().includes(keyword)) ||
+                (item.code && item.code.toLowerCase().includes(keyword))
+              );
+            }
+
+            if (sort) {
+              const [field, dir] = sort.split(',');
+              filtered.sort((a: any, b: any) => {
+                 const valA = a[field] ?? (field === 'bankCount' ? 0 : "");
+                 const valB = b[field] ?? (field === 'bankCount' ? 0 : "");
+                 if (typeof valA === 'string' && typeof valB === 'string') {
+                   const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
+                   return dir === 'desc' ? -cmp : cmp;
+                 }
+                 if (typeof valA === 'number' && typeof valB === 'number') {
+                   return dir === 'desc' ? valB - valA : valA - valB;
+                 }
+                 return 0;
+              });
+            }
+
+            const totalElements = filtered.length;
+            const totalPages = Math.ceil(totalElements / size);
+            const start = page * size;
+            const pagedContent = filtered.slice(start, start + size);
+
+            return { 
+              content: pagedContent, 
+              totalElements, 
+              totalPages, 
+              size, 
+              number: page,
+              first: page === 0,
+              last: page >= totalPages - 1,
+              empty: totalElements === 0
+            } as any;
           }
           return data;
         }
