@@ -1,6 +1,7 @@
 // src/shared/api/api.ts
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { toast } from 'react-hot-toast';
 
 const API_BASE_URL = 'http://localhost:8080/api';
 
@@ -65,6 +66,7 @@ class ApiService {
 
         const res = await fetch(fallbackUrl);
         if (res.ok) {
+          toast.error("Mất kết nối máy chủ. Đang tải dữ liệu cục bộ...", { id: 'api-fallback', duration: 4000 });
           const data = await res.json();
           // If the original request expects a paginated format and the fallback is /all
           if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/subjects')) {
@@ -131,12 +133,14 @@ class PublicApiService {
 
         const res = await fetch(fallbackUrl);
         if (res.ok) {
+          toast.error("Mất kết nối máy chủ. Đang tải dữ liệu cục bộ...", { id: 'api-fallback', duration: 4000 });
           const data = await res.json();
           if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/subjects')) {
             return { content: data, totalElements: data.length, totalPages: 1, size: data.length, number: 0 } as any;
           }
           return data;
         }
+        toast
       } catch (fallbackError) {
         console.error(`[API Fallback] Static JSON also failed for ${url}`);
       }

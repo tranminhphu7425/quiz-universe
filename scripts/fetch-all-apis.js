@@ -73,7 +73,7 @@ async function runSync() {
   }
 
   // If there are subject-specific question APIs, sync them too
-  const subjectsData = await fetchAndSave('/subjects/all');
+  const subjectsData = await fetchAndSave('/subjects/all'); 
   if (subjectsData) {
     const subjects = Array.isArray(subjectsData) ? subjectsData : (subjectsData.content || []);
     console.log(`\n📘 Found ${subjects.length} subjects. Syncing subject questions...`);
