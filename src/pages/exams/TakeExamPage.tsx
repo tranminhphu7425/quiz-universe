@@ -5,16 +5,19 @@ import {
   Clock, ChevronLeft, ChevronRight, Flag, CheckCircle2,
   AlertTriangle, BookOpen, Eye, Send
 } from "lucide-react";
+import { FEATURE_FLAGS } from "@/shared/config/features";
 
 interface ExamOption {
   label: string;
   content: string;
+  imageUrl?: string;
 }
 
 interface ExamQuestion {
   id: number;
   stem: string;
   options: ExamOption[];
+  imageUrl?: string;
 }
 
 // Mock exam data
@@ -144,6 +147,16 @@ export default function TakeExamPage() {
               {/* Stem */}
               <h2 className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-8 leading-relaxed">{currentQuestion.stem}</h2>
 
+              {FEATURE_FLAGS.ENABLE_QUESTION_IMAGES && currentQuestion.imageUrl && (
+                <div className="mb-8 overflow-hidden rounded-2xl border border-gray-100 bg-gray-50 dark:border-slate-700 dark:bg-slate-950/50">
+                  <img 
+                    src={currentQuestion.imageUrl} 
+                    alt="Question illustration" 
+                    className="max-h-96 w-auto object-contain mx-auto"
+                  />
+                </div>
+              )}
+
               {/* Options */}
               <div className="space-y-3">
                 {currentQuestion.options.map(opt => {
@@ -158,9 +171,20 @@ export default function TakeExamPage() {
                         ? 'bg-indigo-500 text-white' : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300'}`}>
                         {opt.label}
                       </div>
-                      <span className={`text-sm ${isSelected ? 'font-semibold text-indigo-900 dark:text-indigo-200' : 'text-gray-700 dark:text-gray-300'}`}>
-                        {opt.content}
-                      </span>
+                      <div className="flex-1">
+                        <span className={`text-sm ${isSelected ? 'font-semibold text-indigo-900 dark:text-indigo-200' : 'text-gray-700 dark:text-gray-300'}`}>
+                          {opt.content}
+                        </span>
+                        {FEATURE_FLAGS.ENABLE_QUESTION_IMAGES && opt.imageUrl && (
+                          <div className="mt-2 overflow-hidden rounded-lg border border-gray-100 dark:border-slate-700">
+                            <img 
+                              src={opt.imageUrl} 
+                              alt={`Option ${opt.label}`} 
+                              className="max-h-32 w-auto object-contain"
+                            />
+                          </div>
+                        )}
+                      </div>
                       {isSelected && <CheckCircle2 className="h-5 w-5 text-indigo-500 ml-auto flex-shrink-0" />}
                     </motion.button>
                   );

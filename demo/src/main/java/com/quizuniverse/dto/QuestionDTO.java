@@ -19,5 +19,6 @@ public class QuestionDTO {
     private String status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String imageUrl;
     private List<QuestionOptionDTO> options;
 }

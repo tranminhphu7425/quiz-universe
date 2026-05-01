@@ -15,4 +15,5 @@ public class QuestionOptionDTO {
     private String content;
     private Boolean isCorrect;
     private Integer sortOrder;
+    private String imageUrl;
 }

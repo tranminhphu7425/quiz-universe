@@ -199,6 +199,8 @@ export default function CreateQuestionBankPage() {
                     throw new Error(`Câu hỏi #${idx + 1} thiếu "stem"`);
                 }
 
+                const imageUrl = typeof obj?.imageUrl === "string" ? obj.imageUrl.trim() : undefined;
+
                 const rawOptionsUnknown = obj?.options;
                 const rawOptions = Array.isArray(rawOptionsUnknown) ? rawOptionsUnknown : [];
                 const options = rawOptions
@@ -209,10 +211,12 @@ export default function CreateQuestionBankPage() {
                         label: (o.label as string).trim(),
                         content: (o.content as string).trim(),
                         isCorrect: Boolean(o.isCorrect),
+                        imageUrl: typeof o.imageUrl === "string" ? o.imageUrl.trim() : undefined,
                     }));
 
                 return {
                     stem,
+                    imageUrl,
                     questionType: "mcq_single",
                     options,
                 };

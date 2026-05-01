@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, XCircle, Flag } from "lucide-react";
 import { Question, QuestionOption } from "@/shared/types/question";
+import { FEATURE_FLAGS } from "@/shared/config/features";
 import { stemToSegments, normalize } from "../utils";
 
 export function QuestionCard({
@@ -88,6 +89,17 @@ export function QuestionCard({
             )}
           </div>
 
+          {FEATURE_FLAGS.ENABLE_QUESTION_IMAGES && q.imageUrl && (
+            <div className="mb-4 overflow-hidden rounded-xl border border-slate-100 bg-slate-50 dark:border-slate-800 dark:bg-slate-950/50">
+              <img 
+                src={q.imageUrl} 
+                alt="Question illustration" 
+                className="max-h-80 w-auto object-contain mx-auto"
+                loading="lazy"
+              />
+            </div>
+          )}
+
           <div className="mt-3 grid gap-2">
             {q.options ? (
               q.options
@@ -156,6 +168,17 @@ export function QuestionCard({
                     }
                   })}
                 </p>
+
+                {FEATURE_FLAGS.ENABLE_QUESTION_IMAGES && q.imageUrl && (
+                  <div className="mb-4 overflow-hidden rounded-xl border border-slate-100 bg-slate-50 dark:border-slate-800 dark:bg-slate-950/50">
+                    <img 
+                      src={q.imageUrl} 
+                      alt="Question illustration" 
+                      className="max-h-80 w-auto object-contain mx-auto"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
 
                 {showResult && segs.filter(s => s.type === "blank").length > opts.length && (
                   <div className="mt-3 text-xs text-amber-600 dark:text-amber-300">
@@ -269,6 +292,16 @@ function OptionItem({
           </span>
           <span>{opt.content}</span>
         </div>
+        {FEATURE_FLAGS.ENABLE_QUESTION_IMAGES && opt.imageUrl && (
+          <div className="mt-2 overflow-hidden rounded-lg border border-slate-100 bg-white dark:border-slate-800 dark:bg-slate-950/30">
+            <img 
+              src={opt.imageUrl} 
+              alt={`Option ${opt.label} illustration`} 
+              className="max-h-40 w-auto object-contain"
+              loading="lazy"
+            />
+          </div>
+        )}
       </div>
     </label>
   );

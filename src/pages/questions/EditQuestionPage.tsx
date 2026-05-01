@@ -9,8 +9,9 @@ import {
   RefreshCcw,
   Save,
   Trash2, AlertTriangle,
-  Settings, X, Users, ShieldCheck, Globe
+  Settings, X, Users, ShieldCheck, Globe, Image, BookOpen
 } from "lucide-react";
+import { FEATURE_FLAGS } from "@/shared/config/features";
 
 import {
   fetchQuestionsByBankId, updateQuestionApi, createQuestionApi, deleteQuestionApi, createQuestionInBankApi
@@ -132,6 +133,11 @@ export default function EditQuestionsPage() {
   function setExplanation(v: string) {
     if (!editing) return;
     setEditing({ ...editing, explanation: v } as Question);
+  }
+
+  function setImageUrl(v: string) {
+    if (!editing) return;
+    setEditing({ ...editing, imageUrl: v } as Question);
   }
 
   function setType(v: Question["questionType"]) {
@@ -295,12 +301,20 @@ export default function EditQuestionsPage() {
     try {
       const payload: UpdateQuestionPayload = {
         stem: editing.stem,
+        imageUrl: editing.imageUrl,
         explanation: editing.explanation ?? undefined,
         questionType: editing.questionType,
         options: (editing.options || [])
           .slice()
           .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
-          .map((o) => ({ optionId: o.optionId > 0 ? o.optionId : undefined, label: o.label, content: o.content, isCorrect: !!o.isCorrect, sortOrder: o.sortOrder })),
+          .map((o) => ({ 
+            optionId: o.optionId > 0 ? o.optionId : undefined, 
+            label: o.label, 
+            content: o.content, 
+            isCorrect: !!o.isCorrect, 
+            sortOrder: o.sortOrder,
+            imageUrl: o.imageUrl
+          })),
       };
       const saved = await updateQuestionApi(editing.questionId, payload);
 
@@ -407,6 +421,11 @@ export default function EditQuestionsPage() {
               <Settings className="h-4 w-4" />
               Thiết lập bộ câu hỏi
             </button>
+
+            <Link to="/question-banks" className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15 whitespace-nowrap">
+              <BookOpen className="h-4 w-4" />
+              Danh sách bộ câu hỏi
+            </Link>
 
             <Link to={`/questions/question-bank/${bankId}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15 whitespace-nowrap">
               <ArrowLeft className="h-4 w-4" />
@@ -608,6 +627,29 @@ export default function EditQuestionsPage() {
                 )}
               </div>
 
+              {/* Image URL */}
+              {FEATURE_FLAGS.ENABLE_QUESTION_IMAGES && (
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                    <Image className="h-4 w-4" /> Hình ảnh câu hỏi (URL)
+                  </label>
+                  <div className="flex gap-2">
+                    <input 
+                      type="text" 
+                      value={editing.imageUrl || ""} 
+                      onChange={(e) => setImageUrl(e.target.value)} 
+                      className="w-full rounded-xl border border-slate-300 bg-white p-3 text-sm outline-none ring-emerald-300 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" 
+                      placeholder="https://example.com/image.png" 
+                    />
+                  </div>
+                  {editing.imageUrl && (
+                    <div className="mt-2 h-20 w-20 overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700">
+                      <img src={editing.imageUrl} alt="Preview" className="h-full w-full object-cover" />
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* Explanation */}
               <div>
                 <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">Giải thích (tuỳ chọn)</label>
@@ -633,16 +675,35 @@ export default function EditQuestionsPage() {
                         <div className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-md bg-slate-100 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">
                           {opt.label || autoLabel(idx)}
                         </div>
-                        <div className="grid flex-1 gap-2 md:grid-cols-[1fr_auto]">
-                          <input type="text" value={opt.content || ""} onChange={(e) => patchOption(opt.optionId, { content: e.target.value })} placeholder={editing.questionType === "fill_in" ? "Đáp án đúng cho ô này (có thể \"a|b|c\")" : "Nội dung phương án"} className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-emerald-300 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" />
+                        <div className="grid flex-1 gap-2">
+                          <div className="grid gap-2 md:grid-cols-[1fr_auto]">
+                            <input type="text" value={opt.content || ""} onChange={(e) => patchOption(opt.optionId, { content: e.target.value })} placeholder={editing.questionType === "fill_in" ? "Đáp án đúng cho ô này (có thể \"a|b|c\")" : "Nội dung phương án"} className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-emerald-300 focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100" />
 
-                          {editing.questionType === "mcq_single" ? (
-                            <label className="inline-flex items-center justify-end gap-2 text-sm text-slate-700 dark:text-slate-200">
-                              <input type="radio" name="correct" checked={!!opt.isCorrect} onChange={() => setCorrect(opt.optionId)} className="h-4 w-4 accent-emerald-700" />
-                              Đúng
-                            </label>
-                          ) : (
-                            <div className="text-right text-[12px] text-slate-500 dark:text-slate-400 self-center">(Tự động chấm theo văn bản)</div>
+                            {editing.questionType === "mcq_single" ? (
+                              <label className="inline-flex items-center justify-end gap-2 text-sm text-slate-700 dark:text-slate-200">
+                                <input type="radio" name="correct" checked={!!opt.isCorrect} onChange={() => setCorrect(opt.optionId)} className="h-4 w-4 accent-emerald-700" />
+                                Đúng
+                              </label>
+                            ) : (
+                              <div className="text-right text-[12px] text-slate-500 dark:text-slate-400 self-center">(Tự động chấm theo văn bản)</div>
+                            )}
+                          </div>
+                          
+                          {FEATURE_FLAGS.ENABLE_QUESTION_IMAGES && (
+                            <div className="flex items-center gap-2">
+                              <input 
+                                type="text" 
+                                value={opt.imageUrl || ""} 
+                                onChange={(e) => patchOption(opt.optionId, { imageUrl: e.target.value })} 
+                                placeholder="Link hình ảnh cho lựa chọn này..." 
+                                className="flex-1 rounded-lg border border-slate-200 bg-slate-50/50 px-3 py-1.5 text-xs outline-none focus:border-emerald-400 dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-200" 
+                              />
+                              {opt.imageUrl && (
+                                <div className="h-8 w-8 overflow-hidden rounded border border-slate-200 dark:border-slate-700">
+                                  <img src={opt.imageUrl} alt="Preview" className="h-full w-full object-cover" />
+                                </div>
+                              )}
+                            </div>
                           )}
                         </div>
                         <button type="button" onClick={() => removeOption(opt.optionId)} className="rounded-md p-2 text-slate-500 hover:bg-slate-100 hover:text-rose-600 dark:hover:bg-slate-800" title="Xoá">

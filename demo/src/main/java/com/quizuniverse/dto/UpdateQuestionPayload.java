@@ -5,6 +5,7 @@ public class UpdateQuestionPayload {
     private String stem;
     private String explanation;    
     private String questionType;
+    private String imageUrl;
     private List<QuestionOptionDTO> options;
     public String getStem() {
         return stem;
@@ -18,6 +19,9 @@ public class UpdateQuestionPayload {
     public List<QuestionOptionDTO> getOptions() {
         return options;
     }
+    public String getImageUrl() {
+        return imageUrl;
+    }
     public void setStem(String stem) {
         this.stem = stem;
     }
@@ -29,6 +33,9 @@ public class UpdateQuestionPayload {
     }
     public void setOptions(List<QuestionOptionDTO> options) {
         this.options = options;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
         

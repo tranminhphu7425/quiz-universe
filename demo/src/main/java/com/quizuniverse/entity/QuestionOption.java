@@ -33,4 +33,7 @@ public class QuestionOption {
 
     @Column(name = "sort_order")
     private Integer sortOrder;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 }

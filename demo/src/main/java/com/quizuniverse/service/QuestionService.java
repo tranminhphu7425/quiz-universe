@@ -65,6 +65,7 @@ public class QuestionService {
         dto.setStatus(question.getStatus().name());
         dto.setCreatedAt(question.getCreatedAt());
         dto.setUpdatedAt(question.getUpdatedAt());
+        dto.setImageUrl(question.getImageUrl());
 
         dto.setOptions(question.getOptions().stream()
                 .map(option -> {
@@ -74,6 +75,7 @@ public class QuestionService {
                     optionDTO.setContent(option.getContent());
                     optionDTO.setIsCorrect(option.getIsCorrect());
                     optionDTO.setSortOrder(option.getSortOrder());
+                    optionDTO.setImageUrl(option.getImageUrl());
                     return optionDTO;
                 })
                 .collect(Collectors.toList()));
@@ -97,6 +99,7 @@ public class QuestionService {
         q.setQuestionType(
                 Question.QuestionType.valueOf(payload.getQuestionType())
         );
+        q.setImageUrl(payload.getImageUrl());
 
         // đồng bộ options
         Map<Long, QuestionOption> current = q.getOptions().stream()
@@ -118,6 +121,7 @@ public class QuestionService {
             opt.setContent(dto.getContent());
             opt.setIsCorrect(dto.getIsCorrect());
             opt.setSortOrder(dto.getSortOrder());
+            opt.setImageUrl(dto.getImageUrl());
             newList.add(opt);
         }
 
@@ -142,6 +146,7 @@ public class QuestionService {
         question.setExplanation(dto.getExplanation());
         question.setQuestionType(Question.QuestionType.valueOf(dto.getQuestionType()));
         question.setStatus(Question.QuestionStatus.approved);
+        question.setImageUrl(dto.getImageUrl());
         question.setCreatedAt(LocalDateTime.now());
         question.setUpdatedAt(LocalDateTime.now());
 
@@ -157,6 +162,7 @@ public class QuestionService {
                         opt.setContent(optDto.getContent());
                         opt.setIsCorrect(Boolean.TRUE.equals(optDto.getIsCorrect()));
                         opt.setSortOrder(optDto.getSortOrder());
+                        opt.setImageUrl(optDto.getImageUrl());
                         return opt;
                     })
                     .toList();
@@ -189,6 +195,7 @@ public class QuestionService {
         question.setExplanation(dto.getExplanation());
         question.setQuestionType(Question.QuestionType.valueOf(dto.getQuestionType()));
         question.setStatus(Question.QuestionStatus.approved);
+        question.setImageUrl(dto.getImageUrl());
         question.setCreatedAt(LocalDateTime.now());
         question.setUpdatedAt(LocalDateTime.now());
 
@@ -204,6 +211,7 @@ public class QuestionService {
                         opt.setContent(optDto.getContent());
                         opt.setIsCorrect(Boolean.TRUE.equals(optDto.getIsCorrect()));
                         opt.setSortOrder(optDto.getSortOrder());
+                        opt.setImageUrl(optDto.getImageUrl());
                         return opt;
                     })
                     .toList();

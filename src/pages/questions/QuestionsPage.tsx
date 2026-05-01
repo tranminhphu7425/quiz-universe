@@ -15,7 +15,9 @@ import {
   TimerReset,
   ArrowLeft,
   BookOpen,
+  Edit,
 } from "lucide-react";
+import { useAuth } from "@/app/providers/AuthProvider";
 import { ArrowRight, LayoutGrid, RefreshCcw, Sparkles, XCircle } from "lucide-react";
 import LoadingState from "@/widgets/LoadingState";
 
@@ -45,6 +47,8 @@ export default function QuestionsPage() {
   const suppressTopScrollRef = useRef(false);
   const [page, setPage] = useState(1);
   const [questionBankName, setQuestionBankName] = useState<string>("");
+  const [bankObj, setBankObj] = useState<QuestionBank | null>(null);
+  const { user } = useAuth();
   var localSubjects: QuestionBank[] = [];
   const [flaggedQuestions, setFlaggedQuestions] = useState<Record<number, boolean>>({});
 
@@ -73,6 +77,7 @@ export default function QuestionsPage() {
       // 1. Xử lý fallback cho Question Bank Name (sRes)
       if (sRes.status === "fulfilled") {
         setQuestionBankName(sRes.value.name);
+        setBankObj(sRes.value);
       } else if (sRes.reason?.name !== "AbortError") {
         try {
           // Luôn đảm bảo có dữ liệu local nếu API lỗi
@@ -337,6 +342,22 @@ export default function QuestionsPage() {
             <div className="rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20">
               Đã làm: <b>{numAnswered}</b>/{total}
             </div>
+
+            <button
+              onClick={() => navigate("/question-banks")}
+              className="flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15 transition-all active:scale-95 whitespace-nowrap"
+            >
+              <BookOpen className="h-4 w-4" /> Danh sách bộ câu hỏi
+            </button>
+
+            {(user?.role === "admin" || (bankObj && String(bankObj.createdBy) === String(user?.userId))) && (
+              <button
+                onClick={() => navigate(`/questions/question-bank/${bankId}/edit`)}
+                className="flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-bold text-emerald-600 shadow-lg hover:bg-emerald-50 transition-all active:scale-95"
+              >
+                <Edit className="h-4 w-4" /> Chỉnh sửa bộ câu hỏi
+              </button>
+            )}
           </motion.div>
 
         </div>

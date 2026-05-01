@@ -9,6 +9,7 @@ export interface QuestionOption {
   isCorrect: boolean;
   feedback?: string;
   sortOrder: number;
+  imageUrl?: string;
 }
 
 export interface Question {
@@ -28,6 +29,7 @@ export interface Question {
   createdAt: string;
   updatedAt?: string;
   versionNo: number;
+  imageUrl?: string;
 
   // Relations
   options?: QuestionOption[];

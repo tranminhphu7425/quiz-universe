@@ -1,0 +1,2162 @@
+[
+  {
+    "questionId": 2238,
+    "stem": "Việc gì cần tránh khi sắp xếp mức độ ưu tiên công việc?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:48",
+    "updatedAt": "2026-05-01T20:06:48",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8378,
+        "label": "A",
+        "content": "Việc đến trước làm trước.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8379,
+        "label": "B",
+        "content": "Việc khó làm trước.",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8380,
+        "label": "C",
+        "content": "Việc dễ làm trước.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8381,
+        "label": "D",
+        "content": "Việc quan trọng hơn làm trước.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2239,
+    "stem": "Chương trình đào tạo Anh/Chị đang học hướng đến giúp người học hoàn thiện mục tiêu chủ yếu nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:48",
+    "updatedAt": "2026-05-01T20:06:48",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8382,
+        "label": "A",
+        "content": "Thái độ và kỹ năng nghề nghiệp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8383,
+        "label": "B",
+        "content": "Kiến thức – Kỹ năng – Mức độ tự chủ/ tự chịu trách nhiệm",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8384,
+        "label": "C",
+        "content": "Kiến thức chuyên môn và Kỹ năng mềm",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8385,
+        "label": "D",
+        "content": "Kiến thức chuyên môn, Kỹ năng cứng và Kỹ năng mềm",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2240,
+    "stem": "Chọn phát biểu đúng về \"vấn đề\"?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:48",
+    "updatedAt": "2026-05-01T20:06:48",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8386,
+        "label": "A",
+        "content": "Vấn đề là một trạng thái tiêu cực hay những khó khăn mang tính khách quan.",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8387,
+        "label": "B",
+        "content": "Vấn đề là những sự việc mang lại kết quả khả quan cho một cá nhân nào đó.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8388,
+        "label": "C",
+        "content": "Vấn đề là một cơ hội mang đến sự thay đổi",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8389,
+        "label": "D",
+        "content": "Vấn đề là một trạng thái tích cực.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2241,
+    "stem": "Để nâng cao hiệu suất công việc, bạn cần trang bị những thành tố nào",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:48",
+    "updatedAt": "2026-05-01T20:06:48",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8390,
+        "label": "A",
+        "content": "Kiến thức, kỹ năng, độ quen thuộc; và Quản lý cảm xúc trong công việc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8391,
+        "label": "B",
+        "content": "Kiến thức, kỹ năng, và Tâm trạng, thái độ trong công việc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8392,
+        "label": "C",
+        "content": "Kiến thức, kỹ năng, độ quen thuộc; và Tâm trạng, thái độ trong công việc",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8393,
+        "label": "D",
+        "content": "Kiến thức, kỹ năng cứng, kỹ năng mềm; và Tâm trạng, thái độ trong công việc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2242,
+    "stem": "Tư duy sáng tạo là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:48",
+    "updatedAt": "2026-05-01T20:06:48",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8394,
+        "label": "A",
+        "content": "Khả năng cải tiến các giải pháp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8395,
+        "label": "B",
+        "content": "Khả năng xây dựng các giải pháp theo công nghệ 4.0",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8396,
+        "label": "C",
+        "content": "Khả năng đưa ra các giải pháp độc đáo và hiệu quả",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8397,
+        "label": "D",
+        "content": "Khả năng đưa ra các giải pháp mới",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2243,
+    "stem": "Thời gian thử việc đối với công việc có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên là bao lâu?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:48",
+    "updatedAt": "2026-05-01T20:06:48",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8398,
+        "label": "A",
+        "content": "Không quá 06 ngày làm việc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8399,
+        "label": "B",
+        "content": "Không quá 180 ngày làm việc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8400,
+        "label": "C",
+        "content": "Không quá 60 ngày làm việc",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8401,
+        "label": "D",
+        "content": "Không quá 30 ngày làm việc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2244,
+    "stem": "Theo B. Tuckman, đâu là trật tự đúng cho các giai đoạn hình thành nhóm làm việc?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:48",
+    "updatedAt": "2026-05-01T20:06:48",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8402,
+        "label": "A",
+        "content": "Sóng gió - Thoái trào - Hình thành - Ổn định - Hiệu quả",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8403,
+        "label": "B",
+        "content": "Sóng gió - Hình thành - Ổn định -Hiệu quả -Thoái trào",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8404,
+        "label": "C",
+        "content": "Thoái trào - Hình thành - Sóng gió-Hiệu quả - Ổn định",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8405,
+        "label": "D",
+        "content": "Hình thành - Sóng gió - Ổn định - Hiệu quả - Thoái trào",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2245,
+    "stem": "Trong các yếu tố gây nhiễu quá trình giao tiếp, đâu là các yếu tố chính?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:49",
+    "updatedAt": "2026-05-01T20:06:49",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8406,
+        "label": "A",
+        "content": "Môi trường giao tiếp ồn ào",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8407,
+        "label": "B",
+        "content": "mục đích và phương thức giao tiếp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8408,
+        "label": "C",
+        "content": "tâm trạng, cảm xúc và khả năng diễn đạt của người giao tiếp",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8409,
+        "label": "D",
+        "content": "sự khác biệt văn hóa",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2246,
+    "stem": "Để giao tiếp thành công thì các bên tham gia vào hoạt động giao tiếp cần chú ý cự li và phương pháp giao tiếp với nhau như thế nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:49",
+    "updatedAt": "2026-05-01T20:06:49",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8410,
+        "label": "A",
+        "content": "Để tôn trọng đối tác, tất cả các hoạt động giao tiếp cần tuân thủ phương pháp và cự li giao tiếp như nhau",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8411,
+        "label": "B",
+        "content": "Với từng đối tượng giao tiếp cụ thể, nên xác định cự li và phương pháp giao tiếp ứng xử phù hợp",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8412,
+        "label": "C",
+        "content": "Việc giao tiếp với người khác như thế nào tùy thuộc vào hoàn cảnh cụ thể nên không cần xác định trước",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8413,
+        "label": "D",
+        "content": "Không cần xác định cự li hay phương pháp giao tiếp với từng người vì bất kì hoạt động giao tiếp nào cũng cần được ứng xử tận tình chu đáo",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2247,
+    "stem": "Nhà tâm lý học Albert Ellis đề xuất cách nào để con người vượt qua khó khăn trong cảm xúc, lo âu, căng thẳng",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:49",
+    "updatedAt": "2026-05-01T20:06:49",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8414,
+        "label": "A",
+        "content": "Trò chuyện với chuyên gia",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8415,
+        "label": "B",
+        "content": "Nụ cười",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8416,
+        "label": "C",
+        "content": "Tái cấu trúc nhận thức",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8417,
+        "label": "D",
+        "content": "Tập trung vào hành động",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2248,
+    "stem": "Một phát biểu đúng về bản chất vấn đề không bao gồm:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:49",
+    "updatedAt": "2026-05-01T20:06:49",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8418,
+        "label": "A",
+        "content": "Xác định chuẩn",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8419,
+        "label": "B",
+        "content": "Xác định hậu quả nếu không được giải quyết kịp thời.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8420,
+        "label": "C",
+        "content": "Xác định nguyên nhân của vấn đề",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8421,
+        "label": "D",
+        "content": "Xác định hiện trạng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2249,
+    "stem": "Để phát triển nghề nghiệp hoàn thiện nhất cần phải bổ sung kỹ năng nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:49",
+    "updatedAt": "2026-05-01T20:06:49",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8422,
+        "label": "A",
+        "content": "Kỹ năng tư duy",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8423,
+        "label": "B",
+        "content": "Kỹ năng giao tiếp",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8424,
+        "label": "C",
+        "content": "Kỹ năng tự chủ",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8425,
+        "label": "D",
+        "content": "Kỹ năng lãnh đạo",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2250,
+    "stem": "Đâu là những lỗi thường gặp trong quản lý thời gian?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:49",
+    "updatedAt": "2026-05-01T20:06:49",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8426,
+        "label": "A",
+        "content": "Làm nhiều việc cùng lúc; Có nhiều cuộc họp.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8427,
+        "label": "B",
+        "content": "Ứng dụng các công cụ hỗ trợ; Thiếu sự ưu tiên giải quyết công việc.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8428,
+        "label": "C",
+        "content": "Không lập danh sách công việc; Làm việc không ngừng nghỉ; Dễ phân tâm",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8429,
+        "label": "D",
+        "content": "Nhờ người khác làm việc giúp mình.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2251,
+    "stem": "Chọn câu trả lời đúng. Quan niệm về Thiền cho rằng cảm xúc tiêu cực xảy ra với mỗi con người là hoàn toàn tự nhiên. Con người có thể làm chủ và chế ngự được cảm xúc tiêu cực là do:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:49",
+    "updatedAt": "2026-05-01T20:06:49",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8430,
+        "label": "A",
+        "content": "Do những mong đợi không được đáp ứng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8431,
+        "label": "B",
+        "content": "Do người khác gây ra",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8432,
+        "label": "C",
+        "content": "Do ngoại cảnh tạo nên",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8433,
+        "label": "D",
+        "content": "Cái tôi của mỗi người",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2252,
+    "stem": "Ứng dụng giúp bạn quản lý thời gian như thế nào",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:50",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8434,
+        "label": "A",
+        "content": "Điều phối sự tập trung, Quản lý lịch biểu, Lưu Thời khóa biểu",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8435,
+        "label": "B",
+        "content": "Điều phối sự tập trung, Tạo lịch biểu, Lập kế hoạch",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8436,
+        "label": "C",
+        "content": "Điều phối sự tập trung, Quản lý lịch biểu, Lập kế hoạch",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8437,
+        "label": "D",
+        "content": "Ứng dụng công nghệ thông tin, Quản lý lịch biểu, Lập kế hoạch",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2253,
+    "stem": "Đối với công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng thì nhóm người lao động từ đủ 18 tuổi trở lên có thể ủy quyền cho một người lao động trong nhóm để giao kết hợp đồng lao động. Đúng hay sai?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:50",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8438,
+        "label": "A",
+        "content": "Sai",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8439,
+        "label": "B",
+        "content": "Đúng",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2254,
+    "stem": "Kiến thức xã hội liên quan đến nghề nghiệp có phải là yêu cầu quan trọng cần phải chuẩn bị trước khi đi tìm việc?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:50",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8440,
+        "label": "A",
+        "content": "Ít quan trọng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8441,
+        "label": "B",
+        "content": "Không quan trọng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8442,
+        "label": "C",
+        "content": "Quan trọng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8443,
+        "label": "D",
+        "content": "Rất quan trọng",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2255,
+    "stem": "Liệu pháp tâm lý nào sau đây giúp cá nhân dễ tha thứ cho người làm tổn thương mình",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:50",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8444,
+        "label": "A",
+        "content": "Liệu pháp hài hước",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8445,
+        "label": "B",
+        "content": "Liệu pháp nụ cười",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8446,
+        "label": "C",
+        "content": "Liệu pháp thấu cảm và yêu thương",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8447,
+        "label": "D",
+        "content": "Liệu pháp sinh thái",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2256,
+    "stem": "Có 4 bạn nhỏ đang ngồi nói chuyện với nhau về món đồ chơi mới mua. - Bảo khoe: \"Tớ mới mua một con ngựa rất đẹp. Các cậu có đoán được màu của nó không?\". - \"Tớ đoán nó không phải là màu đen\", An nói. - \"Nó có màu nâu hoặc màu xám\", Bình tiếp lời. - \"Tớ nghĩ rằng nó có màu nâu\", Cường nói. Lúc này, Bảo mới nói: \"Ít nhất một người trong số các cậu nói đúng và ít nhất một người trong số các cậu nói sai\". Vậy con ngựa của bạn Bảo có màu gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:50",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8448,
+        "label": "A",
+        "content": "Xám",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8449,
+        "label": "B",
+        "content": "Chưa đủ cơ sở để kết luận",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8450,
+        "label": "C",
+        "content": "Đen",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8451,
+        "label": "D",
+        "content": "Nâu",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2257,
+    "stem": "Một người được coi là thực sự có khả năng kiểm soát cảm xúc của bản thân khi người đó:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:50",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8452,
+        "label": "A",
+        "content": "Dằn vặt bản thân, đau đầu mất ngủ",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8453,
+        "label": "B",
+        "content": "Giữ được bình tĩnh trước mọi bất ngờ xảy ra",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8454,
+        "label": "C",
+        "content": "Kiềm chế được sự bốc đồng của bản thân",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8455,
+        "label": "D",
+        "content": "Giữ bề ngoài bình thản, kiềm chế sự khó chịu bên trong",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2258,
+    "stem": "Sắp xếp thứ tự giải quyết công việc hợp lý: 1.Việc quan trọng - Khẩn cấp; 2. Việc không quan trọng - Khẩn cấp; 3. Việc quan trọng - không khẩn cấp; 4. Việc không quan trọng - Không khẩn cấp",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:50",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8456,
+        "label": "A",
+        "content": "3-1-2-4",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8457,
+        "label": "B",
+        "content": "3-2-1-4",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8458,
+        "label": "C",
+        "content": "1-2-3-4",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8459,
+        "label": "D",
+        "content": "1-3-2-4",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2259,
+    "stem": "Cảm xúc trí tuệ là gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:50",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8460,
+        "label": "A",
+        "content": "Là khả năng nhận ra các cảm xúc của bản thân và của những người khác, nhằm thúc đẩy bản thân và kiểm soát các xúc cảm trong chính mình cũng như trong các mối quan hệ",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8461,
+        "label": "B",
+        "content": "Là khả năng nhận ra các thay đổi hành vi của bản thân và của những người khác, nhằm thúc đẩy bản thân và kiểm soát các hành vi của chính mình",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8462,
+        "label": "C",
+        "content": "Là khả năng nhận ra thái độ của những người khác liên quan đến bản thân, nhằm kiểm soát các cảm xúc của chính mình cũng như trong các mối quan hệ",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2260,
+    "stem": "Ý nào sau đây không phải là nguyên tắc giao kết hợp đồng lao động theo quy định?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:50",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8463,
+        "label": "A",
+        "content": "Tự do, tự chủ, tự nguyện và trách nhiệm",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8464,
+        "label": "B",
+        "content": "Tự nguyện, bình đẳng, thiện chí, hợp tác và trung thực",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8465,
+        "label": "C",
+        "content": "Tự do giao kết hợp đồng lao động nhưng không được trái pháp luật, thỏa ước lao động tập thể và đạo đức xã hội",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2261,
+    "stem": "Hiệu suất lắng nghe trung bình của những người tham gia vào quá trình giao tiếp là bao nhiêu?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:51",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8466,
+        "label": "A",
+        "content": "50% - 80%",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8467,
+        "label": "B",
+        "content": "15 %-20%",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8468,
+        "label": "C",
+        "content": "25 % - 30%",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8469,
+        "label": "D",
+        "content": "30 %- 50%",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2262,
+    "stem": "Hành động nào sau đây đúng với Quy tắc làm việc mồi",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:51",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8470,
+        "label": "A",
+        "content": "Làm việc khó nhất trước khi làm các việc khác",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8471,
+        "label": "B",
+        "content": "Chọn 1 trong các mục tiêu công việc, gia đình, bạn bè để tập trung theo đuổi",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8472,
+        "label": "C",
+        "content": "Luôn ập danh sách các công việc cần làm trước 1 ngày",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8473,
+        "label": "D",
+        "content": "Nghe 1 bản nhạc hoặc làm 1 việc mình thích trước khi làm việc khó, việc cần tập trung",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2263,
+    "stem": "Không gian giao tiếp giữa hai người được duy trì trong khoảng từ 0.5- 1m được xếp vào vùng nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:51",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8474,
+        "label": "A",
+        "content": "Vùng riêng tư",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8475,
+        "label": "B",
+        "content": "Vùng công cộng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8476,
+        "label": "C",
+        "content": "Vùng xã giao",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8477,
+        "label": "D",
+        "content": "Vùng mật thiết",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2264,
+    "stem": "Ý nào dưới đây không có khả năng là nguyên nhân của vấn đề sau: \"Không mở được đèn trong phòng khách\"",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:51",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8478,
+        "label": "A",
+        "content": "Phòng khách quá tối",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8479,
+        "label": "B",
+        "content": "Bóng đèn bị vỡ",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8480,
+        "label": "C",
+        "content": "Bóng đèn không được nối với nguồn điện",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8481,
+        "label": "D",
+        "content": "Có lịch cúp điện",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2265,
+    "stem": "Các nguồn học hỏi sinh viên thường sử dụng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:51",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8482,
+        "label": "A",
+        "content": "Sách báo, Internet, Hội thảo/ Hội nghị/ Seminar, Thầy cô/ Bạn bè/ Người thân",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8483,
+        "label": "B",
+        "content": "Internet, Báo đài, Hội thảo/ Hội nghị/ Seminar, Thầy cô/ Bạn bè/ Người thân",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8484,
+        "label": "C",
+        "content": "Sách báo, Google, Hội thảo/ Hội nghị/ Seminar, Thầy cô/ Bạn bè/ Người thân",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8485,
+        "label": "D",
+        "content": "Sách báo, Internet, Lớp học, Thầy cô/ Bạn bè/ Người thân",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2266,
+    "stem": "Trong phương pháp tư duy 6 chiếc mũ, yêu cầu về phân tích khó khăn, sai lầm và phân tích mạo hiểm thuộc về nón màu gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:51",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8486,
+        "label": "A",
+        "content": "nón màu xanh dương",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8487,
+        "label": "B",
+        "content": "Nón màu đỏ",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8488,
+        "label": "C",
+        "content": "Nón màu đen",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8489,
+        "label": "D",
+        "content": "Nón màu trắng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2267,
+    "stem": "Sai lầm trong quá trình giải quyết vấn đề là không đưa ra các mục tiêu cụ thể cần đạt được mà từ việc nhận diện và phân tích nguyên nhân của vấn đề, chúng ta vội vàng đi tìm giải pháp sẽ dẫn đến hậu quả gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:51",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8490,
+        "label": "A",
+        "content": "Quá ít giải pháp.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8491,
+        "label": "B",
+        "content": "Không tìm được giải pháp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8492,
+        "label": "C",
+        "content": "Giải pháp đưa ra có thể không giải quyết được vấn đề",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8493,
+        "label": "D",
+        "content": "Quá nhiều giải pháp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2268,
+    "stem": "Chọn phương án thích hợp để đảm bảo nguyên tắc thư giãn điều chỉnh cảm xúc",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:51",
+    "updatedAt": "2026-05-01T20:06:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8494,
+        "label": "A",
+        "content": "Mua sắm để quên đi căng thẳng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8495,
+        "label": "B",
+        "content": "Làm điều mình thích mà không tổn hại bản thân và cộng đồng",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8496,
+        "label": "C",
+        "content": "Khóc hoặc viết nhật ký cho tâm trạng thoải mái",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8497,
+        "label": "D",
+        "content": "Tìm bất cứ ai để trò chuyện",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2269,
+    "stem": "Chọn đáp án phù hợp khi ứng phó với stress xảy ra trong cuộc sống",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8498,
+        "label": "A",
+        "content": "Ăn uống cho quên hết mọi chuyện",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8499,
+        "label": "B",
+        "content": "Mặc kệ vấn đề",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8500,
+        "label": "C",
+        "content": "Đối diện và giải quyết vấn đề",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8501,
+        "label": "D",
+        "content": "Trốn đến một nơi xa",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2270,
+    "stem": "Phương pháp 5W1H gồm các từ để hỏi nào?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8502,
+        "label": "A",
+        "content": "Whom - When - Where - Why - What - How",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8503,
+        "label": "B",
+        "content": "Who - When - Where - Why - What – How",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8504,
+        "label": "C",
+        "content": "Who - When - Where - Why - What - How much",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8505,
+        "label": "D",
+        "content": "Who - When - Where - Why - Which – How",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2271,
+    "stem": "Yếu tố nào sau đây ảnh hưởng quyết định đến thái độ của ứng viên khi tham gia phỏng vấn tuyển dụng?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8506,
+        "label": "A",
+        "content": "Niềm tin về cơ hội sẽ tự đến",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8507,
+        "label": "B",
+        "content": "Kinh nghiệm làm việc đã qua",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8508,
+        "label": "C",
+        "content": "Sự thấu hiểu về năng lực chuyên môn và mục đích ứng tuyển của ứng viên",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8509,
+        "label": "D",
+        "content": "Sự phù hợp của chuyên ngành đào tạo",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2272,
+    "stem": "Theo góc nhìn quản lý thời gian,việc làm nhiều việc cùng một lúc sẽ?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8510,
+        "label": "A",
+        "content": "dễ gây sao nhãng, nhầm lẫn và thiếu sót.",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8511,
+        "label": "B",
+        "content": "tiết kiệm thời gian",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8512,
+        "label": "C",
+        "content": "tăng năng suất lao động",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8513,
+        "label": "D",
+        "content": "tăng áp lực công việc và dễ bỏ cuộc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2273,
+    "stem": "Trong các nhân tố sau, nhân tố nào khiến cho quá trình giao tiếp không được triển khai thuận lợi?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8514,
+        "label": "A",
+        "content": "Người nhận có khả năng hiểu thông điệp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8515,
+        "label": "B",
+        "content": "Người gửi không thể mã hóa đúng thông điệp",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8516,
+        "label": "C",
+        "content": "Người nhận muốn nhận thông điệp từ người gửi",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8517,
+        "label": "D",
+        "content": "Người gửi muốn truyền thông điệp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2274,
+    "stem": "Dựa vào kiến thức tâm lý học thì nhận định nào sau đây là phù hợp khi gặp những trải nghiệm không mong muốn",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8518,
+        "label": "A",
+        "content": "Kệ đi, cứ bình thường, thời gian sẽ làm cho nỗi buồn \"biến mất\"",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8519,
+        "label": "B",
+        "content": "Đó là cảm xúc tiêu cực, phải loại bỏ ngay khỏi đầu mình",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8520,
+        "label": "C",
+        "content": "Chắc mình bị trầm cảm rồi, không ai buồn như mình",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8521,
+        "label": "D",
+        "content": "Đó là một phần trải nghiệm bình thường của con người và mình cần lắng nghe/thấu hiểu nó",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2275,
+    "stem": "Trong quá trình giao tiếp, kỹ năng lắng nghe hiệu quả sẽ giúp các chủ thể giao tiếp điều gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8522,
+        "label": "A",
+        "content": "Chủ động hơn trong giao tiếp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8523,
+        "label": "B",
+        "content": "Thấu hiểu thông điệp một cách trọn vẹn và phản hồi thông tin chính xác",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8524,
+        "label": "C",
+        "content": "Giúp các chủ thể giao tiếp gây ấn tượng với mọi người nhờ kiến thức sâu rộng của mình",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8525,
+        "label": "D",
+        "content": "Giúp người nghe thể hiện sự tôn trọng đối với người nói",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2276,
+    "stem": "Mô hình cửa sổ Johari được hiểu là một mô hình với thiết lập có 4 phần ( Phần mở - phần mù - Phần che giấu - Phần không biết) nhằm cung cấp cho con người phương pháp để nhìn nhận bản thân và hiểu về cách mà người khác nhìn nhận về mình. Mô hình này được dùng để nâng cao về khả năng nhận thức, hiểu biết lẫn nhau giữa từng cá nhân trong cùng một nhóm. Vậy để khám phá những năng lực của chính bản thân mình thì bạn cần làm gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8526,
+        "label": "A",
+        "content": "Tích cực mở rộng các mối quan hệ, chủ động nắm bắt các cơ hội để phát triển bản thân",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8527,
+        "label": "B",
+        "content": "Chỉ lựa chọn các mối quan hệ cần thiết và có giới hạn cho phạm vi giao tiếp của mình",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8528,
+        "label": "C",
+        "content": "Kiên nhẫn chờ đợi cơ hội đến với mình",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8529,
+        "label": "D",
+        "content": "Trông chờ sự tác động từ bên ngoài",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2277,
+    "stem": "Hành vi nào sau đây của người sử dụng lao động vi phạm nguyên tắc trả lương cho người lao động theo quy định?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8530,
+        "label": "A",
+        "content": "Trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8531,
+        "label": "B",
+        "content": "Trả lương thông qua hàng hóa, dịch vụ của người sử dụng lao động hoặc của đơn vị khác do người sử dụng lao động chỉ định",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8532,
+        "label": "C",
+        "content": "trả lương cho người được người lao động ủy quyền hợp pháp",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2278,
+    "stem": "Bản đồ tư duy giúp chúng ta tìm ra các giải pháp một cách sáng tạo và nhanh chóng, bởi vì:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8533,
+        "label": "A",
+        "content": "Các vấn đề được nhìn nhận dưới nhiều góc độ khác nhau",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8534,
+        "label": "B",
+        "content": "Sử dụng được 100% khả năng của bộ não",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8535,
+        "label": "C",
+        "content": "Bán cầu não trái được sử dụng hoàn toàn trong quá trình ghi nhận thông tin",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8536,
+        "label": "D",
+        "content": "Các vấn đề được lược bỏ bớt",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2279,
+    "stem": "Vì sao để giữ gìn mối quan hệ tốt đẹp lâu dài thì cần phải giữ lễ nghĩa và khoảng cách nhất định, không được suồng sã với các đối tác của mình?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:52",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8537,
+        "label": "A",
+        "content": "Vì hai người cho dù thân nhau đến mấy thì cũng không thể hiểu hết suy nghĩ của nhau",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8538,
+        "label": "B",
+        "content": "Vì ai cũng có lòng tự tôn, việc giữ lễ nghĩa khoảng cách là để thể hiện sự tôn trọng đối tác",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8539,
+        "label": "C",
+        "content": "Vì ai cũng có lòng tự tôn và mong muốn được người khác tôn trọng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8540,
+        "label": "D",
+        "content": "Vì mỗi người có tính cách năng lực, sở thích khác nhau",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2280,
+    "stem": "Một người nói với bạn: \"Tôi ghét làm việc cho công ty này. Họ có chương trình lương và phúc lợi thấp nhất tôi có từng nghe, và họ yêu cầu chúng tôi làm việc như con vật.\". Bạn nên chọn nội dung phản hồi nào để thể hiện bạn nghe được cảm xúc và ý nghĩa trong giao tiếp?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:52",
+    "updatedAt": "2026-05-01T20:06:53",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8541,
+        "label": "A",
+        "content": "Tại sao bạn nói vậy?",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8542,
+        "label": "B",
+        "content": "Công ty này không trả cho bạn những gì bạn xứng đáng và bạn phát cáu vì điều đó?",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8543,
+        "label": "C",
+        "content": "Bạn chỉ than phiền quá nhiều. Nếu nó không phải là điều này, nó là điều khác",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8544,
+        "label": "D",
+        "content": "Nhiều nơi cũng giống như vậy. Chỉ cần quên nó",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2281,
+    "stem": "Theo Bộ Luật Lao động 2019, Người sử dụng lao động Không được thực hiện quyền nào sau đây:",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:53",
+    "updatedAt": "2026-05-01T20:06:53",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8545,
+        "label": "A",
+        "content": "Đóng cửa tạm thời nơi làm việc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8546,
+        "label": "B",
+        "content": "Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8547,
+        "label": "C",
+        "content": "Tham gia giải quyết tranh chấp lao động, đình công",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8548,
+        "label": "D",
+        "content": "Tuyển dụng, bố trí, quản lý, điều hành, giám sát lao động; khen thưởng và xử lý vi phạm kỷ luật lao động",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2282,
+    "stem": "Việc tìm hiểu về nhà tuyển dụng giúp ứng viên đáp ứng nội dung nào sau đây?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:53",
+    "updatedAt": "2026-05-01T20:06:53",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8549,
+        "label": "A",
+        "content": "Giúp ứng viên chủ động trang bị kiến thức, kỹ năng và thái độ phù hợp khi ứng tuyển",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8550,
+        "label": "B",
+        "content": "Giúp ứng viên rèn luyện kỹ năng tốt hơn",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8551,
+        "label": "C",
+        "content": "Giúp ứng viên tích lũy kinh nghiệm làm việc",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8552,
+        "label": "D",
+        "content": "Giúp ứng viên củng cố và điều chỉnh kiến thức chuyên môn",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2283,
+    "stem": "Tại sao khi quản lý thời gian cần phải hiểu rõ về mong muốn và năng lực của bản thân?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:53",
+    "updatedAt": "2026-05-01T20:06:53",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8553,
+        "label": "A",
+        "content": "Để làm chủ khối lượng công việc.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8554,
+        "label": "B",
+        "content": "Để phối hợp với người khác.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8555,
+        "label": "C",
+        "content": "Để thiết lập mục tiêu và lên kế hoạch vừa sức.",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8556,
+        "label": "D",
+        "content": "Để tránh phân tâm.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2284,
+    "stem": "Ma trận quản lý thời gian (theo Phương pháp Eisenhower) gợi ý chia bao nhiêu nhóm việc",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:53",
+    "updatedAt": "2026-05-01T20:06:53",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8557,
+        "label": "A",
+        "content": "2",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8558,
+        "label": "B",
+        "content": "5",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8559,
+        "label": "C",
+        "content": "3",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8560,
+        "label": "D",
+        "content": "4",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2285,
+    "stem": "\"Giao Hàng Nhanh_ Phải hoàn thành chuyến giao hàng trong 30 phút nhưng hiện tải phải mất tới 40 phút\". Phát biểu này giúp ta xác định được điều gì?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:53",
+    "updatedAt": "2026-05-01T20:06:53",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8561,
+        "label": "A",
+        "content": "Xác định nguyên nhân",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8562,
+        "label": "B",
+        "content": "Xác định độ lệch chuẩn",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8563,
+        "label": "C",
+        "content": "Xác định hiện trạng",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8564,
+        "label": "D",
+        "content": "Xác định hậu quả",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2286,
+    "stem": "Vì sao con người cần phải xây dựng sự tự tin cho bản thân?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:53",
+    "updatedAt": "2026-05-01T20:06:53",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8565,
+        "label": "A",
+        "content": "Vì sự tự tin mang lại cho con người sự chắc chắn cần thiết để tiến lên phía trước",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8566,
+        "label": "B",
+        "content": "Vì những người tự tin có thể dễ dàng giải quyết công việc, vượt qua những thách thức",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8567,
+        "label": "C",
+        "content": "Vì khi con người có sự tự tin mạnh mẽ thì họ có thể thu hút và truyền cảm hứng tự tin cho những người xung quanh",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8568,
+        "label": "D",
+        "content": "Vì đó là điều kiện cần thiết để con người làm chủ bản thân, chủ động thực hiện những mục tiêu mà mình đã đề ra.",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 2287,
+    "stem": "Trong giao tiếp, làm sao để người nói kiểm tra xem thông tin chuyển tải đến người nghe được tiếp nhận và hiểu đúng vấn đề được truyền đạt?",
+    "explanation": null,
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-05-01T20:06:53",
+    "updatedAt": "2026-05-01T20:06:53",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 8569,
+        "label": "A",
+        "content": "Quan sát ngôn ngữ cơ thể của người nghe.",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8570,
+        "label": "B",
+        "content": "Chỉ khi nào người nghe đặt câu hỏi, bạn mới biết họ hiểu bạn",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8571,
+        "label": "C",
+        "content": "Hỏi người nghe xem họ có hiểu bạn không",
+        "isCorrect": false,
+        "sortOrder": null,
+        "imageUrl": null
+      },
+      {
+        "optionId": 8572,
+        "label": "D",
+        "content": "Đặt các câu hỏi mở cho người nghe.",
+        "isCorrect": true,
+        "sortOrder": null,
+        "imageUrl": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "questionId": 838,
+    "stem": "Em ơi nếu mộng không thành thì sao",
+    "explanation": "",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-15T11:42:47",
+    "updatedAt": "2026-04-15T11:43:16",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 3225,
+        "label": "A",
+        "content": "Chào èm",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "imageUrl": null
+      },
+      {
+        "optionId": 3226,
+        "label": "B",
+        "content": "Xin chào",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 840,
+    "stem": "Con đường ............... xưa em đi ",
+    "explanation": "",
+    "questionType": "fill_in",
+    "status": "approved",
+    "createdAt": "2026-04-15T11:53:03",
+    "updatedAt": "2026-04-15T11:53:51",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 3227,
+        "label": "A",
+        "content": "1A",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "imageUrl": null
+      }
+    ]
+  },
+  {
+    "questionId": 841,
+    "stem": "",
+    "explanation": "",
+    "questionType": "mcq_single",
+    "status": "approved",
+    "createdAt": "2026-04-15T12:15:45",
+    "updatedAt": "2026-04-15T12:15:45",
+    "imageUrl": null,
+    "options": [
+      {
+        "optionId": 3229,
+        "label": "A",
+        "content": "",
+        "isCorrect": true,
+        "sortOrder": 1,
+        "imageUrl": null
+      },
+      {
+        "optionId": 3230,
+        "label": "B",
+        "content": "",
+        "isCorrect": false,
+        "sortOrder": 2,
+        "imageUrl": null
+      }
+    ]
+  }
+]
