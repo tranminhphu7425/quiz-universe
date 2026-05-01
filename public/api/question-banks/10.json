@@ -1,0 +1,14 @@
+{
+  "bankId": 10,
+  "name": " Tư Tưởng Hồ Chí Minh",
+  "subjectId": 4,
+  "subjectName": "Tư tưởng Hồ Chí Minh",
+  "description": "Tổng hợp các câu hỏi trắc nghiệm môn Tư Tưởng Hồ Chí Minh",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2025-12-01T04:53:08",
+  "updatedAt": null,
+  "questionCount": 151
+}

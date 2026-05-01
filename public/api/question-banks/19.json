@@ -1,0 +1,14 @@
+{
+  "bankId": 19,
+  "name": "Bộ câu hỏi trắc nghiệm Triết học",
+  "subjectId": 21,
+  "subjectName": "Triết học Mác - Lênin",
+  "description": "Nguồn sưu tầm nha, các bạn thấy có đáp án nào sai thì yêu cầu mình chỉnh sửa",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2026-04-27T22:50:34",
+  "updatedAt": "2026-04-27T23:00:55.777741",
+  "questionCount": 226
+}

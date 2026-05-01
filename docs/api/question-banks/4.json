@@ -1,0 +1,14 @@
+{
+  "bankId": 4,
+  "name": "Ôn tập Tư tưởng Hồ Chí Minh (Giáo trình Thầy Búa)",
+  "subjectId": 4,
+  "subjectName": "Tư tưởng Hồ Chí Minh",
+  "description": "Tập câu hỏi trắc nghiệm từ giáo trình đã upload.",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2025-08-26T06:28:29",
+  "updatedAt": null,
+  "questionCount": 130
+}

@@ -1,0 +1,14 @@
+{
+  "bankId": 8,
+  "name": "Chủ nghĩa xã hội - Đầy đủ",
+  "subjectId": 8,
+  "subjectName": "Chủ nghĩa xã hội khoa học",
+  "description": "Ngân hàng câu hỏi trắc nghiệm môn Chủ nghĩa xã hội khoa học, tổng hợp từ tài liệu đầy đủ.",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2025-09-10T10:52:42",
+  "updatedAt": null,
+  "questionCount": 203
+}

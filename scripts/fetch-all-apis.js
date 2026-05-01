@@ -68,6 +68,7 @@ async function runSync() {
       const bankId = bank.bankId || bank.id;
       if (bankId) {
         await fetchAndSave(`/questions/question-bank/${bankId}`);
+        await fetchAndSave(`/question-banks/${bankId}`); 
       }
     }
   }

@@ -1,0 +1,14 @@
+{
+  "bankId": 23,
+  "name": "Bộ đề thi thử",
+  "subjectId": 18,
+  "subjectName": "Kỹ năng mềm",
+  "description": "Nguồn sưu tầm (đáp án có khả năng không chính sát)",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2026-05-01T20:06:48",
+  "updatedAt": "2026-05-01T20:09:05.421801",
+  "questionCount": 50
+}

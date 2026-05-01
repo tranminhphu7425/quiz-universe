@@ -1,0 +1,14 @@
+{
+  "bankId": 21,
+  "name": "Trắc nghiệm triết học chương 2",
+  "subjectId": 21,
+  "subjectName": "Triết học Mác - Lênin",
+  "description": "Nguồn sưu tầm",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510326",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2026-04-29T20:51:14",
+  "updatedAt": "2026-04-29T20:51:13.922195",
+  "questionCount": 155
+}

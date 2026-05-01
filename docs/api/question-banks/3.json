@@ -1,0 +1,14 @@
+{
+  "bankId": 3,
+  "name": "NH TTHCM",
+  "subjectId": 4,
+  "subjectName": "Tư tưởng Hồ Chí Minh",
+  "description": "Import tự động từ PDF",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2025-08-19T10:07:54",
+  "updatedAt": null,
+  "questionCount": 119
+}

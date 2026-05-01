@@ -1,0 +1,14 @@
+{
+  "bankId": 7,
+  "name": "Ngân hàng câu hỏi TTHCM - Trường Đại học Cần Thơ",
+  "subjectId": 4,
+  "subjectName": "Tư tưởng Hồ Chí Minh",
+  "description": "Tổng hợp câu hỏi trắc nghiệm môn Tư tưởng Hồ Chí Minh",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2025-09-09T04:08:39",
+  "updatedAt": "2026-04-28T07:36:54.095303",
+  "questionCount": 122
+}

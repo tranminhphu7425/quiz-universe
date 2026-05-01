@@ -1,0 +1,14 @@
+{
+  "bankId": 16,
+  "name": "Bộ 300 câu hỏi triết học Mác lênin",
+  "subjectId": 21,
+  "subjectName": "Triết học Mác - Lênin",
+  "description": "Nguồn sưu tầm",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510327",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2026-04-27T20:37:30",
+  "updatedAt": "2026-04-27T20:37:29.584252",
+  "questionCount": 300
+}

@@ -1,0 +1,14 @@
+{
+  "bankId": 22,
+  "name": "Bộ câu hỏi Triết học 482 câu",
+  "subjectId": 21,
+  "subjectName": "Triết học Mác - Lênin",
+  "description": "Nguồn sưu tầm nhen",
+  "visibility": "PUBLIC",
+  "status": "ACTIVE",
+  "createdBy": "afc79823-3786-4e4d-aea5-1bb484510326",
+  "creatorName": "Trần Minh Phú",
+  "createdAt": "2026-04-30T23:18:32",
+  "updatedAt": "2026-04-30T23:25:39.176259",
+  "questionCount": 498
+}
