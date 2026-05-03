@@ -704,12 +704,8 @@ export default function CreateQuestionBankPage() {
                                                         </motion.div>
                                                     )}
                                                 </AnimatePresence>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-
-{/* Format Example */}
-                                                                <details className="mb-8 group rounded-xl border border-emerald-200 bg-emerald-50/30 p-4 transition-all duration-300 hover:shadow-md dark:border-emerald-800 dark:bg-emerald-950/20">
+                                                
+                                                                <details className="mt-4 group rounded-xl border border-emerald-200 bg-emerald-50/30 p-4 transition-all duration-300 hover:shadow-md dark:border-emerald-800 dark:bg-emerald-950/20">
                                                                     <summary className="flex cursor-pointer items-center justify-between text-xs font-medium text-gray-700 dark:text-gray-300">
                                                                         <span className="flex items-center gap-2">
                                                                             <span className="text-base">📋</span>
@@ -812,6 +808,11 @@ Lưu ý:
                                                                         </div>
                                                                     </div>
                                                                 </details>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
+{/* Format Example */}
                                     {/* Tags */}
                                     <div className="mb-8">
                                         <h3 className="mb-4 text-lg font-bold text-emerald-900 dark:text-emerald-300">

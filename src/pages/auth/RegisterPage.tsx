@@ -30,10 +30,12 @@ export default function RegisterPage() {
     if (pwd !== pwd2) return setError("Mật khẩu nhập lại không khớp.");
 
     try {
-      // Tùy backend của bạn: signup({ name: fullName, email, password: pwd })
+      // Set redirect so RequireGuest sends the new user to /setup instead of /dashboard
+      sessionStorage.setItem("auth_redirect", "/setup");
+      
       await signup?.({ name: fullName, email, password: pwd });
       
-      navigate("/setup", { state: { fromRegister: true } }); // hoặc chuyển đến /login nếu bạn muốn
+      // Removed manual navigate as RequireGuest handles it now
     } catch (err: unknown) {
       setError((err as { message?: string })?.message ?? "Đăng ký thất bại. Vui lòng thử lại.");
     }

@@ -26,8 +26,7 @@ export default function LoginPage() {
     setError(null);
     try {
       await login(email, password, { remember });
-      // Thành công, chuyển hướng handled bởi AuthProvider
-      navigate("/dashboard");
+      // Thành công, chuyển hướng handled bởi RequireGuest
     } catch (e: unknown) {
       console.error("Lỗi đăng nhập:", e);
       setError("Đăng nhập thất bại. Vui lòng kiểm tra lại email và mật khẩu.");

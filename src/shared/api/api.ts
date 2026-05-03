@@ -70,11 +70,11 @@ class ApiService {
           const data = await res.json();
           // If the original request expects a paginated format and the fallback is /all
           if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/subjects')) {
-            const params = new URLSearchParams(url.split('?')[1] || '');
-            const page = parseInt(params.get('page') || '0', 10);
-            const size = parseInt(params.get('size') || '10', 10);
-            const keyword = (params.get('keyword') || '').toLowerCase();
-            const sort = params.get('sort') || '';
+            const searchParams = new URLSearchParams(url.split('?')[1] || '');
+            const page = parseInt(config?.params?.page?.toString() ?? searchParams.get('page') ?? '0', 10);
+            const size = parseInt(config?.params?.size?.toString() ?? searchParams.get('size') ?? '10', 10);
+            const keyword = (config?.params?.keyword?.toString() ?? searchParams.get('keyword') ?? '').toLowerCase();
+            const sort = config?.params?.sort?.toString() ?? searchParams.get('sort') ?? '';
 
             let filtered = data;
             
@@ -183,11 +183,11 @@ class PublicApiService {
           const data = await res.json();
           // If the original request expects a paginated format and the fallback is /all
           if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/subjects')) {
-            const params = new URLSearchParams(url.split('?')[1] || '');
-            const page = parseInt(params.get('page') || '0', 10);
-            const size = parseInt(params.get('size') || '10', 10);
-            const keyword = (params.get('keyword') || '').toLowerCase();
-            const sort = params.get('sort') || '';
+            const searchParams = new URLSearchParams(url.split('?')[1] || '');
+            const page = parseInt(config?.params?.page?.toString() ?? searchParams.get('page') ?? '0', 10);
+            const size = parseInt(config?.params?.size?.toString() ?? searchParams.get('size') ?? '10', 10);
+            const keyword = (config?.params?.keyword?.toString() ?? searchParams.get('keyword') ?? '').toLowerCase();
+            const sort = config?.params?.sort?.toString() ?? searchParams.get('sort') ?? '';
 
             let filtered = data;
             

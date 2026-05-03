@@ -18,7 +18,7 @@ export const RequireAuth = () => {
   }
 
   if (!user) {
-    sessionStorage.setItem("auth_redirect", "true");
+    sessionStorage.setItem("auth_redirect", window.location.pathname);
     return <Navigate to="/login" replace />;
   }
 
@@ -64,6 +64,11 @@ export const RequireGuest = () => {
   }
 
   if (user) {
+    const redirect = sessionStorage.getItem("auth_redirect");
+    if (redirect) {
+      sessionStorage.removeItem("auth_redirect");
+      return <Navigate to={redirect} replace />;
+    }
     return <Navigate to="/dashboard" replace />;
   }
 

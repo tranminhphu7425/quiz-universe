@@ -84,7 +84,8 @@ export default function SubjectsPage() {
         });
       } catch (error) {
         setCheckOnline(false);
-        console.error("Backend fetch failed, falling back to local data:", error);
+        console.error("Fetch failed:", error);
+        throw error;
       }
     },
     placeholderData: (prev) => prev, // keep previous data while loading next page
