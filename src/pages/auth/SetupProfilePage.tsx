@@ -1,7 +1,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Building2, GraduationCap, CheckCircle2, Loader2, Sparkles, ArrowRight } from "lucide-react";
+import {
+  MdBusiness as Building2,
+  MdSchool as GraduationCap,
+  MdCheckCircleOutline as CheckCircle2,
+  MdLoop as Loader2,
+  MdAutoAwesome as Sparkles,
+  MdArrowForward as ArrowRight
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { UserApi } from "@/shared/api/userApi";

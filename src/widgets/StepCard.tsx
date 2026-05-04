@@ -1,6 +1,8 @@
 // src/widgets/StepCard.tsx
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import {
+  MdAutoAwesome as Sparkles
+} from 'react-icons/md';
 
 interface StepCardProps {
   step: number;

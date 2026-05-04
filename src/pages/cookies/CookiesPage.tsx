@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Cookie, ShieldCheck, Info, FileText, Trash2 } from "lucide-react";
+import {
+  MdCookie as Cookie,
+  MdGppGood as ShieldCheck,
+  MdInfoOutline as Info,
+  MdDescription as FileText,
+  MdDeleteOutline as Trash2
+} from 'react-icons/md';
 import { Link } from "react-router-dom";
 import Floating from "@/shared/ui/Floatting";
 

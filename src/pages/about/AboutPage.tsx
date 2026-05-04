@@ -1,7 +1,21 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Users2, BookOpen, ShieldCheck, Rocket, Trophy, PlusCircle, ChevronRight, ArrowRight, Award, Target, Star, TrendingUp } from "lucide-react";
+import {
+  MdAutoAwesome as Sparkles,
+  MdPeople as Users2,
+  MdAutoStories as BookOpen,
+  MdGppGood as ShieldCheck,
+  MdRocketLaunch as Rocket,
+  MdEmojiEvents as Trophy,
+  MdAddCircleOutline as PlusCircle,
+  MdChevronRight as ChevronRight,
+  MdArrowForward as ArrowRight,
+  MdEmojiEvents as Award,
+  MdAdsClick as Target,
+  MdStarOutline as Star,
+  MdTrendingUp as TrendingUp
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import TypewriterText from "@/shared/ui/TypewriterText";

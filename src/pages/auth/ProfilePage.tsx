@@ -3,28 +3,28 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  User,
-  Mail,
-  Building2,
-  Shield,
-  Edit,
-  BookOpen,
-  Award,
-  History,
-  Star,
-  ChevronRight,
-  UserCircle,
-  GraduationCap,
-  Clock,
-  FileText,
-  Sparkles,
-  Trophy,
-  Zap,
-  Target,
-  FilePlus2,
-  Brain,
-  ArrowRight,
-} from "lucide-react";
+  MdPersonOutline as User,
+  MdMailOutline as Mail,
+  MdBusiness as Building2,
+  MdShield as Shield,
+  MdEdit as Edit,
+  MdAutoStories as BookOpen,
+  MdEmojiEvents as Award,
+  MdHistory as History,
+  MdStarOutline as Star,
+  MdChevronRight as ChevronRight,
+  MdAccountCircle as UserCircle,
+  MdSchool as GraduationCap,
+  MdAccessTime as Clock,
+  MdDescription as FileText,
+  MdAutoAwesome as Sparkles,
+  MdEmojiEvents as Trophy,
+  MdFlashOn as Zap,
+  MdAdsClick as Target,
+  MdNoteAdd as FilePlus2,
+  MdPsychology as Brain,
+  MdArrowForward as ArrowRight
+} from 'react-icons/md';
 import { useAuth } from "@/app/providers/AuthProvider";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import GradientText from "@/shared/ui/GradientText";

@@ -1,4 +1,7 @@
-import { CheckCircle, XCircle } from "lucide-react";
+import {
+  MdCheckCircle as CheckCircle,
+  MdHighlightOff as XCircle
+} from 'react-icons/md';
 
 export function StatusBadge({ isActive }: { isActive: boolean | null }) {
   if (isActive === false) {

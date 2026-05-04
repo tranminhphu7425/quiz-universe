@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import { UserPlus, LogIn, ClipboardList, FolderOpen, ArrowRightCircle } from "lucide-react";
+import {
+  MdPersonAddAlt as UserPlus,
+  MdLogin as LogIn,
+  MdAssignment as ClipboardList,
+  MdFolderOpen as FolderOpen,
+  MdArrowCircleRight as ArrowRightCircle
+} from 'react-icons/md';
 import { Link } from "react-router-dom";
 
 /**

@@ -2,7 +2,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Lock, Sparkles, ArrowRight, Heart, EyeOff, Eye } from "lucide-react";
+import {
+  MdMailOutline as Mail,
+  MdLockOutline as Lock,
+  MdAutoAwesome as Sparkles,
+  MdArrowForward as ArrowRight,
+  MdFavoriteBorder as Heart,
+  MdVisibilityOff as EyeOff,
+  MdVisibility as Eye
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";

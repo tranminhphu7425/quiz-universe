@@ -2,12 +2,28 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  BookOpen, Search, Filter, PlusCircle,
-  ChevronLeft, ChevronRight, Grid, List, SortAsc,
-  SortDesc, Calendar, Download, MoreVertical,
-  ChevronDown, Star, Users, Lock, Globe,
-  ChevronUp, Library, Sparkles
-} from "lucide-react";
+  MdAutoStories as BookOpen,
+  MdSearch as Search,
+  MdFilterList as Filter,
+  MdAddCircleOutline as PlusCircle,
+  MdChevronLeft as ChevronLeft,
+  MdChevronRight as ChevronRight,
+  MdGridView as Grid,
+  MdList as List,
+  MdArrowUpward as SortAsc,
+  MdArrowDownward as SortDesc,
+  MdCalendarToday as Calendar,
+  MdDownload as Download,
+  MdMoreVert as MoreVertical,
+  MdExpandMore as ChevronDown,
+  MdStarOutline as Star,
+  MdPeopleOutline as Users,
+  MdLockOutline as Lock,
+  MdPublic as Globe,
+  MdExpandLess as ChevronUp,
+  MdLocalLibrary as Library,
+  MdAutoAwesome as Sparkles
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";

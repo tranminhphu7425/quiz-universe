@@ -3,20 +3,26 @@ import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
-  Sparkles,
-  BookOpen,
-  ListChecks,
-  ArrowRight,
-  Rocket,
-  Zap,
-} from "lucide-react";
+  MdAutoAwesome as Sparkles,
+  MdAutoStories as BookOpen,
+  MdChecklist as ListChecks,
+  MdArrowForward as ArrowRight,
+  MdRocketLaunch as Rocket,
+  MdFlashOn as Zap
+} from 'react-icons/md';
 import { useAuth } from "@/app/providers/AuthProvider";
 import FeatureCard from "@/widgets/FeatureCard";
 import StepCard from "@/widgets/StepCard";
 import HeroIllustration from "@/widgets/HeroIllustration";
 import Floating from "@/shared/ui/Floatting";
-import { Heart } from "lucide-react";
-import { ClipboardList, Send, CheckCircle2 } from "lucide-react";
+import {
+  MdFavoriteBorder as Heart
+} from 'react-icons/md';
+import {
+  MdAssignment as ClipboardList,
+  MdSend as Send,
+  MdCheckCircleOutline as CheckCircle2
+} from 'react-icons/md';
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import React from 'react';
 import TypewriterText from "@/shared/ui/TypewriterText";
@@ -714,7 +720,10 @@ export default function HomePage() {
 
 // src/widgets/TestimonialCard.tsx
 
-import { Quote, User } from "lucide-react";
+import {
+  MdFormatQuote as Quote,
+  MdPersonOutline as User
+} from 'react-icons/md';
 
 interface TestimonialCardProps {
   name: string;

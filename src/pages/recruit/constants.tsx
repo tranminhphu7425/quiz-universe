@@ -1,4 +1,9 @@
-import { Rocket, Cpu, Globe, Users } from "lucide-react";
+import {
+  MdRocketLaunch as Rocket,
+  MdMemory as Cpu,
+  MdPublic as Globe,
+  MdPeopleOutline as Users
+} from 'react-icons/md';
 import { BenefitItem, JobPosition } from "./types";
 
 export const BENEFITS: BenefitItem[] = [

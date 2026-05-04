@@ -3,23 +3,23 @@ import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 import {
-  Calendar,
-  Calculator,
-  TrendingUp,
-  Clock,
-  Award,
-  BookOpen,
-  Sparkles,
-  ArrowRight,
-  CheckCircle2,
-  Users,
-  GraduationCap,
-  Target,
-  BarChart3,
-  CalendarDays,
-  ChevronRight,
-  Zap
-} from "lucide-react";
+  MdCalendarToday as Calendar,
+  MdCalculate as Calculator,
+  MdTrendingUp as TrendingUp,
+  MdAccessTime as Clock,
+  MdEmojiEvents as Award,
+  MdAutoStories as BookOpen,
+  MdAutoAwesome as Sparkles,
+  MdArrowForward as ArrowRight,
+  MdCheckCircleOutline as CheckCircle2,
+  MdPeopleOutline as Users,
+  MdSchool as GraduationCap,
+  MdAdsClick as Target,
+  MdInsertChartOutlined as BarChart3,
+  MdCalendarMonth as CalendarDays,
+  MdChevronRight as ChevronRight,
+  MdFlashOn as Zap
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import GradientText from "@/shared/ui/GradientText";

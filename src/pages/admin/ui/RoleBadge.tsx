@@ -1,4 +1,8 @@
-import { ShieldCheck, GraduationCap, User } from "lucide-react";
+import {
+  MdGppGood as ShieldCheck,
+  MdSchool as GraduationCap,
+  MdPersonOutline as User
+} from 'react-icons/md';
 
 export function RoleBadge({ role }: { role: string }) {
   const config: Record<string, { bg: string; text: string; icon: React.ReactNode; label: string }> = {

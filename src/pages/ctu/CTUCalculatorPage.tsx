@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Plus,
-  Trash2,
-  Calculator,
-  Target,
-  Info,
-  RotateCcw,
-  CheckCircle2,
-  BookOpen,
-  Award,
-  Star,
-  AlertCircle,
-  TrendingUp
-} from 'lucide-react';
+  MdAdd as Plus,
+  MdDeleteOutline as Trash2,
+  MdCalculate as Calculator,
+  MdAdsClick as Target,
+  MdInfoOutline as Info,
+  MdReplay as RotateCcw,
+  MdCheckCircleOutline as CheckCircle2,
+  MdAutoStories as BookOpen,
+  MdEmojiEvents as Award,
+  MdStarOutline as Star,
+  MdErrorOutline as AlertCircle,
+  MdTrendingUp as TrendingUp
+} from 'react-icons/md';
 import { toast } from 'react-hot-toast';
 
 interface CourseEntry {

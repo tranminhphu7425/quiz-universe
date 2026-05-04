@@ -1,17 +1,17 @@
 
 import { useState } from "react";
 import {
-  LayoutDashboard,
-  Users,
-  BookOpen,
-  BarChart3,
-  Settings,
-  ChevronLeft,
-  ChevronRight,
-  LogOut,
-  FolderOpen,
-  Star,
-} from "lucide-react";
+  MdDashboard as LayoutDashboard,
+  MdPeopleOutline as Users,
+  MdAutoStories as BookOpen,
+  MdInsertChartOutlined as BarChart3,
+  MdSettings as Settings,
+  MdChevronLeft as ChevronLeft,
+  MdChevronRight as ChevronRight,
+  MdLogout as LogOut,
+  MdFolderOpen as FolderOpen,
+  MdStarOutline as Star
+} from 'react-icons/md';
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
 

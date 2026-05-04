@@ -2,9 +2,16 @@ import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  Clock, ChevronLeft, ChevronRight, Flag, CheckCircle2,
-  AlertTriangle, BookOpen, Eye, Send
-} from "lucide-react";
+  MdAccessTime as Clock,
+  MdChevronLeft as ChevronLeft,
+  MdChevronRight as ChevronRight,
+  MdFlag as Flag,
+  MdCheckCircleOutline as CheckCircle2,
+  MdWarning as AlertTriangle,
+  MdAutoStories as BookOpen,
+  MdVisibility as Eye,
+  MdSend as Send
+} from 'react-icons/md';
 import { FEATURE_FLAGS } from "@/shared/config/features";
 
 interface ExamOption {

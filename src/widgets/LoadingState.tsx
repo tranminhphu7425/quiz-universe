@@ -1,4 +1,6 @@
-import { Loader2 } from "lucide-react";
+import {
+  MdLoop as Loader2
+} from 'react-icons/md';
 
 type LoadingStateProps = {
   /** Số “thẻ câu hỏi” giả lập trong lúc tải */

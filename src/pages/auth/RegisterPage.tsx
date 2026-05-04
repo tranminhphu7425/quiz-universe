@@ -2,7 +2,17 @@
 import {  useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Lock, User2, Sparkles, ArrowRight, Heart, ShieldCheck, EyeOff, Eye } from "lucide-react";
+import {
+  MdMailOutline as Mail,
+  MdLockOutline as Lock,
+  MdPerson as User2,
+  MdAutoAwesome as Sparkles,
+  MdArrowForward as ArrowRight,
+  MdFavoriteBorder as Heart,
+  MdGppGood as ShieldCheck,
+  MdVisibilityOff as EyeOff,
+  MdVisibility as Eye
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting"; // giữ nguyên import nếu bạn đã dùng tên này
 import { useAuth } from "@/app/providers/AuthProvider";
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";

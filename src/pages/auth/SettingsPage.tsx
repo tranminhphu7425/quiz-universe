@@ -1,28 +1,28 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  User,
-  Mail,
-  Lock,
-  ShieldCheck,
-  Globe,
-  Clock,
-  FileText,
-  Eye,
-  Bell,
-  Zap,
-  Cookie,
-  Trash2,
-  Smartphone,
-  RefreshCw,
-  Palette,
-  Volume2,
-  Focus,
-  KeyRound,
-  LogOut,
-  Save,
-  EyeOff,
-} from "lucide-react";
+  MdPersonOutline as User,
+  MdMailOutline as Mail,
+  MdLockOutline as Lock,
+  MdGppGood as ShieldCheck,
+  MdPublic as Globe,
+  MdAccessTime as Clock,
+  MdDescription as FileText,
+  MdVisibility as Eye,
+  MdNotifications as Bell,
+  MdFlashOn as Zap,
+  MdCookie as Cookie,
+  MdDeleteOutline as Trash2,
+  MdSmartphone as Smartphone,
+  MdSync as RefreshCw,
+  MdPalette as Palette,
+  MdVolumeUp as Volume2,
+  MdCenterFocusStrong as Focus,
+  MdVpnKey as KeyRound,
+  MdLogout as LogOut,
+  MdSave as Save,
+  MdVisibilityOff as EyeOff
+} from 'react-icons/md';
 import React from "react";
 import { useAuth } from "@/app/providers/AuthProvider";
 import { EducationApi } from "@/shared/api/major-universityApi";

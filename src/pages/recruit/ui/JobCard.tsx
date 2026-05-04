@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { Briefcase, Clock, Globe, FileText, MapPin, CheckCircle2 } from "lucide-react";
+import {
+  MdWork as Briefcase,
+  MdAccessTime as Clock,
+  MdPublic as Globe,
+  MdDescription as FileText,
+  MdLocationOn as MapPin,
+  MdCheckCircleOutline as CheckCircle2
+} from 'react-icons/md';
 import { toast } from "sonner";
 import { JobPosition } from "../types";
 

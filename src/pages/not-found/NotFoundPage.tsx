@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { Home, ArrowLeft, Search, Rocket, Ghost } from "lucide-react";
+import {
+  MdHome as Home,
+  MdArrowBack as ArrowLeft,
+  MdSearch as Search,
+  MdRocketLaunch as Rocket,
+  MdFace as Ghost
+} from 'react-icons/md';
 
 export default function NotFoundPage() {
   const navigate = useNavigate();

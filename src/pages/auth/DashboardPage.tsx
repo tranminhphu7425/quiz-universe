@@ -2,27 +2,27 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Heart,
-  FilePlus2,
-  BookOpen,
-  ArrowRight,
-  Trash2,
-  BarChart3,
-  CheckCircle,
-  Calendar,
-  Target,
-  BookMarked,
-  FileQuestion,
-  Sparkles,
-  Trophy,
-  Brain,
-  History,
-  Zap,
-  Activity,
-  BarChart,
-  PieChart,
-  BookCheck,
-} from "lucide-react";
+  MdFavoriteBorder as Heart,
+  MdNoteAdd as FilePlus2,
+  MdAutoStories as BookOpen,
+  MdArrowForward as ArrowRight,
+  MdDeleteOutline as Trash2,
+  MdInsertChartOutlined as BarChart3,
+  MdCheckCircle as CheckCircle,
+  MdCalendarToday as Calendar,
+  MdAdsClick as Target,
+  MdBookmark as BookMarked,
+  MdHelpCenter as FileQuestion,
+  MdAutoAwesome as Sparkles,
+  MdEmojiEvents as Trophy,
+  MdPsychology as Brain,
+  MdHistory as History,
+  MdFlashOn as Zap,
+  MdLocalActivity as Activity,
+  MdBarChart as BarChart,
+  MdPieChartOutline as PieChart,
+  MdLibraryAddCheck as BookCheck
+} from 'react-icons/md';
 
 import { useAuth } from "@/app/providers/AuthProvider";
 import { favoriteService } from "@/shared/api/favoriteApi";

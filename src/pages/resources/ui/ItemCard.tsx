@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
-import { FolderOpen, Download, Clock } from "lucide-react";
+import {
+  MdFolderOpen as FolderOpen,
+  MdDownload as Download,
+  MdAccessTime as Clock
+} from 'react-icons/md';
 
 export function ItemCard({
   item,

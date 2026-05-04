@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
+import {
+  MdLoop as Loader2
+} from 'react-icons/md';
 
 export const LoadingFallback = () => (
   <div className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-4">

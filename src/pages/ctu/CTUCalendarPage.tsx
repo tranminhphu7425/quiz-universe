@@ -1,14 +1,14 @@
 // CourseRegistration.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  Trash2,
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  Plus,
-  Search,
-  MapPin
-} from 'lucide-react';
+  MdDeleteOutline as Trash2,
+  MdCalendarToday as Calendar,
+  MdChevronLeft as ChevronLeft,
+  MdChevronRight as ChevronRight,
+  MdAdd as Plus,
+  MdSearch as Search,
+  MdLocationOn as MapPin
+} from 'react-icons/md';
 import { Course, ClassSession, ClassGroupItem, ClassItem } from '@/shared/types/courses';
 import { motion } from 'framer-motion';
 import { normalizeText } from '@/shared/utils/textUtils';

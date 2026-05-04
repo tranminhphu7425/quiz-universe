@@ -3,24 +3,24 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
-  PenTool,
-  Sparkles,
-  BookOpen,
-  CheckCircle2,
-  AlertCircle,
-  Edit3,
-  Share2,
-  Settings,
-  Hash,
-  Type,
-  AlignLeft,
-  ArrowLeft,
-  Loader2,
-  Calendar,
-  Save,
-  Ghost,
-  Rocket,
-} from "lucide-react";
+  MdBrush as PenTool,
+  MdAutoAwesome as Sparkles,
+  MdAutoStories as BookOpen,
+  MdCheckCircleOutline as CheckCircle2,
+  MdErrorOutline as AlertCircle,
+  MdEditNote as Edit3,
+  MdShare as Share2,
+  MdSettings as Settings,
+  MdNumbers as Hash,
+  MdTitle as Type,
+  MdFormatAlignLeft as AlignLeft,
+  MdArrowBack as ArrowLeft,
+  MdLoop as Loader2,
+  MdCalendarToday as Calendar,
+  MdSave as Save,
+  MdFace as Ghost,
+  MdRocketLaunch as Rocket
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import { toast } from "react-hot-toast";

@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Heart, Globe, Users, Lock, BookOpen, Clock } from "lucide-react";
+import {
+  MdFavoriteBorder as Heart,
+  MdPublic as Globe,
+  MdPeopleOutline as Users,
+  MdLockOutline as Lock,
+  MdAutoStories as BookOpen,
+  MdAccessTime as Clock
+} from 'react-icons/md';
 import { SubjectCardGridProps } from "./SubjectCardGrid";
 
 export function SubjectCardList({ bank, isFavorite, isSelected, onToggleFavorite, onToggleSelect, userRole, userId, onDelete }: SubjectCardGridProps) {

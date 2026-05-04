@@ -1,27 +1,27 @@
 import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Search,
-  Loader2,
-  User,
-  ShieldCheck,
-  CheckCircle,
-  XCircle,
-  Clock,
-  UserCog,
-  Trash2,
-  GraduationCap,
-  Building2,
-  Mail,
-  Phone,
-  Users,
-  Filter,
-  RefreshCw,
-  ToggleLeft,
-  ToggleRight,
-  AlertTriangle,
-  X,
-} from "lucide-react";
+  MdSearch as Search,
+  MdLoop as Loader2,
+  MdPersonOutline as User,
+  MdGppGood as ShieldCheck,
+  MdCheckCircle as CheckCircle,
+  MdHighlightOff as XCircle,
+  MdAccessTime as Clock,
+  MdManageAccounts as UserCog,
+  MdDeleteOutline as Trash2,
+  MdSchool as GraduationCap,
+  MdBusiness as Building2,
+  MdMailOutline as Mail,
+  MdPhone as Phone,
+  MdPeopleOutline as Users,
+  MdFilterList as Filter,
+  MdSync as RefreshCw,
+  MdToggleOff as ToggleLeft,
+  MdToggleOn as ToggleRight,
+  MdWarning as AlertTriangle,
+  MdClose as X
+} from 'react-icons/md';
 import toast from "react-hot-toast";
 import {
   getAdminUsers,

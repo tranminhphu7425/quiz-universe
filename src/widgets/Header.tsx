@@ -3,22 +3,25 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import Logo from "@/assets/images/logo/quizuniverselogo.png";
 import type { Variants } from "framer-motion";
-import { Bell, Settings } from "lucide-react";
+import {
+  MdNotifications as Bell,
+  MdSettings as Settings
+} from 'react-icons/md';
 
 
 import {
-  Menu,
-  X,
-  ChevronDown,
-  ChevronRight,
-  BookOpen,
-  User,
-  LogIn,
-  UserCircle,
-  LogOut,
-  ShieldCheck,
-  Shield
-} from "lucide-react";
+  MdMenu as Menu,
+  MdClose as X,
+  MdExpandMore as ChevronDown,
+  MdChevronRight as ChevronRight,
+  MdAutoStories as BookOpen,
+  MdPersonOutline as User,
+  MdLogin as LogIn,
+  MdAccountCircle as UserCircle,
+  MdLogout as LogOut,
+  MdGppGood as ShieldCheck,
+  MdShield as Shield
+} from 'react-icons/md';
 import { useAuth } from "@/app/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { FaCrown, FaPlus, FaStar } from "react-icons/fa";

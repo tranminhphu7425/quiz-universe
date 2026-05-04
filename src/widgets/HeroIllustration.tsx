@@ -1,9 +1,21 @@
 
 // 2) Thêm component này (cùng file hoặc import riêng)
 import { motion } from "framer-motion";
-import { Database, FileText, Shuffle, BookOpen, Upload, CheckCircle2, Sparkles } from "lucide-react";
-import { Printer } from 'lucide-react'; // or from your chosen icon library
-import { Users } from 'lucide-react';
+import {
+  MdStorage as Database,
+  MdDescription as FileText,
+  MdShuffle as Shuffle,
+  MdAutoStories as BookOpen,
+  MdUpload as Upload,
+  MdCheckCircleOutline as CheckCircle2,
+  MdAutoAwesome as Sparkles
+} from 'react-icons/md';
+import {
+  MdPrint as Printer
+} from 'react-icons/md'; // or from your chosen icon library
+import {
+  MdPeopleOutline as Users
+} from 'react-icons/md';
 import { fetchAllSubjects } from "@/shared/api/subjectApi";
 import { QuestionBankApi } from "@/shared/api/questionBanksApi";
 import { useEffect, useState } from "react";

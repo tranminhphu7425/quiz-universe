@@ -1,4 +1,9 @@
-import { AlertTriangle, Filter, RefreshCcw, PlusCircle } from "lucide-react";
+import {
+  MdWarning as AlertTriangle,
+  MdFilterList as Filter,
+  MdRefresh as RefreshCcw,
+  MdAddCircleOutline as PlusCircle
+} from 'react-icons/md';
 import { Link } from "react-router-dom";
 
 export function LoadingState() {

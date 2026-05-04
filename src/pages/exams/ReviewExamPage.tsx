@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
 import { useLocation, Link } from "react-router-dom";
 import {
-  Trophy, CheckCircle2, XCircle, Clock, BarChart3, Target,
-  ArrowLeft, RotateCcw, ChevronDown, BookOpen
-} from "lucide-react";
+  MdEmojiEvents as Trophy,
+  MdCheckCircleOutline as CheckCircle2,
+  MdHighlightOff as XCircle,
+  MdAccessTime as Clock,
+  MdInsertChartOutlined as BarChart3,
+  MdAdsClick as Target,
+  MdArrowBack as ArrowLeft,
+  MdReplay as RotateCcw,
+  MdExpandMore as ChevronDown,
+  MdAutoStories as BookOpen
+} from 'react-icons/md';
 import { useState } from "react";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 

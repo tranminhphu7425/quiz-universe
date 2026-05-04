@@ -2,15 +2,22 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ArrowLeft,
-  CheckCircle2,
-  Loader2,
-  Plus,
-  RefreshCcw,
-  Save,
-  Trash2, AlertTriangle,
-  Settings, X, Users, ShieldCheck, Globe, Image, BookOpen
-} from "lucide-react";
+  MdArrowBack as ArrowLeft,
+  MdCheckCircleOutline as CheckCircle2,
+  MdLoop as Loader2,
+  MdAdd as Plus,
+  MdRefresh as RefreshCcw,
+  MdSave as Save,
+  MdDeleteOutline as Trash2,
+  MdWarning as AlertTriangle,
+  MdSettings as Settings,
+  MdClose as X,
+  MdPeopleOutline as Users,
+  MdGppGood as ShieldCheck,
+  MdPublic as Globe,
+  MdImage as Image,
+  MdAutoStories as BookOpen
+} from 'react-icons/md';
 import { FEATURE_FLAGS } from "@/shared/config/features";
 
 import {

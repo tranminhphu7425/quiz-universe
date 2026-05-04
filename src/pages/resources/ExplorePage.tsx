@@ -2,23 +2,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import {
-  Folder,
-  FileText,
-  ArrowRight,
-  Home,
-  ChevronRight,
-  Search,
-  Grid,
-  List,
-  SortAsc,
-  SortDesc,
-  FolderOpen,
-  File,
-  Download,
-  Calendar,
-  Clock,
-  ExternalLink
-} from "lucide-react";
+  MdFolder as Folder,
+  MdDescription as FileText,
+  MdArrowForward as ArrowRight,
+  MdHome as Home,
+  MdChevronRight as ChevronRight,
+  MdSearch as Search,
+  MdGridView as Grid,
+  MdList as List,
+  MdArrowUpward as SortAsc,
+  MdArrowDownward as SortDesc,
+  MdFolderOpen as FolderOpen,
+  MdInsertDriveFile as File,
+  MdDownload as Download,
+  MdCalendarToday as Calendar,
+  MdAccessTime as Clock,
+  MdOpenInNew as ExternalLink
+} from 'react-icons/md';
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import { normalizeText } from "@/shared/utils/textUtils";
 

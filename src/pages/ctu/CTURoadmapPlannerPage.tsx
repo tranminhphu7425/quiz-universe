@@ -2,20 +2,20 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence, Reorder } from 'framer-motion';
 import {
-  Plus,
-  Trash2,
-  BookOpen,
-  ChevronDown,
-  ChevronUp,
-  GripVertical,
-  Search,
-  X,
-  Calendar,
-  Info,
-  Move,
-  Download,
-  Upload,
-} from 'lucide-react';
+  MdAdd as Plus,
+  MdDeleteOutline as Trash2,
+  MdMenuBook as BookOpen,
+  MdExpandMore as ChevronDown,
+  MdExpandLess as ChevronUp,
+  MdDragIndicator as GripVertical,
+  MdSearch as Search,
+  MdClose as X,
+  MdCalendarToday as Calendar,
+  MdInfoOutline as Info,
+  MdOpenWith as Move,
+  MdDownload as Download,
+  MdUpload as Upload,
+} from 'react-icons/md';
 import toast from 'react-hot-toast';
 import { fetchSubjects } from '@/shared/api/subjectApi';
 import { Subject } from '@/shared/types/subject';
@@ -218,7 +218,7 @@ const CTURoadmapPlannerPage: React.FC = () => {
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showLibrary, setShowLibrary] = useState(false);
+  const [showLibrary, setShowLibrary] = useState(window.innerWidth >= 1024);
   const [draggedOverSemester, setDraggedOverSemester] = useState<string | null>(null);
 
   const getSemesterTotalCredits = (semester: Semester) =>
@@ -328,7 +328,15 @@ const CTURoadmapPlannerPage: React.FC = () => {
       toast.error('Không thể xóa năm học duy nhất');
       return;
     }
-    if (window.confirm('Bạn có chắc muốn xóa năm học này?')) {
+    
+    // Ràng buộc: chỉ có thể xóa năm học cuối cùng
+    const yearIndex = academicYears.findIndex(y => y.id === yearId);
+    if (yearIndex < academicYears.length - 1) {
+      toast.error('Vui lòng xóa các năm học cao hơn trước!');
+      return;
+    }
+
+    if (window.confirm('Bạn có chắc muốn xóa năm học này? Toàn bộ môn học trong năm này sẽ bị xóa khỏi lộ trình.')) {
       setAcademicYears(academicYears.filter(y => y.id !== yearId));
       toast.success('Đã xóa năm học');
     }
@@ -585,21 +593,26 @@ const CTURoadmapPlannerPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-6 max-w-7xl">
-        {/* Thư viện môn học */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6"
-        >
-          <button
-            onClick={() => setShowLibrary(!showLibrary)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800/80 dark:backdrop-blur-md rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md hover:border-purple-300 dark:hover:border-purple-500/50 transition-all group"
-          >
-            <BookOpen className="w-5 h-5 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
-            <span className="font-semibold text-slate-700 dark:text-slate-200">Thư viện môn học</span>
-            <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${showLibrary ? 'rotate-180' : ''}`} />
-          </button>
+      <div className="container mx-auto px-4 py-6 max-w-[1600px]">
+        <div className="flex flex-col lg:flex-row gap-6 items-start">
+          {/* Cột trái: Thư viện & Tổng kết (Desktop) */}
+          <div className="w-full lg:w-[350px] xl:w-[400px] shrink-0 lg:sticky lg:top-[5.5rem] z-20">
+            {/* Thư viện môn học */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-6 lg:mb-0"
+            >
+              <button
+                onClick={() => setShowLibrary(!showLibrary)}
+                className="flex items-center justify-between w-full gap-2 px-4 py-2.5 bg-white dark:bg-slate-800/80 dark:backdrop-blur-md rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md hover:border-purple-300 dark:hover:border-purple-500/50 transition-all group"
+              >
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
+                  <span className="font-semibold text-slate-700 dark:text-slate-200">Thư viện môn học</span>
+                </div>
+                <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${showLibrary ? 'rotate-180' : ''}`} />
+              </button>
           
           <AnimatePresence>
             {showLibrary && (
@@ -620,7 +633,7 @@ const CTURoadmapPlannerPage: React.FC = () => {
                   />
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-h-72 overflow-y-auto pr-2 custom-scrollbar">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 max-h-72 lg:max-h-[calc(100vh-320px)] overflow-y-auto pr-2 custom-scrollbar">
                   {isLoadingLibrary ? (
                     <div className="col-span-full py-10 flex flex-col items-center justify-center gap-3">
                       <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
@@ -674,11 +687,48 @@ const CTURoadmapPlannerPage: React.FC = () => {
                 </div>
               </motion.div>
             )}
-          </AnimatePresence>
-        </motion.div>
+            </AnimatePresence>
+          </motion.div>
 
-        {/* Danh sách các năm học */}
-        <div className="space-y-6">
+          {/* Tổng kết (Desktop) */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-6 p-5 hidden lg:block bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 rounded-2xl border border-indigo-200 dark:border-indigo-800/50 shadow-sm"
+          >
+            <h3 className="text-sm font-bold text-slate-700 dark:text-slate-200 mb-4 flex items-center gap-2">
+              <Info className="w-4 h-4 text-purple-500" />
+              Tổng kết kế hoạch
+            </h3>
+            <div className="grid grid-cols-2 gap-4 text-center">
+              <div className="bg-white/60 dark:bg-slate-800/60 p-3 rounded-xl border border-white/40 dark:border-slate-700/50">
+                <p className="text-[10px] text-gray-500 mb-1">Tổng tín chỉ</p>
+                <p className="text-xl font-bold text-indigo-600 dark:text-indigo-400">{totalCredits}</p>
+              </div>
+              <div className="bg-white/60 dark:bg-slate-800/60 p-3 rounded-xl border border-white/40 dark:border-slate-700/50">
+                <p className="text-[10px] text-gray-500 mb-1">Số học phần</p>
+                <p className="text-xl font-bold text-purple-600 dark:text-purple-400">
+                  {academicYears.reduce((sum, y) => sum + y.semesters.reduce((s, sem) => s + sem.courses.length, 0), 0)}
+                </p>
+              </div>
+              <div className="bg-white/60 dark:bg-slate-800/60 p-3 rounded-xl border border-white/40 dark:border-slate-700/50">
+                <p className="text-[10px] text-gray-500 mb-1">Số năm học</p>
+                <p className="text-xl font-bold text-pink-600 dark:text-pink-400">{academicYears.length}</p>
+              </div>
+              <div className="bg-white/60 dark:bg-slate-800/60 p-3 rounded-xl border border-white/40 dark:border-slate-700/50">
+                <p className="text-[10px] text-gray-500 mb-1">Số kỳ học</p>
+                <p className="text-xl font-bold text-cyan-600 dark:text-cyan-400">
+                  {academicYears.reduce((sum, y) => sum + y.semesters.length, 0)}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Cột phải: Lộ trình */}
+        <div className="flex-1 w-full min-w-0">
+          {/* Danh sách các năm học */}
+          <div className="space-y-6">
           {academicYears.map((year, yearIndex) => (
             <motion.div
               key={year.id}
@@ -696,12 +746,15 @@ const CTURoadmapPlannerPage: React.FC = () => {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => removeAcademicYear(year.id)}
-                    className="p-1.5 hover:bg-white/20 rounded-lg transition-colors"
-                  >
-                    <Trash2 className="w-4 h-4 text-white" />
-                  </button>
+                  {yearIndex === academicYears.length - 1 && academicYears.length > 1 && (
+                    <button
+                      onClick={() => removeAcademicYear(year.id)}
+                      className="p-1.5 hover:bg-white/20 rounded-lg transition-colors"
+                      title="Xóa năm học này"
+                    >
+                      <Trash2 className="w-4 h-4 text-white" />
+                    </button>
+                  )}
                 </div>
               </div>
               
@@ -827,11 +880,11 @@ const CTURoadmapPlannerPage: React.FC = () => {
           ))}
         </div>
 
-        {/* Tổng kết */}
+        {/* Tổng kết (Mobile) */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 rounded-xl border border-indigo-200 dark:border-indigo-800"
+          className="mt-6 p-4 lg:hidden bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 rounded-xl border border-indigo-200 dark:border-indigo-800"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
@@ -856,6 +909,8 @@ const CTURoadmapPlannerPage: React.FC = () => {
             </div>
           </div>
         </motion.div>
+          </div>
+        </div>
       </div>
 
       <style>{`

@@ -3,22 +3,28 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  AlertTriangle,
-  CheckCircle2,
-  ChevronLeft,
-  Eye,
-  EyeOff,
-  Loader2,
-  ListChecks,
-  Search,
-  Tag,
-  TimerReset,
-  ArrowLeft,
-  BookOpen,
-  Edit,
-} from "lucide-react";
+  MdWarning as AlertTriangle,
+  MdCheckCircleOutline as CheckCircle2,
+  MdChevronLeft as ChevronLeft,
+  MdVisibility as Eye,
+  MdVisibilityOff as EyeOff,
+  MdLoop as Loader2,
+  MdChecklist as ListChecks,
+  MdSearch as Search,
+  MdLocalOffer as Tag,
+  MdTimer as TimerReset,
+  MdArrowBack as ArrowLeft,
+  MdAutoStories as BookOpen,
+  MdEdit as Edit
+} from 'react-icons/md';
 import { useAuth } from "@/app/providers/AuthProvider";
-import { ArrowRight, LayoutGrid, RefreshCcw, Sparkles, XCircle } from "lucide-react";
+import {
+  MdArrowForward as ArrowRight,
+  MdGridView as LayoutGrid,
+  MdRefresh as RefreshCcw,
+  MdAutoAwesome as Sparkles,
+  MdHighlightOff as XCircle
+} from 'react-icons/md';
 import LoadingState from "@/widgets/LoadingState";
 
 import { } from "@/shared/api/questionBanksApi";
@@ -26,7 +32,9 @@ import { fetchQuestionsByBankId } from "@/shared/api/questionsApi";
 import { QuestionBankApi } from "@/shared/api/questionBanksApi";
 import { QuestionBank } from "@/shared/types/questionBank";
 import { Question, QuestionOption } from "@/shared/types/question";
-import { Flag } from "lucide-react";
+import {
+  MdFlag as Flag
+} from 'react-icons/md';
 import GradientText from "@/shared/ui/GradientText";
 import { stemToSegments, normalize } from "./utils";
 

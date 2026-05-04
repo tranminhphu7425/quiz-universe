@@ -1,18 +1,18 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  ShieldCheck,
-  Lock,
-  KeyRound,
-  Fingerprint,
-  Database,
-  Bell,
-  Bug,
-  FileText,
-  ClipboardCheck,
-  Eye,
-  ShieldAlert,
-} from "lucide-react";
+  MdGppGood as ShieldCheck,
+  MdLockOutline as Lock,
+  MdVpnKey as KeyRound,
+  MdFingerprint as Fingerprint,
+  MdStorage as Database,
+  MdNotifications as Bell,
+  MdBugReport as Bug,
+  MdDescription as FileText,
+  MdAssignmentTurnedIn as ClipboardCheck,
+  MdVisibility as Eye,
+  MdGppMaybe as ShieldAlert
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 import { Link } from "react-router-dom";
 import { PolicyItem } from "./ui/PolicyItem";

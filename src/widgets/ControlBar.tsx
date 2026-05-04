@@ -1,4 +1,6 @@
-// import { SortAsc } from "lucide-react";
+// import {
+  MdArrowUpward as SortAsc
+} from 'react-icons/md';
 
 // type Props = {
 //     viewMode: 'grid' | 'list';

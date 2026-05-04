@@ -2,10 +2,23 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  FileText, Clock, Award, Shuffle, Plus, Trash2, GripVertical,
-  ChevronDown, Search, BookOpen, Sparkles, AlertCircle,
-  CheckCircle2, Settings2, ListChecks, ArrowLeft
-} from "lucide-react";
+  MdDescription as FileText,
+  MdAccessTime as Clock,
+  MdEmojiEvents as Award,
+  MdShuffle as Shuffle,
+  MdAdd as Plus,
+  MdDeleteOutline as Trash2,
+  MdDragIndicator as GripVertical,
+  MdExpandMore as ChevronDown,
+  MdSearch as Search,
+  MdAutoStories as BookOpen,
+  MdAutoAwesome as Sparkles,
+  MdErrorOutline as AlertCircle,
+  MdCheckCircleOutline as CheckCircle2,
+  MdTune as Settings2,
+  MdChecklist as ListChecks,
+  MdArrowBack as ArrowLeft
+} from 'react-icons/md';
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import Floating from "@/shared/ui/Floatting";
 import { useAuth } from "@/app/providers/AuthProvider";

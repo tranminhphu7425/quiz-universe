@@ -1,22 +1,22 @@
 import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Search,
-  Loader2,
-  BookOpen,
-  Hash,
-  Clock,
-  Trash2,
-  Edit3,
-  Plus,
-  Filter,
-  RefreshCw,
-  AlertTriangle,
-  X,
-  CheckCircle,
-  AlignLeft,
-  Type,
-} from "lucide-react";
+  MdSearch as Search,
+  MdLoop as Loader2,
+  MdAutoStories as BookOpen,
+  MdNumbers as Hash,
+  MdAccessTime as Clock,
+  MdDeleteOutline as Trash2,
+  MdEditNote as Edit3,
+  MdAdd as Plus,
+  MdFilterList as Filter,
+  MdSync as RefreshCw,
+  MdWarning as AlertTriangle,
+  MdClose as X,
+  MdCheckCircle as CheckCircle,
+  MdFormatAlignLeft as AlignLeft,
+  MdTitle as Type
+} from 'react-icons/md';
 import toast from "react-hot-toast";
 import { fetchAllSubjects, createSubject, updateSubject, deleteSubject } from "@/shared/api/subjectApi";
 import type { Subject } from "@/shared/types/subject";

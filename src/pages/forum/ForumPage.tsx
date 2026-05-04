@@ -2,21 +2,21 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-    MessageSquare,
-    Search,
-    Filter,
-    TrendingUp,
-    Clock,
-    Users,
-    ThumbsUp,
-    Eye,
-    Plus,
-    ArrowRight,
-    Sparkles,
-    Bookmark,
-    Tag,
-    ChevronRight
-} from "lucide-react";
+  MdChat as MessageSquare,
+  MdSearch as Search,
+  MdFilterList as Filter,
+  MdTrendingUp as TrendingUp,
+  MdAccessTime as Clock,
+  MdPeopleOutline as Users,
+  MdThumbUpOffAlt as ThumbsUp,
+  MdVisibility as Eye,
+  MdAdd as Plus,
+  MdArrowForward as ArrowRight,
+  MdAutoAwesome as Sparkles,
+  MdBookmarkBorder as Bookmark,
+  MdLocalOffer as Tag,
+  MdChevronRight as ChevronRight
+} from 'react-icons/md';
 import { useAuth } from "@/app/providers/AuthProvider";
 import GradientText from "@/shared/ui/GradientText";
 import Floating from "@/shared/ui/Floatting";

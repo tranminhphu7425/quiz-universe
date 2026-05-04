@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Heart, Clock } from "lucide-react";
+import {
+  MdFavoriteBorder as Heart,
+  MdAccessTime as Clock
+} from 'react-icons/md';
 import { Subject } from "@/shared/types/subject";
 
 export type SubjectCardGridProps = {

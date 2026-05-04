@@ -5,21 +5,42 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  BookOpen, Search, Filter, Clock, PlusCircle,
-  ChevronLeft, ChevronRight, Grid, List, SortAsc,
-  SortDesc, Calendar, Download, Eye, MoreVertical,
-  ChevronDown, Star, Users, Lock, Globe,
-  ChevronUp,
-  Sparkles,
-  Library
-} from "lucide-react";
-import { 
-  Edit2, 
-  Trash2, 
-  ArrowRight,
-} from "lucide-react";
-import { Heart } from "lucide-react";
-import { AlertTriangle, RefreshCcw } from "lucide-react";
+  MdAutoStories as BookOpen,
+  MdSearch as Search,
+  MdFilterList as Filter,
+  MdAccessTime as Clock,
+  MdAddCircleOutline as PlusCircle,
+  MdChevronLeft as ChevronLeft,
+  MdChevronRight as ChevronRight,
+  MdGridView as Grid,
+  MdList as List,
+  MdArrowUpward as SortAsc,
+  MdArrowDownward as SortDesc,
+  MdCalendarToday as Calendar,
+  MdDownload as Download,
+  MdVisibility as Eye,
+  MdMoreVert as MoreVertical,
+  MdExpandMore as ChevronDown,
+  MdStarOutline as Star,
+  MdPeopleOutline as Users,
+  MdLockOutline as Lock,
+  MdPublic as Globe,
+  MdExpandLess as ChevronUp,
+  MdAutoAwesome as Sparkles,
+  MdLocalLibrary as Library
+} from 'react-icons/md';
+import {
+  MdModeEdit as Edit2,
+  MdDeleteOutline as Trash2,
+  MdArrowForward as ArrowRight
+} from 'react-icons/md';
+import {
+  MdFavoriteBorder as Heart
+} from 'react-icons/md';
+import {
+  MdWarning as AlertTriangle,
+  MdRefresh as RefreshCcw
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 
 type Difficulty = "easy" | "medium" | "hard";
@@ -78,7 +99,7 @@ export default function QuestionBanksPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       handleSearch(searchInput);
-    }, 400);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [searchInput, handleSearch]);
 

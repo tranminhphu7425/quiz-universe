@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Heart } from "lucide-react";
+import {
+  MdFavoriteBorder as Heart
+} from 'react-icons/md';
 import { SubjectCardGridProps } from "./SubjectCardGrid";
 
 export function SubjectCardList({ subject, isFavorite, isSelected, onToggleFavorite, onToggleSelect, userRole }: SubjectCardGridProps) {

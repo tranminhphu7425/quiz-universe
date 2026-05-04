@@ -1,7 +1,17 @@
 // Auto-generated
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Twitter, MessageCircle, Mail, Heart, Sparkles, Send, ShieldCheck, BookOpen } from "lucide-react";
+import {
+  MdCode as Github,
+  MdForum as Twitter,
+  MdChatBubbleOutline as MessageCircle,
+  MdMailOutline as Mail,
+  MdFavoriteBorder as Heart,
+  MdAutoAwesome as Sparkles,
+  MdSend as Send,
+  MdGppGood as ShieldCheck,
+  MdAutoStories as BookOpen
+} from 'react-icons/md';
 import Logo from "@/assets/images/logo/quizuniverselogo.png";
 import ThemeToggle from "@/shared/ui/ThemeToggle";
 import Floating from "@/shared/ui/Floatting";

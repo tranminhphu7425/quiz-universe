@@ -1,6 +1,18 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Heart, Globe, Users, Lock, BookOpen, Sparkles, Clock, Edit2, Trash2, Eye, ArrowRight } from "lucide-react";
+import {
+  MdFavoriteBorder as Heart,
+  MdPublic as Globe,
+  MdPeopleOutline as Users,
+  MdLockOutline as Lock,
+  MdAutoStories as BookOpen,
+  MdAutoAwesome as Sparkles,
+  MdAccessTime as Clock,
+  MdModeEdit as Edit2,
+  MdDeleteOutline as Trash2,
+  MdVisibility as Eye,
+  MdArrowForward as ArrowRight
+} from 'react-icons/md';
 import { QuestionBank } from "@/shared/types/questionBank";
 
 export type SubjectCardGridProps = {

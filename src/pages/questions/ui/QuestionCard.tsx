@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle, Flag } from "lucide-react";
+import {
+  MdCheckCircleOutline as CheckCircle2,
+  MdHighlightOff as XCircle,
+  MdFlag as Flag
+} from 'react-icons/md';
 import { Question, QuestionOption } from "@/shared/types/question";
 import { FEATURE_FLAGS } from "@/shared/config/features";
 import { stemToSegments, normalize } from "../utils";

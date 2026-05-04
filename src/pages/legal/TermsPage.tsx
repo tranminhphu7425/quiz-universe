@@ -1,22 +1,22 @@
 // src/pages/terms/TermsPage.tsx (cải thiện)
 import { motion } from "framer-motion";
-import { 
-  Sparkles, 
-  Heart, 
-  ScrollText, 
-  Shield, 
-  Lock, 
-  Users, 
-  FileText, 
-  AlertCircle,
-  CheckCircle,
-  BookOpen,
-  Globe,
-  Database,
-  DollarSign,
-  Scale,
-  Mail
-} from "lucide-react";
+import {
+  MdAutoAwesome as Sparkles,
+  MdFavoriteBorder as Heart,
+  MdReceiptLong as ScrollText,
+  MdShield as Shield,
+  MdLockOutline as Lock,
+  MdPeopleOutline as Users,
+  MdDescription as FileText,
+  MdErrorOutline as AlertCircle,
+  MdCheckCircle as CheckCircle,
+  MdAutoStories as BookOpen,
+  MdPublic as Globe,
+  MdStorage as Database,
+  MdAttachMoney as DollarSign,
+  MdBalance as Scale,
+  MdMailOutline as Mail
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import GradientText from "@/shared/ui/GradientText";

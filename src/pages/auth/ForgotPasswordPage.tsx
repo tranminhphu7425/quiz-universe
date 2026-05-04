@@ -1,7 +1,13 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Sparkles, ArrowRight, Heart, HelpCircle } from "lucide-react";
+import {
+  MdMailOutline as Mail,
+  MdAutoAwesome as Sparkles,
+  MdArrowForward as ArrowRight,
+  MdFavoriteBorder as Heart,
+  MdHelpOutline as HelpCircle
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting"; // dùng cùng import như các trang trước
 import { useAuth } from "@/app/providers/AuthProvider";
 

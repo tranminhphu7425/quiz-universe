@@ -3,25 +3,25 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  Rocket,
-  GraduationCap,
-  Cpu,
-  Globe,
-  Users,
-  Zap,
-  Briefcase,
-  MapPin,
-  Clock,
-  Send,
-  Mail,
-  User,
-  FileText,
-  ChevronRight,
-  CheckCircle2,
-  Sparkles,
-  Lightbulb,
-  HeartHandshake,
-} from "lucide-react";
+  MdRocketLaunch as Rocket,
+  MdSchool as GraduationCap,
+  MdMemory as Cpu,
+  MdPublic as Globe,
+  MdPeopleOutline as Users,
+  MdFlashOn as Zap,
+  MdWork as Briefcase,
+  MdLocationOn as MapPin,
+  MdAccessTime as Clock,
+  MdSend as Send,
+  MdMailOutline as Mail,
+  MdPersonOutline as User,
+  MdDescription as FileText,
+  MdChevronRight as ChevronRight,
+  MdCheckCircleOutline as CheckCircle2,
+  MdAutoAwesome as Sparkles,
+  MdLightbulbOutline as Lightbulb,
+  MdHandshake as HeartHandshake
+} from 'react-icons/md';
 import GradientText from "@/shared/ui/GradientText";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import { toast } from "sonner";

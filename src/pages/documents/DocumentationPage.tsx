@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { Book, FileText, Code, ShieldCheck, Settings, HelpCircle } from "lucide-react";
+import {
+  MdMenuBook as Book,
+  MdDescription as FileText,
+  MdCode as Code,
+  MdGppGood as ShieldCheck,
+  MdSettings as Settings,
+  MdHelpOutline as HelpCircle
+} from 'react-icons/md';
 import { Link } from "react-router-dom";
 
 /**

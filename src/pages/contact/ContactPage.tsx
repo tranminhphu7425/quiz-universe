@@ -1,6 +1,18 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Sparkles, Heart, Send, MessageCircle, Clock, Shield, Globe, CheckCircle2 } from "lucide-react";
+import {
+  MdMailOutline as Mail,
+  MdPhone as Phone,
+  MdLocationOn as MapPin,
+  MdAutoAwesome as Sparkles,
+  MdFavoriteBorder as Heart,
+  MdSend as Send,
+  MdChatBubbleOutline as MessageCircle,
+  MdAccessTime as Clock,
+  MdShield as Shield,
+  MdPublic as Globe,
+  MdCheckCircleOutline as CheckCircle2
+} from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting";
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import TypewriterText from "@/shared/ui/TypewriterText";

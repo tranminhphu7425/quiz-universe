@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Loader2, Users, BookOpen, Database, CheckCircle, Clock, ClipboardList, Tag, Layers, UploadCloud } from "lucide-react";
+import {
+  MdLoop as Loader2,
+  MdPeopleOutline as Users,
+  MdAutoStories as BookOpen,
+  MdStorage as Database,
+  MdCheckCircle as CheckCircle,
+  MdAccessTime as Clock,
+  MdAssignment as ClipboardList,
+  MdLocalOffer as Tag,
+  MdLayers as Layers,
+  MdCloudUpload as UploadCloud
+} from 'react-icons/md';
 import { motion } from "framer-motion";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell } from "recharts";
 import { getAdminStats } from "@/shared/api/adminApi";

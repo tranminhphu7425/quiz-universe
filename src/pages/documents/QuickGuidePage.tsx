@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { BookOpen, CheckCircle, PlayCircle, ArrowRightCircle, Rocket, Lightbulb } from "lucide-react";
+import {
+  MdAutoStories as BookOpen,
+  MdCheckCircle as CheckCircle,
+  MdPlayCircleOutline as PlayCircle,
+  MdArrowCircleRight as ArrowRightCircle,
+  MdRocketLaunch as Rocket,
+  MdLightbulbOutline as Lightbulb
+} from 'react-icons/md';
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import AOS from "aos";

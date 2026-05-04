@@ -1,22 +1,22 @@
 // src/pages/feedback/FeedbackPage.tsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  MessageSquare, 
-  Bug, 
-  Lightbulb, 
-  Send, 
-  CheckCircle2, 
-  AlertCircle,
-  Star,
-  ThumbsUp,
-  Sparkles,
-  HelpCircle,
-  FileText,
-  Shield,
-  Bell,
-  Zap
-} from "lucide-react";
+import {
+  MdChat as MessageSquare,
+  MdBugReport as Bug,
+  MdLightbulbOutline as Lightbulb,
+  MdSend as Send,
+  MdCheckCircleOutline as CheckCircle2,
+  MdErrorOutline as AlertCircle,
+  MdStarOutline as Star,
+  MdThumbUpOffAlt as ThumbsUp,
+  MdAutoAwesome as Sparkles,
+  MdHelpOutline as HelpCircle,
+  MdDescription as FileText,
+  MdShield as Shield,
+  MdNotifications as Bell,
+  MdFlashOn as Zap
+} from 'react-icons/md';
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import { toast } from "sonner";
 

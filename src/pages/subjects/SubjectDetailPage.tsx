@@ -3,11 +3,27 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  BookOpen, Clock, Tag, ArrowLeft, Edit, Download,
-  Share2, Copy, ChevronRight, Users, Globe, Lock,
-  FileText, BarChart3, Calendar, Hash, Award,
-  BookMarked, Link as LinkIcon, CheckCircle2
-} from "lucide-react";
+  MdAutoStories as BookOpen,
+  MdAccessTime as Clock,
+  MdLocalOffer as Tag,
+  MdArrowBack as ArrowLeft,
+  MdEdit as Edit,
+  MdDownload as Download,
+  MdShare as Share2,
+  MdContentCopy as Copy,
+  MdChevronRight as ChevronRight,
+  MdPeopleOutline as Users,
+  MdPublic as Globe,
+  MdLockOutline as Lock,
+  MdDescription as FileText,
+  MdInsertChartOutlined as BarChart3,
+  MdCalendarToday as Calendar,
+  MdNumbers as Hash,
+  MdEmojiEvents as Award,
+  MdBookmark as BookMarked,
+  MdLink as LinkIcon,
+  MdCheckCircleOutline as CheckCircle2
+} from 'react-icons/md';
 import { useAuth } from "@/app/providers/AuthProvider";
 import { favoriteService } from "@/shared/api/favoriteApi";
 import type { FavoriteSubject } from "@/shared/types/favorite";

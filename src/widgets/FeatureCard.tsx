@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import {
+  MdArrowForward as ArrowRight,
+  MdAutoAwesome as Sparkles
+} from 'react-icons/md';
 
 function FeatureCard({
   title,

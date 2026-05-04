@@ -3,26 +3,26 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  ChevronDown,
-  HelpCircle,
-  BookOpen,
-  Lock,
-  Shield,
-  CreditCard,
-  Users,
-  Download,
-  Smartphone,
-  Bell,
-  Settings,
-  FileQuestion,
-  Trophy,
-  Clock,
-  Eye,
-  Share2,
-  Star,
-  Zap,
-  Search
-} from "lucide-react";
+  MdExpandMore as ChevronDown,
+  MdHelpOutline as HelpCircle,
+  MdAutoStories as BookOpen,
+  MdLockOutline as Lock,
+  MdShield as Shield,
+  MdCreditCard as CreditCard,
+  MdPeopleOutline as Users,
+  MdDownload as Download,
+  MdSmartphone as Smartphone,
+  MdNotifications as Bell,
+  MdSettings as Settings,
+  MdHelpCenter as FileQuestion,
+  MdEmojiEvents as Trophy,
+  MdAccessTime as Clock,
+  MdVisibility as Eye,
+  MdShare as Share2,
+  MdStarOutline as Star,
+  MdFlashOn as Zap,
+  MdSearch as Search
+} from 'react-icons/md';
 
 interface FAQItem {
   id: number;
