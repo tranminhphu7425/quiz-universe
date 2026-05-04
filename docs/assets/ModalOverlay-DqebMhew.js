@@ -1,0 +1,1 @@
+import{j as a,m as e}from"./index-BzMkILf0.js";function s({children:i,onClose:t}){return a.jsx(e.div,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},onClick:t,className:"fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm",children:i})}export{s as M};

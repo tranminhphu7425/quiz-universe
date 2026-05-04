@@ -423,7 +423,7 @@ export default function SubjectDetailPage() {
                 className="group cursor-pointer"
               >
                 <Link
-                  to={`/documents?subjectId=${subject.subjectId}`}
+                  to={`/resources?search=${subject.code}`}
                   className="block rounded-xl bg-white dark:bg-slate-800 p-6 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-500 transition-colors"
                 >
                   <div className="flex items-start justify-between mb-4">

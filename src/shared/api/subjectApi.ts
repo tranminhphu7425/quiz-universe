@@ -23,7 +23,7 @@ export function fetchSubjectById(
   subjectId: number,
   signal?: AbortSignal
 ): Promise<Subject> {
-  return apiService.get<Subject>(
+  return publicApiService.get<Subject>(
     `/subjects/${subjectId}`,
     { signal }
   );

@@ -81,7 +81,8 @@ async function runSync() {
     for (const subject of subjects) {
       const subjectId = subject.subjectId || subject.id;
       if (subjectId) {
-        await fetchAndSave(`/questions/subject/${subjectId}`);
+        // await fetchAndSave(`/questions/subject/${subjectId}`);
+        await fetchAndSave(`/subjects/${subjectId}`);
       }
     }
   }

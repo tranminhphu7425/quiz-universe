@@ -1,0 +1,9 @@
+{
+  "subjectId": 67,
+  "code": "CT482",
+  "name": "Xử lý dữ liệu lớn",
+  "description": "Môn học về các kiến trúc và công cụ xử lý dữ liệu lớn (Big Data) như Hadoop, Spark, và các kỹ thuật phân tích dữ liệu quy mô lớn.",
+  "credit": 3,
+  "bankCount": 0,
+  "createdAt": "2025-12-19T14:26:18"
+}

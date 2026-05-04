@@ -1,0 +1,9 @@
+{
+  "subjectId": 24,
+  "code": "CT172",
+  "name": "Toán rời rạc",
+  "description": "Môn học về các cấu trúc toán học rời rạc, bao gồm lý thuyết tập hợp, logic, quan hệ, đồ thị và đại số Bool, nền tảng cho khoa học máy tính.",
+  "credit": 4,
+  "bankCount": 0,
+  "createdAt": "2025-12-19T14:26:18"
+}

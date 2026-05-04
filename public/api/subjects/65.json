@@ -1,0 +1,9 @@
+{
+  "subjectId": 65,
+  "code": "CT283",
+  "name": "Hệ thống chịu lỗi",
+  "description": "Môn học về thiết kế hệ thống máy tính có khả năng chịu lỗi, đảm bảo hoạt động liên tục và tin cậy ngay cả khi có thành phần bị hỏng.",
+  "credit": 3,
+  "bankCount": 0,
+  "createdAt": "2025-12-19T14:26:18"
+}

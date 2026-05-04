@@ -1,0 +1,9 @@
+{
+  "subjectId": 44,
+  "code": "CT112",
+  "name": "Mạng máy tính",
+  "description": "Môn học về kiến trúc mạng, các giao thức mạng (TCP/IP), công nghệ mạng LAN/WAN và nguyên lý truyền thông dữ liệu.",
+  "credit": 3,
+  "bankCount": 0,
+  "createdAt": "2025-12-19T14:26:18"
+}

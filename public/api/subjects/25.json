@@ -1,0 +1,9 @@
+{
+  "subjectId": 25,
+  "code": "CT177",
+  "name": "Cấu trúc dữ liệu",
+  "description": "Môn học về các cấu trúc dữ liệu cơ bản và nâng cao như mảng, danh sách liên kết, cây, đồ thị và các thuật toán liên quan.",
+  "credit": 3,
+  "bankCount": 0,
+  "createdAt": "2025-12-19T14:26:18"
+}

@@ -1,0 +1,9 @@
+{
+  "subjectId": 63,
+  "code": "CT219",
+  "name": "Xử lý ngôn ngữ tự nhiên",
+  "description": "Môn học về các kỹ thuật xử lý và phân tích ngôn ngữ tự nhiên bằng máy tính, như phân tích cú pháp, ngữ nghĩa và ứng dụng chatbot, dịch máy.",
+  "credit": 3,
+  "bankCount": 0,
+  "createdAt": "2025-12-19T14:26:18"
+}

@@ -1,0 +1,1 @@
+import{b4 as n}from"./index-BzMkILf0.js";function u(e,t){return n.get(`/questions/question-bank/${e}`,{signal:t})}function i(e,t){return n.post(`/questions/question-bank/${e}`,t)}function o(e,t){return n.put(`/questions/${e}`,t)}function r(e){return n.delete(`/questions/${e}`)}export{i as c,r as d,u as f,o as u};

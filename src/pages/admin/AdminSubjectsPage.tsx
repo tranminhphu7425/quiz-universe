@@ -1,5 +1,8 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { usePagination } from "@/shared/hooks/usePagination";
+import { normalizeText } from "@/shared/utils/textUtils";
 import {
   MdSearch as Search,
   MdLoop as Loader2,
@@ -15,18 +18,32 @@ import {
   MdClose as X,
   MdCheckCircle as CheckCircle,
   MdFormatAlignLeft as AlignLeft,
-  MdTitle as Type
+  MdTitle as Type,
+  MdChevronLeft as ChevronLeft,
+  MdChevronRight as ChevronRight
 } from 'react-icons/md';
 import toast from "react-hot-toast";
-import { fetchAllSubjects, createSubject, updateSubject, deleteSubject } from "@/shared/api/subjectApi";
+import { fetchSubjects, createSubject, updateSubject, deleteSubject } from "@/shared/api/subjectApi";
 import type { Subject } from "@/shared/types/subject";
 
 /* ===================== MAIN PAGE ===================== */
 
 export default function AdminSubjectsPage() {
-  const [subjects, setSubjects] = useState<Subject[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState("");
+  const {
+    page,
+    size: pageSize,
+    keyword: q,
+    sort,
+    setPage,
+    handleSearch,
+  } = usePagination({
+    initialPage: 1,
+    initialSize: 10,
+    initialSort: 'name,asc'
+  });
+
+  const queryClient = useQueryClient();
+  const [searchInput, setSearchInput] = useState(q || "");
   const [err, setErr] = useState<string | null>(null);
 
   // Modal states
@@ -40,35 +57,36 @@ export default function AdminSubjectsPage() {
   const [formName, setFormName] = useState("");
   const [formDescription, setFormDescription] = useState("");
 
-  const fetchSubjects = () => {
-    setLoading(true);
-    setErr(null);
-    fetchAllSubjects()
-      .then((data) => {
-        setSubjects(data);
-      })
-      .catch((e) => {
-        console.warn("⚠️ Lỗi API:", e);
-        setErr("Không thể tải danh sách môn học. Vui lòng thử lại.");
-      })
-      .finally(() => setLoading(false));
-  };
-
+  // Debounce search
   useEffect(() => {
-    fetchSubjects();
-  }, []);
+    const timer = setTimeout(() => {
+      handleSearch(searchInput);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [searchInput, handleSearch]);
 
-  /* ---- Filtering ---- */
-  const filteredSubjects = useMemo(() => {
-    return subjects.filter((s) => {
-      const q = query.toLowerCase();
-      return (
-        s.name.toLowerCase().includes(q) ||
-        s.code.toLowerCase().includes(q) ||
-        (s.description ?? "").toLowerCase().includes(q)
-      );
-    });
-  }, [subjects, query]);
+  const {
+    data: pageResult,
+    isLoading: loading,
+    isPlaceholderData,
+    refetch,
+  } = useQuery({
+    queryKey: ['adminSubjects', page, pageSize, q, sort],
+    queryFn: () => {
+      const normalizedQuery = normalizeText(q);
+      return fetchSubjects({
+        page: page - 1,
+        size: pageSize,
+        keyword: normalizedQuery,
+        sort: sort
+      });
+    },
+    placeholderData: (prev) => prev,
+  });
+
+  const subjects = pageResult?.content || [];
+  const totalElements = pageResult?.totalElements || 0;
+  const totalPages = pageResult?.totalPages || 1;
 
   /* ---- Open create modal ---- */
   const openCreateModal = () => {
@@ -112,24 +130,21 @@ export default function AdminSubjectsPage() {
 
     try {
       if (editingSubject) {
-        const updated = await updateSubject(editingSubject.subjectId, {
+        await updateSubject(editingSubject.subjectId, {
           code: formCode.trim(),
           name: formName.trim(),
           description: formDescription.trim(),
         });
-        setSubjects((prev) =>
-          prev.map((s) => (s.subjectId === editingSubject.subjectId ? updated : s))
-        );
         toast.success("Cập nhật môn học thành công!", { id: toastId });
       } else {
-        const created = await createSubject({
+        await createSubject({
           code: formCode.trim(),
           name: formName.trim(),
           description: formDescription.trim(),
         });
-        setSubjects((prev) => [...prev, created]);
         toast.success("Tạo môn học thành công!", { id: toastId });
       }
+      queryClient.invalidateQueries({ queryKey: ["adminSubjects"] });
       closeModal();
     } catch (error: any) {
       const msg =
@@ -146,7 +161,7 @@ export default function AdminSubjectsPage() {
     const toastId = toast.loading("Đang xóa môn học...");
     try {
       await deleteSubject(id);
-      setSubjects((prev) => prev.filter((s) => s.subjectId !== id));
+      queryClient.invalidateQueries({ queryKey: ["adminSubjects"] });
       toast.success("Đã xóa môn học thành công!", { id: toastId });
       setConfirmDelete(null);
     } catch (error: any) {
@@ -166,18 +181,14 @@ export default function AdminSubjectsPage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 160, damping: 18 }}
-          >
+          <div>
             <h1 className="text-3xl md:text-4xl font-black leading-tight text-white">
               📚 Quản lý môn học
             </h1>
             <p className="mt-2 max-w-xl mx-auto text-white/80">
               Thêm, chỉnh sửa và xóa môn học trong hệ thống Quiz Universe.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -187,33 +198,25 @@ export default function AdminSubjectsPage() {
           <StatCard
             icon={<BookOpen className="h-4 w-4" />}
             label="Tổng môn học"
-            value={subjects.length}
+            value={totalElements}
             color="indigo"
           />
           <StatCard
-            icon={<CheckCircle className="h-4 w-4" />}
-            label="Có mô tả"
-            value={subjects.filter((s) => s.description).length}
-            color="emerald"
-          />
-          <StatCard
             icon={<Hash className="h-4 w-4" />}
-            label="Kết quả lọc"
-            value={filteredSubjects.length}
+            label="Số trang"
+            value={totalPages}
             color="amber"
           />
           <StatCard
+            icon={<CheckCircle className="h-4 w-4" />}
+            label="Trang hiện tại"
+            value={page}
+            color="emerald"
+          />
+          <StatCard
             icon={<Clock className="h-4 w-4" />}
-            label="Mới nhất"
-            value={
-              subjects.length > 0
-                ? new Date(
-                    subjects.reduce((a, b) =>
-                      new Date(a.createdAt) > new Date(b.createdAt) ? a : b
-                    ).createdAt
-                  ).toLocaleDateString("vi-VN")
-                : "—"
-            }
+            label="Hiển thị"
+            value={`${subjects.length} / ${pageSize}`}
             color="slate"
           />
         </div>
@@ -228,8 +231,8 @@ export default function AdminSubjectsPage() {
             <input
               type="text"
               placeholder="Tìm theo tên, mã hoặc mô tả..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
               className="w-full rounded-xl border border-slate-200 bg-white px-9 py-2 text-sm text-slate-800 shadow-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
           </div>
@@ -245,7 +248,7 @@ export default function AdminSubjectsPage() {
 
           {/* Refresh */}
           <button
-            onClick={fetchSubjects}
+            onClick={() => refetch()}
             disabled={loading}
             className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
           >
@@ -255,9 +258,8 @@ export default function AdminSubjectsPage() {
             Làm mới
           </button>
 
-          {/* Count */}
           <span className="text-sm text-slate-500 dark:text-slate-400 ml-auto">
-            {filteredSubjects.length}/{subjects.length} môn học
+            {totalElements} môn học
           </span>
         </div>
 
@@ -266,7 +268,7 @@ export default function AdminSubjectsPage() {
             <AlertTriangle className="h-4 w-4" />
             {err}
             <button
-              onClick={fetchSubjects}
+              onClick={() => refetch()}
               className="ml-auto underline hover:no-underline"
             >
               Thử lại
@@ -282,23 +284,23 @@ export default function AdminSubjectsPage() {
             <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
             <p className="text-slate-500">Đang tải danh sách môn học...</p>
           </div>
-        ) : filteredSubjects.length === 0 ? (
+        ) : subjects.length === 0 ? (
           <div className="text-center py-16">
             <BookOpen className="h-12 w-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
             <p className="text-slate-500 dark:text-slate-400">
-              {query
+              {q
                 ? "Không tìm thấy môn học phù hợp."
                 : "Chưa có môn học nào trong hệ thống."}
             </p>
-            {query && (
+            {q && (
               <button
-                onClick={() => setQuery("")}
+                onClick={() => setSearchInput("")}
                 className="mt-3 text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-400"
               >
                 Xóa bộ lọc
               </button>
             )}
-            {!query && (
+            {!q && (
               <button
                 onClick={openCreateModal}
                 className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition-colors"
@@ -309,9 +311,7 @@ export default function AdminSubjectsPage() {
             )}
           </div>
         ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+          <div
             className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
           >
             <div className="overflow-x-auto">
@@ -339,14 +339,9 @@ export default function AdminSubjectsPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                  <AnimatePresence>
-                    {filteredSubjects.map((s, i) => (
-                      <motion.tr
+                    {subjects.map((s, i) => (
+                      <tr
                         key={s.subjectId}
-                        initial={{ opacity: 0, y: 6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ delay: i * 0.02 }}
                         className="hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors"
                       >
                         <td className="px-4 py-3 text-slate-400 font-mono text-xs">
@@ -412,13 +407,37 @@ export default function AdminSubjectsPage() {
                             </button>
                           </div>
                         </td>
-                      </motion.tr>
+                      </tr>
                     ))}
-                  </AnimatePresence>
                 </tbody>
               </table>
             </div>
-          </motion.div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-between border-t border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30 px-4 py-3">
+                <span className="text-sm text-slate-500 dark:text-slate-400">
+                  Hiển thị trang {page} trên tổng số {totalPages}
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setPage(Math.max(1, page - 1))}
+                    disabled={page === 1}
+                    className="inline-flex items-center gap-1 rounded-lg bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-700"
+                  >
+                    <ChevronLeft className="h-4 w-4" /> Trước
+                  </button>
+                  <button
+                    onClick={() => setPage(Math.min(totalPages, page + 1))}
+                    disabled={page === totalPages || isPlaceholderData}
+                    className="inline-flex items-center gap-1 rounded-lg bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-700"
+                  >
+                    Sau <ChevronRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </main>
 

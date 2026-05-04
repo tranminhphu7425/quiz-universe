@@ -90,6 +90,7 @@ export default function Header({
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -158,10 +159,18 @@ export default function Header({
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Xử lý tìm kiếm, ví dụ chuyển trang hoặc gọi API
-    if (search.trim()) {
-      window.location.href = `/questions?search=${encodeURIComponent(search)}`;
+    if (searchInput.trim()) {
+      window.location.href = `/questions?search=${encodeURIComponent(searchInput)}`;
     }
   };
+  
+  // Debounce search input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearch(searchInput);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [searchInput]);
 
   useEffect(() => {
     // Tick is removed so don't need the interval
@@ -383,8 +392,8 @@ export default function Header({
             >
               <input
                 type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setTimeout(() => setIsFocused(false), 200)}
                 placeholder="Tìm kiếm môn học, đề thi.."
@@ -405,7 +414,7 @@ export default function Header({
                               <Link
                                 to={`/subjects/${item.data.subjectId}`}
                                 className="block px-4 py-2 hover:bg-emerald-100 dark:hover:bg-slate-700"
-                                onClick={() => setSearch("")}
+                                onClick={() => setSearchInput("")}
                               >
                                 <div className="text-xs text-emerald-500 font-semibold">
                                   📘 Subject
@@ -894,8 +903,8 @@ export default function Header({
             <form onSubmit={handleSearch} className="w-full">
               <input
                 type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setTimeout(() => setIsFocused(false), 200)}
                 placeholder="Tìm kiếm môn học..."

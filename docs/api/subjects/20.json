@@ -1,0 +1,9 @@
+{
+  "subjectId": 20,
+  "code": "CT101",
+  "name": "Lập trình căn bản A",
+  "description": "Môn học nhập môn lập trình, giới thiệu các khái niệm cơ bản, cấu trúc dữ liệu và giải thuật sử dụng ngôn ngữ lập trình phổ biến.",
+  "credit": 4,
+  "bankCount": 0,
+  "createdAt": "2025-12-19T14:26:18"
+}

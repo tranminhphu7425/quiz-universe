@@ -1,0 +1,9 @@
+{
+  "subjectId": 36,
+  "code": "CT180",
+  "name": "Cơ sở dữ liệu",
+  "description": "Môn học về nguyên lý cơ sở dữ liệu, mô hình quan hệ, ngôn ngữ SQL, thiết kế và tối ưu hóa cơ sở dữ liệu.",
+  "credit": 3,
+  "bankCount": 0,
+  "createdAt": "2025-12-19T14:26:18"
+}
