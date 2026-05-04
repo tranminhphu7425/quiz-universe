@@ -31,26 +31,26 @@ export const usePagination = (options: UsePaginationOptions = {}) => {
 
   // Các hàm điều khiển
   const nextPage = useCallback(() => setPage((p) => p + 1), []);
-  const prevPage = useCallback(() => setPage((p) => Math.max(0, p - 1)), []);
+  const prevPage = useCallback(() => setPage((p) => Math.max(initialPage, p - 1)), [initialPage]);
   
   const goToPage = useCallback((newPage: number) => {
-    setPage(Math.max(0, newPage));
-  }, []);
+    setPage(Math.max(initialPage, newPage));
+  }, [initialPage]);
 
   const changeSize = useCallback((newSize: number) => {
     setSize(newSize);
-    setPage(0); // Reset về trang đầu khi đổi size
-  }, []);
+    setPage(initialPage); // Reset về trang đầu khi đổi size
+  }, [initialPage]);
 
   const handleSearch = useCallback((newKeyword: string) => {
     setKeyword(newKeyword);
-    setPage(0); // Reset về trang đầu khi search
-  }, []);
+    setPage(initialPage); // Reset về trang đầu khi search
+  }, [initialPage]);
 
   const changeSort = useCallback((newSort: string) => {
     setSort(newSort);
-    setPage(0);
-  }, []);
+    setPage(initialPage);
+  }, [initialPage]);
 
   const reset = useCallback(() => {
     setPage(initialPage);

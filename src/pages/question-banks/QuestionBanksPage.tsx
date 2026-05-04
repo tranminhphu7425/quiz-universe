@@ -72,6 +72,16 @@ export default function QuestionBanksPage() {
   const sortOption = sort as SortOption;
   const setSortOption = changeSort;
 
+  // ======= SEARCH DEBOUNCE =======
+  const [searchInput, setSearchInput] = useState(q || "");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleSearch(searchInput);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [searchInput, handleSearch]);
+
   // ======= FILTER QuestionBanks
   const [diff, setDiff] = useState<"all" | Difficulty>("all");
   const [type, setType] = useState<"all" | QType>("all");
@@ -92,7 +102,7 @@ export default function QuestionBanksPage() {
         };
         
         if (q) {
-          return await QuestionBankApi.search(q, params);
+          return await QuestionBankApi.search(normalizeText(q), params);
         }
         return await QuestionBankApi.getAll(params);
       } catch (err) {
@@ -610,8 +620,8 @@ export default function QuestionBanksPage() {
                   <div className="flex items-center gap-2 rounded-xl bg-white/80 px-3 py-2 ring-1 ring-black/10 focus-within:ring-2 focus-within:ring-emerald-400 dark:bg-slate-900/70 dark:ring-white/10">
                     <Search className="h-4 w-4 text-emerald-600 dark:text-emerald-300" />
                     <input
-                      value={q}
-                      onChange={(e) => handleSearch(e.target.value)}
+                      value={searchInput}
+                      onChange={(e) => setSearchInput(e.target.value)}
                       placeholder="Từ khóa: tên, mô tả, môn học…"
                       className="w-full bg-transparent p-1 text-sm text-gray-800 placeholder:text-gray-500 focus:outline-none dark:text-gray-100 dark:placeholder:text-gray-400"
                     />

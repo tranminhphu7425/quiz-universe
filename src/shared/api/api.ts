@@ -25,8 +25,8 @@ class ApiService {
 
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
-          
-          
+
+
         }
         return config;
       },
@@ -59,17 +59,17 @@ class ApiService {
       try {
         const cleanUrl = url.split('?')[0];
         let fallbackUrl = `${import.meta.env.BASE_URL}api${cleanUrl.startsWith('/') ? cleanUrl : '/' + cleanUrl}.json`;
-        
+
         // Maps paginated endpoints to /all.json for static fallback
-        if (cleanUrl === '/question-banks') fallbackUrl = `${import.meta.env.BASE_URL}api/question-banks/all.json`;
+        if (cleanUrl === '/question-banks' || cleanUrl === '/question-banks/search') fallbackUrl = `${import.meta.env.BASE_URL}api/question-banks/all.json`;
         if (cleanUrl === '/subjects') fallbackUrl = `${import.meta.env.BASE_URL}api/subjects/all.json`;
 
         const res = await fetch(fallbackUrl);
         if (res.ok) {
-          toast.error("Mất kết nối máy chủ. Đang tải dữ liệu cục bộ...", { id: 'api-fallback', duration: 4000 });
+          toast.success("Mất kết nối máy chủ. Đang tải dữ liệu cục bộ...", { id: 'api-fallback', duration: 4000 });
           const data = await res.json();
           // If the original request expects a paginated format and the fallback is /all
-          if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/subjects')) {
+          if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/question-banks/search' || cleanUrl === '/subjects')) {
             const searchParams = new URLSearchParams(url.split('?')[1] || '');
             const page = parseInt(config?.params?.page?.toString() ?? searchParams.get('page') ?? '0', 10);
             const size = parseInt(config?.params?.size?.toString() ?? searchParams.get('size') ?? '10', 10);
@@ -77,28 +77,30 @@ class ApiService {
             const sort = config?.params?.sort?.toString() ?? searchParams.get('sort') ?? '';
 
             let filtered = data;
-            
+
             if (keyword) {
-              filtered = data.filter((item: any) => 
-                (item.name && item.name.toLowerCase().includes(keyword)) ||
-                (item.description && item.description.toLowerCase().includes(keyword)) ||
-                (item.code && item.code.toLowerCase().includes(keyword))
-              );
+              const normKeyword = keyword.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+              filtered = data.filter((item: any) => {
+                const name = item.name ? item.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+                const desc = item.description ? item.description.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+                const code = item.code ? item.code.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+                return name.includes(normKeyword) || desc.includes(normKeyword) || code.includes(normKeyword);
+              });
             }
 
             if (sort) {
               const [field, dir] = sort.split(',');
               filtered.sort((a: any, b: any) => {
-                 const valA = a[field] ?? (field === 'bankCount' ? 0 : "");
-                 const valB = b[field] ?? (field === 'bankCount' ? 0 : "");
-                 if (typeof valA === 'string' && typeof valB === 'string') {
-                   const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
-                   return dir === 'desc' ? -cmp : cmp;
-                 }
-                 if (typeof valA === 'number' && typeof valB === 'number') {
-                   return dir === 'desc' ? valB - valA : valA - valB;
-                 }
-                 return 0;
+                const valA = a[field] ?? (field === 'bankCount' || field === 'questionCount' ? 0 : "");
+                const valB = b[field] ?? (field === 'bankCount' || field === 'questionCount' ? 0 : "");
+                if (typeof valA === 'string' && typeof valB === 'string') {
+                  const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
+                  return dir === 'desc' ? -cmp : cmp;
+                }
+                if (typeof valA === 'number' && typeof valB === 'number') {
+                  return dir === 'desc' ? valB - valA : valA - valB;
+                }
+                return 0;
               });
             }
 
@@ -107,11 +109,11 @@ class ApiService {
             const start = page * size;
             const pagedContent = filtered.slice(start, start + size);
 
-            return { 
-              content: pagedContent, 
-              totalElements, 
-              totalPages, 
-              size, 
+            return {
+              content: pagedContent,
+              totalElements,
+              totalPages,
+              size,
               number: page,
               first: page === 0,
               last: page >= totalPages - 1,
@@ -166,23 +168,27 @@ class PublicApiService {
 
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     try {
-      const response: AxiosResponse<T> = await this.axiosInstance.get(url, config);
-      return response.data;
+      // const response: AxiosResponse<T> = await this.axiosInstance.get(url, config);
+      // return response.data;
+      //cho try luôn lỗi để test catch
+      const error = new Error("Test catch");
+      throw error;
+      
     } catch (error) {
       console.warn(`[API Fallback] Failed to fetch ${url}, trying static JSON...`);
       try {
         const cleanUrl = url.split('?')[0];
         let fallbackUrl = `${import.meta.env.BASE_URL}api${cleanUrl.startsWith('/') ? cleanUrl : '/' + cleanUrl}.json`;
-        
-        if (cleanUrl === '/question-banks') fallbackUrl = `${import.meta.env.BASE_URL}api/question-banks/all.json`;
+
+        if (cleanUrl === '/question-banks' || cleanUrl === '/question-banks/search') fallbackUrl = `${import.meta.env.BASE_URL}api/question-banks/all.json`;
         if (cleanUrl === '/subjects') fallbackUrl = `${import.meta.env.BASE_URL}api/subjects/all.json`;
 
         const res = await fetch(fallbackUrl);
         if (res.ok) {
-          toast.error("Mất kết nối máy chủ. Đang tải dữ liệu cục bộ...", { id: 'api-fallback', duration: 4000 });
+          toast.success("Mất kết nối máy chủ. Đang tải dữ liệu cục bộ...", { id: 'api-fallback', duration: 4000 });
           const data = await res.json();
           // If the original request expects a paginated format and the fallback is /all
-          if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/subjects')) {
+          if (!url.includes('/all') && (cleanUrl === '/question-banks' || cleanUrl === '/question-banks/search' || cleanUrl === '/subjects')) {
             const searchParams = new URLSearchParams(url.split('?')[1] || '');
             const page = parseInt(config?.params?.page?.toString() ?? searchParams.get('page') ?? '0', 10);
             const size = parseInt(config?.params?.size?.toString() ?? searchParams.get('size') ?? '10', 10);
@@ -190,28 +196,30 @@ class PublicApiService {
             const sort = config?.params?.sort?.toString() ?? searchParams.get('sort') ?? '';
 
             let filtered = data;
-            
+
             if (keyword) {
-              filtered = data.filter((item: any) => 
-                (item.name && item.name.toLowerCase().includes(keyword)) ||
-                (item.description && item.description.toLowerCase().includes(keyword)) ||
-                (item.code && item.code.toLowerCase().includes(keyword))
-              );
+              const normKeyword = keyword.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+              filtered = data.filter((item: any) => {
+                const name = item.name ? item.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+                const desc = item.description ? item.description.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+                const code = item.code ? item.code.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+                return name.includes(normKeyword) || desc.includes(normKeyword) || code.includes(normKeyword);
+              });
             }
 
             if (sort) {
               const [field, dir] = sort.split(',');
               filtered.sort((a: any, b: any) => {
-                 const valA = a[field] ?? (field === 'bankCount' ? 0 : "");
-                 const valB = b[field] ?? (field === 'bankCount' ? 0 : "");
-                 if (typeof valA === 'string' && typeof valB === 'string') {
-                   const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
-                   return dir === 'desc' ? -cmp : cmp;
-                 }
-                 if (typeof valA === 'number' && typeof valB === 'number') {
-                   return dir === 'desc' ? valB - valA : valA - valB;
-                 }
-                 return 0;
+                const valA = a[field] ?? (field === 'bankCount' || field === 'questionCount' ? 0 : "");
+                const valB = b[field] ?? (field === 'bankCount' || field === 'questionCount' ? 0 : "");
+                if (typeof valA === 'string' && typeof valB === 'string') {
+                  const cmp = valA.localeCompare(valB, 'vi', { sensitivity: 'base' });
+                  return dir === 'desc' ? -cmp : cmp;
+                }
+                if (typeof valA === 'number' && typeof valB === 'number') {
+                  return dir === 'desc' ? valB - valA : valA - valB;
+                }
+                return 0;
               });
             }
 
@@ -220,11 +228,11 @@ class PublicApiService {
             const start = page * size;
             const pagedContent = filtered.slice(start, start + size);
 
-            return { 
-              content: pagedContent, 
-              totalElements, 
-              totalPages, 
-              size, 
+            return {
+              content: pagedContent,
+              totalElements,
+              totalPages,
+              size,
               number: page,
               first: page === 0,
               last: page >= totalPages - 1,
@@ -233,7 +241,7 @@ class PublicApiService {
           }
           return data;
         }
-        toast
+
       } catch (fallbackError) {
         console.error(`[API Fallback] Static JSON also failed for ${url}`);
       }

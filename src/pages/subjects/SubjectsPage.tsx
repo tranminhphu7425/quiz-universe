@@ -18,6 +18,8 @@ import { favoriteService } from "@/shared/api/favoriteApi";
 import { FavoriteSubject } from "@/shared/types/favorite";
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import { toast } from "react-hot-toast";
+import { usePagination } from '@/shared/hooks/usePagination';
+import { normalizeText } from "@/shared/utils/textUtils";
 
 // Sort options
 type SortOption = 'name-asc' | 'name-desc' | 'date-asc' | 'date-desc' | 'popularity-desc';
@@ -36,34 +38,43 @@ function toSortParam(opt: SortOption): string {
 }
 
 export default function SubjectsPage() {
+  const {
+    page,
+    size: pageSize,
+    keyword: q,
+    sort,
+    setPage,
+    handleSearch,
+    changeSort,
+  } = usePagination({
+    initialPage: 1,
+    initialSize: 12,
+    initialSort: 'popularity-desc'
+  });
+  const sortOption = sort as SortOption;
+  const setSortOption = changeSort;
+
   // ======= SEARCH & FILTER STATE =======
-  const [searchInput, setSearchInput] = useState("");
-  const [keyword, setKeyword] = useState(""); // debounced value sent to API
+  const [searchInput, setSearchInput] = useState(q || "");
   const [onlyApproved, setOnlyApproved] = useState(false);
+
+  // Debounce search input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleSearch(searchInput);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [searchInput, handleSearch]);
 
   // ======= VIEW & SORT STATE =======
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
-  const [sortOption, setSortOption] = useState<SortOption>('popularity-desc');
   const [selectedSubjects, setSelectedSubjects] = useState<Set<number>>(new Set());
   const [showBulkActions, setShowBulkActions] = useState(false);
   const [showFilters, setShowFilters] = useState<boolean>(false);
 
-  // ======= BACKEND PAGINATION =======
-  const [page, setPage] = useState(1); // 1-based UI page
-  const pageSize = 12;
-
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [checkOnline, setCheckOnline] = useState(true);
-
-  // Debounce search input 400ms → update keyword → reset page
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setKeyword(searchInput);
-      setPage(1);
-    }, 400);
-    return () => clearTimeout(timer);
-  }, [searchInput]);
   
   // ======= FETCH DATA WITH BACKEND PAGINATION =======
   const {
@@ -71,7 +82,7 @@ export default function SubjectsPage() {
     isLoading: isLoadingSubjects,
     isPlaceholderData,
   } = useQuery({
-    queryKey: ["subjects", { page, pageSize, keyword, sort: sortOption, checkOnline }],
+    queryKey: ["subjects", { page, pageSize, keyword: q, sort: sortOption, checkOnline }],
     queryFn: async () => {
     
 
@@ -79,7 +90,7 @@ export default function SubjectsPage() {
         return await fetchSubjects({
           page: page - 1, // Spring Data: 0-based
           size: pageSize,
-          keyword: keyword || undefined,
+          keyword: q ? normalizeText(q) : undefined,
           sort: toSortParam(sortOption),
         });
       } catch (error) {
@@ -125,7 +136,6 @@ console.log(pageResult);
   const handleSortChange = (value: string) => {
     const valid: SortOption[] = ['name-asc', 'name-desc', 'date-asc', 'date-desc', 'popularity-desc'];
     setSortOption(valid.includes(value as SortOption) ? (value as SortOption) : 'date-desc');
-    setPage(1);
     setSelectedSubjects(new Set());
   };
 
@@ -517,7 +527,7 @@ console.log(pageResult);
             {/* Pagination */}
             <div className="mt-6 flex items-center justify-center gap-2">
               <button
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                onClick={() => setPage(Math.max(1, page - 1))}
                 disabled={page === 1}
                 className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-slate-200 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700"
               >
@@ -527,7 +537,7 @@ console.log(pageResult);
                 Trang {page}/{totalPages}
               </span>
               <button
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                onClick={() => setPage(Math.min(totalPages, page + 1))}
                 disabled={page === totalPages || isPlaceholderData}
                 className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-slate-200 disabled:opacity-50 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700"
               >

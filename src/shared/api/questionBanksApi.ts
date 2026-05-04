@@ -56,7 +56,7 @@ export const QuestionBankApi = {
   },
 
   search(keyword: string, params?: PageParams) {
-    return apiService.get<PaginatedResponse<QuestionBank>>(
+    return publicApiService.get<PaginatedResponse<QuestionBank>>(
       "/question-banks/search",
       { params: { keyword, ...params } }
     );
