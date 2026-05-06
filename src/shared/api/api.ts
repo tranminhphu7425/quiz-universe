@@ -168,12 +168,13 @@ class PublicApiService {
 
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     try {
-      // const response: AxiosResponse<T> = await this.axiosInstance.get(url, config);
-      // return response.data;
-      //cho try luôn lỗi để test catch
-      const error = new Error("Test catch");
-      throw error;
-      
+      const online: boolean = true;
+      if (!online) {
+        throw new Error("Test catch");
+      }
+      const response: AxiosResponse<T> = await this.axiosInstance.get(url, config);
+      return response.data;
+
     } catch (error) {
       console.warn(`[API Fallback] Failed to fetch ${url}, trying static JSON...`);
       try {

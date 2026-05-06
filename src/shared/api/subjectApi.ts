@@ -1,99 +1,90 @@
 import { apiService, publicApiService } from "@/shared/api/api";
 import { Subject, SubjectNameResponse } from "../types/subject";
-
-/* ===================== QUERY ===================== */
-
-/**
- * Lấy tên môn học theo ID
- */
-export function fetchSubjectNameById(
-  subjectId: number,
-  signal?: AbortSignal
-): Promise<SubjectNameResponse> {
-  return apiService.get<SubjectNameResponse>(
-    `/subjects/${subjectId}/name`,
-    { signal }
-  );
-}
-
-/**
- * Lấy thông tin đầy đủ của một môn học theo ID
- */
-export function fetchSubjectById(
-  subjectId: number,
-  signal?: AbortSignal
-): Promise<Subject> {
-  return publicApiService.get<Subject>(
-    `/subjects/${subjectId}`,
-    { signal }
-  );
-}
-
 import { PageParams, PaginatedResponse } from "../types/pagination";
 
-/**
- * Lấy toàn bộ danh sách môn học
- */
-export function fetchAllSubjects(
-  signal?: AbortSignal
-): Promise<Subject[]> {
-  return apiService.get<Subject[]>(
-    `/subjects/all`,
-    { signal }
-  );
-}
+export const SubjectApi = {
+  /* ===================== QUERY ===================== */
 
-/**
- * Lấy danh sách môn học có phân trang
- */
-export function fetchSubjects(
-  params?: PageParams,
-  signal?: AbortSignal
-): Promise<PaginatedResponse<Subject>> {
-  return publicApiService.get<PaginatedResponse<Subject>>(
-    `/subjects`,
-    { params, signal }
-  );
-}
+  /**
+   * Lấy tên môn học theo ID
+   */
+  getName(subjectId: number, signal?: AbortSignal): Promise<SubjectNameResponse> {
+    return apiService.get<SubjectNameResponse>(
+      `/subjects/${subjectId}/name`,
+      { signal }
+    );
+  },
 
-/**
- * Tạo môn học mới
- */
-export function createSubject(
-  data: Partial<Subject>,
-  signal?: AbortSignal
-): Promise<Subject> {
-  return apiService.post<Subject>(
-    `/subjects/create`,
-    data,
-    { signal }
-  );
-}
+  /**
+   * Lấy thông tin đầy đủ của một môn học theo ID
+   */
+  getById(subjectId: number, signal?: AbortSignal): Promise<Subject> {
+    return publicApiService.get<Subject>(
+      `/subjects/${subjectId}`,
+      { signal }
+    );
+  },
 
-/**
- * Cập nhật môn học
- */
-export function updateSubject(
-  id: number,
-  data: Partial<Subject>,
-  signal?: AbortSignal
-): Promise<Subject> {
-  return apiService.put<Subject>(
-    `/subjects/${id}`,
-    data,
-    { signal }
-  );
-}
+  /**
+   * Lấy toàn bộ danh sách môn học
+   */
+  getAll(signal?: AbortSignal): Promise<Subject[]> {
+    return apiService.get<Subject[]>(
+      `/subjects/all`,
+      { signal }
+    );
+  },
 
-/**
- * Xóa môn học
- */
-export function deleteSubject(
-  id: number,
-  signal?: AbortSignal
-): Promise<void> {
-  return apiService.delete<void>(
-    `/subjects/${id}`,
-    { signal }
-  );
-}
+  /**
+   * Lấy danh sách môn học có phân trang
+   */
+  getList(params?: PageParams, signal?: AbortSignal): Promise<PaginatedResponse<Subject>> {
+    return publicApiService.get<PaginatedResponse<Subject>>(
+      `/subjects`,
+      { params, signal }
+    );
+  },
+
+  /* ===================== MUTATION ===================== */
+
+  /**
+   * Tạo môn học mới
+   */
+  create(data: Partial<Subject>, signal?: AbortSignal): Promise<Subject> {
+    return apiService.post<Subject>(
+      `/subjects/create`,
+      data,
+      { signal }
+    );
+  },
+
+  /**
+   * Cập nhật môn học
+   */
+  update(id: number, data: Partial<Subject>, signal?: AbortSignal): Promise<Subject> {
+    return apiService.put<Subject>(
+      `/subjects/${id}`,
+      data,
+      { signal }
+    );
+  },
+
+  /**
+   * Xóa môn học
+   */
+  delete(id: number, signal?: AbortSignal): Promise<void> {
+    return apiService.delete<void>(
+      `/subjects/${id}`,
+      { signal }
+    );
+  },
+};
+
+// Aliases for backward compatibility if needed during migration
+export const fetchSubjectById = SubjectApi.getById;
+export const fetchSubjects = SubjectApi.getList;
+export const fetchSubjectNameById = SubjectApi.getName;
+export const fetchAllSubjects = SubjectApi.getAll;
+export const createSubject = SubjectApi.create;
+export const updateSubject = SubjectApi.update;
+export const deleteSubject = SubjectApi.delete;

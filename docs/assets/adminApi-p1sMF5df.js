@@ -1,1 +1,0 @@
-import{b4 as t}from"./index-BzMkILf0.js";function s(){return t.get("/admin/stats")}function i(){return t.get("/admin/users")}function u(e,n){return t.put(`/admin/users/${e}/role`,{role:n})}function a(e){return t.put(`/admin/users/${e}/toggle-active`)}function d(e){return t.delete(`/admin/users/${e}`)}export{i as a,d,s as g,a as t,u};

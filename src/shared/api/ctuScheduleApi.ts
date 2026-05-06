@@ -7,11 +7,15 @@ export type CtuSchedulePayload = {
   savedAt?: string;
 };
 
-export function fetchMyCtuSchedule(signal?: AbortSignal): Promise<CtuSchedulePayload | null> {
-  return apiService.get<CtuSchedulePayload | null>(`/ctu-schedule`, { signal });
-}
+export const CtuScheduleApi = {
+  getMySchedule(signal?: AbortSignal): Promise<CtuSchedulePayload | null> {
+    return apiService.get<CtuSchedulePayload | null>(`/ctu-schedule`, { signal });
+  },
 
-export function saveMyCtuSchedule(payload: CtuSchedulePayload): Promise<CtuSchedulePayload> {
-  return apiService.put<CtuSchedulePayload>(`/ctu-schedule`, payload);
-}
+  saveMySchedule(payload: CtuSchedulePayload): Promise<CtuSchedulePayload> {
+    return apiService.put<CtuSchedulePayload>(`/ctu-schedule`, payload);
+  }
+};
 
+export const fetchMyCtuSchedule = CtuScheduleApi.getMySchedule;
+export const saveMyCtuSchedule = CtuScheduleApi.saveMySchedule;

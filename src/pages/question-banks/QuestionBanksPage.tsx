@@ -2,7 +2,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   MdAutoStories as BookOpen,
@@ -76,6 +76,9 @@ function toSortParam(opt: SortOption): string {
 import { usePagination } from '@/shared/hooks/usePagination';
 
 export default function QuestionBanksPage() {
+  const [searchParams] = useSearchParams();
+  const urlSearch = searchParams.get("search") || "";
+
   // ======= PAGINATION & SEARCH HOOK =======
   const {
     page,
@@ -88,13 +91,21 @@ export default function QuestionBanksPage() {
   } = usePagination({
     initialPage: 1,
     initialSize: 12,
-    initialSort: 'date-desc'
+    initialSort: 'date-desc',
+    initialKeyword: urlSearch
   });
   const sortOption = sort as SortOption;
   const setSortOption = changeSort;
 
   // ======= SEARCH DEBOUNCE =======
-  const [searchInput, setSearchInput] = useState(q || "");
+  const [searchInput, setSearchInput] = useState(urlSearch);
+
+  useEffect(() => {
+    // Nếu keyword thay đổi từ bên ngoài (URL), cập nhật lại searchInput
+    if (urlSearch && !searchInput) {
+      setSearchInput(urlSearch);
+    }
+  }, [urlSearch]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -114,14 +125,14 @@ export default function QuestionBanksPage() {
   const { data: pageResult, isLoading, error: queryError } = useQuery({
     queryKey: ['question-banks', page, pageSize, q, sortOption],
     queryFn: async () => {
-      
+
       try {
         const params = {
           page: page - 1,
           size: pageSize,
           sort: toSortParam(sortOption)
         };
-        
+
         if (q) {
           return await QuestionBankApi.search(normalizeText(q), params);
         }
@@ -143,7 +154,7 @@ export default function QuestionBanksPage() {
   const [showBulkActions, setShowBulkActions] = useState(false);
   // Thêm vào phần state khai báo
   const [showFilters, setShowFilters] = useState<boolean>(false);
-  
+
   // State for delete modal
   const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
   const types = ["all", "MCQ", "TRUE_FALSE", "FILL_BLANK"] as const;
@@ -180,14 +191,14 @@ export default function QuestionBanksPage() {
     if (!user) return;
     try {
       if (isFav) {
-        await favoriteService.removeFavoriteQuestionBank(bankId);
+        await favoriteService.removeQuestionBank(bankId);
         setFavorites(prev => {
           const next = new Set(prev);
           next.delete(bankId);
           return next;
         });
       } else {
-        await favoriteService.addFavoriteQuestionBank(bankId);
+        await favoriteService.addQuestionBank(bankId);
         setFavorites(prev => new Set(prev).add(bankId));
       }
     } catch (err) {
@@ -224,7 +235,7 @@ export default function QuestionBanksPage() {
     const loadFavorite = async () => {
       try {
         if (!user) return;
-        const data = await favoriteService.getFavoriteQuestionBanks();
+        const data = await favoriteService.getQuestionBanks();
         setFavorites(new Set(data.map((s: FavoriteQuestionBank) => s.bankId)));
       } catch (err) {
         console.error(err);
@@ -758,7 +769,7 @@ export default function QuestionBanksPage() {
             }>
               {questionBanks.map((bank) => (
                 viewMode === 'grid' ? (
-                  <SubjectCardGrid
+                  <QuestionBankCardGrid
                     key={bank.bankId}
                     bank={bank}
                     isFavorite={favorites.has(bank.bankId)}
@@ -770,7 +781,7 @@ export default function QuestionBanksPage() {
                     onDelete={() => handleDeleteBank(bank.bankId)}
                   />
                 ) : (
-                  <SubjectCardList
+                  <QuestionBankCardList
                     key={bank.bankId}
                     bank={bank}
                     isFavorite={favorites.has(bank.bankId)}
@@ -824,11 +835,11 @@ export default function QuestionBanksPage() {
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">Xóa bộ câu hỏi</h3>
             </div>
-            
+
             <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">
               Bạn có chắc chắn muốn xóa bộ câu hỏi này không? Bộ câu hỏi sẽ được đưa vào thùng rác (xóa mềm).
             </p>
-            
+
             <div className="flex justify-end gap-3">
               <button
                 onClick={() => setDeleteConfirmId(null)}
@@ -850,6 +861,6 @@ export default function QuestionBanksPage() {
   );
 }
 
-import { SubjectCardGrid, type SubjectCardGridProps } from "./ui/SubjectCardGrid";
-import { SubjectCardList } from "./ui/SubjectCardList";
+import { QuestionBankCardGrid, type QuestionBankCardGridProps } from "./ui/QuestionBankCardGrid";
+import { QuestionBankCardList } from "./ui/QuestionBankCardList";
 import { LoadingState, ErrorState, EmptyState } from "./ui/States";

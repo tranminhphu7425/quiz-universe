@@ -128,7 +128,7 @@ console.log(pageResult);
     queryKey: ["favorites", user?.id],
     queryFn: async () => {
       if (!user) return new Set<number>();
-      const favs = await favoriteService.getFavoriteSubjects();
+      const favs = await favoriteService.getSubjects();
       return new Set(favs.map((s: FavoriteSubject) => s.subjectId));
     },
     enabled: !!user,
@@ -139,8 +139,8 @@ console.log(pageResult);
   const toggleFavoriteMutation = useMutation({
     mutationFn: async (id: number) => {
       const isFav = favoriteIds.has(id);
-      if (isFav) await favoriteService.removeFavoriteSubject(id);
-      else await favoriteService.addFavoriteSubject(id);
+      if (isFav) await favoriteService.removeSubject(id);
+      else await favoriteService.addSubject(id);
       return { id, isFav };
     },
     onSuccess: () => {

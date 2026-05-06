@@ -1,69 +1,59 @@
 import { apiService } from "@/shared/api/api";
 import { Question, UpdateQuestionPayload } from "../types/question";
 
-/* ===================== QUERY ===================== */
+export const QuestionApi = {
+  /* ===================== QUERY ===================== */
 
-export function fetchQuestionsBySubjectId(
-  subjectId: number,
-  signal?: AbortSignal
-): Promise<Question[]> {
-  return apiService.get<Question[]>(
-    `/questions/subject/${subjectId}`,
-    { signal }
-  );
-}
+  getBySubjectId(subjectId: number, signal?: AbortSignal): Promise<Question[]> {
+    return apiService.get<Question[]>(
+      `/questions/subject/${subjectId}`,
+      { signal }
+    );
+  },
 
+  getByBankId(bankId: number, signal?: AbortSignal): Promise<Question[]> {
+    return apiService.get<Question[]>(
+      `/questions/question-bank/${bankId}`,
+      { signal }
+    );
+  },
 
+  getTotalCount(signal?: AbortSignal): Promise<number> {
+    return apiService.get<number>(`/questions/count`, { signal });
+  },
 
+  /* ===================== MUTATION ===================== */
 
-export function fetchQuestionsByBankId(
-  bankId: number,
-  signal?: AbortSignal
-): Promise<Question[]> {
-  return apiService.get<Question[]>(
-    `/questions/question-bank/${bankId}`,
-    { signal }
-  );
-}
+  create(subjectId: number, payload: UpdateQuestionPayload): Promise<Question> {
+    return apiService.post<Question>(
+      `/questions/subject/${subjectId}`,
+      payload
+    );
+  },
 
-export function fetchTotalQuestionCount(
-  signal?: AbortSignal
-): Promise<number> {
-  return apiService.get<number>(`/questions/count`, { signal });
-}
+  createInBank(bankId: number, payload: UpdateQuestionPayload): Promise<Question> {
+    return apiService.post<Question>(
+      `/questions/question-bank/${bankId}`,
+      payload
+    );
+  },
 
-/* ===================== MUTATION ===================== */
+  update(qId: number, payload: UpdateQuestionPayload): Promise<Question> {
+    return apiService.put<Question>(
+      `/questions/${qId}`,
+      payload
+    );
+  },
 
-export function createQuestionApi(
-  subjectId: number,
-  payload: UpdateQuestionPayload
-): Promise<Question> {
-  return apiService.post<Question>(
-    `/questions/subject/${subjectId}`,
-    payload
-  );
-}
+  delete(qId: number): Promise<void> {
+    return apiService.delete<void>(`/questions/${qId}`);
+  },
+};
 
-export function createQuestionInBankApi(
-  bankId: number,
-  payload: UpdateQuestionPayload
-): Promise<Question> {
-  return apiService.post<Question>(
-    `/questions/question-bank/${bankId}`,
-    payload
-  );
-}
-
-export function updateQuestionApi(
-  qId: number,
-  payload: UpdateQuestionPayload
-): Promise<Question> {
-  return apiService.put<Question>(
-    `/questions/${qId}`,
-    payload
-  );
-}
-
-export function deleteQuestionApi(qId: number): Promise<void> {
-  return apiService.delete<void>(`/questions/${qId}`);
-}
+export const fetchQuestionsBySubjectId = QuestionApi.getBySubjectId;
+export const fetchQuestionsByBankId = QuestionApi.getByBankId;
+export const fetchTotalQuestionCount = QuestionApi.getTotalCount;
+export const createQuestionApi = QuestionApi.create;
+export const createQuestionInBankApi = QuestionApi.createInBank;
+export const updateQuestionApi = QuestionApi.update;
+export const deleteQuestionApi = QuestionApi.delete;

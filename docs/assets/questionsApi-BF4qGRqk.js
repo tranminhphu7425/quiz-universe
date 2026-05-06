@@ -1,0 +1,1 @@
+import{b4 as n}from"./index-kzldeaKo.js";const s={getByBankId(e,t){return n.get(`/questions/question-bank/${e}`,{signal:t})},createInBank(e,t){return n.post(`/questions/question-bank/${e}`,t)},update(e,t){return n.put(`/questions/${e}`,t)},delete(e){return n.delete(`/questions/${e}`)}},o=s.getByBankId,u=s.createInBank,i=s.update,r=s.delete;export{u as c,r as d,o as f,i as u};

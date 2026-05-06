@@ -15,29 +15,34 @@ export interface AdminUser {
   major: { majorId: number; majorName: string } | null;
 }
 
-/* ===================== QUERY ===================== */
+export const AdminApi = {
+  /* ===================== QUERY ===================== */
+  
+  getStats() {
+    return apiService.get<any>("/admin/stats");
+  },
 
-export function getAdminStats() {
-  return apiService.get<any>("/admin/stats");
-}
+  getUsers(): Promise<AdminUser[]> {
+    return apiService.get<AdminUser[]>("/admin/users");
+  },
 
-export function getAdminUsers(): Promise<AdminUser[]> {
-  return apiService.get<AdminUser[]>("/admin/users");
-}
+  /* ===================== MUTATION ===================== */
 
-/* ===================== MUTATION ===================== */
+  updateUserRole(userId: string, role: string): Promise<AdminUser> {
+    return apiService.put<AdminUser>(`/admin/users/${userId}/role`, { role });
+  },
 
-export function updateUserRole(
-  userId: string,
-  role: string
-): Promise<AdminUser> {
-  return apiService.put<AdminUser>(`/admin/users/${userId}/role`, { role });
-}
+  toggleUserActive(userId: string): Promise<AdminUser> {
+    return apiService.put<AdminUser>(`/admin/users/${userId}/toggle-active`);
+  },
 
-export function toggleUserActive(userId: string): Promise<AdminUser> {
-  return apiService.put<AdminUser>(`/admin/users/${userId}/toggle-active`);
-}
+  deleteUser(userId: string): Promise<void> {
+    return apiService.delete<void>(`/admin/users/${userId}`);
+  },
+};
 
-export function deleteAdminUser(userId: string): Promise<void> {
-  return apiService.delete<void>(`/admin/users/${userId}`);
-}
+export const getAdminStats = AdminApi.getStats;
+export const getAdminUsers = AdminApi.getUsers;
+export const updateUserRole = AdminApi.updateUserRole;
+export const toggleUserActive = AdminApi.toggleUserActive;
+export const deleteAdminUser = AdminApi.deleteUser;

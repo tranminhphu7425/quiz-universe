@@ -9,7 +9,7 @@
         "dev:backend": "cd backend && mvn spring-boot:run",
         "docker:mysql": "docker start my-mysql",
         "docker:stop": "docker stop my-mysql",
-        "build": "node ./scripts/fetch-all-apis.js && tsc -b --noEmit && vite build",
+        "build": "tsc -b --noEmit && vite build && node ./scripts/fetch-all-apis.js",
         "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit",
         "lint": "eslint .",
         "preview": "vite preview",

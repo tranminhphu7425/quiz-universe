@@ -1,4 +1,4 @@
-// src/services/favorites/favoriteService.ts
+// src/shared/api/favoriteApi.ts
 
 import { apiService } from './api';
 import {
@@ -6,42 +6,50 @@ import {
   FavoriteSubject,
 } from '../types/favorite';
 
-import { QuestionBank } from '../types/questionBank';
-
-class FavoriteService {
+export const FavoriteApi = {
   // Question Bank Favorites
-  async addFavoriteQuestionBank(bankId: number): Promise<FavoriteQuestionBank> {
-    return await apiService.post(`/favorites/question-banks/${bankId}`);
-  }
+  addQuestionBank(bankId: number): Promise<FavoriteQuestionBank> {
+    return apiService.post(`/favorites/question-banks/${bankId}`);
+  },
 
-  async removeFavoriteQuestionBank(bankId: number): Promise<void> {
-    await apiService.delete(`/favorites/question-banks/${bankId}`);
-  }
+  removeQuestionBank(bankId: number): Promise<void> {
+    return apiService.delete(`/favorites/question-banks/${bankId}`);
+  },
 
-  async getFavoriteQuestionBanks(): Promise<FavoriteQuestionBank[]> {
-    return await apiService.get(`/favorites/question-banks`);
-  }
+  getQuestionBanks(): Promise<FavoriteQuestionBank[]> {
+    return apiService.get(`/favorites/question-banks`);
+  },
 
-  async checkQuestionBankFavorite(bankId: number): Promise<boolean> {
-    return await apiService.get(`/favorites/question-banks/${bankId}/status`);
-  }
+  checkQuestionBank(bankId: number): Promise<boolean> {
+    return apiService.get(`/favorites/question-banks/${bankId}/status`);
+  },
 
   // Subject Favorites
-  async addFavoriteSubject(subjectId: number): Promise<FavoriteSubject> {
-    return await apiService.post(`/favorites/subjects/${subjectId}`);
-  }
+  addSubject(subjectId: number): Promise<FavoriteSubject> {
+    return apiService.post(`/favorites/subjects/${subjectId}`);
+  },
 
-  async removeFavoriteSubject(subjectId: number): Promise<void> {
-    await apiService.delete(`/favorites/subjects/${subjectId}`);
-  }
+  removeSubject(subjectId: number): Promise<void> {
+    return apiService.delete(`/favorites/subjects/${subjectId}`);
+  },
 
-  async getFavoriteSubjects(): Promise<FavoriteSubject[]> {
-    return await apiService.get(`/favorites/subjects`);
-  }
+  getSubjects(): Promise<FavoriteSubject[]> {
+    return apiService.get(`/favorites/subjects`);
+  },
 
-  async checkSubjectFavorite(subjectId: number): Promise<boolean> {
-    return await apiService.get(`/favorites/subjects/${subjectId}/status`);
-  }
-}
+  checkSubject(subjectId: number): Promise<boolean> {
+    return apiService.get(`/favorites/subjects/${subjectId}/status`);
+  },
+};
 
-export const favoriteService = new FavoriteService();
+// Duy trì tên cũ để tránh breaking changes nếu chưa kịp sửa hết ở Component
+export const favoriteService = FavoriteApi;
+
+export const addFavoriteQuestionBank = FavoriteApi.addQuestionBank;
+export const removeFavoriteQuestionBank = FavoriteApi.removeQuestionBank;
+export const getFavoriteQuestionBanks = FavoriteApi.getQuestionBanks;
+export const checkQuestionBankFavorite = FavoriteApi.checkQuestionBank;
+export const addFavoriteSubject = FavoriteApi.addSubject;
+export const removeFavoriteSubject = FavoriteApi.removeSubject;
+export const getFavoriteSubjects = FavoriteApi.getSubjects;
+export const checkSubjectFavorite = FavoriteApi.checkSubject;

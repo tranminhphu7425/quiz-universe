@@ -126,8 +126,8 @@ export default function DashboardPage() {
     const loadFavorite = async () => {
       try {
         if (!User) return;
-        const questionBankData = await favoriteService.getFavoriteQuestionBanks();
-        const subjectData = await favoriteService.getFavoriteSubjects();
+        const questionBankData = await favoriteService.getQuestionBanks();
+        const subjectData = await favoriteService.getSubjects();
         setQuestionBankFavorites(questionBankData);
         setSubjectFavorites(subjectData);
         console.log("Chay subject data", subjectData);
@@ -144,10 +144,10 @@ export default function DashboardPage() {
     try {
       if (!User) return;
       if ('bankId' in s) {
-        await favoriteService.removeFavoriteQuestionBank(s.bankId);
+        await favoriteService.removeQuestionBank(s.bankId);
         setQuestionBankFavorites(prev => prev.filter(fav => fav.bankId !== s.bankId));
       } else {
-        await favoriteService.removeFavoriteSubject(s.subjectId);
+        await favoriteService.removeSubject(s.subjectId);
         setSubjectFavorites(prev => prev.filter(fav => fav.subjectId !== s.subjectId));
       }
     }
