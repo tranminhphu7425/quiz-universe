@@ -12,7 +12,7 @@ interface GradientTextProps {
 export default function GradientText({
   children,
   className = "",
-  colors = ["#8a00ffff", "#ff0066ff", "#ffa631ff"],
+  colors = ["#f0904cff", "#ff8f0fff", "#f97316"],
   animationSpeed = 8,
   showBorder = false,
 }: GradientTextProps) {
@@ -24,7 +24,7 @@ export default function GradientText({
 
   return (
     <div
-      className={`relative flx max-w-fit flex-row items-center justify-center rounded-[1.25rem] backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
+      className={`relative flex max-w-fit mx-auto flex-row items-center justify-center rounded-[1.25rem] backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
     >
       {showBorder && (
         <div
@@ -44,7 +44,7 @@ export default function GradientText({
         </div>
       )}
       <div
-        className="inline-block relative z-2 text-transparent bg-cover"
+        className="inline-block pb-3 relative z-2 text-transparent bg-cover"
         style={{
           ...gradientStyle,
           backgroundClip: "text",

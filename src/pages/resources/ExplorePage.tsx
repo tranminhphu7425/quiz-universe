@@ -17,7 +17,8 @@ import {
   MdDownload as Download,
   MdCalendarToday as Calendar,
   MdAccessTime as Clock,
-  MdOpenInNew as ExternalLink
+  MdOpenInNew as ExternalLink,
+  MdAddCircleOutline as AddIcon
 } from 'react-icons/md';
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import { normalizeText } from "@/shared/utils/textUtils";
@@ -319,7 +320,6 @@ export default function ExplorePage() {
               className="relative max-w-xl mx-auto mt-5"
             >
               <div className="relative group">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 dark:text-emerald-400 h-4 w-4 transition-colors group-focus-within:text-yellow-300" />
                 <input
                   ref={searchInputRef}
                   type="text"
@@ -328,6 +328,8 @@ export default function ExplorePage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300 dark:text-emerald-400 h-4 w-4 transition-colors group-focus-within:text-yellow-300 z-10" />
+
 
                 {/* Shortcut hint */}
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-1">
@@ -549,7 +551,7 @@ export default function ExplorePage() {
                     onClick={() => setDisplayLimit(prev => prev + 40)}
                     className="flex items-center gap-2 px-8 py-3 rounded-full bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 font-semibold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-all shadow-sm"
                   >
-                    🚀 Xem thêm ({filteredItems.length - displayLimit} mục còn lại)
+                    <AddIcon className="h-5 w-5" /> Xem thêm ({filteredItems.length - displayLimit} mục còn lại)
                   </button>
                 </div>
               )}

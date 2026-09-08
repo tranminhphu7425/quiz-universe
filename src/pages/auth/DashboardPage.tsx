@@ -30,43 +30,11 @@ import TypewriterText from "@/shared/ui/TypewriterText";
 // import OrbitingSkills from "@/shared/ui/OrbitingSkills";
 import { FavoriteQuestionBank, FavoriteSubject } from "@/shared/types/favorite";
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
+import { UserLearningStats, RecentActivity } from "@/shared/types/dashboard";
 
 // =============================
 // Types & interfaces
 // =============================
-export type QuestionSet = {
-  id: number;
-  name: string;
-  subjectId?: number | null;
-  subjectName?: string | null;
-  questionsCount: number;
-  createdAt?: string;
-  updatedAt?: string;
-  ownerId?: number | string;
-  ownerName?: string;
-  progress?: number;
-};
-
-type UserStats = {
-  totalQuestions: number;
-  completedSets: number;
-  totalStudyTime: number;
-  accuracy: number;
-  streak: number;
-  level: number;
-  xp: number;
-};
-
-type RecentActivity = {
-  id: number;
-  type: 'practice' | 'create' | 'favorite' | 'complete';
-  title: string;
-  description: string;
-  subjectName?: string;
-  timestamp: string;
-  icon: React.ReactNode;
-  color: string;
-};
 
 // =============================
 // Dashboard Page
@@ -76,7 +44,7 @@ export default function DashboardPage() {
   const [questionBankFavorites, setQuestionBankFavorites] = useState<FavoriteQuestionBank[]>([]);
   const [subjectFavorites, setSubjectFavorites] = useState<FavoriteSubject[]>([]);
   const [activeTab, setActiveTab] = useState<'overview' | 'stats' | 'recent'>('overview');
-  const [userStats] = useState<UserStats>({
+  const [userStats] = useState<UserLearningStats>({
     totalQuestions: 0,
     completedSets: 0,
     totalStudyTime: 0,

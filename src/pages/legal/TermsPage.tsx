@@ -316,7 +316,7 @@ export default function TermsPage() {
             © {new Date().getFullYear()} QuizUniverse. Bảo lưu mọi quyền lợi.
           </p>
           <div className="mt-2 flex justify-center gap-4 text-xs text-gray-400 dark:text-gray-500">
-            <Link to="/privacy" className="hover:text-emerald-600 transition-colors">Chính sách bảo mật</Link>
+            <Link to="/security" className="hover:text-emerald-600 transition-colors">Chính sách bảo mật</Link>
             <span>•</span>
             <Link to="/terms" className="hover:text-emerald-600 transition-colors">Điều khoản sử dụng</Link>
           </div>

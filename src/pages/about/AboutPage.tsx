@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -14,20 +14,16 @@ import {
   MdEmojiEvents as Award,
   MdAdsClick as Target,
   MdStarOutline as Star,
-  MdTrendingUp as TrendingUp
+  MdTrendingUp as TrendingUp,
+  MdDashboard as Dashboard
 } from 'react-icons/md';
+import { useAuth } from "@/app/providers/AuthProvider";
+import { HeroApi, HeroStats } from "@/shared/api/heroApi";
 import Floating from "@/shared/ui/Floatting";
 import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import TypewriterText from "@/shared/ui/TypewriterText";
 import GradientText from "@/shared/ui/GradientText";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
-
-const stats = [
-  { label: "Ngân hàng câu hỏi", value: "25,000+" },
-  { label: "Môn học", value: "40+" },
-  { label: "Trường sử dụng", value: "60+" },
-  { label: "Bài thi đã tạo", value: "120,000+" },
-];
 
 const values = [
   {
@@ -48,10 +44,26 @@ const values = [
 ];
 
 const team = [
-  { name: "Phú Trần Minh", role: "Founder / Full-stack", avatar: "" },
+  { name: "Phú Trần Minh", role: "Founder / Full-stack", avatar: "src/assets/images/logo/Phu'sAvatar.jpg" },
 ];
 
 export default function AboutPage() {
+  const { user } = useAuth();
+  const [dynamicStats, setDynamicStats] = useState<HeroStats | null>(null);
+
+  useEffect(() => {
+    HeroApi.getStatistics()
+      .then(setDynamicStats)
+      .catch(err => console.error("Failed to fetch about stats:", err));
+  }, []);
+
+  const stats = useMemo(() => [
+    { label: "Ngân hàng câu hỏi", value: dynamicStats ? `${dynamicStats.totalQuestions.toLocaleString()}+` : "25,000+" },
+    { label: "Môn học", value: dynamicStats ? `${dynamicStats.totalSubjects}+` : "40+" },
+    { label: "Trường sử dụng", value: dynamicStats ? `${dynamicStats.totalUniversities}+` : "60+" },
+    { label: "Bài thi đã tạo", value: dynamicStats ? `${dynamicStats.totalExams.toLocaleString()}+` : "120,000+" },
+  ], [dynamicStats]);
+
   const achievements = useMemo(
     () => [
       { year: "2026", title: "Khởi tạo dự án", desc: "Thử nghiệm thành công tại 2 khoa", icon: <Rocket className="h-4 w-4" /> },
@@ -115,10 +127,10 @@ export default function AboutPage() {
                 Khám phá ngay <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/register"
+                to={user ? "/dashboard" : "/register"}
                 className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-6 py-2.5 font-medium text-white ring-1 ring-white/30 hover:bg-white/20 transition-all"
               >
-                Đăng ký miễn phí
+                {user ? "Vào bảng điều khiển" : "Đăng ký miễn phí"}
               </Link>
             </motion.div>
           </div>
@@ -304,12 +316,10 @@ export default function AboutPage() {
                 whileHover={{ y: -8 }}
                 className="group rounded-2xl bg-white p-6 text-center shadow-lg transition-all duration-300 hover:shadow-2xl dark:bg-slate-800"
               >
-                <div className="relative mx-auto mb-4 h-24 w-24">
+                <div className="relative mx-auto mb-4 h-32 w-32">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-emerald-400 to-teal-400 opacity-80 group-hover:scale-105 transition-transform duration-300" />
                   <div className="absolute inset-1 flex items-center justify-center rounded-full bg-white dark:bg-slate-800">
-                    <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">
-                      {member.name.charAt(0)}
-                    </span>
+                    <img src={member.avatar} alt={member.name} className="w-full h-full object-cover rounded-full" />
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 dark:text-white">{member.name}</h3>
@@ -364,11 +374,11 @@ export default function AboutPage() {
             className="mt-8 flex flex-wrap justify-center gap-4"
           >
             <Link
-              to="/register"
+              to={user ? "/dashboard" : "/register"}
               className="group inline-flex items-center gap-2 rounded-full bg-yellow-400 px-8 py-3 font-bold text-emerald-950 shadow-lg transition-all hover:shadow-xl hover:brightness-105"
             >
-              Đăng ký miễn phí
-              <Rocket className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              {user ? "Vào bảng điều khiển" : "Đăng ký miễn phí"}
+              {user ? <Dashboard className="h-4 w-4" /> : <Rocket className="h-4 w-4 group-hover:translate-x-1 transition-transform" />}
             </Link>
             <Link
               to="/question-banks"

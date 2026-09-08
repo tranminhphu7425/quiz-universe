@@ -17,6 +17,7 @@ import {
   MdNotifications as Bell,
   MdFlashOn as Zap
 } from 'react-icons/md';
+import { Link } from "react-router-dom";
 import FadeInOnView from "@/shared/ui/FadeInOnView";
 import { toast } from "sonner";
 
@@ -694,9 +695,9 @@ export default function FeedbackPage() {
                           
                           <p className="mt-3 text-center text-xs text-gray-500 dark:text-gray-400">
                             Bằng cách gửi phản hồi, bạn đồng ý với{' '}
-                            <a href="/privacy" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 underline">
+                            <Link to="/security" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 underline">
                               Chính sách bảo mật
-                            </a>{' '}
+                            </Link>{' '}
                             của chúng tôi
                           </p>
                         </div>

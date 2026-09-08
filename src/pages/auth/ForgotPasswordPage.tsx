@@ -10,6 +10,7 @@ import {
 } from 'react-icons/md';
 import Floating from "@/shared/ui/Floatting"; // dùng cùng import như các trang trước
 import { useAuth } from "@/app/providers/AuthProvider";
+import GradientText from "@/shared/ui/GradientText";
 
 export default function ForgotPasswordPage() {
     const { requestPasswordReset, loading } = useAuth();
@@ -103,19 +104,10 @@ export default function ForgotPasswordPage() {
                             <HelpCircle className="h-4 w-4" />
                             QuizUniverse • Quên mật khẩu
                         </div>
-                        <h1 className="text-3xl font-black leading-tight text-white">
-                            <span
-                                className="
-      bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 
-      bg-clip-text text-transparent glow-text font-['Be Vietnam Pro']
-      dark:drop-shadow-none
-    "
-                                style={{
-                                    textShadow: "0px 2px 2px rgba(0,0,0,0.1)" // chỉ áp cho light
-                                }}
-                            >
-                               Đặt lại mật khẩu
-                            </span>
+                        <h1 className="text-3xl font-black leading-tight glow-text text-white">
+                            <GradientText>
+                                Đặt lại mật khẩu
+                            </GradientText>
                         </h1>
                         <p className="mt-2 text-white/90 dark:text-gray-300">
                             Nhập email của bạn, chúng tôi sẽ gửi liên kết đặt lại mật khẩu.

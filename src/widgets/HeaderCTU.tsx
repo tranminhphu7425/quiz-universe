@@ -156,7 +156,7 @@ export default function HeaderCTU({
     e.preventDefault();
     // TODO: Xử lý tìm kiếm, ví dụ chuyển trang hoặc gọi API
     if (search.trim()) {
-      window.location.href = `/questions?search=${encodeURIComponent(search)}`;
+      window.location.href = `/question-banks?search=${encodeURIComponent(search)}`;
     }
   };
 

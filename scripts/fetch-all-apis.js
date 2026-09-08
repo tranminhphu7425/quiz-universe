@@ -49,6 +49,7 @@ async function runSync() {
   await fetchAndSave('/subjects/all');
   await fetchAndSave('/majors/all');
   await fetchAndSave('/universities/all');
+  await fetchAndSave('/statistics/hero');
   
   // Fetch paginated versions if they are used by the app without /all (optional, but good to have)
   // Usually, frontend might request /question-banks?page=0&size=10, but static JSON doesn't support query params easily in the filename unless we map them.

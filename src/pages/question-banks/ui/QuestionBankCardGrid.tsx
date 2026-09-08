@@ -44,7 +44,7 @@ export function QuestionBankCardGrid({ bank, isFavorite, isSelected, onToggleFav
     isSelected
       ? 'border-emerald-400 dark:border-emerald-500 ring-2 ring-emerald-200 dark:ring-emerald-500/30 shadow-lg shadow-emerald-100 dark:shadow-emerald-950/30'
       : 'border-emerald-100/60 dark:border-slate-800 hover:border-emerald-200 dark:hover:border-slate-700'
-  } bg-white p-5 shadow-lg hover:shadow-2xl dark:bg-slate-900`}
+  } bg-white p-5 shadow-lg hover:shadow-2xl dark:bg-slate-900 h-full`}
 >
   {/* Gradient border effect on hover */}
   <div

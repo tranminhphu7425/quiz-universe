@@ -32,25 +32,25 @@ export default function DocumentationPage() {
       icon: <Code className="h-6 w-6" />,
       title: "API Documentation",
       desc: "Chi tiết endpoint REST API: xác thực, subjects, questions, results.",
-      to: "/userguide"
+      to: "/api-docs"
     },
     {
       icon: <ShieldCheck className="h-6 w-6" />,
       title: "Bảo mật",
       desc: "Nguyên tắc bảo mật, quản lý token, phân quyền và quyền riêng tư.",
-      to: "/userguide"
+      to: "/privacy"
     },
     {
       icon: <Settings className="h-6 w-6" />,
       title: "Cấu hình hệ thống",
       desc: "Các tùy chọn cài đặt: ngôn ngữ, dark mode, thông báo, cookie.",
-      to: "/userguide"
+      to: "/settings"
     },
     {
       icon: <HelpCircle className="h-6 w-6" />,
       title: "FAQ",
       desc: "Giải đáp nhanh các câu hỏi thường gặp của người dùng và dev.",
-      to: "/userguide"
+      to: "/faq"
     },
   ];
 

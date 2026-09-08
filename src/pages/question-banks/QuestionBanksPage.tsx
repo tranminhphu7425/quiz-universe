@@ -310,9 +310,9 @@ export default function QuestionBanksPage() {
 
               {/* Title with gradient */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-                <span className="bg-gradient-to-r from-white via-yellow-100 to-amber-200 bg-clip-text text-transparent">
+                <GradientText>
                   Ngân hàng câu hỏi
-                </span>
+                </GradientText>
               </h1>
 
               {/* Decorative underline */}
@@ -864,3 +864,4 @@ export default function QuestionBanksPage() {
 import { QuestionBankCardGrid, type QuestionBankCardGridProps } from "./ui/QuestionBankCardGrid";
 import { QuestionBankCardList } from "./ui/QuestionBankCardList";
 import { LoadingState, ErrorState, EmptyState } from "./ui/States";
+import GradientText from "@/shared/ui/GradientText";

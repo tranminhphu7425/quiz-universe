@@ -1,5 +1,4 @@
-
-// 2) Thêm component này (cùng file hoặc import riêng)
+// src/widgets/HeroIllustration.tsx
 import { motion } from "framer-motion";
 import {
   MdStorage as Database,
@@ -8,21 +7,13 @@ import {
   MdAutoStories as BookOpen,
   MdUpload as Upload,
   MdCheckCircleOutline as CheckCircle2,
-  MdAutoAwesome as Sparkles
-} from 'react-icons/md';
-import {
-  MdPrint as Printer
-} from 'react-icons/md'; // or from your chosen icon library
-import {
+  MdAutoAwesome as Sparkles,
+  MdPrint as Printer,
   MdPeopleOutline as Users
 } from 'react-icons/md';
-import { fetchAllSubjects } from "@/shared/api/subjectApi";
-import { QuestionBankApi } from "@/shared/api/questionBanksApi";
+import { HeroApi } from "@/shared/api/heroApi";
 import { useEffect, useState } from "react";
 import React from "react";
-
-
-
 
 function Card({
   title,
@@ -52,14 +43,13 @@ function Card({
         </span>
         <div className="font-semibold text-gray-900 dark:text-gray-100">{title}</div>
       </div>
-      <div className = "flex flex-col mt-2">
-      <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line flex-1">{subtitle.trim()}</div>
-      {footer && (
-        <div className="mt-auto pt-3 text-xs text-gray-600 dark:text-gray-400">{footer}</div>
-      )}
+      <div className="flex flex-col mt-2">
+        <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line flex-1">{subtitle.trim()}</div>
+        {footer && (
+          <div className="mt-auto pt-3 text-xs text-gray-600 dark:text-gray-400">{footer}</div>
+        )}
       </div>
     </motion.div>
-
   );
 }
 
@@ -73,14 +63,11 @@ export function HeroIllustration() {
   useEffect(() => {
     async function loadStats() {
       try {
-        const [statData, subjects] = await Promise.all([
-          QuestionBankApi.statistics(),
-          fetchAllSubjects()
-        ]);
+        const statData = await HeroApi.getStatistics();
         setStats({
           totalBanks: statData.totalBanks,
           totalQuestions: statData.totalQuestions,
-          totalSubjects: subjects.length
+          totalSubjects: statData.totalSubjects
         });
       } catch (err) {
         console.error("Failed to fetch stats for Hero:", err);
@@ -91,7 +78,6 @@ export function HeroIllustration() {
 
   return (
     <div className="relative select-none">
-
       {/* Glowing border top */}
       <div className="flex flex-row absolute -top-px left-0 right-0">
         <div className="h-[2px] w-1/2 bg-gradient-to-r 
@@ -111,7 +97,6 @@ export function HeroIllustration() {
                   from-sky-300 to-transparent 
                   dark:from-green-300 dark:to-transparent" />
       </div>
-
 
       {/* Main container */}
       <div className="relative rounded-2xl border border-white/30 bg-gradient-to-br from-blue-50 to-white/20 p-5 text-gray-800 shadow-xl backdrop-blur
@@ -137,7 +122,6 @@ export function HeroIllustration() {
                   >
                     <CheckCircle2 className="h-3.5 w-3.5" /> Đã xác thực
                   </span>
-
                 </div>
               }
             />
@@ -152,7 +136,6 @@ export function HeroIllustration() {
                 <Upload className="h-4 w-4" /> Nhập từ Excel/GIFT/Moodle XML
               </motion.div>
             </div>
-
           </div>
 
           {/* 2. Exam Creation */}
@@ -174,7 +157,6 @@ export function HeroIllustration() {
                     <FileText className="h-3.5 w-3.5" /> Hỗ trợ nhiều mã đề
                   </span>
                 </div>
-
               }
             />
             <div>
@@ -222,7 +204,6 @@ export function HeroIllustration() {
                 <Users className="h-4 w-4" /> Phê duyệt tập thể trước khi sử dụng
               </motion.div>
             </div>
-
           </div>
         </div>
 
@@ -255,15 +236,5 @@ export function HeroIllustration() {
     </div>
   );
 }
-
-// Assuming Card is a separate component with these props:
-interface CardProps {
-  delay: number;
-  title: string;
-  subtitle: string;
-  icon: React.ReactNode;
-  footer: React.ReactNode;
-}
-
 
 export default HeroIllustration;

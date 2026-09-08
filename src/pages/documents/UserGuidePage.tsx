@@ -82,7 +82,7 @@ export default function UserGuidePage() {
           className="mt-12 text-center"
         >
           <Link
-            to="/subjects"
+            to="/question-banks"
             className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:brightness-110"
           >
             Bắt đầu ngay <ArrowRightCircle className="h-4 w-4" />

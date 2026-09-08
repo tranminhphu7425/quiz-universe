@@ -61,6 +61,8 @@ public interface QuestionBankRepository extends JpaRepository<QuestionBank, Long
 
     long countByCreatedBy_UserIdAndStatusNot(String userId, Status status);
 
+    long countByStatusNot(Status status);
+
     boolean existsByNameAndSubject_SubjectId(String name, Long subjectId);
     
     Optional<QuestionBank> findByBankIdAndCreatedBy_UserId(Long bankId, String userId);

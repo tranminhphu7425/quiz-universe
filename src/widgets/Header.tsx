@@ -160,7 +160,7 @@ export default function Header({
     e.preventDefault();
     // TODO: Xử lý tìm kiếm, ví dụ chuyển trang hoặc gọi API
     if (searchInput.trim()) {
-      window.location.href = `/questions?search=${encodeURIComponent(searchInput)}`;
+      window.location.href = `/question-banks?search=${encodeURIComponent(searchInput)}`;
     }
   };
   

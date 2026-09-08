@@ -3,7 +3,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE;
 
 class ApiService {
   private axiosInstance: AxiosInstance;
@@ -52,6 +52,10 @@ class ApiService {
 
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     try {
+      const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+      if (deployUrl && window.location.href.startsWith(deployUrl)) {
+        throw new Error("Force local fallback on deployment");
+      }
       const response: AxiosResponse<T> = await this.axiosInstance.get(url, config);
       return response.data;
     } catch (error) {
@@ -168,10 +172,12 @@ class PublicApiService {
 
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     try {
-      const online: boolean = true;
-      if (!online) {
-        throw new Error("Test catch");
+
+      const deployUrl = import.meta.env.VITE_DEPLOY_URL;
+      if (deployUrl && window.location.href.startsWith(deployUrl)) {
+        throw new Error("Force local fallback on deployment");
       }
+
       const response: AxiosResponse<T> = await this.axiosInstance.get(url, config);
       return response.data;
 

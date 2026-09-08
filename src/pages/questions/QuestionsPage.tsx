@@ -15,27 +15,23 @@ import {
   MdTimer as TimerReset,
   MdArrowBack as ArrowLeft,
   MdAutoStories as BookOpen,
-  MdEdit as Edit
-} from 'react-icons/md';
-import { useAuth } from "@/app/providers/AuthProvider";
-import {
+  MdEdit as Edit,
   MdArrowForward as ArrowRight,
   MdGridView as LayoutGrid,
   MdRefresh as RefreshCcw,
   MdAutoAwesome as Sparkles,
-  MdHighlightOff as XCircle
+  MdHighlightOff as XCircle,
+  MdFlag as Flag
 } from 'react-icons/md';
+import { useAuth } from "@/app/providers/AuthProvider";
 import LoadingState from "@/widgets/LoadingState";
 
-import { } from "@/shared/api/questionBanksApi";
 import { fetchQuestionsByBankId } from "@/shared/api/questionsApi";
 import { QuestionBankApi } from "@/shared/api/questionBanksApi";
 import { QuestionBank } from "@/shared/types/questionBank";
 import { Question, QuestionOption } from "@/shared/types/question";
-import {
-  MdFlag as Flag
-} from 'react-icons/md';
 import GradientText from "@/shared/ui/GradientText";
+import AnimatedGradientBackground from "@/shared/ui/AnimatedGradientBackground";
 import { stemToSegments, normalize } from "./utils";
 
 
@@ -49,7 +45,7 @@ export default function QuestionsPage() {
   const { bankId } = useParams<{ bankId: string }>();
   const [data, setData] = useState<Question[]>([]);
   const [navOpen, setNavOpen] = useState(false); // ✅ trạng thái mở/đóng popup
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
   const pageTopRef = useRef<HTMLDivElement | null>(null);
   const suppressTopScrollRef = useRef(false);
@@ -57,7 +53,6 @@ export default function QuestionsPage() {
   const [questionBankName, setQuestionBankName] = useState<string>("");
   const [bankObj, setBankObj] = useState<QuestionBank | null>(null);
   const { user } = useAuth();
-  var localSubjects: QuestionBank[] = [];
   const [flaggedQuestions, setFlaggedQuestions] = useState<Record<number, boolean>>({});
 
   const toggleFlag = (qId: number) => {
@@ -79,7 +74,6 @@ export default function QuestionsPage() {
       const [qRes, sRes] = await Promise.allSettled([
         fetchQuestionsByBankId(id),
         QuestionBankApi.getById(id),
-        // nhớ nhận signal
       ]);
 
       // 1. Xử lý fallback cho Question Bank Name (sRes)
@@ -88,16 +82,11 @@ export default function QuestionsPage() {
         setBankObj(sRes.value);
       } else if (sRes.reason?.name !== "AbortError") {
         try {
-          // Luôn đảm bảo có dữ liệu local nếu API lỗi
           const res = await fetch(`${import.meta.env.BASE_URL}data/questionBanks.json`);
           const json = await res.json();
-          // Trích xuất mảng content từ JSON (vì file có cấu trúc { content: [...] })
           const subjects = Array.isArray(json) ? json : (json.content || []);
-          
           const idNum = Number(bankId);
           const sj = subjects.find((s: any) => s.bankId === idNum);
-          
-          console.log("Tìm thấy môn học local:", sj);
           setQuestionBankName(sj?.name ?? `[Môn #${idNum}]`);
           setErr((prev) => prev ?? "Không thể lấy thông tin môn học từ API.");
         } catch (e) {
@@ -137,10 +126,8 @@ export default function QuestionsPage() {
 
 
   useEffect(() => {
-    // chỉ scroll-top khi đổi trang bằng nút phân trang
     if (suppressTopScrollRef.current) return;
     pageTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    // hoặc: document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
   }, [page]);
 
 
@@ -155,33 +142,24 @@ export default function QuestionsPage() {
   const isZone = (index: number): boolean => index >= start && index < end;
 
   const pageQuestions = data.slice(start, end);
-  // {FAB}
   const startIndexFAB = Math.floor(start / pageSizeFAB) * pageSizeFAB;
   const endIndexFAB = startIndexFAB + pageSizeFAB;
   const currentQuestions = data.slice(startIndexFAB, endIndexFAB);
 
 
-  const answeredSet = new Set(Object.entries(picked)
-    .filter(([, optId]) => optId != null)
-    .map(([qId]) => Number(qId))
-  );
-
   const matchAnswer = (user: string, correctSpec: string) =>
     correctSpec.split("|").some(ans => normalize(user) === normalize(ans));
 
 
-  // ✅ chuyển tới câu bất kỳ: đổi trang + scroll mượt
   const goToQuestion = (qGlobalIndex: number, qId: number) => {
     const targetPage = Math.floor(qGlobalIndex / PAGE_SIZE) + 1;
 
     if (targetPage !== page) {
-      suppressTopScrollRef.current = true;   // ⬅️ chặn scroll-top của useEffect
+      suppressTopScrollRef.current = true;
       setPage(targetPage);
 
-      // chờ render xong rồi scroll tới đúng câu
       setTimeout(() => {
         document.getElementById(`q-${qId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
-        // nhả cờ sau một nhịp để lần đổi trang kế tiếp lại scroll-top bình thường
         setTimeout(() => { suppressTopScrollRef.current = false; }, 300);
       }, 0);
     } else {
@@ -197,35 +175,31 @@ export default function QuestionsPage() {
     let s = 0;
     for (const q of data) {
       if (q.questionType === "fill_in") {
-        // Đúng khi TẤT CẢ ô (options) đều khớp nội dung
         const allCorrect =
           (q.options ?? []).length > 0 &&
           (q.options ?? []).every(opt => {
-            const user = fillAnswers?.[opt.optionId] ?? "";        // <-- state nhập liệu: { optionId: text }
-            return matchAnswer(user, opt.content ?? "");           // hoặc: normalize(user) === normalize(opt.content)
+            const user = fillAnswers?.[opt.optionId] ?? "";
+            return matchAnswer(user, opt.content ?? "");
           });
 
         if (allCorrect) s += 1;
       } else {
-        // mcq_single (giữ nguyên)
         const pickedOptionId = picked[q.questionId];
         const correct = q.options?.find(o => o.isCorrect);
         if (pickedOptionId && correct && pickedOptionId === correct.optionId) s += 1;
       }
     }
     return s;
-  }, [submitted, data, picked, fillAnswers]);   // <-- nhớ thêm fillAnswers
+  }, [submitted, data, picked, fillAnswers]);
+
   const reset = () => {
     setPicked({});
-
     setFillAnswers({});
-
     setSubmitted(false);
   };
 
 
 
-  // Tính số câu đã làm (có đáp án được chọn)
   const numAnswered = useMemo(
     () => Object.values(picked).filter((v) => v !== null && v !== undefined).length,
     [picked]
@@ -234,14 +208,7 @@ export default function QuestionsPage() {
   if (!questionBankName && !loading) {
     return (
       <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-[#030712] selection:bg-rose-500/30 transition-colors duration-500">
-        {/* Background Orbs */}
-        <div className="absolute top-0 -left-4 w-96 h-96 bg-rose-400/30 dark:bg-rose-500/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 dark:opacity-20 animate-blob" />
-        <div className="absolute top-0 -right-4 w-96 h-96 bg-purple-400/30 dark:bg-purple-500/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 dark:opacity-20 animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-orange-400/30 dark:bg-orange-500/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 dark:opacity-20 animate-blob animation-delay-4000" />
-
-        {/* Grid & Noise Overlay */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] dark:opacity-20 pointer-events-none" />
-        <div className="absolute inset-0 bg-grid-slate-200/[0.5] dark:bg-grid-white/[0.02] bg-[bottom_1px_center] pointer-events-none" />
+        <AnimatedGradientBackground />
 
         <div className="relative z-10 max-w-2xl px-6 text-center">
           {/* Animated Icon Container */}
@@ -308,19 +275,10 @@ export default function QuestionsPage() {
 
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
 
-
-      {/* nền mờ */}
-      {/* {navOpen && (<div
-        className="fixed z-49 inset-0 h-full bg-black/30 backdrop-blur-[1px]"
-        onClick={() => setNavOpen(false)}
-      />)
-      } */}
-
-
-
       {/* ====== HERO (phong cách giống trang chủ) ====== */}
       <section className="relative  overflow-hidden">
-        <div className="absolute  inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-500 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
+        <AnimatedGradientBackground />
+        
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-14 text-white md:flex-row md:justify-between">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 160, damping: 18 }}>
             <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/20 backdrop-blur">
@@ -350,6 +308,14 @@ export default function QuestionsPage() {
             <div className="rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20">
               Đã làm: <b>{numAnswered}</b>/{total}
             </div>
+
+            <button
+              onClick={() => navigate(`/questions/question-bank/${bankId}/review`)}
+              className="flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20 hover:bg-white/15 transition-all active:scale-95 whitespace-nowrap"
+              title="Xem đáp án và giải thích ngay"
+            >
+              <Eye className="h-4 w-4" /> Chế độ ôn tập
+            </button>
 
             <button
               onClick={() => navigate("/question-banks")}
@@ -402,7 +368,6 @@ export default function QuestionsPage() {
           {loading ? (
             <LoadingState count={PAGE_SIZE} />
           )
-            // : err ? (<></>)
             : (
               <>
                 <div className="space-y-6">
@@ -442,9 +407,9 @@ export default function QuestionsPage() {
                     ← Trước
                   </button>
 
-                  {/* Nút số trang (tối ưu: chỉ hiển thị một cụm nhỏ quanh trang hiện tại) */}
+                  {/* Nút số trang */}
                   {Array.from({ length: pageCount }, (_, i) => i + 1)
-                    .filter(p => Math.abs(p - page) <= 2 || p === 1 || p === pageCount) // hiển thị trang đầu/cuối và lân cận
+                    .filter(p => Math.abs(p - page) <= 2 || p === 1 || p === pageCount)
                     .reduce<(number | string)[]>((acc, p, idx, arr) => {
                       if (idx > 0) {
                         const prev = arr[idx - 1] as number;
@@ -458,16 +423,16 @@ export default function QuestionsPage() {
                         <span key={`ellipsis-${i}`} className="px-2 text-slate-400">…</span>
                       ) : (
                         <button
-                          key={p}
-                          onClick={() => setPage(p)}
-                          className={`rounded-lg px-3 py-1.5 text-sm font-medium border
-              ${p === page
-                              ? "bg-emerald-600 text-white border-emerald-600"
-                              : "border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"}`}
-                          title={`Trang ${p}`}
-                        >
-                          {p}
-                        </button>
+                           key={p}
+                           onClick={() => setPage(p)}
+                           className={`rounded-lg px-3 py-1.5 text-sm font-medium border
+               ${p === page
+                               ? "bg-emerald-600 text-white border-emerald-600"
+                               : "border-slate-200 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"}`}
+                           title={`Trang ${p}`}
+                         >
+                           {p}
+                         </button>
                       )
                     )
                   }
@@ -482,32 +447,9 @@ export default function QuestionsPage() {
                     Sau →
                   </button>
 
-                  {/* Hiển thị phạm vi câu trên trang */}
                   <div className="flex items-center gap-5 ml-auto text-sm text-slate-600 dark:text-slate-300">
                     <div>
                       Trang <b>{page}</b>/<b>{pageCount}</b> • Câu <b>{start + 1}</b>–<b>{Math.min(end, total)}</b> / {total}
-                    </div>
-                    <div className="flex flex-wrap items-center gap-3">
-                      {!submitted ? (
-                        <button
-                          onClick={() => setShowConfirmModal(true)}
-                          className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white shadow hover:brightness-110"
-                        >
-                          Nộp bài <ArrowRight className="h-4 w-4" />
-                        </button>
-                      ) : (
-                        <>
-                          <div className="mr-2 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:ring-emerald-800">
-                            Điểm: <b>{score}</b>/<b>{total}</b>
-                          </div>
-                          <button
-                            onClick={reset}
-                            className="inline-flex items-center gap-2 rounded-full bg-slate-800 px-5 py-2.5 text-white shadow hover:brightness-110 dark:bg-slate-700"
-                          >
-                            Làm lại <RefreshCcw className="h-4 w-4" />
-                          </button>
-                        </>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -521,7 +463,6 @@ export default function QuestionsPage() {
         </main>
         <div className="absolute right-5 top-10 w-fit h-full">
           <div className="sticky z-30 top-20 w-fit">
-            {/* FAB mở popup ở góc phải - icon only */}
             {!navOpen && (<button
               type="button"
               onClick={() => setNavOpen(true)}
@@ -531,12 +472,8 @@ export default function QuestionsPage() {
             >
               <LayoutGrid className="h-5 w-5" />
             </button>)}
-            {/* Drawer phải */}
             {navOpen && (
               <div className="relative inset-0 z-50 h-3/4 my-auto bg-slate-50 dark:bg-slate-900">
-
-
-                {/* thân drawer */}
                 <motion.div
                   initial={{ x: 360 }}
                   animate={{ x: 0 }}
@@ -556,7 +493,6 @@ export default function QuestionsPage() {
                     </button>
                   </div>
 
-                  {/* legend */}
                   <div className="mb-3 flex flex-wrap gap-2 text-xs">
                     <span className="inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-700">Chưa làm</span>
                     <span className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-white bg-emerald-600">Đã chọn</span>
@@ -568,11 +504,10 @@ export default function QuestionsPage() {
                     )}
                   </div>
 
-                  {/* grid câu hỏi */}
                   <div className="grid grid-cols-5 gap-2 overflow-auto">
                     {currentQuestions.map((q, idx) => {
-                      const globalIndex = startIndexFAB + idx;   // tính index toàn cục
-                      const qNumber = globalIndex + 1;        // số thứ tự câu
+                      const globalIndex = startIndexFAB + idx;
+                      const qNumber = globalIndex + 1;
                       const pickedId = picked[q.questionId];
                       const hasPicked = pickedId != null;
                       const flagged = flaggedQuestions[q.questionId];
@@ -582,17 +517,14 @@ export default function QuestionsPage() {
                         color = isCorrect ? "bg-emerald-500 text-white" : "bg-rose-500 text-white";
                       } else if (hasPicked) {
                         color = "bg-emerald-700 text-white ";
-
                       } else {
                         color = "border border-slate-300 text-slate-700 dark:text-slate-300 dark:border-slate-700";
                       }
-
 
                       let finalColor = color;
                       if (finalColor === "border border-slate-300 text-slate-700 dark:text-slate-300 dark:border-slate-700" && isZone(globalIndex)) {
                         finalColor = "bg-neutral-200 dark:bg-neutral-500";
                       }
-
 
                       return (
                         <button
@@ -602,19 +534,14 @@ export default function QuestionsPage() {
                           title={`Tới câu ${qNumber}`}
                         >
                           {qNumber}
-
-                          {/* Cờ vàng nếu flagged */}
                           {flagged && (
                             <span className="absolute top-0 left-0 w-0 h-0 border-t-[10px] border-r-transparent border-r-[10px] border-t-amber-400 border-l-0 border-b-0"></span>
-
                           )}
                         </button>
                       );
                     })}
-
                   </div>
 
-                  {/* phân trang nhanh trong drawer */}
                   <div className="mt-auto pt-3">
                     <div className="flex flex-wrap items-center gap-2">
                       <button
@@ -624,11 +551,9 @@ export default function QuestionsPage() {
                       >
                         ← Trước
                       </button>
-
                       <div className="text-sm text-slate-600 dark:text-slate-300">
                         Trang <b>{page}</b>/<b>{pageCount}</b>
                       </div>
-
                       <button
                         onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
                         disabled={page === pageCount}
@@ -645,7 +570,6 @@ export default function QuestionsPage() {
         </div>
       </div>
 
-      {/* Xác nhận nộp bài Modal */}
       <AnimatePresence>
         {showConfirmModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">

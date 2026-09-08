@@ -20,6 +20,7 @@ const HomePage = React.lazy(() => import("@pages/home/HomePage"));
 const AboutPage = React.lazy(() => import("@pages/about/AboutPage"));
 const ContactPage = React.lazy(() => import("@pages/contact/ContactPage"));
 const ForumPage = React.lazy(() => import("@pages/forum/ForumPage"));
+const CreateThreadPage = React.lazy(() => import("@pages/forum/CreateThreadPage"));
 const FaqPage = React.lazy(() => import("@pages/faq/FaqPage"));
 const FeedbackPage = React.lazy(() => import("@pages/feedback/FeedbackPage"));
 const RecruitmentPage = React.lazy(() => import("@pages/recruit/RecruitmentPage"));
@@ -32,6 +33,7 @@ const CookiesPage = React.lazy(() => import("@pages/cookies/CookiesPage"));
 const QuickGuidePage = React.lazy(() => import("@pages/documents/QuickGuidePage"));
 const DocumentationPage = React.lazy(() => import("@pages/documents/DocumentationPage"));
 const UserGuidePage = React.lazy(() => import("@pages/documents/UserGuidePage"));
+const ApiReferencePage = React.lazy(() => import("@pages/documents/ApiReferencePage"));
 
 // ============================================================================
 // LAZY LOADING - AUTH PAGES
@@ -56,6 +58,7 @@ const QuestionBanksPage = React.lazy(() => import("@pages/question-banks/Questio
 const CreateQuestionBankPage = React.lazy(() => import("@pages/question-banks/CreateQuestionBankPage"));
 
 const QuestionsPage = React.lazy(() => import("@pages/questions/QuestionsPage"));
+const QuestionDocumentPage = React.lazy(() => import("@pages/questions/QuestionDocumentPage"));
 const EditQuestionPage = React.lazy(() => import("@pages/questions/EditQuestionPage"));
 
 // ============================================================================
@@ -158,6 +161,9 @@ export const router = createHashRouter([
           // Create & Edit Question Banks
           { path: "question-bank/create", ...withErrorBoundary(<CreateQuestionBankPage />) },
 
+          // Forum
+          { path: "forum/create", ...withErrorBoundary(<CreateThreadPage />) },
+
           // Exams
           { path: "exams/create", ...withErrorBoundary(<CreateExamPage />) },
           { path: "exams/:examId/take", ...withErrorBoundary(<TakeExamPage />) },
@@ -178,6 +184,8 @@ export const router = createHashRouter([
     errorElement: <NotFoundPage />,
     children: [
       { path: "questions/question-bank/:bankId", ...withErrorBoundary(<QuestionsPage />) },
+      { path: "questions/question-bank/:bankId/review", ...withErrorBoundary(<QuestionDocumentPage />) },
+      { path: "api-docs", ...withErrorBoundary(<ApiReferencePage />) },
       {
         element: <RequireAuth />,
         children: [
